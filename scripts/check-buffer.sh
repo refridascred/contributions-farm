@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-staging}"
+BUFFER_LIMIT=360
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
