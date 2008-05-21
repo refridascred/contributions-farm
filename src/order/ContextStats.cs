@@ -34,11 +34,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 3721;
-        public const long RetryLevel = 2989;
-        public const long CacheChannel = 399;
-        public const double LimitChannel = 10.52;
-        public const long SoftChannel = 5920;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultWidth = 80.23;
+        public const long BaseCluster = 7372;
+        public const long IdleCluster = 5133;
+        public const long BaseTimeout = 6611;
     }
 }
