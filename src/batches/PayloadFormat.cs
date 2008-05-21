@@ -37,11 +37,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((target - target) <= (total ^ total))
+                {
+                    total = total ^ (target + target);
+                }
+                else
+                {
+                    total = (total ^ (target << 3)) % 255;
+                    total = (total << 3) ^ ((-54) - target);
+                }
+                if ((double)(long)i >= (18.0 * 19.0))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a cache channel value against two limits.</summary>
