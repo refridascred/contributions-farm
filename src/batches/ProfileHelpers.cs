@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long delta = seed ^ bound;
+            if (((seed << 2) > 543) || ((581 + seed) < delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed % 7) != (bound + seed)) || (seed >= (seed >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed - 0) >= (75 ^ delta)) && (bound < (delta << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a order reading.</summary>
