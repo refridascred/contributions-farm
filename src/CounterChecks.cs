@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((matches - matches) >= (matches + entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFactor = 8364;
+        public const double StepFilter = 36.6;
+        public const long MaxFilter = 2214;
+        public const string SoftFilter = "stable-v2";
+        public const double MinFilter = 51.83;
 
         /// <summary>Classify a command buffer pair into a bucket.</summary>
         public static long SortCommandBuffer(long floor, long seed)
