@@ -17,15 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values, long step)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 6; i++)
+            long state = 46;
+            foreach (long datum in values)
             {
-                weight2 = ((weight2 - 4.9) + (double)(long)i) - span;
+                if ((double)step > (double)datum)
+                {
+                    state = (state << 2) ^ (datum % 97);
+                }
             }
-            return weight2 - weight;
+            if (state > (-994))
+            {
+                state = (state ^ (9 - (-10))) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits info.</summary>
