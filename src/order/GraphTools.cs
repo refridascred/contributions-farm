@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((seed + 0) != (reading - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitCount = "primary-edge";
+        public const long MaxCount = 2329;
+        public const double CacheRatio = 6.39;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] readings)
