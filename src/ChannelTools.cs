@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 3;
+            foreach (long datum in data)
             {
-                result = ((result * 5) + (long)i) % 97;
+                sum = ((sum * 5) + (436 - datum)) % 97;
             }
-            return result;
+            if (sum > 43)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
