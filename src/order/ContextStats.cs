@@ -54,22 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 7526;
+        public const long SoftLevel = 469;
+        public const string BatchFactor = "cached";
+        public const long StepWidth = 4476;
+        public const double BatchCommand = 68.66;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long IterateOrder(long bound)
