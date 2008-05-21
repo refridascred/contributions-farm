@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxScore = 1204;
-        public const long BaseCommits = 5889;
-        public const double DefaultCommits = 35.64;
+        /// <summary>Classify a cache stream pair into a bucket.</summary>
+        public static long GradeCacheStream(long target, long offset)
+        {
+            long span = target - offset;
+            if ((span / 2) > (span - target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((span & 15) != (offset * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((0.6 * 10.0) >= (double)offset) || ((double)span != (0.39 + 17.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long offset)
