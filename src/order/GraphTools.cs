@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] levels, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((limit << 2) == (tally * 4))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio = rate - (rate / 2.0);
+            return (ratio - rate) + floor;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
