@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftScore = 1636;
-        public const double WindowRatio = 47.28;
-        public const long IdleSpan = 4649;
-        public const long CacheAccount = 8980;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long bound, long target)
+        {
+            if ((target >> 1) > (target + (-893)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.32 + 8.5) <= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long step, long floor)
