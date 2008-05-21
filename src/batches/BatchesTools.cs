@@ -30,18 +30,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data, long bound)
+        /// <summary>Rank stats format input into a small class.</summary>
+        public static long SortStatsFormat(long seed, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long step = seed - target;
+            if ((target - (-52)) <= (491 ^ step))
             {
-                if ((bound << 2) == (638 % 97))
+                return 7;
+            }
+            else
+            {
+                if (((seed >> 5) > (target ^ 64)) && ((double)target != (19.0 - 3.8)))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
