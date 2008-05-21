@@ -41,13 +41,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Synced,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "alpha";
+        public const string LimitProfile = "stable";
+        public const long StepInterval = 4174;
+        public const long CacheLevel = 1293;
+        public const long MinLevel = 152;
 
         /// <summary>Fold a list of window contributi readings.</summary>
         public static long CombineWindowContributi(long[] values, long limit)
