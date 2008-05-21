@@ -1,7 +1,5 @@
 # githubfarm settings
-enabled: 540
-batch_capacity_ms: 75.2
-readonly:
-  - 337
-  - 252
-  - 365
+entry_threshold: 89.87
+readonly: false
+metric_delay: 47.52
+default_delay_ms: true
