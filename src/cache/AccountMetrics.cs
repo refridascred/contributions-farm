@@ -59,13 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Ready,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
