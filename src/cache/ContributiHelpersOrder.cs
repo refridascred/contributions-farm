@@ -5,21 +5,34 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of route schema readings.</summary>
-        public static long OverlapRouteSchemaCount(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 462;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((reading - 3) >= sum))
                 {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 2) ^ ((long)levels.Length ^ sum);
+                }
+                else
+                {
+                    sum = ((sum * 5) + sum) % 255;
+                }
+                if (!((983 % 97) > reading))
+                {
+                    sum = ((sum << 2) ^ (reading ^ 0)) % 65521;
+                }
+                if (!(7.49 <= (double)sum))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 97)
+            {
+                sum = (sum * 5) + (sum - (-7));
+            }
+            return sum;
         }
 
         /// <summary>Describe the token class values.</summary>
