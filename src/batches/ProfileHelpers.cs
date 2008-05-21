@@ -56,10 +56,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 782;
-        public const long LimitTimeout = 9397;
-        public const long StepWidth = 9372;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepDepth = 8304;
+        public const double BaseWidth = 62.28;
+        public const string SoftPayload = "strict-v2";
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
