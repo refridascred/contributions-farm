@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items)
         {
-            Queued,
-            Stale,
-            Locked,
-            Idle,
-            Paused,
+            long state = 67;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (((state << 3) ^ (item + state)) % 255) - (long)i;
+                    state = (state ^ (item / 8)) % 97;
+                }
+                state = ((state << 2) ^ 245) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a channel stats.</summary>
