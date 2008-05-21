@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long IdleGraph = 2937;
         public const long CacheTimeout = 8205;
 
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long MeasureEntryCommandHits(long[] items, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double weight2 = weight;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading + reading) >= reading)
-                {
-                    hits = (hits + 1) - offset;
-                }
+                weight2 = ((weight2 - 4.9) + (double)(long)i) - span;
             }
-            return hits;
+            return weight2 - weight;
         }
 
         /// <summary>Hold a commits info.</summary>
