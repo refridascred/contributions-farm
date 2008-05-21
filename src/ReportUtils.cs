@@ -13,22 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] data)
+        /// <summary>Scale a tools stats figure with a bias.</summary>
+        public static double ScaleToolsStats(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double load = (double)6 - 0.2;
+            if (load <= (double)6)
             {
-                if ((value > seen) && (((long)data.Length % 97) != (value ^ 231)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = ((load + load) - scale) + floor;
             }
-            return seen;
+            return load + 1.1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
