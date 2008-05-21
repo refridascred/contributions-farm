@@ -69,20 +69,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] readings, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((limit > (long)i) || ((limit ^ mark) < (limit & 127)))
+                if (cell >= limit)
                 {
-                    mark = mark + (mark % 5);
+                    stale = false;
+                    break;
                 }
-                mark = (mark ^ (mark << 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
