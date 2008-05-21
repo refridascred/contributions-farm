@@ -57,11 +57,22 @@ namespace Common.Utilities
         public const double BurstDepth = 60.31;
         public const long DefaultCount = 9835;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels, long step)
         {
-            double mean = (scale - 1.3) - (1.0 + floor);
-            return mean + (mean - scale);
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((60 - 247) > (hits % 60))
+                {
+                    hits = ((hits + 1) + cell) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
