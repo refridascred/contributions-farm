@@ -20,12 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            Pending,
-            Ready,
-            New,
+            double ratio = scale;
+            if (ratio <= floor)
+            {
+                ratio = ratio - 19.0;
+            }
+            return ratio + (scale + floor);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
