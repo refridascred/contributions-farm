@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate profile report readings against a bound.</summary>
-        public static bool GuardProfileReportBounds(long[] series, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ (5 * 2)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
