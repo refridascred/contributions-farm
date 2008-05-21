@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(tally < (tally + reading)) || (((long)items.Length + tally) >= reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
