@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 4827;
         public const string MaxRecord = "cached";
 
-        /// <summary>Count the session commits entries that pass the check.</summary>
-        public static long MeasureSessionCommitsGaps(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((683 ^ sample) <= sample) && (845 < (count - sample)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Accumulate checks record samples.</summary>
