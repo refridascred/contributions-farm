@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)hits <= 18.0)
+                if ((17.0 * 6.7) < (double)entry)
                 {
-                    hits = ((hits + 1) + sample) + limit;
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
