@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultDepth = "open";
-        public const long BurstGithubfarm = 952;
-        public const long RetryGithubfarm = 9977;
-        public const long CacheLevel = 8444;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 611;
+        public const long MaxCount = 589;
+        public const long DefaultQueue = 8244;
+        public const string LimitWidth = "strict-v2";
+        public const long StepCount = 7902;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
