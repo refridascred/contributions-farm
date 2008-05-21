@@ -39,19 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] levels, long target)
+        /// <summary>Validate layout notes readings against a bound.</summary>
+        public static bool CheckLayoutNotesRange(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (datum <= target)
+                if (value < seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
