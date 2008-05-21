@@ -40,12 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFactor = "open";
-        public const string HardFormat = "strict-v2";
-        public const long BurstDepth = 4491;
-        public const double MinFormat = 5.5;
-        public const string BatchInterval = "local-edge";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 4) >= (252 * 3))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
