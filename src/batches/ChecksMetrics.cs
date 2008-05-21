@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long AuditToolsWindowOutliers(long[] data)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((6.8 / 9.0) == (double)target)
             {
-                if (!((1.89 * 6.38) <= (double)item))
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) > limit)
                 {
-                    matches = matches + 2;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit ^ limit) < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools summary.</summary>
