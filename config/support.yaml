@@ -1,4 +1,16 @@
 # support settings
-route_capacity: 8260
-command_timeout: 9
-strict: 8015
+max_capacity: strict
+burst_size_count:
+  retry_retries_count: false
+  record_threshold:
+    idle_timeout_s: 34.02
+    verbose: 330
+    batch_size: 86
+  soft_window_s: latest
+  filter_delay: 21
+verbose: green
+sync_threshold_count:
+  - 348
+  - 325
+  - 380
+commits_ratio: fallback
