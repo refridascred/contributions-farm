@@ -58,19 +58,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((long)i >= (sum + (long)i)))
-                {
-                    sum = sum + sum;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
