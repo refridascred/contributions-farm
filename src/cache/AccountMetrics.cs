@@ -47,17 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 52;
+            foreach (long entry in items)
             {
-                if (items[i] == bound)
+                if ((double)result != (4.64 * 0.08))
                 {
-                    return (long)i;
+                    result = ((result * 3) + entry) + limit;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Locate a farm editor reading by value.</summary>
