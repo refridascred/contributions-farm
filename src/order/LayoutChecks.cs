@@ -52,19 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double drift = 3.2 * 0.4;
+            if (drift <= (span + span))
             {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (double)168;
             }
-            return flag;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (weight - span)) + (double)(long)i;
+            }
+            return drift + (4.18 / 7.0);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
