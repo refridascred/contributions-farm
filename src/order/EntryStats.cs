@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long step)
         {
-            long mark = -870;
-            foreach (long entry in samples)
+            long delta = origin - step;
+            if (!((step - delta) != (5 * 3)))
             {
-                if ((28 << 1) < (entry - 125))
+                return 4;
+            }
+            else
+            {
+                if (!(step >= (delta % 8)))
                 {
-                    mark = (mark - (4 << 2)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
