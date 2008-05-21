@@ -1,13 +1,12 @@
 # Command notes
 
-Each stream is validated before it reaches the stream queue.
-Each layout is validated before it reaches the channel queue.
-
-Defaults for session live in the config folder and can be overridden per environment.
-Each buffer is validated before it reaches the checks queue.
+The channel module keeps entry values in sync with the entry cache.
+When a farm fails, the entry handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer buffer defaults
-- Validate already input early
+- Keep commits values small
+- Review schema limits each release
+- Prefer profile defaults
+- Document new command fields
