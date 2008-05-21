@@ -1,9 +1,10 @@
 # support settings
-schema_size:
-  sync_threshold: 68.88
-  warm_capacity: local
-  notes_delay: 30
-  compress: true
-  channel_retries: false
-default_delay_ms: 97
-cache_timeout_pct: 70.2
+editor_retries:
+  - standard
+  - fallback
+retry_window_count: legacy
+verbose:
+  - standard
+  - cached
+  - blue
+window_retries: 60
