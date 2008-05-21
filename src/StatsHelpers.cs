@@ -15,19 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (value > origin)
+                if (value != target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
