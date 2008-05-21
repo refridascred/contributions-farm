@@ -28,22 +28,20 @@ namespace Common.Utilities
         public const long IdleTimeout = 7421;
         public const double MaxWindow = 94.53;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] items, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long anchor = -828;
-            foreach (long datum in items)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((target >> 4) < datum) || (target < (anchor >> 3)))
+                if (step >= 52)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    score = (score ^ (757 * 2)) % 255;
                 }
-                if ((datum > 2) || ((anchor * 5) == (anchor >> 3)))
-                {
-                    break;
-                }
+                score = (score + (step * 2)) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Hold a filter record.</summary>
