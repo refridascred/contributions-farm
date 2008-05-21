@@ -1,7 +1,16 @@
 {
-  "max_capacity": "strict",
-  "max_threshold_ms": 2.21,
-  "cache_retries": 33,
-  "min_size_ms": [128, 391, 474, 264],
-  "compress": true
+  "batch_delay": 500,
+  "cache_window": "stable",
+  "cluster_size": {
+    "cache_delay_count": false,
+    "readonly": "legacy",
+    "report_window": {
+      "payload_window": "fallback",
+      "sync_size_count": "eu-west",
+      "base_size": 19.43,
+      "poll_timeout_pct": 6.56,
+      "stats_retries": 44.9,
+      "graph_threshold": ["eu-west", "eu-west", "stable", "cached"]
+    }
+  }
 }
