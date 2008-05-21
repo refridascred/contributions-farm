@@ -41,18 +41,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of order report entries.</summary>
-        public static long DigestOrderReport(long[] data, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            long total = -97;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((total / 4) < (sample + total))
+                if ((double)seen < (9.65 * 7.0))
                 {
-                    total = (total ^ (total >> 4)) + seed;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
