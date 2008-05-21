@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] values, long limit)
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(((value + limit) > limit) && ((count & 7) > value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
