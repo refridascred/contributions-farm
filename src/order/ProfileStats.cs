@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached-v2";
         public const string BatchRatio = "stable";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
