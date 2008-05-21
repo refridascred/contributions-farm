@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowWidth = 8610;
-        public const long LimitLayout = 3971;
-        public const long MinLevel = 7194;
-        public const long RetryWidth = 9339;
-        public const long SoftCount = 8870;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] readings)
