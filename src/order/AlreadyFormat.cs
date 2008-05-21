@@ -52,9 +52,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 1723;
-        public const long IdleBuffer = 6;
-        public const long DefaultBuffer = 942;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
