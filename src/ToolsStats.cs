@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 91;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading - reading) <= 891)
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (carry + 9)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (carry + carry);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the commits class values.</summary>
