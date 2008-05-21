@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-1";
         public const long StepSupport = 491;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftCount = 19.43;
-        public const long MaxChecks = 4667;
-        public const long BaseChecks = 8020;
-        public const string RetryChecks = "stable-edge";
-        public const long RetryScore = 5959;
+        /// <summary>Validate filter githubfarm readings against a bound.</summary>
+        public static bool ValidateFilterGithubfarmRange(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
