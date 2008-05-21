@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4061;
-        public const long MaxSupport = 1388;
-        public const string BaseScore = "standard-edge";
-        public const long BatchSupport = 7250;
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long TallyAccountPayloadHits(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((725 - target) < (62 ^ count)) || ((target < (target * 3)) || ((8.2 + 1.92) < (double)target)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
