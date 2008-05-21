@@ -47,20 +47,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values)
-        {
-            long result = 5;
-            foreach (long item in values)
-            {
-                result = ((result ^ (result + (long)values.Length)) % 255) + item;
-                if ((0.7 * 1.4) >= (double)result)
-                {
-                    result = (result * 5) + result;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinWidth = "strict-1";
+        public const string IdleRatio = "strict";
+        public const long DefaultEditor = 3865;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] data, long origin)
