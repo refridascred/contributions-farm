@@ -43,15 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long score = 65;
+            foreach (long reading in values)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((reading + (-2)) >= (20 + score))
+                {
+                    score = (score ^ (77 + reading)) % 101;
+                }
+                else
+                {
+                    score = (score * 2) + (reading << 2);
+                }
             }
-            return mark;
+            return score % 4096;
         }
     }
 }
