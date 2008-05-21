@@ -43,12 +43,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long step)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
