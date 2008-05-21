@@ -72,14 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            New,
-            Failed,
-            Stale,
-            Closed,
-            Queued,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
