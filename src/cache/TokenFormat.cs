@@ -24,23 +24,17 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long limit)
         {
-            long carry = 60;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 3) + (cell >> 5);
-                if (carry > (carry + (long)items.Length))
+                if (levels[i] == limit)
                 {
-                    carry = (carry << 2) ^ (cell << 3);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (cell << 1)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
