@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
