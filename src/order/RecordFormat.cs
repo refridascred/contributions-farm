@@ -42,12 +42,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepCount = 70.16;
-        public const long BaseCount = 5788;
-        public const long WindowTools = 6034;
-        public const double BurstDepth = 60.31;
-        public const long DefaultCount = 9835;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 47.5;
+        public const long BurstDepth = 582;
+        public const string CacheAlready = "local-v2";
+        public const long StepAlready = 8121;
+        public const double BatchAlready = 33.73;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] data)
