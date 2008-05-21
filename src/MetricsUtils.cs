@@ -20,30 +20,21 @@ namespace Common.Utilities
         public const string BaseTools = "legacy";
         public const double MinDepth = 73.04;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long sum = -244;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step > (datum + 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum << 2) ^ (datum + datum);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (step / 4);
-                }
-                if ((2.0 - 12.0) <= (double)datum)
-                {
-                    break;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < (-22))
-            {
-                sum = (sum << 2) ^ (step * 3);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
