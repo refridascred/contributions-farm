@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] values, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
