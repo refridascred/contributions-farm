@@ -44,22 +44,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((58 ^ item) >= (500 - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
