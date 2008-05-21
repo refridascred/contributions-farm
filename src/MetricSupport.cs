@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultCount = "latest-1";
-        public const string DefaultSize = "stable-edge";
-        public const string WindowBatch = "strict-edge";
-        public const long HardBatch = 1217;
-        public const long StepBatch = 7568;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Ready,
+            New,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] levels, long bound)
