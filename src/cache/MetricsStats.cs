@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long limit)
         {
-            Pending,
-            Locked,
-            Stale,
-            Failed,
-            Ready,
+            long prev = floor ^ limit;
+            if ((prev & 3) <= (3 ^ prev))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit != (14.0 + 1.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)prev < 2.51)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (5 > (prev % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
