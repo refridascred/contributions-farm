@@ -39,11 +39,23 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 3199;
-        public const string BurstRatio = "primary-1";
-        public const double BatchFarm = 81.85;
-        public const long BaseFarm = 2466;
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long CountChannelAlreadyHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)reading <= (6.7 / 6.0)))
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long target)
