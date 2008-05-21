@@ -38,12 +38,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit counter route readings against a rule.</summary>
+        public static long CountCounterRouteMatches(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count - cell) >= cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
