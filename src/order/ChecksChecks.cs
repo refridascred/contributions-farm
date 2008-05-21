@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a tools already pair into a bucket.</summary>
-        public static long ClassifyToolsAlready(long offset, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            if ((1 ^ offset) != (offset + offset))
+            double load = floor;
+            if (load <= (weight / 5.0))
             {
-                return 5;
+                load = load - (floor - floor);
             }
-            else
-            {
-                if ((bound * 4) != (offset + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset <= (offset & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound < 5.79) && ((offset / 9) != (offset - bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return load + floor;
         }
 
         /// <summary>Count tools batch pairs that satisfy a relation.</summary>
