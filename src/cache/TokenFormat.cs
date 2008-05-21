@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool VerifyStatsFormatRange(long[] levels, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
