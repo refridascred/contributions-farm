@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long BatchAlready = 3109;
         public const string CacheAlready = "cached";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((sample - matches) < (matches * 5)) && ((double)sample > (4.0 / 7.0))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the format state values.</summary>
