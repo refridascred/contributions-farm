@@ -39,21 +39,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 366;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (entry >> 4)) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
