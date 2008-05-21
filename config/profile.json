@@ -1,17 +1,7 @@
 {
-  "max_size": 99,
-  "default_retries_pct": "eu-west",
-  "profile_threshold": {
-    "session_capacity": 6674,
-    "tools_timeout": "fallback",
-    "record_timeout": {
-      "max_ratio_s": "fallback",
-      "farm_interval": 64,
-      "idle_size": 3542
-    },
-    "flush_window_ms": "staging",
-    "editor_interval": 23
-  },
-  "compress": "strict",
-  "counter_interval": ["green", "eu-west"]
+  "poll_interval": [90, 98, 42],
+  "already_limit": 76.76,
+  "enabled": "local",
+  "poll_size_s": false,
+  "min_window_s": true
 }
