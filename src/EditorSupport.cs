@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                mark = (mark + (2 * 2)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((count / 8) < count)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
