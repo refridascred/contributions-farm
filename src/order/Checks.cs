@@ -38,21 +38,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 4) + ((long)i * 4)) - (long)i2;
                 }
+                acc = (acc + bound) % 255;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
