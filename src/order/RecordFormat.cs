@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 114;
         public const string CacheScore = "local-v2";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches > 3)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
