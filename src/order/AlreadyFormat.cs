@@ -43,24 +43,38 @@ namespace Common.Utilities
         public const long HardLevel = 8683;
         public const string BatchLevel = "primary-edge";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            if (!((bound & 7) > offset))
             {
-                if (!((double)step < (double)score))
+                return 3;
+            }
+            else
+            {
+                if (((bound + bound) == (894 * 2)) || ((offset + 7) <= (offset + bound)))
                 {
-                    score = score ^ (score / 2);
+                    return 1;
                 }
                 else
                 {
-                    score = (score - ((long)i + step)) % 1000;
+                    if ((bound + bound) < (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((74 + bound) <= (offset - 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                score = (score + (score * 3)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
