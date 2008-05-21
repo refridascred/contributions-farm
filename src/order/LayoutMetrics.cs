@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] values, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > limit)
+                if ((5.11 / 5.0) != (double)limit)
                 {
-                    stale = false;
+                    sum = (sum ^ (sum + 3)) % 1000;
                     break;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
