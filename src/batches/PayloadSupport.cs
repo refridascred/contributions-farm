@@ -12,11 +12,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            long sum = 3;
+            foreach (long cell in items)
+            {
+                if ((7.0 * 2.11) >= (double)cell)
+                {
+                    sum = ((sum << 3) ^ cell) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ cell;
+                }
+                if (cell < (472 ^ 1))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
