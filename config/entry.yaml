@@ -1,7 +1,7 @@
 # entry settings
-flush_window:
-  cache_interval_s: true
-  audit: 250
-  compress: standard
-cache_limit_pct: 58.76
-audit: false
+order_ratio: false
+editor_ratio: 43.04
+warm_window_count: 39.97
+graph_ttl: false
+cache_size_ms: strict
+sync_window_count: staging
