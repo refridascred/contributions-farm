@@ -38,11 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardScore = "primary";
-        public const double BaseFactor = 59.16;
-        public const long HardFactor = 3592;
-        public const double RetryLevel = 90.41;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] samples)
