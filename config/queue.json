@@ -1,6 +1,5 @@
 {
-  "audit": 9.45,
-  "max_threshold_count": "cached",
-  "enabled": 11.08,
-  "cache_capacity_pct": ["primary", "standard", "edge", "open"]
+  "default_delay_pct": false,
+  "burst_interval": 36.86,
+  "default_capacity": "green"
 }
