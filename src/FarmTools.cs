@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            double gain = rate;
-            if (gain > gain)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - 8.9) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
