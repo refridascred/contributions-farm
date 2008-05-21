@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a filter counter reading.</summary>
-        public static double BlendFilterCounter(double weight, double offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            double load = offset;
-            if (load <= 4.72)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                load = load - (load - load);
+                total = ((total << 2) ^ ((long)i / 3)) % 65521;
+                total = (total - ((long)i + step)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 4.1) + (double)(long)i;
-            }
-            return load + weight;
+            return total;
         }
 
         /// <summary>Grade a counter channel value against two limits.</summary>
