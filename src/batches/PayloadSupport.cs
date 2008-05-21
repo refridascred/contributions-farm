@@ -21,26 +21,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = 3;
-            foreach (long cell in items)
-            {
-                if ((7.0 * 2.11) >= (double)cell)
-                {
-                    sum = ((sum << 3) ^ cell) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ cell;
-                }
-                if (cell < (472 ^ 1))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Idle,
+            Draft,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine context values into a single score.</summary>
