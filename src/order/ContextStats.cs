@@ -51,17 +51,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a order githubfarm reading by value.</summary>
-        public static long FindOrderGithubfarmIndex(long[] items, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                result = (result + ((long)i + (long)i)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
