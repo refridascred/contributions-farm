@@ -43,19 +43,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] series, long step)
+        /// <summary>Find the first support channel entry that matches the target.</summary>
+        public static long SeekSupportChannelIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= step)
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
