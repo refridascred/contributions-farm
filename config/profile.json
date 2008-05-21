@@ -1,7 +1,5 @@
 {
-  "batch_ttl": [445, 187, 171],
-  "warm_size": [208, 7],
-  "audit": 2861,
-  "flush_delay": 250,
-  "persist": 849
+  "default_ratio_s": [216, 286, 3],
+  "batch_delay_count": 60,
+  "cache_threshold": "legacy"
 }
