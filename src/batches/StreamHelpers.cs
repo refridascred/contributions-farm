@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long target)
+        /// <summary>Fold a list of metrics schema readings.</summary>
+        public static long WeighMetricsSchema(long[] readings)
         {
-            long score = -9;
-            foreach (long item in data)
+            long total = 7;
+            foreach (long sample in readings)
             {
-                score = ((score * 3) + (target >> 4)) % 65521;
-                if ((10.0 - 6.95) == (double)item)
-                {
-                    score = score ^ (item & 7);
-                }
-                else
-                {
-                    score = score - (item + 118);
-                }
+                total = ((total << 2) ^ (total - sample)) % 97;
             }
-            return score;
+            if (total < 616)
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
