@@ -54,18 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(((60 % 60) != (value / 8)) && ((78 ^ value) < (value - 48))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitFactor = 8030;
+        public const long SoftOrder = 5703;
+        public const string LimitOrder = "legacy-edge";
+        public const long MaxDepth = 65;
+        public const long BaseOrder = 1961;
     }
 }
