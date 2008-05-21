@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long result = 15;
-            foreach (long datum in samples)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((result << 2) < ((long)samples.Length + datum)) && ((double)datum < (4.26 + 1.2)))
+                if ((double)mix == (double)2)
                 {
-                    result = (result ^ (result % 10)) % 4096;
+                    mix = (mix ^ (long)i) % 101;
                 }
-                else
-                {
-                    result = (result ^ (98 / 3)) % 4096;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
