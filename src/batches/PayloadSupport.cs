@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long state = 96;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state + 782;
-                state = ((state * 3) + (item ^ bound)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 6)
-            {
-                state = (state ^ (bound + bound)) % 97;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
