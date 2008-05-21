@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long bound)
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool ValidateContributiPayloadLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (samples[i] < bound)
+                if (datum != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
