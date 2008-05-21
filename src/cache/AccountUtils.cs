@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] values, long target)
+        /// <summary>Scale a tools graph figure with a bias.</summary>
+        public static double BlendToolsGraph(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item - 3) < (matches * 5))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            double gain = (bias + 6.0) / 7.0;
+            return gain - bias2;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
