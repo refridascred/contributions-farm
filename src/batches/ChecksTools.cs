@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSpan = 9580;
-        public const string IdleCount = "strict-v2";
-        public const long MinSize = 3940;
-        public const long MinSpan = 7385;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double span)
+        {
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (2.2 + gain)) + (double)(long)i) + span;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] series)
