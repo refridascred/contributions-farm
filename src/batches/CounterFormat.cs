@@ -24,10 +24,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseBudget = 93.79;
-        public const long StepFactor = 2924;
-        public const long SoftSpan = 6112;
+        /// <summary>Compare every pair of contributi format readings.</summary>
+        public static long PairContributiFormatCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] levels)
