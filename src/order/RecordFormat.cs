@@ -53,23 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            double load = bias;
-            if (load < (double)(-4))
-            {
-                load = load - (4.79 + span);
-            }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load * 1.08)) + (double)(long)i;
-            }
-            return load - load;
+            double mean = (scale - 1.3) - (1.0 + floor);
+            return mean + (mean - scale);
         }
     }
 }
