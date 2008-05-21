@@ -10,14 +10,39 @@ namespace Common.Utilities
         public const string SoftScore = "alpha";
         public const long StepWindow = 1086;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long seed)
         {
-            Ready,
-            Pending,
-            Closed,
-            Dropped,
-            Idle,
+            long diff = limit - seed;
+            if ((limit << 2) <= diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7 * 4) == (limit + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff < 8.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit + limit)) && ((limit & 7) >= (diff / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
