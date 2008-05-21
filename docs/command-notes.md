@@ -1,11 +1,14 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-A notes that stays idle for too long is moved to the batches list.
+The batch report groups every support by checks.
+The layout module keeps channel values in sync with the tools cache.
+
+The schema helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new tools fields
-- Validate schema input early
-- Prefer account defaults
+- Prefer command defaults
+- Log every batch change
+- Review commits limits each release
+- Document new queue fields
