@@ -23,22 +23,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] items, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = 5;
+            foreach (long value in items)
             {
-                if (((cell ^ 29) <= (offset << 1)) || ((double)cell >= (double)offset))
+                if ((result + value) >= result)
                 {
-                    seen = seen + 2;
+                    result = (result << 3) ^ (result - value);
+                    result = ((result * 3) + (value ^ result)) % 65521;
                 }
-                else
+                if (!((2.63 + 9.09) >= (double)value))
                 {
-                    seen = seen - 1;
+                    result = (result + (value + result)) % 65521;
                 }
             }
-            return seen;
+            if (result > 72)
+            {
+                result = ((result * 3) + (result * 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
