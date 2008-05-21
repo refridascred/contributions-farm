@@ -1,11 +1,11 @@
 {
-  "base_limit": 250,
-  "cache_capacity": 1024,
-  "payload_delay": {
-    "flush_ttl_pct": 6106,
-    "sync_interval": "legacy",
-    "soft_interval_pct": 35.06,
-    "batch_threshold": 9329
+  "tools_window": 1024,
+  "audit": 1024,
+  "verbose": {
+    "burst_window_count": "edge",
+    "soft_timeout": 30,
+    "flush_depth_s": ["fallback", "staging"],
+    "compress": 17.88
   },
-  "command_window": 2.31
+  "hard_depth_ms": true
 }
