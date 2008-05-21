@@ -1,8 +1,19 @@
 {
-  "hard_timeout_count": 30.32,
-  "sync_delay_count": 1024,
-  "strict": true,
-  "idle_limit": "stable",
-  "base_ratio": 4285,
-  "poll_ratio": [149, 324, 345]
+  "buffer_delay": 68.74,
+  "compress": 4391,
+  "hard_threshold_count": {
+    "session_capacity": 4693,
+    "min_interval": 28,
+    "sync_limit_s": ["staging", "cached"],
+    "counter_size": {
+      "burst_window_s": false,
+      "cache_depth_count": "primary",
+      "audit": 76.53,
+      "burst_timeout": "legacy"
+    },
+    "entry_depth": "edge"
+  },
+  "persist": "staging",
+  "order_ttl": ["open", "strict"],
+  "idle_threshold": 4015
 }
