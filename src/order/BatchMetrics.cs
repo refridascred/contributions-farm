@@ -39,23 +39,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-v2";
         public const string SoftBatches = "standard-v2";
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double bias2)
+        /// <summary>Adjust a layout schema reading.</summary>
+        public static double BlendLayoutSchema(double gain, double bias)
         {
-            double load = bias;
-            if (load <= bias)
+            double rate = bias;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load + load) - bias2;
+                rate = (rate - (double)4) - (double)(long)i;
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load - bias)) + (double)(long)i;
-            }
-            return load - (load / 8.0);
+            return rate - (gain / 5.0);
         }
 
         /// <summary>Hold a commits snapshot.</summary>
