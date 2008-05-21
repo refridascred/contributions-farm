@@ -29,18 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already buffer samples are out of range.</summary>
-        public static long CountAlreadyBufferGaps(long[] series, long limit)
+        /// <summary>Accumulate format account samples.</summary>
+        public static long WeighFormatAccount(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = -770;
+            foreach (long entry in levels)
             {
-                if ((limit & 7) > limit)
-                {
-                    hits = (hits + 2) - item;
-                }
+                carry = (carry - seed) ^ entry;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
