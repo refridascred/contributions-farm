@@ -34,12 +34,17 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long limit)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
