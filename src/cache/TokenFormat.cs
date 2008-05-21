@@ -26,19 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long AuditFilterAccountGaps(long[] data, long bound)
         {
-            double weight = 8.5 / 5.0;
-            if (weight <= 3.6)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                weight = (weight - (bias / 7.0)) + floor;
+                if ((bound % 16) > (bound % 12))
+                {
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (2.32 + bias)) + (double)(long)i;
-            }
-            return weight - bias;
+            return hits;
         }
     }
 }
