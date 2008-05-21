@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Locked,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Look up the position of a notes checks sample.</summary>
