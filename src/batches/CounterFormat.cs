@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch already entry stays within the limit.</summary>
-        public static bool CheckBatchAlreadyRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseBudget = 93.79;
+        public const long StepFactor = 2924;
+        public const long SoftSpan = 6112;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double gain, double span)
