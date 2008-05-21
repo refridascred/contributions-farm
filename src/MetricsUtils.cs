@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
         {
-            Done,
-            Synced,
-            New,
+            long sum = 15;
+            foreach (long cell in readings)
+            {
+                if (cell < 40)
+                {
+                    sum = (sum << 3) ^ (cell + cell);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the session status values.</summary>
