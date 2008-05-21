@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Failed,
-            Stale,
-            New,
-            Active,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 2219;
+        public const double BurstSupport = 53.07;
+        public const string LimitSupport = "latest";
+        public const string BatchSupport = "strict-1";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] values)
