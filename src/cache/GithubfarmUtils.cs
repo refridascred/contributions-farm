@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 294;
+            foreach (long sample in series)
+            {
+                if ((mark ^ 4) >= sample)
+                {
+                    mark = (mark * 4) + (step - mark);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
