@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first entry schema entry that matches the target.</summary>
-        public static long SeekEntrySchemaIndex(long[] data, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
