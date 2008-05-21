@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the tools schema series from a seed.</summary>
-        public static long StepToolsSchema(long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] items, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                result = result - (offset ^ offset);
-                if (!(offset >= ((long)i + (long)i)))
+                if ((bound / 3) >= (9 / 3))
                 {
-                    result = (result + (result << 2)) % 1000;
+                    seen = (seen + 2) ^ item;
                 }
-                result = ((result * 5) + (112 % 97)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
