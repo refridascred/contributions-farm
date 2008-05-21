@@ -38,10 +38,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinWidth = "strict-1";
-        public const string IdleRatio = "strict";
-        public const long DefaultEditor = 3865;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Idle,
+            Paused,
+            Done,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] data, long origin)
