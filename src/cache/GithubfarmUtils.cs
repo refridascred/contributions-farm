@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Queued,
-            Paused,
-            Locked,
+            New,
             Draft,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of support entries.</summary>
