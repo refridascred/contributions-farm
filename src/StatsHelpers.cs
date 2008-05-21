@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry ^ (bound + carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 53.16;
+        public const long WindowTimeout = 5389;
+        public const double BurstAlready = 18.45;
+        public const double RetryAlready = 79.93;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
