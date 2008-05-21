@@ -20,14 +20,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Synced,
-            Ready,
-            Pending,
-            Paused,
-            Locked,
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
