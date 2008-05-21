@@ -50,12 +50,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long CombineReportFilter(long[] data, long seed)
         {
-            Dropped,
-            New,
-            Stale,
+            long mark = 0;
+            foreach (long entry in data)
+            {
+                mark = (mark + (mark + seed)) + entry;
+            }
+            return mark;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
