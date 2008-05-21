@@ -1,14 +1,7 @@
 # entry settings
-burst_ratio:
-  - 414
-  - 228
-  - 254
-  - 319
-base_capacity_s: strict
-compress: true
-contributi_ttl: 62.38
-persist:
-  poll_interval_count: 5499
-  enabled: cached
-  burst_ttl_ms: green
-stream_size: local
+flush_window:
+  cache_interval_s: true
+  audit: 250
+  compress: standard
+cache_limit_pct: 58.76
+audit: false
