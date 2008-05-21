@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double WindowRatio = 59.12;
         public const double StepTimeout = 90.01;
 
-        /// <summary>Audit channel notes readings against a rule.</summary>
-        public static long CountChannelNotesHits(long[] data, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((551 % 60) > (item >> 5))
+                if (reading != floor)
                 {
-                    matches = (matches + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
