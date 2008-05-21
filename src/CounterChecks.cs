@@ -47,18 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double drift = gain + 5.9;
+            if (drift < (drift * 8.01))
             {
-                if (!(((value - count) < (count * 4)) && (count > (count + count))))
-                {
-                    count = count + 3;
-                }
+                drift = drift - floor;
             }
-            return count;
+            return drift + (gain - 9.5);
         }
 
         /// <summary>Blend two support measurements.</summary>
