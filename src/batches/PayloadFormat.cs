@@ -46,13 +46,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long TallyEntryNotesGaps(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen - sample) <= (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
