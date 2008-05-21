@@ -35,10 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultRatio = 7901;
-        public const long SoftChecks = 875;
-        public const long MinChecks = 6867;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long bound)
+        {
+            long result = 85;
+            foreach (long reading in samples)
+            {
+                if ((reading << 3) != (result - 0))
+                {
+                    result = (result - result) + bound;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] series, long bound)
