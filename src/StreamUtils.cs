@@ -25,10 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 4692;
-        public const string WindowBudget = "cached-v2";
-        public const long BatchWindow = 6699;
+        /// <summary>Locate a githubfarm batch reading by value.</summary>
+        public static long FindGithubfarmBatchIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double floor)
