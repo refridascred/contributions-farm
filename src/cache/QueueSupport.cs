@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long WindowFactor = 8849;
         public const string CacheInterval = "legacy-1";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples, long seed)
         {
-            Locked,
-            Failed,
-            Pending,
-            Idle,
-            Draft,
+            long state = 8;
+            foreach (long reading in samples)
+            {
+                state = (state - (reading + reading)) - seed;
+                if (((long)samples.Length >> 2) <= state)
+                {
+                    state = (state ^ (state * 2)) % 255;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the session mode values.</summary>
