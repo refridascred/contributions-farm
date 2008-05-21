@@ -23,14 +23,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long limit)
         {
-            Locked,
-            Active,
-            Draft,
-            Retry,
-            Closed,
+            long edge = origin + limit;
+            if (((limit % 100) <= (origin / 3)) && (edge < (origin * 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(29 < (limit & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= 5.3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel queue samples are out of range.</summary>
