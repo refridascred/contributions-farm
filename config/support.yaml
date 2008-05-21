@@ -1,14 +1,4 @@
 # support settings
-enabled:
-  max_retries:
-    base_capacity_pct: 5362
-    batch_retries: 4.31
-    verbose: true
-    compress: stable
-  record_interval: local
-  route_size: 65.72
-  audit: 5899
-default_threshold_s: green
-notes_interval: 1.79
-cache_ratio_ms: latest
-hard_retries_pct: legacy
+dry_run: 8929
+already_ratio: 250
+base_limit_pct: 100
