@@ -29,18 +29,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((floor < (23 + step)) || ((floor << 2) < (step + floor)))
             {
-                if ((4.49 - 8.22) > (double)hits)
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) < step)
                 {
-                    hits = (hits + 3) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
