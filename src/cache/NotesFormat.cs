@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long bound, long bound2)
         {
-            if (!((double)limit >= (8.1 + 20.0)))
+            if (((bound2 * 4) <= (bound + bound)) && ((bound / 4) > (66 & 127)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((5 - offset) < limit) || (limit < (offset * 2)))
+                if (!((bound - 99) < (bound % 60)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((7 - limit) < offset) || (((-821) + limit) <= (limit - limit)))
+                    if ((double)bound2 != (8.6 + 0.2))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        return 3;
                     }
                 }
             }
