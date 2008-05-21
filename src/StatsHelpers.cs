@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            double load = rate * 5.6;
-            if (load < 18.0)
+            long mark = 684;
+            foreach (long value in samples)
             {
-                load = (load - (double)(-832)) + floor;
+                if (!(((mark - mark) > value) && ((15.0 * 0.5) <= (double)value)))
+                {
+                    mark = ((mark << 3) ^ value) % 4096;
+                }
+                if ((mark * 2) < mark)
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark + (mark + value)) % 97;
+                }
             }
-            return load + load;
+            return mark % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
