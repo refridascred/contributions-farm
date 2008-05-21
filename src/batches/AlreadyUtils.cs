@@ -19,32 +19,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long delta = target - step;
-            if ((step * 3) >= (delta ^ 779))
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                sum = (sum + (7 * 2)) % 97;
+                sum = (sum << 3) ^ (sum + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target ^ target) >= (-9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta > (3.07 + 1.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
