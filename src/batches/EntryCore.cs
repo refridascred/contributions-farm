@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long sum = 21;
-            foreach (long entry in levels)
-            {
-                sum = ((sum + (sum + offset)) % 101) - entry;
-            }
-            if (sum < 0)
-            {
-                sum = (sum + (sum >> 5)) % 65521;
-            }
-            return sum;
+            New,
+            Retry,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
