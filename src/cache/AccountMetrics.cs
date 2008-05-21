@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] series, long offset)
         {
-            if (((limit >> 5) == (74 + limit)) && ((double)limit != (3.1 + 7.55)))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step & 31) > (limit + step))
+                if (value != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - 1) >= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a support filter reading by value.</summary>
