@@ -37,9 +37,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 464;
-        public const string StepCache = "latest-edge";
-        public const long HardCache = 52;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 266;
+        public const string WindowDepth = "standard-edge";
+        public const long StepCounter = 8657;
+        public const long MaxCounter = 1123;
+        public const long MinCounter = 6604;
     }
 }
