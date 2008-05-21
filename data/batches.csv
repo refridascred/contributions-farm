@@ -1,7 +1,9 @@
-id,region,level
-1,45.44,green
-2,980,51
-3,659,81.42
-4,fallback,2.46
-5,493,31.53
-6,9.58,79.73
+id,ratio,level,state
+1,primary,cached,20.96
+2,88.66,fallback,54.3
+3,800,edge,34.5
+4,98.51,22.36,latest
+5,480,cached,62
+6,stable,60.29,419
+7,56.33,8.41,91.03
+8,851,67,latest
