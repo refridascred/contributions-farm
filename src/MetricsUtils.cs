@@ -45,15 +45,13 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Iterate the buffer tools series from a seed.</summary>
-        public static long StepBufferTools(long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
