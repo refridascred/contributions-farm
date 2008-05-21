@@ -1,16 +1,13 @@
 # support settings
-max_capacity: strict
-burst_size_count:
-  retry_retries_count: false
-  record_threshold:
-    idle_timeout_s: 34.02
-    verbose: 330
-    batch_size: 86
-  soft_window_s: latest
-  filter_delay: 21
-verbose: green
-sync_threshold_count:
-  - 348
-  - 325
-  - 380
-commits_ratio: fallback
+batch_capacity_s: 1.8
+batch_limit:
+  - 290
+  - 57
+  - 444
+  - 386
+dry_run: 60
+idle_delay_count:
+  - 223
+  - 353
+githubfarm_capacity: fallback
+cache_threshold_pct: 13.09
