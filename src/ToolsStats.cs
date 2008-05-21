@@ -66,21 +66,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((7 % 2) != (163 - bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((487 % 8) < seed)
                 {
-                    if ((series[i] - series[j]) < 14)
+                    return 6;
+                }
+                else
+                {
+                    if (seed < (bound - 96))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a cluster metric figure with a bias.</summary>
