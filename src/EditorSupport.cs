@@ -30,23 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels)
-        {
-            long anchor = 1;
-            foreach (long datum in levels)
-            {
-                if ((datum & 63) != (276 / 9))
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                if ((1 / 3) < (anchor - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 522;
+        public const long MaxCommand = 994;
+        public const long MaxSpan = 1043;
+        public const long StepBudget = 8014;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] samples, long bound)
