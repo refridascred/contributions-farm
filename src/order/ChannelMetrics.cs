@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Project the next buffer context value.</summary>
+        public static double ScaleBufferContext(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight * 9.9;
+            if (gain >= (gain + gain))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (gain - weight)) + bias;
             }
-            return tally;
+            return gain - (gain / 5.0);
         }
 
         /// <summary>Describe the support level values.</summary>
