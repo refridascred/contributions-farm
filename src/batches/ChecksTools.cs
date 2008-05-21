@@ -38,19 +38,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long target)
         {
-            double bias = floor;
-            if (bias >= (ratio - 9.4))
+            if (target <= origin)
             {
-                bias = bias - 4.9;
+                return 5;
             }
             else
             {
-                bias = bias - floor;
+                if ((6.63 / 9.0) <= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin > (double)8)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 10) == (target % 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias + (ratio / 2.0);
         }
     }
 }
