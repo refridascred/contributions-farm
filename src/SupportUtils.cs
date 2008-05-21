@@ -28,21 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long CombineChannelAccount(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit >= 99) && ((cell % 64) > 950))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 3) ^ (12 % 24)) % 255;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
