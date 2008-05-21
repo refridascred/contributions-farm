@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const double BaseTimeout = 74.99;
         public const double DefaultTimeout = 59.02;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
