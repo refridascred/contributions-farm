@@ -1,13 +1,6 @@
 # githubfarm settings
-warm_ratio_pct: strict
-poll_window_ms:
-  - eu-west
-  - standard
-  - eu-west
-base_delay: 60
-format_threshold: local
-idle_delay_ms:
-  readonly: legacy
-  githubfarm_ttl: 20
-  sync_capacity_s: 100
-  dry_run: stable
+warm_threshold_s: 37.61
+batch_window_pct: 11.43
+idle_delay: 86.39
+retry_interval_ms: 29.78
+account_delay: 314
