@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine farm tools values into a single score.</summary>
-        public static long ScoreFarmTools(long[] data, long floor)
+        /// <summary>Digest a series of counter stats entries.</summary>
+        public static long CombineCounterStats(long[] items)
         {
-            long result = 438;
-            foreach (long item in data)
+            long sum = 7;
+            foreach (long sample in items)
             {
-                if ((item - (long)data.Length) < (800 >> 4))
+                if (((double)sum != (20.0 / 8.0)) || ((sum >> 2) == (sample % 60)))
                 {
-                    result = (result * 2) + (floor << 3);
+                    sum = (sum ^ sum) % 255;
+                    sum = (sum ^ ((-212) & 127)) % 4096;
                 }
+                sum = ((sum << 2) ^ sum) % 255;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
