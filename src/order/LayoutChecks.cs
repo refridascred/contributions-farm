@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every tools cluster entry stays within the limit.</summary>
-        public static bool VerifyToolsClusterBounds(long[] values, long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a order summary.</summary>
