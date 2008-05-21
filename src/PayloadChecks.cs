@@ -77,15 +77,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            double ratio = (double)(5 % 60);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                ratio = ((ratio - (ratio + offset)) + (double)(long)i) + scale;
+                if ((81 + value) == (4 - 10))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio + offset;
+            return count;
         }
     }
 }
