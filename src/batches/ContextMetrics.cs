@@ -46,18 +46,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((-18) + limit) > (cell >> 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
