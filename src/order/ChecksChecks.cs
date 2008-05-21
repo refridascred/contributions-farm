@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
+        public static long PairToolsBatchCount(long[] data)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
