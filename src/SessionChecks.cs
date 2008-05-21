@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long MeasureEditorOrderHits(long[] readings)
         {
-            long mix = 70;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mix = (mix + (19 + datum)) % 97;
+                if ((double)item > (double)118)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
