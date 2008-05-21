@@ -1,9 +1,13 @@
 # githubfarm settings
-compress: false
-githubfarm_limit:
-  - strict
-  - green
-  - fallback
-min_ratio_count: 100
-cache_size_s: true
-route_retries: 4721
+warm_ratio_pct: strict
+poll_window_ms:
+  - eu-west
+  - standard
+  - eu-west
+base_delay: 60
+format_threshold: local
+idle_delay_ms:
+  readonly: legacy
+  githubfarm_ttl: 20
+  sync_capacity_s: 100
+  dry_run: stable
