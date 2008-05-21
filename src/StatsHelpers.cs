@@ -41,19 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
