@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
