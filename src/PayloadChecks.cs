@@ -68,21 +68,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Derive the next batch window value from a seed.</summary>
+        public static long SeriesBatchWindow(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (4.3 >= (double)total)
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (314 >> 5)) % 65521;
                 }
+                else
+                {
+                    total = ((total * 3) + 82) % 97;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
