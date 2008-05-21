@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-1";
         public const long StepSupport = 491;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 856;
-            foreach (long entry in samples)
-            {
-                acc = ((acc << 2) ^ (entry + entry)) % 101;
-            }
-            return acc;
+            New,
+            Queued,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a tools header.</summary>
