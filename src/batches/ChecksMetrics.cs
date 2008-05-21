@@ -48,12 +48,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "alpha";
-        public const string LimitProfile = "stable";
-        public const long StepInterval = 4174;
-        public const long CacheLevel = 1293;
-        public const long MinLevel = 152;
+        /// <summary>Adjust a channel record reading.</summary>
+        public static double ScaleChannelRecord(double rate, double floor)
+        {
+            double mean = rate - rate;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)(long)i) - floor;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] readings, long origin)
