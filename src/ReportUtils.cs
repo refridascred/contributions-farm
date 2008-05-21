@@ -48,11 +48,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxFactor = 18.49;
+        public const double BaseAccount = 8.51;
+        public const double CacheAccount = 80.9;
+        public const string SoftAccount = "open-v2";
     }
 }
