@@ -22,38 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account entry pair into a bucket.</summary>
-        public static long BucketAccountEntry(long step, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((83 / 8) < target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) <= 458)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target >= (18.0 - 0.71))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.8 / 8.0) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the schema kind values.</summary>
