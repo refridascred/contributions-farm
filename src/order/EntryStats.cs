@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long delta = origin - step;
-            if (!((step - delta) != (5 * 3)))
+            long anchor = -710;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(step >= (delta % 8)))
+                if ((value >= ((long)values.Length + anchor)) && (anchor <= value))
                 {
-                    return 2;
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = (anchor - anchor) % 97;
             }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
