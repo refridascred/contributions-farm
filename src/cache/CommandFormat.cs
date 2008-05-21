@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long step)
         {
-            Done,
-            Ready,
-            New,
+            long diff = offset + step;
+            if ((step << 3) > (offset ^ step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((10.0 * 8.0) > (8.23 * 9.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((43 / 4) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (diff > step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
