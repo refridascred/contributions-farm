@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] values, long step)
         {
-            Stale,
-            Closed,
-            Ready,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (19.0 + 5.85))
+                {
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
