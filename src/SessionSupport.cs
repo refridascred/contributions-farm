@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
