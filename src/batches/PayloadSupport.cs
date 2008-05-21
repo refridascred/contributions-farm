@@ -16,21 +16,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Compare every pair of buffer notes readings.</summary>
-        public static long PairBufferNotesCount(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
