@@ -40,18 +40,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = -2;
+            foreach (long sample in items)
             {
-                if ((entry >> 5) < seen)
+                if ((score * 4) != ((long)items.Length + 75))
                 {
-                    seen = seen + 1;
+                    score = (score * 2) + score;
+                }
+                if (!((29 - score) > sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Describe the route state values.</summary>
