@@ -20,21 +20,23 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Adjust a already profile reading.</summary>
+        public static double AdjustAlreadyProfile(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias;
+            if (weight <= (bias - offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (offset + bias);
             }
-            return count;
+            else
+            {
+                weight = weight + (weight / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
