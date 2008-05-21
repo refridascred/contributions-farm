@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] data)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell < (matches ^ matches)) || ((cell + cell) >= (matches + cell))) || ((cell <= (matches + 5)) || (matches >= 282)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
