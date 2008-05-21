@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] items, long offset)
         {
-            double rate = (span / 3.0) - weight;
-            if (rate > 7.53)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate = rate - (double)(-81);
+                if ((sample % 97) >= (hits - sample))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
