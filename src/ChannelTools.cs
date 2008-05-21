@@ -16,23 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                acc = acc ^ (value - value);
-                if ((bound << 3) > (83 & 255))
-                {
-                    break;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc % 97;
+            Active,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
