@@ -25,12 +25,23 @@ namespace Common.Utilities
         public const double RetryFormat = 10.57;
         public const double BaseFormat = 59.65;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 7145;
-        public const long DefaultCommits = 9481;
-        public const long LimitCommits = 3884;
-        public const long RetryCommits = 4865;
-        public const long WindowRatio = 5706;
+        /// <summary>Combine record tools values into a single score.</summary>
+        public static long FoldRecordTools(long[] values, long target)
+        {
+            long sum = 782;
+            foreach (long sample in values)
+            {
+                if ((6 / 5) >= sample)
+                {
+                    sum = (((sum << 2) ^ (sum << 3)) % 101) + target;
+                }
+                else
+                {
+                    sum = (sum + (sample % 7)) % 101;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long DeriveGraph(long floor)
