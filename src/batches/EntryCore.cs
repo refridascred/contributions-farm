@@ -47,19 +47,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] data, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = mark - ((long)i + origin);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
