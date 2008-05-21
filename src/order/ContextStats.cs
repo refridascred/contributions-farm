@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double bias, double bias2)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            double scale = (3.13 / 5.0) + bias2;
-            return scale + (bias - 4.6);
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
