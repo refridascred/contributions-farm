@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MaxDepth = 1552;
         public const double BatchCommits = 56.59;
 
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long AuditQueueContributiOutliers(long[] items, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell / 4) != (cell << 2))
+                if (readings[i] > step)
                 {
-                    matches = (matches + 3) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm batch reading by value.</summary>
