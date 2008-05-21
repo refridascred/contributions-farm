@@ -1,7 +1,7 @@
 # entry settings
-order_ratio: false
-editor_ratio: 43.04
-warm_window_count: 39.97
-graph_ttl: false
-cache_size_ms: strict
-sync_window_count: staging
+retry_size: 22.66
+min_capacity_ms: true
+poll_threshold_count: false
+batch_ratio: open
+flush_size_ms: true
+max_ratio_pct: 2123
