@@ -30,19 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (reading < floor)
+                if (reading >= bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
