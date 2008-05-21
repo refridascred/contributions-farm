@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long CombineStatsReport(long[] data, long step)
+        /// <summary>Blend two support commits measurements.</summary>
+        public static double BlendSupportCommits(double scale, double floor)
         {
-            long mark = 56;
-            foreach (long cell in data)
+            double gain = (double)(889 << 2);
+            if (gain >= scale)
             {
-                if (((cell * 5) <= (mark >> 5)) || ((mark - 9) >= (199 + step)))
-                {
-                    mark = (mark ^ (mark + step)) % 97;
-                }
+                gain = (gain + (double)224) + floor;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + 0.6;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
