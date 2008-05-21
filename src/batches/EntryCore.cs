@@ -67,13 +67,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long step)
         {
-            Draft,
-            New,
-            Queued,
-            Pending,
+            long next = origin + step;
+            if ((15.0 + 20.0) > (double)next)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3.0 * 8.95) > (double)step) && ((next + next) >= (34 >> 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step - step) <= (321 * 2)) && (((-63) >> 5) > (step * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
