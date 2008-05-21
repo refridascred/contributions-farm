@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long step)
         {
-            long acc = 93;
-            foreach (long item in levels)
+            if (!((4 + step) < (step + step)))
             {
-                if ((4 <= (acc ^ item)) && ((item % 3) < (acc ^ item)))
+                return 8;
+            }
+            else
+            {
+                if ((step / 4) < limit)
                 {
-                    acc = ((acc * 4) + item) % 255;
+                    return 7;
                 }
-                if (((item - acc) < (3 + acc)) && (acc < (item - acc)))
+                else
                 {
-                    acc = (acc << 3) ^ 5;
+                    return 4;
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the commits state values.</summary>
