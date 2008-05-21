@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + count) <= (count & 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) - item;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
