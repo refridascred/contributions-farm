@@ -71,10 +71,22 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryDepth = "latest";
-        public const long LimitDepth = 1791;
-        public const double CacheContext = 95.07;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
