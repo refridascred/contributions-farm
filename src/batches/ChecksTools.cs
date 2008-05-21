@@ -39,20 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 9501;
+        public const long BaseTimeout = 8602;
+        public const double LimitQueue = 17.69;
+        public const long HardQueue = 7660;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] items, long step)
