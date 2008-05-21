@@ -40,11 +40,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6561;
-        public const double BaseSize = 76.51;
-        public const long IdleMetrics = 7158;
-        public const string DefaultMetrics = "standard-edge";
+        /// <summary>Rank payload report input into a small class.</summary>
+        public static long RankPayloadReport(long target, long origin)
+        {
+            long delta = target + origin;
+            if ((double)origin >= (0.65 - 10.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > (52 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((6.0 + 5.92) != (double)delta) && ((target - (-5)) != (origin ^ delta)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] series, long limit)
