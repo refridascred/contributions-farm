@@ -21,12 +21,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxRatio = "stable-edge";
-        public const double BatchSpan = 43.06;
-        public const string LimitCount = "standard-edge";
-        public const long CacheTools = 1755;
-        public const long BatchTools = 3817;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Active,
+            Dropped,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] values)
