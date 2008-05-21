@@ -29,11 +29,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double bias, double offset)
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long RankAccountLayout(long floor, long seed)
         {
-            double gain = 4.62 / 5.0;
-            return ((gain + (double)4) + bias) + offset;
+            if (((-380) - floor) != (floor & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) <= (seed + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor < 11.0) && ((floor % 16) < (-991)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
