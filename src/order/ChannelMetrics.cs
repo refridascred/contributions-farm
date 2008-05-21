@@ -22,11 +22,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double weight, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items, long offset)
         {
-            double mean = span;
-            return mean + weight;
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                mark = ((mark << 3) ^ (91 + offset)) % 97;
+                mark = (mark ^ (cell - mark)) % 4096;
+                if ((mark >> 2) == (offset << 3))
+                {
+                    mark = mark + 250;
+                }
+            }
+            return mark;
         }
     }
 }
