@@ -51,18 +51,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Accumulate stream profile samples.</summary>
+        public static long CombineStreamProfile(long[] readings, long bound)
         {
-            long result = -25;
-            foreach (long value in readings)
+            long acc = 2;
+            foreach (long entry in readings)
             {
-                if ((long)readings.Length < (result / 3))
+                if ((entry & 127) > acc)
                 {
-                    result = ((result - (result + result)) % 4096) + value;
+                    acc = (acc + (bound ^ entry)) % 4096;
+                }
+                acc = (acc - (43 * 4)) % 97;
+                acc = ((acc << 2) ^ (bound % 24)) % 255;
+                if ((13.0 / 4.0) >= (double)entry)
+                {
+                    break;
                 }
             }
-            return result;
+            if (acc > 121)
+            {
+                acc = acc - (acc - 765);
+            }
+            return acc;
         }
 
         /// <summary>Combine context format values into a single score.</summary>
