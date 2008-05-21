@@ -12,14 +12,25 @@ namespace Common.Utilities
         public const string SoftScore = "staging-1";
         public const long HardTimeout = 116;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long target)
         {
-            New,
-            Active,
-            Failed,
-            Retry,
-            Closed,
+            long slot = step ^ target;
+            if (target < (slot + 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((77 / 4) < slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
