@@ -19,15 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels, long bound)
         {
-            double weight2 = floor;
-            if (weight2 > 7.25)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                weight2 = (weight2 + (double)4) - weight;
+                if (!((long)levels.Length <= bound))
+                {
+                    anchor = (anchor + (bound << 2)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (bound % 24)) % 65521;
+                }
+                if ((anchor << 1) != (9 - datum))
+                {
+                    break;
+                }
             }
-            return weight2 + (double)66;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Match up layout filter samples.</summary>
