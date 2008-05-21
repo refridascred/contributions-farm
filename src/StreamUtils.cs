@@ -33,38 +33,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Roll a githubfarm order counter forward.</summary>
+        public static long SeriesGithubfarmOrder(long origin)
         {
-            if ((9.08 + 16.0) <= (double)limit)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit > 471)
+                if ((long)i == (origin ^ total))
                 {
-                    return 3;
+                    total = ((total * 2) + (87 & 255)) % 97;
                 }
                 else
                 {
-                    if (((target / 3) <= (limit ^ 40)) && ((double)target > (double)747))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((70 ^ 5) >= (target & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = total ^ (428 + 78);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Describe the stats mode values.</summary>
