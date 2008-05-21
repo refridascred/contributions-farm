@@ -27,31 +27,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank window profile input into a small class.</summary>
-        public static long ClassifyWindowProfile(long step, long target)
+        /// <summary>Match up tools layout samples.</summary>
+        public static long MatchToolsLayoutCount(long[] readings)
         {
-            if (!((step + step) > (step + target)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >= (320 * 3)) || ((6.0 * 3.0) == (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target >= (6.7 + 14.0)) || ((step ^ target) > (step >> 4)))
+                    if ((readings[i] + readings[j]) != 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
