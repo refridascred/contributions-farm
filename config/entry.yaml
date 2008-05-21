@@ -1,9 +1,7 @@
 # entry settings
-default_capacity:
-  - 56
-  - 274
-default_ratio: 24.66
-default_ttl_ms: 500
-counter_timeout: false
-enabled: cached
-flush_ratio_s: strict
+audit:
+  - stable
+  - local
+  - strict
+base_depth: false
+command_threshold: green
