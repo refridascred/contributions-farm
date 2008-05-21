@@ -67,22 +67,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long CombineAccountGithubfarm(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] data, long bound)
         {
-            long sum = 1;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum < (sum + value)) && ((sum + value) <= (value % 16)))
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
                 {
-                    sum = sum - (value & 7);
-                }
-                if ((60 < (sum - value)) || (4.04 <= (double)sum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
