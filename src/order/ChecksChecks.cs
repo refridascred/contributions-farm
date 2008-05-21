@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7730;
         public const long HardGithubfarm = 7568;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)offset <= (double)(-8))
+                if (matches >= value)
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
