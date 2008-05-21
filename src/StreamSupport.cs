@@ -30,11 +30,21 @@ namespace Common.Utilities
             return weight2 + (double)66;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "standard-1";
-        public const long IdleLevel = 6337;
-        public const long StepWidth = 2963;
-        public const double StepSpan = 32.63;
-        public const double CacheScore = 44.47;
+        /// <summary>Match up layout filter samples.</summary>
+        public static long MatchLayoutFilterCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
