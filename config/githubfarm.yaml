@@ -1,9 +1,56 @@
 # githubfarm settings
-base_retries_count: edge
-poll_depth_ms: 3995
-account_depth: true
-persist: 9240
-min_capacity:
-  - staging
-  - latest
+support_limit:
+  - stable
   - open
+  - fallback
+  - primary
+metric_limit:
+  min_interval_count: 36
+  burst_retries_s: 500
+  commits_capacity: 76
+  default_depth: 60
+format_timeout: 60
+graph_retries: 57
+dry_run:
+  strict: edge
+  report_interval:
+    retry_interval: staging
+    route_delay: true
+    min_delay_pct:
+      - open
+      - latest
+      - open
+      - strict
+    retry_interval_count: local
+    order_limit: standard
+    hard_retries_s: 51.95
+  route_size:
+    githubfarm_threshold: true
+    sync_delay_pct: 70
+    support_window: open
+    idle_limit: 86
+    soft_limit_s: 60
+    soft_limit:
+      - 205
+      - 427
+  hard_retries_count:
+    idle_depth_pct: 500
+    base_capacity: local
+    base_limit_s: 30
+    burst_capacity: 37.77
+    soft_capacity_s: 9347
+    idle_window: 44.08
+  burst_retries_pct: 85.66
+  readonly: 13
+support_capacity:
+  compress: false
+  token_size: legacy
+  already_ratio: 500
+  cache_threshold_ms: edge
+  command_size: strict
+  idle_delay_s:
+    idle_delay_ms: green
+    readonly: 5224
+    cache_window_pct: 8434
+    compress: false
+    profile_timeout: 100
