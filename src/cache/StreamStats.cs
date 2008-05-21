@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Pending,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSize = 82.87;
+        public const string IdleSupport = "latest-1";
+        public const string RetryRatio = "primary-1";
+        public const long StepSupport = 491;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] samples)
