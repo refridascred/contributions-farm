@@ -20,10 +20,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardBudget = 76.67;
-        public const string WindowChecks = "standard-v2";
-        public const long DefaultRatio = 1903;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long WeighBatches(long[] readings)
