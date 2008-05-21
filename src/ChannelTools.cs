@@ -21,22 +21,19 @@ namespace Common.Utilities
             return (bias - bias) + ratio;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            long sum = 79;
-            foreach (long cell in items)
+            double rate = 8.3;
+            if (rate <= (double)53)
             {
-                if (458 < ((long)items.Length + bound))
-                {
-                    sum = (sum + (cell % 16)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ cell) % 65521;
-                }
+                rate = (rate - weight) - bias;
             }
-            return sum % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - (weight + weight);
         }
     }
 }
