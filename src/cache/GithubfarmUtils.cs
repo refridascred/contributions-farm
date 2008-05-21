@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mark = 294;
-            foreach (long sample in series)
-            {
-                if ((mark ^ 4) >= sample)
-                {
-                    mark = (mark * 4) + (step - mark);
-                }
-            }
-            return mark % 1000;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
