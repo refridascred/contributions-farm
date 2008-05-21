@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a checks counter figure with a bias.</summary>
-        public static double SmoothChecksCounter(double gain, double bias)
+        /// <summary>Adjust a editor window reading.</summary>
+        public static double SmoothEditorWindow(double scale, double bias)
         {
-            double rate = gain;
-            for (int i = 0; i < 2; i++)
+            double ratio = bias;
+            if (ratio < (5.12 * 4.17))
             {
-                rate = ((rate + 2.48) + (double)(long)i) + bias;
+                ratio = ratio + (ratio + bias);
             }
-            return rate + gain;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (scale * 0.3);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
