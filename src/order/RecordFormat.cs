@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] series, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > seed)
+                if (offset < (result >> 2))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 3) + ((long)i + (long)i)) % 255;
+                    result = ((result << 2) ^ (68 ^ (long)i)) % 4096;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
