@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 661;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor << 3) ^ value) % 97) - seed;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
