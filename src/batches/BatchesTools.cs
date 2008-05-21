@@ -41,18 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (matches >= (59 + (-77)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                carry = carry ^ (seed % 7);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
