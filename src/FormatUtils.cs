@@ -54,11 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
