@@ -35,22 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command farm samples.</summary>
-        public static long MatchCommandFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6561;
+        public const double BaseSize = 76.51;
+        public const long IdleMetrics = 7158;
+        public const string DefaultMetrics = "standard-edge";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
