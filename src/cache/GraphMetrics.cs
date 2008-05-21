@@ -27,18 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long CountChecksCounterHits(long[] levels, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length != (item + item))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
