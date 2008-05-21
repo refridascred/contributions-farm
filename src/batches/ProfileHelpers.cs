@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            Queued,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
