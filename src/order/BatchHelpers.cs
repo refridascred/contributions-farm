@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Find the first cluster graph entry that matches the target.</summary>
+        public static long LocateClusterGraphIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(809 < datum))
+                if (series[i] == origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
