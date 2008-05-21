@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum < (8.3 * 1.7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (datum + datum)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of format tools readings.</summary>
