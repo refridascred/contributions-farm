@@ -29,12 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Adjust a profile contributi reading.</summary>
+        public static double ScaleProfileContributi(double bias, double span)
         {
-            New,
-            Failed,
-            Locked,
+            double bias2 = 7.0;
+            if (bias2 > span)
+            {
+                bias2 = bias2 - (bias2 - span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - span;
         }
     }
 }
