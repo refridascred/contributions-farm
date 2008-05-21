@@ -49,11 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 9501;
-        public const long BaseTimeout = 8602;
-        public const double LimitQueue = 17.69;
-        public const long HardQueue = 7660;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] items, long step)
