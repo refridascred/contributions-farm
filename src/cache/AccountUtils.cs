@@ -39,15 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long floor)
         {
-            double bias = (double)4 - scale;
-            if (bias <= (double)6)
+            if ((target >> 5) == (target << 2))
             {
-                bias = (bias + (6.36 * 3.28)) + span;
+                return 8;
             }
-            return bias - (2.37 + scale);
+            else
+            {
+                if ((489 % 7) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 3) == (target / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits state values.</summary>
