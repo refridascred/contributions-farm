@@ -1,5 +1,5 @@
 {
-  "editor_ratio": true,
-  "compress": 60.42,
-  "persist": false
+  "base_interval_count": "fallback",
+  "hard_size_s": ["strict", "latest", "eu-west"],
+  "sync_limit_ms": "latest"
 }
