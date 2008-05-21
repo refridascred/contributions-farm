@@ -35,16 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry - (carry + (long)i);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
