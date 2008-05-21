@@ -1,7 +1,6 @@
 {
-  "already_depth": 72.1,
-  "sync_ttl_pct": 2269,
-  "schema_limit": true,
-  "metrics_retries": true,
-  "account_size": 37
+  "warm_timeout_pct": 1024,
+  "sync_threshold": "open",
+  "session_size": "legacy",
+  "commits_window": "cached"
 }
