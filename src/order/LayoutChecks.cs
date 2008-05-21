@@ -33,21 +33,18 @@ namespace Common.Utilities
             return (load + load) + scale;
         }
 
-        /// <summary>Count window farm pairs that satisfy a relation.</summary>
-        public static long MatchWindowFarmCount(long[] samples)
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long TallyContributiChecksGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((value - seen) >= (value >> 2)) && (((double)value >= (double)22) && ((16.0 + 11.0) >= (double)value)))
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
