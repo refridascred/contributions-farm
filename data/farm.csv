@@ -1,10 +1,6 @@
-id,owner,rank,region,state
-1,stable,standard,380,standard
-2,31.17,547,928,83
-3,25.11,70.16,441,834
-4,25.26,543,standard,36.72
-5,942,90,416,474
-6,94.86,578,legacy,33.36
-7,697,710,890,742
-8,459,581,61.61,426
-9,575,56,stable,96.69
+id,ratio,token,state
+1,9.28,primary,eu-west
+2,stable,7.19,legacy
+3,604,36.96,fallback
+4,812,25.06,open
+5,63.53,54.19,latest
