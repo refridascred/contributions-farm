@@ -13,14 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples, long floor)
         {
-            New,
-            Retry,
-            Draft,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (25 >= (cell ^ cell))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
