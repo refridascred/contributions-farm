@@ -68,13 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = -9;
+            foreach (long entry in items)
+            {
+                if (((entry & 1) >= (entry - 9)) && ((766 * 2) >= entry))
+                {
+                    carry = (carry << 3) ^ (4 + carry);
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry % 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
