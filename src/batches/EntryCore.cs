@@ -62,13 +62,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstLevel = 5148;
+        public const long CacheSpan = 6436;
+        public const string RetryWidth = "legacy";
+        public const long SoftScore = 6184;
+        public const long LimitSize = 5144;
     }
 }
