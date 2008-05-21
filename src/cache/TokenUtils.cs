@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry != bound)
+                if ((double)seen == (8.73 - 0.33))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
