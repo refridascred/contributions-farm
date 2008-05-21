@@ -26,17 +26,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = span;
+            return mean + weight;
         }
     }
 }
