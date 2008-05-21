@@ -19,15 +19,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two format order measurements.</summary>
-        public static double ScaleFormatOrder(double gain, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples, long floor)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 4; i++)
+            long result = 155;
+            foreach (long entry in samples)
             {
-                gain2 = ((gain2 - (gain * 4.4)) + (double)(long)i) + bias;
+                result = ((result ^ (969 >> 5)) ^ entry) + floor;
             }
-            return gain2 + gain2;
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
