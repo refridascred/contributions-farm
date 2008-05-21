@@ -52,11 +52,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
