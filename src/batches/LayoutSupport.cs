@@ -30,11 +30,18 @@ namespace Common.Utilities
             return scale - (double)979;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels, long floor)
         {
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((floor % 12) <= floor)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
