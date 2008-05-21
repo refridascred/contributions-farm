@@ -20,20 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
-        {
-            long carry = 972;
-            foreach (long datum in readings)
-            {
-                carry = (carry ^ (carry % 8)) + datum;
-            }
-            if (carry < (-7))
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSpan = 9736;
+        public const long BaseStream = 699;
+        public const long BatchSpan = 5808;
+        public const long HardStream = 1808;
+        public const string WindowStream = "cached-1";
 
         /// <summary>Find the first command report entry that matches the target.</summary>
         public static long FindCommandReportIndex(long[] readings, long seed)
