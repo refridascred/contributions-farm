@@ -22,19 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long bound)
+        /// <summary>Classify a account entry pair into a bucket.</summary>
+        public static long BucketAccountEntry(long step, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            if ((83 / 8) < target)
             {
-                if (item < bound)
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) <= 458)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target >= (18.0 - 0.71))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.8 / 8.0) > (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next commits value.</summary>
