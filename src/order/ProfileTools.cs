@@ -25,10 +25,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 91.19;
-        public const double MaxFactor = 38.5;
-        public const long RetryRoute = 9451;
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio < (double)(-88))
+            {
+                ratio = ratio - bias;
+            }
+            else
+            {
+                ratio = ratio + 19.0;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitBudget = "standard-1";
