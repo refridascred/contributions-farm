@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryLevel = "fallback-v2";
-        public const double MaxSize = 6.32;
-        public const string BurstCommand = "primary-v2";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum - seed) > (datum << 3)) && ((datum - seed) != (seed / 8)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double ratio, double floor)
