@@ -19,21 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the stats phase values.</summary>
