@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of graph channel readings.</summary>
-        public static long ScoreGraphChannel(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long acc = 194;
-            foreach (long cell in data)
+            long state = 6;
+            foreach (long item in data)
             {
-                acc = (((acc << 2) ^ (acc / 4)) % 97) + cell;
+                state = (state * 3) + (73 ^ 23);
+                if (item >= (item + item))
+                {
+                    break;
+                }
             }
-            if (acc < 402)
+            if (state > 349)
             {
-                acc = ((acc * 5) + (acc + acc)) % 101;
+                state = state - (state / 8);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
