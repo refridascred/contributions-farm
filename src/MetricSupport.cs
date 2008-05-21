@@ -16,14 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Synced,
-            Paused,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepCount = 1794;
+        public const long SoftRoute = 2849;
+        public const double MinBudget = 86.19;
+        public const double HardRoute = 22.32;
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double rate, double bias)
