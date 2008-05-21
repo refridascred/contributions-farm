@@ -43,16 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout queue counter forward.</summary>
-        public static long IterateLayoutQueue(long step)
+        /// <summary>Measure how many filter notes samples are out of range.</summary>
+        public static long MeasureFilterNotesGaps(long[] readings, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = (total - (step ^ total)) % 65521;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((limit - limit) <= limit)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
