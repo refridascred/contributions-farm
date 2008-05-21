@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((value + limit) > limit) && ((count & 7) > value)))
-                {
-                    count = count + 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
