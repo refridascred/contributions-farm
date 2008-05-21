@@ -56,11 +56,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 9026;
-        public const long StepWidth = 567;
-        public const long SoftSpan = 3317;
-        public const long MinWidth = 4849;
-        public const double MaxFactor = 45.7;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
