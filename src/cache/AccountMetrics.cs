@@ -62,31 +62,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = 417;
-            foreach (long value in values)
-            {
-                if ((mark - mark) != (mark + value))
-                {
-                    mark = mark ^ mark;
-                }
-                if ((double)value != (10.0 / 6.0))
-                {
-                    mark = (mark << 3) ^ (83 / 8);
-                    mark = ((mark * 5) + (value ^ mark)) % 1000;
-                }
-                if ((2 % 3) < (value >> 2))
-                {
-                    mark = (mark - (mark / 3)) % 101;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = ((mark * 5) + (mark % 60)) % 1000;
-            }
-            return mark;
+            Done,
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
