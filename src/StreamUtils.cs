@@ -64,29 +64,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank counter format input into a small class.</summary>
-        public static long ClassifyCounterFormat(long target, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long target)
         {
-            if ((13.0 + 5.65) <= (double)bound)
+            if ((target <= 36) && ((target + floor) > floor))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (((6.85 + 7.5) > (double)bound) && (((-48) - 93) < (bound + bound)))
+                if (((double)floor < (4.0 + 14.0)) || ((8.1 / 8.0) != (double)target))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((bound + target) != (bound & 63)) && ((target % 12) <= (bound - target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 5;
                 }
             }
         }
