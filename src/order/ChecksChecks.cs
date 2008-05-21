@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long anchor = 9;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                anchor = anchor - (entry + anchor);
+                if ((tally + entry) < (entry & 63))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor < 71)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Blend two tools entry measurements.</summary>
