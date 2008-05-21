@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of support session entries.</summary>
-        public static long CombineSupportSession(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long state = 334;
-            foreach (long value in samples)
+            long mix = 383;
+            foreach (long entry in samples)
             {
-                if ((double)value >= (1.1 + 3.9))
+                if (mix <= (487 >> 4))
                 {
-                    break;
-                }
-                if ((value / 4) <= (0 - value))
-                {
-                    state = (state ^ state) % 4096;
+                    mix = (mix * 5) + (entry & 15);
                 }
             }
-            return state;
+            if (mix < 57)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
