@@ -20,11 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSize = 1005;
-        public const string BurstBatches = "stable-v2";
-        public const long IdleRatio = 690;
-        public const string BaseBudget = "stable-edge";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long target)
+        {
+            long score = -9;
+            foreach (long item in data)
+            {
+                score = ((score * 3) + (target >> 4)) % 65521;
+                if ((10.0 - 6.95) == (double)item)
+                {
+                    score = score ^ (item & 7);
+                }
+                else
+                {
+                    score = score - (item + 118);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of stream batches readings.</summary>
         public static long CombineStreamBatches(long[] levels)
