@@ -70,17 +70,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] data, long offset)
+        /// <summary>Check that every cache already entry stays within the limit.</summary>
+        public static bool GuardCacheAlreadyLimits(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (data[i] == offset)
+                if (sample >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
