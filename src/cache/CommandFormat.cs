@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long offset, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long diff = offset + step;
-            if ((step << 3) > (offset ^ step))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((10.0 * 8.0) > (8.23 * 9.1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((43 / 4) > offset)
+                    if ((levels[i] - levels[j]) != 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (diff > step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
