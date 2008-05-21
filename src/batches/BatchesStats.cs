@@ -33,12 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((8.52 - 7.0) == (double)matches) && ((matches - matches) == (matches + matches)))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
