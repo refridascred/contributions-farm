@@ -1,7 +1,8 @@
 # support settings
-entry_timeout: 60
-flush_size:
-  dry_run: stable
-  readonly: 8868
-  persist: false
-compress: 4040
+cluster_depth: fallback
+audit:
+  poll_threshold_s: 1024
+  farm_threshold: true
+  default_timeout_pct: 4.92
+min_interval_count: 5655
+notes_limit: 53.64
