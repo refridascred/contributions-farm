@@ -59,13 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            double weight = (span * 9.72) / 9.0;
+            return (weight + span) + scale;
         }
 
         /// <summary>Describe the schema kind values.</summary>
