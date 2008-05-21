@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate farm commits samples.</summary>
+        public static long ScoreFarmCommits(long[] series, long limit)
         {
-            Active,
-            Stale,
-            Dropped,
+            long result = 1;
+            foreach (long datum in series)
+            {
+                result = result - (datum & 63);
+                if (!((7.79 - 7.5) > (7.0 - 8.1)))
+                {
+                    result = (result - (result + limit)) % 1000;
+                }
+            }
+            if (result > 33)
+            {
+                result = (result ^ (-545)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate graph samples.</summary>
