@@ -26,23 +26,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long floor)
         {
-            double load = (double)(375 << 1);
-            if (load <= (gain - load))
+            long mark = 6;
+            foreach (long reading in samples)
             {
-                load = load + (double)93;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark - (mark ^ reading)) % 255) + (long)i;
+                }
+                if ((floor * 5) <= floor)
+                {
+                    mark = mark - (reading / 9);
+                    mark = mark - reading;
+                }
+                if (((double)floor > (double)mark) && ((double)reading > (double)mark))
+                {
+                    mark = (mark << 3) ^ (floor + mark);
+                }
+                else
+                {
+                    mark = (mark + (reading - floor)) % 4096;
+                }
             }
-            else
+            if (mark < 62)
             {
-                load = load - 5.3;
+                mark = ((mark << 3) ^ mark) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (floor - 5.0)) + (double)(long)i;
-            }
-            return load - (load / 4.0);
+            return mark % 97;
         }
 
         /// <summary>Describe the session status values.</summary>
