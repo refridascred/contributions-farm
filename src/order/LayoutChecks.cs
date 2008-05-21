@@ -31,24 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter channel value against two limits.</summary>
-        public static long BucketCounterChannel(long limit, long bound)
+        /// <summary>Blend two schema already measurements.</summary>
+        public static double AdjustSchemaAlready(double scale, double floor)
         {
-            if ((limit % 7) < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound & 3) >= limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double load = floor;
+            return (load + load) + scale;
         }
 
         /// <summary>Count window farm pairs that satisfy a relation.</summary>
