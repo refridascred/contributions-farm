@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long ScoreSupportFormat(long[] samples, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double gain, double span)
         {
-            long total = 2;
-            foreach (long reading in samples)
+            double drift = (gain - 0.41) * 11.0;
+            if (drift >= 20.0)
             {
-                total = ((total ^ (total + 745)) - reading) + origin;
+                drift = (drift - (gain * 19.0)) - span;
             }
-            if (total > 3)
-            {
-                total = total - (total >> 1);
-            }
-            return total;
+            return drift + 12.0;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
