@@ -1,12 +1,11 @@
 # Command notes
 
-The session report groups every queue by schema.
-Defaults for cache live in the config folder and can be overridden per environment.
-Run the cache check before changing any account limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate session input early
-- Keep stream values small
-- Log every checks change
+- Review support limits each release
+- Document new tools fields
+- Validate schema input early
+- Prefer account defaults
