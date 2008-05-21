@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long target, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long floor)
         {
-            if ((6.8 / 9.0) == (double)target)
+            if (limit < (6 + (-78)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((limit + limit) > limit)
+                if (((double)limit <= (5.4 - 11.0)) || ((double)floor >= 19.0))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit ^ limit) < target)
+                    if (floor > (floor - 528))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)floor == (double)4)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
