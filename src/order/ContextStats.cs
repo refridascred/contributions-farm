@@ -44,11 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 6;
+            foreach (long entry in values)
+            {
+                anchor = (anchor + (anchor & 31)) + entry;
+            }
+            return anchor % 65521;
         }
     }
 }
