@@ -1,5 +1,7 @@
 {
-  "batch_retries_count": "legacy",
-  "cache_delay": 7497,
-  "batch_threshold": 18
+  "batch_ttl": [445, 187, 171],
+  "warm_size": [208, 7],
+  "audit": 2861,
+  "flush_delay": 250,
+  "persist": 849
 }
