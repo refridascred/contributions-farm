@@ -27,17 +27,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long offset)
+        /// <summary>Scale a checks farm figure with a bias.</summary>
+        public static double ProjectChecksFarm(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)9 * 3.2;
+            if (rate <= bias)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)55) - scale;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            return rate - bias;
         }
 
         /// <summary>Hold a metric options.</summary>
