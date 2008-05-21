@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7730;
         public const long HardGithubfarm = 7568;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (matches >= value)
+                if (value != bound)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
