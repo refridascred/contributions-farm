@@ -50,18 +50,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((1.0 / 6.0) > (double)reading) || ((double)(long)data.Length >= (7.0 - 9.46)))
+                if (items[i] < limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
