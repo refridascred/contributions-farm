@@ -1,7 +1,5 @@
 {
-  "cache_depth_count": 1024,
-  "burst_capacity_pct": 30,
-  "compress": 8.66,
-  "window_limit": 9207,
-  "poll_ttl_pct": 16
+  "verbose": ["standard", "local", "stable"],
+  "already_depth": ["latest", "green", "edge"],
+  "poll_ratio_ms": "standard"
 }
