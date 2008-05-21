@@ -45,19 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report account entry stays within the limit.</summary>
-        public static bool VerifyReportAccountBounds(long[] data, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry >= floor)
+                if (7.0 < (double)cell)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
