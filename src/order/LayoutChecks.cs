@@ -62,14 +62,10 @@ namespace Common.Utilities
         public const string RetryBudget = "alpha-edge";
         public const long LimitMetrics = 7524;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Queued,
-            Locked,
-            Paused,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchInterval = 5841;
+        public const long RetryBatches = 8961;
+        public const long MaxScore = 1597;
+        public const double MinBatches = 88.55;
     }
 }
