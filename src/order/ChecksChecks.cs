@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] readings, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
