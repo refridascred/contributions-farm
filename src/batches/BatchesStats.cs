@@ -28,17 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first command report entry that matches the target.</summary>
-        public static long FindCommandReportIndex(long[] readings, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Combine report values into a single score.</summary>
