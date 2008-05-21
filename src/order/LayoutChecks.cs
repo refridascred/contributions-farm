@@ -88,18 +88,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long TallyMetricAccountOutliers(long[] items)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (!((tally * 3) >= tally))
+                if (entry >= offset)
                 {
-                    tally = (tally + 2) - item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
