@@ -66,18 +66,9 @@ namespace Common.Utilities
         public const long MinSupport = 8531;
         public const long IdleSupport = 6133;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((double)item > (8.03 + 7.3)) || ((tally + item) < 260))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 1947;
+        public const long BurstBudget = 9072;
+        public const string BatchOrder = "legacy-1";
     }
 }
