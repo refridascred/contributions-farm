@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "cached-edge";
+        public const long BaseInterval = 5346;
+        public const long BaseProfile = 110;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] series, long limit)
