@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)step <= (8.0 - 6.42)) && ((double)sum <= (5.25 - 3.0)))
-                {
-                    sum = ((sum << 3) ^ (long)i) % 101;
-                }
-                else
-                {
-                    sum = (sum + (24 & 1)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftBudget = 2880;
+        public const string SoftStats = "cached";
+        public const long LimitWidth = 4322;
+        public const long WindowStats = 8826;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
