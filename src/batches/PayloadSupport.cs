@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool VerifyWindowChecksLimits(long[] readings, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long state = 96;
+            foreach (long item in items)
             {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state + 782;
+                state = ((state * 3) + (item ^ bound)) % 1000;
             }
-            return stale;
+            if (state > 6)
+            {
+                state = (state ^ (bound + bound)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of support entries.</summary>
