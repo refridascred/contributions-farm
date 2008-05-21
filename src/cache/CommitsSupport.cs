@@ -107,19 +107,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
