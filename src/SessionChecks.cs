@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftWidth = 6020;
-        public const long IdleScore = 3177;
-        public const double SoftSpan = 72.68;
-        public const long LimitRatio = 4601;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series)
+        {
+            long mix = 70;
+            foreach (long datum in series)
+            {
+                mix = (mix + (19 + datum)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
