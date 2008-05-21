@@ -56,19 +56,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value + value) > value) || ((value % 64) == (900 >> 3)))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 34.0;
+        public const long BatchQueue = 2420;
+        public const long StepQueue = 8516;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterOutliers(long[] data)
