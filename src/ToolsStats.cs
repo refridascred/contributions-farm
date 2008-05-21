@@ -62,12 +62,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
