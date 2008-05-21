@@ -16,21 +16,24 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
-        public static long PairToolsBatchCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)step != (14.0 / 6.0)) || ((seed * 4) < (step << 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed > ((-2) + step)) || ((8.31 * 19.0) <= (double)step))
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
