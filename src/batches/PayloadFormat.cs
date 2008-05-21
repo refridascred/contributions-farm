@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long limit, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            if ((double)origin != (2.19 / 2.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 1) < (limit >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit - limit) < (origin + origin)) && ((limit + limit) >= origin))
+                    if ((series[i] - series[j]) < 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next entry queue value.</summary>
