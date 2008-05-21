@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 356;
-            foreach (long sample in data)
-            {
-                total = ((total - (total / 5)) % 1000) ^ sample;
-            }
-            return total % 65521;
+            Failed,
+            Stale,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Match up command format samples.</summary>
