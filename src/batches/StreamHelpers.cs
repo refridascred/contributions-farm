@@ -17,10 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9030;
-        public const long BatchAlready = 3109;
-        public const string CacheAlready = "cached";
+        /// <summary>Match up support contributi samples.</summary>
+        public static long PairSupportContributiCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
