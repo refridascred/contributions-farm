@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long WindowFactor = 8849;
         public const string CacheInterval = "legacy-1";
 
-        /// <summary>Check that every session filter entry stays within the limit.</summary>
-        public static bool ValidateSessionFilterRange(long[] readings, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the session mode values.</summary>
