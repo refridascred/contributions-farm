@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels, long target)
+        /// <summary>Scale a checks counter figure with a bias.</summary>
+        public static double SmoothChecksCounter(double gain, double bias)
         {
-            long total = 76;
-            foreach (long reading in levels)
+            double rate = gain;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((reading ^ reading) >= reading))
-                {
-                    total = ((total * 2) + (33 % 64)) % 4096;
-                }
-                if ((total << 2) > (target >> 2))
-                {
-                    break;
-                }
+                rate = ((rate + 2.48) + (double)(long)i) + bias;
             }
-            if (total > 754)
-            {
-                total = total - (target & 15);
-            }
-            return total;
+            return rate + gain;
         }
 
         /// <summary>Hold a farm summary.</summary>
