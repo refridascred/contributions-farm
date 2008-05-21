@@ -43,17 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long LocateFilterReportIndex(long[] levels, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                if (value >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
