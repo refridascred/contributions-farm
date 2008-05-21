@@ -1,22 +1,30 @@
 # entry settings
-queue_limit: legacy
-burst_interval: 100
-max_window_count: 4093
-idle_ttl_s:
-  burst_limit: 591
-  base_delay_count: legacy
-  default_window_ms: 38
-  default_capacity_s: latest
-  token_threshold: staging
-  burst_capacity_s: legacy
-poll_limit_count:
-  min_interval_count: 16
-  command_size: open
-  soft_ratio_ms: stable
-  warm_retries_ms:
-    - 280
-    - 292
-    - 387
-  cache_window_s: 42.41
-  compress: 76.47
-batch_limit: blue
+queue_interval: stable
+queue_timeout: 30.69
+retry_interval_pct: 20
+flush_size_pct: true
+burst_interval:
+  contributi_threshold: false
+  editor_threshold: stable
+  poll_ttl:
+    metric_retries: 57.65
+    burst_size_ms: 7859
+    support_limit: eu-west
+    entry_threshold: blue
+    sync_timeout_s: false
+idle_retries_ms:
+  strict:
+    flush_interval_ms:
+      - 134
+      - 346
+      - 272
+    soft_window_pct: cached
+    editor_capacity: 400
+    verbose: edge
+  sync_capacity_count: false
+  filter_limit: fallback
+  flush_window_ms:
+    - primary
+    - green
+  idle_delay_ms: 4161
+  enabled: fallback
