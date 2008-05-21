@@ -1,5 +1,6 @@
 {
-  "sync_threshold": true,
-  "verbose": 19.17,
-  "strict": "blue"
+  "entry_retries": "green",
+  "strict": false,
+  "warm_window": 66,
+  "burst_ttl_count": 7380
 }
