@@ -1,18 +1,5 @@
 {
-  "entry_size": 96,
-  "batch_threshold_pct": {
-    "max_timeout_count": 500,
-    "enabled": 5,
-    "idle_threshold_ms": {
-      "record_ratio": [99, 311, 353],
-      "max_timeout_pct": "latest",
-      "report_timeout": 33.09
-    },
-    "burst_depth": "latest",
-    "default_delay_pct": false,
-    "idle_capacity": 89
-  },
-  "base_threshold": ["cached", "staging"],
-  "batch_window_ms": 8106,
-  "idle_depth_ms": false
+  "tools_timeout": 100,
+  "channel_depth": 500,
+  "flush_ttl_pct": 87
 }
