@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=329
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green standard; do
+for item in cached open; do
     log "checking ${item}"
 done
