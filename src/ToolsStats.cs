@@ -40,12 +40,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] values, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
+                if (data[i] == limit)
                 {
                     return (long)i;
                 }
