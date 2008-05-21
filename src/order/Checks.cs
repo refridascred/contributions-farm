@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Active,
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 49.34;
+        public const long CacheSpan = 2405;
+        public const long SoftMetrics = 5506;
+        public const long DefaultSpan = 6607;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardAccount = 1473;
