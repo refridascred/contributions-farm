@@ -41,21 +41,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Synced,
+            Retry,
+            Active,
         }
     }
 }
