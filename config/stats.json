@@ -1,16 +1,7 @@
 {
-  "cache_interval": {
-    "editor_interval": "standard",
-    "warm_window_ms": "stable",
-    "min_depth_ms": true,
-    "session_window": 53.81,
-    "warm_size": true
-  },
-  "editor_ratio": {
-    "retry_ratio": 3185,
-    "max_retries": 51.66,
-    "base_delay": 100
-  },
-  "layout_limit": [18, 405, 89],
-  "idle_capacity_pct": 67.16
+  "warm_ratio_count": ["edge", "open", "eu-west", "green"],
+  "githubfarm_limit": [278, 160, 413, 206],
+  "hard_depth": 41.85,
+  "batch_retries_s": [383, 435, 364, 107],
+  "flush_retries_pct": false
 }
