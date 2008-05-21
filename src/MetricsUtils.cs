@@ -52,18 +52,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double bias = offset;
+            if (bias >= offset)
             {
-                if (reading < (reading + seen))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias - rate;
             }
-            return seen;
+            return bias - (bias / 8.0);
         }
     }
 }
