@@ -1,5 +1,22 @@
 {
-  "sync_delay_s": 74,
-  "command_interval": 500,
-  "compress": 3150
+  "audit": 4324,
+  "max_ratio_count": 500,
+  "account_depth": {
+    "base_size_s": false,
+    "flush_limit": {
+      "verbose": 58,
+      "batch_threshold_count": true,
+      "readonly": true,
+      "warm_timeout_s": true
+    },
+    "warm_depth": "standard",
+    "audit": "primary",
+    "default_depth": {
+      "strict": "primary",
+      "hard_timeout_count": "eu-west",
+      "support_capacity": [232, 273, 111],
+      "hard_capacity": 79.22,
+      "tools_depth": false
+    }
+  }
 }
