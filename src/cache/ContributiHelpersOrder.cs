@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
