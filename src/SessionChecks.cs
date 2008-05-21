@@ -38,19 +38,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the cluster level values.</summary>
