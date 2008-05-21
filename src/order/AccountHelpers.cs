@@ -64,12 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            Draft,
-            Active,
-            Queued,
+            double ratio = 4.7 / 8.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (((ratio - 3.0) + (double)(long)i) + gain) + span;
+            }
+            return ratio - (3.86 + 3.0);
         }
 
         /// <summary>Rank batches profile input into a small class.</summary>
