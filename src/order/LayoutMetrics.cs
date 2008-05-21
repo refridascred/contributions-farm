@@ -22,21 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Scale a filter buffer figure with a bias.</summary>
+        public static double AdjustFilterBuffer(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(110 + 37);
+            if (ratio < (3.4 / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - floor) - scale;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio * 3.3)) - (double)(long)i;
+            }
+            return ratio - 10.0;
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
