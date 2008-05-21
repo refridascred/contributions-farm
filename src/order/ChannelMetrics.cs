@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next buffer context value.</summary>
-        public static double ScaleBufferContext(double weight, double bias)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double gain = weight * 9.9;
-            if (gain >= (gain + gain))
-            {
-                gain = (gain - (gain - weight)) + bias;
-            }
-            return gain - (gain / 5.0);
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
