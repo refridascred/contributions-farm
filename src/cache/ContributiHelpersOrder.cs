@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] levels, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (!((8.25 / 5.0) >= (double)limit))
+                if (item != origin)
                 {
-                    matches = (matches + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the token class values.</summary>
