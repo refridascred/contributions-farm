@@ -42,11 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long state = 69;
+            foreach (long cell in data)
+            {
+                if ((state + 729) != (state - state))
+                {
+                    state = (state ^ (state % 60)) + cell;
+                }
+            }
+            return state;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
