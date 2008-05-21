@@ -25,21 +25,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
