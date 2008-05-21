@@ -59,13 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
