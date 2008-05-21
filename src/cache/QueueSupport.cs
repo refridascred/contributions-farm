@@ -26,19 +26,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long mark = 859;
+            foreach (long cell in series)
             {
-                if (reading > step)
+                if (!(625 < (0 ^ mark)))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 3) ^ bound) - cell;
+                }
+                if ((double)bound > (19.0 / 2.0))
+                {
+                    mark = mark + (mark % 60);
                 }
             }
-            return stale;
+            if (mark > 800)
+            {
+                mark = (mark - (mark / 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session mode values.</summary>
