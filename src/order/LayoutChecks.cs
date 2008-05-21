@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of layout context entries.</summary>
-        public static long WeighLayoutContext(long[] data, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
         {
-            long mark = 478;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + (seed + mark)) % 65521) + entry;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
