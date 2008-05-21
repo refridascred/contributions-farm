@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            long sum = 352;
-            foreach (long datum in items)
+            long mix = -4;
+            foreach (long value in samples)
             {
-                if (datum <= (sum >> 5))
-                {
-                    sum = (sum - (datum * 3)) % 101;
-                }
+                mix = ((mix - 7) + value) - origin;
             }
-            if (sum > 702)
-            {
-                sum = ((sum * 5) + (limit / 9)) % 1000;
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
