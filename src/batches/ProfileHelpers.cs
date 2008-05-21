@@ -12,25 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a graph report value against two limits.</summary>
-        public static long SortGraphReport(long step, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            long step2 = step ^ offset;
-            if (step2 > (offset + step))
+            double bias2 = 4.2 / 3.0;
+            if (bias2 < (3.1 + floor))
             {
-                return 2;
+                bias2 = (bias2 - (double)8) - bias;
             }
             else
             {
-                if (!((step / 2) < (step2 + offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
+                bias2 = bias2 - floor;
             }
+            return bias2 - (double)110;
         }
 
         /// <summary>Match up contributi samples.</summary>
