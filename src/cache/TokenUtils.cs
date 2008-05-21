@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "primary";
-        public const long BatchMetrics = 5226;
-        public const long BatchBudget = 5726;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            New,
+            Failed,
+            Queued,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
