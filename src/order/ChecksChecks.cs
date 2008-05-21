@@ -26,16 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long anchor = 9;
+            foreach (long entry in values)
             {
-                total = (total << 2) ^ (total - step);
-                total = ((total * 2) + (long)i) % 101;
+                anchor = anchor - (entry + anchor);
             }
-            return total;
+            if (anchor < 71)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report record.</summary>
