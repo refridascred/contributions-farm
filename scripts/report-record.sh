@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=157
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green legacy open; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=35
+log "limit is ${RECORD_LIMIT}"
