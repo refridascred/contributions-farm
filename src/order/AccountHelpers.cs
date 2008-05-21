@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Queued,
-            Locked,
-            Synced,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "fallback-v2";
+        public const string CacheCount = "alpha-v2";
+        public const long BatchInterval = 1596;
+        public const long IdleOrder = 86;
 
         /// <summary>Audit format cluster readings against a rule.</summary>
         public static long MeasureFormatClusterHits(long[] readings)
