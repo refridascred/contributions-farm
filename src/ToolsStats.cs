@@ -62,18 +62,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (1 <= (reading + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
