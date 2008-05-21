@@ -1,4 +1,9 @@
 # support settings
-dry_run: local
-strict: blue
-verbose: 71.66
+schema_size:
+  sync_threshold: 68.88
+  warm_capacity: local
+  notes_delay: 30
+  compress: true
+  channel_retries: false
+default_delay_ms: 97
+cache_timeout_pct: 70.2
