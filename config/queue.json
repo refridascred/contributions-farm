@@ -1,6 +1,8 @@
 {
-  "warm_timeout_pct": 1024,
-  "sync_threshold": "open",
-  "session_size": "legacy",
-  "commits_window": "cached"
+  "default_size_s": [426, 40, 195, 103],
+  "idle_delay_ms": 28,
+  "dry_run": 9.79,
+  "burst_window_s": 50.59,
+  "poll_depth_count": "green",
+  "sync_threshold_pct": 60
 }
