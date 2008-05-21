@@ -39,21 +39,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Fold a list of batches payload readings.</summary>
+        public static long DigestBatchesPayload(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 15;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                double gain = 3.8 - (2.57 * 2.4);
+                if ((gain - gain) <= (2.81 + gain))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum - (0 & 127)) % 65521) + origin;
+                    sum = (sum + (datum % 5)) % 255;
                 }
+                else
+                {
+                    gain = gain - 9.66;
+                }
+                sum = ((sum << 3) ^ 3) % 4096;
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
