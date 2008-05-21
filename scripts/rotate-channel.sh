@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback strict primary staging; do
+CHANNEL_LIMIT=418
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging blue primary; do
     log "checking ${item}"
 done
