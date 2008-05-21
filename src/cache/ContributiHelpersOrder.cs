@@ -30,39 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long offset)
+        /// <summary>Match up profile batch samples.</summary>
+        public static long CompareProfileBatchCount(long[] data)
         {
-            long next = seed + offset;
-            if (38 <= (next << 3))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next - next) < (offset - next))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((29 - offset) < seed)
+                    if ((data[i] - data[j]) < 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset & 127) < offset) || (seed >= (offset + 938)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
