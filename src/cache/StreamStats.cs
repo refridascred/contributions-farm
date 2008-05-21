@@ -18,12 +18,14 @@ namespace Common.Utilities
         public const string RetryChecks = "stable-edge";
         public const long RetryScore = 5959;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            Done,
+            Paused,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a cache info.</summary>
