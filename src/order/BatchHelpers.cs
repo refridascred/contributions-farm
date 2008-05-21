@@ -20,10 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 3106;
-        public const long BurstFactor = 3032;
-        public const string BaseQueue = "latest-v2";
+        /// <summary>Find the first entry schema entry that matches the target.</summary>
+        public static long SeekEntrySchemaIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
