@@ -33,15 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph profile values into a single score.</summary>
-        public static long ScoreGraphProfile(long[] samples, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data)
         {
-            long mix = 949;
-            foreach (long value in samples)
+            long carry = 66;
+            foreach (long sample in data)
             {
-                mix = ((((mix << 3) ^ (mix & 3)) % 101) ^ value) + seed;
+                if ((4 % 3) <= (carry << 3))
+                {
+                    carry = ((carry - carry) % 1000) + sample;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the channel state values.</summary>
