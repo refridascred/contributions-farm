@@ -17,12 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9030;
+        public const long BatchAlready = 3109;
+        public const string CacheAlready = "cached";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
