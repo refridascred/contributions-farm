@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
