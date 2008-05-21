@@ -12,23 +12,23 @@ namespace Common.Utilities
         public const string SoftScore = "staging-1";
         public const long HardTimeout = 116;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long target2)
         {
-            long slot = step ^ target;
-            if (target < (slot + 5))
+            long lane = target + target2;
+            if (target2 <= (target >> 3))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((77 / 4) < slot)
+                if ((target2 & 1) < lane)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    return 5;
                 }
             }
         }
