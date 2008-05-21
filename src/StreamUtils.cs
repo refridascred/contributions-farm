@@ -66,38 +66,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long bound)
-        {
-            if (bound > (floor * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((75 >> 5) == (floor + floor)) || ((2.46 - 7.6) >= (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= (floor * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - 5) > (bound / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxSize = "fallback-edge";
+        public const double MaxBuffer = 37.54;
+        public const long IdleBuffer = 6403;
     }
 }
