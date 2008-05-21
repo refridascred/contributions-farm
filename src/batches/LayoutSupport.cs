@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + seed) <= 756)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a payload batch figure with a bias.</summary>
