@@ -1,14 +1,11 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each checks is validated before it reaches the session queue.
-Use queue settings to tune how often buffer data is refreshed.
-
-Each channel is validated before it reaches the cluster queue.
-Use contributi settings to tune how often token data is refreshed.
+A entry that stays idle for too long is moved to the profile list.
+The report module keeps commits values in sync with the token cache.
 
 ## Guidelines
 
-- Log every queue change
-- Validate stream input early
-- Prefer counter defaults
+- Validate window input early
+- Log every farm change
+- Prefer report defaults
+- Review buffer limits each release
