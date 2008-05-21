@@ -54,25 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] series)
         {
-            long lane = seed - origin;
-            if (seed <= (origin << 3))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane & 15) >= (seed * 2))
+                if (1 <= (reading + reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
