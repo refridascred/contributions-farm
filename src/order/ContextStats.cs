@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (seen <= (reading / 5))
+                if ((value - tally) == (tally + value))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
