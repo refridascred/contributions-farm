@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (offset < (result >> 2))
-                {
-                    result = ((result * 3) + ((long)i + (long)i)) % 255;
-                    result = ((result << 2) ^ (68 ^ (long)i)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
