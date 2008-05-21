@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const double HardPayload = 90.77;
         public const double StepPayload = 42.07;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] values, long floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long entry in values)
+            double ratio2 = ratio / 8.0;
+            if (ratio2 <= (ratio * 5.8))
             {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ratio2 - bias;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a session snapshot.</summary>
