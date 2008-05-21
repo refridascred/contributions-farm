@@ -1,5 +1,6 @@
 # entry settings
-soft_depth_pct: cached
-batch_size: standard
-audit: true
-entry_depth: 3017
+strict: cached
+checks_depth: 63
+max_retries_s: true
+default_size_pct: 99
+account_ttl: primary
