@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 8234;
-        public const double StepChecks = 61.6;
-        public const long WindowScore = 6653;
-        public const string CacheChecks = "open-v2";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items)
+        {
+            long state = 9;
+            foreach (long value in items)
+            {
+                if (value >= 57)
+                {
+                    state = state + (value - value);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] readings, long floor)
