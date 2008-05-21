@@ -33,19 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] values, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (sample >= target)
+                if (6.95 < (double)reading)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
