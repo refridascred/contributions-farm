@@ -37,14 +37,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryScore = 49.81;
+        public const double BaseContributi = 50.26;
+        public const long HardTimeout = 48;
+        public const long MinContributi = 3148;
+        public const long CacheContributi = 7522;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] data, long bound)
