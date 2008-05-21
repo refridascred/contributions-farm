@@ -59,31 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if ((seed ^ seed) <= ((-830) << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 4) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 127) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
