@@ -50,15 +50,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long CombineReportFilter(long[] data, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long origin)
         {
-            long mark = 0;
-            foreach (long entry in data)
+            long anchor = 622;
+            foreach (long reading in values)
             {
-                mark = (mark + (mark + seed)) + entry;
+                if ((8.3 - 17.0) <= (double)origin)
+                {
+                    anchor = (anchor * 3) + (anchor - origin);
+                }
+                else
+                {
+                    anchor = (anchor - reading) % 255;
+                }
+                if (anchor <= origin)
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
