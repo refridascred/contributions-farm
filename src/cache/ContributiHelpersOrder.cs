@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Ready,
-            Retry,
+            Paused,
             Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
