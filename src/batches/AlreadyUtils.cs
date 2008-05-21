@@ -25,18 +25,39 @@ namespace Common.Utilities
         public const double MinToken = 58.07;
         public const long StepToken = 3802;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] levels, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long span = origin ^ offset;
+            if ((431 % 16) <= span)
             {
-                if ((((limit % 8) == (count + 157)) && (cell <= (limit ^ limit))) && (cell <= (limit - 8)))
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) <= (offset * 2))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset > (4.81 - 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > (origin + span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
