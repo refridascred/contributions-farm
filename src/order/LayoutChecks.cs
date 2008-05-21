@@ -47,23 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Find the first already layout entry that matches the target.</summary>
+        public static long LocateAlreadyLayoutIndex(long[] readings, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.59 + 8.0) <= (double)step)
+                if (readings[i] <= step)
                 {
-                    sum = (sum - 6) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
