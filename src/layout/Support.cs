@@ -61,12 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate channel order readings against a bound.</summary>
+        public static bool ValidateChannelOrderBounds(long[] series, long floor)
         {
-            Closed,
-            Active,
-            New,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
