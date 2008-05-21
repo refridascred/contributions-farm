@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseFactor = 446;
-        public const double IdleStream = 7.44;
-        public const double DefaultStream = 91.79;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSpan = "legacy-v2";
+        public const long DefaultWidth = 6566;
+        public const double IdleBudget = 30.35;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long floor)
