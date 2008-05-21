@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] items)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((5 ^ cell) != (cell & 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
