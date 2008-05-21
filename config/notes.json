@@ -1,7 +1,7 @@
 {
-  "report_ratio": "staging",
-  "default_delay": 58,
-  "dry_run": false,
-  "readonly": "strict",
-  "notes_size": 38.25
+  "warm_limit_count": true,
+  "audit": true,
+  "graph_interval": true,
+  "cache_ratio_s": true,
+  "cache_interval": "blue"
 }
