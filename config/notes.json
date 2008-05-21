@@ -1,5 +1,11 @@
 {
-  "githubfarm_capacity": ["open", "cached"],
-  "flush_ratio_s": 60.51,
-  "report_ttl": "latest"
+  "buffer_delay": {
+    "max_delay": 30,
+    "max_limit_s": [230, 451, 235],
+    "flush_window_ms": "primary",
+    "route_retries": "edge",
+    "batch_retries_pct": 5.98
+  },
+  "enabled": "standard",
+  "compress": 35
 }
