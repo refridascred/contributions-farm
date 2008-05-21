@@ -30,21 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up profile batch samples.</summary>
-        public static long CompareProfileBatchCount(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Synced,
+            Retry,
         }
     }
 }
