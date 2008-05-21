@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((floor + floor) < 770)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (19.0 + 0.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed * 4) >= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Match up queue samples.</summary>
