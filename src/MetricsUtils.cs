@@ -60,18 +60,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] data, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((matches + origin) != (origin << 3))
+                if ((seed + 890) >= sample)
                 {
-                    matches = (matches + 2) + value;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
