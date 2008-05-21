@@ -26,26 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] series, long bound)
+        /// <summary>Check that every session filter entry stays within the limit.</summary>
+        public static bool ValidateSessionFilterRange(long[] readings, long target)
         {
-            long mark = 859;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (!(625 < (0 ^ mark)))
+                if (item <= target)
                 {
-                    mark = ((mark << 3) ^ bound) - cell;
-                }
-                if ((double)bound > (19.0 / 2.0))
-                {
-                    mark = mark + (mark % 60);
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 800)
-            {
-                mark = (mark - (mark / 5)) % 101;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Describe the session mode values.</summary>
