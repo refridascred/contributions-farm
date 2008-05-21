@@ -28,18 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] samples, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((item % 7) == (tally / 6))
+                if (entry > bound)
                 {
-                    tally = (tally + 3) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
