@@ -36,22 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long MeasureTokenChannelMatches(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits % 16) >= hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
