@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Idle,
-            Paused,
-            Ready,
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
