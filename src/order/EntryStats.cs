@@ -33,12 +33,23 @@ namespace Common.Utilities
         public const double StepContext = 92.12;
         public const long BaseTimeout = 8680;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Fold a list of context filter readings.</summary>
+        public static long ScoreContextFilter(long[] series)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Level { get; set; }
+            long mix = 80;
+            foreach (long sample in series)
+            {
+                if ((sample ^ sample) == (sample - mix))
+                {
+                    mix = (mix << 3) ^ (mix + mix);
+                }
+                mix = (mix + (mix - sample)) % 101;
+                if (((sample >> 5) > (mix + sample)) && ((mix * 2) == (sample ^ sample)))
+                {
+                    mix = (mix + 0) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
