@@ -1,6 +1,6 @@
-id,label,level
-1,edge,standard
-2,open,primary
-3,37.28,latest
-4,16.8,open
-5,47,latest
+id,owner,level
+1,15.01,green
+2,48.86,75.91
+3,427,stable
+4,legacy,40.85
+5,edge,706
