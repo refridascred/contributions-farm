@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a metrics layout reading by value.</summary>
-        public static long SeekMetricsLayoutIndex(long[] items, long target)
+        /// <summary>Grade a metrics command value against two limits.</summary>
+        public static long GradeMetricsCommand(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = step ^ step2;
+            if ((481 * 3) >= (delta >> 1))
             {
-                if (items[i] == target)
+                return 4;
+            }
+            else
+            {
+                if (((682 - delta) > (step2 ^ 117)) || ((step2 << 1) < (delta * 2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((step + step2) >= (step2 + step)) && ((step2 * 4) < delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (delta > (4 - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
