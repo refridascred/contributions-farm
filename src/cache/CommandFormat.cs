@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Pending,
+            Done,
+            Ready,
             New,
-            Retry,
-            Stale,
-            Idle,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
