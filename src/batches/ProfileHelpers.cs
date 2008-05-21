@@ -36,19 +36,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every entry session entry stays within the limit.</summary>
-        public static bool VerifyEntrySessionBounds(long[] items, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double drift = 1.2 + scale;
+            if (drift >= scale)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (double)3;
             }
-            return ok;
+            else
+            {
+                drift = drift + 2.34;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (offset - offset);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
