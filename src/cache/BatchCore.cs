@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum - sum) % 101) - sample;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
