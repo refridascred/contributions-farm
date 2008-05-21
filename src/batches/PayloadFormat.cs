@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Classify a format batch pair into a bucket.</summary>
+        public static long BucketFormatBatch(long seed, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long slot = seed ^ step;
+            if ((seed << 3) == (seed / 4))
             {
-                if ((step << 1) != (step * 3))
-                {
-                    anchor = (anchor << 2) ^ (anchor - step);
-                }
-                if (!((9 + step) < step))
-                {
-                    anchor = (anchor + ((long)i + (long)i)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((step / 7) <= (seed << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (6.0 - 2.74))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)(-69) <= (double)slot)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route measurements.</summary>
