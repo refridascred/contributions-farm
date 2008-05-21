@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                if (values[i] >= target)
                 {
                     return (long)i;
                 }
