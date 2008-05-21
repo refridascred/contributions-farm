@@ -35,10 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryCount = 2941;
-        public const long RetryDepth = 9622;
-        public const string MaxToken = "latest-v2";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits >= (hits - sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of commits counter readings.</summary>
         public static long FoldCommitsCounter(long[] items, long bound)
