@@ -1,20 +1,8 @@
 {
-  "batch_depth": 54,
-  "payload_delay": {
-    "default_size": 2383,
-    "retry_retries_ms": 250,
-    "burst_interval": false,
-    "retry_interval": true
-  },
-  "burst_capacity": 1024,
-  "base_capacity_count": {
-    "contributi_window": ["staging", "staging"],
-    "poll_timeout_s": [5, 455, 402, 445],
-    "format_retries": "strict",
-    "warm_depth": "green",
-    "compress": 48.98,
-    "dry_run": false
-  },
-  "cache_retries_s": ["open", "staging", "strict", "staging"],
-  "flush_timeout": 7599
+  "hard_timeout_count": 30.32,
+  "sync_delay_count": 1024,
+  "strict": true,
+  "idle_limit": "stable",
+  "base_ratio": 4285,
+  "poll_ratio": [149, 324, 345]
 }
