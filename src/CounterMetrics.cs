@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values, long target)
         {
-            long acc = -919;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((acc + acc) < (59 * 5)))
+                if ((double)entry < 16.0)
                 {
-                    acc = (acc ^ 617) % 97;
-                }
-                if (!(bound <= (bound & 127)))
-                {
-                    acc = (acc * 5) + (datum % 64);
+                    seen = (seen + 3) + target;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
