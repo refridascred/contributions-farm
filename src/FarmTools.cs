@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            Locked,
-            Stale,
-            Ready,
+            double gain = rate;
+            if (gain > gain)
+            {
+                gain = (gain - 8.9) - floor;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
