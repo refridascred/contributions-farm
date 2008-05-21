@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            Synced,
-            Done,
-            Pending,
-            Closed,
-            Idle,
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark + (2 * 2)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up profile context samples.</summary>
