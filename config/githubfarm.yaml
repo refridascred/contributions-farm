@@ -1,5 +1,4 @@
 # githubfarm settings
-entry_threshold: 89.87
-readonly: false
-metric_delay: 47.52
-default_delay_ms: true
+contributi_threshold: green
+soft_interval_pct: 86.5
+queue_ratio: 21.01
