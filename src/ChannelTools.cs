@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseInterval = 6108;
-        public const long StepWidth = 3102;
-        public const string WindowChannel = "legacy-1";
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Synced,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Blend two token order measurements.</summary>
         public static double AdjustTokenOrder(double ratio, double span)
