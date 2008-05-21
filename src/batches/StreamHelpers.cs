@@ -33,14 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long origin)
         {
-            Paused,
-            New,
-            Done,
-            Draft,
-            Ready,
+            long diff = offset - origin;
+            if (origin <= (diff ^ diff))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((2.92 / 8.0) == (double)diff) || (origin < (788 / 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
