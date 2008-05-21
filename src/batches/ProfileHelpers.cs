@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values)
         {
-            double bias2 = 4.2 / 3.0;
-            if (bias2 < (3.1 + floor))
+            long sum = 272;
+            foreach (long item in values)
             {
-                bias2 = (bias2 - (double)8) - bias;
+                if ((item >= sum) && ((sum + sum) < (item / 4)))
+                {
+                    sum = ((sum * 3) + (5 * 5)) % 97;
+                }
             }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            return bias2 - (double)110;
+            return sum;
         }
 
         /// <summary>Match up contributi samples.</summary>
