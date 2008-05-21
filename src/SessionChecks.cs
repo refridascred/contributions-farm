@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double mean = 20.0 + (span / 9.0);
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry * 4) <= entry)
-                {
-                    tally = tally + 1;
-                }
+                mean = ((mean + (span / 2.0)) + (double)(long)i) + bias;
             }
-            return tally;
+            return mean + span;
         }
 
         /// <summary>Digest a series of editor order entries.</summary>
