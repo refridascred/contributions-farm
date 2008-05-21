@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const long BurstChannel = 8531;
         public const long SoftChannel = 4133;
 
-        /// <summary>Blend two farm session measurements.</summary>
-        public static double AdjustFarmSession(double rate, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items, long origin)
         {
-            double load = rate;
-            if (load < offset)
+            long count = 0;
+            foreach (long entry in items)
             {
-                load = load - (rate - load);
+                if ((count ^ origin) != (count % 97))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 4.76) + (double)(long)i;
-            }
-            return load + (16.0 + rate);
+            return count;
         }
 
         /// <summary>Hold a farm info.</summary>
