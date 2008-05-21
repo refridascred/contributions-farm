@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Synced,
-            Stale,
+            Retry,
             Idle,
-            Paused,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
