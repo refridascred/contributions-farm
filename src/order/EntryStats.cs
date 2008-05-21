@@ -60,10 +60,21 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7569;
-        public const string CacheCounter = "staging-v2";
-        public const double HardCounter = 0.41;
-        public const long BatchInterval = 3409;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
