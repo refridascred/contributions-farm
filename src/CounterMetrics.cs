@@ -53,14 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many already buffer samples are out of range.</summary>
+        public static long CountAlreadyBufferGaps(long[] series, long limit)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((limit & 7) > limit)
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
