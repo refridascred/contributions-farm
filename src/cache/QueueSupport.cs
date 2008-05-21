@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] readings, long seed)
         {
-            Failed,
-            Ready,
-            Synced,
-            Queued,
+            long acc = 0;
+            foreach (long reading in readings)
+            {
+                acc = (((acc << 3) ^ (seed + 93)) % 97) ^ reading;
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
