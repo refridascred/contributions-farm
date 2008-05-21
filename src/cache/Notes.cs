@@ -43,14 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheSpan = "legacy-v2";
+        public const long CacheCluster = 8200;
+        public const string IdleCluster = "primary-v2";
+        public const long RetryRatio = 5408;
+        public const string BaseCluster = "standard-1";
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
