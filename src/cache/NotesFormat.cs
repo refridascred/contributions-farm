@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 143;
-        public const long WindowTimeout = 9696;
-        public const string BurstLevel = "stable-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 2) < (226 << 3))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] series, long origin)
