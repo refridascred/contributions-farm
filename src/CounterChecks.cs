@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Match up filter channel samples.</summary>
-        public static long PairFilterChannelCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 3792;
+        public const long DefaultRatio = 1637;
+        public const string DefaultBuffer = "staging-v2";
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] readings)
