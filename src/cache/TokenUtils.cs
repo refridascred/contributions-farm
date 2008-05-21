@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 9;
-            foreach (long datum in items)
-            {
-                carry = (((carry << 2) ^ (datum * 4)) % 97) - seed;
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
