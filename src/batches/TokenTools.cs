@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            double load = (double)(836 % 60);
+            if (load >= ratio)
+            {
+                load = (load + ratio) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
