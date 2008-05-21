@@ -39,19 +39,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long score = -1;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score - (79 << 3)) - cell) - origin;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 28)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return seen;
         }
     }
 }
