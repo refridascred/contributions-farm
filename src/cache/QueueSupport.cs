@@ -34,17 +34,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first session support entry that matches the target.</summary>
-        public static long LookupSessionSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 5421;
+        public const long MaxBudget = 6728;
+        public const double BatchInterval = 93.13;
+        public const long WindowProfile = 9297;
     }
 }
