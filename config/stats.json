@@ -1,16 +1,5 @@
 {
-  "batch_delay": 500,
-  "cache_window": "stable",
-  "cluster_size": {
-    "cache_delay_count": false,
-    "readonly": "legacy",
-    "report_window": {
-      "payload_window": "fallback",
-      "sync_size_count": "eu-west",
-      "base_size": 19.43,
-      "poll_timeout_pct": 6.56,
-      "stats_retries": 44.9,
-      "graph_threshold": ["eu-west", "eu-west", "stable", "cached"]
-    }
-  }
+  "burst_threshold_ms": 70.54,
+  "filter_interval": 500,
+  "dry_run": "edge"
 }
