@@ -40,17 +40,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] values, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -25;
+            foreach (long value in readings)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if ((long)readings.Length < (result / 3))
                 {
-                    return (long)i;
+                    result = ((result - (result + result)) % 4096) + value;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
