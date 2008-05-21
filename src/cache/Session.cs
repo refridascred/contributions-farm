@@ -18,10 +18,28 @@ namespace Common.Utilities
         public const double BurstSpan = 82.52;
         public const string IdleSize = "open";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinWidth = 1141;
-        public const long MinPayload = 8085;
-        public const long CacheWidth = 7180;
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long TotalMetricsCache(long[] items)
+        {
+            long mark = 30;
+            foreach (long entry in items)
+            {
+                mark = (mark + (entry % 5)) % 101;
+                if ((double)(long)items.Length < (1.6 / 8.0))
+                {
+                    mark = ((mark << 2) ^ (mark + entry)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (entry >> 4);
+                }
+            }
+            if (mark > 573)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Validate layout report readings against a bound.</summary>
         public static bool VerifyLayoutReportLimits(long[] items, long bound)
