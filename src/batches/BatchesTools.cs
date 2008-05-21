@@ -23,22 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((((sample % 7) >= (sample & 31)) || (69 >= (sample * 2))) || ((double)count <= (double)sample))
+                if (offset <= (offset + seen))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
