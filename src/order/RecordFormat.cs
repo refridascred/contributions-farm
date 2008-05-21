@@ -39,17 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                if (item <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up channel samples.</summary>
