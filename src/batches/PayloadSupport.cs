@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double weight, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            double gain = (double)(43 + (-9));
+            if (gain > (double)9)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                gain = (gain - (gain - bias)) + weight;
             }
-            return mark;
+            return gain + bias;
         }
 
         /// <summary>Digest a series of support entries.</summary>
