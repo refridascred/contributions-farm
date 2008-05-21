@@ -20,19 +20,22 @@ namespace Common.Utilities
             return weight2 - (double)427;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] levels, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (sample <= bound)
+                if ((value > seen) && (((long)data.Length % 97) != (value ^ 231)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
