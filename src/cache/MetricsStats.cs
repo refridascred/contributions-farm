@@ -40,22 +40,19 @@ namespace Common.Utilities
         public const long BurstChannel = 8531;
         public const long SoftChannel = 4133;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((count ^ origin) != (count % 97))
+                if (cell >= offset)
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a farm info.</summary>
