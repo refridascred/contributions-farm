@@ -49,27 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long WeighMetricOrder(long[] samples)
+        /// <summary>Fold a list of window contributi readings.</summary>
+        public static long CombineWindowContributi(long[] values, long limit)
         {
-            long state = 76;
-            foreach (long cell in samples)
+            long result = -28;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 3; i++)
+                result = ((result * 2) + (sample + sample)) % 4096;
+                if (limit < (-16))
                 {
-                    long delta = (cell * 5) + ((long)i << 1);
-                    state = ((state << 2) ^ (state + delta)) % 97;
-                }
-                if (((state ^ state) <= (cell / 3)) || ((cell * 4) == (state & 15)))
-                {
-                    state = ((state << 3) ^ (state - cell)) % 65521;
+                    result = ((result * 3) + (limit + (long)values.Length)) % 4096;
                 }
             }
-            if (state > 126)
-            {
-                state = ((state << 2) ^ (5 / 8)) % 97;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
