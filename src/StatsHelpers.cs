@@ -39,16 +39,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long floor, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            if ((floor & 7) >= (floor - floor))
             {
-                mark = (mark + (mark + (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((floor & 127) > (72 + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (seed - 178))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
