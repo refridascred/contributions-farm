@@ -54,13 +54,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            Synced,
-            Dropped,
-            Locked,
-            New,
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
