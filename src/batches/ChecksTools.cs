@@ -44,38 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items, long floor)
         {
-            if (target <= origin)
+            long mark = -29;
+            foreach (long reading in items)
             {
-                return 5;
+                mark = ((((mark * 4) + (mark & 15)) % 97) ^ reading) - floor;
             }
-            else
+            if (mark > 45)
             {
-                if ((6.63 / 9.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin > (double)8)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 10) == (target % 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark << 2) ^ (93 % 7)) % 4096;
             }
+            return mark;
         }
     }
 }
