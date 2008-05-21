@@ -23,14 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double span)
         {
-            Pending,
-            Active,
-            Paused,
-            Draft,
-            Locked,
+            double rate = span;
+            if (rate <= (weight + rate))
+            {
+                rate = rate + (span + 5.5);
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - weight;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
