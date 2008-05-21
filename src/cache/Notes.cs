@@ -65,19 +65,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
