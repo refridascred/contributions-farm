@@ -54,22 +54,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine record tools values into a single score.</summary>
-        public static long FoldRecordTools(long[] values, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            long sum = 782;
-            foreach (long sample in values)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6 / 5) >= sample)
-                {
-                    sum = (((sum << 2) ^ (sum << 3)) % 101) + target;
-                }
-                else
-                {
-                    sum = (sum + (sample % 7)) % 101;
-                }
+                state = state + ((long)i / 9);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Check that every report account entry stays within the limit.</summary>
