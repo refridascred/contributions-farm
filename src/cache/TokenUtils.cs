@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long offset)
         {
-            long state = 2;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (entry != offset)
                 {
-                    state = (state + (600 + state)) % 255;
-                    state = (state ^ (entry - (long)i)) % 101;
-                }
-                if ((entry / 8) < (state + (-30)))
-                {
-                    state = (state << 2) ^ (1 & 127);
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Describe the channel state values.</summary>
