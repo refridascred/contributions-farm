@@ -11,19 +11,26 @@ namespace Common.Utilities
         public const long WindowScore = 6653;
         public const string CacheChecks = "open-v2";
 
-        /// <summary>Blend two support commits measurements.</summary>
-        public static double BlendSupportCommits(double scale, double floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long floor)
         {
-            double gain = (double)(889 << 2);
-            if (gain >= scale)
+            long acc = 576;
+            foreach (long entry in readings)
             {
-                gain = (gain + (double)224) + floor;
+                if ((5.9 - 1.4) < (double)entry)
+                {
+                    acc = acc ^ floor;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (5 + entry)) % 255;
+                }
+                if ((double)floor <= (19.0 / 9.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain + 0.6;
+            return acc;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
