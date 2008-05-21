@@ -52,23 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double weight, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long target)
         {
-            double drift = weight;
-            if (drift >= 2.9)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                drift = drift + offset;
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (double)2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (3.4 + 5.4)) + (double)(long)i;
-            }
-            return drift - (weight - weight);
+            return flag;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
