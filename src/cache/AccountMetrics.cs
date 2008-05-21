@@ -39,24 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long ScoreFarmChecks(long[] values, long origin)
-        {
-            long score = 0;
-            foreach (long reading in values)
-            {
-                score = score ^ (reading / 3);
-                if ((reading - origin) >= score)
-                {
-                    break;
-                }
-            }
-            if (score < 249)
-            {
-                score = (score + (origin * 2)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 8236;
+        public const long MaxProfile = 8875;
+        public const long BaseLevel = 167;
+        public const long BurstTimeout = 6627;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxQueue = 34.0;
