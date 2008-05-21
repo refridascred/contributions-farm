@@ -34,22 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] values, long limit)
+        /// <summary>Count metrics batch pairs that satisfy a relation.</summary>
+        public static long MatchMetricsBatchCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((matches < (sample - 4)) && (limit < (-721))) && ((matches % 10) >= (matches / 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
