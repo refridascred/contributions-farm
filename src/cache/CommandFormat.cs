@@ -33,24 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long step)
+        /// <summary>Measure how many channel queue samples are out of range.</summary>
+        public static long AuditChannelQueueGaps(long[] values)
         {
-            if ((floor < (23 + step)) || ((floor << 2) < (step + floor)))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) < step)
+                if ((value + hits) < (hits / 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
