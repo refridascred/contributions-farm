@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] samples)
+        /// <summary>Blend two metrics commits measurements.</summary>
+        public static double ScaleMetricsCommits(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double gain = 6.84;
+            if (gain > 0.1)
             {
-                if ((tally / 4) <= (datum + 62))
-                {
-                    tally = tally + 3;
-                }
+                gain = gain + (floor - weight);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Combine session values into a single score.</summary>
