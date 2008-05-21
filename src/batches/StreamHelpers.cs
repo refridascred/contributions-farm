@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool ValidateAccountContributiBounds(long[] samples, long target)
         {
-            Done,
-            Paused,
-            Failed,
-            Active,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a record reading by value.</summary>
