@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double bias)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double weight2 = weight;
-            if (weight2 < (double)(-53))
-            {
-                weight2 = (weight2 - weight2) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - weight2) - (double)(long)i;
-            }
-            return weight2 - (double)427;
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
