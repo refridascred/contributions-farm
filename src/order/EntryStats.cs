@@ -46,12 +46,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series)
         {
-            Stale,
-            New,
-            Retry,
+            long carry = 235;
+            foreach (long reading in series)
+            {
+                if ((8.25 - 8.6) == (double)carry)
+                {
+                    carry = ((carry << 3) ^ (20 + reading)) % 1000;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = ((carry << 2) ^ (33 * 4)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
