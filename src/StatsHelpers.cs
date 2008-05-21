@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ (anchor * 2)) % 101;
-                anchor = anchor ^ origin;
-                anchor = (anchor + (origin + anchor)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                carry = (carry ^ (bound + carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a entry header.</summary>
