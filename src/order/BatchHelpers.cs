@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchInterval = 5814;
-        public const long SoftCount = 5581;
-        public const long DefaultBatch = 9441;
-        public const long MaxBatch = 4008;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 3106;
