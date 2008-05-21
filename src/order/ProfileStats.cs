@@ -62,22 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already profile samples.</summary>
-        public static long ScoreAlreadyProfile(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
-            long mark = 745;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (datum <= (mark << 3))
+                if ((tally ^ cell) != (361 * 3))
                 {
-                    mark = mark - 224;
-                }
-                if ((74 <= (datum - mark)) || ((datum - datum) >= datum))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
