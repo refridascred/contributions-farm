@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Audit record token readings against a rule.</summary>
+        public static long CountRecordTokenHits(long[] levels)
         {
-            long mix = 18;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix ^ (mix / 2)) % 1000) ^ cell;
+                if ((double)seen >= (9.2 * 3.93))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix > 3)
-            {
-                mix = (mix + 334) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
