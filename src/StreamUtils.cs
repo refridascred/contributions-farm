@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long ScoreCommandStream(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = 31;
-            foreach (long value in items)
-            {
-                if ((((-7) - value) > (value << 1)) && ((double)mix < (double)value))
-                {
-                    mix = mix - (value / 5);
-                }
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
