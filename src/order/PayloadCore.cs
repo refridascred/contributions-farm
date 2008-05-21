@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitScore = 7920;
-        public const string BatchWidth = "local";
-        public const double MaxCommand = 26.64;
-        public const long StepCommand = 6533;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next batch cluster value from a seed.</summary>
         public static long SeriesBatchCluster(long floor)
