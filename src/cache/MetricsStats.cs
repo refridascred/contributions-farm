@@ -61,10 +61,11 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 98.49;
-        public const double SoftAlready = 75.48;
-        public const long HardRatio = 9749;
-        public const long BurstLevel = 5372;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double bias)
+        {
+            double rate = (bias * 3.8) + (bias + weight);
+            return rate - 8.9;
+        }
     }
 }
