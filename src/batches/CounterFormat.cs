@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every batch already entry stays within the limit.</summary>
+        public static bool CheckBatchAlreadyRange(long[] data, long step)
         {
-            Done,
-            Stale,
-            Synced,
-            Pending,
-            Retry,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cache status values.</summary>
