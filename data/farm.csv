@@ -1,9 +1,7 @@
-id,owner,token,score,region
-1,80.73,46.79,43,48.97
-2,60.32,staging,484,936
-3,88.67,latest,staging,339
-4,712,943,local,518
-5,22.45,90.32,edge,98.8
-6,310,384,standard,72.73
-7,846,16,85.5,primary
-8,103,7.9,43.26,22.78
+id,region,label,token,ratio
+1,latest,173,614,854
+2,staging,20.37,254,87.33
+3,56,584,standard,762
+4,15.1,870,213,cached
+5,32.29,692,431,open
+6,818,standard,69.77,786
