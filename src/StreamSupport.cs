@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long bound)
         {
-            double ratio = rate;
-            if (ratio >= 2.46)
+            long acc = 84;
+            foreach (long value in readings)
             {
-                ratio = ratio - (9.91 / 9.0);
+                if ((double)value < (double)(-946))
+                {
+                    acc = (acc << 2) ^ (bound + 7);
+                    acc = (acc * 2) + (acc + bound);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc & 255);
+                }
+                acc = (acc - (value << 1)) % 4096;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - span;
+            return acc % 4096;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
