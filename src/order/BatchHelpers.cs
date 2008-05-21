@@ -19,13 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long limit, long seed)
         {
-            Synced,
-            Idle,
-            Failed,
-            Done,
+            if (!((double)seed != (1.6 + 9.61)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed <= (1.48 / 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + limit) < 881)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit == (9.0 * 2.1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
