@@ -17,32 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long target)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long next = limit - target;
-            if (((double)limit == (1.64 - 5.27)) && ((next % 100) <= (target - 293)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next >> 5) < next)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target > (8.0 - 4.73))
+                    if ((readings[i] - readings[j]) == 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two queue measurements.</summary>
