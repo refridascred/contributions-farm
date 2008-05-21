@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                long edge = (long)i + (carry & 1);
-                if (edge > (38 >> 1))
-                {
-                    edge = (edge << 3) ^ bound;
-                    edge = edge + (8 - edge);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 66.82;
+        public const string DefaultWidth = "cached-v2";
+        public const string BatchRatio = "stable";
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
