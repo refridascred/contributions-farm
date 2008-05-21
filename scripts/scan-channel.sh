@@ -13,17 +13,10 @@ done
 log "total ${total}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=474
+log "limit is ${CHANNEL_LIMIT}"
