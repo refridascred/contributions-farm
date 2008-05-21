@@ -10,12 +10,26 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached-v2";
         public const string BatchRatio = "stable";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 5470;
-        public const string MinCount = "primary-edge";
-        public const string BatchChannel = "legacy-edge";
-        public const string LimitInterval = "local-edge";
-        public const long HardChannel = 7195;
+        /// <summary>Iterate the layout counter series from a seed.</summary>
+        public static long SeriesLayoutCounter(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state * 5) + ((long)i / 9);
+                if ((double)offset <= (2.4 / 3.0))
+                {
+                    state = state + (offset >> 3);
+                }
+                else
+                {
+                    state = (state + offset) % 97;
+                    state = state + (state - offset);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] values, long floor)
