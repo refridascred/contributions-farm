@@ -66,11 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 33;
-        public const string BaseRatio = "fallback";
-        public const long DefaultCount = 7761;
-        public const long CacheCluster = 7429;
+        /// <summary>Find the first already graph entry that matches the target.</summary>
+        public static long LookupAlreadyGraphIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportRange(long[] samples, long seed)
