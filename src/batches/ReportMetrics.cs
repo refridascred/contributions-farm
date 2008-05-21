@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double bias)
         {
-            double load = (double)(462 + 1);
-            if (load < (bias / 3.0))
-            {
-                load = load + gain;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias / 7.0)) + (double)(long)i;
-            }
-            return load - load;
+            double mean = (double)138 - bias;
+            return (mean + bias) + weight;
         }
 
         /// <summary>Describe the report level values.</summary>
