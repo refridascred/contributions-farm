@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4386;
-        public const long DefaultQueue = 9915;
-        public const double SoftTimeout = 70.61;
-        public const long HardSize = 1800;
-        public const long WindowSize = 8894;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
