@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const string WindowChecks = "standard-v2";
         public const long DefaultRatio = 1903;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            long sum = 473;
-            foreach (long datum in data)
+            long mix = 2;
+            foreach (long reading in readings)
             {
-                sum = (sum - (origin * 5)) + datum;
+                mix = (mix + 61) ^ reading;
             }
-            return sum;
+            return mix % 4096;
         }
     }
 }
