@@ -1,5 +1,6 @@
 {
-  "max_retries_pct": 500,
-  "compress": "latest",
-  "enabled": "stable"
+  "retry_interval_ms": 6.1,
+  "idle_delay_ms": [219, 484, 228],
+  "retry_capacity_pct": true,
+  "verbose": 500
 }
