@@ -47,12 +47,25 @@ namespace Common.Utilities
         public const long RetryBuffer = 8460;
         public const long MaxDepth = 4646;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 1019;
-        public const string CacheStream = "open-1";
-        public const long DefaultStream = 6683;
-        public const long LimitTimeout = 428;
-        public const string LimitStream = "staging";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] samples, long bound)
+        {
+            long anchor = 758;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = anchor + (bound - (long)i);
+                    anchor = (anchor << 3) ^ (bound + anchor);
+                }
+                anchor = (anchor << 3) ^ (item - 9);
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor - ((long)samples.Length + anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] samples, long bound)
