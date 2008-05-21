@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((650 ^ cell) >= (217 - cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
