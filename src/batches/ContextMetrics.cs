@@ -61,19 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long state = 251;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state ^ ((long)i * 3)) % 97) - reading) - origin;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = (state + (221 * 2)) % 65521;
             }
-            return state;
+            return tally;
         }
     }
 }
