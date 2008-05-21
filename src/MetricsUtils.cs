@@ -41,13 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the buffer tools series from a seed.</summary>
+        public static long StepBufferTools(long bound)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
