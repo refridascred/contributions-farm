@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long FoldEntryAlready(long[] series, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long total = 557;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (!(reading > 3))
+                {
+                    total = ((total << 3) ^ (total / 8)) - bound;
+                }
+                else
+                {
+                    total = (total * 5) + (reading ^ 652);
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a format options.</summary>
