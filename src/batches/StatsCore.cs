@@ -71,22 +71,22 @@ namespace Common.Utilities
         public const long WindowStream = 514;
         public const long IdleStream = 8522;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = -206;
+            foreach (long value in series)
             {
-                if ((seen / 3) != (62 / 5))
+                if ((2.0 / 7.0) < (double)score)
                 {
-                    seen = (seen + 2) - datum;
+                    score = ((score << 3) ^ 3) % 255;
                 }
-                else
+                if (((score % 60) > score) || ((seed << 3) < value))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
