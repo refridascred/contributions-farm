@@ -70,18 +70,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)48 >= (double)seed) && (((20.0 * 3.3) != (double)seed) || (2.52 >= (double)item)))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
