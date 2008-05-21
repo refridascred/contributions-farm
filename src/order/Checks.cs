@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long HardRoute = 583;
         public const long SoftRoute = 4770;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Draft,
-            Stale,
-            Synced,
-            Paused,
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
