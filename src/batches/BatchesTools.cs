@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long anchor = 6;
-            foreach (long item in readings)
-            {
-                if (anchor >= (item * 5))
-                {
-                    anchor = ((anchor << 2) ^ (limit - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor - item)) % 1000;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
