@@ -55,12 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((6.59 + 8.0) <= (double)step)
+                {
+                    sum = (sum - 6) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
