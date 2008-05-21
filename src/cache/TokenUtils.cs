@@ -23,17 +23,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
