@@ -49,12 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] levels, long floor)
         {
-            Queued,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)floor <= (double)541)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
     }
 }
