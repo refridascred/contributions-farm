@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] values)
+        /// <summary>Match up notes farm samples.</summary>
+        public static long PairNotesFarmCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits << 2) < ((-484) / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
