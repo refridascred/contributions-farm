@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            double load = (double)8 - span;
-            if (load <= (span + gain))
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + (load + gain);
+                if (((double)acc < (double)15) || ((acc << 1) <= (limit + (long)i)))
+                {
+                    acc = acc - 77;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (gain - load)) - (double)(long)i;
-            }
-            return load + gain;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
