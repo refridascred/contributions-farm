@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7730;
         public const long HardGithubfarm = 7568;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
