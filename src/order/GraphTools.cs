@@ -74,19 +74,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate command channel samples.</summary>
-        public static long FoldCommandChannel(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long sum = 0;
-            foreach (long item in values)
-            {
-                sum = (sum * 3) + ((-320) ^ item);
-            }
-            if (sum < 86)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            New,
+            Queued,
+            Stale,
+            Paused,
         }
     }
 }
