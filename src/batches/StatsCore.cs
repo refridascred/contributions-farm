@@ -85,12 +85,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (535 >= matches)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
