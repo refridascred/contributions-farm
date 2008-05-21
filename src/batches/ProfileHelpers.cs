@@ -25,26 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (origin < (anchor + origin))
-                {
-                    anchor = (anchor ^ origin) % 101;
-                    anchor = (anchor - ((long)i >> 4)) % 1000;
-                    continue;
-                }
-                if (((anchor + anchor) <= anchor) || ((origin - origin) < ((long)i % 5)))
-                {
-                    anchor = (anchor * 4) + (origin << 1);
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Project the next schema queue value.</summary>
