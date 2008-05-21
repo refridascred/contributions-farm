@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
