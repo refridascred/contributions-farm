@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of buffer layout entries.</summary>
-        public static long ScoreBufferLayout(long[] samples, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long bound)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((score < entry) && (entry >= (step + entry)))
+                if (entry != bound)
                 {
+                    valid = false;
                     break;
                 }
-                score = score ^ (step << 2);
             }
-            if (score < 8)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Describe the graph state values.</summary>
