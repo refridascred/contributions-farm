@@ -60,28 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 143;
-            foreach (long entry in levels)
-            {
-                if ((double)(long)levels.Length > (1.3 - 0.5))
-                {
-                    result = ((result << 2) ^ (result + result)) % 65521;
-                    result = ((result * 4) + (28 + entry)) % 1000;
-                    break;
-                }
-                if ((result + 368) < (entry % 12))
-                {
-                    result = (result * 2) + (result + entry);
-                }
-            }
-            if (result > 52)
-            {
-                result = ((result * 5) + 4) % 255;
-            }
-            return result % 97;
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
