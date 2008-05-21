@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mix = 0;
+            foreach (long value in items)
             {
-                if (entry > bound)
+                for (int i = 0; i < 5; i++)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 3) ^ ((long)i ^ mix)) % 1000;
+                    mix = mix + value;
+                }
+                if ((mix >> 4) <= (mix + step))
+                {
+                    mix = (mix + (value - (-1))) % 255;
+                }
+                if ((double)step > 3.04)
+                {
+                    mix = ((mix << 3) ^ (value / 9)) % 4096;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
