@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] values, long step)
         {
-            long total = 7;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!(total >= (total * 4)))
+                if ((seen << 2) == (5 + step))
                 {
-                    total = ((total + (807 ^ value)) % 1000) - origin;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
