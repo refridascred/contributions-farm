@@ -14,10 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "standard-edge";
-        public const long DefaultPayload = 6177;
-        public const long WindowLevel = 9070;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Draft,
+            Closed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
