@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long limit)
+        /// <summary>Combine commits githubfarm values into a single score.</summary>
+        public static long DigestCommitsGithubfarm(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long score = 815;
+            foreach (long item in data)
             {
-                if ((sample << 2) < (226 << 3))
+                if (((842 - score) > item) || (5 > item))
                 {
-                    tally = (tally + 3) + limit;
+                    score = score - (item % 97);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
