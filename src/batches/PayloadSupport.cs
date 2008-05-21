@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Closed,
-            Pending,
-            Active,
-            Locked,
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
