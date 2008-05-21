@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] samples, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed + reading) != (996 + seed))
+                if (samples[i] > bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
