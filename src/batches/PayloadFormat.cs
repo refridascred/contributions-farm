@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples, long seed)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((0.1 * 4.05) < (double)datum) && ((seed & 31) <= (tally % 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
