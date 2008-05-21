@@ -14,10 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryDepth = "staging-edge";
-        public const string LimitOrder = "latest-edge";
-        public const long StepSize = 3594;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "standard-edge";
+        public const long DefaultPayload = 6177;
+        public const long WindowLevel = 9070;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
