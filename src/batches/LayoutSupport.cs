@@ -20,19 +20,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long score = 139;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score - (score + 52)) % 101) ^ datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 1)
-            {
-                score = (score + score) % 255;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Describe the channel state values.</summary>
