@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long AuditToolsCacheHits(long[] levels, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = 44;
+            foreach (long item in items)
             {
-                if ((double)limit != (2.5 * 11.0))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total * 4) + (bound * 2)) % 1000) - item;
             }
-            return seen;
+            if (total < 79)
+            {
+                total = (total - (366 - 89)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Locate a window reading by value.</summary>
