@@ -14,18 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] items, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count >> 5) <= 71)
-                {
-                    count = ((count + 2) + item) - limit;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Roll a context counter forward.</summary>
