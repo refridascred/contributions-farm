@@ -55,22 +55,19 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long AuditContextAccountHits(long[] data, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((matches + matches) >= sample)
+                if (datum <= target)
                 {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
