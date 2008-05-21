@@ -32,11 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate schema channel samples.</summary>
+        public static long DigestSchemaChannel(long[] values)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long mix = -567;
+            foreach (long cell in values)
+            {
+                if ((mix > (cell * 4)) && ((double)mix < (0.41 + 7.1)))
+                {
+                    mix = (mix * 5) + (cell - cell);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
