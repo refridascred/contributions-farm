@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long floor)
         {
-            Done,
-            Locked,
-            Queued,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
