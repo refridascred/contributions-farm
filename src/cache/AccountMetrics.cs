@@ -62,13 +62,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Synced,
-            Queued,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepBudget = "strict";
+        public const string BaseCluster = "open-edge";
+        public const long LimitCluster = 7562;
+        public const long CacheSize = 951;
+        public const double CacheRatio = 77.54;
     }
 }
