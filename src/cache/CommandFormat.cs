@@ -57,18 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel queue samples are out of range.</summary>
-        public static long AuditChannelQueueGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + hits) < (hits / 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseSpan = "fallback-1";
+        public const long SoftBatches = 7835;
+        public const long BaseBatches = 742;
     }
 }
