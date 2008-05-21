@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            Draft,
-            Synced,
-            Failed,
+            double gain = weight;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + (4.6 - gain)) + (double)(long)i) - bias;
+            }
+            return gain - (gain - gain);
         }
 
         /// <summary>Hold a graph header.</summary>
