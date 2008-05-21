@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local latest; do
+for item in stable blue latest; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=58
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 3); do
     total=$((total + i * 4))
 done
 log "total ${total}"
