@@ -24,15 +24,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples, long seed)
         {
-            double ratio = (double)(1 ^ 335);
-            for (int i = 0; i < 8; i++)
+            long score = 36;
+            foreach (long value in samples)
             {
-                ratio = ((ratio - (double)47) + (double)(long)i) - floor;
+                score = ((score << 3) ^ (value >> 3)) - seed;
             }
-            return ratio - (rate / 9.0);
+            if (score < 23)
+            {
+                score = ((score << 2) ^ 7) % 1000;
+            }
+            return score;
         }
     }
 }
