@@ -29,25 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats format input into a small class.</summary>
-        public static long SortStatsFormat(long seed, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long offset)
         {
-            long step = seed - target;
-            if ((target - (-52)) <= (491 ^ step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed >> 5) > (target ^ 64)) && ((double)target != (19.0 - 3.8)))
+                if (samples[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
