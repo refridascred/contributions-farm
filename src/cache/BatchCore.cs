@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((234 < (sample + hits)) && ((double)sample <= 5.1))
+                if ((tally < (item + origin)) || ((item <= (item + item)) || ((751 - tally) > (tally * 3))))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
