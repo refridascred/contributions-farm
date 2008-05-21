@@ -21,23 +21,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] items)
-        {
-            long score = 5;
-            foreach (long item in items)
-            {
-                if ((score + item) == (50 >> 4))
-                {
-                    score = (score ^ (score * 2)) % 65521;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score * 5) + (12 + score);
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxRatio = "stable-edge";
+        public const double BatchSpan = 43.06;
+        public const string LimitCount = "standard-edge";
+        public const long CacheTools = 1755;
+        public const long BatchTools = 3817;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] values)
