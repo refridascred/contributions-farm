@@ -1,7 +1,7 @@
-id,active,weight
-1,37.21,935
-2,52.61,blue
-3,849,202
-4,909,98.61
-5,898,960
-6,206,91.62
+id,token,level,count,owner
+1,635,544,400,67.66
+2,367,31.66,375,cached
+3,legacy,blue,801,eu-west
+4,eu-west,open,cached,870
+5,855,758,915,primary
+6,9.1,latest,187,eu-west
