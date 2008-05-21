@@ -13,18 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.66 / 7.0) <= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
