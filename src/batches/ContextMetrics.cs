@@ -16,22 +16,11 @@ namespace Common.Utilities
         public const long LimitFilter = 1338;
         public const long CacheScore = 5355;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSize = 2758;
+        public const long StepWidth = 1763;
+        public const long DefaultCommits = 5126;
+        public const long IdleCommits = 6583;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long step, long bound)
