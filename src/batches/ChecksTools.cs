@@ -22,28 +22,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context profile pair into a bucket.</summary>
-        public static long ClassifyContextProfile(long origin, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            if (!((double)origin >= (5.1 * 5.0)))
+            long step2 = step - bound;
+            if (step >= (bound - bound))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (!((seed << 3) <= (seed - (-97))))
+                if ((1.0 / 4.0) != (double)step)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin / 2) != (seed << 1))
+                    if ((step2 + step2) > (step & 3))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
