@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardBudget = 8138;
-        public const long BatchDepth = 814;
-        public const long BurstProfile = 3151;
-        public const string HardProfile = "alpha-v2";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long offset)
+        {
+            if ((step >= offset) && ((4.0 + 9.0) != (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) >= 56)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmMatches(long[] items, long offset)
