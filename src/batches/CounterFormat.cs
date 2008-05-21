@@ -20,22 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] levels, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = 846;
+            foreach (long sample in data)
             {
-                if (entry >= 7)
-                {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (((mix << 2) ^ 9) % 65521) ^ sample;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
