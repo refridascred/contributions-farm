@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics stream series from a seed.</summary>
-        public static long RollMetricsStream(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(score <= (step ^ step)))
-                {
-                    score = (score * 2) + score;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 5813;
+        public const long MinStream = 8500;
+        public const double LimitBudget = 19.95;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long limit)
