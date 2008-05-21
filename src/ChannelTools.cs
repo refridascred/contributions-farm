@@ -27,9 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "legacy-edge";
-        public const long CacheNotes = 2673;
-        public const long BaseSpan = 7197;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] samples, long step)
+        {
+            long mix = 12;
+            foreach (long cell in samples)
+            {
+                if ((step ^ 40) > mix)
+                {
+                    mix = ((mix + ((long)samples.Length / 7)) % 4096) ^ cell;
+                }
+            }
+            return mix;
+        }
     }
 }
