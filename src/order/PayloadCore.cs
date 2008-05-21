@@ -37,12 +37,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] series, long floor)
         {
-            Draft,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
