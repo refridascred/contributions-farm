@@ -11,23 +11,25 @@ namespace Common.Utilities
         public const long IdleSpan = 4649;
         public const long CacheAccount = 8980;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long floor)
         {
-            double scale = floor;
-            if (scale < ratio)
+            long delta = step - floor;
+            if ((double)floor > (double)step)
             {
-                scale = scale - ratio;
+                return 3;
             }
             else
             {
-                scale = scale - floor;
+                if (6 >= delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - floor;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
