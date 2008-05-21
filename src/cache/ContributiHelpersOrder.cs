@@ -20,19 +20,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            double scale = weight;
-            if (scale >= (floor - 2.87))
+            long next = seed + offset;
+            if (38 <= (next << 3))
             {
-                scale = scale - (double)318;
+                return 1;
             }
             else
             {
-                scale = scale - (double)2;
+                if ((next - next) < (offset - next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((29 - offset) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset & 127) < offset) || (seed >= (offset + 938)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return scale + floor;
         }
     }
 }
