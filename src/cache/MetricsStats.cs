@@ -45,19 +45,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes metric reading.</summary>
-        public static double BlendNotesMetric(double weight, double offset)
+        /// <summary>Rank checks queue input into a small class.</summary>
+        public static long GradeChecksQueue(long origin, long seed)
         {
-            double mean = offset;
-            if (mean > (offset / 8.0))
+            long edge = origin + seed;
+            if ((seed >= (origin % 12)) && (((-2) ^ seed) >= origin))
             {
-                mean = (mean + (double)827) + weight;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - (2.2 + offset)) + (double)(long)i;
+                if (seed >= (edge - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Define already limits and defaults.</summary>
