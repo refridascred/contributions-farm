@@ -17,21 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up support contributi samples.</summary>
-        public static long PairSupportContributiCount(long[] items)
+        /// <summary>Locate a stream profile reading by value.</summary>
+        public static long LookupStreamProfileIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] == seed)
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
