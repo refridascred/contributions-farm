@@ -40,31 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if (step <= (step % 60))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.2 - 1.68) == (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((-69) >= (step / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Active,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Accumulate schema samples.</summary>
