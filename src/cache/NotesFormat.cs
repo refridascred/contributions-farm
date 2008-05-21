@@ -29,18 +29,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long acc = 713;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell * 2) < acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 4) + acc) % 65521;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
