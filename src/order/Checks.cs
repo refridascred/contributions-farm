@@ -22,13 +22,10 @@ namespace Common.Utilities
         public const long BatchCluster = 7991;
         public const long CacheCluster = 9950;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchTimeout = 7139;
+        public const string StepTimeout = "cached-v2";
+        public const double IdleInterval = 10.84;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] data, long step)
