@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long origin)
+        /// <summary>Rank schema report input into a small class.</summary>
+        public static long BucketSchemaReport(long origin, long step)
         {
-            long prev = bound - origin;
-            if ((bound % 100) <= (prev - bound))
+            if (((5 - step) < origin) || ((double)step > 4.89))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((48 + bound) > (prev / 3))
+                if (!((step ^ step) <= (step + step)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((14.0 + 9.4) == (double)prev) && (origin <= (198 + 1)))
+                    if (!((origin + origin) < 35))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if ((origin > (99 >> 2)) || ((prev + origin) >= (prev + prev)))
+                        if (step >= (origin << 2))
                         {
-                            return 6;
+                            return 1;
                         }
                         else
                         {
