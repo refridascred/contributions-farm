@@ -1,5 +1,8 @@
 {
-  "dry_run": 4035,
-  "compress": 500,
-  "warm_window_pct": 12
+  "poll_ratio": "edge",
+  "sync_ttl_ms": "strict",
+  "base_ttl_s": 58.51,
+  "compress": 563,
+  "batch_window": 1024,
+  "idle_capacity": "open"
 }
