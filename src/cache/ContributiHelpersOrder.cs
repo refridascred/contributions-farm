@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != offset)
+                if ((anchor << 1) == (long)i)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (414 + anchor)) % 65521;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Accumulate farm commits samples.</summary>
