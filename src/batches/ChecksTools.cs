@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= step)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate token samples.</summary>
