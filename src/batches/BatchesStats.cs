@@ -39,26 +39,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Accumulate schema format samples.</summary>
+        public static long TotalSchemaFormat(long[] items)
         {
-            long score = 63;
-            foreach (long item in data)
+            long total = 4;
+            foreach (long datum in items)
             {
-                if (!(((-39) - item) > (item ^ score)))
-                {
-                    score = score + score;
-                }
-                if ((item + item) > (score + item))
-                {
-                    break;
-                }
+                total = (total * 3) + datum;
             }
-            if (score > 64)
-            {
-                score = (score - (1 >> 2)) % 65521;
-            }
-            return score;
+            return total;
         }
     }
 }
