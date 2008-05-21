@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitWidth = 1563;
-        public const long BatchSize = 7464;
-        public const long RetryPayload = 5000;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitCount = "primary-edge";
