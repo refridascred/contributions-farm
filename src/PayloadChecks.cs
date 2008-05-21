@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinRatio = "alpha";
+        public const string WindowFilter = "open-edge";
+        public const long RetrySize = 3662;
+        public const double RetryFilter = 82.76;
+        public const long LimitCount = 1524;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double ratio, double floor)
