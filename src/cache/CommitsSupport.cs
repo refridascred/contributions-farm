@@ -82,17 +82,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long floor)
+        /// <summary>Validate record commits readings against a bound.</summary>
+        public static bool GuardRecordCommitsRange(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (series[i] > floor)
+                if (item <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
