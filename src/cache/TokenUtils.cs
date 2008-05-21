@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "staging-v2";
+        public const long MinSession = 3815;
+        public const string DefaultSession = "legacy";
+        public const double StepSession = 50.28;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
