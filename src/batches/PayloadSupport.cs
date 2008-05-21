@@ -42,18 +42,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = 3;
+            foreach (long entry in readings)
             {
-                if (!((cell % 5) > 45))
+                if ((double)step >= 6.1)
                 {
-                    matches = matches + 1;
+                    total = total - (entry + 5);
                 }
             }
-            return matches;
+            if (total < 3)
+            {
+                total = (total - total) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
