@@ -1,6 +1,8 @@
 {
-  "retry_size": 3617,
-  "persist": 835,
-  "min_window": true,
-  "warm_ratio": 250
+  "retry_interval": 20,
+  "min_retries_count": [259, 69, 288],
+  "min_depth_s": "cached",
+  "counter_ttl": true,
+  "warm_interval_count": [349, 344, 322],
+  "idle_delay_ms": 74
 }
