@@ -1,4 +1,26 @@
 # support settings
-soft_retries_ms: false
-poll_limit: false
-sync_retries: 100
+cache_size: 1144
+idle_threshold_count:
+  min_depth_pct: true
+  retry_depth_pct: 43
+  verbose: 38
+  default_delay_s:
+    batch_delay:
+      - fallback
+      - open
+      - latest
+    base_window_s: eu-west
+    retry_ratio_pct: true
+    channel_delay:
+      - 102
+      - 299
+  audit: false
+max_window_count: true
+soft_ttl_s: 60
+hard_ttl_count:
+  route_limit:
+    - primary
+    - standard
+  max_window_count: false
+  strict: blue
+flush_retries_s: 30
