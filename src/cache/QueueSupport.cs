@@ -34,32 +34,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank token buffer input into a small class.</summary>
-        public static long SortTokenBuffer(long floor, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long gap = floor + limit;
-            if (limit <= (floor & 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor * 3) >= floor) || ((gap + limit) > (488 ^ limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit / 7) <= (floor + limit)) || ((1.5 * 10.0) == (double)gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Paused,
+            Draft,
         }
     }
 }
