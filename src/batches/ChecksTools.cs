@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 7308;
-        public const double HardQueue = 24.4;
-        public const string SoftSpan = "strict-edge";
-        public const long BurstQueue = 7036;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSpan = 9580;
+        public const string IdleCount = "strict-v2";
+        public const long MinSize = 3940;
+        public const long MinSpan = 7385;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] series, long limit)
