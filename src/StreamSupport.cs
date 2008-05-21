@@ -39,9 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 49.51;
-        public const long CacheCounter = 251;
-        public const long BatchScore = 8580;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] readings, long bound)
+        {
+            long result = -337;
+            foreach (long item in readings)
+            {
+                result = (result + bound) % 97;
+                if (35 >= (item >> 3))
+                {
+                    result = result ^ 73;
+                }
+            }
+            return result;
+        }
     }
 }
