@@ -55,19 +55,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)(long)i <= (6.11 - 1.0)) || ((double)mark >= (double)(long)i))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 98.49;
+        public const double SoftAlready = 75.48;
+        public const long HardRatio = 9749;
+        public const long BurstLevel = 5372;
     }
 }
