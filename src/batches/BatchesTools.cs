@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BaseSpan = 1058;
         public const double StepLevel = 22.38;
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 62;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark ^ (mark ^ datum)) % 4096;
             }
-            return matches;
+            if (mark > 0)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
