@@ -20,39 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long delta = seed - step;
-            if ((delta < (424 ^ step)) || ((seed >> 2) >= (1 - delta)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + 9) >= (delta * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed >= (seed - delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((-5) > (82 - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
