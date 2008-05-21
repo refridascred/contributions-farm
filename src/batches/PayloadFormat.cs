@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a format batch pair into a bucket.</summary>
-        public static long BucketFormatBatch(long seed, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long slot = seed ^ step;
-            if ((seed << 3) == (seed / 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step / 7) <= (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (6.0 - 2.74))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)(-69) <= (double)slot)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Blend two route measurements.</summary>
