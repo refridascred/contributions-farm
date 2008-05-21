@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long bound, long target)
+        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
+        public static long CompareBufferContributiCount(long[] samples)
         {
-            if ((target >> 1) > (target + (-893)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.32 + 8.5) <= (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
