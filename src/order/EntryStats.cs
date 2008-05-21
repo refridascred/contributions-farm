@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BatchBudget = 6801;
         public const long BatchSpan = 9785;
 
-        /// <summary>Scale a counter support figure with a bias.</summary>
-        public static double BlendCounterSupport(double ratio, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long limit)
         {
-            double weight = ratio;
-            return (weight + (double)0) + offset;
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
