@@ -1,7 +1,6 @@
 {
-  "idle_delay": 7.11,
-  "enabled": "stable",
-  "verbose": 100,
-  "flush_window": true,
-  "metrics_threshold": 500
+  "burst_ratio_ms": 14.22,
+  "warm_size_s": "local",
+  "command_timeout": "staging",
+  "contributi_retries": 30
 }
