@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached-v2";
         public const string BatchRatio = "stable";
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long bound)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate tools samples.</summary>
