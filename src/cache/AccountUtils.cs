@@ -26,9 +26,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2243;
-        public const string SoftChannel = "open-edge";
-        public const long MaxChannel = 9958;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCount = "strict-v2";
+        public const string HardScore = "open";
+        public const long StepRatio = 5797;
     }
 }
