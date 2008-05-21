@@ -46,19 +46,14 @@ namespace Common.Utilities
         public const long LimitTimeout = 9397;
         public const long StepWidth = 9372;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double drift = offset;
-            if (drift > 19.0)
-            {
-                drift = (drift + (drift / 7.0)) + gain;
-            }
-            else
-            {
-                drift = drift - (7.3 - offset);
-            }
-            return drift + drift;
+            New,
+            Failed,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a layout reading.</summary>
