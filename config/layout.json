@@ -1,7 +1,23 @@
 {
-  "dry_run": "local",
-  "enabled": true,
-  "commits_size": ["green", "staging"],
-  "strict": 72,
-  "account_interval": 2337
+  "readonly": 89.32,
+  "max_window_s": "cached",
+  "persist": {
+    "dry_run": {
+      "min_retries_pct": true,
+      "burst_capacity_pct": "primary",
+      "enabled": 72.12,
+      "batch_capacity": 97.21,
+      "session_size": false,
+      "sync_size": 62
+    },
+    "strict": ["blue", "cached"],
+    "format_retries": ["strict", "strict", "legacy", "edge"]
+  },
+  "soft_capacity_s": "standard",
+  "burst_retries_s": 61.29,
+  "context_timeout": {
+    "max_ttl_s": ["latest", "open"],
+    "base_ratio": "stable",
+    "max_timeout": "cached"
+  }
 }
