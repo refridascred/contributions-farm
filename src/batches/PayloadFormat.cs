@@ -53,18 +53,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long TallyEntryNotesGaps(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen - sample) <= (seen + seen))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
