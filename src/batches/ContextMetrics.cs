@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string SoftScore = "alpha";
         public const long StepWindow = 1086;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1583;
-        public const string RetryBudget = "local";
-        public const long LimitFilter = 1338;
-        public const long CacheScore = 5355;
+        /// <summary>Find the first cluster stream entry that matches the target.</summary>
+        public static long LookupClusterStreamIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftSize = 2758;
