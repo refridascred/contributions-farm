@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            double weight = (gain - bias) * 7.0;
-            if (weight > gain)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + 3.0;
+            return count;
         }
 
         /// <summary>Accumulate format account samples.</summary>
