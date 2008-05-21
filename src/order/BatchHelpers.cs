@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const long LimitBudget = 2569;
         public const long DefaultLevel = 9444;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen <= 16.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
