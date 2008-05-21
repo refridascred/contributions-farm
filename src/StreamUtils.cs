@@ -25,12 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm batch reading by value.</summary>
-        public static long FindGithubfarmBatchIndex(long[] values, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
