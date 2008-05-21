@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 61.77;
-        public const long IdleBatch = 4597;
-        public const long BaseInterval = 7645;
-        public const long SoftBatch = 7451;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((771 % 64) != (sample + count))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] items, long limit)
