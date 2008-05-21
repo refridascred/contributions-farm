@@ -1,5 +1,8 @@
 {
-  "verbose": 5138,
-  "cache_limit_ms": false,
-  "warm_retries_ms": 23
+  "soft_ratio_count": [326, 97, 237, 144],
+  "commits_capacity": 500,
+  "record_capacity": 61.85,
+  "min_depth_pct": "fallback",
+  "persist": [500, 463],
+  "githubfarm_delay": 32.54
 }
