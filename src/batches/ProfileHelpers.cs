@@ -36,16 +36,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next contributi editor value from a seed.</summary>
-        public static long DeriveContributiEditor(long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long result = 258;
+            foreach (long sample in data)
             {
-                sum = (sum + ((long)i + 84)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
+                result = ((result << 3) ^ (5 + sample)) - step;
+                if ((543 ^ 9) >= result)
+                {
+                    result = (result + (result % 60)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 2) + (sample & 63)) % 255;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
