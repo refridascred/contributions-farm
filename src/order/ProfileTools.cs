@@ -47,19 +47,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double scale = floor;
-            if (scale > scale)
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + (ratio * 5.0);
+            Locked,
+            Synced,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
