@@ -20,12 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSpan = 9736;
-        public const long BaseStream = 699;
-        public const long BatchSpan = 5808;
-        public const long HardStream = 1808;
-        public const string WindowStream = "cached-1";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Pending,
+            Ready,
+            New,
+        }
 
         /// <summary>Find the first command report entry that matches the target.</summary>
         public static long FindCommandReportIndex(long[] readings, long seed)
