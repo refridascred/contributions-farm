@@ -20,10 +20,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 63.96;
-        public const double LimitSpan = 96.79;
-        public const double MaxSpan = 29.09;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] items)
