@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 61.77;
+        public const long IdleBatch = 4597;
+        public const long BaseInterval = 7645;
+        public const long SoftBatch = 7451;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] levels)
