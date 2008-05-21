@@ -76,18 +76,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Audit checks editor readings against a rule.</summary>
+        public static long MeasureChecksEditorOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((81 + value) == (4 - 10))
+                if ((value + matches) > ((long)series.Length - 17))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
