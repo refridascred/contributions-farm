@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchCount = 2311;
-        public const string BurstDepth = "legacy";
-        public const string BatchRecord = "fallback";
-        public const long DefaultScore = 1286;
-        public const double MinDepth = 36.5;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitLevel = 8377;
+        public const double HardBudget = 19.78;
+        public const long LimitGithubfarm = 9193;
+        public const long BaseSpan = 1058;
+        public const double StepLevel = 22.38;
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] series)
