@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = 6;
+            foreach (long item in readings)
             {
-                if (datum != offset)
+                if (anchor >= (item * 5))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (limit - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor - item)) % 1000;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
