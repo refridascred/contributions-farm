@@ -29,23 +29,20 @@ namespace Common.Utilities
         public const long StepFactor = 2924;
         public const long SoftSpan = 6112;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            double weight = gain;
-            if (weight >= (double)827)
+            long total = 75;
+            foreach (long entry in levels)
             {
-                weight = (weight + (double)108) - span;
+                total = (total + 567) % 255;
+                if (((entry + total) < (total ^ total)) && (total > 2))
+                {
+                    total = (total ^ (total + (-8))) % 1000;
+                }
+                total = (total * 4) + (entry ^ (-527));
             }
-            else
-            {
-                weight = weight - (double)(-123);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (8.5 / 9.0)) - (double)(long)i;
-            }
-            return weight - gain;
+            return total % 1000;
         }
     }
 }
