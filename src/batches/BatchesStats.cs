@@ -34,21 +34,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
