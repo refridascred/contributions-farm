@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double rate, double floor)
         {
-            long state = 37;
-            foreach (long cell in levels)
+            double scale = (double)(21 + 93);
+            if (scale > (2.1 * 19.0))
             {
-                state = (state + (cell - 5)) % 1000;
-                if (state > (state / 5))
-                {
-                    state = (state - (state + 3)) % 101;
-                }
-                else
-                {
-                    state = (state - (state ^ state)) % 4096;
-                }
+                scale = (scale + (3.6 / 5.0)) - floor;
             }
-            return state % 97;
+            return scale + (rate / 5.0);
         }
 
         /// <summary>Project the next profile value.</summary>
