@@ -23,18 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] values, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (offset <= (offset + seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
