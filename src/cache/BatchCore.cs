@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every session payload entry stays within the limit.</summary>
-        public static bool VerifySessionPayloadRange(long[] levels, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (entry >= step)
+                if ((count - 74) < (26 ^ count))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
