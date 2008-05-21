@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] data)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry >= (tally * 3)) || ((double)tally == (6.7 - 8.0)))
+                if ((step << 1) != (step * 3))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor << 2) ^ (anchor - step);
                 }
-                else
+                if (!((9 + step) < step))
                 {
-                    tally = tally - 1;
+                    anchor = (anchor + ((long)i + (long)i)) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
