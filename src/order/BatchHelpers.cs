@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics account counter forward.</summary>
-        public static long IterateMetricsAccount(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((3.2 * 2.9) <= (double)(long)i) || (((long)i / 7) >= ((long)i ^ sum)))
+                if (seen >= (seen ^ 7))
                 {
-                    sum = sum + (-3);
+                    seen = ((seen + 3) ^ value) + offset;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
     }
 }
