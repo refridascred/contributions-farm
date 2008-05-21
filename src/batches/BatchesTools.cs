@@ -23,19 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] items, long offset)
         {
-            double rate = span;
-            if (rate <= (weight + rate))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                rate = rate + (span + 5.5);
+                if (((cell ^ 29) <= (offset << 1)) || ((double)cell >= (double)offset))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - weight;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
