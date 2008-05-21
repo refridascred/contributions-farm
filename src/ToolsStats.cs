@@ -46,12 +46,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long target)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            if (floor <= (target ^ floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ floor) >= (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
