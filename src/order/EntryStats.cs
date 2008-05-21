@@ -55,21 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.88 * 5.08) > (double)entry)
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
