@@ -1,6 +1,11 @@
-id,owner,rank
-1,67.3,staging
-2,577,edge
-3,92,500
-4,675,286
-5,656,10
+id,region,active,label
+1,open,845,edge
+2,67.16,87.48,strict
+3,13,55.14,4.62
+4,940,408,standard
+5,212,205,79.04
+6,4.87,21,staging
+7,standard,178,930
+8,36.64,stable,staging
+9,73.03,34.31,legacy
+10,latest,53.36,edge
