@@ -67,21 +67,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of buffer order readings.</summary>
-        public static long PairBufferOrderCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 6976;
+        public const double CacheCount = 98.88;
+        public const long CacheScore = 38;
+        public const long BurstStream = 2066;
+        public const long CacheStream = 1028;
     }
 }
