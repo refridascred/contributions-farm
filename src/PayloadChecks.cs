@@ -39,14 +39,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long floor)
         {
-            Queued,
-            Done,
-            Retry,
-            Active,
-            Synced,
+            long offset2 = offset + floor;
+            if (((offset * 4) < 0) && (offset2 <= (offset2 * 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.31 / 3.0) <= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 <= floor) || ((offset ^ offset2) >= (floor / 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset2 >> 3) > offset2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
