@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] readings, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long bound)
         {
-            long result = -337;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                result = (result + bound) % 97;
-                if (35 >= (item >> 3))
+                if (((586 << 1) < hits) || (((bound + bound) >= (bound & 3)) || ((double)bound > (double)hits)))
                 {
-                    result = result ^ 73;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
