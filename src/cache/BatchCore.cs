@@ -16,14 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Active,
-            Stale,
-            Done,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 68.32;
+        public const string DefaultSize = "cached-edge";
+        public const double HardPayload = 90.77;
+        public const double StepPayload = 42.07;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] values, long floor)
