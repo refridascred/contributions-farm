@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] readings, long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (230 <= hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 1) ^ entry) - offset;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two schema already measurements.</summary>
