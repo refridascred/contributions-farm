@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long delta = floor ^ seed;
-            if ((double)floor > 2.93)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
+                sum = sum + (bound & 7);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor - delta) >= (seed % 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Derive the next record buffer value from a seed.</summary>
