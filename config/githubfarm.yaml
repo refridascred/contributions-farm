@@ -1,24 +1,27 @@
 # githubfarm settings
-batch_size_pct: 60
-dry_run: legacy
-strict: cached
-farm_ratio:
-  - 292
-  - 133
-  - 6
-graph_retries:
-  audit: blue
-  metric_threshold: 48.95
+batches_ttl:
+  - 50
+  - 7
+  - 398
+  - 85
+buffer_limit: standard
+poll_size_ms:
   warm_limit_count:
-    - fallback
-    - standard
-    - cached
-    - green
-  cache_window: standard
-support_size:
-  strict: true
-  command_delay: eu-west
-  context_threshold: blue
-  audit:
-    - 342
-    - 334
+    order_limit: 1024
+    max_capacity: 27.16
+    hard_ratio: 6368
+    max_ttl_s: blue
+    contributi_threshold: 60
+    report_capacity: 4287
+  default_retries: fallback
+  report_window: 29.35
+  order_window:
+    - 491
+    - 184
+    - 386
+    - 386
+  flush_size_count:
+    - 224
+    - 424
+    - 71
+    - 258
