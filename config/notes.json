@@ -1,6 +1,5 @@
 {
-  "profile_window": 100,
-  "soft_retries_s": "legacy",
-  "verbose": "standard",
-  "compress": 9240
+  "batch_interval_count": 74.56,
+  "burst_window": 9661,
+  "base_capacity_pct": 11
 }
