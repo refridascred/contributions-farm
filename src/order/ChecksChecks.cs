@@ -41,12 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseWidth = 6307;
+        public const string LimitTimeout = "latest-1";
+        public const long SoftSupport = 8126;
+        public const long LimitFactor = 9871;
+        public const long MinSupport = 5903;
     }
 }
