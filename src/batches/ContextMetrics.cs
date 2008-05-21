@@ -61,12 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryScore = 49.81;
-        public const double BaseContributi = 50.26;
-        public const long HardTimeout = 48;
-        public const long MinContributi = 3148;
-        public const long CacheContributi = 7522;
+        /// <summary>Validate batch stream readings against a bound.</summary>
+        public static bool CheckBatchStreamBounds(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] readings, long origin)
