@@ -16,13 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double floor)
         {
-            Active,
-            Synced,
-            Draft,
-            Done,
+            double scale = floor;
+            if (scale < ratio)
+            {
+                scale = scale - ratio;
+            }
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
