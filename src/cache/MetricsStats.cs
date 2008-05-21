@@ -84,18 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] data, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits ^ (long)data.Length) >= target)
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
