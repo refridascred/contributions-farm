@@ -19,11 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long step)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            if (((limit >> 5) == (74 + limit)) && ((double)limit != (3.1 + 7.55)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step & 31) > (limit + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - 1) >= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support filter reading by value.</summary>
