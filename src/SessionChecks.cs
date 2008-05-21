@@ -14,17 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total << 2) ^ (total / 4)) % 255;
-                total = ((total << 2) ^ (total % 2)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Done,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
