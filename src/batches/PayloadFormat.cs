@@ -63,39 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a cache channel value against two limits.</summary>
-        public static long BucketCacheChannel(long bound, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
-            long diff = bound - step;
-            if (step < (979 + step))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((756 & 7) <= diff)
+                if ((double)item > (6.0 / 7.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.17 + 4.7) > (double)diff) || ((step + bound) != (diff & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)diff >= (double)bound) || (8.89 > (double)diff))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + offset;
                 }
             }
+            return seen;
         }
     }
 }
