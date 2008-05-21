@@ -42,11 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            long result = 0;
+            foreach (long datum in readings)
+            {
+                result = ((result - (867 + origin)) % 4096) ^ datum;
+            }
+            return result;
         }
     }
 }
