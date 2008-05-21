@@ -1,19 +1,6 @@
 # githubfarm settings
-min_delay: fallback
-burst_ttl:
-  verbose: true
-  retry_ratio_pct: local
-  burst_depth: 61
-  default_depth_pct: 9.79
-  batch_retries: 3.21
-strict: cached
-cache_capacity_pct: edge
-command_window:
-  strict: staging
-  cache_window_ms: 8235
-  max_interval_ms: 95.83
-  base_capacity:
-    - 4
-    - 115
-  batches_interval: 58.32
-  burst_window: blue
+format_limit: strict
+base_threshold_s: 84
+burst_depth_count:
+  - edge
+  - stable
