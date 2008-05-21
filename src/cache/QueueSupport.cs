@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 93.8;
-        public const string CacheMetric = "fallback";
-        public const long BatchWidth = 257;
-        public const long DefaultWidth = 6234;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long seed)
