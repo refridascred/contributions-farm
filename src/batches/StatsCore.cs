@@ -28,25 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter tools input into a small class.</summary>
-        public static long ClassifyFilterTools(long bound, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long bound)
         {
-            long span = bound + step;
-            if (((237 + span) != (step - 155)) && ((double)6 <= (double)span))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (span < step)
+                if (datum > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate context samples.</summary>
