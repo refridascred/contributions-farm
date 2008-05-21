@@ -43,16 +43,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor << 2) ^ (floor + floor)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((hits + sample) >= (588 + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
