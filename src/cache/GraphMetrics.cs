@@ -76,12 +76,32 @@ namespace Common.Utilities
         public const long LimitDepth = 1791;
         public const double CacheContext = 95.07;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long origin, long limit)
         {
-            Active,
-            Pending,
-            Queued,
+            long cur = origin ^ limit;
+            if (((double)origin != (1.3 / 5.0)) || ((limit >> 4) >= (cur + 14)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >= (cur + limit)) || (limit > origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
