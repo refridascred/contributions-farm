@@ -36,10 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstRatio = "latest-v2";
-        public const double SoftScore = 86.75;
-        public const long RetryCache = 8755;
+        /// <summary>Derive the next contributi editor value from a seed.</summary>
+        public static long DeriveContributiEditor(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum + ((long)i + 84)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 782;
