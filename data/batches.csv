@@ -1,7 +1,10 @@
-id,score,label,ratio,region
-1,305,stable,59.99,2.86
-2,37.25,68.69,901,eu-west
-3,36.01,45.13,staging,22.84
-4,local,74.24,eu-west,220
-5,eu-west,63.15,643,388
-6,586,94,37.3,38.52
+id,ratio,level,owner
+1,primary,909,blue
+2,343,436,791
+3,strict,190,764
+4,114,640,edge
+5,19.72,local,staging
+6,39.49,6.33,98.52
+7,862,7.47,596
+8,87.59,open,legacy
+9,13.55,48.15,90.14
