@@ -72,19 +72,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double span)
-        {
-            double bias = (double)446;
-            if (bias <= scale)
-            {
-                bias = bias + (double)1;
-            }
-            else
-            {
-                bias = bias - (double)(-7);
-            }
-            return bias - (bias - span);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8141;
+        public const double MinRatio = 95.75;
+        public const string BatchGithubfarm = "stable";
     }
 }
