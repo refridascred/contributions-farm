@@ -22,26 +22,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window account entries.</summary>
-        public static long CombineWindowAccount(long[] values, long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mix = 7;
-            foreach (long entry in values)
-            {
-                if (78 > (mix * 2))
-                {
-                    mix = ((mix << 3) ^ entry) + step;
-                }
-                else
-                {
-                    mix = (mix ^ (entry & 7)) % 1000;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix + (37 - 488)) % 255;
-            }
-            return mix % 97;
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
