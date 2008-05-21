@@ -30,13 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels, long limit)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (limit - limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
