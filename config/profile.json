@@ -1,11 +1,6 @@
 {
-  "buffer_limit": "legacy",
-  "hard_threshold_s": {
-    "min_threshold_ms": ["legacy", "edge", "fallback"],
-    "profile_depth": ["eu-west", "staging"],
-    "cache_size": "strict",
-    "min_threshold": "strict",
-    "batch_ttl": true
-  },
-  "entry_depth": "legacy"
+  "idle_threshold": [185, 190, 303, 225],
+  "burst_size_count": 30,
+  "idle_depth_pct": "cached",
+  "batch_limit_pct": 12
 }
