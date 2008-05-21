@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Derive the next record buffer value from a seed.</summary>
+        public static long StepRecordBuffer(long floor)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 2) ^ (floor - result)) % 97;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter stats.</summary>
