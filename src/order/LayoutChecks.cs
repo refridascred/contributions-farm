@@ -20,21 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
