@@ -32,21 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Synced,
+            Done,
+            Ready,
         }
     }
 }
