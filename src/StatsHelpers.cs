@@ -54,10 +54,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxBudget = 8889;
-        public const long BaseCount = 728;
-        public const long HardTimeout = 5704;
-        public const string IdleDepth = "fallback-v2";
+        /// <summary>Check that every support notes entry stays within the limit.</summary>
+        public static bool CheckSupportNotesLimits(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
