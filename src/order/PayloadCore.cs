@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context payload entries.</summary>
-        public static long TotalContextPayload(long[] series, long offset)
+        /// <summary>Iterate the metrics stream series from a seed.</summary>
+        public static long RollMetricsStream(long step)
         {
-            long total = 1;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (!(score <= (step ^ step)))
                 {
-                    total = (total - reading) % 101;
-                    total = (total + ((long)i % 2)) % 1000;
+                    score = (score * 2) + score;
                 }
-                if (!((offset + 327) > offset))
-                {
-                    total = (total << 3) ^ (reading % 5);
-                }
-                else
-                {
-                    total = total ^ (13 >> 1);
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (total > 637)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
