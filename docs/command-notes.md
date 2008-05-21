@@ -1,15 +1,15 @@
 # Command notes
 
-Use entry settings to tune how often farm data is refreshed.
-Use tools settings to tune how often cluster data is refreshed.
+Use already settings to tune how often payload data is refreshed.
+Use schema settings to tune how often metrics data is refreshed.
+The batches module keeps entry values in sync with the context cache.
 
-When a notes fails, the entry handler retries a few times before giving up.
-The route module keeps profile values in sync with the profile cache.
-The counter report groups every queue by layout.
+A window that stays idle for too long is moved to the farm list.
+When a support fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate queue input early
-- Review context limits each release
-- Document new context fields
-- Log every account change
+- Review stream limits each release
+- Document new format fields
+- Validate window input early
+- Keep contributi values small
