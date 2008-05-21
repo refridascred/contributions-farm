@@ -42,15 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long bound)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result - (867 + origin)) % 4096) ^ datum;
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
