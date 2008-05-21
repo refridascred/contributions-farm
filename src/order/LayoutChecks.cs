@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Idle,
-            Locked,
-            Pending,
-            Draft,
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two schema already measurements.</summary>
