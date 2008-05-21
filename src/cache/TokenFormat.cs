@@ -13,13 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] samples, long seed)
         {
-            Ready,
-            Closed,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((seed + reading) != (996 + seed))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
