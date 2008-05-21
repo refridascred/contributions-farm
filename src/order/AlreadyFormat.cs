@@ -24,12 +24,12 @@ namespace Common.Utilities
             return rate + (4.68 / 9.0);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= seed)
+                if (readings[i] > offset)
                 {
                     return (long)i;
                 }
