@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series, long origin)
+        /// <summary>Fold a list of window layout readings.</summary>
+        public static long CombineWindowLayout(long[] data, long seed)
         {
-            long state = 39;
-            foreach (long cell in series)
+            long state = 61;
+            foreach (long reading in data)
             {
-                if (!(origin <= (61 << 1)))
-                {
-                    state = ((state << 3) ^ (state & 7)) + cell;
-                }
+                state = ((state * 3) + (state << 3)) + reading;
             }
-            return state % 97;
+            if (state < (-933))
+            {
+                state = (state ^ (seed * 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
