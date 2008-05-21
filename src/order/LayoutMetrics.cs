@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batch payload counter forward.</summary>
-        public static long DeriveBatchPayload(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long carry = 2;
+            foreach (long cell in levels)
             {
-                if (((double)anchor > (5.0 - 6.0)) || ((anchor * 5) < step))
-                {
-                    anchor = (anchor ^ (650 << 3)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (53 >> 3)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                carry = ((carry ^ (origin << 1)) % 255) ^ cell;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Match up report samples.</summary>
