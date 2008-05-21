@@ -62,10 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4921;
-        public const long StepSpan = 4853;
-        public const string MinInterval = "primary";
-        public const string IdleRatio = "latest-1";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
