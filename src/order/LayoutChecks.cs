@@ -31,23 +31,22 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long step, long seed)
+        /// <summary>Grade a counter channel value against two limits.</summary>
+        public static long BucketCounterChannel(long limit, long bound)
         {
-            long diff = step + seed;
-            if (((163 >> 5) != (303 ^ step)) || ((6.5 / 7.0) != (double)seed))
+            if ((limit % 7) < bound)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((step / 2) == (7 * 3)) || ((diff + step) >= 179))
+                if (!((bound & 3) >= limit))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
