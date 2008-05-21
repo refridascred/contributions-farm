@@ -62,24 +62,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data, long origin)
         {
-            if ((target <= 36) && ((target + floor) > floor))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor < (4.0 + 14.0)) || ((8.1 / 8.0) != (double)target))
+                if ((double)origin < (20.0 + 1.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
