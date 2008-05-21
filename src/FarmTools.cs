@@ -30,9 +30,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 50.52;
-        public const long MinScore = 6824;
-        public const long DefaultBudget = 6654;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3913;
+        public const double DefaultDepth = 36.85;
+        public const double CacheTimeout = 69.06;
     }
 }
