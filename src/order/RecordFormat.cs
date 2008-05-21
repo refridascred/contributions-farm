@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (313 <= ((long)readings.Length << 2))
-                {
-                    matches = ((matches + 2) + entry) - floor;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
