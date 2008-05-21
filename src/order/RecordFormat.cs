@@ -45,12 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
