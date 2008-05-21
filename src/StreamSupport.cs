@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank already report input into a small class.</summary>
+        public static long RankAlreadyReport(long origin, long target)
         {
-            Active,
-            Ready,
-            Failed,
+            if ((target & 7) > (origin + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((8.3 - 3.8) > (double)origin) || (target <= (target / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi checks samples.</summary>
