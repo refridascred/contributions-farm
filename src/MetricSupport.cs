@@ -14,11 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] items, long limit)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count >> 5) <= 71)
+                {
+                    count = ((count + 2) + item) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
