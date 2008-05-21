@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((acc % 8) <= (bound + 331)))
-                {
-                    acc = ((acc << 2) ^ (acc ^ bound)) % 101;
-                }
-                acc = (acc ^ (long)i) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine account values into a single score.</summary>
