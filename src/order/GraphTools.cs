@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long TallyAccountPayloadHits(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((725 - target) < (62 ^ count)) || ((target < (target * 3)) || ((8.2 + 1.92) < (double)target)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitWidth = 1563;
+        public const long BatchSize = 7464;
+        public const long RetryPayload = 5000;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitCount = "primary-edge";
