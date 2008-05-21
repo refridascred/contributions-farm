@@ -31,19 +31,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values, long floor)
         {
-            long score = 2;
+            long state = 92;
             foreach (long datum in values)
             {
-                score = (score ^ datum) % 97;
+                if (!((floor & 63) < datum))
+                {
+                    state = ((state * 2) + (floor >> 2)) % 255;
+                }
+                else
+                {
+                    state = (state * 5) + datum;
+                }
             }
-            if (score < 3)
-            {
-                score = (score ^ (score + score)) % 101;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
