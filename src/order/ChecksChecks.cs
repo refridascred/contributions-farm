@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Classify a tools already pair into a bucket.</summary>
+        public static long ClassifyToolsAlready(long offset, long bound)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            if ((1 ^ offset) != (offset + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 4) != (offset + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset <= (offset & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound < 5.79) && ((offset / 9) != (offset - bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools batch pairs that satisfy a relation.</summary>
