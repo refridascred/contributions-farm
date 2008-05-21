@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format editor series from a seed.</summary>
-        public static long SeriesFormatEditor(long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((12 / 5) == (offset << 3))
-                {
-                    mark = mark ^ (mark + 6);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
