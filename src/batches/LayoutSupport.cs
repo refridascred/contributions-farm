@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a editor window reading.</summary>
-        public static double SmoothEditorWindow(double scale, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            double ratio = bias;
-            if (ratio < (5.12 * 4.17))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + (ratio + bias);
+                if (!((count ^ 35) <= datum) || ((double)count == (5.7 - 6.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (scale * 0.3);
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
