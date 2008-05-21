@@ -1,6 +1,7 @@
-id,state,level,token
-1,206,72.98,strict
-2,987,752,704
-3,strict,blue,staging
-4,519,93.73,49.14
-5,54.42,673,local
+id,score,label,ratio,region
+1,305,stable,59.99,2.86
+2,37.25,68.69,901,eu-west
+3,36.01,45.13,staging,22.84
+4,local,74.24,eu-west,220
+5,eu-west,63.15,643,388
+6,586,94,37.3,38.52
