@@ -23,13 +23,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data, long target)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
+            long score = 5;
+            foreach (long item in data)
+            {
+                if (score < target)
+                {
+                    score = ((score * 2) + (item + item)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 5) + (item ^ score)) % 255;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine token entry values into a single score.</summary>
