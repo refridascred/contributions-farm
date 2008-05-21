@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a stats queue sample.</summary>
-        public static long LookupStatsQueueIndex(long[] samples, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count format channel pairs that satisfy a relation.</summary>
