@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long bound, long origin)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            long gap = bound - origin;
-            if (bound <= origin)
+            double scale = (double)(9 * 5);
+            if (scale > (span * 16.0))
             {
-                return 7;
+                scale = scale + (bias + scale);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin < (gap / 8)) && (826 >= (bound - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5 - origin) != (bound - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-94) + bound) != (origin + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = (scale - (bias - bias)) + (double)(long)i;
             }
+            return scale - (9.95 * 5.5);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
