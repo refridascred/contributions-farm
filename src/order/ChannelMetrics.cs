@@ -21,21 +21,22 @@ namespace Common.Utilities
         public const string LimitInterval = "open-1";
         public const double DefaultBudget = 30.61;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((438 + bound) > datum)
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
