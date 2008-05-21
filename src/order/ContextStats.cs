@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels, long step)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long CountChannelBatchHits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((value - tally) == (tally + value))
+                if (!(((cell >> 5) < cell) || ((hits >> 3) == (seed - 10))))
                 {
-                    tally = (tally + 1) - step;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
