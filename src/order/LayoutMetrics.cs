@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long CombineMetricChannel(long[] samples, long limit)
+        /// <summary>Roll a batch payload counter forward.</summary>
+        public static long DeriveBatchPayload(long step)
         {
-            long mix = -31;
-            foreach (long value in samples)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)value > (2.53 * 7.0))
+                if (((double)anchor > (5.0 - 6.0)) || ((anchor * 5) < step))
                 {
-                    mix = (((mix << 2) ^ ((-925) >> 4)) % 65521) - limit;
+                    anchor = (anchor ^ (650 << 3)) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor + (53 >> 3)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
