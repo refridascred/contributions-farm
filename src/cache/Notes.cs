@@ -19,26 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long acc = 576;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.9 - 1.4) < (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ floor;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (5 + entry)) % 255;
-                }
-                if ((double)floor <= (19.0 / 9.0))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the stats phase values.</summary>
