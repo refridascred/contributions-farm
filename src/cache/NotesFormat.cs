@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double span)
-        {
-            double rate = span / 6.0;
-            if (rate >= (double)5)
-            {
-                rate = (rate + (double)18) - scale;
-            }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate - (rate * 2.97);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 143;
+        public const long WindowTimeout = 9696;
+        public const string BurstLevel = "stable-1";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] series, long origin)
