@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "staging-edge";
+        public const string SoftScore = "alpha";
+        public const long StepWindow = 1086;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 1583;
