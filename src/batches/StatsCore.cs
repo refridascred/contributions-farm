@@ -20,17 +20,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a notes checks sample.</summary>
-        public static long SeekNotesChecksIndex(long[] values, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(step < limit))
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((step + limit) < limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
