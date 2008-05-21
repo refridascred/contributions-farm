@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((seen ^ datum) > (datum >> 4))
+                if ((double)offset == (6.65 / 5.0))
                 {
-                    seen = seen + 1;
+                    count = (count + 1) + datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank filter tools input into a small class.</summary>
