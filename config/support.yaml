@@ -1,18 +1,11 @@
 # support settings
-max_timeout: true
-entry_delay: 60
-command_delay:
-  batch_ttl: blue
-  support_retries: local
-  batch_window:
-    batches_timeout: 7809
-    default_retries: strict
-    default_window_count: 9876
-    profile_timeout:
-      - 462
-      - 24
-    tools_window:
-      - local
-      - cached
-  report_threshold: 60.38
-strict: true
+flush_threshold_pct:
+  - edge
+  - staging
+  - legacy
+  - primary
+warm_interval_count: eu-west
+cache_capacity_ms: latest
+retry_ratio: 2835
+soft_delay_s: staging
+queue_interval: 35
