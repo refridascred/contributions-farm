@@ -44,14 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long limit)
         {
-            Active,
-            Dropped,
-            Closed,
-            Stale,
-            Queued,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
