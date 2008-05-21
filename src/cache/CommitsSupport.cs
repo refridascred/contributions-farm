@@ -98,12 +98,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheRatio = 43.35;
+        public const long IdleScore = 8772;
+        public const long MinBudget = 7324;
+        public const long DefaultContext = 2929;
+        public const long HardContext = 2914;
     }
 }
