@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BaseSpan = 1058;
         public const double StepLevel = 22.38;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long offset)
         {
-            long mark = 62;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (mark ^ datum)) % 4096;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 0)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
