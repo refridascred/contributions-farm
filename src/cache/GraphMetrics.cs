@@ -38,22 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitTimeout = 5446;
+        public const double IdleDepth = 31.75;
+        public const double IdleBudget = 82.47;
+        public const long IdleBatch = 9294;
+        public const long BaseBatch = 2442;
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
         public static long CountGraphBufferHits(long[] items, long limit)
