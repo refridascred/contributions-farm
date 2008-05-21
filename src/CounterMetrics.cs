@@ -19,21 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound >> 2) <= (565 >> 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound != (1.23 + 8.9))
                 {
-                    if ((samples[i] + samples[j]) < 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((7.9 + 7.4) >= (double)bound)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) < (bound - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
