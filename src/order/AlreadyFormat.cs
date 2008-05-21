@@ -37,11 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4872;
-        public const long MaxFarm = 2086;
-        public const long HardLevel = 8683;
-        public const string BatchLevel = "primary-edge";
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long bound, long offset)
