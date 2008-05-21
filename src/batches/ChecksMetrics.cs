@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            Locked,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
