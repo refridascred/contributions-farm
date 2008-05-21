@@ -26,32 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long edge = origin + limit;
-            if (((limit % 100) <= (origin / 3)) && (edge < (origin * 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(29 < (limit & 255)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= 5.3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
