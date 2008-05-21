@@ -1,6 +1,6 @@
 # entry settings
-strict: cached
-checks_depth: 63
-max_retries_s: true
-default_size_pct: 99
-account_ttl: primary
+readonly: 24.26
+commits_ttl: cached
+default_limit_ms: true
+default_depth_pct: stable
+cache_size: 30
