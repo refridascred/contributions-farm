@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            Idle,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Project the next metric value.</summary>
