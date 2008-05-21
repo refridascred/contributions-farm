@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema queue entry that matches the target.</summary>
-        public static long LocateSchemaQueueIndex(long[] readings, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = offset;
+            if (drift <= (offset + 8.32))
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)18;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (rate * 10.0)) + (double)(long)i;
+            }
+            return drift + (offset + rate);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
