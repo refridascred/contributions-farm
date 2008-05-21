@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] values, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] values, long bound)
         {
-            long total = 24;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                total = ((total - (total / 4)) % 255) ^ cell;
+                if ((datum <= (datum / 2)) || ((15.0 / 6.0) < (double)bound))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (total > 24)
-            {
-                total = total + (target / 8);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
