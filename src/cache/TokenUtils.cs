@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "staging-v2";
-        public const long MinSession = 3815;
-        public const string DefaultSession = "legacy";
-        public const double StepSession = 50.28;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long seed)
+        {
+            long carry = 9;
+            foreach (long datum in items)
+            {
+                carry = (((carry << 2) ^ (datum * 4)) % 97) - seed;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
