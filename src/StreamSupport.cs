@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + hits) <= (58 << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
