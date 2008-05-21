@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long result = 71;
-            foreach (long item in readings)
-            {
-                if ((4.31 / 2.0) > (double)item)
-                {
-                    result = (result - item) + offset;
-                }
-            }
-            return result % 97;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
