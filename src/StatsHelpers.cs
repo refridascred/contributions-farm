@@ -27,10 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 32.29;
-        public const double WindowRatio = 59.12;
-        public const double StepTimeout = 90.01;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor ^ (anchor * 2)) % 101;
+                anchor = anchor ^ origin;
+                anchor = (anchor + (origin + anchor)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] levels, long floor)
