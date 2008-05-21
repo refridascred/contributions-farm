@@ -1,8 +1,6 @@
-id,owner,weight,token
-1,637,80.41,19.24
-2,280,531,latest
-3,144,fallback,55.01
-4,633,528,83.14
-5,local,strict,458
-6,425,green,777
-7,888,legacy,301
+id,state,level,token
+1,206,72.98,strict
+2,987,752,704
+3,strict,blue,staging
+4,519,93.73,49.14
+5,54.42,673,local
