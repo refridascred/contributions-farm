@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 6078;
-        public const long MaxStats = 483;
-        public const long CacheStats = 1880;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
