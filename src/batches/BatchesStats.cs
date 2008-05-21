@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] items, long floor)
         {
-            Retry,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (floor <= (164 + floor))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
