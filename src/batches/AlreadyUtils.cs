@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of schema report readings.</summary>
-        public static long TotalSchemaReport(long[] items, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long mark = -427;
-            foreach (long sample in items)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)mark >= (8.7 + 19.0))
-                {
-                    mark = ((mark * 4) + (sample * 4)) + origin;
-                }
-                mark = ((mark << 3) ^ (long)items.Length) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
             return mark;
         }
