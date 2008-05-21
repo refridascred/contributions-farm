@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] samples)
         {
-            double drift = bias + bias;
-            return (drift + (double)592) + weight;
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally / 4) <= (datum + 62))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
