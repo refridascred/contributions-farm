@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const long DefaultCount = 7761;
         public const long CacheCluster = 7429;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] samples, long seed)
         {
-            double ratio = (double)(834 & 15);
-            if (ratio >= (2.89 - 10.0))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio - (ratio + scale);
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (5.35 + scale);
-            }
-            return ratio - bias;
+            return flag;
         }
 
         /// <summary>Accumulate editor samples.</summary>
