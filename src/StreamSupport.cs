@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
+        public static long PairBatchesGithubfarmCount(long[] samples)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a context reading.</summary>
