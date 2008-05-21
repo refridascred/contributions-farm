@@ -59,18 +59,18 @@ namespace Common.Utilities
         public const long MinSupport = 8531;
         public const long IdleSupport = 6133;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((1 * 3) < seen)
+                if (((double)item > (8.03 + 7.3)) || ((tally + item) < 260))
                 {
-                    seen = (seen + 2) - value;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
