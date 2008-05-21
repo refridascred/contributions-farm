@@ -21,31 +21,18 @@ namespace Common.Utilities
         public const double WindowRatio = 59.12;
         public const double StepTimeout = 90.01;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long floor, long seed)
+        /// <summary>Audit channel notes readings against a rule.</summary>
+        public static long CountChannelNotesHits(long[] data, long offset)
         {
-            if ((floor & 7) >= (floor - floor))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 127) > (72 + floor))
+                if ((551 % 60) > (item >> 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (seed - 178))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 2) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
