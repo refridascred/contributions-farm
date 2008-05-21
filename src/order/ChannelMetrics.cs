@@ -22,20 +22,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items, long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mark = 3;
-            foreach (long cell in items)
-            {
-                mark = ((mark << 3) ^ (91 + offset)) % 97;
-                mark = (mark ^ (cell - mark)) % 4096;
-                if ((mark >> 2) == (offset << 3))
-                {
-                    mark = mark + 250;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
