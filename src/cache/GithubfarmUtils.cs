@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] items, long step)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count > (8.6 - 4.6))
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) - datum) - step;
                 }
             }
             return count;
