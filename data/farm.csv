@@ -1,6 +1,11 @@
-id,owner,level
-1,15.01,green
-2,48.86,75.91
-3,427,stable
-4,legacy,40.85
-5,edge,706
+id,region
+1,local
+2,377
+3,52
+4,67
+5,stable
+6,250
+7,48.76
+8,10.19
+9,stable
+10,230
