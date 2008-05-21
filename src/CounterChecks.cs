@@ -49,12 +49,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((((datum + (-9)) == (653 & 31)) && ((tally + 84) > datum)) && ((double)tally == (0.91 * 0.26)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
