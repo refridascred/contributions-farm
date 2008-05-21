@@ -26,35 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long origin)
         {
-            long mark = 6;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
-                    mark = ((mark - (mark ^ reading)) % 255) + (long)i;
-                }
-                if ((floor * 5) <= floor)
-                {
-                    mark = mark - (reading / 9);
-                    mark = mark - reading;
-                }
-                if (((double)floor > (double)mark) && ((double)reading > (double)mark))
-                {
-                    mark = (mark << 3) ^ (floor + mark);
-                }
-                else
-                {
-                    mark = (mark + (reading - floor)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark < 62)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
