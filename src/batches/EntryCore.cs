@@ -47,16 +47,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            if ((74 % 100) <= (limit + limit))
             {
-                mark = mark - ((long)i + origin);
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((bound >= (bound & 3)) && ((bound + limit) > (5 - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
