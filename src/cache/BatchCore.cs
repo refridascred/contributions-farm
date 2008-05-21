@@ -16,14 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every session payload entry stays within the limit.</summary>
+        public static bool VerifySessionPayloadRange(long[] levels, long step)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
