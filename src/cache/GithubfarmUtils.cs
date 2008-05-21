@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            New,
-            Draft,
-            Failed,
-            Pending,
-            Queued,
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of support entries.</summary>
