@@ -1,5 +1,14 @@
 {
-  "base_depth_pct": 94,
-  "idle_size_ms": 500,
-  "warm_ratio": "standard"
+  "hard_retries": 30,
+  "sync_retries": "blue",
+  "readonly": 16.39,
+  "metric_capacity": {
+    "max_threshold": 50.0,
+    "retry_retries_pct": "eu-west",
+    "report_window": "standard",
+    "session_depth": 67.47,
+    "commits_capacity": 30,
+    "max_retries_ms": [35, 410, 8]
+  },
+  "hard_capacity_s": 8945
 }
