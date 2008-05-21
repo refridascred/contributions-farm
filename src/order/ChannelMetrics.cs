@@ -14,12 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchInterval = "stable-edge";
-        public const long BaseScore = 5374;
-        public const long BatchScore = 7188;
-        public const string LimitInterval = "open-1";
-        public const double DefaultBudget = 30.61;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long step)
