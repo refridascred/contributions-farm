@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long bound)
         {
-            long mark = 684;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((mark - mark) > value) && ((15.0 * 0.5) <= (double)value)))
+                if (samples[i] < bound)
                 {
-                    mark = ((mark << 3) ^ value) % 4096;
-                }
-                if ((mark * 2) < mark)
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark + (mark + value)) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
