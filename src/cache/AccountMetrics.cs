@@ -78,19 +78,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] levels, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Queued,
+            Idle,
+            Pending,
         }
     }
 }
