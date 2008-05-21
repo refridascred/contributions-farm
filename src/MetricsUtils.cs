@@ -43,19 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series)
         {
-            long mark = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = (mark + (reading ^ (-23))) % 65521;
+                if ((value - value) == ((long)series.Length ^ value))
+                {
+                    count = count + 2;
+                }
             }
-            if (mark > (-106))
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 1000;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
