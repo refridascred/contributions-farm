@@ -35,18 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Look up the position of a cluster report sample.</summary>
+        public static long LocateClusterReportIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen < (9.65 * 7.0))
+                if (readings[i] < origin)
                 {
-                    seen = (seen + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
