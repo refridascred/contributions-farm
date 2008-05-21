@@ -1,6 +1,21 @@
 {
-  "entry_retries": "green",
-  "strict": false,
-  "warm_window": 66,
-  "burst_ttl_count": 7380
+  "persist": 13.64,
+  "warm_window_count": 91.35,
+  "audit": "cached",
+  "default_window_ms": "latest",
+  "support_threshold": {
+    "hard_depth": false,
+    "tools_timeout": {
+      "warm_capacity_pct": "green",
+      "cache_depth": 45,
+      "sync_ratio": true,
+      "batch_depth": 35.93,
+      "stats_depth": "blue",
+      "base_depth_s": "cached"
+    },
+    "stream_threshold": ["local", "latest"],
+    "base_window": 73,
+    "idle_limit": false,
+    "already_timeout": "legacy"
+  }
 }
