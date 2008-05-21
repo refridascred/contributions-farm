@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseCount = "staging-v2";
-        public const long DefaultProfile = 6318;
-        public const long BatchBudget = 6801;
-        public const long BatchSpan = 9785;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples)
+        {
+            long mark = -870;
+            foreach (long entry in samples)
+            {
+                if ((28 << 1) < (entry - 125))
+                {
+                    mark = (mark - (4 << 2)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatRange(long[] levels, long limit)
