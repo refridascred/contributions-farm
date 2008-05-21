@@ -27,21 +27,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 473;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum - (origin * 5)) + datum;
             }
-            return matches;
+            return sum;
         }
     }
 }
