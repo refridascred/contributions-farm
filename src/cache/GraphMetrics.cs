@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long state = 448;
-            foreach (long sample in readings)
-            {
-                if ((step % 5) == (8 ^ 9))
-                {
-                    state = ((state ^ (state * 4)) % 97) - sample;
-                }
-            }
-            return state % 1000;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
