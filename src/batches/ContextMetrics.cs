@@ -26,15 +26,39 @@ namespace Common.Utilities
         public const long LimitFilter = 1338;
         public const long CacheScore = 5355;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long limit, long offset)
         {
-            long sum = 99;
-            foreach (long item in items)
+            long delta = limit - offset;
+            if (14.0 <= (double)limit)
             {
-                sum = ((sum + sum) % 255) + item;
+                return 1;
             }
-            return sum % 97;
+            else
+            {
+                if (((-4) & 255) < (offset - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta ^ limit) > (172 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta + limit) < (delta ^ limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
