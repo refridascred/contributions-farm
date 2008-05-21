@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,14 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=465
+log "limit is ${COMMAND_LIMIT}"
