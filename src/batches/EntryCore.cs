@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the schema phase values.</summary>
