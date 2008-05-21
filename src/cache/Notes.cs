@@ -47,15 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            long result = 484;
+            foreach (long cell in readings)
             {
-                load = ((load - (load + load)) + (double)(long)i) - rate;
+                result = ((result * 5) + (cell - 7)) % 101;
             }
-            return load + (load * 8.74);
+            if (result > 861)
+            {
+                result = result - (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
