@@ -1,6 +1,6 @@
 {
-  "base_retries_count": 97,
-  "min_retries_ms": ["local", "staging"],
-  "persist": [369, 222, 239, 371],
-  "enabled": 78.62
+  "default_delay_pct": 500,
+  "sync_capacity_ms": "edge",
+  "retry_capacity_s": [244, 11, 370],
+  "batches_depth": false
 }
