@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            Synced,
-            Locked,
-            Paused,
-            Retry,
-            New,
+            double weight = (gain - bias) * 7.0;
+            if (weight > gain)
+            {
+                weight = weight + gain;
+            }
+            return weight + 3.0;
         }
 
         /// <summary>Accumulate format account samples.</summary>
