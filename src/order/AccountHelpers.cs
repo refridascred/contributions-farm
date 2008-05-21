@@ -43,10 +43,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 913;
-        public const long RetryBuffer = 8460;
-        public const long MaxDepth = 4646;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= (datum + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
