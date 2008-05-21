@@ -12,12 +12,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            double scale2 = (double)98 + (1.1 * 7.79);
+            if (scale2 > floor)
+            {
+                scale2 = scale2 + scale;
+            }
+            else
+            {
+                scale2 = scale2 - (scale + 13.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 - (double)607;
         }
 
         /// <summary>Define window limits and defaults.</summary>
