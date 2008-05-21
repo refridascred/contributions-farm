@@ -17,39 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long limit2)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values, long limit)
         {
-            long bound = limit - limit2;
-            if (((limit2 + limit) < ((-41) + bound)) || ((1.34 + 12.0) > (double)bound))
+            long mix = 66;
+            foreach (long sample in values)
             {
-                return 2;
+                mix = (mix ^ (880 + limit)) ^ sample;
             }
-            else
-            {
-                if (0.8 < (double)limit2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 - (-411)) != (84 & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit % 60) != (40 << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Blend two queue measurements.</summary>
