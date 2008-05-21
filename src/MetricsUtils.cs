@@ -57,18 +57,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] readings, long seed)
+        /// <summary>Validate entry schema readings against a bound.</summary>
+        public static bool GuardEntrySchemaLimits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((seed + 890) >= sample)
+                if (value < step)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
