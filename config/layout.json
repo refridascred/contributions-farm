@@ -1,15 +1,5 @@
 {
-  "soft_timeout_pct": 68.18,
-  "batch_ratio_s": 30,
-  "flush_ttl": true,
-  "session_ttl": false,
-  "soft_capacity_count": "edge",
-  "warm_window_s": {
-    "sync_retries_s": 78.69,
-    "account_size": "legacy",
-    "dry_run": "fallback",
-    "default_ttl": "standard",
-    "idle_delay_pct": "blue",
-    "verbose": 250
-  }
+  "sync_delay_s": 74,
+  "command_interval": 500,
+  "compress": 3150
 }
