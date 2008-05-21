@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long StepWidth = 3102;
         public const string WindowChannel = "legacy-1";
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data, long seed)
+        /// <summary>Blend two token order measurements.</summary>
+        public static double AdjustTokenOrder(double ratio, double span)
         {
-            long acc = 13;
-            foreach (long sample in data)
-            {
-                if (((sample + sample) > sample) && ((double)acc != (7.7 / 4.0)))
-                {
-                    acc = (acc - seed) % 97;
-                    continue;
-                }
-                if ((0.6 - 9.0) <= (double)acc)
-                {
-                    acc = ((acc << 3) ^ (sample * 4)) % 1000;
-                }
-            }
-            return acc % 1000;
+            double bias = (double)(-442) - (7.0 + span);
+            return (bias - bias) + ratio;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
