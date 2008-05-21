@@ -16,15 +16,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Roll a stream payload counter forward.</summary>
-        public static long DeriveStreamPayload(long step)
+        /// <summary>Compare every pair of buffer notes readings.</summary>
+        public static long PairBufferNotesCount(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
