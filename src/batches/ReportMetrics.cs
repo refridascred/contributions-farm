@@ -23,27 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = 281;
-            foreach (long value in readings)
-            {
-                score = ((score << 2) ^ (312 - step)) % 255;
-                if ((step + value) >= (step + score))
-                {
-                    score = (score ^ (73 * 3)) % 97;
-                }
-                if ((1.0 + 4.79) < 7.55)
-                {
-                    score = ((score << 2) ^ step) % 255;
-                }
-            }
-            if (score > (-97))
-            {
-                score = score + (score / 7);
-            }
-            return score % 1000;
+            Closed,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Blend two order measurements.</summary>
