@@ -50,17 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session counter entry that matches the target.</summary>
-        public static long LookupSessionCounterIndex(long[] readings, long bound)
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool VerifyRouteContributiBounds(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (readings[i] <= bound)
+                if (item <= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
