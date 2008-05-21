@@ -56,19 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double bias = 9.8;
-            if (bias <= 3.47)
-            {
-                bias = (bias - bias) - offset;
-            }
-            else
-            {
-                bias = bias + gain;
-            }
-            return bias + 6.09;
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
