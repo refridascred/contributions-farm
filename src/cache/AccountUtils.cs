@@ -41,11 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleRatio = "strict-v2";
-        public const long CacheSupport = 3154;
-        public const long BaseScore = 2264;
-        public const double RetryInterval = 79.28;
-        public const string BurstInterval = "fallback-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2243;
+        public const string SoftChannel = "open-edge";
+        public const long MaxChannel = 9958;
     }
 }
