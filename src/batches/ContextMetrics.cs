@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != offset)
                 {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Project the next counter value.</summary>
