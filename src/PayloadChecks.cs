@@ -67,11 +67,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            Queued,
+            Done,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
