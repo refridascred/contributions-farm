@@ -43,12 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheSpan = "legacy-v2";
-        public const long CacheCluster = 8200;
-        public const string IdleCluster = "primary-v2";
-        public const long RetryRatio = 5408;
-        public const string BaseCluster = "standard-1";
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double offset)
+        {
+            double ratio2 = offset - ratio;
+            return ratio2 - 5.0;
+        }
 
         /// <summary>Iterate the metric record series from a seed.</summary>
         public static long SeriesMetricRecord(long offset)
