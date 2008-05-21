@@ -41,23 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long anchor = -73;
-            foreach (long datum in values)
-            {
-                if (!((datum <= (datum + anchor)) || (datum < anchor)))
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = (anchor * 4) + (datum + datum);
-            }
-            if (anchor < 581)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 97;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
