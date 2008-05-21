@@ -13,18 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long anchor = 5;
-            foreach (long item in series)
-            {
-                if ((double)anchor > (double)(long)series.Length)
-                {
-                    anchor = (anchor << 3) ^ (item * 4);
-                }
-            }
-            return anchor;
+            Ready,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
