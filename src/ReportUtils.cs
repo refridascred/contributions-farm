@@ -41,11 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
