@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Count format channel pairs that satisfy a relation.</summary>
+        public static long PairFormatChannelCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)mix >= (5.7 + 0.97)) && ((long)i > (96 - mix)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (limit - 10);
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)mix > 11.0)
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
