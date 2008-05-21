@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached-v2";
         public const string BatchRatio = "stable";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 5470;
+        public const string MinCount = "primary-edge";
+        public const string BatchChannel = "legacy-edge";
+        public const string LimitInterval = "local-edge";
+        public const long HardChannel = 7195;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] values, long floor)
