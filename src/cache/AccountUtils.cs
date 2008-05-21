@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((518 % 60) > limit)
             {
-                if (!((entry + hits) != (734 & 3)))
+                return 1;
+            }
+            else
+            {
+                if (limit < (limit + limit))
                 {
-                    hits = hits + 2;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit + limit) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit >= (offset * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next stream value.</summary>
