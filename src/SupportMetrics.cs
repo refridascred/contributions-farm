@@ -17,19 +17,13 @@ namespace Common.Utilities
             return (gain + (gain * 9.41)) + ratio;
         }
 
-        /// <summary>Validate schema channel readings against a bound.</summary>
-        public static bool ValidateSchemaChannelLimits(long[] readings, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
