@@ -60,19 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Active,
+            Synced,
         }
     }
 }
