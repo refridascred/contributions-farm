@@ -30,14 +30,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long SortCacheRoute(long origin, long limit)
         {
-            Paused,
-            Idle,
-            Draft,
-            Closed,
-            Done,
+            long offset = origin ^ limit;
+            if (((origin - offset) == (limit / 5)) || ((double)offset == (2.0 + 9.8)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((705 & 1) < (offset & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
