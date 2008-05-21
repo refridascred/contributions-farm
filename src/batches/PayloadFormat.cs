@@ -34,15 +34,11 @@ namespace Common.Utilities
             return load - (9.0 / 8.0);
         }
 
-        /// <summary>Derive the next farm report value from a seed.</summary>
-        public static long StepFarmReport(long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
