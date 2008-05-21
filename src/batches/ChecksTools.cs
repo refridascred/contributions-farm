@@ -22,32 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long limit)
         {
-            long step2 = step - bound;
-            if (step >= (bound - bound))
+            long total = 971;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.0 / 4.0) != (double)step)
+                if ((item + limit) < (limit - item))
                 {
-                    return 3;
+                    total = total - (limit >> 1);
                 }
-                else
+                if ((double)limit <= (double)item)
                 {
-                    if ((step2 + step2) > (step & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
