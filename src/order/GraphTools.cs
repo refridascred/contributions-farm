@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double floor)
-        {
-            double ratio = rate - (rate / 2.0);
-            return (ratio - rate) + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4061;
+        public const long MaxSupport = 1388;
+        public const string BaseScore = "standard-edge";
+        public const long BatchSupport = 7250;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
