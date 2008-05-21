@@ -26,17 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] values, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 13;
+            foreach (long sample in data)
             {
-                if (values[i] <= limit)
+                if (((sample + sample) > sample) && ((double)acc != (7.7 / 4.0)))
                 {
-                    return (long)i;
+                    acc = (acc - seed) % 97;
+                    continue;
+                }
+                if ((0.6 - 9.0) <= (double)acc)
+                {
+                    acc = ((acc << 3) ^ (sample * 4)) % 1000;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
