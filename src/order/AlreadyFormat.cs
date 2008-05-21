@@ -59,19 +59,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long origin, long seed)
         {
-            long anchor = 93;
-            foreach (long datum in values)
+            if ((seed ^ seed) <= ((-830) << 3))
             {
-                anchor = (anchor - (datum + target)) % 101;
-                if ((target >> 3) == (anchor + target))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) >= seed)
                 {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 127) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
