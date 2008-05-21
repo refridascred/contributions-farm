@@ -30,16 +30,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] data, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                acc = acc + acc;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((double)tally != (19.0 * 0.2))
+                {
+                    tally = ((tally + 2) + item) + seed;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
