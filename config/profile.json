@@ -1,8 +1,22 @@
 {
-  "strict": "eu-west",
-  "record_interval": 82.31,
-  "batch_depth": "primary",
-  "cache_window": "fallback",
-  "persist": 21,
-  "cache_ttl": 1024
+  "cache_limit_count": 60,
+  "default_limit": false,
+  "poll_delay_count": 1866,
+  "stats_limit": {
+    "cluster_capacity": 60,
+    "audit": ["staging", "open", "cached", "eu-west"],
+    "flush_threshold_pct": "open",
+    "compress": false
+  },
+  "enabled": {
+    "cache_threshold_pct": 15,
+    "base_threshold_pct": {
+      "hard_ratio_s": 250,
+      "sync_size": 9.01,
+      "burst_capacity_pct": 9644,
+      "stream_retries": 500
+    },
+    "hard_size_count": 250,
+    "verbose": 35
+  }
 }
