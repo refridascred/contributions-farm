@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (item != target)
+                if ((seed + 0) != (reading - tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
