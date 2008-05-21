@@ -35,14 +35,39 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long seed)
         {
-            Pending,
-            Done,
-            Locked,
-            Idle,
-            Retry,
+            long slot = bound ^ seed;
+            if (seed < (slot + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < 88)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(bound >= (slot >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)slot <= (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
