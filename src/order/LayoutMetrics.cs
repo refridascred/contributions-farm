@@ -37,17 +37,18 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Combine cache cluster values into a single score.</summary>
-        public static long TotalCacheCluster(long[] levels)
+        /// <summary>Derive the next profile entry value from a seed.</summary>
+        public static long RollProfileEntry(long floor)
         {
-            long mark = 6;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark << 2) ^ sample) % 97;
-            }
-            if (mark < 3)
-            {
-                mark = ((mark * 5) + mark) % 101;
+                mark = ((mark << 2) ^ (floor + mark)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (mark - (floor ^ 0)) + (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
             return mark;
         }
