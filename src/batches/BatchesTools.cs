@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseWidth = 4013;
+        public const long StepRoute = 7431;
+        public const long BaseRatio = 2278;
+        public const double CacheFactor = 21.63;
+        public const long MinRoute = 8314;
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] series)
