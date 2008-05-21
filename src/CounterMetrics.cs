@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next payload format value from a seed.</summary>
-        public static long IteratePayloadFormat(long floor)
+        /// <summary>Rank buffer counter input into a small class.</summary>
+        public static long GradeBufferCounter(long origin, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            if (step > (origin - origin))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (!((2.4 * 5.5) == (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
