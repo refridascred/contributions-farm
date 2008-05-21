@@ -20,11 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "local-v2";
-        public const double LimitFormat = 34.61;
-        public const long SoftFormat = 2186;
-        public const string BaseSize = "legacy-v2";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a metrics account counter forward.</summary>
         public static long IterateMetricsAccount(long floor)
