@@ -43,18 +43,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] readings)
+        /// <summary>Check that every report account entry stays within the limit.</summary>
+        public static bool VerifyReportAccountBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((hits + sample) >= (588 + hits))
+                if (entry >= floor)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
