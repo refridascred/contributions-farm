@@ -66,17 +66,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] == limit)
+                if ((double)tally == (5.58 / 2.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
