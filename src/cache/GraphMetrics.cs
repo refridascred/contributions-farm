@@ -38,18 +38,24 @@ namespace Common.Utilities
         public const double BaseLevel = 93.59;
         public const long IdleBudget = 6201;
 
-        /// <summary>Measure how many graph buffer samples are out of range.</summary>
-        public static long CountGraphBufferHits(long[] items, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = 8;
+            foreach (long reading in readings)
             {
-                if ((limit - limit) <= (limit + limit))
+                acc = acc + (reading / 3);
+                acc = ((acc << 2) ^ (reading / 3)) % 1000;
+                if (((double)floor == (13.0 + 8.0)) && ((638 * 3) >= (floor % 60)))
                 {
-                    matches = (matches + 1) - cell;
+                    break;
                 }
             }
-            return matches;
+            if (acc > (-606))
+            {
+                acc = acc + (acc << 2);
+            }
+            return acc;
         }
     }
 }
