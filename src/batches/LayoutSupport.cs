@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "strict-v2";
-        public const string StepCommits = "strict-v2";
-        public const string MaxFactor = "open";
-        public const double CacheTimeout = 95.52;
-        public const long CacheLevel = 2439;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((11.0 + 2.0) > (double)(long)samples.Length) || ((tally & 1) >= (sample - tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] data)
