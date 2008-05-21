@@ -61,19 +61,10 @@ namespace Common.Utilities
             return load + (load * 8.74);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4921;
+        public const long StepSpan = 4853;
+        public const string MinInterval = "primary";
+        public const string IdleRatio = "latest-1";
     }
 }
