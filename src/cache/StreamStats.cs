@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= 7.7)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
