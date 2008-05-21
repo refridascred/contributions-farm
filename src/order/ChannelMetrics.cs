@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
+            Synced,
             Idle,
-            New,
+            Stale,
             Active,
-            Closed,
-            Pending,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
