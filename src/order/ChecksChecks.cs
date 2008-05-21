@@ -16,24 +16,23 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double ratio, double bias)
         {
-            if (((double)step != (14.0 / 6.0)) || ((seed * 4) < (step << 3)))
+            double scale = bias;
+            if (scale > bias)
             {
-                return 2;
+                scale = (scale - (3.68 + bias)) + ratio;
             }
             else
             {
-                if ((seed > ((-2) + step)) || ((8.31 * 19.0) <= (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                scale = scale + (bias / 4.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - 8.0;
         }
 
         /// <summary>Hold a report record.</summary>
