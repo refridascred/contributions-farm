@@ -56,38 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double floor)
         {
-            if (!(floor < 9))
+            double scale = floor - (weight + weight);
+            if (scale <= (double)31)
             {
-                return 2;
+                scale = scale - (double)8;
             }
-            else
-            {
-                if (!((42 % 12) <= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= (floor - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((92 >> 5) <= (origin << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale - scale;
         }
     }
 }
