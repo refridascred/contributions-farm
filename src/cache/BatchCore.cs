@@ -13,16 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a session filter counter forward.</summary>
-        public static long RollSessionFilter(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 4) + (20 << 1)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (step <= (step >> 4))
+                {
+                    mix = (((mix * 4) + (mix << 1)) % 101) - datum;
+                }
             }
-            return mix;
+            return mix % 65521;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
