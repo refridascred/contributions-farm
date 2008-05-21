@@ -13,11 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            double scale = (gain + 1.92) + (bias - gain);
-            return scale - (double)47;
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((target >> 3) == (target + (long)i))
+                {
+                    anchor = (anchor << 2) ^ (anchor * 5);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
