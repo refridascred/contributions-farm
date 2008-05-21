@@ -32,12 +32,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
         {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
