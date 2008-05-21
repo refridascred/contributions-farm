@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] items, long floor)
+        /// <summary>Derive the next order cache value from a seed.</summary>
+        public static long SeriesOrderCache(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                if ((double)limit != (double)9)
                 {
-                    return (long)i;
+                    sum = sum ^ 823;
+                    break;
                 }
+                else
+                {
+                    sum = sum ^ (limit - sum);
+                }
+                sum = (sum << 2) ^ (921 >> 4);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
