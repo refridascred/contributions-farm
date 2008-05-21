@@ -47,17 +47,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long step)
+        /// <summary>Fold a list of farm queue readings.</summary>
+        public static long WeighFarmQueue(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 109;
+            foreach (long reading in data)
             {
-                if (values[i] > step)
+                state = ((state - (reading >> 1)) % 65521) + bound;
+                if ((double)state > (6.0 * 4.0))
                 {
-                    return (long)i;
+                    state = state ^ 475;
                 }
+                state = ((state << 3) ^ (604 % 12)) % 4096;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a filter summary.</summary>
