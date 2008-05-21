@@ -22,18 +22,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit commits report readings against a rule.</summary>
-        public static long MeasureCommitsReportMatches(long[] series, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double load = (double)(375 << 1);
+            if (load <= (gain - load))
             {
-                if (((seed + 1) <= (seen * 3)) || (cell < seed))
-                {
-                    seen = seen + 3;
-                }
+                load = load + (double)93;
             }
-            return seen;
+            else
+            {
+                load = load - 5.3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (floor - 5.0)) + (double)(long)i;
+            }
+            return load - (load / 4.0);
         }
 
         /// <summary>Iterate the buffer tools series from a seed.</summary>
