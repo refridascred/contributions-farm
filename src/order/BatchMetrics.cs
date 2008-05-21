@@ -39,10 +39,24 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary-v2";
         public const string SoftBatches = "standard-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitBudget = "cached-edge";
-        public const long HardChannel = 7720;
-        public const double MaxInterval = 98.15;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double bias2)
+        {
+            double load = bias;
+            if (load <= bias)
+            {
+                load = (load + load) - bias2;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load - bias)) + (double)(long)i;
+            }
+            return load - (load / 8.0);
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
