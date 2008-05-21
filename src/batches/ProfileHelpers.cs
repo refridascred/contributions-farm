@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] items, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (((bound + bound) < (bound * 4)) || ((8.36 / 4.0) != (double)seed))
             {
-                if ((bound / 3) >= (9 / 3))
+                return 6;
+            }
+            else
+            {
+                if ((bound >= (seed - seed)) && ((seed >> 2) <= bound))
                 {
-                    seen = (seen + 2) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
