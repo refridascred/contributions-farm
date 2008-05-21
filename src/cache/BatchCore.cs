@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((item * 3) > item) || ((long)samples.Length > 59))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3497;
+        public const string LimitEntry = "open-edge";
+        public const string CacheInterval = "legacy-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] readings)
