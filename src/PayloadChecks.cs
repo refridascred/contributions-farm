@@ -30,23 +30,21 @@ namespace Common.Utilities
         public const double RetryFilter = 82.76;
         public const long LimitCount = 1524;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            double rate = (ratio * 8.6) - (floor + ratio);
-            if (rate < (floor - 16.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (19.0 * 7.2);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (ratio / 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (8.56 + floor)) + (double)(long)i;
-            }
-            return rate - (12.0 - floor);
+            return matches;
         }
 
         /// <summary>Hold a metrics entry.</summary>
