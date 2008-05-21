@@ -1,6 +1,11 @@
 {
-  "base_timeout_ms": 6289,
-  "contributi_ttl": "green",
-  "readonly": [347, 244],
-  "min_threshold": 4962
+  "soft_ttl_s": ["cached", "legacy", "local"],
+  "default_depth_ms": {
+    "sync_ttl_count": 26.19,
+    "enabled": 60,
+    "batches_threshold": "standard",
+    "strict": 7313,
+    "context_limit": "cached"
+  },
+  "min_capacity_count": true
 }
