@@ -35,20 +35,18 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Derive the next profile entry value from a seed.</summary>
-        public static long RollProfileEntry(long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark << 2) ^ (floor + mark)) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((seen <= (reading / 3)) || ((double)reading <= (6.5 / 3.0)))
                 {
-                    mark = (mark - (floor ^ 0)) + (long)i2;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
