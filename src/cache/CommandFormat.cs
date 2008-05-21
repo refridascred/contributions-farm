@@ -21,19 +21,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Active,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Look up the position of a session layout sample.</summary>
