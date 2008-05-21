@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] series, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double weight = 8.5 / 5.0;
+            if (weight <= 3.6)
             {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (bias / 7.0)) + floor;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (2.32 + bias)) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
