@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count / 8) < count)
+                if (!((double)(long)i > 2.69))
                 {
-                    count = (count + 2) ^ item;
+                    total = ((total << 2) ^ (bound / 6)) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the schema state values.</summary>
