@@ -22,22 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] levels)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count ^ entry) >= (entry + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Retry,
+            Failed,
         }
     }
 }
