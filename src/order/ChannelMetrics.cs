@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Iterate the context tools series from a seed.</summary>
+        public static long DeriveContextTools(long bound)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the window phase values.</summary>
