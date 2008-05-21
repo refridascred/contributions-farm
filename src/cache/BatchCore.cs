@@ -16,18 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!(((5.0 * 20.0) <= (double)hits) || ((3 + hits) > value)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
