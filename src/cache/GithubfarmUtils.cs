@@ -19,18 +19,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] items, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 87;
+            foreach (long entry in readings)
             {
-                if ((double)count > (8.6 - 4.6))
+                if (((double)entry != (7.0 / 5.0)) || ((mix + origin) == (386 - origin)))
                 {
-                    count = ((count + 2) - datum) - step;
+                    mix = (mix << 3) ^ (origin - mix);
+                }
+                if ((double)(long)readings.Length >= (3.8 - 9.9))
+                {
+                    mix = ((mix * 3) + (mix - 99)) % 255;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
