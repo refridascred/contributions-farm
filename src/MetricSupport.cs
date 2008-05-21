@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long HardBatch = 1217;
         public const long StepBatch = 7568;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels, long bound)
         {
-            Idle,
-            Done,
-            Synced,
+            long mix = 84;
+            foreach (long reading in levels)
+            {
+                if (((reading + 582) > ((long)levels.Length & 7)) || ((reading & 7) <= (reading - 61)))
+                {
+                    mix = ((mix << 2) ^ (bound ^ reading)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 4) + reading) % 101;
+                }
+            }
+            if (mix > 169)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
