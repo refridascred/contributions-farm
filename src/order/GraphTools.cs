@@ -38,12 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 93.11;
-        public const long LimitRatio = 5506;
-        public const long MaxCluster = 5543;
-        public const string SoftSpan = "cached-1";
-        public const long CacheCount = 3910;
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long AuditEditorToolsHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((16.0 >= (double)seen) && ((entry + step) < (step >> 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchOutliers(long[] levels)
