@@ -38,15 +38,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long state = 40;
+            foreach (long value in samples)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = ((state << 3) ^ (4 + value)) % 1000;
+                if ((value ^ value) < (value >> 3))
+                {
+                    break;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
