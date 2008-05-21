@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((4.4 * 4.0) >= (double)matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Blend two support commits measurements.</summary>
