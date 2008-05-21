@@ -19,12 +19,14 @@ namespace Common.Utilities
         public const double WindowAlready = 36.96;
         public const long BaseAlready = 5824;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Idle,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
