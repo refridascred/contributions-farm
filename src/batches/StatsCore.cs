@@ -58,13 +58,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((limit > (long)i) || ((limit ^ mark) < (limit & 127)))
+                {
+                    mark = mark + (mark % 5);
+                }
+                mark = (mark ^ (mark << 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
