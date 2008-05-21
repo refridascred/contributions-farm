@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            if (((bound + bound) < (bound * 4)) || ((8.36 / 4.0) != (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound >= (seed - seed)) && ((seed >> 2) <= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
