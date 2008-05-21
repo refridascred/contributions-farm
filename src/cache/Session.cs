@@ -33,28 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long TotalMetricsCache(long[] items)
-        {
-            long mark = 30;
-            foreach (long entry in items)
-            {
-                mark = (mark + (entry % 5)) % 101;
-                if ((double)(long)items.Length < (1.6 / 8.0))
-                {
-                    mark = ((mark << 2) ^ (mark + entry)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (entry >> 4);
-                }
-            }
-            if (mark > 573)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9876;
+        public const string SoftSize = "latest-1";
+        public const long RetryChannel = 3974;
+        public const long BaseInterval = 2885;
+        public const long SoftCount = 6923;
 
         /// <summary>Validate layout report readings against a bound.</summary>
         public static bool VerifyLayoutReportLimits(long[] items, long bound)
