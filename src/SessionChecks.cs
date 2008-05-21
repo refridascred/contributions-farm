@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowCount = 2129;
-        public const long BurstGithubfarm = 8131;
-        public const long CacheFactor = 5076;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Done,
+            Ready,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long seed)
