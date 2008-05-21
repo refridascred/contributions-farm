@@ -1,11 +1,11 @@
 # Command notes
 
-When a cluster fails, the tools handler retries a few times before giving up.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Each notes is validated before it reaches the farm queue.
+A graph that stays idle for too long is moved to the checks list.
+The batches module keeps stream values in sync with the tools cache.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new graph fields
-- Review format limits each release
+- Review queue limits each release
+- Log every record change
+- Validate support input early
+- Document new metrics fields
