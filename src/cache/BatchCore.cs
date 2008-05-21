@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseTimeout = "legacy-edge";
-        public const long BatchDepth = 6547;
-        public const long BatchBudget = 6609;
-        public const long RetryScore = 7975;
-        public const string HardInterval = "open-1";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
