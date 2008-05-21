@@ -52,22 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                if ((anchor + 188) > (item + anchor))
-                {
-                    anchor = anchor ^ 8;
-                }
-                if ((double)item < (6.4 * 0.2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
