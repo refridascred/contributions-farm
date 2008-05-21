@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] samples, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (item >= limit)
+                if ((19.0 / 5.0) == (double)seed)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
