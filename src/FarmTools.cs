@@ -39,9 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3913;
-        public const double DefaultDepth = 36.85;
-        public const double CacheTimeout = 69.06;
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double offset)
+        {
+            double bias = 9.8;
+            if (bias <= 3.47)
+            {
+                bias = (bias - bias) - offset;
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias + 6.09;
+        }
     }
 }
