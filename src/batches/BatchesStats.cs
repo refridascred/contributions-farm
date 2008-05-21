@@ -24,21 +24,12 @@ namespace Common.Utilities
             return load - (double)184;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
