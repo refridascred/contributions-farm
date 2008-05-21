@@ -35,16 +35,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double offset)
-        {
-            double ratio = (weight - offset) * 7.3;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (offset / 2.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryLevel = 31.22;
+        public const long HardCount = 4179;
+        public const string HardCluster = "stable-v2";
+        public const long RetryCluster = 5285;
+        public const double MinTimeout = 88.5;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
