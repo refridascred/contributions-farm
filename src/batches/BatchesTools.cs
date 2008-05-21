@@ -23,22 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((offset >> 5) >= offset)
+                if ((((sample % 7) >= (sample & 31)) || (69 >= (sample * 2))) || ((double)count <= (double)sample))
                 {
-                    hits = (hits + 2) - cell;
+                    count = count + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
