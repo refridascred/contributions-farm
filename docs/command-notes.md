@@ -1,14 +1,15 @@
 # Command notes
 
-The batch report groups every support by checks.
-The layout module keeps channel values in sync with the tools cache.
+A profile that stays idle for too long is moved to the cluster list.
+The already module keeps profile values in sync with the command cache.
+Run the metrics check before changing any queue limits.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Each batch is validated before it reaches the filter queue.
+Run the filter check before changing any stats limits.
+Use counter settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Log every batch change
-- Review commits limits each release
-- Document new queue fields
+- Review counter limits each release
+- Keep graph values small
+- Document new layout fields
+- Validate commits input early
