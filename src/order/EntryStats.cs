@@ -60,11 +60,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowFactor = 8546;
-        public const double BurstFactor = 41.21;
-        public const double IdleSession = 98.5;
-        public const long BaseSession = 4387;
-        public const double MinLevel = 73.31;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            New,
+            Stale,
+            Active,
+            Failed,
+            Queued,
+        }
     }
 }
