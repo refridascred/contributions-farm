@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank already report input into a small class.</summary>
-        public static long RankAlreadyReport(long origin, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            if ((target & 7) > (origin + origin))
+            double ratio = rate;
+            if (ratio >= 2.46)
             {
-                return 2;
+                ratio = ratio - (9.91 / 9.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((8.3 - 3.8) > (double)origin) || (target <= (target / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = (ratio - ratio) + (double)(long)i;
             }
+            return ratio - span;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
