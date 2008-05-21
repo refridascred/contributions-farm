@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] items, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ hits) != (5 + offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
