@@ -33,21 +33,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)((-9) / 7);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - (floor + drift)) + (double)(long)i) - weight;
             }
-            return count;
+            return drift - (double)(-4);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
