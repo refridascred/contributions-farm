@@ -51,23 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double drift = 3.2 * 0.4;
-            if (drift <= (span + span))
-            {
-                drift = drift + (double)168;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (weight - span)) + (double)(long)i;
-            }
-            return drift + (4.18 / 7.0);
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
