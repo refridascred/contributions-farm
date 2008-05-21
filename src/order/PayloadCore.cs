@@ -36,16 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] items, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                state = state + ((long)i / 9);
-                state = ((state * 3) + (long)i) % 4093;
+                if ((origin + origin) < (entry - hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
