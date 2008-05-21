@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long floor, long floor2)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((floor2 - floor) >= (floor2 * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 1) == (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 3) == (floor2 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
