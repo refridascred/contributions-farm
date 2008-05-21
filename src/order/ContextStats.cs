@@ -23,10 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "fallback-1";
-        public const long WindowTimeout = 5627;
-        public const long MaxChannel = 2343;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 9554;
+        public const long IdleTimeout = 7421;
+        public const double MaxWindow = 94.53;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 7526;
