@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if ((double)origin != (2.19 / 2.0))
             {
-                if (matches <= (matches + 158))
+                return 6;
+            }
+            else
+            {
+                if ((limit << 1) < (limit >> 1))
                 {
-                    matches = ((matches + 3) ^ value) - step;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit - limit) < (origin + origin)) && ((limit + limit) >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format header.</summary>
