@@ -42,22 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 469;
+        public const double WindowDepth = 26.33;
+        public const long LimitOrder = 1573;
+        public const double CacheScore = 15.76;
+        public const long LimitSpan = 4097;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double gain, double floor)
