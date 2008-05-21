@@ -39,12 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSpan = 5178;
-        public const long SoftStats = 7687;
-        public const double StepStats = 22.81;
-        public const long DefaultLevel = 8276;
-        public const string StepCount = "legacy";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((mark * 5) > 843)
+                {
+                    mark = mark + (97 << 2);
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double floor)
