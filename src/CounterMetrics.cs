@@ -19,35 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long bound)
         {
-            if ((bound >> 2) <= (565 >> 5))
+            long slot = floor ^ bound;
+            if ((slot - floor) <= bound)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((double)bound != (1.23 + 8.9))
+                if ((double)floor != (double)slot)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((7.9 + 7.4) >= (double)bound)
+                    if (((bound / 4) < (8 + floor)) || ((15.0 * 8.81) >= (double)slot))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor >> 3) < (bound - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
