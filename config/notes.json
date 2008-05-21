@@ -1,18 +1,6 @@
 {
-  "format_timeout": {
-    "channel_window": [313, 148],
-    "hard_interval": [441, 168, 399],
-    "audit": {
-      "checks_capacity": "blue",
-      "batch_threshold_count": false,
-      "dry_run": ["cached", "staging", "cached"],
-      "batch_retries": 1024,
-      "burst_ttl_ms": false,
-      "sync_ttl_pct": [198, 479]
-    },
-    "contributi_capacity": [320, 479, 354, 191]
-  },
-  "retry_capacity_s": [377, 445, 436, 419],
-  "batch_window": 59,
-  "retry_ratio": 11
+  "profile_window": 100,
+  "soft_retries_s": "legacy",
+  "verbose": "standard",
+  "compress": 9240
 }
