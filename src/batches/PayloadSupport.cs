@@ -18,11 +18,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "staging";
-        public const long DefaultInterval = 123;
-        public const long StepBuffer = 5678;
-        public const double LimitSpan = 96.93;
-        public const long SoftRatio = 8137;
+        /// <summary>Count report route pairs that satisfy a relation.</summary>
+        public static long OverlapReportRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
