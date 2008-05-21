@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=426
+RECORD_LIMIT=329
 log "limit is ${RECORD_LIMIT}"
+
+for item in green standard; do
+    log "checking ${item}"
+done
