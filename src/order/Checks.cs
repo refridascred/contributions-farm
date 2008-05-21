@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long origin)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
