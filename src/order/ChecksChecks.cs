@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Closed,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
