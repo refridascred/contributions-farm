@@ -70,19 +70,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading >= floor)
+                if (datum <= bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
