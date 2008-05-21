@@ -67,13 +67,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            double bias = (double)(572 - (-79));
+            if (bias < (3.53 / 8.0))
+            {
+                bias = bias + span;
+            }
+            return bias - rate;
         }
     }
 }
