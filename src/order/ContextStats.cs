@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark ^ ((long)i % 2);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            New,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
