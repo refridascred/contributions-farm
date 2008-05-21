@@ -19,10 +19,33 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 1190;
-        public const double BatchFactor = 46.8;
-        public const string BatchCount = "standard-1";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long step)
+        {
+            long delta = target - step;
+            if ((step * 3) >= (delta ^ 779))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) >= (-9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta > (3.07 + 1.8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long offset)
