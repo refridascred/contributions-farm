@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Synced,
-            Paused,
-            Locked,
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two token order measurements.</summary>
