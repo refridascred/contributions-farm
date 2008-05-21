@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] series, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mix = 18;
+            foreach (long cell in readings)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix ^ (mix / 2)) % 1000) ^ cell;
             }
-            return ok;
+            if (mix > 3)
+            {
+                mix = (mix + 334) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
