@@ -16,17 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
