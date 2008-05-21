@@ -77,15 +77,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double bias = (double)(572 - (-79));
-            if (bias < (3.53 / 8.0))
-            {
-                bias = bias + span;
-            }
-            return bias - rate;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
