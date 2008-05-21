@@ -1,8 +1,7 @@
 {
-  "entry_depth": 1024,
-  "token_delay": 14,
-  "dry_run": 5,
-  "poll_ratio": ["primary", "legacy", "latest"],
-  "max_threshold_count": [32, 129, 117],
-  "strict": 5097
+  "idle_delay": 7.11,
+  "enabled": "stable",
+  "verbose": 100,
+  "flush_window": true,
+  "metrics_threshold": 500
 }
