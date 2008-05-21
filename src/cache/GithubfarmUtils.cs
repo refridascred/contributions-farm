@@ -54,12 +54,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                if (!((carry >> 3) < reading))
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
+                if ((double)reading == (4.0 - 1.38))
+                {
+                    break;
+                }
+            }
+            if (carry > 589)
+            {
+                carry = (carry + (carry + carry)) % 97;
+            }
+            return carry;
         }
     }
 }
