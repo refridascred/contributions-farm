@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const long CacheLevel = 1293;
         public const long MinLevel = 152;
 
-        /// <summary>Locate a channel counter reading by value.</summary>
-        public static long LocateChannelCounterIndex(long[] values, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long datum in readings)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (origin << 3)) ^ datum;
             }
-            return -1;
+            if (mark > 2)
+            {
+                mark = mark ^ origin;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
