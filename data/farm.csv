@@ -1,7 +1,10 @@
-id,token,level,count,owner
-1,635,544,400,67.66
-2,367,31.66,375,cached
-3,legacy,blue,801,eu-west
-4,eu-west,open,cached,870
-5,855,758,915,primary
-6,9.1,latest,187,eu-west
+id,state,token,label
+1,green,blue,2.93
+2,880,latest,88.26
+3,56,69.07,staging
+4,78.95,724,edge
+5,stable,open,5.83
+6,strict,21.77,33.77
+7,edge,66.21,local
+8,9.31,18.23,blue
+9,83.16,25.04,35.84
