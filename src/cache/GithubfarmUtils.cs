@@ -47,21 +47,12 @@ namespace Common.Utilities
         public const double MinFormat = 5.5;
         public const string BatchInterval = "local-edge";
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
