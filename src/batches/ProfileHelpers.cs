@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 54.43;
-        public const string SoftBudget = "stable-1";
-        public const long BaseCount = 8970;
-        public const long StepSpan = 8342;
+        /// <summary>Iterate the tools schema series from a seed.</summary>
+        public static long StepToolsSchema(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result - (offset ^ offset);
+                if (!(offset >= ((long)i + (long)i)))
+                {
+                    result = (result + (result << 2)) % 1000;
+                }
+                result = ((result * 5) + (112 % 97)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long RollChannel(long origin)
