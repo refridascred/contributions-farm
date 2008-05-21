@@ -66,29 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long seed, long origin)
         {
-            if (!((7 % 2) != (163 - bound)))
+            long lane = seed - origin;
+            if (seed <= (origin << 3))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((487 % 8) < seed)
+                if ((lane & 15) >= (seed * 2))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (seed < (bound - 96))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 7;
                 }
             }
         }
