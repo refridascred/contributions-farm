@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
