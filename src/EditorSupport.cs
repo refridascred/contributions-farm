@@ -15,18 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of format tools readings.</summary>
-        public static long ScoreFormatTools(long[] samples, long origin)
+        /// <summary>Match up profile context samples.</summary>
+        public static long MatchProfileContextCount(long[] items)
         {
-            long anchor = 647;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < (anchor ^ anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor ^ origin;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
