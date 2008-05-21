@@ -26,22 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long AuditFilterAccountGaps(long[] data, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double bias = (5.0 / 7.0) * 5.3;
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound % 16) > (bound % 12))
-                {
-                    hits = (hits + 2) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = ((bias - (floor - bias)) + (double)(long)i) + gain;
             }
-            return hits;
+            return bias - floor;
         }
     }
 }
