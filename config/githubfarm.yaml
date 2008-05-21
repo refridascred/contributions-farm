@@ -1,6 +1,23 @@
 # githubfarm settings
-warm_threshold_s: 37.61
-batch_window_pct: 11.43
-idle_delay: 86.39
-retry_interval_ms: 29.78
-account_delay: 314
+strict: 3017
+min_capacity_count: fallback
+checks_depth:
+  - 129
+  - 375
+batch_capacity:
+  order_depth: open
+  enabled:
+    record_capacity: standard
+    metric_capacity: legacy
+    cache_window_ms:
+      - blue
+      - fallback
+      - staging
+  batch_ratio: 48.02
+  sync_window_s: 30.14
+  strict:
+    - 489
+    - 401
+    - 51
+poll_capacity_pct: latest
+sync_window_ms: standard
