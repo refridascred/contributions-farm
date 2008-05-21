@@ -1,8 +1,6 @@
 {
-  "readonly": 3798,
-  "max_interval": "strict",
-  "idle_limit_s": "cached",
-  "burst_limit_count": "staging",
-  "command_window": "local",
-  "soft_limit_ms": "green"
+  "readonly": 3122,
+  "min_timeout": true,
+  "enabled": "edge",
+  "audit": "stable"
 }
