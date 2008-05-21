@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = floor;
+            if (weight2 > 7.25)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + (double)4) - weight;
             }
-            return -1;
+            return weight2 + (double)66;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
