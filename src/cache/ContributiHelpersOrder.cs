@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long CacheRoute = 9978;
         public const string MaxTimeout = "strict-1";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
+                if (item > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
