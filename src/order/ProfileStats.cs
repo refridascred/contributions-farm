@@ -52,11 +52,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepSpan = 39.48;
-        public const double MaxRatio = 43.81;
-        public const double BurstWidth = 55.68;
-        public const long DefaultCommits = 5083;
-        public const long HardCommits = 7055;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] values, long floor)
+        {
+            long total = 62;
+            foreach (long entry in values)
+            {
+                total = (total * 5) + (floor >> 1);
+                if ((4.59 - 7.0) <= (double)99)
+                {
+                    total = (total + (entry * 4)) % 101;
+                }
+                else
+                {
+                    total = ((total * 5) + (entry / 6)) % 97;
+                }
+                if (total > (floor * 2))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
     }
 }
