@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 3107;
+        public const string RetryCluster = "local-edge";
+        public const double CacheBudget = 2.38;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultRatio = 74;
