@@ -25,13 +25,38 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            if ((9.08 + 16.0) <= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit > 471)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target / 3) <= (limit ^ 40)) && ((double)target > (double)747))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((70 ^ 5) >= (target & 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats mode values.</summary>
