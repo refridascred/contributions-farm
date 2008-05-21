@@ -50,13 +50,22 @@ namespace Common.Utilities
         public const long RetryRatio = 5408;
         public const string BaseCluster = "standard-1";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the metric record series from a seed.</summary>
+        public static long SeriesMetricRecord(long offset)
         {
-            Synced,
-            Retry,
-            Idle,
-            Done,
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((offset / 2) < offset)
+                {
+                    result = result ^ (result % 3);
+                    result = result + result;
+                }
+                result = ((result * 5) + (offset - result)) % 255;
+                result = (result ^ (result - offset)) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
