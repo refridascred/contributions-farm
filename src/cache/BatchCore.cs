@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((234 < (sample + hits)) && ((double)sample <= 5.1))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
