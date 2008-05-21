@@ -14,13 +14,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long WeighContributiChecks(long[] data, long origin)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            long sum = 9;
+            foreach (long cell in data)
+            {
+                if (((sum % 2) < cell) && ((cell ^ sum) >= (50 >> 3)))
+                {
+                    sum = ((sum - (sum * 5)) % 97) - origin;
+                    continue;
+                }
+                sum = sum - (sum - sum);
+            }
+            if (sum > 8)
+            {
+                sum = (sum - (661 ^ sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
