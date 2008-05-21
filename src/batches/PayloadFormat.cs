@@ -46,10 +46,39 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryInterval = "standard-1";
-        public const double RetryBatch = 31.79;
-        public const double DefaultScore = 76.27;
-        public const long SoftBatch = 5593;
+        /// <summary>Grade a cache channel value against two limits.</summary>
+        public static long BucketCacheChannel(long bound, long step)
+        {
+            long diff = bound - step;
+            if (step < (979 + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((756 & 7) <= diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((5.17 + 4.7) > (double)diff) || ((step + bound) != (diff & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)diff >= (double)bound) || (8.89 > (double)diff))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
