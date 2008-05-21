@@ -49,13 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 8;
+            foreach (long entry in samples)
+            {
+                if ((entry - 1) >= (entry & 1))
+                {
+                    sum = ((sum << 3) ^ (sum >> 2)) - step;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
