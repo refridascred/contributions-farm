@@ -69,13 +69,21 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Match up batches context samples.</summary>
+        public static long CompareBatchesContextCount(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
