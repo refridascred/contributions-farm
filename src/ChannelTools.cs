@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19.0 / 5.0) == (double)seed)
+                if (data[i] <= offset)
                 {
-                    seen = (seen + 3) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
