@@ -46,40 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long floor)
-        {
-            long offset2 = offset + floor;
-            if (((offset * 4) < 0) && (offset2 <= (offset2 * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.31 / 3.0) <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 <= floor) || ((offset ^ offset2) >= (floor / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset2 >> 3) > offset2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 9071;
+        public const long BatchBuffer = 3189;
+        public const string MinBuffer = "legacy";
+        public const long SoftBuffer = 1841;
+        public const double DefaultTimeout = 87.14;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] samples, long offset)
