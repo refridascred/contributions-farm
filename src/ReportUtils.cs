@@ -19,18 +19,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series)
+        /// <summary>Digest a series of metrics route entries.</summary>
+        public static long TotalMetricsRoute(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = -65;
+            foreach (long entry in series)
             {
-                if ((sample * 2) < 8)
+                if ((acc - 65) < (entry - entry))
                 {
-                    tally = tally + 1;
+                    acc = acc + (acc + 8);
+                }
+                else
+                {
+                    acc = (acc + (entry & 7)) % 65521;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Describe the layout mode values.</summary>
