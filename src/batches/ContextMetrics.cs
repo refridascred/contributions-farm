@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const string SoftScore = "alpha";
         public const long StepWindow = 1086;
 
-        /// <summary>Find the first cluster stream entry that matches the target.</summary>
-        public static long LookupClusterStreamIndex(long[] readings, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
