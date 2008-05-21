@@ -43,19 +43,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long anchor = -73;
+            foreach (long datum in values)
             {
-                if (value >= bound)
+                if (!((datum <= (datum + anchor)) || (datum < anchor)))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor + anchor;
                 }
+                anchor = (anchor * 4) + (datum + datum);
             }
-            return ready;
+            if (anchor < 581)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
