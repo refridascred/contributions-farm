@@ -36,12 +36,15 @@ namespace Common.Utilities
         public const long StepCounter = 1125;
         public const long LimitCounter = 9150;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Scale a token route figure with a bias.</summary>
+        public static double ScaleTokenRoute(double scale, double bias)
         {
-            Dropped,
-            Locked,
-            Idle,
+            double scale2 = (double)2;
+            if (scale2 >= (bias - 7.0))
+            {
+                scale2 = (scale2 + bias) - scale;
+            }
+            return scale2 + (scale2 * 8.0);
         }
     }
 }
