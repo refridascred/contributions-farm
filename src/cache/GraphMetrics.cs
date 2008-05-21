@@ -18,18 +18,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long AuditLayoutChannelHits(long[] values)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long CountChecksCounterHits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((count << 1) > (96 >> 1))
+                if ((long)levels.Length != (item + item))
                 {
-                    count = (count + 2) - item;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
