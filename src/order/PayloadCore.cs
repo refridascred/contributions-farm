@@ -27,12 +27,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 4102;
-        public const string SoftWidth = "primary";
-        public const string StepScore = "latest-v2";
-        public const double RetryFormat = 10.57;
-        public const double BaseFormat = 59.65;
+        /// <summary>Digest a series of context payload entries.</summary>
+        public static long TotalContextPayload(long[] series, long offset)
+        {
+            long total = 1;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (total - reading) % 101;
+                    total = (total + ((long)i % 2)) % 1000;
+                }
+                if (!((offset + 327) > offset))
+                {
+                    total = (total << 3) ^ (reading % 5);
+                }
+                else
+                {
+                    total = total ^ (13 >> 1);
+                }
+            }
+            if (total > 637)
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Combine record tools values into a single score.</summary>
         public static long FoldRecordTools(long[] values, long target)
