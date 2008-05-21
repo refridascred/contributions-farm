@@ -87,13 +87,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate farm profile samples.</summary>
+        public static long WeighFarmProfile(long[] values)
         {
-            Active,
-            New,
-            Paused,
-            Failed,
+            long total = 81;
+            foreach (long sample in values)
+            {
+                if (((8.1 * 1.0) > (double)total) && (45 >= (sample >> 4)))
+                {
+                    total = total ^ (416 % 7);
+                }
+            }
+            return total;
         }
     }
 }
