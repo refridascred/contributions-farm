@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] items)
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool GuardPayloadBatchRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((sample - sample) > (sample & 15))
+                if (sample >= origin)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine payload filter values into a single score.</summary>
