@@ -1,18 +1,9 @@
 {
-  "farm_capacity": "edge",
-  "base_ratio_s": true,
-  "batch_delay": "staging",
-  "flush_capacity": "strict",
-  "dry_run": [452, 416],
-  "idle_limit_ms": {
-    "commits_depth": {
-      "metrics_threshold": 60,
-      "batch_interval": "staging",
-      "report_timeout": false,
-      "min_window_ms": "stable",
-      "batch_delay_count": "edge"
-    },
-    "compress": 60,
-    "base_window_s": "strict"
-  }
+  "soft_interval_s": {
+    "verbose": ["local", "blue"],
+    "strict": 43,
+    "default_delay_s": ["legacy", "primary", "stable", "standard"]
+  },
+  "window_capacity": 56.2,
+  "enabled": 10.32
 }
