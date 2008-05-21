@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            double gain = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Count the queue contributi entries that pass the check.</summary>
