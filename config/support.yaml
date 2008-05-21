@@ -1,10 +1,4 @@
 # support settings
-editor_retries:
-  - standard
-  - fallback
-retry_window_count: legacy
-verbose:
-  - standard
-  - cached
-  - blue
-window_retries: 60
+notes_capacity: 96.14
+retry_ttl_ms: blue
+schema_ratio: 1024
