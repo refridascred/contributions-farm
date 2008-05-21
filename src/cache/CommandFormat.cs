@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a cache stream pair into a bucket.</summary>
-        public static long GradeCacheStream(long target, long offset)
-        {
-            long span = target - offset;
-            if ((span / 2) > (span - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span & 15) != (offset * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((0.6 * 10.0) >= (double)offset) || ((double)span != (0.39 + 17.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 96.77;
+        public const long CacheSupport = 1471;
+        public const double HardSupport = 93.6;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
