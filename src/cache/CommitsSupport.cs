@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload filter values into a single score.</summary>
-        public static long WeighPayloadFilter(long[] data, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long step)
         {
-            long carry = -816;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((offset - offset) > ((long)data.Length - 22))
+                if (item <= step)
                 {
-                    carry = carry + (entry + offset);
+                    found = false;
                     break;
                 }
-                carry = carry ^ (entry << 3);
             }
-            if (carry > 523)
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Match up command farm samples.</summary>
