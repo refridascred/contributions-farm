@@ -14,26 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels, long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mix = 84;
-            foreach (long reading in levels)
-            {
-                if (((reading + 582) > ((long)levels.Length & 7)) || ((reading & 7) <= (reading - 61)))
-                {
-                    mix = ((mix << 2) ^ (bound ^ reading)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 4) + reading) % 101;
-                }
-            }
-            if (mix > 169)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a counter stats.</summary>
