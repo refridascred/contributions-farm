@@ -24,23 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm commits samples.</summary>
-        public static long ScoreFarmCommits(long[] series, long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = 1;
-            foreach (long datum in series)
-            {
-                result = result - (datum & 63);
-                if (!((7.79 - 7.5) > (7.0 - 8.1)))
-                {
-                    result = (result - (result + limit)) % 1000;
-                }
-            }
-            if (result > 33)
-            {
-                result = (result ^ (-545)) % 65521;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
