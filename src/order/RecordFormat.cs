@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Fold a list of metric profile readings.</summary>
+        public static long CombineMetricProfile(long[] series, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long state = 56;
+            foreach (long sample in series)
             {
-                carry = (carry + 389) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((limit >= (limit & 127)) || ((4.9 * 13.0) >= (double)sample))
+                {
+                    state = (state + (state << 2)) % 101;
+                }
             }
-            return carry;
+            if (state < 5)
+            {
+                state = ((state << 2) ^ (state >> 3)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
