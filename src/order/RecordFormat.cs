@@ -42,18 +42,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples, long step)
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long WeighCacheChecks(long[] levels)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long total = 840;
+            foreach (long reading in levels)
             {
-                if ((entry - 1) >= (entry & 1))
+                if (((reading / 6) >= (total >> 3)) && ((reading + reading) != (total + total)))
                 {
-                    sum = ((sum << 3) ^ (sum >> 2)) - step;
+                    total = ((total * 2) + (total ^ 1)) % 1000;
+                }
+                if ((805 > (reading / 9)) || ((1.0 + 8.4) <= (double)reading))
+                {
+                    total = total + (reading * 5);
                 }
             }
-            return sum % 1000;
+            if (total < 7)
+            {
+                total = ((total * 3) + (total - (-57))) % 65521;
+            }
+            return total;
         }
     }
 }
