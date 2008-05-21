@@ -27,14 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] data)
         {
-            Pending,
-            Locked,
-            Synced,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value + hits) < (hits * 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
