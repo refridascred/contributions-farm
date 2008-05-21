@@ -1,6 +1,5 @@
 {
-  "readonly": 65,
-  "sync_timeout_ms": [445, 370],
-  "retry_capacity": "edge",
-  "flush_retries": true
+  "idle_delay_ms": 60,
+  "strict": "latest",
+  "stats_size": "open"
 }
