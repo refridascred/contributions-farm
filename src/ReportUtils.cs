@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const string RetryCluster = "local-edge";
         public const double CacheBudget = 2.38;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
