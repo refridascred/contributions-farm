@@ -82,19 +82,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate record commits readings against a bound.</summary>
-        public static bool GuardRecordCommitsRange(long[] data, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
