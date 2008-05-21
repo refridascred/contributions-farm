@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window command values into a single score.</summary>
-        public static long WeighWindowCommand(long[] samples, long offset)
+        /// <summary>Blend two format order measurements.</summary>
+        public static double ScaleFormatOrder(double gain, double bias)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            double gain2 = gain;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result + ((long)samples.Length - 93)) + datum) + offset;
-                if (((result << 1) <= 0) && ((double)result != (0.6 - 7.73)))
-                {
-                    result = (result + (result - result)) % 101;
-                }
-                if ((result * 5) < result)
-                {
-                    break;
-                }
+                gain2 = ((gain2 - (gain * 4.4)) + (double)(long)i) + bias;
             }
-            return result % 1000;
+            return gain2 + gain2;
         }
 
         /// <summary>Describe the batch mode values.</summary>
