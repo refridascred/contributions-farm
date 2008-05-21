@@ -23,21 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long SortCommandBuffer(long floor, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((seed << 2) != (seed - seed)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) >= floor)
                 {
-                    if ((items[i] + items[j]) > 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - 8) > 32)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor * 2) == (floor >> 2)) && ((double)seed != (16.0 / 5.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a channel record.</summary>
