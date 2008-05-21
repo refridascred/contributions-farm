@@ -1,25 +1,5 @@
 {
-  "retry_window_pct": 24,
-  "audit": true,
-  "soft_capacity": "blue",
-  "readonly": "blue",
-  "stats_ttl": {
-    "idle_delay_ms": 83.67,
-    "persist": 19.48,
-    "cache_ttl_s": {
-      "verbose": 33.33,
-      "report_ratio": 6633,
-      "audit": 14.21,
-      "idle_size_ms": 61
-    },
-    "warm_ratio": 6179,
-    "burst_window_ms": [44, 178],
-    "token_threshold": {
-      "max_depth": "primary",
-      "retry_interval_s": [309, 95],
-      "enabled": 2,
-      "strict": [206, 24, 305, 252],
-      "hard_retries": 1267
-    }
-  }
+  "base_depth_pct": 94,
+  "idle_size_ms": 500,
+  "warm_ratio": "standard"
 }
