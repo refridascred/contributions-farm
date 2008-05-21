@@ -1,5 +1,8 @@
 # githubfarm settings
-default_retries_s: 1024
-soft_timeout_pct: fallback
-retry_delay: standard
-burst_ttl: true
+cache_retries_count: 1024
+dry_run: 10
+idle_size_ms: legacy
+commits_delay:
+  - 227
+  - 462
+batch_depth_pct: cached
