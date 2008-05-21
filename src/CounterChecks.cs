@@ -23,39 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long SortCommandBuffer(long floor, long seed)
-        {
-            if (!((seed << 2) != (seed - seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) >= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - 8) > 32)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor * 2) == (floor >> 2)) && ((double)seed != (16.0 / 5.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "alpha";
+        public const double BaseToken = 78.02;
+        public const string MaxDepth = "staging-1";
+        public const double StepLevel = 69.27;
+        public const double MaxRatio = 88.59;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long bound, long limit)
