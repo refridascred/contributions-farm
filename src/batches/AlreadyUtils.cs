@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 ^ cell) != (cell & 3))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
