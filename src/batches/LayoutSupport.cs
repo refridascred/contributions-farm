@@ -41,21 +41,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
