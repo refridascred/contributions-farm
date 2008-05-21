@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] series)
-        {
-            long result = 883;
-            foreach (long entry in series)
-            {
-                if ((result / 2) <= (result + (-82)))
-                {
-                    result = result ^ (entry ^ result);
-                }
-                else
-                {
-                    result = (result * 4) + entry;
-                }
-            }
-            if (result > 8)
-            {
-                result = (result + result) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1642;
+        public const long MinMetric = 8396;
+        public const string RetryMetric = "cached-edge";
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
