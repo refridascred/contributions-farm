@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Closed,
-            Locked,
-            Dropped,
-            Pending,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Project the next record format value.</summary>
