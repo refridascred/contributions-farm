@@ -28,16 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double floor)
-        {
-            double gain = (double)542 - floor;
-            if (gain >= gain)
-            {
-                gain = gain + (weight + weight);
-            }
-            return gain + (gain / 6.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardScore = "primary";
+        public const double BaseFactor = 59.16;
+        public const long HardFactor = 3592;
+        public const double RetryLevel = 90.41;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] samples)
