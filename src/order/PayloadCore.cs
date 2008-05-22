@@ -41,19 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context token readings.</summary>
-        public static long TotalContextToken(long[] items)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long bound)
         {
-            long state = -33;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 3) + state) % 97;
-                if ((value / 4) != (value + value))
+                if (values[i] < bound)
                 {
-                    state = (state ^ (state * 2)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
