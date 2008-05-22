@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const long HardCommand = 4036;
         public const long BatchLevel = 2015;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 25.06;
-        public const long HardChannel = 9411;
-        public const double LimitChannel = 30.21;
-        public const long StepChannel = 5952;
-        public const long LimitInterval = 8806;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((origin >> 2) >= (item / 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
