@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double offset)
-        {
-            double weight = (double)(-68) / 5.0;
-            if (weight >= (double)87)
-            {
-                weight = (weight + (scale / 5.0)) + offset;
-            }
-            return weight + (scale - scale);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinFactor = 9419;
+        public const double RetryBuffer = 17.59;
+        public const long MaxBuffer = 3532;
+        public const string SoftRatio = "legacy";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] values, long offset)
