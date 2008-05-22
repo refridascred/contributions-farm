@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 9.73;
-        public const long BurstCommand = 8763;
-        public const long IdleCommand = 3349;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((target / 7) <= 44))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double WindowBuffer = 57.37;
