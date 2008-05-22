@@ -47,18 +47,11 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] samples, long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset & 1) >= (offset + offset))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
