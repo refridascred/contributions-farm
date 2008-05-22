@@ -43,19 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items, long limit)
         {
-            double load = floor;
-            if (load > (double)(-6))
+            long carry = -966;
+            foreach (long datum in items)
             {
-                load = load - weight;
+                if ((((long)items.Length ^ datum) <= limit) || ((limit / 3) != (carry ^ 370)))
+                {
+                    carry = ((carry << 3) ^ carry) % 101;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (load / 4.0);
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
