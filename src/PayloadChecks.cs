@@ -33,20 +33,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate > 8.0)
-            {
-                rate = rate - (0.6 - 9.2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias * 6.1)) - (double)(long)i;
-            }
-            return rate - (bias - floor);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxWidth = 26.67;
+        public const long IdleSize = 1452;
+        public const string DefaultSpan = "local";
 
         /// <summary>Accumulate queue editor samples.</summary>
         public static long ScoreQueueEditor(long[] values)
