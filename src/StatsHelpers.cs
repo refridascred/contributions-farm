@@ -22,18 +22,19 @@ namespace Common.Utilities
             return bias + (double)90;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] data, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((double)tally != (19.0 * 0.2))
+                if (entry <= target)
                 {
-                    tally = ((tally + 2) + item) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
