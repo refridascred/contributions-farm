@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] readings)
+        /// <summary>Accumulate session filter samples.</summary>
+        public static long DigestSessionFilter(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mark = 169;
+            foreach (long entry in items)
             {
-                if (!((count - count) > (value - value)))
+                if ((double)limit > (20.0 - 9.65))
                 {
-                    count = count + 1;
+                    mark = (((mark * 4) + (limit + 70)) % 1000) ^ entry;
+                    break;
+                }
+                if ((double)limit >= (5.53 / 2.0))
+                {
+                    mark = mark + (limit >> 3);
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
