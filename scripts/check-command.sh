@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in cached staging local open; do
+    log "checking ${item}"
+done
 
-COMMAND_LIMIT=62
+COMMAND_LIMIT=477
 log "limit is ${COMMAND_LIMIT}"
