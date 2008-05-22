@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long state = 12;
-            foreach (long entry in levels)
-            {
-                if (state < ((-65) * 3))
-                {
-                    state = (state ^ (entry - state)) % 101;
-                }
-            }
-            return state % 97;
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
