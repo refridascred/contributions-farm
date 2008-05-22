@@ -36,15 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            double ratio = floor - (floor / 4.0);
-            if (ratio >= (double)6)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + rate;
+            return count;
         }
 
         /// <summary>Audit context token readings against a rule.</summary>
