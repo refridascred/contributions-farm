@@ -31,18 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] levels, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!!((step - sample) < (3 / 5)))
+                if (count >= (26 >> 5))
                 {
-                    tally = tally + 2;
+                    count = ((count + 3) ^ value) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
