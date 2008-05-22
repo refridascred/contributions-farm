@@ -34,18 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream metric entries that pass the check.</summary>
-        public static long CountStreamMetricMatches(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!(9.5 < (double)item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
