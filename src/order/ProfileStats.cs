@@ -43,39 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long floor)
-        {
-            long edge = offset ^ floor;
-            if (!(offset < 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge - (-614)) >= (offset % 16))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor ^ floor) <= (floor / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((((-3) + edge) <= offset) && ((9 - offset) <= (offset >> 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4467;
+        public const string IdleWindow = "primary-1";
+        public const string BurstWindow = "cached-v2";
+        public const long CacheWindow = 8315;
     }
 }
