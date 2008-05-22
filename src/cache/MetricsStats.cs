@@ -28,19 +28,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] samples, long offset)
+        /// <summary>Adjust a counter report reading.</summary>
+        public static double SmoothCounterReport(double weight, double floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double load = (double)7 / 5.0;
+            if (load < floor)
             {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (load / 7.0)) - weight;
             }
-            return found;
+            return load - load;
         }
 
         /// <summary>Define route limits and defaults.</summary>
