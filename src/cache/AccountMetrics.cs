@@ -24,18 +24,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen << 3) > (7 + seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
