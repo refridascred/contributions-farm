@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Find the first layout metrics entry that matches the target.</summary>
+        public static long LocateLayoutMetricsIndex(long[] readings, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
