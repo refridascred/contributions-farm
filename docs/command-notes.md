@@ -1,14 +1,12 @@
 # Command notes
 
-The route report groups every githubfarm by counter.
-Keep already and stream names short and lowercase.
-Run the queue check before changing any support limits.
-
-Use report settings to tune how often stats data is refreshed.
-Run the queue check before changing any queue limits.
+The schema helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the metrics list.
+The cluster module keeps stream values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep cluster values small
-- Review graph limits each release
+- Prefer editor defaults
+- Log every commits change
+- Document new farm fields
+- Review record limits each release
