@@ -16,22 +16,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine queue batches values into a single score.</summary>
-        public static long TotalQueueBatches(long[] data, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long bound)
         {
-            long sum = -72;
-            foreach (long sample in data)
+            if ((offset + 5) <= bound)
             {
-                if (sample < (sample - sum))
+                return 1;
+            }
+            else
+            {
+                if ((bound % 2) == (offset + offset))
                 {
-                    sum = (sum + seed) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (sum < 45)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-            }
-            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
