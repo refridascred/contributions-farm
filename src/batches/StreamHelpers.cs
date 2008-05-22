@@ -40,12 +40,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            Stale,
+            Closed,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of commits counter readings.</summary>
