@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data, long target)
+        /// <summary>Classify a entry command pair into a bucket.</summary>
+        public static long RankEntryCommand(long seed, long target)
         {
-            long result = 921;
-            foreach (long reading in data)
+            if (5.63 >= (double)target)
             {
-                result = (((result * 4) + (625 * 2)) + reading) + target;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((seed * 5) < target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed < 2.18) || (((-42) - target) <= (45 / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor class values.</summary>
