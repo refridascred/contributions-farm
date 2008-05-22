@@ -1,5 +1,5 @@
 {
-  "filter_depth": "legacy",
-  "soft_ttl_s": "open",
-  "queue_retries": "legacy"
+  "retry_size": "eu-west",
+  "min_limit_s": ["eu-west", "green"],
+  "base_depth_count": 1024
 }
