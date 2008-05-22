@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long floor)
         {
-            Failed,
-            Queued,
-            Locked,
-            Active,
+            long next = offset + floor;
+            if ((next % 100) > (next + next))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((4.7 * 16.0) == (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
