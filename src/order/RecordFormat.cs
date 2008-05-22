@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a account tools figure with a bias.</summary>
-        public static double BlendAccountTools(double bias, double bias2)
+        /// <summary>Measure how many route schema samples are out of range.</summary>
+        public static long CountRouteSchemaOutliers(long[] levels)
         {
-            double rate = bias;
-            if (rate >= bias2)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                rate = rate + (7.0 + bias2);
+                if ((item ^ 819) < (item + 45))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate - 0.1;
-            }
-            return rate + (bias2 - bias2);
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
