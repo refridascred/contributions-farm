@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first buffer context entry that matches the target.</summary>
-        public static long LookupBufferContextIndex(long[] values, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= step)
+                if (series[i] == offset)
                 {
                     return (long)i;
                 }
