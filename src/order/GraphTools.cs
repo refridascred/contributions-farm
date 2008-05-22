@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings)
-        {
-            long sum = 9;
-            foreach (long value in readings)
-            {
-                sum = (sum + (sum ^ (long)readings.Length)) % 101;
-                sum = (sum ^ (value >> 3)) % 101;
-                if ((value - sum) >= (value - 9))
-                {
-                    break;
-                }
-            }
-            if (sum < 409)
-            {
-                sum = sum - (sum ^ sum);
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleLevel = 6738;
+        public const long CacheFactor = 5203;
+        public const long BaseBudget = 9941;
+        public const long SoftRecord = 4037;
+        public const double WindowRatio = 60.45;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] samples)
