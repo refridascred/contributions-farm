@@ -55,11 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
