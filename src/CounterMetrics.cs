@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long AuditAccountWindowGaps(long[] samples, long floor)
         {
-            long sum = -62;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sum <= (sum + sum))
+                if (floor < (floor - count))
                 {
-                    sum = (sum << 3) ^ (value + value);
-                }
-                else
-                {
-                    sum = sum - value;
-                }
-                sum = sum - (value ^ sum);
-                if ((value + sum) > (sum << 2))
-                {
-                    break;
+                    count = (count + 1) - reading;
                 }
             }
-            if (sum < 54)
-            {
-                sum = (sum + (sum << 2)) % 65521;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
