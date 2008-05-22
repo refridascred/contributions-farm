@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const double CacheNotes = 96.79;
         public const long DefaultNotes = 5237;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((9 ^ 226) != (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 5553;
+        public const long CacheWidth = 1273;
+        public const long HardStats = 3460;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long offset, long step)
