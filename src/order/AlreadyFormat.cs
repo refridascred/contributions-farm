@@ -21,24 +21,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)(long)i < (5.22 * 9.6))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix + (bound / 8)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 0.69;
+        public const long DefaultRecord = 7825;
+        public const long WindowRecord = 567;
+        public const long IdleRecord = 7525;
+        public const double MinBudget = 42.83;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinFactor = 3297;
