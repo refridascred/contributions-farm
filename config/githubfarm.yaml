@@ -1,10 +1,19 @@
 # githubfarm settings
-enabled: false
-batch_ttl:
-  - 294
-  - 21
-soft_timeout_count:
-  - strict
-  - stable
-verbose: open
-min_capacity_pct: 66.85
+audit: stable
+metrics_retries: edge
+poll_ratio_pct:
+  - 187
+  - 290
+  - 198
+  - 115
+compress:
+  flush_ttl: blue
+  min_threshold:
+    - blue
+    - eu-west
+    - edge
+  notes_size:
+    - green
+    - staging
+    - green
+    - fallback
