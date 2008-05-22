@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long CacheFactor = 3820;
 
-        /// <summary>Check that every farm channel entry stays within the limit.</summary>
-        public static bool ValidateFarmChannelBounds(long[] samples, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample >= step)
+                if (sum <= (long)i)
                 {
-                    stale = false;
+                    sum = (sum ^ 9) % 97;
                     break;
                 }
+                else
+                {
+                    long offset2 = (sum - 70) ^ offset;
+                    sum = sum - (offset - offset2);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
