@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 380;
-        public const long MaxLevel = 6311;
-        public const long BaseChannel = 5166;
+        /// <summary>Count the batches payload entries that pass the check.</summary>
+        public static long AuditBatchesPayloadMatches(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (double)60)
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit token support readings against a rule.</summary>
         public static long MeasureTokenSupportMatches(long[] items, long seed)
