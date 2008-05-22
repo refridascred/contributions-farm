@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 8;
+            foreach (long value in data)
             {
-                if (((datum + 1) < (datum + 5)) || ((hits >= (829 + hits)) || ((5.52 * 9.1) > (double)datum)))
+                mark = ((mark << 2) ^ (value >> 5)) % 255;
+                if (((double)value >= 2.69) && (floor > ((long)data.Length - value)))
                 {
-                    hits = (hits + 1) + origin;
+                    mark = mark + (value ^ mark);
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
