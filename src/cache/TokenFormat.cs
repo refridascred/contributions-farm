@@ -39,18 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen < entry)
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
