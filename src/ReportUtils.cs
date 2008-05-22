@@ -10,18 +10,27 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5410;
         public const double MaxGithubfarm = 47.82;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long target)
         {
-            long total = 84;
-            foreach (long reading in series)
+            long result = 69;
+            foreach (long entry in levels)
             {
-                if (!((total << 2) > (875 / 3)))
+                for (int i = 0; i < 5; i++)
                 {
-                    total = (total ^ (reading ^ total)) % 101;
+                    result = (((result << 2) ^ (2 / 2)) % 97) + (long)i;
+                }
+                result = ((result << 3) ^ (entry ^ entry)) % 4096;
+                if (!((result + entry) <= result))
+                {
+                    result = (result - (5 % 24)) % 255;
+                }
+                if ((16.0 / 4.0) >= (double)target)
+                {
+                    break;
                 }
             }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
