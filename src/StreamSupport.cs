@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long TallyContributiRecordOutliers(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((8.1 - 4.7) >= (double)tally)
+                if ((item >> 1) > (765 << 3))
                 {
-                    tally = (tally + 1) ^ datum;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
