@@ -38,21 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long TallyNotesCommandOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen % 5) >= (datum & 255))
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
