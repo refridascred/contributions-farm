@@ -42,13 +42,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            Stale,
+            Draft,
+            Failed,
+            Pending,
+            Synced,
         }
     }
 }
