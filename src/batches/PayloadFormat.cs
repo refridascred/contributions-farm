@@ -29,12 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
