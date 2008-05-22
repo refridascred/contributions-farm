@@ -14,18 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values, long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((target + entry) > (88 + target))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate farm samples.</summary>
