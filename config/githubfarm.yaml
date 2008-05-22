@@ -1,7 +1,12 @@
 # githubfarm settings
-context_depth: edge
-already_interval: 1024
-flush_retries_count: false
-retry_size:
-  - eu-west
-  - edge
+channel_capacity: 5169
+verbose:
+  - 283
+  - 446
+  - 228
+flush_timeout:
+  - 82
+  - 315
+  - 51
+enabled: 7.33
+cache_ttl: 85
