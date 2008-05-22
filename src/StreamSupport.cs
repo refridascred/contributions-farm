@@ -14,10 +14,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSpan = 2844;
-        public const long MaxTools = 2124;
-        public const string CacheBudget = "legacy-v2";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Ready,
+            Active,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Grade a window counter value against two limits.</summary>
         public static long RankWindowCounter(long offset, long limit)
