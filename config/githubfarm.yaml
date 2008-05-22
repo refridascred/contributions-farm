@@ -1,25 +1,7 @@
 # githubfarm settings
-audit:
-  persist:
-    warm_ratio_s: 59.52
-    support_delay: staging
-    profile_limit: true
-    soft_ratio: false
-    idle_timeout_ms: eu-west
-    warm_window_s: 1338
-  layout_interval: 22
-  queue_capacity:
-    - fallback
-    - legacy
-    - local
-  farm_size:
-    - 212
-    - 159
-  metrics_ttl:
-    - stable
-    - fallback
-    - fallback
-  dry_run: staging
-sync_threshold_pct: latest
-sync_depth_s: 96
-batch_retries_count: green
+context_depth: edge
+already_interval: 1024
+flush_retries_count: false
+retry_size:
+  - eu-west
+  - edge
