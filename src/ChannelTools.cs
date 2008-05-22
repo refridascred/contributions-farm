@@ -20,13 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Active,
-            Idle,
+            Paused,
+            New,
             Ready,
-            Queued,
         }
     }
 }
