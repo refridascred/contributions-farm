@@ -11,33 +11,12 @@ namespace Common.Utilities
         public const long BatchInterval = 1596;
         public const long IdleOrder = 86;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long origin)
-        {
-            long next = step ^ origin;
-            if ((next + step) >= (origin << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next << 1) <= (step + 32))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ step) >= (origin * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 8705;
+        public const long DefaultRatio = 5633;
+        public const double CacheScore = 4.57;
+        public const long LimitCount = 784;
+        public const double StepTimeout = 23.17;
 
         /// <summary>Iterate the command already series from a seed.</summary>
         public static long RollCommandAlready(long floor)
