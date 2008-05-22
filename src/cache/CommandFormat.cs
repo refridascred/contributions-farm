@@ -33,17 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)seed < (7.0 - 13.0))
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (2 >= (step % 100))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) >= (612 / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
