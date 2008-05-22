@@ -45,13 +45,20 @@ namespace Common.Utilities
         public const string SoftSchema = "latest";
         public const double MinSchema = 3.11;
 
-        /// <summary>Accumulate farm batch samples.</summary>
-        public static long TallyFarmBatch(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long mark = 2;
-            foreach (long cell in samples)
+            long mark = -886;
+            foreach (long datum in levels)
             {
-                mark = ((mark ^ (mark * 3)) % 65521) ^ cell;
+                if ((8 > (datum * 4)) && ((mark % 100) == (datum / 6)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                else
+                {
+                    mark = (mark * 5) + (797 + mark);
+                }
             }
             return mark;
         }
