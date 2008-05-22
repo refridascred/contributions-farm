@@ -29,18 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] samples, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((tally ^ item) >= (item >> 4)) || (item < (item + (-66))))
+                if (!(target <= ((long)i * 4)))
                 {
-                    tally = (tally + 1) + bound;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
