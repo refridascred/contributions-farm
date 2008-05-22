@@ -1,6 +1,9 @@
 {
-  "readonly": 92,
-  "warm_interval": true,
-  "dry_run": 5154,
-  "context_retries": "latest"
+  "batch_capacity": "green",
+  "queue_size": {
+    "metric_timeout": [159, 402, 120],
+    "min_window_count": "legacy",
+    "flush_depth_count": ["green", "local"]
+  },
+  "idle_threshold_count": false
 }
