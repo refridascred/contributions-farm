@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] series, long limit)
+        /// <summary>Find the first metric batches entry that matches the target.</summary>
+        public static long SeekMetricBatchesIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
