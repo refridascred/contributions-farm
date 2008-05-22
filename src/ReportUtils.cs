@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const string RetryCluster = "local-edge";
         public const double CacheBudget = 2.38;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] data)
         {
-            Retry,
-            Dropped,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
