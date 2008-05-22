@@ -14,38 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a queue layout value against two limits.</summary>
-        public static long GradeQueueLayout(long bound, long bound2)
+        /// <summary>Validate command context readings against a bound.</summary>
+        public static bool GuardCommandContextLimits(long[] readings, long seed)
         {
-            if ((2.99 / 5.0) <= (double)bound)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound2 <= (bound - bound2))
+                if (reading <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 + bound) < (bound2 % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 12) != (bound ^ bound2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a command record.</summary>
