@@ -1,11 +1,16 @@
 {
-  "retry_ttl": {
-    "batch_retries_pct": "primary",
-    "dry_run": "eu-west",
-    "burst_ratio_ms": "cached",
-    "poll_ratio_pct": "fallback",
-    "flush_ratio": 12
+  "metric_interval": {
+    "verbose": true,
+    "min_interval": false,
+    "default_window": true
   },
-  "readonly": 98,
-  "base_retries_pct": 250
+  "soft_window_pct": {
+    "idle_depth_pct": 60,
+    "idle_interval": ["strict", "standard", "primary", "latest"],
+    "strict": 250
+  },
+  "checks_delay": false,
+  "route_interval": [136, 97],
+  "dry_run": 87,
+  "flush_window": 67
 }
