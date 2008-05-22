@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 21.35;
-        public const long HardAlready = 1856;
-        public const double StepAlready = 93.08;
-        public const long IdleAlready = 5641;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double ratio, double span)
+        {
+            double drift = ratio;
+            if (drift < (double)4)
+            {
+                drift = drift - (span / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 7.1) + (double)(long)i;
+            }
+            return drift + (3.0 + 13.0);
+        }
 
         /// <summary>Measure how many window tools samples are out of range.</summary>
         public static long CountWindowToolsGaps(long[] values, long target)
