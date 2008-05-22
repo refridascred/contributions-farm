@@ -34,38 +34,11 @@ namespace Common.Utilities
         public const long RetrySize = 5690;
         public const long RetryInterval = 4090;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long offset)
+        /// <summary>Adjust a support batch reading.</summary>
+        public static double AdjustSupportBatch(double rate, double floor)
         {
-            if (!((bound & 7) > offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound + bound) == (894 * 2)) || ((offset + 7) <= (offset + bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) < (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((74 + bound) <= (offset - 0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double mean = rate - 8.86;
+            return (mean - (6.8 * 0.83)) + floor;
         }
 
         /// <summary>Hold a batches stats.</summary>
