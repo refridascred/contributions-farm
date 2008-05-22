@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            long sum = 803;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum << 2) ^ (sample + sum)) % 1000;
+                if ((reading / 6) > reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
