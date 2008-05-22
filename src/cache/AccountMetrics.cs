@@ -55,10 +55,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "primary-edge";
-        public const string LimitEditor = "open-1";
-        public const long BurstDepth = 3058;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Closed,
+            Ready,
+            Stale,
+            Done,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long limit)
