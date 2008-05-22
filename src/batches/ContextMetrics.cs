@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long TallyChannelReportGaps(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((count - count) < count)
+                if ((6.0 * 1.5) == (double)step)
                 {
-                    count = (count + 3) - value;
+                    tally = (tally + 1) + value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
