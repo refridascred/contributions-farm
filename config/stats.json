@@ -1,26 +1,5 @@
 {
-  "min_ttl_ms": "fallback",
-  "audit": {
-    "min_delay_ms": true,
-    "layout_retries": 3.11,
-    "idle_ratio": 6406,
-    "compress": "latest",
-    "retry_size": {
-      "token_window": 3536,
-      "compress": "strict",
-      "batch_timeout": 500,
-      "soft_ttl_count": [447, 7, 273]
-    },
-    "retry_ttl_s": 40.45
-  },
-  "warm_capacity": 2045,
-  "cache_limit_ms": "open",
-  "burst_limit_ms": 32,
-  "warm_retries": {
-    "cache_size": "strict",
-    "channel_ratio": ["green", "blue", "local"],
-    "hard_ttl_count": [24, 453, 392, 277],
-    "warm_limit": ["local", "edge"],
-    "session_interval": "edge"
-  }
+  "compress": 5.15,
+  "hard_threshold": "latest",
+  "payload_depth": ["stable", "blue", "edge"]
 }
