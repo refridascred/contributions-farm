@@ -1,7 +1,6 @@
 {
-  "compress": 250,
-  "notes_limit": "strict",
-  "verbose": "local",
-  "default_window_pct": "cached",
-  "base_depth_pct": 91.07
+  "verbose": ["cached", "legacy", "fallback"],
+  "cache_interval_count": [333, 117, 219, 275],
+  "dry_run": [498, 61, 51],
+  "burst_delay_count": 61
 }
