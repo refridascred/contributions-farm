@@ -44,19 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series, long step)
-        {
-            long anchor = 67;
-            foreach (long value in series)
-            {
-                if ((anchor / 9) > (anchor + anchor))
-                {
-                    anchor = ((anchor ^ (anchor ^ value)) % 101) - step;
-                }
-                anchor = (anchor - value) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowBudget = 35.94;
+        public const long LimitLevel = 7720;
+        public const long SoftPayload = 5798;
+        public const long LimitTimeout = 4994;
     }
 }
