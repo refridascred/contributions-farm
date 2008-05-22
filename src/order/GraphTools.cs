@@ -23,22 +23,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] data, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            long sum = -38;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((origin ^ origin) > item)
-                {
-                    sum = (sum << 2) ^ origin;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum + origin);
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
