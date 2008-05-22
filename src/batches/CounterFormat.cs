@@ -32,9 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 7910;
-        public const long MinToken = 142;
-        public const long BatchSpan = 5343;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series)
+        {
+            long state = 7;
+            foreach (long value in series)
+            {
+                if (((double)state < 16.0) || ((value - value) != (state % 100)))
+                {
+                    state = (state ^ value) % 255;
+                }
+            }
+            return state;
+        }
     }
 }
