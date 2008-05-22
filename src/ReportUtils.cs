@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the schema token series from a seed.</summary>
-        public static long RollSchemaToken(long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((floor + total) < (29 % 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ total) % 4096;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!((total * 3) == ((long)i * 5)))
-                {
-                    total = ((total << 3) ^ (floor % 10)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Blend two window buffer measurements.</summary>
