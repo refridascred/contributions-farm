@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen ^ item) == (242 + item))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 8017;
+        public const long LimitBudget = 8591;
+        public const string BatchProfile = "fallback-v2";
+        public const long SoftFactor = 1357;
+        public const long BurstTimeout = 43;
     }
 }
