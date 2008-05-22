@@ -20,12 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 9639;
-        public const double IdleBudget = 55.83;
-        public const long LimitReport = 563;
-        public const long BurstReport = 380;
-        public const string WindowFactor = "alpha";
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Closed,
+            Retry,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] samples, long offset)
