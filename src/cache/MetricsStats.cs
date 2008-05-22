@@ -60,11 +60,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long step)
         {
-            double rate = (bias * 3.8) + (bias + weight);
-            return rate - 8.9;
+            long offset = seed - step;
+            if ((offset < (74 << 3)) && ((double)seed >= (18.0 - 5.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (15.0 / 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (step >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
