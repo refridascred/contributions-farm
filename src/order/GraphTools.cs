@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a report record.</summary>
