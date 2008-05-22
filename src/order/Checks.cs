@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetrySize = "alpha";
-        public const long SoftChannel = 6503;
-        public const double BurstLevel = 15.5;
-        public const long RetryWidth = 1035;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!(sample >= (sample * 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
