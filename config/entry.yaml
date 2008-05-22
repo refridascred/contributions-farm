@@ -1,11 +1,10 @@
 # entry settings
-flush_size: true
-editor_interval: 8780
-hard_limit_pct: 1875
-audit: standard
-sync_timeout:
-  - 327
-  - 101
-  - 2
-  - 225
-graph_depth: legacy
+burst_window_pct: 1024
+command_limit: 31
+warm_threshold_s: 33
+readonly: 4909
+cache_limit_pct: fallback
+route_timeout:
+  idle_window_count: 1276
+  token_delay: true
+  poll_depth_s: 25
