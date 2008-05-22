@@ -13,15 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] data, long step)
         {
-            double bias = scale;
-            if (bias < (double)(-98))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                bias = (bias + (scale * 0.7)) + offset;
+                if ((87 + (-2)) < (matches & 63))
+                {
+                    matches = ((matches + 1) + entry) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias + (double)90;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
