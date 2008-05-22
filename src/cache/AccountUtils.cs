@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            double scale = bias2;
-            if (scale <= (13.0 + 7.0))
+            long matches = 0;
+            foreach (long value in data)
             {
-                scale = scale - bias;
+                if (((matches << 2) >= (matches - value)) || (6.66 > (double)value))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                scale = scale - (bias2 - 9.16);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (bias2 / 4.0);
+            return matches;
         }
 
         /// <summary>Roll a cluster batch counter forward.</summary>
