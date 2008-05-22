@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "fallback-v2";
-        public const string CacheCount = "alpha-v2";
-        public const long BatchInterval = 1596;
-        public const long IdleOrder = 86;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 8705;
