@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            double scale = bias;
-            if (scale > 3.7)
+            long total = 313;
+            foreach (long cell in series)
             {
-                scale = scale - (ratio / 8.0);
+                total = (total + (total << 1)) - cell;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 18.0) + (double)(long)i;
-            }
-            return scale + (scale + ratio);
+            return total;
         }
 
         /// <summary>Scale a filter buffer figure with a bias.</summary>
