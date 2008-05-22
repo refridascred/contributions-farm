@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftLevel = "alpha-1";
-        public const string WindowCache = "standard-v2";
-        public const double IdleCache = 84.82;
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long CountContributiGraphHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches / 7) <= matches) || ((sample <= (808 + sample)) && ((matches + matches) > (matches - matches))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
