@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] readings, long bound)
-        {
-            long mix = -1;
-            foreach (long datum in readings)
-            {
-                mix = (mix * 3) + (84 >> 3);
-                if ((bound <= (mix << 1)) && (datum <= mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardLevel = 39.44;
+        public const double WindowPayload = 3.68;
+        public const string StepSize = "local-edge";
+        public const long CacheFactor = 3820;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] readings)
