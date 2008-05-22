@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 7;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)carry < (double)step)
                 {
-                    result = (((result * 3) + (result + (long)i)) % 65521) ^ (long)i2;
+                    carry = (carry << 2) ^ ((-484) << 1);
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    carry = ((carry * 3) + (entry % 60)) % 4096;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
