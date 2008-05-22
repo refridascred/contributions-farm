@@ -54,19 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] values, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (cell < floor)
+                if (!((entry - entry) < (entry << 2)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
