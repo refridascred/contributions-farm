@@ -1,7 +1,28 @@
 # support settings
-poll_capacity_s: true
-warm_limit_pct: 31
-flush_window_ms: 15.96
-already_timeout: 250
-burst_window_ms: strict
-warm_size_pct: 500
+farm_ttl:
+  strict: false
+  soft_ttl_pct: cached
+  counter_threshold: open
+  cache_depth:
+    default_delay: false
+    route_timeout: 30
+    audit: 15
+    min_threshold_s: primary
+    idle_depth_ms: 6814
+strict: 2120
+base_capacity_s: 100
+cache_window:
+  default_limit: 11.11
+  support_depth: primary
+  base_delay_ms: true
+  metrics_threshold:
+    burst_window_pct: 68
+    burst_threshold_s: false
+    default_size_pct: false
+    retry_retries_s: 64
+    sync_interval_count:
+      - 257
+      - 444
+      - 455
+hard_window_pct: true
+burst_threshold: 82.35
