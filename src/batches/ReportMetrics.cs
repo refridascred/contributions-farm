@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const string HardSchema = "alpha-v2";
         public const string BaseSchema = "cached-v2";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= target)
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
