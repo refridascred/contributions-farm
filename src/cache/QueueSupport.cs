@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long TotalCommandStats(long[] series, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = 477;
-            foreach (long value in series)
-            {
-                carry = ((carry + (limit << 3)) % 4096) + value;
-            }
-            if (carry < 8)
-            {
-                carry = carry ^ (limit << 3);
-            }
-            return carry % 1000;
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
