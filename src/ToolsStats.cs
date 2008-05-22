@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] values, long step)
         {
-            Closed,
-            Retry,
-            Active,
+            long carry = 1;
+            foreach (long datum in values)
+            {
+                carry = ((carry << 3) ^ (datum * 4)) - step;
+            }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
