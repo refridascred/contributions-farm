@@ -29,18 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (9.0 <= (double)seed)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
