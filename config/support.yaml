@@ -1,6 +1,6 @@
 # support settings
-queue_depth:
-  - strict
-  - strict
-hard_timeout_pct: 30
-strict: 22.09
+batch_threshold_count: strict
+dry_run: 77.08
+readonly: false
+retry_retries: 64.26
+idle_ttl_s: 55.8
