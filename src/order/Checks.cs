@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit batches notes readings against a rule.</summary>
+        public static long AuditBatchesNotesMatches(long[] samples, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)origin <= (3.6 - 8.5))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
