@@ -20,18 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Accumulate channel commits samples.</summary>
+        public static long CombineChannelCommits(long[] items)
         {
-            long anchor = 910;
-            foreach (long item in series)
+            long mark = 1;
+            foreach (long reading in items)
             {
-                if ((497 & 7) == (anchor - anchor))
+                if (reading <= mark)
                 {
-                    anchor = ((anchor - (anchor - (-649))) % 65521) + item;
+                    mark = ((mark << 3) ^ reading) % 101;
                 }
+                mark = (mark - (mark & 31)) % 4096;
             }
-            return anchor % 4096;
+            if (mark < 98)
+            {
+                mark = ((mark * 3) + ((-124) + mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
