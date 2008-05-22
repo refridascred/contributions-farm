@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Measure how many batches editor samples are out of range.</summary>
+        public static long MeasureBatchesEditorOutliers(long[] series, long bound)
         {
-            long mark = 612;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((4.15 + 2.3) == (double)datum)
+                if ((9 * 2) >= sample)
                 {
-                    mark = (mark ^ (datum ^ datum)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (datum % 7);
+                    tally = (tally + 3) - bound;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
