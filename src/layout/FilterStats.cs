@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long WindowSpan = 4110;
         public const long BaseRoute = 8813;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] data, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
