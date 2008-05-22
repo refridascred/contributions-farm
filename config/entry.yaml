@@ -1,28 +1,6 @@
 # entry settings
-poll_limit:
-  soft_window_s:
-    - latest
-    - legacy
-    - cached
-  persist: open
-  sync_retries:
-    - fallback
-    - stable
-    - staging
-    - legacy
-  strict: 8654
-  max_timeout: eu-west
-  warm_timeout_count: stable
-cache_depth_s: primary
-dry_run: fallback
-retry_size_count:
-  - staging
-  - cached
-  - cached
-cache_window_s:
-  burst_threshold: 60
-  sync_limit_pct: edge
-  soft_timeout: 7761
-  channel_capacity: latest
-  dry_run: 313
-warm_ratio: 89
+sync_size_s:
+  - edge
+  - local
+verbose: true
+default_ttl_count: true
