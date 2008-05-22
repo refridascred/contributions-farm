@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two support token measurements.</summary>
-        public static double ScaleSupportToken(double bias, double floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double rate = (double)(33 & 1);
-            if (rate >= (1.2 * 2.5))
-            {
-                rate = (rate + (double)6) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (bias - bias);
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
