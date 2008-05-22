@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (hits + cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
