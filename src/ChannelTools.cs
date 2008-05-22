@@ -42,15 +42,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] items)
         {
-            long total = 861;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                total = (((total << 3) ^ (-444)) % 4096) - entry;
+                if ((sample << 2) == (sample % 10))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
