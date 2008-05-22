@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a schema format figure with a bias.</summary>
-        public static double BlendSchemaFormat(double ratio, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] levels, long limit)
         {
-            double weight = span / 8.0;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                weight = (weight - (ratio / 8.0)) - (double)(long)i;
+                if (((double)matches != (double)limit) || (entry < ((long)levels.Length - limit)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - (weight - weight);
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
