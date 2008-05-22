@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit format filter readings against a rule.</summary>
-        public static long TallyFormatFilterHits(long[] readings, long floor)
+        /// <summary>Count the order graph entries that pass the check.</summary>
+        public static long CountOrderGraphMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((5 - item) < ((long)readings.Length * 3))
+                if ((datum < (seen - seen)) && ((double)datum < (0.9 + 11.0)))
                 {
-                    tally = (tally + 1) - floor;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the queue class values.</summary>
