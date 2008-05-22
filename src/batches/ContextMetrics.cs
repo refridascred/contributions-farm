@@ -34,13 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                long count = ((long)i - 86) + (bound - bound);
+                if ((count + acc) > (172 - acc))
+                {
+                    count = ((count << 3) ^ ((long)i + 0)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support entry.</summary>
