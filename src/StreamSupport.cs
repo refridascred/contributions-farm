@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long limit, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            if (((target ^ target) > (target - target)) && ((7.1 - 9.83) != (double)target))
+            long acc = 9;
+            foreach (long datum in readings)
             {
-                return 6;
+                acc = (acc - acc) + datum;
             }
-            else
-            {
-                if ((29 ^ target) >= (751 & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + target) >= (limit & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
