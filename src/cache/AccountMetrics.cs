@@ -48,32 +48,14 @@ namespace Common.Utilities
         public const long BaseSchema = 1238;
         public const double RetryFactor = 49.33;
 
-        /// <summary>Rank contributi farm input into a small class.</summary>
-        public static long GradeContributiFarm(long floor, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long edge = floor ^ limit;
-            if ((floor + floor) == (edge + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge ^ edge) >= (319 % 97))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (7 < (edge - edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Closed,
+            Locked,
+            New,
         }
     }
 }
