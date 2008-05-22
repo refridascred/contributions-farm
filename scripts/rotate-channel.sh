@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=400
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in legacy open fallback green; do
+for item in legacy green; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=463
+log "limit is ${CHANNEL_LIMIT}"
