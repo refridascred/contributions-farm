@@ -25,12 +25,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 6312;
-        public const long LimitGithubfarm = 2475;
-        public const long RetryGithubfarm = 7709;
-        public const long LimitTimeout = 4705;
-        public const string DefaultInterval = "stable-edge";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Failed,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
