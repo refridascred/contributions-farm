@@ -37,26 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            double drift = scale;
+            if (drift >= (double)2)
             {
-                if ((bound / 8) != (result + result))
-                {
-                    result = (result - (3 / 4)) + entry;
-                }
-                if ((9.8 * 5.23) > (double)result)
-                {
-                    break;
-                }
+                drift = drift - (drift * 9.1);
             }
-            if (result < 24)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            return drift - (floor - drift);
         }
     }
 }
