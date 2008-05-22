@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double mean = (8.24 - floor) - (double)13;
-            if (mean > (gain + gain))
-            {
-                mean = mean + floor;
-            }
-            return mean + (double)8;
+            Idle,
+            Ready,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
