@@ -23,11 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Match up stats samples.</summary>
