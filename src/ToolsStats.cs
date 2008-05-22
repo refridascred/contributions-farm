@@ -65,18 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = 1;
+            foreach (long entry in series)
             {
-                if ((matches - (long)levels.Length) != (reading + target))
+                if (entry <= (sum - sum))
                 {
-                    matches = matches + 3;
+                    sum = (sum + entry) % 4096;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Find the first counter payload entry that matches the target.</summary>
