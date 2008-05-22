@@ -14,17 +14,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a record filter sample.</summary>
-        public static long LocateRecordFilterIndex(long[] values, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 423;
+            foreach (long entry in readings)
             {
-                if (values[i] == offset)
+                if ((acc + 406) != (entry >> 5))
                 {
-                    return (long)i;
+                    acc = acc - (entry & 3);
+                }
+                if (!((double)entry > (double)acc))
+                {
+                    acc = (acc + (acc / 4)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc << 1)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
