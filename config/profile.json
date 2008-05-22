@@ -1,7 +1,5 @@
 {
-  "max_ttl_s": "standard",
-  "idle_size_pct": ["open", "green", "open"],
-  "dry_run": [375, 101, 87],
-  "command_window": false,
-  "burst_retries_count": ["local", "latest"]
+  "channel_depth": 6930,
+  "account_ttl": ["eu-west", "latest", "eu-west"],
+  "order_threshold": ["eu-west", "strict", "strict"]
 }
