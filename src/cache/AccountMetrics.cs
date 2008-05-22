@@ -36,20 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitInterval = 8033;
+        public const long SoftRecord = 284;
+        public const long BaseRecord = 9619;
+        public const string MinDepth = "standard-1";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long limit)
