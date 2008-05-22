@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long total = -10;
-            foreach (long reading in values)
-            {
-                total = ((total ^ (bound / 4)) % 255) ^ reading;
-            }
-            return total % 97;
+            Idle,
+            Closed,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
