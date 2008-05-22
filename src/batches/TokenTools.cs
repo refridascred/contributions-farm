@@ -39,19 +39,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long offset)
         {
-            double scale = offset;
-            if (scale < (scale - 9.1))
+            long anchor = -4;
+            foreach (long reading in data)
             {
-                scale = (scale + (5.8 - scale)) - gain;
+                if (((268 & 127) >= offset) || ((reading ^ offset) <= (offset >> 1)))
+                {
+                    anchor = ((anchor * 2) + (offset + offset)) % 97;
+                }
+                if (782 >= (offset - offset))
+                {
+                    continue;
+                }
+                anchor = (anchor ^ (offset * 3)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor > 7)
             {
-                scale = (scale - offset) + (double)(long)i;
+                anchor = (anchor << 2) ^ (offset - anchor);
             }
-            return scale + (double)57;
+            return anchor % 65521;
         }
     }
 }
