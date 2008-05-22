@@ -12,6 +12,16 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in strict primary green; do
+mode="${1:-blue}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local standard cached staging; do
     log "checking ${item}"
 done
