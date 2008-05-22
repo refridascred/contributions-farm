@@ -29,19 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] levels, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!(target <= ((long)i * 4)))
+                if (cell < offset)
                 {
+                    found = false;
                     break;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
