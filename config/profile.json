@@ -1,6 +1,7 @@
 {
-  "cache_timeout": "fallback",
-  "min_window": ["edge", "fallback", "blue"],
-  "record_delay": 4966,
-  "poll_depth_ms": true
+  "max_ttl_s": "standard",
+  "idle_size_pct": ["open", "green", "open"],
+  "dry_run": [375, 101, 87],
+  "command_window": false,
+  "burst_retries_count": ["local", "latest"]
 }
