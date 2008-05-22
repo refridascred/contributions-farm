@@ -13,14 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Locate a commits session reading by value.</summary>
+        public static long FindCommitsSessionIndex(long[] data, long seed)
         {
-            Synced,
-            Done,
-            Retry,
-            Paused,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
