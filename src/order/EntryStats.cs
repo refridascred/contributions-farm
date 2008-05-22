@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] readings, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches < (double)entry)
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
