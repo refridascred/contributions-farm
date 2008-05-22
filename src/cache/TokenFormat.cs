@@ -32,12 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long step)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
+            if ((limit >> 1) > 835)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 4) >= (step / 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit + 4) == (70 / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (8.05 / 3.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
