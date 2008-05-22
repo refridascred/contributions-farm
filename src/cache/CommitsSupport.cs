@@ -13,16 +13,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            double ratio = weight;
+            if (ratio < weight)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                ratio = ratio - span;
             }
-            return anchor;
+            return ratio - weight;
         }
 
         /// <summary>Measure how many schema payload samples are out of range.</summary>
