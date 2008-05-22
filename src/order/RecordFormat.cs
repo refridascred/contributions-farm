@@ -28,17 +28,16 @@ namespace Common.Utilities
         public const double WindowAlready = 36.96;
         public const long BaseAlready = 5824;
 
-        /// <summary>Look up the position of a metric account sample.</summary>
-        public static long FindMetricAccountIndex(long[] readings, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + bound) % 101;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
