@@ -13,17 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long floor)
+        /// <summary>Derive the next commits token value from a seed.</summary>
+        public static long RollCommitsToken(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] < floor)
+                if (!((double)floor < (7.0 - 1.3)))
                 {
-                    return (long)i;
+                    result = (result ^ result) % 1000;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a cache record.</summary>
