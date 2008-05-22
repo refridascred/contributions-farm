@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 757;
+            foreach (long sample in items)
             {
-                if ((item / 4) < hits)
+                if ((mix & 1) >= (sample + sample))
                 {
-                    hits = hits + 1;
+                    mix = ((mix << 2) ^ 599) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + mix;
                 }
             }
-            return hits;
+            if (mix < 5)
+            {
+                mix = ((mix << 3) ^ (mix % 12)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
