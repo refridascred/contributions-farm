@@ -28,16 +28,11 @@ namespace Common.Utilities
         public const double WindowAlready = 36.96;
         public const long BaseAlready = 5824;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + bound) % 101;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
