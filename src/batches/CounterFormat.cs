@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long TallyLayoutGithubfarmMatches(long[] values, long bound)
         {
-            double bias = (double)(4 - 527);
-            return (bias + (weight + bias)) + floor;
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (bound < (sample * 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
