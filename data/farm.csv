@@ -1,8 +1,6 @@
-id,ratio,score
-1,88,470
-2,staging,cached
-3,202,74.45
-4,64.38,873
-5,stable,790
-6,935,514
-7,87.35,654
+id,state,active,label,score
+1,64.56,791,653,794
+2,open,64.2,756,stable
+3,staging,165,latest,standard
+4,169,34.95,strict,75.84
+5,stable,latest,61.01,32.85
