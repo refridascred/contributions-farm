@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two route metrics measurements.</summary>
-        public static double ProjectRouteMetrics(double ratio, double floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            double mean = floor;
-            if (mean >= (9.0 - floor))
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - 2.0) - ratio;
+                if (((offset + (long)i) >= ((long)i << 1)) && (363 < (offset >> 2)))
+                {
+                    continue;
+                }
+                if ((offset - offset) != ((long)i & 255))
+                {
+                    mix = mix ^ ((long)i % 7);
+                    mix = ((mix * 3) + (offset - offset)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - 12.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (double)4;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
