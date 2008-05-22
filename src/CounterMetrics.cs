@@ -60,25 +60,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long lane = floor - step;
-            if ((8.0 + 12.0) != (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-5) <= (lane << 3)) && ((step % 97) != (floor + lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Stale,
+            Dropped,
+            Done,
         }
     }
 }
