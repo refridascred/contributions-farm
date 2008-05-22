@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit counter report readings against a rule.</summary>
+        public static long TallyCounterReportMatches(long[] data, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + cell) < (tally / 2))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
