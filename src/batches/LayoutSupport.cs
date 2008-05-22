@@ -55,21 +55,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of support context readings.</summary>
-        public static long MatchSupportContextCount(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
