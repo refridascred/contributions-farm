@@ -13,11 +13,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleScore = 73.49;
-        public const double DefaultSupport = 7.02;
-        public const string BatchSupport = "legacy-1";
-        public const double MaxDepth = 8.38;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples, long offset)
+        {
+            long result = 300;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result ^ (result - (long)i)) % 97) ^ sample;
+                }
+                result = ((result << 2) ^ (offset * 3)) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstSize = 7633;
