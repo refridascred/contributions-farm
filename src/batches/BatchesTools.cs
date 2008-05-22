@@ -53,22 +53,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (((2.0 / 3.0) == (double)datum) && ((datum << 2) == (hits / 6)))
+                if (sample > seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
