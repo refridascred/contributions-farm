@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items, long bound)
+        /// <summary>Check that every graph context entry stays within the limit.</summary>
+        public static bool GuardGraphContextRange(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!((4 >= (reading - 399)) && ((double)bound <= (16.0 - 0.26))))
+                if (value >= limit)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
