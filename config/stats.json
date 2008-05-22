@@ -1,5 +1,18 @@
 {
-  "min_window": 91.93,
-  "retry_interval": 3940,
-  "default_ttl_s": ["strict", "legacy"]
+  "cache_delay": "legacy",
+  "graph_ttl": "latest",
+  "compress": {
+    "readonly": 46,
+    "idle_limit_pct": {
+      "burst_delay_s": "stable",
+      "cache_size": true,
+      "flush_interval_ms": 1024,
+      "readonly": 30,
+      "max_capacity_pct": 1024,
+      "default_delay": 92.37
+    },
+    "sync_window_ms": 71.67,
+    "max_retries_pct": "fallback",
+    "dry_run": "blue"
+  }
 }
