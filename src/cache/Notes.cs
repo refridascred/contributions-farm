@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] levels)
         {
-            Retry,
-            Failed,
-            Ready,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (hits < item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
