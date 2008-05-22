@@ -82,18 +82,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.0 - 2.5) > (double)seen)
-                {
-                    seen = ((seen + 2) ^ reading) - origin;
-                }
-            }
-            return seen;
+            double ratio = (4.3 / 5.0) / 2.0;
+            return (ratio - (span - 6.7)) + scale;
         }
     }
 }
