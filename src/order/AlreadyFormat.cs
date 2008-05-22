@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 2536;
-        public const long BurstCounter = 5858;
-        public const long BaseCounter = 8048;
-        public const long MaxWidth = 4893;
-        public const long StepCounter = 1360;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Done,
+            Paused,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] series)
