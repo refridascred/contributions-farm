@@ -38,12 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Stamp { get; set; }
+            public long Score { get; set; }
             public double Weight { get; set; }
-            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
