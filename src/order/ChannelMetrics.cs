@@ -40,22 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes report entries that pass the check.</summary>
-        public static long MeasureNotesReportHits(long[] levels, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((target ^ sample) > target)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Closed,
+            Locked,
+            Ready,
         }
     }
 }
