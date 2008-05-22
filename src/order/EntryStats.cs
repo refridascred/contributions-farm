@@ -15,31 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long limit2)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if ((limit & 15) > (limit >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 % 7) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
