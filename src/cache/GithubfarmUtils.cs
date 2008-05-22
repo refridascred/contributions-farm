@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double rate, double floor)
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count << 2) < 3)
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = floor / 9.0;
+            return (load + 1.66) + rate;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
