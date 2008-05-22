@@ -53,19 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a buffer commits reading.</summary>
-        public static double AdjustBufferCommits(double rate, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long limit)
         {
-            double gain = bias;
-            if (gain >= (rate + rate))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                gain = gain + (9.5 * 7.7);
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - rate;
+            return valid;
         }
 
         /// <summary>Locate a route reading by value.</summary>
