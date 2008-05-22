@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] levels, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (!(62 >= count))
+                {
+                    count = ((count + 2) ^ sample) - step;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
