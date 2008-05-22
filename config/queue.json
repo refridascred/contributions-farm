@@ -1,15 +1,6 @@
 {
-  "retry_capacity_s": 30,
-  "dry_run": {
-    "order_interval": {
-      "soft_threshold_count": false,
-      "enabled": "eu-west",
-      "commits_ratio": true
-    },
-    "metrics_interval": "green",
-    "min_ttl_s": "open",
-    "readonly": 30
-  },
-  "max_delay_s": ["edge", "blue", "latest", "blue"],
-  "tools_retries": 5.28
+  "readonly": 92,
+  "warm_interval": true,
+  "dry_run": 5154,
+  "context_retries": "latest"
 }
