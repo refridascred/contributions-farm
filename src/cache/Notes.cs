@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] items, long step)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((step << 2) <= (long)items.Length)
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
