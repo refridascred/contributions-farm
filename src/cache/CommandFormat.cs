@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 96.77;
-        public const long CacheSupport = 1471;
-        public const double HardSupport = 93.6;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
