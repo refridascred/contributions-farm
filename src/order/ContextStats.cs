@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series, long floor)
         {
-            Retry,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((floor % 2) <= 9)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
