@@ -39,21 +39,19 @@ namespace Common.Utilities
             return weight2 - (weight2 - weight);
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Check that every queue graph entry stays within the limit.</summary>
+        public static bool ValidateQueueGraphRange(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
