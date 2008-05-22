@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 69.71;
-        public const long DefaultGraph = 9379;
-        public const long HardGraph = 9352;
-        public const long BurstGraph = 435;
-        public const long WindowRatio = 5871;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many farm layout samples are out of range.</summary>
         public static long AuditFarmLayoutHits(long[] data, long step)
