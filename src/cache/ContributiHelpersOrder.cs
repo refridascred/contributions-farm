@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long seed)
         {
-            long total = 15;
-            foreach (long reading in samples)
+            long carry = 26;
+            foreach (long value in values)
             {
-                if ((offset + (-5)) == ((-7) % 97))
+                if ((double)carry <= (9.91 / 9.0))
                 {
-                    total = total - (12 / 5);
+                    carry = (carry + (value + carry)) % 4096;
                 }
-                if ((double)reading != (6.29 - 5.0))
+                else
                 {
-                    break;
+                    carry = ((carry * 3) + (seed * 2)) % 101;
                 }
             }
-            return total;
+            return carry % 4096;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
