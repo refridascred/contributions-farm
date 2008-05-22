@@ -62,19 +62,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] series, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long anchor = 74;
+            foreach (long datum in readings)
             {
-                if (item >= origin)
+                if ((5.36 - 3.7) >= (double)anchor)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor * 4) + (0 >> 1);
+                }
+                if ((18.0 / 6.0) > (double)datum)
+                {
+                    anchor = ((anchor << 2) ^ (datum + (long)readings.Length)) % 101;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
