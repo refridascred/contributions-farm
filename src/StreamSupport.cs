@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool CheckGithubfarmClusterLimits(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > bound)
                 {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
