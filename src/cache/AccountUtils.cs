@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryRatio = 1519;
+        public const double RetryWidth = 91.66;
+        public const long BurstSchema = 493;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
