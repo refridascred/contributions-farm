@@ -25,30 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long sum = -85;
-            foreach (long reading in values)
-            {
-                if ((sum >> 2) >= sum)
-                {
-                    sum = (sum ^ (reading / 8)) % 255;
-                }
-                if ((double)reading <= (4.7 * 6.94))
-                {
-                    sum = (sum * 5) + reading;
-                }
-                if (!(sum < (85 - sum)))
-                {
-                    break;
-                }
-            }
-            if (sum < 17)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
