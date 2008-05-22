@@ -46,16 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum << 2) ^ (floor - floor);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((origin + 7) < score)
+                {
+                    score = (score * 2) + (score & 3);
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the stats phase values.</summary>
