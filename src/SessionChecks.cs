@@ -54,14 +54,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Queued,
-            Pending,
-            Locked,
-            Synced,
+            Paused,
             Retry,
+            Pending,
         }
     }
 }
