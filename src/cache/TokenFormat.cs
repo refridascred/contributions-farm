@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first metric account entry that matches the target.</summary>
-        public static long SeekMetricAccountIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitWidth = 7232;
+        public const double CacheFilter = 50.41;
+        public const long WindowFilter = 5777;
+        public const long HardFilter = 9488;
+        public const long MinLevel = 7415;
 
         /// <summary>Adjust a account githubfarm reading.</summary>
         public static double ProjectAccountGithubfarm(double gain, double floor)
