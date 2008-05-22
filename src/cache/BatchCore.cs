@@ -32,11 +32,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitGithubfarm = "cached-edge";
-        public const long CacheScore = 1869;
-        public const long CacheGithubfarm = 9886;
-        public const string RetryFactor = "staging-v2";
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MinInterval = "primary";
