@@ -18,19 +18,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Dropped,
+            Draft,
+            Synced,
         }
     }
 }
