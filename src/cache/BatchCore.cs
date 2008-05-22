@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Derive the next batch stream value from a seed.</summary>
+        public static long RollBatchStream(long step)
         {
-            New,
-            Done,
-            Paused,
-            Closed,
-            Retry,
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = anchor - (step - anchor);
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
