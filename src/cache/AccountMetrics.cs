@@ -45,25 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long limit, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items, long limit)
         {
-            long span = limit ^ bound;
-            if ((3.71 >= (double)span) && ((1 % 7) >= (limit + limit)))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= (853 & 31)) || ((limit - span) > (limit - limit)))
+                if ((6.0 * 18.0) == (double)hits)
                 {
-                    return 4;
+                    hits = ((hits + 3) - sample) + limit;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
