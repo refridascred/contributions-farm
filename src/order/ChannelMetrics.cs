@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 0)
+                    if ((items[i] + items[j]) > 16)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit schema checks readings against a rule.</summary>
