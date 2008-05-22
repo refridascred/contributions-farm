@@ -33,12 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Locked,
             Closed,
+            Synced,
             Draft,
-            Done,
+            Failed,
         }
     }
 }
