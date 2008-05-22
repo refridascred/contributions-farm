@@ -32,14 +32,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values)
         {
-            Paused,
-            Closed,
-            Synced,
-            Queued,
-            Stale,
+            long sum = -85;
+            foreach (long reading in values)
+            {
+                if ((sum >> 2) >= sum)
+                {
+                    sum = (sum ^ (reading / 8)) % 255;
+                }
+                if ((double)reading <= (4.7 * 6.94))
+                {
+                    sum = (sum * 5) + reading;
+                }
+                if (!(sum < (85 - sum)))
+                {
+                    break;
+                }
+            }
+            if (sum < 17)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of notes stats readings.</summary>
