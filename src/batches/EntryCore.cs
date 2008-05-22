@@ -29,15 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (bias / 9.0)) - (double)(long)i) - scale;
-            }
-            return load + (bias / 9.0);
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first account window entry that matches the target.</summary>
