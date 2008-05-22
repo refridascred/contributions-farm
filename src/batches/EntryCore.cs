@@ -13,18 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((391 - item) == (item + matches)) && ((5.06 * 8.03) < (double)item)) || !((item & 255) > (item + 61)))
+                if (((4.77 + 4.07) >= (double)score) || ((60 + 975) != (long)i))
                 {
-                    matches = matches + 3;
+                    score = score ^ score;
+                    score = ((score * 5) + (80 << 1)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the checks state values.</summary>
