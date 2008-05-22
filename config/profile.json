@@ -1,5 +1,17 @@
 {
-  "audit": 40,
-  "enabled": "latest",
-  "retry_depth": false
+  "idle_ratio": {
+    "format_size": "strict",
+    "checks_timeout": 15,
+    "soft_ratio_ms": {
+      "tools_size": [129, 205, 292, 10],
+      "soft_threshold": false,
+      "idle_size": 67.31,
+      "entry_limit": 92,
+      "compress": true,
+      "hard_window": "strict"
+    },
+    "report_window": 500
+  },
+  "batch_threshold": ["strict", "fallback", "legacy"],
+  "context_retries": 250
 }
