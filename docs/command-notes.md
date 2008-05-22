@@ -1,10 +1,11 @@
 # Command notes
 
-Use graph settings to tune how often schema data is refreshed.
-Use route settings to tune how often metric data is refreshed.
+The queue report groups every window by metrics.
+The buffer report groups every checks by buffer.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer batch defaults
-- Validate payload input early
+- Keep schema values small
+- Validate filter input early
+- Review batch limits each release
+- Prefer queue defaults
