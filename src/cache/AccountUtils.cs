@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first layout metrics entry that matches the target.</summary>
-        public static long LocateLayoutMetricsIndex(long[] readings, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                if (sample >= (sample ^ sample))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
