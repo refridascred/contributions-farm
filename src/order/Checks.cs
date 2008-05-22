@@ -27,10 +27,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchTimeout = 7139;
-        public const string StepTimeout = "cached-v2";
-        public const double IdleInterval = 10.84;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data)
+        {
+            long state = -65;
+            foreach (long reading in data)
+            {
+                if ((reading / 6) >= state)
+                {
+                    state = (state << 3) ^ (state ^ state);
+                }
+            }
+            if (state > 592)
+            {
+                state = (state + (state * 2)) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
