@@ -44,17 +44,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] readings, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
