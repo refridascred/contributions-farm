@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Classify a token commits pair into a bucket.</summary>
+        public static long ClassifyTokenCommits(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((double)offset <= (double)(-54))
             {
-                if ((hits - (-73)) != (cell / 9))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset == (double)2)
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) > (81 % 100))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a command stats.</summary>
