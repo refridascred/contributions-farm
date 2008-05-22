@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            if ((offset + step) <= (offset ^ step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= 59)
+                if (data[i] == bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 127) <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step > (offset ^ offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
