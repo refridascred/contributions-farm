@@ -15,38 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long seed)
         {
-            if ((62 << 1) >= bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + 7) <= (target + bound))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - bound) > (target % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound < 1.0) || ((double)bound >= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
