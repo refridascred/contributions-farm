@@ -33,10 +33,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSpan = "standard-v2";
-        public const string CacheSupport = "staging";
-        public const long StepSupport = 4920;
+        /// <summary>Count the checks entry entries that pass the check.</summary>
+        public static long TallyChecksEntryMatches(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((3.15 + 10.0) > (double)value)
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
