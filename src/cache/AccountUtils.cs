@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a tools graph figure with a bias.</summary>
-        public static double BlendToolsGraph(double bias, double bias2)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            double gain = (bias + 6.0) / 7.0;
-            return gain - bias2;
+            double scale = bias2;
+            if (scale <= (13.0 + 7.0))
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale - (bias2 - 9.16);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (bias2 / 4.0);
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
