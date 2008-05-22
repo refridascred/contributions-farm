@@ -20,16 +20,18 @@ namespace Common.Utilities
             return drift + (3.0 + 13.0);
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] data, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                carry = (carry << 3) ^ 8;
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((6.3 / 9.0) < (double)item)
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
