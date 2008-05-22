@@ -19,28 +19,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)origin == (6.46 + 4.2))
-                {
-                    mix = (mix + (mix >> 5)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (31 / 3);
-                    mix = mix + ((long)i % 2);
-                }
-                if (!((8.4 / 5.0) > (double)origin))
-                {
-                    mix = (mix + ((long)i ^ mix)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
