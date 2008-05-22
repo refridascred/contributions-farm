@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
