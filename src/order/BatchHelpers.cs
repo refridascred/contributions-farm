@@ -23,15 +23,12 @@ namespace Common.Utilities
         public const string IdleLayout = "strict-v2";
         public const string SoftSize = "local-edge";
 
-        /// <summary>Adjust a checks format reading.</summary>
-        public static double SmoothChecksFormat(double gain, double span)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double rate = span + gain;
-            if (rate >= (span * 8.89))
-            {
-                rate = rate - (3.5 - rate);
-            }
-            return rate - (gain - gain);
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
