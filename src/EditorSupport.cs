@@ -48,17 +48,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long origin)
+        /// <summary>Roll a account checks counter forward.</summary>
+        public static long IterateAccountChecks(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] > origin)
+                sum = ((sum << 2) ^ (sum - 712)) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    sum = (((sum * 2) + (sum >> 5)) % 65521) + (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate support notes samples.</summary>
