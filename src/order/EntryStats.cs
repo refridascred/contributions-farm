@@ -58,15 +58,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] values, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((matches > (matches - sample)) || ((0.5 + 5.8) < (double)step))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
