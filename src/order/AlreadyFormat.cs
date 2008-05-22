@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data)
         {
-            double ratio = (double)7 - bias;
-            if (ratio >= (rate * 2.0))
+            long carry = 14;
+            foreach (long entry in data)
             {
-                ratio = ratio - (bias + ratio);
+                if ((entry & 127) >= (739 % 10))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (entry + carry)) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (rate + 6.9);
+            return carry;
         }
     }
 }
