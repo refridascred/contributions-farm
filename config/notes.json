@@ -1,18 +1,6 @@
 {
-  "compress": false,
-  "persist": 7213,
-  "sync_timeout_s": 4,
-  "poll_retries_count": {
-    "token_retries": {
-      "flush_ttl": true,
-      "layout_ratio": 5303,
-      "stream_limit": ["standard", "standard"],
-      "readonly": 4089
-    },
-    "max_threshold_pct": "eu-west",
-    "poll_threshold_count": "standard",
-    "batch_threshold_s": 9485,
-    "verbose": 0.75,
-    "flush_size_s": 250
-  }
+  "strict": true,
+  "idle_window_s": false,
+  "flush_timeout": 75.55,
+  "tools_size": false
 }
