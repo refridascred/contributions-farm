@@ -24,11 +24,12 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 8791;
         public const double BurstBudget = 57.08;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
+            public bool Total { get; set; }
             public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
