@@ -40,19 +40,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items, long limit)
-        {
-            long carry = -966;
-            foreach (long datum in items)
-            {
-                if ((((long)items.Length ^ datum) <= limit) || ((limit / 3) != (carry ^ 370)))
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 1335;
+        public const long LimitGithubfarm = 1626;
+        public const string IdleGithubfarm = "stable-edge";
+        public const long StepGithubfarm = 4188;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
