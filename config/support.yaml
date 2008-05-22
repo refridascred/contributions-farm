@@ -1,11 +1,22 @@
 # support settings
-layout_limit: legacy
-layout_delay:
-  dry_run:
-    - 388
-    - 89
-    - 126
-    - 86
-  commits_delay: legacy
-  batches_delay: latest
-editor_timeout: edge
+burst_size:
+  batches_capacity: 31.77
+  compress: 60
+  profile_delay: false
+  enabled:
+    - standard
+    - blue
+  verbose: 89
+flush_ttl_ms:
+  channel_timeout: 23.08
+  hard_depth_pct: 26
+  dry_run: 5786
+  batch_limit_pct: false
+  hard_interval:
+    - 58
+    - 454
+  session_window:
+    - green
+    - fallback
+base_limit_pct: edge
+flush_ratio: 25.92
