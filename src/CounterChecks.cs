@@ -41,23 +41,11 @@ namespace Common.Utilities
         public const double CacheScore = 15.76;
         public const long LimitSpan = 4097;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long anchor = -4;
-            foreach (long item in samples)
-            {
-                anchor = (anchor << 2) ^ (limit & 15);
-                if ((((-45) % 100) >= ((-17) + anchor)) && ((item & 255) > limit))
-                {
-                    anchor = (anchor + (item - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (-3)) % 97;
-                }
-            }
-            return anchor % 65521;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
