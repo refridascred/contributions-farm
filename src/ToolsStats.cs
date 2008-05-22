@@ -31,18 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Count order batches pairs that satisfy a relation.</summary>
+        public static long PairOrderBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value >> 5) > (584 + hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
