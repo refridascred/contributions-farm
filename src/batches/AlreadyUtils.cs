@@ -60,21 +60,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor << 3) < (floor / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc - ((long)i / 7)) % 97;
-                    acc = acc ^ ((long)i << 1);
-                    break;
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
     }
 }
