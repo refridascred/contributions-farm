@@ -56,26 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long seed)
+        /// <summary>Find the first filter entry entry that matches the target.</summary>
+        public static long LookupFilterEntryIndex(long[] series, long bound)
         {
-            long total = 28;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((0.84 + 6.72) >= (0.39 + 0.45)))
+                if (series[i] >= bound)
                 {
-                    continue;
-                }
-                if ((entry + entry) >= (seed * 5))
-                {
-                    total = (total ^ (total * 2)) % 65521;
-                }
-                if ((total * 4) < (entry + seed))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
