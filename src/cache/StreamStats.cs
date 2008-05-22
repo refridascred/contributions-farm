@@ -46,18 +46,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] data, long bound)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((double)cell < (double)92)
+                if (sample < bound)
                 {
-                    mark = ((mark - (cell / 8)) % 1000) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
