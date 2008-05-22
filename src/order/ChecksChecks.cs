@@ -20,21 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 129;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (975 < (1 ^ acc))
                 {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 2) + (acc + 56)) % 255;
+                    acc = acc ^ (datum * 4);
+                }
+                if (!((27 - 947) <= (datum + acc)))
+                {
+                    acc = (acc + datum) % 65521;
+                    acc = ((acc * 3) + (acc % 2)) % 65521;
+                }
+                if (acc < (acc / 7))
+                {
+                    acc = (acc - (4 - 8)) % 4096;
                 }
             }
-            return tally;
+            if (acc > 58)
+            {
+                acc = acc + (92 % 97);
+            }
+            return acc;
         }
 
         /// <summary>Project the next report metrics value.</summary>
