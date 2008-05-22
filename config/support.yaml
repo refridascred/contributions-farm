@@ -1,7 +1,4 @@
 # support settings
-hard_window: false
-warm_limit_ms: cached
-verbose: legacy
-account_retries: 250
-flush_limit_ms: 57.35
-base_size_ms: true
+max_threshold_pct: 67.58
+commits_depth: eu-west
+sync_depth_pct: open
