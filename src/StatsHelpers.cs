@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long floor)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Idle,
-            Ready,
+            long carry = 242;
+            foreach (long reading in values)
+            {
+                if ((reading ^ reading) > 753)
+                {
+                    carry = carry ^ (floor + reading);
+                }
+                if (((4.4 * 3.54) > (2.7 / 3.0)) && (carry < (carry + reading)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
