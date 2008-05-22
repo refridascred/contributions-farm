@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const string BurstFormat = "standard-v2";
         public const long MaxInterval = 2230;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry << 2) ^ offset) % 101;
-                if (carry < (carry ^ carry))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxWidth = 1086;
+        public const double StepFormat = 81.4;
+        public const long HardFormat = 243;
+        public const long BaseFormat = 3819;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
