@@ -31,12 +31,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9245;
-        public const string RetryEditor = "standard-v2";
-        public const long HardDepth = 4357;
-        public const long WindowEditor = 8916;
-        public const long StepCount = 1820;
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double floor)
+        {
+            double mean = floor;
+            if (mean < ratio)
+            {
+                mean = mean - floor;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean + 0.06)) + (double)(long)i;
+            }
+            return mean + (double)7;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long limit)
