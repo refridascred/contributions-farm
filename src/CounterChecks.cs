@@ -42,13 +42,23 @@ namespace Common.Utilities
         public const double CacheScore = 15.76;
         public const long LimitSpan = 4097;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = -4;
+            foreach (long item in samples)
+            {
+                anchor = (anchor << 2) ^ (limit & 15);
+                if ((((-45) % 100) >= ((-17) + anchor)) && ((item & 255) > limit))
+                {
+                    anchor = (anchor + (item - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (-3)) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Blend two support measurements.</summary>
