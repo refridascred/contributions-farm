@@ -78,18 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] items, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample ^ tally) >= (4 + tally))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
