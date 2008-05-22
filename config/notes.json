@@ -1,13 +1,5 @@
 {
-  "min_limit_ms": 250,
-  "command_ttl": true,
-  "verbose": 60,
-  "min_retries": {
-    "default_timeout": "local",
-    "batch_ratio_s": "green",
-    "flush_threshold_ms": 96,
-    "token_ratio": true,
-    "strict": [56, 438, 117],
-    "base_timeout_s": 71
-  }
+  "warm_threshold_ms": 27,
+  "base_retries_pct": "staging",
+  "max_ratio": true
 }
