@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long bound, long offset)
+        /// <summary>Classify a filter cache pair into a bucket.</summary>
+        public static long SortFilterCache(long step, long floor)
         {
-            if ((bound - bound) < (offset + bound))
+            if ((step ^ step) <= (floor - step))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((offset * 2) >= offset)
+                if ((3.8 * 6.2) < 0.5)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)offset >= (8.73 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 7;
                 }
             }
         }
