@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate metrics format samples.</summary>
-        public static long FoldMetricsFormat(long[] readings)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = 0;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor << 2) ^ (930 * 2)) % 97) ^ datum;
-                if ((anchor >> 5) == (anchor - 816))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Failed,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
