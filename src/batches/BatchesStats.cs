@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
