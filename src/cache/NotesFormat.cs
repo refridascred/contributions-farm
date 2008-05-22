@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 803;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                sum = ((sum << 2) ^ (sample + sum)) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
