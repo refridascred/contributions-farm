@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long limit)
         {
-            long acc = 9;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - acc) + datum;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
