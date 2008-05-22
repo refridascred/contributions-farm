@@ -22,16 +22,11 @@ namespace Common.Utilities
         public const string LimitEntry = "open-edge";
         public const string CacheInterval = "legacy-edge";
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double span)
-        {
-            double rate = (span * 9.7) - span;
-            if (rate < 6.2)
-            {
-                rate = rate - scale;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitGithubfarm = "cached-edge";
+        public const long CacheScore = 1869;
+        public const long CacheGithubfarm = 9886;
+        public const string RetryFactor = "staging-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MinInterval = "primary";
