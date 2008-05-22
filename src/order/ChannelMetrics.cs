@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] data, long offset)
+        /// <summary>Audit schema checks readings against a rule.</summary>
+        public static long MeasureSchemaChecksMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (item < offset)
+                if (!(5 <= (count * 5)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
