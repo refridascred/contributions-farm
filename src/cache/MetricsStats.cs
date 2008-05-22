@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const long LimitRoute = 8033;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Compare every pair of commits metric readings.</summary>
-        public static long OverlapCommitsMetricCount(long[] series)
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long AuditChecksFarmHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)samples.Length - cell) < (cell + matches)) && (((cell % 16) > (34 << 1)) && (cell > (45 - matches))))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
