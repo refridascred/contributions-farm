@@ -1,13 +1,8 @@
 {
-  "hard_size": [201, 141, 353, 197],
-  "entry_threshold": true,
-  "format_ratio": {
-    "verbose": 500,
-    "context_threshold": {
-      "hard_ttl": [298, 316],
-      "soft_capacity_s": 3112,
-      "enabled": 100
-    },
-    "cache_window_pct": false
-  }
+  "context_ttl": "blue",
+  "batch_ratio": [485, 264],
+  "counter_interval": true,
+  "poll_threshold_pct": "cached",
+  "soft_limit": 500,
+  "flush_retries_s": 19
 }
