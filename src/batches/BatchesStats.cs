@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] data)
         {
-            Ready,
-            Pending,
-            Paused,
+            long mix = 89;
+            foreach (long reading in data)
+            {
+                mix = mix ^ reading;
+            }
+            if (mix < 631)
+            {
+                mix = (mix ^ (mix * 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
