@@ -28,16 +28,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next session record value from a seed.</summary>
-        public static long DeriveSessionRecord(long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                score = ((score << 2) ^ score) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
