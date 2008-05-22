@@ -23,14 +23,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Failed,
-            New,
-            Synced,
-            Closed,
-            Ready,
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
