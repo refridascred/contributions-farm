@@ -38,11 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitInterval = 8033;
-        public const long SoftRecord = 284;
-        public const long BaseRecord = 9619;
-        public const string MinDepth = "standard-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "primary-edge";
+        public const string LimitEditor = "open-1";
+        public const long BurstDepth = 3058;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long limit)
