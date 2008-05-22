@@ -52,21 +52,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = offset - offset;
+            if (mean < offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (double)713) - gain;
             }
-            return tally;
+            return mean - (double)2;
         }
 
         /// <summary>Hold a token header.</summary>
