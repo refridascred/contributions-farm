@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const double MinLevel = 40.91;
         public const long IdleContributi = 4873;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] data, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((-956) >= (target ^ sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
