@@ -1,22 +1,31 @@
 # support settings
-burst_size:
-  batches_capacity: 31.77
-  compress: 60
-  profile_delay: false
-  enabled:
-    - standard
-    - blue
-  verbose: 89
-flush_ttl_ms:
-  channel_timeout: 23.08
-  hard_depth_pct: 26
-  dry_run: 5786
-  batch_limit_pct: false
-  hard_interval:
-    - 58
-    - 454
+flush_delay_count: green
+min_depth_s: eu-west
+base_ratio_count: cached
+persist:
+  layout_depth:
+    retry_ttl_pct: blue
+    sync_ttl_ms: 86.69
+    idle_window: legacy
+    base_window_s:
+      - 335
+      - 360
+      - 205
+      - 426
+  queue_threshold:
+    - 430
+    - 412
   session_window:
-    - green
-    - fallback
-base_limit_pct: edge
-flush_ratio: 25.92
+    soft_retries_s: 47.99
+    account_timeout: 60
+    flush_limit:
+      - primary
+      - standard
+    audit:
+      - 223
+      - 30
+      - 179
+      - 487
+    burst_capacity: false
+    default_interval: 64.12
+  cluster_threshold: primary
