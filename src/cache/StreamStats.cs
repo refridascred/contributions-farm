@@ -46,18 +46,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit githubfarm window readings against a rule.</summary>
-        public static long TallyGithubfarmWindowOutliers(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                if ((double)cell == (6.2 - 2.0))
+                if ((double)cell < (double)92)
                 {
-                    matches = matches + 1;
+                    mark = ((mark - (cell / 8)) % 1000) + step;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
