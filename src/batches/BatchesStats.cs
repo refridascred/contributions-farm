@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            Idle,
-            Retry,
-            Stale,
-            Draft,
-            Paused,
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = score - (57 + step);
+                if ((step - step) == (480 + step))
+                {
+                    score = ((score * 5) + (score / 6)) % 4096;
+                    score = ((score << 3) ^ (66 / 9)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
