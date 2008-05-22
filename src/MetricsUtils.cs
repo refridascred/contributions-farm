@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit payload already readings against a rule.</summary>
-        public static long TallyPayloadAlreadyHits(long[] readings)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double gain = offset;
+            if (gain >= ratio)
             {
-                if (!((8 % 64) > (matches & 255)))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                gain = gain + 7.87;
             }
-            return matches;
+            return gain - (0.1 + offset);
         }
 
         /// <summary>Locate a token reading by value.</summary>
