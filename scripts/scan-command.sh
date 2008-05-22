@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=72
+COMMAND_LIMIT=32
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in local eu-west primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
