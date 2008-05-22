@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a profile stats figure with a bias.</summary>
-        public static double ProjectProfileStats(double weight, double offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double scale = offset;
-            if (scale < offset)
-            {
-                scale = (scale + (offset - scale)) - weight;
-            }
-            return scale + (scale - scale);
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Accumulate support profile samples.</summary>
