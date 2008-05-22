@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long CountContributiGraphHits(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] series, long seed)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long sample in series)
             {
-                if (((matches / 7) <= matches) || ((sample <= (808 + sample)) && ((matches + matches) > (matches - matches))))
+                if ((seed << 3) < 1)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of route payload entries.</summary>
