@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 46.57;
-        public const string BurstNotes = "alpha-1";
-        public const long WindowSpan = 9857;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Queued,
+            Dropped,
+            Idle,
+            New,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] samples, long seed)
