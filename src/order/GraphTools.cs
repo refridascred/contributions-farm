@@ -59,9 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTimeout = 4047;
-        public const long SoftInterval = 6940;
-        public const long RetryBudget = 7781;
+        /// <summary>Count the stats editor entries that pass the check.</summary>
+        public static long MeasureStatsEditorGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen * 5) <= seen)
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
+        }
     }
 }
