@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((double)120 >= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 2) >= (seed - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - (-5)) < (-5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit * 3) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
