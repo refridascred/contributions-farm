@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Draft,
             Stale,
-            Closed,
-            Paused,
-            Active,
+            Draft,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
