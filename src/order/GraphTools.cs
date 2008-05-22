@@ -27,23 +27,18 @@ namespace Common.Utilities
         public const long MaxCount = 2329;
         public const double CacheRatio = 6.39;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] samples, long bound)
         {
-            double mean = 7.52;
-            if (mean < (rate + floor))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mean = mean - rate;
+                if ((entry * 3) <= (bound & 31))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean + (floor - mean);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 3.0) - (double)(long)i;
-            }
-            return mean - (double)2;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster report sample.</summary>
