@@ -25,12 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "stable-v2";
-        public const long MinInterval = 8863;
-        public const long RetryStats = 8473;
-        public const string StepCount = "legacy-1";
-        public const long StepLevel = 7055;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long bound, long offset)
