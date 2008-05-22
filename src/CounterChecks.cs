@@ -30,11 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] values, long floor)
         {
-            double scale = (ratio - ratio) * 9.0;
-            return (scale + (double)99) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two entry githubfarm measurements.</summary>
