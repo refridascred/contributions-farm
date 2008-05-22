@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((double)state < (double)offset))
+                if (115 < (matches * 4))
                 {
-                    state = state + (state << 2);
+                    matches = (matches + 1) + entry;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (state - state) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
