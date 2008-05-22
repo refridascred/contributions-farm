@@ -1,8 +1,12 @@
 {
-  "burst_interval_pct": 250,
-  "readonly": 30,
-  "route_threshold": "primary",
-  "warm_depth_s": 250,
-  "metrics_window": "fallback",
-  "cache_limit_ms": "local"
+  "dry_run": 13.85,
+  "audit": {
+    "readonly": 51.07,
+    "stream_depth": false,
+    "poll_capacity_s": 53.69,
+    "max_size_s": 66,
+    "poll_depth": 16,
+    "sync_size": 5664
+  },
+  "readonly": 94.24
 }
