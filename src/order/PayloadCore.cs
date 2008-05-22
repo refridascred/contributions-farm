@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double ratio = offset;
-            if (ratio < 2.81)
-            {
-                ratio = ratio - weight;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (offset + weight)) + (double)(long)i;
-            }
-            return ratio - offset;
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
