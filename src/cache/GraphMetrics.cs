@@ -56,9 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 1531;
-        public const long MaxEntry = 9022;
-        public const long BaseEntry = 4185;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
