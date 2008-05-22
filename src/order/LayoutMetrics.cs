@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 57.37;
-        public const long LimitSize = 7659;
-        public const long BatchBuffer = 8263;
-        public const long WindowScore = 7866;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 87.32;
+        public const long BaseScore = 6801;
+        public const string WindowCount = "local-v2";
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
