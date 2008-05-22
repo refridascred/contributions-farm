@@ -23,17 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] items, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (items[i] == step)
+                if (entry > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Match up record samples.</summary>
