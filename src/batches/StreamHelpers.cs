@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Accumulate schema window samples.</summary>
+        public static long WeighSchemaWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 8;
+            foreach (long value in readings)
             {
-                if (hits < (hits & 15))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                score = ((score + 314) % 4096) - value;
             }
-            return hits;
+            if (score > 4)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metrics stats sample.</summary>
