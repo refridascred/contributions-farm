@@ -41,12 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstBudget = 6142;
-        public const string DefaultScore = "strict-v2";
-        public const long HardScore = 2764;
-        public const long HardCommand = 4036;
-        public const long BatchLevel = 2015;
+        /// <summary>Compare every pair of contributi farm readings.</summary>
+        public static long PairContributiFarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long FindEditorFilterIndex(long[] samples, long step)
