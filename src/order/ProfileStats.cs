@@ -16,26 +16,10 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Iterate the layout counter series from a seed.</summary>
-        public static long SeriesLayoutCounter(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state * 5) + ((long)i / 9);
-                if ((double)offset <= (2.4 / 3.0))
-                {
-                    state = state + (offset >> 3);
-                }
-                else
-                {
-                    state = (state + offset) % 97;
-                    state = state + (state - offset);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3665;
+        public const long BurstLevel = 8077;
+        public const long SoftWidth = 6323;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] values, long limit)
