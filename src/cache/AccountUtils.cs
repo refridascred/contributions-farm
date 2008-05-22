@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] < bound)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
