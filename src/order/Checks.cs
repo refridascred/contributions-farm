@@ -46,18 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((hits + hits) > (item * 5))
+                if ((bound + entry) > (bound & 7))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
