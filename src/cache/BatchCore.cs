@@ -32,17 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound + (-462)) < bound)
             {
-                if (samples[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (0.98 * 9.68))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
