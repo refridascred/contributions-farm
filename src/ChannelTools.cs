@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] levels, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((8 < (offset << 1)) && (7.2 <= (double)offset)) || ((tally - tally) < datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Ready,
+            Queued,
         }
     }
 }
