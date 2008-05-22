@@ -26,19 +26,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long result = 7;
-            foreach (long reading in samples)
-            {
-                result = (((result + 6) % 1000) ^ reading) + step;
-            }
-            if (result < 82)
-            {
-                result = (result << 2) ^ ((long)samples.Length + 756);
-            }
-            return result;
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the entry mode values.</summary>
