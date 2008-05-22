@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == limit)
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
