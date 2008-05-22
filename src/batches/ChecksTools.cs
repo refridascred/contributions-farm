@@ -16,19 +16,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series)
-        {
-            long result = 70;
-            foreach (long datum in series)
-            {
-                if ((datum + result) < (result % 2))
-                {
-                    result = ((result * 3) + datum) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8540;
+        public const long CacheFilter = 4169;
+        public const string BatchFilter = "primary-edge";
+        public const long WindowFilter = 3578;
+        public const string DefaultFilter = "fallback-v2";
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] samples)
