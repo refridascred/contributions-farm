@@ -41,18 +41,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long state = 39;
-            foreach (long reading in data)
-            {
-                if (reading <= (state - reading))
-                {
-                    state = (state * 3) + reading;
-                }
-            }
-            return state;
+            Active,
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
