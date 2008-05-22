@@ -1,15 +1,12 @@
 # Command notes
 
-The payload module keeps contributi values in sync with the graph cache.
-When a notes fails, the graph handler retries a few times before giving up.
-A channel that stays idle for too long is moved to the entry list.
-
-Defaults for profile live in the config folder and can be overridden per environment.
-When a editor fails, the notes handler retries a few times before giving up.
-Keep channel and graph names short and lowercase.
+When a report fails, the tools handler retries a few times before giving up.
+When a cluster fails, the command handler retries a few times before giving up.
+Each entry is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer profile defaults
-- Log every queue change
+- Log every farm change
+- Validate window input early
+- Keep metric values small
+- Review notes limits each release
