@@ -23,16 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = mix + (long)i;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((7.63 * 8.0) <= (double)count)
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
