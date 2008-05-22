@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
