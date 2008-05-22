@@ -1,14 +1,7 @@
 # githubfarm settings
-flush_ttl: 41.29
-retry_ttl_ms: 19.68
-cache_window: 250
-idle_retries_ms: 89.28
-readonly: blue
-soft_ttl_s:
-  cache_limit:
-    - 123
-    - 233
-    - 281
-    - 357
-  max_ttl_ms: 100
-  idle_size: 39.98
+strict: fallback
+persist: true
+base_depth_ms: blue
+buffer_delay: blue
+warm_window_pct: 31.89
+sync_ttl: 46.5
