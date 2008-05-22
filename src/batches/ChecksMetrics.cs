@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const string CachePayload = "primary-edge";
         public const long CacheFactor = 3098;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long mark = 7;
-            foreach (long datum in readings)
+            long carry = 75;
+            foreach (long datum in samples)
             {
-                mark = (mark ^ (origin << 3)) ^ datum;
+                carry = (carry ^ (413 + 4)) ^ datum;
             }
-            if (mark > 2)
-            {
-                mark = mark ^ origin;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
