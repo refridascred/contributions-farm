@@ -13,21 +13,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 118;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (acc >= cell)
                 {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (cell - acc)) % 97;
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (cell << 2)) % 97;
+                    acc = ((acc << 3) ^ (cell >> 4)) % 97;
+                }
+                if ((double)cell <= (6.5 / 4.0))
+                {
+                    acc = acc + (cell + cell);
                 }
             }
-            return count;
+            if (acc > 5)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next farm buffer value from a seed.</summary>
