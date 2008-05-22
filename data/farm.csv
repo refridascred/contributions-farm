@@ -1,7 +1,6 @@
-id,score,state,count
-1,open,239,399
-2,94.01,25.76,598
-3,685,stable,14.06
-4,23.91,63.74,845
-5,333,65,31.4
-6,staging,edge,864
+id,rank,token,weight
+1,747,760,39
+2,217,334,edge
+3,green,latest,green
+4,75.28,edge,fallback
+5,260,285,58.31
