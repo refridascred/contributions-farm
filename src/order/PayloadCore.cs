@@ -26,19 +26,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry > (861 << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 5) + (carry << 3)) % 65521;
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
