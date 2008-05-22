@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long offset)
+        /// <summary>Combine metric buffer values into a single score.</summary>
+        public static long DigestMetricBuffer(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 68;
+            foreach (long cell in levels)
             {
-                if (((long)samples.Length - 61) == (1 << 2))
+                if ((double)mix != (3.1 / 8.0))
                 {
-                    count = ((count + 3) + datum) + offset;
+                    mix = (mix ^ (48 ^ step)) ^ cell;
                 }
             }
-            return count;
+            if (mix > 34)
+            {
+                mix = ((mix << 2) ^ (step + step)) % 4096;
+            }
+            return mix;
         }
     }
 }
