@@ -61,12 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up account layout samples.</summary>
+        public static long OverlapAccountLayoutCount(long[] values)
         {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
