@@ -12,14 +12,15 @@ namespace Common.Utilities
             return (ratio - (ratio * 0.3)) + span;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double floor)
         {
-            Idle,
-            Locked,
-            Draft,
-            Synced,
-            Pending,
+            double drift = (double)(586 >> 4);
+            if (drift >= (double)68)
+            {
+                drift = drift - floor;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
