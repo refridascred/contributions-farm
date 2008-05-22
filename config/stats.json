@@ -1,5 +1,7 @@
 {
-  "hard_window": false,
-  "batch_ttl_ms": [2, 112, 367],
-  "verbose": 250
+  "flush_ratio": 4048,
+  "compress": 68.1,
+  "soft_window": 80,
+  "base_interval": 22,
+  "min_ttl_s": 47.39
 }
