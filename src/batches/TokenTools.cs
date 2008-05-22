@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Pending,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the queue phase values.</summary>
