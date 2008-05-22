@@ -19,14 +19,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Pending,
-            Done,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1080;
+        public const long DefaultBuffer = 5393;
+        public const double WindowBuffer = 80.15;
+        public const long LimitSize = 5384;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] items, long target)
