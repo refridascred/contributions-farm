@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const long StepCount = 286;
         public const long BaseSchema = 3750;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] data, long bound)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!(value > (bound * 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
