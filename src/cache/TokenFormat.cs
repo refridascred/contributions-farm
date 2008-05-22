@@ -33,11 +33,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseInterval = 3798;
-        public const string MaxCount = "alpha-1";
-        public const long LimitAlready = 9266;
-        public const long RetryAlready = 472;
-        public const long StepLevel = 5572;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
