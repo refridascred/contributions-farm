@@ -19,12 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            Locked,
-            Failed,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up checks samples.</summary>
