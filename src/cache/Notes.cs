@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (entry > seed)
+                if (sample <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a entry stats.</summary>
