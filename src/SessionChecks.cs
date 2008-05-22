@@ -39,32 +39,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long offset)
         {
-            long bound = offset - limit;
-            if (bound <= (offset + 60))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound / 3) >= limit) && ((8 << 1) < offset))
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((29 / 9) < (bound * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
