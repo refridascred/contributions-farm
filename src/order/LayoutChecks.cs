@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long limit)
         {
-            double mean = (double)(8 - 6);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = ((mean + ratio) + (double)(long)i) - span;
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Count the tools account entries that pass the check.</summary>
