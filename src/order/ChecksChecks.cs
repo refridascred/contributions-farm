@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MaxDepth = 855;
         public const string MinFactor = "strict-1";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Ready,
-            Idle,
-            Failed,
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
