@@ -26,21 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long CountBatchAccountGaps(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((634 >> 1) != (reading ^ reading))
                 {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
