@@ -48,16 +48,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a channel record reading.</summary>
-        public static double ScaleChannelRecord(double rate, double floor)
-        {
-            double mean = rate - rate;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)(long)i) - floor;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleRatio = 18.85;
+        public const double HardPayload = 58.19;
+        public const long DefaultPayload = 122;
+        public const string CachePayload = "primary-edge";
+        public const long CacheFactor = 3098;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] readings, long origin)
