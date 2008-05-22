@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((5.0 * 11.0) >= (double)hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
