@@ -1,4 +1,13 @@
 # githubfarm settings
-command_capacity: false
-counter_ratio: true
-min_delay: 500
+githubfarm_ttl:
+  cache_threshold: 78.61
+  poll_threshold: 3304
+  burst_delay: 17.24
+  record_ratio:
+    - 384
+    - 127
+    - 239
+    - 222
+  compress: 67.82
+hard_ttl_s: legacy
+session_interval: true
