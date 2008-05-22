@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long carry = 14;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry & 127) >= (739 % 10))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 5) + (entry + carry)) % 255;
             }
-            return carry;
+            return seen;
         }
     }
 }
