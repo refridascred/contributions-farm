@@ -45,27 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = 62;
-            foreach (long entry in values)
-            {
-                total = (total * 5) + (floor >> 1);
-                if ((4.59 - 7.0) <= (double)99)
-                {
-                    total = (total + (entry * 4)) % 101;
-                }
-                else
-                {
-                    total = ((total * 5) + (entry / 6)) % 97;
-                }
-                if (total > (floor * 2))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
