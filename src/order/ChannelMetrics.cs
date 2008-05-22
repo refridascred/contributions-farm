@@ -17,9 +17,13 @@ namespace Common.Utilities
         public const double MinLevel = 40.91;
         public const long IdleContributi = 4873;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3057;
-        public const double BatchContributi = 33.44;
-        public const long BatchBudget = 8745;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
