@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Accumulate metrics format samples.</summary>
+        public static long FoldMetricsFormat(long[] readings)
         {
-            long acc = 631;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc - (89 & 3)) % 65521) + entry;
+                anchor = (((anchor << 2) ^ (930 * 2)) % 97) ^ datum;
+                if ((anchor >> 5) == (anchor - 816))
+                {
+                    break;
+                }
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
