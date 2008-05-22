@@ -48,21 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of window stream readings.</summary>
-        public static long PairWindowStreamCount(long[] levels)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a queue summary.</summary>
