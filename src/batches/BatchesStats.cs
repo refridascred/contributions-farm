@@ -45,18 +45,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit * 5) == (tally & 7))
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
