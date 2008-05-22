@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples, long offset)
+        /// <summary>Find the first queue report entry that matches the target.</summary>
+        public static long FindQueueReportIndex(long[] levels, long floor)
         {
-            long anchor = 2;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor + offset) % 4096) + entry;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 842)
-            {
-                anchor = anchor - (anchor * 3);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank checks payload input into a small class.</summary>
