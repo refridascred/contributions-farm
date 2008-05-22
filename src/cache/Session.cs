@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long bound)
         {
-            double rate = weight;
-            if (rate > (floor - weight))
+            long score = 4;
+            foreach (long sample in levels)
             {
-                rate = rate + floor;
+                score = (score + sample) - bound;
             }
-            return rate + (2.0 - floor);
+            return score;
         }
 
         /// <summary>Find the first checks account entry that matches the target.</summary>
