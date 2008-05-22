@@ -31,17 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] items, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (items[i] < bound)
+                if ((double)count > (2.0 - 4.07))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
