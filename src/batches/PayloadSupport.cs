@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] samples, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((double)limit != (double)offset)
             {
-                if ((bound - bound) == (long)samples.Length)
+                return 7;
+            }
+            else
+            {
+                if ((offset % 8) != (limit - offset))
                 {
-                    seen = (seen + 2) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
