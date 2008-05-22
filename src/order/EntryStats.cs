@@ -58,17 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor filter entry that matches the target.</summary>
-        public static long FindEditorFilterIndex(long[] samples, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
