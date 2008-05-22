@@ -1,7 +1,5 @@
 {
-  "poll_delay": [376, 332, 111, 440],
-  "soft_interval_s": 3368,
-  "readonly": "green",
-  "batch_capacity_count": 41.88,
-  "strict": [119, 23]
+  "min_window": 91.93,
+  "retry_interval": 3940,
+  "default_ttl_s": ["strict", "legacy"]
 }
