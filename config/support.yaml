@@ -1,7 +1,8 @@
 # support settings
-poll_interval_pct: 1.47
-buffer_interval: false
-dry_run: true
-sync_timeout:
-  - 471
-  - 31
+min_timeout_s: blue
+record_timeout: 10.05
+verbose:
+  - 259
+  - 262
+  - 148
+  - 395
