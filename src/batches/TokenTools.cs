@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const string RetryScore = "primary";
         public const long MaxLayout = 7186;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
