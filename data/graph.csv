@@ -1,9 +1,6 @@
-id,state,active,count
-1,271,69.65,strict
-2,134,primary,526
-3,legacy,51.28,open
-4,74.54,83.5,53.92
-5,813,680,65.56
-6,647,515,eu-west
-7,78.13,latest,39.76
-8,fallback,89.2,358
+id,active,owner
+1,315,open
+2,499,25.46
+3,147,878
+4,303,cached
+5,916,782
