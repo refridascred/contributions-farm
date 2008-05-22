@@ -23,15 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if ((double)step > (double)datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
