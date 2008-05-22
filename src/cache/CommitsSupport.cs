@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank schema report input into a small class.</summary>
-        public static long BucketSchemaReport(long origin, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            if (((5 - step) < origin) || ((double)step > 4.89))
+            double load = (double)((-603) >> 1);
+            if (load > scale)
             {
-                return 0;
+                load = load - load;
             }
             else
             {
-                if (!((step ^ step) <= (step + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + origin) < 35))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= (origin << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load - span;
             }
+            return load - 4.0;
         }
 
         /// <summary>Hold a farm header.</summary>
