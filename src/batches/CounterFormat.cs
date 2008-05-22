@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const double CacheNotes = 96.79;
         public const long DefaultNotes = 5237;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step << 2) < (mark ^ step))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 2) ^ (step + mark)) % 65521;
                 }
+                mark = (mark ^ (mark + (long)i)) % 255;
+                if ((9.0 - 8.0) >= (double)mark)
+                {
+                    mark = mark + (step & 3);
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
