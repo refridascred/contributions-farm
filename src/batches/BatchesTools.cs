@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate notes entry readings against a bound.</summary>
+        public static bool GuardNotesEntryBounds(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
