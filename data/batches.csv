@@ -1,11 +1,6 @@
-id,level,active,count,ratio
-1,7.71,255,461,8.41
-2,74.87,stable,fallback,cached
-3,85.83,306,standard,legacy
-4,287,62.97,71.94,edge
-5,staging,630,411,20.89
-6,58.4,stable,edge,840
-7,local,849,edge,37.24
-8,blue,45.18,stable,679
-9,94,991,57.48,187
-10,77.05,693,344,882
+id,state,count
+1,local,5.09
+2,94.39,eu-west
+3,staging,edge
+4,867,713
+5,567,stable
