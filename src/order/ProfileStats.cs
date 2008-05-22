@@ -23,22 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((17 * 5) != (cell * 4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
