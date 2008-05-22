@@ -12,13 +12,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
