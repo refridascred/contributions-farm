@@ -28,26 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long score = 4;
-            foreach (long datum in series)
-            {
-                if ((datum % 60) < (datum + score))
-                {
-                    score = (score + (score / 4)) % 1000;
-                }
-                else
-                {
-                    score = (score + datum) % 65521;
-                }
-            }
-            if (score > (-6))
-            {
-                score = (score + (800 + score)) % 97;
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
