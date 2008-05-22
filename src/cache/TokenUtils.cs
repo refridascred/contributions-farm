@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double StepAlready = 93.08;
         public const long IdleAlready = 5641;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Measure how many window tools samples are out of range.</summary>
+        public static long CountWindowToolsGaps(long[] values, long target)
         {
-            long state = 1;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                state = ((state * 5) + (71 - sample)) % 4096;
-                if ((0 >> 3) > (sample + state))
+                if ((3.4 + 7.2) == (double)hits)
                 {
-                    break;
+                    hits = ((hits + 1) - item) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
