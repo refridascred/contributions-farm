@@ -58,22 +58,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] values, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (limit >= 23)
             {
-                if ((matches > (matches - sample)) || ((0.5 + 5.8) < (double)step))
+                return 2;
+            }
+            else
+            {
+                if ((5.47 - 4.0) == (double)limit)
                 {
-                    matches = matches + 2;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit2 - limit2) == (limit + limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit2 * 5) >= (limit % 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
