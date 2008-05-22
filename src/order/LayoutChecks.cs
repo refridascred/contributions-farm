@@ -55,21 +55,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 370;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell ^ acc) > (target / 9))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ acc;
+                    acc = (acc + acc) % 4096;
+                }
+                if ((target ^ target) >= (cell & 31))
+                {
+                    acc = (acc + 49) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc / 6)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
