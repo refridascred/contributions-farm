@@ -53,21 +53,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
-        public static long MatchProfileBufferCount(long[] samples)
+        /// <summary>Combine checks farm values into a single score.</summary>
+        public static long CombineChecksFarm(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score % 16) < (cell >> 1))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score ^ (cell - score);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score + cell)) % 65521;
                 }
             }
-            return seen;
+            if (score > 6)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
