@@ -18,26 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long result = 0;
-            foreach (long value in items)
+            long mix = 334;
+            foreach (long cell in levels)
             {
-                if (!((long)items.Length == (result * 4)))
+                if ((double)cell < (2.66 * 15.0))
                 {
-                    result = ((result << 2) ^ (result & 255)) % 255;
+                    mix = (mix + (mix - mix)) % 255;
                 }
                 else
                 {
-                    result = ((result * 4) + (value >> 2)) % 4096;
+                    mix = (mix ^ (cell & 1)) % 65521;
                 }
-                if ((14 - result) <= (value * 3))
+                if (((cell >> 1) != (mix - mix)) && ((cell + 643) >= mix))
                 {
                     break;
                 }
             }
-            return result % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Describe the notes status values.</summary>
