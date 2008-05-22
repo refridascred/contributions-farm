@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many filter already samples are out of range.</summary>
-        public static long MeasureFilterAlreadyGaps(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count % 3) <= (entry ^ count))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 2;
+                    anchor = ((anchor - (bound << 2)) % 4096) ^ (long)i2;
                 }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
