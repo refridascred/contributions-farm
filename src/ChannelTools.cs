@@ -29,12 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Synced,
-            Active,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 8366;
+        public const long StepSpan = 1427;
+        public const double IdleContext = 38.22;
+        public const long BaseContext = 4127;
+        public const long RetryContext = 6598;
     }
 }
