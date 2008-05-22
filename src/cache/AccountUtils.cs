@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch cache entries.</summary>
-        public static long FoldBatchCache(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long result = 375;
-            foreach (long item in items)
+            long acc = 655;
+            foreach (long sample in series)
             {
-                result = (((result * 5) + result) % 65521) - item;
+                acc = (acc + sample) % 4096;
             }
-            return result;
+            if (acc < 5)
+            {
+                acc = ((acc << 2) ^ (acc >> 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
