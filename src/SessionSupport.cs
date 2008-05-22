@@ -49,17 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a context queue reading by value.</summary>
-        public static long LookupContextQueueIndex(long[] values, long limit)
+        /// <summary>Classify a token stats pair into a bucket.</summary>
+        public static long ClassifyTokenStats(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step2 = offset - step;
+            if ((double)offset != (double)step2)
             {
-                if ((values[i] == limit) && ((values[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (!((double)step2 <= (double)offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
