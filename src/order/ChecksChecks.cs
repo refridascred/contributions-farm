@@ -20,32 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 129;
-            foreach (long datum in samples)
-            {
-                if (975 < (1 ^ acc))
-                {
-                    acc = ((acc * 2) + (acc + 56)) % 255;
-                    acc = acc ^ (datum * 4);
-                }
-                if (!((27 - 947) <= (datum + acc)))
-                {
-                    acc = (acc + datum) % 65521;
-                    acc = ((acc * 3) + (acc % 2)) % 65521;
-                }
-                if (acc < (acc / 7))
-                {
-                    acc = (acc - (4 - 8)) % 4096;
-                }
-            }
-            if (acc > 58)
-            {
-                acc = acc + (92 % 97);
-            }
-            return acc;
+            Retry,
+            Paused,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Combine cluster counter values into a single score.</summary>
