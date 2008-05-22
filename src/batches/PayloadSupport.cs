@@ -33,15 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if ((seen ^ item) == (242 + item))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
