@@ -26,12 +26,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 91.28;
+        public const string RetryFarm = "latest-v2";
+        public const long HardFarm = 1532;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
