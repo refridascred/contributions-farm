@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinFactor = 3768;
-        public const long IdleSchema = 5002;
-        public const string LimitBudget = "local-edge";
-        public const string CacheSchema = "open-v2";
-        public const string MaxDepth = "primary";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series)
+        {
+            long score = 0;
+            foreach (long value in series)
+            {
+                if (score >= ((-7) << 3))
+                {
+                    score = ((score * 4) + (value + value)) % 101;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmOutliers(long[] levels)
