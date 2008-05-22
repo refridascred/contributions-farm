@@ -14,13 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "staging-1";
+        public const long LimitQueue = 6882;
+        public const string BurstQueue = "latest-v2";
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
