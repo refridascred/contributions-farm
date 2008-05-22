@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            double load = (span + span) + (double)358;
+            return (load + (double)5) + weight;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
