@@ -52,12 +52,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long origin)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            if ((step ^ step) <= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((18.0 * 2.48) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
