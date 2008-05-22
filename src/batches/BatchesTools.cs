@@ -39,19 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] series, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > floor)
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
