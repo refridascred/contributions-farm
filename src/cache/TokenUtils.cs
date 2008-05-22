@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 21.35;
+        public const long HardAlready = 1856;
+        public const double StepAlready = 93.08;
+        public const long IdleAlready = 5641;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] items)
