@@ -19,10 +19,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitBudget = 747;
-        public const long MinSession = 4189;
-        public const double LimitSession = 15.51;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            Done,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] samples, long offset)
