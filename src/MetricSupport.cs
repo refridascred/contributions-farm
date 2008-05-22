@@ -21,17 +21,28 @@ namespace Common.Utilities
         public const long HardDepth = 1737;
         public const long StepBudget = 170;
 
-        /// <summary>Look up the position of a notes token sample.</summary>
-        public static long LookupNotesTokenIndex(long[] samples, long limit)
+        /// <summary>Roll a cluster checks counter forward.</summary>
+        public static long IterateClusterChecks(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] < limit)
+                long edge = (22 - anchor) + (seed + seed);
+                if ((double)edge == (double)seed)
                 {
-                    return (long)i;
+                    edge = ((edge * 4) + (edge + (long)i)) % 255;
+                    edge = (edge - ((long)i % 3)) % 97;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor + (seed - edge)) % 1000;
+                    anchor = (anchor * 2) + (anchor / 6);
+                }
+                anchor = (anchor << 3) ^ (anchor % 100);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
