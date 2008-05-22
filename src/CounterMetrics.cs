@@ -46,15 +46,25 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] items, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long step)
         {
-            long mix = 92;
-            foreach (long value in items)
+            long lane = floor - step;
+            if ((8.0 + 12.0) != (double)step)
             {
-                mix = ((mix << 3) ^ (value ^ 707)) - seed;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((-5) <= (lane << 3)) && ((step % 97) != (floor + lane)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
