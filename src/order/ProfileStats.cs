@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long BurstLevel = 8077;
         public const long SoftWidth = 6323;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (entry != limit)
+                if (sample <= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
