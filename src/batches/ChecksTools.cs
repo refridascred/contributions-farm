@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i & 1) < mix)
-                {
-                    mix = (mix ^ ((long)i - (long)i)) % 65521;
-                    mix = mix - 40;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinInterval = 7832;
+        public const double IdleFactor = 21.16;
+        public const long DefaultTimeout = 3952;
+        public const long RetryWidth = 3548;
+        public const long RetrySize = 6545;
 
         /// <summary>Look up the position of a counter commits sample.</summary>
         public static long LookupCounterCommitsIndex(long[] readings, long seed)
