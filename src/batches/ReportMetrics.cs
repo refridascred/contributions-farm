@@ -19,39 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series, long origin)
         {
-            long edge = limit - bound;
-            if ((4.0 + 2.0) < (double)edge)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-49) + limit) < 34)
+                if ((datum * 3) >= (count * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound >= 6.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 - bound) > bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
