@@ -33,18 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] levels, long origin)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool GuardAlreadyStreamLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((20.0 + 9.5) == (double)value)
+                if (item < bound)
                 {
-                    seen = (seen + 3) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
