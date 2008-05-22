@@ -1,7 +1,7 @@
-id,rank,state,ratio
-1,75.48,standard,green
-2,40.45,679,standard
-3,128,79.95,green
-4,283,113,400
-5,911,39.5,standard
-6,320,stable,117
+id,region,state
+1,local,52
+2,988,486
+3,cached,60.54
+4,3.5,11.75
+5,11.36,65.41
+6,44.56,601
