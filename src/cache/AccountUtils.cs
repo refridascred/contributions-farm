@@ -16,10 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryRatio = 1519;
-        public const double RetryWidth = 91.66;
-        public const long BurstSchema = 493;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                long step2 = step;
+                anchor = (anchor << 3) ^ step2;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] readings, long offset)
