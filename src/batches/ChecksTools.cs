@@ -52,18 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count & 63) > (count + count))
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
                 {
-                    count = (count + 3) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
