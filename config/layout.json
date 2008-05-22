@@ -1,10 +1,6 @@
 {
-  "window_limit": {
-    "batch_timeout_s": false,
-    "poll_delay_count": 59,
-    "default_size_ms": "stable",
-    "verbose": "open"
-  },
-  "enabled": 90.54,
-  "audit": "strict"
+  "poll_limit": "latest",
+  "verbose": 163,
+  "layout_capacity": 7687,
+  "base_interval_count": false
 }
