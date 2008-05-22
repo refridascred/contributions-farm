@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            Stale,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
