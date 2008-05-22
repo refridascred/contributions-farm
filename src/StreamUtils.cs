@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] levels, long floor)
         {
-            long mix = 54;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + (datum << 3)) % 1000;
-                if (mix <= (775 / 5))
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
                 {
-                    mix = mix - (datum << 3);
-                }
-                else
-                {
-                    mix = (mix + (3 >> 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
