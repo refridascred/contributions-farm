@@ -1,7 +1,15 @@
 # support settings
-batch_window: cached
-channel_window: 9564
-checks_ratio: 100
-cache_size: 38
-payload_capacity: strict
-readonly: 37.03
+batch_limit_count: green
+strict: 1024
+idle_delay_pct: 83
+hard_window:
+  readonly:
+    - 334
+    - 337
+    - 282
+  cache_interval: 3.7
+  entry_depth: 100
+  strict: eu-west
+  cache_window_pct: 1754
+  idle_size_count: 8737
+max_limit_ms: strict
