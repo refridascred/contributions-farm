@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] readings, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] data, long step)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (value > offset)
+                if (item > step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
