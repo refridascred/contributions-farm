@@ -71,12 +71,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Locked,
-            Done,
-            Retry,
+            Stale,
+            Draft,
+            Queued,
+            Idle,
+            Closed,
         }
     }
 }
