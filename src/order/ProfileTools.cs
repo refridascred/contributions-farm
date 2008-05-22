@@ -34,11 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Validate batches metric readings against a bound.</summary>
+        public static bool GuardBatchesMetricLimits(long[] series, long floor)
         {
-            double bias = ratio;
-            return (bias + bias) + span;
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the checks kind values.</summary>
