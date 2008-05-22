@@ -49,25 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token stats pair into a bucket.</summary>
-        public static long ClassifyTokenStats(long offset, long step)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long step2 = offset - step;
-            if ((double)offset != (double)step2)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step2 <= (double)offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
