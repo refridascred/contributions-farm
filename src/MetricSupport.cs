@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 51.1;
-        public const long SoftCluster = 5985;
-        public const double MinCluster = 60.13;
-        public const double LimitSpan = 21.42;
-        public const string BurstSpan = "legacy";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((7 + floor) <= (floor ^ matches))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
