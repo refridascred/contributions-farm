@@ -12,18 +12,13 @@ namespace Common.Utilities
             return (bias + (weight + bias)) + floor;
         }
 
-        /// <summary>Count the graph batch entries that pass the check.</summary>
-        public static long TallyGraphBatchHits(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count >> 1) < reading) && (((count * 4) < (reading * 4)) && ((reading - reading) > ((long)data.Length & 255))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
