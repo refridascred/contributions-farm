@@ -61,11 +61,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate entry batch samples.</summary>
+        public static long ScoreEntryBatch(long[] samples, long target)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long total = 36;
+            foreach (long reading in samples)
+            {
+                if ((target & 1) > target)
+                {
+                    total = (total - (reading + (long)samples.Length)) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
