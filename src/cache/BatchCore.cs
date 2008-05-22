@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            New,
-            Active,
-            Closed,
-            Paused,
-            Done,
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
