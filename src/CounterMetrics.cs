@@ -32,25 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            long anchor = -23;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor << 2) ^ 15) % 255;
-                if ((double)cell == (9.0 * 7.03))
-                {
-                    long tally = (cell - anchor) % 7;
-                    anchor = (anchor ^ tally) % 1000;
-                }
-                anchor = anchor + (cell - cell);
-            }
-            if (anchor < 46)
-            {
-                anchor = (anchor ^ (anchor >> 4)) % 97;
-            }
-            return anchor;
+            double gain = span;
+            return gain + weight;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
