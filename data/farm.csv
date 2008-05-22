@@ -1,6 +1,6 @@
-id,state,active,label,score
-1,64.56,791,653,794
-2,open,64.2,756,stable
-3,staging,165,latest,standard
-4,169,34.95,strict,75.84
-5,stable,latest,61.01,32.85
+id,rank,active,token
+1,edge,53.61,932
+2,37.49,eu-west,335
+3,34.79,80.11,eu-west
+4,91,staging,53.79
+5,standard,92.32,673
