@@ -30,18 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Rank token buffer input into a small class.</summary>
+        public static long BucketTokenBuffer(long step, long seed)
         {
-            long state = 7;
-            foreach (long value in series)
+            long offset = step + seed;
+            if ((step + offset) >= (step + step))
             {
-                if (((double)state < 16.0) || ((value - value) != (state % 100)))
+                return 0;
+            }
+            else
+            {
+                if ((seed & 1) >= 0)
                 {
-                    state = (state ^ value) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (70 - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed < (2.47 + 1.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
