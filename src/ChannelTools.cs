@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long CountOrderGraphMatches(long[] samples)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum < (seen - seen)) && ((double)datum < (0.9 + 11.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the queue class values.</summary>
