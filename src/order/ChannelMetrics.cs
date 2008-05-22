@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the payload counter series from a seed.</summary>
-        public static long RollPayloadCounter(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i <= floor) || (6 >= (long)i))
-                {
-                    score = ((score * 4) + (score ^ floor)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 984;
+        public const long BatchScore = 4523;
+        public const double MinLevel = 40.91;
+        public const long IdleContributi = 4873;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] series)
