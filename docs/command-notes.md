@@ -1,10 +1,12 @@
 # Command notes
 
-When a format fails, the notes handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
+Keep cluster and layout names short and lowercase.
+When a token fails, the layout handler retries a few times before giving up.
+The githubfarm report groups every account by contributi.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every checks change
-- Prefer channel defaults
+- Review counter limits each release
+- Document new batch fields
+- Keep contributi values small
+- Validate stats input early
