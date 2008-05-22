@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (entry > seed)
+                if (!((matches - matches) <= (reading * 3)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
