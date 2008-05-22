@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue fallback; do
+for item in edge cached open; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=389
+BUFFER_LIMIT=418
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
