@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BurstSpan = 9048;
         public const long StepCommits = 6884;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data)
         {
-            double gain = span;
-            return (gain + (gain * 9.41)) + ratio;
+            long result = 80;
+            foreach (long datum in data)
+            {
+                if ((6.9 * 8.9) <= (double)result)
+                {
+                    result = ((result - (result / 5)) % 255) ^ datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a commits entry.</summary>
