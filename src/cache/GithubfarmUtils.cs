@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long CacheBatch = 6109;
         public const long BurstInterval = 4321;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] values, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long result = 8;
-            foreach (long cell in values)
-            {
-                result = ((result * 5) + (result - (long)values.Length)) ^ cell;
-                if (result <= (offset ^ result))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
