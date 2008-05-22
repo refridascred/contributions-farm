@@ -19,15 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Ready,
-            Failed,
-            Retry,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftLevel = 92.42;
+        public const long CacheSize = 4376;
+        public const long RetryFactor = 6829;
+        public const long SoftSpan = 306;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
