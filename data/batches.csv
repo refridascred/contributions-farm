@@ -1,6 +1,8 @@
-id,owner,count,score
-1,934,83.06,4.26
-2,28.47,fallback,91.48
-3,995,498,fallback
-4,8.67,fallback,97.46
-5,929,cached,19.75
+id,token,count,region
+1,47.82,59.11,latest
+2,29.93,151,996
+3,open,618,blue
+4,standard,66.75,latest
+5,716,cached,581
+6,437,fallback,84.26
+7,86.83,staging,427
