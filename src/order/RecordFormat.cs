@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Scale a account tools figure with a bias.</summary>
+        public static double BlendAccountTools(double bias, double bias2)
         {
-            long state = 970;
-            foreach (long cell in samples)
+            double rate = bias;
+            if (rate >= bias2)
             {
-                if ((cell + state) < (state + state))
-                {
-                    state = (state << 3) ^ cell;
-                }
+                rate = rate + (7.0 + bias2);
             }
-            return state;
+            else
+            {
+                rate = rate - 0.1;
+            }
+            return rate + (bias2 - bias2);
         }
 
         /// <summary>Hold a report entry.</summary>
