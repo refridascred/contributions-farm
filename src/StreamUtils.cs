@@ -40,11 +40,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 1335;
-        public const long LimitGithubfarm = 1626;
-        public const string IdleGithubfarm = "stable-edge";
-        public const long StepGithubfarm = 4188;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long offset)
+        {
+            if (((81 / 4) != (offset / 7)) || ((844 + bound) >= (offset / 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) >= (bound * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
