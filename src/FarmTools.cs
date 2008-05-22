@@ -33,14 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double offset)
         {
-            Locked,
-            Closed,
-            Synced,
-            Draft,
-            Failed,
+            double drift = 15.0;
+            return (drift + (offset * 15.0)) + rate;
         }
     }
 }
