@@ -1,6 +1,10 @@
 # entry settings
-sync_size_s:
+cache_size: fallback
+default_threshold_count: true
+order_delay: primary
+compress:
+  - open
+  - cached
   - edge
-  - local
-verbose: true
-default_ttl_count: true
+enabled: 1077
+persist: 6662
