@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 9939;
-        public const long MaxTimeout = 1843;
-        public const double BatchRatio = 46.36;
-        public const long HardFactor = 4666;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double bias, double bias2)
+        {
+            double mean = bias / 5.0;
+            if (mean >= bias)
+            {
+                mean = (mean - (mean / 9.0)) - bias2;
+            }
+            else
+            {
+                mean = mean + 5.9;
+            }
+            return mean - (bias - mean);
+        }
 
         /// <summary>Derive the next commits token value from a seed.</summary>
         public static long RollCommitsToken(long floor)
