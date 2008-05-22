@@ -1,7 +1,5 @@
 {
-  "payload_interval": 1782,
-  "graph_depth": "cached",
-  "idle_window": 60,
-  "warm_limit_pct": "latest",
-  "base_capacity_pct": "cached"
+  "filter_depth": "legacy",
+  "soft_ttl_s": "open",
+  "queue_retries": "legacy"
 }
