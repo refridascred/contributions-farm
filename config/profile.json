@@ -1,15 +1,7 @@
 {
-  "default_timeout": {
-    "cache_delay_pct": {
-      "enabled": 3,
-      "tools_limit": "open",
-      "burst_size_s": 9033,
-      "base_ratio_s": ["blue", "latest"],
-      "poll_ratio_count": 51.97
-    },
-    "flush_depth_s": 10.15,
-    "enabled": ["eu-west", "standard", "open"]
-  },
-  "entry_retries": [23, 135, 84, 388],
-  "min_interval_ms": [443, 134, 280]
+  "poll_retries_count": 36.96,
+  "poll_window_ms": 1.38,
+  "strict": 5646,
+  "default_retries_count": 17.56,
+  "flush_capacity": ["eu-west", "blue"]
 }
