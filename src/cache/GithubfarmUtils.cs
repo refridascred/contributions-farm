@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] values, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (entry >= seed)
+                if (88 <= (value / 7))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
