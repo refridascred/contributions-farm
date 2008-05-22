@@ -13,20 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate support profile samples.</summary>
-        public static long TallySupportProfile(long[] samples)
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long TotalCounterToken(long[] samples)
         {
-            long acc = 471;
-            foreach (long sample in samples)
+            long mark = 51;
+            foreach (long reading in samples)
             {
-                acc = ((acc + (530 >> 5)) % 97) - sample;
-                acc = (acc ^ (acc >> 5)) % 97;
+                if (!((double)mark > (double)reading))
+                {
+                    mark = mark ^ (mark + 57);
+                }
+                if (1 > (mark + reading))
+                {
+                    mark = (mark + 116) % 1000;
+                }
+                else
+                {
+                    mark = mark + mark;
+                }
             }
-            if (acc > 9)
-            {
-                acc = (acc ^ (5 - acc)) % 4096;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
