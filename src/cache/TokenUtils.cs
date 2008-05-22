@@ -32,18 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long TallyNotesCommandOutliers(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 387;
+            foreach (long reading in items)
             {
-                if ((seen % 5) >= (datum & 255))
-                {
-                    seen = seen + 1;
-                }
+                state = (((state << 3) ^ (-65)) % 255) + reading;
             }
-            return seen;
+            return state;
         }
     }
 }
