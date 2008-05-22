@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item > (6.6 - 1.86)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank command account input into a small class.</summary>
