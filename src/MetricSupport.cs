@@ -30,18 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((7 + floor) <= (floor ^ matches))
+                if (sample > limit)
                 {
-                    matches = (matches + 1) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
