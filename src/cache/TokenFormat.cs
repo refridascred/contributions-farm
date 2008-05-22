@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long ClassifyReportProfile(long limit, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            if (limit > (bound + limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound - limit) >= 516) || ((53 * 5) > (bound >> 3)))
+                if (samples[i] == bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
