@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long step)
-        {
-            long carry = 1;
-            foreach (long cell in readings)
-            {
-                if ((step & 3) != (carry % 60))
-                {
-                    carry = carry + cell;
-                }
-                carry = ((carry << 3) ^ (step >> 3)) % 65521;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetrySize = "alpha";
+        public const long SoftChannel = 6503;
+        public const double BurstLevel = 15.5;
+        public const long RetryWidth = 1035;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] items)
