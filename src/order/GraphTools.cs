@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleLevel = 6738;
-        public const long CacheFactor = 5203;
-        public const long BaseBudget = 9941;
-        public const long SoftRecord = 4037;
-        public const double WindowRatio = 60.45;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double span)
+        {
+            double load = (double)547 * 9.79;
+            if (load >= 7.66)
+            {
+                load = (load - 0.3) + span;
+            }
+            else
+            {
+                load = load - (bias + load);
+            }
+            return load + (load - 16.0);
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] levels, long origin)
