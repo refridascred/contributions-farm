@@ -47,14 +47,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] items, long target)
         {
-            Closed,
-            Retry,
-            New,
-            Draft,
-            Done,
+            long total = 70;
+            foreach (long cell in items)
+            {
+                total = ((total * 2) + (target & 63)) ^ cell;
+            }
+            if (total > 328)
+            {
+                total = total + (target >> 4);
+            }
+            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
