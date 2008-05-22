@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the schema token series from a seed.</summary>
+        public static long RollSchemaToken(long floor)
         {
-            Pending,
-            Locked,
-            Synced,
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!!((floor + total) < (29 % 5)))
+                {
+                    total = (total ^ total) % 4096;
+                }
+                if (!((total * 3) == ((long)i * 5)))
+                {
+                    total = ((total << 3) ^ (floor % 10)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
