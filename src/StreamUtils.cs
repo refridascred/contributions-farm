@@ -32,11 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long state = 205;
+            foreach (long value in series)
+            {
+                if ((value + state) >= (state * 5))
+                {
+                    state = (state << 2) ^ value;
+                }
+            }
+            if (state < 4)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Project the next channel value.</summary>
