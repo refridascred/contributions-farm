@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] == floor)
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
