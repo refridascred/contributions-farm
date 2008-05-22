@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((reading ^ step) > step)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
