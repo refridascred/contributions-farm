@@ -18,13 +18,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 8895;
+        public const long DefaultBudget = 8695;
+        public const string MaxLevel = "primary-edge";
+        public const long SoftEntry = 5792;
+        public const string CacheEntry = "primary";
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
