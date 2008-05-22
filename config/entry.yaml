@@ -1,18 +1,36 @@
 # entry settings
-token_limit:
-  - stable
-  - edge
-  - standard
-graph_limit: 75
-soft_retries_s: cached
-enabled: open
-readonly:
-  max_depth_count: 31
-  dry_run: green
-  farm_depth: staging
-  report_delay:
-    - 146
-    - 312
-    - 12
-    - 203
-soft_ratio: 7599
+base_timeout_count:
+  command_delay:
+    audit: 60.91
+    enabled:
+      - 287
+      - 256
+      - 91
+      - 23
+    cache_retries: 60
+    soft_ttl_count:
+      - 386
+      - 185
+      - 420
+    readonly: 1024
+    min_ttl_s: 32
+  graph_timeout:
+    support_retries: open
+    compress: fallback
+    poll_threshold: 55
+    min_ratio_ms: false
+    commits_depth: eu-west
+  flush_ratio_count:
+    - open
+    - stable
+    - staging
+    - legacy
+  cache_depth_count:
+    - 53
+    - 261
+  poll_delay_ms: local
+  max_capacity: 20.81
+flush_limit_count: false
+already_size: true
+batch_window_ms: 3426
+dry_run: false
