@@ -33,19 +33,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double bias)
-        {
-            double load = bias;
-            if (load >= (rate - bias))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + (1.9 * 13.0);
-            }
-            return load + (9.44 - 2.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "alpha-edge";
+        public const long BasePayload = 5447;
+        public const string StepFactor = "standard-edge";
+        public const long MaxFactor = 6729;
     }
 }
