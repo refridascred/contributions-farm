@@ -56,18 +56,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if (((437 >> 1) > bound) || ((origin + bound) != (685 - bound)))
             {
-                if (!((entry - entry) < (entry << 2)))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound < 9.0) && ((7.9 * 4.0) > (double)bound))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (797 > (bound - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-455) + origin) < (534 % 64))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
