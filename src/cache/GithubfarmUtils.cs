@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every editor profile entry stays within the limit.</summary>
-        public static bool VerifyEditorProfileBounds(long[] levels, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (entry < bound)
+                if (value > bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Scale a schema format figure with a bias.</summary>
