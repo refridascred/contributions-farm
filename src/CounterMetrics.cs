@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long origin)
         {
-            Idle,
-            Paused,
-            Retry,
-            Queued,
+            if (!((floor + floor) <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor <= (1.74 + 8.39))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + 1) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
