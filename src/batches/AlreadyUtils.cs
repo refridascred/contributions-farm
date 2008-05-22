@@ -19,22 +19,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!(seed > (seed * 3)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
