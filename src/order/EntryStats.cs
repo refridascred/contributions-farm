@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Match up schema command samples.</summary>
+        public static long PairSchemaCommandCount(long[] samples)
         {
-            long carry = 60;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)carry == (9.8 - 5.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry + 612) ^ cell) - limit;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next stats payload value from a seed.</summary>
