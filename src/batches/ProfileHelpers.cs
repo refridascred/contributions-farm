@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const double WindowChannel = 67.08;
         public const double MaxChannel = 72.01;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!(((item % 16) != (long)levels.Length) && ((tally + 26) != (tally & 63))))
+                if (((hits % 24) >= (cell + hits)) || ((8.37 + 7.3) < (double)hits))
                 {
-                    tally = (tally + 3) - offset;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up schema profile samples.</summary>
