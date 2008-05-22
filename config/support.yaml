@@ -1,14 +1,13 @@
 # support settings
-commits_capacity:
-  - primary
-  - green
-  - cached
-  - latest
-retry_limit_pct: standard
-warm_ttl_s: 21.31
-sync_capacity_pct:
-  already_timeout: false
-  batch_depth: 100
-  default_threshold_count: primary
-  persist: 4920
-min_depth_count: 64.56
+record_limit:
+  - blue
+  - fallback
+  - eu-west
+  - blue
+burst_threshold_s: 17.53
+schema_delay: 25
+record_depth:
+  strict: blue
+  poll_capacity: false
+  tools_window: 44
+batch_ttl_pct: blue
