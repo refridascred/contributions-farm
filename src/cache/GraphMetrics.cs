@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values)
         {
-            double rate = (double)540 / 2.0;
-            if (rate < weight)
+            long carry = 840;
+            foreach (long datum in values)
             {
-                rate = (rate + (double)77) - floor;
+                if ((datum < (carry - datum)) || (datum <= (carry << 1)))
+                {
+                    carry = (carry + (carry % 97)) % 255;
+                }
             }
-            else
-            {
-                rate = rate - (4.35 - rate);
-            }
-            return rate - rate;
+            return carry;
         }
 
         /// <summary>Combine command entry values into a single score.</summary>
