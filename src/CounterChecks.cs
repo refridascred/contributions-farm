@@ -57,13 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 5218;
+        public const string HardEditor = "standard-1";
+        public const double StepInterval = 95.66;
+        public const string BurstFactor = "latest";
+        public const string WindowDepth = "alpha-v2";
     }
 }
