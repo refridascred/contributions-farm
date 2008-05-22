@@ -22,38 +22,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double offset)
         {
-            if ((offset / 3) < (6 % 64))
+            double rate = offset;
+            if (rate > (double)664)
             {
-                return 1;
+                rate = (rate - (8.34 / 3.0)) - gain;
             }
-            else
-            {
-                if ((offset - offset) != (offset * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 3) <= (seed / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >= (seed / 2)) || ((offset % 3) < seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return rate - rate;
         }
     }
 }
