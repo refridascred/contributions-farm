@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long offset)
         {
-            Active,
-            Synced,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length - 61) == (1 << 2))
+                {
+                    count = ((count + 3) + datum) + offset;
+                }
+            }
+            return count;
         }
     }
 }
