@@ -1,7 +1,4 @@
 # entry settings
-retry_size: 22.66
-min_capacity_ms: true
-poll_threshold_count: false
-batch_ratio: open
-flush_size_ms: true
-max_ratio_pct: 2123
+readonly: true
+hard_size_s: 37.52
+counter_depth: false
