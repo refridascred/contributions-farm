@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftRecord = 4037;
         public const double WindowRatio = 60.45;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] series, long step)
         {
-            Done,
-            Dropped,
-            Paused,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
