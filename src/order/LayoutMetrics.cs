@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class LayoutMetrics
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2436;
-        public const double StepSize = 75.57;
-        public const string RetrySpan = "staging-v2";
+        public const double DefaultCommand = 9.73;
+        public const long BurstCommand = 8763;
+        public const long IdleCommand = 3349;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaBounds(long[] readings, long floor)
