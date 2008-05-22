@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every checks support entry stays within the limit.</summary>
-        public static bool ValidateChecksSupportBounds(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 69.71;
+        public const long DefaultGraph = 9379;
+        public const long HardGraph = 9352;
+        public const long BurstGraph = 435;
+        public const long WindowRatio = 5871;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] levels)
