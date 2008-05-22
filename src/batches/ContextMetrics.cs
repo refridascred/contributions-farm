@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 5126;
         public const long IdleCommits = 6583;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (item != origin)
+                if (value <= target)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
