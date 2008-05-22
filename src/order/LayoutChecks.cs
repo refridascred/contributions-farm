@@ -44,18 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue stats samples.</summary>
-        public static long ScoreQueueStats(long[] levels, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
-            long score = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((step / 4) >= score)
+                if ((hits / 3) == (hits - 785))
                 {
-                    score = (score - (step / 2)) - entry;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
