@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string CacheBatch = "fallback-edge";
         public const long HardFactor = 8174;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool ValidateSupportSchemaLimits(long[] data, long bound)
         {
-            long sum = 219;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                sum = ((sum - (sum * 4)) % 4096) + item;
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 221)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
