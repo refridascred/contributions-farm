@@ -19,24 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema token input into a small class.</summary>
-        public static long SortSchemaToken(long bound, long step)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if (!((2 - 866) > (step - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + 41) < bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
