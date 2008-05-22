@@ -23,17 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
+        /// <summary>Scale a report graph figure with a bias.</summary>
+        public static double ProjectReportGraph(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = weight;
+            return (scale - (6.0 * 1.0)) + span;
         }
 
         /// <summary>Describe the report phase values.</summary>
