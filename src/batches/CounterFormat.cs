@@ -41,18 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound >> 2) >= (bound * 5))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 164;
+        public const long BaseStats = 2324;
+        public const long BurstStats = 4;
+        public const double HardStats = 24.37;
+        public const long BatchTimeout = 1593;
     }
 }
