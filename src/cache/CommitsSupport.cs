@@ -55,12 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Synced,
-            Retry,
-            Pending,
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
