@@ -1,12 +1,7 @@
 {
-  "retry_window": 3273,
-  "soft_timeout": "cached",
-  "readonly": "fallback",
-  "batches_limit": {
-    "default_ratio_ms": "eu-west",
-    "max_depth_pct": [282, 325],
-    "poll_timeout": [343, 100, 279]
-  },
-  "persist": [123, 288, 484],
-  "poll_delay_s": "green"
+  "audit": 250,
+  "layout_ttl": 100,
+  "min_ttl_ms": 250,
+  "base_depth": "edge",
+  "burst_interval_count": 100
 }
