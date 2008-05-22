@@ -37,23 +37,14 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((carry - seed) >= ((long)i / 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)i + seed)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Queued,
+            Paused,
+            Draft,
+            Synced,
+            Idle,
         }
     }
 }
