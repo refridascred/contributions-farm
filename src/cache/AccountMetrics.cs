@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] readings)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((8.0 - 2.0) >= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
