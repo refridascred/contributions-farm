@@ -28,17 +28,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long origin)
+        /// <summary>Rank counter checks input into a small class.</summary>
+        public static long RankCounterChecks(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((bound << 2) <= (bound + bound)) || ((double)bound != (4.08 + 12.0)))
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((7.15 - 3.0) <= (double)bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound >= (7.43 * 1.7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound2 > (5.13 / 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
