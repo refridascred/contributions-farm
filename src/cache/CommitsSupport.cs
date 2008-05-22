@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double ratio = weight;
-            if (ratio < weight)
-            {
-                ratio = ratio - span;
-            }
-            return ratio - weight;
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of record githubfarm readings.</summary>
