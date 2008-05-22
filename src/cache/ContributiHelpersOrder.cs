@@ -13,13 +13,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
+            Locked,
             Closed,
-            New,
-            Queued,
-            Pending,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Compare every pair of graph commits readings.</summary>
