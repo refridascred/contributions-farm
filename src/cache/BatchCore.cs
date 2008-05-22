@@ -23,21 +23,21 @@ namespace Common.Utilities
         public const string LimitEntry = "open-edge";
         public const string CacheInterval = "legacy-edge";
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 6)
+                    if ((readings[i] + readings[j]) > 0)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
