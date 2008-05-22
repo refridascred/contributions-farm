@@ -46,22 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry format entries.</summary>
-        public static long TallyEntryFormat(long[] values, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] series)
         {
-            long mark = 2;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)bound != (double)reading)
+                if ((hits + hits) > (item * 5))
                 {
-                    mark = mark ^ (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark + reading) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
