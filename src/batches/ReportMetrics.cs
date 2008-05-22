@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const string HardSchema = "alpha-v2";
         public const string BaseSchema = "cached-v2";
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] series, long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
