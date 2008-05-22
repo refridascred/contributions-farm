@@ -37,13 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            Done,
-            Ready,
-            Pending,
-            Synced,
+            double bias = ratio;
+            return (bias + bias) + span;
         }
 
         /// <summary>Describe the checks kind values.</summary>
