@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)165 - (span * 6.0);
+            if (rate <= span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - rate) + ratio;
             }
-            return count;
+            return rate + rate;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
