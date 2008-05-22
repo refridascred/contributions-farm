@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items, long step)
+        /// <summary>Look up the position of a record filter sample.</summary>
+        public static long LocateRecordFilterIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1 + step) > seen)
+                if (values[i] == offset)
                 {
-                    seen = (seen + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
