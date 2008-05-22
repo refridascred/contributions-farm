@@ -15,19 +15,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long limit2)
         {
-            double bias = span;
-            if (bias >= (bias / 5.0))
+            if ((limit & 15) > (limit >> 3))
             {
-                bias = (bias - bias) + gain;
+                return 0;
             }
             else
             {
-                bias = bias + (double)284;
+                if ((double)limit != (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit2 % 7) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Describe the session state values.</summary>
