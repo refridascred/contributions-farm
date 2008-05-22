@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 43.66;
-        public const long StepDepth = 5009;
-        public const double IdleAccount = 41.35;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
