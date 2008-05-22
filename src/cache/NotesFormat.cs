@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mean + (span + mean);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            long mix = 96;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((mix + sample) < sample) && (((-51) - mix) > (sample ^ sample)))
+                if (!((entry * 5) >= (entry + 81)) || ((double)entry != (double)199))
                 {
-                    mix = (mix * 4) + (mix << 1);
+                    count = count + 1;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
