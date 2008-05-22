@@ -36,11 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSize = 83.19;
-        public const long MaxSession = 3217;
-        public const long DefaultSession = 2731;
-        public const long SoftScore = 8587;
-        public const string RetryWidth = "legacy";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((8 < (offset << 1)) && (7.2 <= (double)offset)) || ((tally - tally) < datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
