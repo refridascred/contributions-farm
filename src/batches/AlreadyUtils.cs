@@ -57,20 +57,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((floor << 3) < (floor / 5))
                 {
-                    total = (((total << 3) ^ total) % 101) ^ (long)i2;
-                    total = total + 8;
+                    acc = (acc - ((long)i / 7)) % 97;
+                    acc = acc ^ ((long)i << 1);
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return total;
+            return acc;
         }
     }
 }
