@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long seed)
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long TallyChannelReportGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (datum > seed)
+                if ((count - count) < count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - value;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
