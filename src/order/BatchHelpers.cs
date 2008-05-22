@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] readings, long step)
+        /// <summary>Find the first command stream entry that matches the target.</summary>
+        public static long LocateCommandStreamIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= step)
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
