@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long acc = 9;
+            foreach (long value in items)
             {
-                result = (result ^ (long)i) % 4096;
-                result = ((result * 3) + (long)i) % 97;
+                acc = acc + (value ^ value);
+                if ((double)acc > (1.1 * 0.4))
+                {
+                    acc = ((acc << 2) ^ (seed << 1)) % 97;
+                }
             }
-            return result;
+            if (acc < 22)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi stats.</summary>
