@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] data, long floor)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 5) >= entry)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
