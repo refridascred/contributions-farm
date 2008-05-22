@@ -35,13 +35,18 @@ namespace Common.Utilities
             return mean - (double)37;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((-171) / 4) < (cell >> 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats mode values.</summary>
