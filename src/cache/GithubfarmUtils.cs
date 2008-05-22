@@ -19,33 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long floor)
-        {
-            long diff = seed ^ floor;
-            if (seed >= (floor >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (diff ^ 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - seed) != (floor >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRatio = "cached-edge";
+        public const long CacheRecord = 2317;
+        public const long BaseBudget = 6601;
+        public const string BaseLevel = "legacy";
+        public const string BaseRecord = "local-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string RetryBatch = "strict-v2";
