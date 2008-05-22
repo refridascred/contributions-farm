@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstDepth = "cached-edge";
-        public const double MinGithubfarm = 68.44;
-        public const long MinScore = 6925;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Retry,
+            Synced,
+            New,
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double bias, double span)
