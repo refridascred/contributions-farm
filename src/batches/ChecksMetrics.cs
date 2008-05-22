@@ -73,21 +73,22 @@ namespace Common.Utilities
             return drift - (double)644;
         }
 
-        /// <summary>Match up cluster report samples.</summary>
-        public static long CompareClusterReportCount(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 708;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum != (1.4 + 5.4))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ datum;
                 }
             }
-            return hits;
+            if (total > 38)
+            {
+                total = (total * 5) + (total * 3);
+            }
+            return total;
         }
     }
 }
