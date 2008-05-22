@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token commits pair into a bucket.</summary>
-        public static long ClassifyTokenCommits(long floor, long offset)
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long TallyGraphTokenOutliers(long[] levels, long offset)
         {
-            if ((double)offset <= (double)(-54))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (double)2)
+                if ((entry + offset) != (offset & 63))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) > (81 % 100))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a command stats.</summary>
