@@ -1,23 +1,5 @@
 {
-  "batch_threshold_s": {
-    "notes_limit": {
-      "base_ttl_count": 99,
-      "channel_threshold": [111, 252, 121],
-      "counter_capacity": "legacy"
-    },
-    "compress": "latest",
-    "idle_size_pct": 86,
-    "command_delay": {
-      "idle_timeout_ms": 50.71,
-      "soft_interval": 37.87,
-      "sync_ttl_s": 100,
-      "warm_limit": "eu-west",
-      "notes_depth": 100,
-      "soft_interval_ms": true
-    }
-  },
-  "base_size_s": 8,
-  "flush_ratio": false,
-  "compress": true,
-  "layout_limit": 100
+  "soft_size_pct": false,
+  "counter_size": "edge",
+  "strict": ["cached", "edge", "staging", "latest"]
 }
