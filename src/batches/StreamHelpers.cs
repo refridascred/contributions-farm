@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Queued,
-            Synced,
-            Stale,
-            Closed,
-            Done,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a session stats.</summary>
