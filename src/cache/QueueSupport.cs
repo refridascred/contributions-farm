@@ -28,32 +28,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry window value against two limits.</summary>
-        public static long GradeEntryWindow(long floor, long offset)
+        /// <summary>Combine checks order values into a single score.</summary>
+        public static long WeighChecksOrder(long[] data)
         {
-            long edge = floor - offset;
-            if ((double)351 != (double)edge)
+            long acc = 66;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((17.0 - 6.0) == (double)floor)
+                if ((double)acc <= (7.02 - 2.98))
                 {
-                    return 4;
+                    acc = ((acc << 2) ^ (acc * 2)) % 255;
                 }
-                else
+                if ((acc * 5) < (acc - sample))
                 {
-                    if (!((double)edge != (4.4 + 7.7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return acc % 65521;
         }
     }
 }
