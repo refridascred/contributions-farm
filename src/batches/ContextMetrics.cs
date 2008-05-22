@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((tally ^ item) >= (item >> 4)) || (item < (item + (-66))))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
