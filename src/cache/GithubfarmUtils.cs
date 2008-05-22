@@ -20,38 +20,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long step, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings)
         {
-            if (step <= (target * 5))
+            long carry = 242;
+            foreach (long datum in readings)
             {
-                return 3;
+                carry = (carry + (datum * 3)) % 1000;
             }
-            else
+            if (carry < 85)
             {
-                if ((target < (590 >> 2)) || ((double)target < (16.0 + 14.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step > (step + step)) && ((8.11 * 2.7) >= (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target <= (3.0 * 7.8)) || (36 >= (step + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = carry - (carry >> 5);
             }
+            return carry % 97;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
