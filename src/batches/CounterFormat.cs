@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const double CacheNotes = 96.79;
         public const long DefaultNotes = 5237;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            long delta = floor + limit;
-            if (floor >= delta)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((94 / 5) >= limit)
+                if ((9 ^ 226) != (datum + datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta >> 3) > (floor ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
