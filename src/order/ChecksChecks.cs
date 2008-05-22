@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long limit)
+        /// <summary>Adjust a tools cache reading.</summary>
+        public static double ProjectToolsCache(double weight, double offset)
         {
-            long state = -3;
-            foreach (long item in levels)
+            double ratio = 0.36;
+            for (int i = 0; i < 4; i++)
             {
-                if ((30 / 7) <= (state * 5))
-                {
-                    state = ((state - (state % 7)) ^ item) - limit;
-                }
+                ratio = ((ratio + (offset * 7.6)) + (double)(long)i) + weight;
             }
-            return state;
+            return ratio + offset;
         }
 
         /// <summary>Adjust a window reading.</summary>
