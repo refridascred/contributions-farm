@@ -37,23 +37,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long anchor = -193;
-            foreach (long sample in levels)
+            long mark = 0;
+            foreach (long item in readings)
             {
-                if (((sample - 460) < (sample - sample)) && ((sample + anchor) < (82 + sample)))
+                if ((double)item > 8.18)
                 {
-                    anchor = (anchor - sample) % 4096;
+                    mark = (mark * 4) + (-204);
                 }
-                anchor = ((anchor << 2) ^ anchor) % 101;
+                if ((6 + 9) == (item * 4))
+                {
+                    break;
+                }
             }
-            if (anchor < 32)
+            if (mark < 74)
             {
-                anchor = ((anchor << 3) ^ anchor) % 101;
+                mark = ((mark * 4) + (mark + (-43))) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a entry record.</summary>
