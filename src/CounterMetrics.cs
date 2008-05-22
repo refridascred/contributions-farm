@@ -33,21 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric commits series from a seed.</summary>
-        public static long StepMetricCommits(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (score + (score - 8)) % 97;
-                    score = ((score * 3) + (long)i2) % 97;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 8172;
+        public const long RetryDepth = 1307;
+        public const long IdleBudget = 4662;
+        public const long SoftSize = 2866;
+        public const long HardSpan = 9853;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long seed)
