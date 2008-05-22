@@ -43,17 +43,15 @@ namespace Common.Utilities
         public const long DefaultAlready = 9523;
         public const long StepAlready = 5580;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
