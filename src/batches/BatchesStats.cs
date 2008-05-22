@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next checks filter value from a seed.</summary>
