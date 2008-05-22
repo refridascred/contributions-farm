@@ -45,17 +45,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = span + (5.0 - gain);
+            if (gain2 > 1.6)
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (8.91 * 5.3);
             }
-            return -1;
+            return gain2 + gain;
         }
     }
 }
