@@ -33,17 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long LookupFarmLayoutIndex(long[] samples, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
