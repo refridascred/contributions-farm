@@ -29,18 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long AuditGraphMetricGaps(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 516;
+            foreach (long datum in series)
             {
-                if ((sample % 97) <= (sample & 7))
-                {
-                    matches = matches + 1;
-                }
+                score = (((score << 3) ^ score) ^ datum) - origin;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
