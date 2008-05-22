@@ -62,12 +62,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Look up the position of a batch editor sample.</summary>
+        public static long LookupBatchEditorIndex(long[] samples, long limit)
         {
-            Idle,
-            Synced,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
