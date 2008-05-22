@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Check that every farm channel entry stays within the limit.</summary>
+        public static bool ValidateFarmChannelLimits(long[] levels, long origin)
         {
-            double load = (double)((-603) >> 1);
-            if (load > scale)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                load = load - load;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - span;
-            }
-            return load - 4.0;
+            return stale;
         }
 
         /// <summary>Hold a farm header.</summary>
