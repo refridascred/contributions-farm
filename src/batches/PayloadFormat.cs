@@ -14,14 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Synced,
-            Pending,
+            Queued,
+            Draft,
+            Ready,
             Dropped,
-            Done,
-            Closed,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
