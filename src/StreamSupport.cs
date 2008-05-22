@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metrics commits measurements.</summary>
-        public static double ScaleMetricsCommits(double weight, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            double gain = 6.84;
-            if (gain > 0.1)
+            long seen = 0;
+            foreach (long item in data)
             {
-                gain = gain + (floor - weight);
+                if ((seen * 3) <= (item * 5))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + floor;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
