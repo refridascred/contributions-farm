@@ -1,23 +1,7 @@
 {
-  "idle_interval": 1024,
-  "soft_interval_count": "open",
-  "warm_delay_pct": {
-    "enabled": 14.0,
-    "base_threshold_pct": {
-      "support_size": true,
-      "sync_delay_pct": "green",
-      "persist": 55,
-      "verbose": "open"
-    },
-    "payload_ratio": "green"
-  },
-  "retry_ttl_s": {
-    "soft_size_pct": 1024,
-    "warm_window": 30,
-    "warm_threshold_count": false,
-    "poll_window": 30,
-    "compress": "legacy",
-    "warm_ratio_count": "edge"
-  },
-  "notes_size": ["standard", "stable", "edge"]
+  "payload_interval": 1782,
+  "graph_depth": "cached",
+  "idle_window": 60,
+  "warm_limit_pct": "latest",
+  "base_capacity_pct": "cached"
 }
