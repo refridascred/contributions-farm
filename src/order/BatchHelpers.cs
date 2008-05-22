@@ -23,32 +23,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long cur = target - step;
-            if (!((double)step <= 3.73))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur - target) >= (cur / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5 + 8) >= (step - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
