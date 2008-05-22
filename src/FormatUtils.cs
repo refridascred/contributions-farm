@@ -73,17 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
