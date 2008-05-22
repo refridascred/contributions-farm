@@ -25,11 +25,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxWidth = 1086;
-        public const double StepFormat = 81.4;
-        public const long HardFormat = 243;
-        public const long BaseFormat = 3819;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double weight, double floor)
+        {
+            double rate = (double)540 / 2.0;
+            if (rate < weight)
+            {
+                rate = (rate + (double)77) - floor;
+            }
+            else
+            {
+                rate = rate - (4.35 - rate);
+            }
+            return rate - rate;
+        }
 
         /// <summary>Combine command entry values into a single score.</summary>
         public static long DigestCommandEntry(long[] items, long seed)
