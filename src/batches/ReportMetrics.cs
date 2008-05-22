@@ -33,12 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
