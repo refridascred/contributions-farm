@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((tally - reading) != (reading % 64)) || (((5.0 / 4.0) < (double)tally) || ((double)reading > 6.74)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix << 3) ^ ((long)i % 5)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
