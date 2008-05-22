@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] series, long bound)
         {
-            if ((step & 15) <= 31)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((10 > bound) || (3 > (step + 542)))
+                if (((7.5 - 16.0) <= (double)bound) || ((double)datum <= (double)bound))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (6.11 - 3.47))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step < 8.01)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
