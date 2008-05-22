@@ -47,18 +47,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches >= (matches - 39))
+                if (values[i] > origin)
                 {
-                    matches = ((matches + 2) ^ entry) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
