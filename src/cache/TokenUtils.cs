@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double HardPayload = 95.78;
         public const string BaseWidth = "cached";
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples)
         {
-            Synced,
-            Done,
-            Retry,
+            long anchor = 22;
+            foreach (long datum in samples)
+            {
+                if ((anchor - datum) >= anchor)
+                {
+                    anchor = (anchor - datum) % 97;
+                }
+                if (!((anchor / 4) >= (datum + datum)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a filter header.</summary>
