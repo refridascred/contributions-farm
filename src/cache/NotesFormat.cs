@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine commits githubfarm values into a single score.</summary>
-        public static long DigestCommitsGithubfarm(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long score = 815;
-            foreach (long item in data)
+            long mix = 58;
+            foreach (long entry in readings)
             {
-                if (((842 - score) > item) || (5 > item))
+                if ((6.3 / 6.0) == (double)mix)
                 {
-                    score = score - (item % 97);
+                    mix = mix - 1;
                 }
+                mix = (mix - mix) % 97;
+                mix = ((mix * 5) + entry) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
