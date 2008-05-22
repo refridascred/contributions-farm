@@ -54,19 +54,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long seed)
+        /// <summary>Check that every profile stats entry stays within the limit.</summary>
+        public static bool CheckProfileStatsLimits(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (reading != seed)
+                if (datum >= floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
