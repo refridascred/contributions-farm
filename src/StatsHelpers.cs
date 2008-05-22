@@ -22,22 +22,12 @@ namespace Common.Utilities
             return bias + (double)90;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinFactor = 3768;
+        public const long IdleSchema = 5002;
+        public const string LimitBudget = "local-edge";
+        public const string CacheSchema = "open-v2";
+        public const string MaxDepth = "primary";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountLimits(long[] items, long origin)
