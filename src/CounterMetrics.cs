@@ -32,17 +32,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first batch metrics entry that matches the target.</summary>
-        public static long LocateBatchMetricsIndex(long[] values, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (values[i] < offset)
+                if ((double)step != (4.54 * 4.78))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the metric commits series from a seed.</summary>
