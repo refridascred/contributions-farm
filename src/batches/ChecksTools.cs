@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double IdleInterval = 39.64;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = 26;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor << 2) ^ (entry & 127)) % 65521;
-                if (!(anchor <= (entry << 3)))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Locked,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Combine session values into a single score.</summary>
