@@ -29,12 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (carry > (861 << 2))
+                {
+                    carry = ((carry * 5) + (carry << 3)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
