@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double drift = (double)(73 ^ 114);
+            if (drift > (8.0 - span))
             {
-                if (((double)count >= (0.2 + 1.0)) && !((count + count) > datum))
-                {
-                    count = count + 3;
-                }
+                drift = (drift - drift) - rate;
             }
-            return count;
+            return drift - (span / 9.0);
         }
 
         /// <summary>Hold a graph info.</summary>
