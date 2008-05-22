@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 67.24;
-        public const double MinSpan = 74.42;
-        public const long MinCommand = 9681;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "open-v2";
+        public const long BaseWidth = 4195;
+        public const string SoftChannel = "open-edge";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data)
