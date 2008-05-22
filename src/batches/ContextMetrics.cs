@@ -37,38 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            if (((step % 8) >= (bound ^ 54)) || ((double)bound >= 7.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) > (step + bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step % 60) >= bound))
+                    if ((readings[i] - readings[j]) != 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 3) > (step / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
