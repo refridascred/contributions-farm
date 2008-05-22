@@ -51,14 +51,11 @@ namespace Common.Utilities
         public const long BaseSchema = 1238;
         public const double RetryFactor = 49.33;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Retry,
-            Idle,
-            Closed,
-            Locked,
-            New,
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
