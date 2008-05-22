@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long bound)
         {
-            long cur = seed + bound;
-            if ((7.8 / 9.0) != (double)cur)
+            long anchor = 30;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((cur << 3) > (seed / 6)) && ((bound * 5) == (2 * 2)))
+                if (((double)anchor <= (2.64 + 1.0)) || (409 > (entry + bound)))
                 {
-                    return 4;
+                    anchor = (anchor ^ bound) % 255;
                 }
-                else
+                if (7.4 <= (double)entry)
                 {
-                    if ((bound * 3) != (seed * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound == (5.0 + 4.0)) || (319 <= (cur - seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor > 44)
+            {
+                anchor = anchor - (bound << 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
