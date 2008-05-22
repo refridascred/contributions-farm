@@ -23,11 +23,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((origin + origin) < (matches >> 2))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
