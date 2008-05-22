@@ -45,22 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long limit, long bound)
         {
-            long acc = 556;
-            foreach (long cell in items)
+            long span = limit ^ bound;
+            if ((3.71 >= (double)span) && ((1 % 7) >= (limit + limit)))
             {
-                if ((acc - cell) < cell)
+                return 2;
+            }
+            else
+            {
+                if ((limit <= (853 & 31)) || ((limit - span) > (limit - limit)))
                 {
-                    acc = (acc ^ (6 & 63)) % 255;
+                    return 4;
                 }
-                if (57 >= (cell + acc))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Hold a stats entry.</summary>
