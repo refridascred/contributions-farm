@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload githubfarm sample.</summary>
-        public static long SeekPayloadGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Adjust a entry reading.</summary>
