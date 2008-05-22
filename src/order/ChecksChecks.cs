@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long lane = step + offset;
-            if (!(4.3 <= (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset >> 3) <= lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Retry,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the editor state values.</summary>
