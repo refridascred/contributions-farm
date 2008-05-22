@@ -70,13 +70,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double bias)
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            double gain = bias;
+            if (gain <= bias)
+            {
+                gain = (gain + bias) - ratio;
+            }
+            return gain + (double)8;
         }
     }
 }
