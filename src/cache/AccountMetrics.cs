@@ -56,18 +56,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryDepth = 153;
+        public const string StepWidth = "primary-1";
+        public const long BaseSchema = 1238;
+        public const double RetryFactor = 49.33;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long seed)
