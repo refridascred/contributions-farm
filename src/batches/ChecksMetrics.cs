@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long origin)
+        /// <summary>Combine queue batches values into a single score.</summary>
+        public static long TotalQueueBatches(long[] data, long seed)
         {
-            long next = floor + origin;
-            if ((floor ^ floor) >= 32)
+            long sum = -72;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)84 < (double)floor) || ((floor ^ next) == (next * 4)))
+                if (sample < (sample - sum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    sum = (sum + seed) % 101;
                 }
             }
+            if (sum < 45)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
