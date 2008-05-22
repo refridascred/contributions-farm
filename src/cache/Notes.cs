@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 9;
-            foreach (long value in items)
-            {
-                if (value >= 57)
-                {
-                    state = state + (value - value);
-                }
-            }
-            return state;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
