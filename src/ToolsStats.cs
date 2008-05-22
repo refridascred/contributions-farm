@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= bound)
+                if ((matches > (matches / 2)) || ((7.54 * 6.69) > (double)reading))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
