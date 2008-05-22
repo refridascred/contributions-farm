@@ -65,22 +65,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] samples, long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seen != (double)(-5))
-                {
-                    seen = ((seen + 3) + cell) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Idle,
+            Retry,
         }
     }
 }
