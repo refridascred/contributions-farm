@@ -26,14 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
+        public static bool GuardSessionGithubfarmRange(long[] levels, long target)
         {
-            Done,
-            Paused,
-            Failed,
-            Active,
-            Dropped,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cache info.</summary>
