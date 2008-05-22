@@ -53,23 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double bias, double offset)
+        /// <summary>Compare every pair of profile editor readings.</summary>
+        public static long OverlapProfileEditorCount(long[] series)
         {
-            double scale = offset;
-            if (scale < (double)(-26))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)61;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (bias - offset)) + (double)(long)i;
-            }
-            return scale + scale;
+            return count;
         }
     }
 }
