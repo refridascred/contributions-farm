@@ -33,18 +33,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the checks entry entries that pass the check.</summary>
-        public static long TallyChecksEntryMatches(long[] samples, long floor)
+        /// <summary>Look up the position of a batch metric sample.</summary>
+        public static long LocateBatchMetricIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.15 + 10.0) > (double)value)
+                if (levels[i] >= limit)
                 {
-                    tally = (tally + 1) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
