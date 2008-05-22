@@ -30,19 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (item >= limit)
+                if (cell > seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
