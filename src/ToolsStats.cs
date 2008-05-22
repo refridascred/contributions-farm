@@ -25,18 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count ^ count) > count)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Match up filter samples.</summary>
