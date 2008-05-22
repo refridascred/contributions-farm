@@ -57,21 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] data, long origin)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == origin)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
