@@ -58,13 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Idle,
-            Stale,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9175;
+        public const double HardFilter = 16.17;
+        public const string SoftFilter = "strict";
+        public const long DefaultCount = 8718;
+        public const long LimitCount = 2414;
     }
 }
