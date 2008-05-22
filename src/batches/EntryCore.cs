@@ -43,18 +43,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally < (reading >> 1))
+                if (samples[i] < floor)
                 {
-                    tally = (tally + 1) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
