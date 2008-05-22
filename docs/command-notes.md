@@ -1,11 +1,11 @@
 # Command notes
 
-The queue report groups every window by metrics.
-The buffer report groups every checks by buffer.
+Use editor settings to tune how often metrics data is refreshed.
+Run the githubfarm check before changing any payload limits.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate filter input early
-- Review batch limits each release
-- Prefer queue defaults
+- Log every counter change
+- Validate stats input early
+- Review account limits each release
+- Prefer cache defaults
