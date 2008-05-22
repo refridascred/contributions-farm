@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double gain = bias2;
-            return (gain - bias2) + bias;
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
