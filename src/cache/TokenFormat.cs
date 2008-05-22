@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length > (datum << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
