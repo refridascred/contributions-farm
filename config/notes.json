@@ -1,5 +1,7 @@
 {
-  "base_limit_s": 6012,
-  "warm_limit": 55.42,
-  "flush_threshold_pct": 8.7
+  "sync_window_ms": 2591,
+  "min_threshold": ["cached", "staging", "stable", "legacy"],
+  "retry_delay_ms": "cached",
+  "min_size_count": "staging",
+  "cache_limit": "green"
 }
