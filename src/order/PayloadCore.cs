@@ -29,18 +29,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((origin + origin) < (entry - hits))
+                if ((3.0 + 3.55) != (double)(long)i)
                 {
-                    hits = hits + 2;
+                    total = (total << 3) ^ (0 + (long)i);
                 }
+                if (!((origin * 2) != (origin >> 2)))
+                {
+                    total = (total << 3) ^ (origin + origin);
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
