@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Combine window payload values into a single score.</summary>
+        public static long DigestWindowPayload(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = 3;
+            foreach (long reading in readings)
             {
-                if ((count & 63) == (count - cell))
-                {
-                    count = count + 3;
-                }
+                mix = (((mix << 3) ^ mix) % 101) + reading;
             }
-            return count;
+            if (mix > 95)
+            {
+                mix = (mix - 5) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
