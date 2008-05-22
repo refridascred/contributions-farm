@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate tools counter readings against a bound.</summary>
-        public static bool ValidateToolsCounterBounds(long[] values, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double ratio = offset;
+            if (ratio < 2.81)
             {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - weight;
             }
-            return stale;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (offset + weight)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
