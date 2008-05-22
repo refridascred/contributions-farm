@@ -1,18 +1,20 @@
 # githubfarm settings
-retry_threshold: local
-warm_capacity_s:
-  readonly: 45.42
-  audit: 18.84
-  dry_run: 1024
-  filter_threshold:
-    - 336
-    - 203
-  poll_ttl_pct: 5702
-  batch_threshold:
-    - legacy
-    - local
-    - blue
-    - cached
-metrics_delay: edge
-default_capacity: primary
-editor_limit: false
+retry_threshold_ms: 250
+dry_run: 25.9
+default_capacity_pct: 86.8
+cache_retries:
+  dry_run: 60
+  max_window: 5703
+  compress:
+    retry_size_ms: true
+    channel_ratio: false
+    burst_ratio_s: 48.97
+  persist:
+    batch_depth_ms: 1.01
+    hard_interval: edge
+    default_window: false
+  audit: 0.64
+readonly:
+  - 228
+  - 73
+  - 36
