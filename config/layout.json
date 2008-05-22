@@ -1,6 +1,5 @@
 {
-  "poll_limit": "latest",
-  "verbose": 163,
-  "layout_capacity": 7687,
-  "base_interval_count": false
+  "flush_capacity": false,
+  "context_depth": "eu-west",
+  "enabled": 223
 }
