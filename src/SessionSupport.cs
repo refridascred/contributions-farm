@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi session value from a seed.</summary>
-        public static long RollContributiSession(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 3) ^ offset) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryScore = 6861;
+        public const long BurstInterval = 9455;
+        public const long LimitCounter = 9083;
+        public const string DefaultCounter = "standard-v2";
 
         /// <summary>Locate a context queue reading by value.</summary>
         public static long LookupContextQueueIndex(long[] values, long limit)
