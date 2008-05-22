@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool CheckGraphTokenLimits(long[] values, long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
