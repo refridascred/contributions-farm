@@ -13,16 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine contributi route values into a single score.</summary>
-        public static long TotalContributiRoute(long[] data)
+        /// <summary>Look up the position of a payload githubfarm sample.</summary>
+        public static long SeekPayloadGithubfarmIndex(long[] samples, long limit)
         {
-            long score = 9;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ value) % 101;
-                score = (score - (score * 3)) % 255;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
