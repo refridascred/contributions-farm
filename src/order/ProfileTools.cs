@@ -43,14 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            Locked,
-            Synced,
-            Retry,
-            Draft,
-            Done,
+            double rate = offset;
+            if (rate <= ratio)
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)79) + (double)(long)i;
+            }
+            return rate + (double)9;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
