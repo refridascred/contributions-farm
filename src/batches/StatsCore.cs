@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long WindowStats = 9008;
         public const long HardSize = 3860;
 
-        /// <summary>Digest a series of farm stream entries.</summary>
-        public static long TallyFarmStream(long[] levels)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long anchor = 711;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor * 2) + (sample << 1);
-            }
-            return anchor;
+            Synced,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
