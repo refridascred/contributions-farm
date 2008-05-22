@@ -1,10 +1,6 @@
 {
-  "hard_limit_s": 3,
-  "base_limit_ms": true,
-  "verbose": {
-    "dry_run": false,
-    "sync_depth_ms": 686,
-    "default_size": 78.78,
-    "idle_window": "fallback"
-  }
+  "entry_delay": 82,
+  "cache_retries": 7775,
+  "retry_ratio_s": 18,
+  "burst_interval_count": 60
 }
