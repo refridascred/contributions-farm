@@ -39,17 +39,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long bound)
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long TotalCommandStats(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 477;
+            foreach (long value in series)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (limit << 3)) % 4096) + value;
             }
-            return -1;
+            if (carry < 8)
+            {
+                carry = carry ^ (limit << 3);
+            }
+            return carry % 1000;
         }
     }
 }
