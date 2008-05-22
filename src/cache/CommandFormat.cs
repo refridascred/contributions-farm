@@ -59,12 +59,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Ready,
-            Failed,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 6544;
+        public const long RetrySpan = 7422;
+        public const string DefaultAccount = "latest-1";
+        public const string BatchWidth = "primary-v2";
     }
 }
