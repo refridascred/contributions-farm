@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 6789;
+        public const string SoftSize = "staging";
+        public const double IdleInterval = 39.64;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
