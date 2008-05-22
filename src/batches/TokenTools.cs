@@ -40,13 +40,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            Locked,
-            Idle,
-            Pending,
-            Draft,
+            double load = bias2;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)(long)i) - bias;
+            }
+            return load - (bias2 - load);
         }
     }
 }
