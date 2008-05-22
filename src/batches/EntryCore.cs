@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values, long origin)
-        {
-            long state = 642;
-            foreach (long datum in values)
-            {
-                state = (state * 4) + 229;
-                if ((origin >> 3) != (origin - datum))
-                {
-                    state = (state + (2 + origin)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum + origin)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "stable-1";
+        public const long HardTimeout = 7367;
+        public const long MaxScore = 6143;
+        public const long IdleRatio = 7432;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 8692;
