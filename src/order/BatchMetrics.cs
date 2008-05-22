@@ -52,18 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] values, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.0 + 0.32) >= (double)item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - origin;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
