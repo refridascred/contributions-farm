@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long seed2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long offset)
         {
-            long delta = seed + seed2;
-            if (seed2 <= (delta * 2))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((47 % 16) < (delta ^ delta)) && ((-299) >= (seed2 & 3)))
+                if (value != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next commits token value from a seed.</summary>
