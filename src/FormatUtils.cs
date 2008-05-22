@@ -91,25 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long bound)
         {
-            long edge = offset + floor;
-            if (!(offset < floor))
+            long score = 90;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((177 - 28) != (edge * 2))
+                if ((score - 1) < (entry + bound))
                 {
-                    return 4;
+                    score = score - (bound & 127);
                 }
                 else
                 {
-                    return 5;
+                    score = (score - (entry & 127)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Look up the position of a route filter sample.</summary>
