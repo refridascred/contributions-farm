@@ -28,19 +28,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long seed)
         {
-            double rate = 8.3;
-            if (rate <= (double)53)
+            long offset2 = offset ^ seed;
+            if (((offset2 ^ 936) > (offset + seed)) || ((offset2 / 5) > offset2))
             {
-                rate = (rate - weight) - bias;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate - weight) + (double)(long)i;
+                if ((double)seed > (3.3 / 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate - (weight + weight);
         }
     }
 }
