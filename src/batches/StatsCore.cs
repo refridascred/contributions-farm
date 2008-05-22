@@ -74,24 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long limit)
         {
-            if ((9.8 - 11.0) != (double)step)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 - step) < step)
+                if (cell > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
