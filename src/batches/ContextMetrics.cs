@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = (bias - 14.0) / 5.0;
+            return (weight - (bias / 6.0)) + scale;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
