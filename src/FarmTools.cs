@@ -44,11 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Derive the next farm buffer value from a seed.</summary>
+        public static long SeriesFarmBuffer(long offset)
         {
-            double drift = floor * 2.23;
-            return drift + (scale + scale);
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
