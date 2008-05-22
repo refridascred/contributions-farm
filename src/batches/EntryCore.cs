@@ -24,21 +24,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((4.77 + 4.07) >= (double)score) || ((60 + 975) != (long)i))
-                {
-                    score = score ^ score;
-                    score = ((score * 5) + (80 << 1)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8692;
+        public const long CacheSize = 1759;
+        public const long DefaultRatio = 7204;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] series, long origin)
