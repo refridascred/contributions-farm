@@ -59,10 +59,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowRatio = 4.0;
-        public const double MaxFactor = 51.77;
-        public const long BaseCache = 881;
-        public const double BurstCache = 84.42;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Ready,
+            Failed,
+            Active,
+        }
     }
 }
