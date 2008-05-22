@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const double BurstLevel = 15.5;
         public const long RetryWidth = 1035;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((hits - hits) < (item << 1)) && !(17.0 > (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 44.59;
+        public const string HardSchema = "cached";
+        public const long StepCount = 286;
+        public const long BaseSchema = 3750;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterHits(long[] data, long bound)
