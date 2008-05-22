@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Failed,
-            Paused,
-            Idle,
-            Queued,
-            Ready,
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
