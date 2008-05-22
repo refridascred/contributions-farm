@@ -16,21 +16,18 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1.1 + 8.0) > (double)limit)
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix + mix)) - datum;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a command summary.</summary>
