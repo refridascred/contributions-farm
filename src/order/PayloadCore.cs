@@ -24,12 +24,20 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSpan = 6582;
-        public const double BatchLayout = 65.55;
-        public const long IdleLayout = 7149;
-        public const long IdleTimeout = 4498;
-        public const double BurstSpan = 80.81;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenHits(long[] items, long origin)
