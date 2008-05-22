@@ -71,18 +71,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long result = 57;
-            foreach (long datum in data)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((-9) + 27) <= ((long)data.Length % 2))
+                if (((double)8 >= (double)bound) || ((double)(long)i != (1.0 + 9.2)))
                 {
-                    result = (((result * 5) + datum) % 65521) + origin;
+                    state = (state ^ ((long)i + state)) % 255;
+                    break;
                 }
+                else
+                {
+                    state = state + (state << 2);
+                }
+                state = (state - bound) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
