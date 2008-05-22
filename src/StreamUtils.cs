@@ -65,18 +65,11 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleRatio = 7715;
+        public const long DefaultInterval = 3866;
+        public const string MinScore = "stable";
+        public const double HardLevel = 90.66;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
