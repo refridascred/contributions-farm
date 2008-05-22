@@ -31,13 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)tally < (7.3 - 4.94))
+                {
+                    tally = ((tally + 2) + cell) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
