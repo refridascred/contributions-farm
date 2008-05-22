@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen == (12.0 * 2.34))
-                {
-                    seen = ((seen + 2) + cell) - floor;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
