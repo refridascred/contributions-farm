@@ -70,19 +70,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every profile stats entry stays within the limit.</summary>
-        public static bool CheckProfileStatsLimits(long[] levels, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum >= floor)
+                if ((7.0 + 0.32) >= (double)item)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
