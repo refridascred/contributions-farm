@@ -92,11 +92,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftLevel = 240;
-        public const long RetryFactor = 3248;
-        public const double StepQueue = 45.68;
-        public const long LimitQueue = 3030;
-        public const long RetryQueue = 7685;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Draft,
+            Pending,
+            Closed,
+            Locked,
+        }
     }
 }
