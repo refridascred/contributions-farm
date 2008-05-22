@@ -43,38 +43,15 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings, long limit)
         {
-            if (step > (offset - step))
+            long score = -93;
+            foreach (long item in readings)
             {
-                return 8;
+                score = (((score ^ (54 / 2)) % 101) ^ item) + limit;
             }
-            else
-            {
-                if ((643 >= (offset * 3)) && ((step - step) < (143 + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((19.0 / 3.0) == (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - step) >= 427)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many queue buffer samples are out of range.</summary>
