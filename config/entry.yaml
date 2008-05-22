@@ -1,36 +1,11 @@
 # entry settings
-base_timeout_count:
-  command_delay:
-    audit: 60.91
-    enabled:
-      - 287
-      - 256
-      - 91
-      - 23
-    cache_retries: 60
-    soft_ttl_count:
-      - 386
-      - 185
-      - 420
-    readonly: 1024
-    min_ttl_s: 32
-  graph_timeout:
-    support_retries: open
-    compress: fallback
-    poll_threshold: 55
-    min_ratio_ms: false
-    commits_depth: eu-west
-  flush_ratio_count:
-    - open
-    - stable
-    - staging
-    - legacy
-  cache_depth_count:
-    - 53
-    - 261
-  poll_delay_ms: local
-  max_capacity: 20.81
-flush_limit_count: false
-already_size: true
-batch_window_ms: 3426
-dry_run: false
+flush_size: true
+editor_interval: 8780
+hard_limit_pct: 1875
+audit: standard
+sync_timeout:
+  - 327
+  - 101
+  - 2
+  - 225
+graph_depth: legacy
