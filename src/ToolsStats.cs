@@ -50,25 +50,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long next = limit ^ seed;
+            if ((seed << 1) == (limit - 0))
             {
-                if ((19.0 / 8.0) == (double)carry)
-                {
-                    carry = (carry << 2) ^ origin;
-                    break;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry - (0 & 15)) - (long)i2;
-                }
-                carry = ((carry * 4) + 222) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((seed + next) <= (5 % 12))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1.0 < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 << 1) > (limit / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks schema entry stays within the limit.</summary>
