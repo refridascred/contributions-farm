@@ -64,18 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] data, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double weight = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (hits < 4)
-                {
-                    hits = ((hits + 2) + cell) - origin;
-                }
+                weight = ((weight + (weight - offset)) + (double)(long)i) - rate;
             }
-            return hits;
+            return weight - (offset / 8.0);
         }
     }
 }
