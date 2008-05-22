@@ -19,13 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every commits counter entry stays within the limit.</summary>
+        public static bool VerifyCommitsCounterLimits(long[] levels, long seed)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a commits header.</summary>
