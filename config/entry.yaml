@@ -1,10 +1,16 @@
 # entry settings
-cache_size: fallback
-default_threshold_count: true
-order_delay: primary
-compress:
-  - open
-  - cached
-  - edge
-enabled: 1077
-persist: 6662
+min_ttl_count: staging
+batch_depth_pct: cached
+token_timeout: 70
+channel_ttl: local
+cache_window_pct:
+  burst_depth:
+    batch_depth_ms: stable
+    poll_size_count: standard
+    stream_capacity: 18
+    tools_limit: local
+    compress: local
+    max_retries: 81.33
+  farm_delay: staging
+  sync_threshold_count: 5882
+graph_capacity: 49
