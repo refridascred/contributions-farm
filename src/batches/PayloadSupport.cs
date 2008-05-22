@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long limit)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
