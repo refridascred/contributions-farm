@@ -35,19 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            Synced,
+            Draft,
+            Dropped,
         }
     }
 }
