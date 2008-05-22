@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many route schema samples are out of range.</summary>
-        public static long CountRouteSchemaOutliers(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ 819) < (item + 45))
+                if (readings[i] > origin)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a checks stats.</summary>
