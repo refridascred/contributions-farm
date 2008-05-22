@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long score = 72;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((((score << 3) ^ score) % 97) ^ entry) + offset;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (score < 7)
-            {
-                score = (score ^ (337 / 7)) % 4096;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many account notes samples are out of range.</summary>
