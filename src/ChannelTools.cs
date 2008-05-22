@@ -19,17 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + (limit - limit);
-                carry = ((carry * 5) + (carry << 2)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
