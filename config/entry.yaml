@@ -1,4 +1,4 @@
 # entry settings
-entry_limit: edge
-batch_ttl_ms: false
-hard_delay: 88
+sync_timeout_count: 5790
+min_window_count: legacy
+warm_depth_ms: 30.39
