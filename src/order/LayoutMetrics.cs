@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 87.32;
-        public const long BaseScore = 6801;
-        public const string WindowCount = "local-v2";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value ^ value) != (seen + 51))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
