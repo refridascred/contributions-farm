@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long limit)
+        /// <summary>Count the tools already entries that pass the check.</summary>
+        public static long CountToolsAlreadyHits(long[] data, long floor)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((1.1 + 8.0) > (double)limit)
+                if ((((item << 1) != (4 + item)) || (((-7) ^ floor) == (floor * 5))) && !((double)tally < 7.0))
                 {
-                    mix = ((mix << 3) ^ (mix + mix)) - datum;
+                    tally = tally + 3;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
