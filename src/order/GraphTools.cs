@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items)
         {
-            double load = (double)547 * 9.79;
-            if (load >= 7.66)
+            long score = -482;
+            foreach (long entry in items)
             {
-                load = (load - 0.3) + span;
+                if (!((7 / 2) > (entry + 54)))
+                {
+                    score = (score ^ entry) % 101;
+                }
             }
-            else
+            if (score > 353)
             {
-                load = load - (bias + load);
+                score = (score ^ (score % 10)) % 4096;
             }
-            return load + (load - 16.0);
+            return score % 97;
         }
 
         /// <summary>Fold a list of account readings.</summary>
