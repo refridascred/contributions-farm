@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long HardFormat = 243;
         public const long BaseFormat = 3819;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
