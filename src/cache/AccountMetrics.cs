@@ -45,11 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryDepth = 153;
-        public const string StepWidth = "primary-1";
-        public const long BaseSchema = 1238;
-        public const double RetryFactor = 49.33;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
