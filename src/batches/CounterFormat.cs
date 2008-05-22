@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long MaxLevel = 6311;
         public const long BaseChannel = 5166;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit token support readings against a rule.</summary>
+        public static long MeasureTokenSupportMatches(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((7.0 + 1.82) == (double)(long)items.Length)
+                {
+                    seen = ((seen + 1) ^ datum) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
