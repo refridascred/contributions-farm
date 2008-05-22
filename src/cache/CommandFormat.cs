@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long CountToolsCounterHits(long[] levels, long offset)
+        /// <summary>Look up the position of a stream metric sample.</summary>
+        public static long SeekStreamMetricIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.73 < (18.0 + 18.0)) && ((reading - reading) < (matches << 1)))
+                if (series[i] > step)
                 {
-                    matches = (matches + 3) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
