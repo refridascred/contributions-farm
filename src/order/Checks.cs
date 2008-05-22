@@ -34,18 +34,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((bound << 1) <= (sample / 3)))
+                if (!((hits - hits) < (item << 1)) && !(17.0 > (double)hits))
                 {
-                    matches = matches + 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
