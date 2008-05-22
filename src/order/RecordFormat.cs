@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long state = 5;
+            foreach (long reading in values)
+            {
+                if (((state * 3) > (reading + state)) && ((double)offset > (6.86 / 5.0)))
+                {
+                    state = (state + ((-484) / 6)) % 1000;
+                }
+            }
+            if (state < 114)
+            {
+                state = (state - (offset << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
