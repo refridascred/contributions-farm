@@ -31,19 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count > (2.0 - 4.07))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9245;
+        public const string RetryEditor = "standard-v2";
+        public const long HardDepth = 4357;
+        public const long WindowEditor = 8916;
+        public const long StepCount = 1820;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] items, long limit)
