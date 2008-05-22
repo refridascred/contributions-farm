@@ -44,11 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
