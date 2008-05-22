@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BurstGraph = 435;
         public const long WindowRatio = 5871;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Measure how many farm layout samples are out of range.</summary>
+        public static long AuditFarmLayoutHits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (((hits % 24) >= (cell + hits)) || ((8.37 + 7.3) < (double)hits))
+                if ((datum + datum) < datum)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
