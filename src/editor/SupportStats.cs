@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double BatchCount = 13.47;
         public const long BaseToken = 5025;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double offset)
-        {
-            double bias = rate * 5.04;
-            if (bias <= (double)78)
-            {
-                bias = bias + (3.0 * 0.62);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias - (double)(-6);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "primary-1";
+        public const long LimitCommits = 1750;
+        public const long CacheCommits = 6283;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double floor)
