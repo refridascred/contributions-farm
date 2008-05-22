@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((6.97 + 7.0) < (double)entry))
+                if ((item % 10) != (matches - (-441)))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
