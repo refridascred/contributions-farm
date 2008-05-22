@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
