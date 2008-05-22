@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardScore = "strict-1";
+        public const long RetryCommand = 2109;
+        public const double BurstCount = 33.95;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
