@@ -56,21 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile editor readings.</summary>
-        public static long OverlapProfileEditorCount(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + seen) < (63 >> 1))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
