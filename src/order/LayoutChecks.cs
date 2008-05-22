@@ -25,12 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            Ready,
-            Queued,
-            Failed,
+            double bias = (double)(403 << 1);
+            return (bias + offset) + gain;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
