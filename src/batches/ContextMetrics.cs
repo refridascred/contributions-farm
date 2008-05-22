@@ -62,11 +62,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
             public long Owner { get; set; }
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
