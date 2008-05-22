@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 4681;
+        public const long CacheSize = 2764;
+        public const double HardPayload = 95.78;
+        public const string BaseWidth = "cached";
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] samples)
