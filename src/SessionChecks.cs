@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
