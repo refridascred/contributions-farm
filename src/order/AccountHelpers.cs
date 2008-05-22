@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 2298;
-        public const long DefaultScore = 8583;
-        public const long BaseRecord = 8622;
-        public const long MaxDepth = 8846;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples)
+        {
+            long mark = 405;
+            foreach (long datum in samples)
+            {
+                mark = (mark ^ (datum << 2)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
