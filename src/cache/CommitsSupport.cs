@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
