@@ -23,20 +23,21 @@ namespace Common.Utilities
         public const long RetryBatches = 54;
         public const double BurstBatches = 57.04;
 
-        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
-        public static long SeriesGithubfarmPayload(long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 2) + (acc + offset)) % 65521;
-                if ((offset & 1) <= ((long)i / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - (offset + 16)) % 4096;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
