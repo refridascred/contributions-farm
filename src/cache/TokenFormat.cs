@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample + matches) > sample) || ((sample % 16) <= (matches ^ 924)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
