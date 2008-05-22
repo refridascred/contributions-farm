@@ -20,10 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 3610;
-        public const long SoftWidth = 4692;
-        public const long MaxDepth = 431;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((target + entry) > (88 + target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] series)
