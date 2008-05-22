@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Ready,
-            Paused,
-            Stale,
-            Synced,
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
