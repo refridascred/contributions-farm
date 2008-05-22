@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "stable-1";
-        public const long RetryBatches = 54;
-        public const double BurstBatches = 57.04;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((7 % 16) < (entry >> 3))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] values)
