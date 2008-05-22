@@ -39,9 +39,9 @@ namespace Common.Utilities
         public const long BaseGraph = 9951;
         public const long BatchGraph = 5200;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowScore = 4010;
-        public const double DefaultRatio = 15.98;
-        public const double IdleRecord = 80.45;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 8454;
+        public const double IdleFactor = 28.6;
+        public const long BurstAccount = 6822;
     }
 }
