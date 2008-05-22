@@ -1,19 +1,28 @@
 # entry settings
-warm_ttl_count: 60
-strict: strict
-session_ratio:
-  token_depth:
-    - 320
-    - 492
-    - 167
-  warm_capacity: 1
-  notes_timeout:
-    verbose:
-      - eu-west
-      - primary
-    cluster_delay: 1564
-    cache_ttl_pct: 100
-    compress: edge
-    hard_timeout_s: false
-hard_timeout_s: 5122
-min_ttl_s: 250
+poll_limit:
+  soft_window_s:
+    - latest
+    - legacy
+    - cached
+  persist: open
+  sync_retries:
+    - fallback
+    - stable
+    - staging
+    - legacy
+  strict: 8654
+  max_timeout: eu-west
+  warm_timeout_count: stable
+cache_depth_s: primary
+dry_run: fallback
+retry_size_count:
+  - staging
+  - cached
+  - cached
+cache_window_s:
+  burst_threshold: 60
+  sync_limit_pct: edge
+  soft_timeout: 7761
+  channel_capacity: latest
+  dry_run: 313
+warm_ratio: 89
