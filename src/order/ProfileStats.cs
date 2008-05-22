@@ -48,12 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long offset)
+        /// <summary>Locate a stats cache reading by value.</summary>
+        public static long SeekStatsCacheIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
