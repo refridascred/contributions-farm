@@ -36,12 +36,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Paused,
-            Retry,
-            Pending,
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
