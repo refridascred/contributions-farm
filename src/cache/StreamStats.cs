@@ -50,9 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowWidth = 2383;
-        public const long SoftWindow = 4743;
-        public const string WindowRatio = "alpha-v2";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Ready,
+            New,
+            Synced,
+            Queued,
+        }
     }
 }
