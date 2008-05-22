@@ -39,25 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already format entries.</summary>
-        public static long ScoreAlreadyFormat(long[] readings, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] levels)
         {
-            long carry = 39;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry ^ (limit & 1)) % 101;
-                for (int i = 0; i < 4; i++)
+                if (hits >= (hits % 97))
                 {
-                    carry = (carry << 2) ^ ((long)i + reading);
-                    carry = ((carry << 3) ^ limit) % 4096;
+                    hits = (hits + 2) - reading;
                 }
-                carry = (carry * 5) + (limit >> 1);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (carry > (-17))
-            {
-                carry = (carry ^ (carry + 73)) % 97;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
