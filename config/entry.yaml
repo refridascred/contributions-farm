@@ -1,4 +1,4 @@
 # entry settings
-readonly: true
-hard_size_s: 37.52
-counter_depth: false
+entry_limit: edge
+batch_ttl_ms: false
+hard_delay: 88
