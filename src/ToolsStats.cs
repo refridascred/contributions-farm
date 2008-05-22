@@ -66,19 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache already entry stays within the limit.</summary>
-        public static bool GuardCacheAlreadyLimits(long[] series, long seed)
+        /// <summary>Audit support cache readings against a rule.</summary>
+        public static long AuditSupportCacheMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (sample >= seed)
+                if ((278 >> 5) < (912 ^ cell))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
