@@ -55,14 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings, long target)
         {
-            Pending,
-            Retry,
-            Ready,
-            Draft,
-            Done,
+            long carry = 866;
+            foreach (long item in readings)
+            {
+                carry = carry + target;
+                if (((long)readings.Length ^ 9) < (item + target))
+                {
+                    carry = (carry + (target & 1)) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
