@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long acc = 278;
-            foreach (long value in series)
-            {
-                acc = (acc ^ (acc & 3)) ^ value;
-            }
-            return acc % 1000;
+            Retry,
+            Failed,
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a contributi record.</summary>
