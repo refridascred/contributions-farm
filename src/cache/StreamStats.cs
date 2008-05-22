@@ -68,15 +68,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double scale, double bias)
         {
-            long acc = 273;
-            foreach (long sample in samples)
+            double ratio = scale - (double)7;
+            if (ratio > (ratio - ratio))
             {
-                acc = (acc - (sample / 5)) % 4096;
+                ratio = (ratio + ratio) + bias;
             }
-            return acc;
+            return ratio + (double)190;
         }
     }
 }
