@@ -1,10 +1,9 @@
 # entry settings
-poll_delay_ms:
-  - 341
-  - 280
-  - 154
-  - 44
-command_ratio: 100
-retry_ratio: open
-enabled: true
-readonly: latest
+account_timeout:
+  - 197
+  - 293
+  - 397
+base_ratio_ms: true
+readonly: 100
+max_capacity_count: fallback
+warm_ratio_count: 4279
