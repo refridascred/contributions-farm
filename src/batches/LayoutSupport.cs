@@ -55,32 +55,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long target)
+        /// <summary>Compare every pair of support context readings.</summary>
+        public static long MatchSupportContextCount(long[] data)
         {
-            long next = limit + target;
-            if ((1.2 > (double)limit) && ((1.6 * 9.9) == (double)limit))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((4.28 / 2.0) >= (5.5 / 6.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next > (target + target)) || ((limit * 4) > (target % 12)))
+                    if ((data[i] + data[j]) == 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
