@@ -56,39 +56,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a window stats pair into a bucket.</summary>
-        public static long GradeWindowStats(long offset, long bound)
-        {
-            long next = offset - bound;
-            if (((double)bound >= 8.1) && ((869 ^ next) < (offset + next)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound << 1) >= (next ^ offset)) || ((double)bound <= (double)next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound + next) >= (offset - offset)) || ((double)offset < (double)next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.0 / 6.0) != (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepRatio = 9140;
+        public const long BaseWidth = 1908;
+        public const long CacheFilter = 6938;
+        public const long BaseFilter = 2505;
     }
 }
