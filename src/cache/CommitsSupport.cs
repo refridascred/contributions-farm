@@ -59,21 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry - (carry << 1)) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Scale a support token figure with a bias.</summary>
