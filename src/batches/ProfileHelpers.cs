@@ -46,20 +46,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((origin + 7) < score)
-                {
-                    score = (score * 2) + (score & 3);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchRatio = 5712;
+        public const double BatchCommand = 90.72;
+        public const long WindowCount = 3864;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] values, long target)
