@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next checks filter value from a seed.</summary>
