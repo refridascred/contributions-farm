@@ -38,19 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
