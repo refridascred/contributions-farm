@@ -21,18 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultLevel = "cached-edge";
+        public const long BatchStats = 6863;
+        public const string HardLevel = "open-v2";
+        public const long RetryStats = 7362;
+        public const long CacheCount = 8611;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] values)
