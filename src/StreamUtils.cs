@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if (915 > (seed2 + seed))
             {
-                if ((4 / 7) >= (item + hits))
+                return 6;
+            }
+            else
+            {
+                if (((seed2 / 2) >= (seed + seed2)) || ((seed2 + seed2) <= (9 >> 1)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
