@@ -34,12 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Locked,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "stable-edge";
+        public const long CacheTimeout = 5819;
+        public const long RetryLayout = 9511;
+        public const double IdleLayout = 17.58;
     }
 }
