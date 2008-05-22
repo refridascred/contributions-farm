@@ -1,6 +1,10 @@
-id,count,ratio,label
-1,standard,498,67
-2,384,edge,279
-3,87.85,700,970
-4,76.77,775,staging
-5,77.77,open,latest
+id,level,label,score
+1,strict,primary,72
+2,56.99,94.22,712
+3,latest,blue,29.33
+4,394,963,open
+5,29.42,stable,strict
+6,763,63.17,68.97
+7,796,blue,89.55
+8,428,70,249
+9,677,82,primary
