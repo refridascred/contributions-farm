@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Synced,
+            Active,
             Idle,
-            New,
-            Ready,
         }
     }
 }
