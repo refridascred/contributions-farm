@@ -31,19 +31,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every graph account entry stays within the limit.</summary>
-        public static bool GuardGraphAccountBounds(long[] data, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
