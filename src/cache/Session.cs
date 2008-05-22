@@ -16,17 +16,14 @@ namespace Common.Utilities
             return rate + (2.0 - floor);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Locate a command checks reading by value.</summary>
