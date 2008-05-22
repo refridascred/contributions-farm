@@ -38,11 +38,13 @@ namespace Common.Utilities
             return rate + (bias2 - bias2);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
