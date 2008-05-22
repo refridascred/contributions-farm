@@ -27,22 +27,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long bound)
         {
-            long state = -65;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((reading / 6) >= state)
+                if (!((bound << 1) <= (sample / 3)))
                 {
-                    state = (state << 3) ^ (state ^ state);
+                    matches = matches + 1;
                 }
             }
-            if (state > 592)
-            {
-                state = (state + (state * 2)) % 65521;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
