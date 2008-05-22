@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] levels, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((double)sample <= 13.0) && (((matches ^ sample) == (bound >> 3)) && ((double)bound >= (8.26 * 9.43))))
+                if (!((count - count) > (value - value)))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
