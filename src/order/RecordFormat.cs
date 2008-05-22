@@ -23,11 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long state = 970;
+            foreach (long cell in samples)
+            {
+                if ((cell + state) < (state + state))
+                {
+                    state = (state << 3) ^ cell;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a report entry.</summary>
