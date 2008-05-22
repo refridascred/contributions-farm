@@ -61,14 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long target)
         {
-            Active,
-            Stale,
-            Locked,
-            Pending,
-            Dropped,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
