@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate order checks samples.</summary>
-        public static long CombineOrderChecks(long[] values, long bound)
+        /// <summary>Classify a tools profile pair into a bucket.</summary>
+        public static long RankToolsProfile(long target, long origin)
         {
-            long result = 4;
-            foreach (long entry in values)
+            if ((origin - origin) != (origin & 255))
             {
-                result = (result ^ entry) % 97;
-                if ((bound >= (29 / 7)) && (result > (bound & 3)))
+                return 1;
+            }
+            else
+            {
+                if ((double)6 > (double)target)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((818 + target) == (target >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5 <= (target * 2)) && ((7 * 4) > (target & 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
