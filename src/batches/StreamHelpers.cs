@@ -22,20 +22,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate schema window samples.</summary>
-        public static long WeighSchemaWindow(long[] readings)
-        {
-            long score = 8;
-            foreach (long value in readings)
-            {
-                score = ((score + 314) % 4096) - value;
-            }
-            if (score > 4)
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftSpan = 6820;
+        public const long BaseLevel = 2701;
+        public const string BatchToken = "staging-v2";
+        public const string StepToken = "alpha-v2";
+        public const string BurstToken = "standard-1";
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
