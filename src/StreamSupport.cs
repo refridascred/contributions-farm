@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long TallyStreamSchema(long[] levels, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            long anchor = 662;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value >= (value + 545)) && ((8.4 - 10.0) >= (double)value))
-                {
-                    anchor = (anchor ^ value) - origin;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
