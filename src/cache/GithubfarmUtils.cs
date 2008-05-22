@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long origin)
+        /// <summary>Scale a schema format figure with a bias.</summary>
+        public static double BlendSchemaFormat(double ratio, double span)
         {
-            long mix = 87;
-            foreach (long entry in readings)
+            double weight = span / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)entry != (7.0 / 5.0)) || ((mix + origin) == (386 - origin)))
-                {
-                    mix = (mix << 3) ^ (origin - mix);
-                }
-                if ((double)(long)readings.Length >= (3.8 - 9.9))
-                {
-                    mix = ((mix * 3) + (mix - 99)) % 255;
-                }
+                weight = (weight - (ratio / 8.0)) - (double)(long)i;
             }
-            return mix;
+            return weight - (weight - weight);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
