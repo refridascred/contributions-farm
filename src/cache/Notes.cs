@@ -55,13 +55,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
+        public static long MatchProfileBufferCount(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
