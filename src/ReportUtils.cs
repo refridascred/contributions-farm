@@ -35,18 +35,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long result = 7;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result ^ (result + result)) % 97) ^ (long)i2;
-                    result = (result ^ result) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                result = (((result + 6) % 1000) ^ reading) + step;
+            }
+            if (result < 82)
+            {
+                result = (result << 2) ^ ((long)samples.Length + 756);
             }
             return result;
         }
