@@ -33,12 +33,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 8895;
-        public const long DefaultBudget = 8695;
-        public const string MaxLevel = "primary-edge";
-        public const long SoftEntry = 5792;
-        public const string CacheEntry = "primary";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSpan = "standard-v2";
+        public const string CacheSupport = "staging";
+        public const long StepSupport = 4920;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
