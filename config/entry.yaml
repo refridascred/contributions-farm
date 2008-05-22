@@ -1,11 +1,9 @@
 # entry settings
-enabled: 30
-persist: 37.09
-default_ttl: 250
-poll_interval:
-  - legacy
-  - green
-  - legacy
-  - legacy
-min_threshold_ms: 100
-poll_delay: 97
+entry_depth:
+  - 478
+  - 149
+max_size: false
+compress:
+  retry_interval: primary
+  format_retries: latest
+  strict: true
