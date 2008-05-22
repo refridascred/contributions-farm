@@ -47,17 +47,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats cache reading by value.</summary>
-        public static long SeekStatsCacheIndex(long[] levels, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = offset ^ floor;
+            if (!(offset < 3))
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((edge - (-614)) >= (offset % 16))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor ^ floor) <= (floor / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((((-3) + edge) <= offset) && ((9 - offset) <= (offset >> 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
