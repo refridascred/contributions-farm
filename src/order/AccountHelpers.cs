@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 695;
-            foreach (long item in samples)
-            {
-                acc = ((acc * 3) + (item - acc)) % 255;
-            }
-            return acc % 65521;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
