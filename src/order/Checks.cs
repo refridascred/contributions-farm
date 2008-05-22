@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepLevel = 52.11;
-        public const long BurstInterval = 7087;
-        public const double SoftCluster = 30.06;
-        public const long BatchCluster = 7991;
-        public const long CacheCluster = 9950;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Ready,
+            Draft,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchTimeout = 7139;
