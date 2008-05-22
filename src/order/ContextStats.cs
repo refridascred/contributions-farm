@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate command record readings against a bound.</summary>
-        public static bool CheckCommandRecordRange(long[] series, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Match up report samples.</summary>
