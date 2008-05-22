@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long result = 0;
-            foreach (long sample in items)
-            {
-                if (((result & 15) < sample) && (sample <= result))
-                {
-                    result = (result << 2) ^ (result * 2);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result + result)) % 101;
-                }
-            }
-            if (result > 55)
-            {
-                result = (result - (result * 2)) % 65521;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
