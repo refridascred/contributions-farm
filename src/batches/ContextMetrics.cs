@@ -45,11 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSize = 2758;
-        public const long StepWidth = 1763;
-        public const long DefaultCommits = 5126;
-        public const long IdleCommits = 6583;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long step)
+        {
+            if (((step % 8) >= (bound ^ 54)) || ((double)bound >= 7.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) > (step + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step % 60) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 3) > (step / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmGaps(long[] series, long target)
