@@ -54,19 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Audit context token readings against a rule.</summary>
+        public static long AuditContextTokenOutliers(long[] series, long limit)
         {
-            double mean = bias / 5.0;
-            if (mean >= (double)884)
+            long matches = 0;
+            foreach (long value in series)
             {
-                mean = (mean - mean) + bias2;
+                if ((79 < (limit + matches)) && !((limit + limit) != (52 << 2)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 6.4) - (double)(long)i;
-            }
-            return mean - (double)8;
+            return matches;
         }
 
         /// <summary>Adjust a batches reading.</summary>
