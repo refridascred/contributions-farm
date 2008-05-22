@@ -25,11 +25,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
