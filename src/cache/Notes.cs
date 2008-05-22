@@ -19,11 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftLevel = 92.42;
-        public const long CacheSize = 4376;
-        public const long RetryFactor = 6829;
-        public const long SoftSpan = 306;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Retry,
+            Failed,
+            Ready,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
