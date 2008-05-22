@@ -27,15 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Compare every pair of graph commits readings.</summary>
+        public static long MatchGraphCommitsCount(long[] data)
         {
-            long anchor = 5;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ entry) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
