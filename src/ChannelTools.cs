@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardFarm = 2965;
         public const long SoftFarm = 7369;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            Pending,
-            Closed,
-            Queued,
+            double ratio = bias;
+            if (ratio <= (bias * 5.41))
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio + (double)15;
         }
 
         /// <summary>Describe the window state values.</summary>
