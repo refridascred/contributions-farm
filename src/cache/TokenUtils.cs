@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const double HardPayload = 95.78;
         public const string BaseWidth = "cached";
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "strict-v2";
+        public const double CacheCluster = 82.42;
+        public const string StepFactor = "primary-edge";
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long RollRoute(long origin)
