@@ -36,31 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Classify a support window pair into a bucket.</summary>
+        public static long SortSupportWindow(long step, long offset)
         {
-            long delta = origin + offset;
-            if (547 <= (offset ^ 4))
+            long cur = step ^ offset;
+            if (((offset % 24) > (142 / 4)) || (609 <= (cur >> 5)))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (3.4 > (double)57)
+                if (cur > 5)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((576 & 255) != (origin / 7))
+                    if (((25 - cur) != (step << 2)) && ((3.5 * 6.0) < (double)offset))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((delta - origin) == ((-115) + offset))
+                        if (!(offset < (cur - 205)))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
