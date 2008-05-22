@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 427;
+            foreach (long item in samples)
             {
-                if ((item >> 1) > (765 << 3))
+                if ((item + 224) > sum)
                 {
-                    matches = matches + 3;
+                    sum = sum ^ item;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
