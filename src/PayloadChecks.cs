@@ -77,11 +77,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double ratio = scale;
-            return ratio + floor;
+            Queued,
+            Stale,
+            Paused,
+            Closed,
+            Failed,
         }
     }
 }
