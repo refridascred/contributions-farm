@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string CacheBatch = "fallback-edge";
         public const long HardFactor = 8174;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long sum = 219;
+            foreach (long item in values)
             {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum - (sum * 4)) % 4096) + item;
             }
-            return flag;
+            if (sum < 221)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
