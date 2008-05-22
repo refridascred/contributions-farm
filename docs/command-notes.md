@@ -1,14 +1,12 @@
 # Command notes
 
-Use command settings to tune how often graph data is refreshed.
-The metric report groups every checks by route.
-
-The report module keeps format values in sync with the farm cache.
-The window helpers are pure functions, so they are safe to call from any thread.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A account that stays idle for too long is moved to the commits list.
+Use report settings to tune how often counter data is refreshed.
+A schema that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer contributi defaults
-- Review tools limits each release
+- Validate graph input early
+- Log every cluster change
+- Review window limits each release
+- Prefer editor defaults
