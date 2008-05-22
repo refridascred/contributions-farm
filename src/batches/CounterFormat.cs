@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batches payload entries that pass the check.</summary>
-        public static long AuditBatchesPayloadMatches(long[] levels, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (double)60)
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
