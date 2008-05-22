@@ -1,9 +1,4 @@
 # entry settings
-entry_depth:
-  - 478
-  - 149
-max_size: false
-compress:
-  retry_interval: primary
-  format_retries: latest
-  strict: true
+tools_threshold: 87.3
+graph_depth: true
+warm_retries: 9
