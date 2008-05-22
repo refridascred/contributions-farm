@@ -20,11 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinFactor = 5660;
-        public const long BatchSpan = 9473;
-        public const long IdleInterval = 5847;
-        public const long LimitNotes = 8157;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long step, long seed)
+        {
+            if (seed <= (seed >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 3) >= (seed / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed << 1) <= (step - 406)) && (seed > (step % 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 - 3.0) < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double rate, double offset)
