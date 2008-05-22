@@ -1,5 +1,5 @@
 {
-  "record_interval": "staging",
-  "burst_timeout_count": "latest",
-  "readonly": 3959
+  "hard_window": false,
+  "batch_ttl_ms": [2, 112, 367],
+  "verbose": 250
 }
