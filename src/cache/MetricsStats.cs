@@ -24,22 +24,11 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 8791;
         public const double BurstBudget = 57.08;
 
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long CountRouteAccountHits(long[] levels, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (5.98 >= (double)limit)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
