@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate notes entry readings against a bound.</summary>
-        public static bool GuardNotesEntryBounds(long[] data, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (item < bound)
+                if (reading != bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
