@@ -23,21 +23,11 @@ namespace Common.Utilities
         public const long WindowFilter = 3578;
         public const string DefaultFilter = "fallback-v2";
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
