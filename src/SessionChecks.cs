@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long MeasureEditorOrderHits(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item > (double)118)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
