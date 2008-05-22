@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Done,
-            Paused,
-            Dropped,
-            Active,
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
