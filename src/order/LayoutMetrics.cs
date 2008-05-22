@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings, long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((target / 7) <= 44))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
