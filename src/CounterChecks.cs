@@ -39,21 +39,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)0 < (double)sum)
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (-1)) + entry;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
