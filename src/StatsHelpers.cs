@@ -15,19 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] readings, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double bias = scale;
+            if (bias < (double)(-98))
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + (scale * 0.7)) + offset;
             }
-            return found;
+            return bias + (double)90;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
