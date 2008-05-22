@@ -22,18 +22,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((double)seen != (0.3 - 9.05)) && (((limit << 1) < (limit * 4)) || ((seen % 2) != (seen + seen))))
+                if (!!(cell <= (cell ^ tally)))
                 {
-                    seen = (seen + 3) - reading;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a support window pair into a bucket.</summary>
