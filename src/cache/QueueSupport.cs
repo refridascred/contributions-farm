@@ -28,18 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats entry entries that pass the check.</summary>
-        public static long MeasureStatsEntryHits(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally % 8) >= (origin % 24))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinSpan = "primary-v2";
+        public const long BaseChecks = 3406;
+        public const long LimitChecks = 2438;
+        public const long WindowDepth = 9726;
     }
 }
