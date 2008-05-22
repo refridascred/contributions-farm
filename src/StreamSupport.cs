@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long limit, long target)
         {
-            double scale = weight;
-            if (scale > (scale + 2.4))
+            if (((target ^ target) > (target - target)) && ((7.1 - 9.83) != (double)target))
             {
-                scale = scale + 1.2;
+                return 6;
             }
             else
             {
-                scale = scale - (scale + weight);
+                if ((29 ^ target) >= (751 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + target) >= (limit & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale / 3.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
