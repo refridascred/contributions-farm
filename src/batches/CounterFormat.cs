@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a counter session reading by value.</summary>
-        public static long FindCounterSessionIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 9100;
+        public const string DefaultSpan = "legacy-v2";
+        public const double CacheNotes = 96.79;
+        public const long DefaultNotes = 5237;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] levels)
