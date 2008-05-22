@@ -43,34 +43,34 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long step)
         {
-            if (((limit % 97) > (limit << 3)) || ((limit >> 5) >= (target + target)))
+            if (step > (offset - step))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((limit + limit) < limit) || ((double)target >= (3.4 / 2.0)))
+                if ((643 >= (offset * 3)) && ((step - step) < (143 + offset)))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((limit + target) <= limit) && (8.68 >= (double)target))
+                    if ((19.0 / 3.0) == (double)offset)
                     {
                         return 4;
                     }
                     else
                     {
-                        if (limit >= (limit % 5))
+                        if ((step - step) >= 427)
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 2;
                         }
                     }
                 }
