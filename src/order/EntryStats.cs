@@ -39,22 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] series, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 60;
+            foreach (long cell in items)
             {
-                if ((hits / 6) > (reading * 4))
+                if ((double)carry == (9.8 - 5.0))
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry + 612) ^ cell) - limit;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Derive the next stats payload value from a seed.</summary>
