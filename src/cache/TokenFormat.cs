@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Adjust a account githubfarm reading.</summary>
+        public static double ProjectAccountGithubfarm(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = floor / 7.0;
+            if (bias < (4.0 * 4.41))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias - (double)302) + gain;
             }
-            return count;
+            else
+            {
+                bias = bias - (floor - 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - 4.1) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
