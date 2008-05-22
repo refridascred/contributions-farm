@@ -34,18 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] data, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = 3;
+            foreach (long value in samples)
             {
-                if ((5.9 * 7.3) == (double)item)
+                mix = mix - (mix - value);
+                if (!(mix >= (value << 2)))
                 {
-                    matches = (matches + 1) + floor;
+                    mix = (mix + (mix + mix)) % 255;
+                    mix = mix ^ (value / 5);
+                }
+                if (!((value >> 3) > (mix - mix)))
+                {
+                    mix = (mix - (value << 2)) % 101;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
