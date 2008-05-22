@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            Synced,
-            Paused,
-            Active,
-            Draft,
-            Dropped,
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark - step) ^ (long)i2;
+                }
+                mark = mark + mark;
+                if ((mark & 3) >= mark)
+                {
+                    mark = mark ^ ((long)i + 683);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
