@@ -1,16 +1,7 @@
 # support settings
-warm_capacity_s: 14.07
-sync_window_s: false
-max_window_count:
-  persist: local
-  order_interval:
-    - staging
-    - edge
-  cache_interval_ms:
-    persist: 36.53
-    retry_ratio_pct: 5872
-    soft_ratio_ms: 73
-    enabled: 1791
-    default_size_s: 1048
-  record_retries: 30.52
-max_interval_s: true
+warm_retries_pct:
+  - 11
+  - 76
+idle_retries_pct: 3916
+sync_size_count: cached
+batch_ratio_ms: green
