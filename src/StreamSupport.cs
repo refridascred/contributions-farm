@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long seed)
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long MeasureSchemaReportHits(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] > seed)
+                if ((count + bound) <= count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
