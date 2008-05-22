@@ -18,23 +18,13 @@ namespace Common.Utilities
         public const long LimitCount = 784;
         public const double StepTimeout = 23.17;
 
-        /// <summary>Iterate the command already series from a seed.</summary>
-        public static long RollCommandAlready(long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((score / 4) <= (score / 8)))
-                {
-                    score = score ^ (score % 10);
-                }
-                else
-                {
-                    score = score - (floor >> 1);
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
