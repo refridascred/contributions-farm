@@ -1,16 +1,8 @@
 {
-  "metric_interval": {
-    "verbose": true,
-    "min_interval": false,
-    "default_window": true
-  },
-  "soft_window_pct": {
-    "idle_depth_pct": 60,
-    "idle_interval": ["strict", "standard", "primary", "latest"],
-    "strict": 250
-  },
-  "checks_delay": false,
-  "route_interval": [136, 97],
-  "dry_run": 87,
-  "flush_window": 67
+  "soft_limit_count": "primary",
+  "checks_window": 59,
+  "format_timeout": "eu-west",
+  "default_interval": "cached",
+  "checks_ratio": 45,
+  "hard_ratio_ms": 49
 }
