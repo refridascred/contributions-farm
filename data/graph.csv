@@ -1,9 +1,7 @@
-id,score,label,rank
-1,56.99,61.43,local
-2,254,staging,legacy
-3,85.21,117,975
-4,693,808,stable
-5,strict,green,684
-6,blue,452,94.19
-7,fallback,987,852
-8,433,572,847
+id,active,label
+1,830,449
+2,57,97.35
+3,322,500
+4,open,93.48
+5,open,81.57
+6,880,standard
