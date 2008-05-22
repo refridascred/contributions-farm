@@ -26,17 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue report entry that matches the target.</summary>
-        public static long FindQueueReportIndex(long[] levels, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a payload summary.</summary>
