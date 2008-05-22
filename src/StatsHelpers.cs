@@ -48,10 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstRatio = "staging-v2";
-        public const string SoftSchema = "latest";
-        public const double MinSchema = 3.11;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] levels)
