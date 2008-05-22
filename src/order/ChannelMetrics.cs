@@ -26,21 +26,9 @@ namespace Common.Utilities
         public const double MinLevel = 40.91;
         public const long IdleContributi = 4873;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 3057;
+        public const double BatchContributi = 33.44;
+        public const long BatchBudget = 8745;
     }
 }
