@@ -1,13 +1,8 @@
 # support settings
-readonly:
-  - staging
-  - stable
-  - open
-  - legacy
-profile_ratio: edge
-hard_retries_s: 6942
-warm_ttl_s: legacy
-batch_capacity_s:
-  - 138
-  - 488
-  - 26
+retry_delay_count: 2948
+command_limit: cached
+record_interval: edge
+burst_delay_ms: 93.13
+hard_timeout:
+  - 191
+  - 225
