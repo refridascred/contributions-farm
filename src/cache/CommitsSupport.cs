@@ -53,16 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token batches counter forward.</summary>
-        public static long RollTokenBatches(long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 2) ^ target) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Synced,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
