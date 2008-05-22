@@ -1,7 +1,4 @@
 # githubfarm settings
-strict: fallback
-persist: true
-base_depth_ms: blue
-buffer_delay: blue
-warm_window_pct: 31.89
-sync_ttl: 46.5
+command_capacity: false
+counter_ratio: true
+min_delay: 500
