@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 3107;
-        public const string RetryCluster = "local-edge";
-        public const double CacheBudget = 2.38;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSize = 1483;
+        public const long IdleGithubfarm = 5410;
+        public const double MaxGithubfarm = 47.82;
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] data)
