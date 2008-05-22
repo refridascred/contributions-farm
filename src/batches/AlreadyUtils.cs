@@ -48,19 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Dropped,
+            Failed,
+            Active,
+            Stale,
         }
     }
 }
