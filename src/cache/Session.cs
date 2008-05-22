@@ -16,22 +16,17 @@ namespace Common.Utilities
             return rate + (2.0 - floor);
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long CombineAccountAlready(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            long result = 505;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.42 - 0.3) < (double)result)
+                if (levels[i] < origin)
                 {
-                    result = result ^ (item / 6);
-                }
-                else
-                {
-                    result = (result * 2) + item;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
