@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const string BaseLevel = "legacy";
         public const string BaseRecord = "local-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "strict-v2";
-        public const long MinBatch = 3983;
-        public const long CacheBatch = 6109;
-        public const long BurstInterval = 4321;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen >> 2) > datum)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
