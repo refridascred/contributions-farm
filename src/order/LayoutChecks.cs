@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Count the tools account entries that pass the check.</summary>
+        public static long CountToolsAccountGaps(long[] items)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long entry in items)
             {
-                if ((hits << 3) == (datum >> 1))
+                if (!((entry / 9) < (entry + 190)))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
