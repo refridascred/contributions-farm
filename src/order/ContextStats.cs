@@ -45,10 +45,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 9249;
-        public const long MaxMetrics = 1284;
-        public const string MinMetrics = "latest-edge";
-        public const long BurstScore = 9653;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
+        {
+            long acc = 410;
+            foreach (long entry in data)
+            {
+                if (!(acc < (969 - 867)))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (acc ^ acc)) % 101;
+                }
+                if ((3.98 * 10.0) > (double)acc)
+                {
+                    acc = ((acc << 3) ^ (entry + 12)) % 97;
+                }
+            }
+            return acc;
+        }
     }
 }
