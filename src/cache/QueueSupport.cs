@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings, long offset)
+        /// <summary>Digest a series of session context entries.</summary>
+        public static long TotalSessionContext(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = -42;
+            foreach (long sample in levels)
             {
-                if ((entry - offset) > 0)
-                {
-                    count = count + 1;
-                }
+                carry = ((carry * 3) + (sample - carry)) - floor;
             }
-            return count;
+            return carry;
         }
     }
 }
