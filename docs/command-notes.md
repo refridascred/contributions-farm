@@ -1,12 +1,11 @@
 # Command notes
 
-Run the batches check before changing any session limits.
-Run the checks check before changing any batches limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and stats names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Keep metric and metric names short and lowercase.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Keep cluster values small
-- Validate checks input early
-- Prefer batch defaults
+- Keep context values small
+- Validate token input early
+- Review session limits each release
