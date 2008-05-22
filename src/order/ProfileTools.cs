@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Active,
-            Draft,
-            Ready,
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
