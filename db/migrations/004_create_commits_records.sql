@@ -1,12 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    count INTEGER NOT NULL DEFAULT 0,
     region TEXT,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
 
-INSERT INTO commits_records (region, rank, count) VALUES ('open', 32, 26);
-INSERT INTO commits_records (region, rank, count) VALUES ('standard', 62, 22);
+INSERT INTO commits_records (count, region, state) VALUES (97, 'stable', 'cached');
+INSERT INTO commits_records (count, region, state) VALUES (54, 'cached', 'primary');
