@@ -16,19 +16,24 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long limit)
+        /// <summary>Rank queue window input into a small class.</summary>
+        public static long GradeQueueWindow(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            if (bound >= (730 - 925))
             {
-                if (datum <= limit)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (bound % 3))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
