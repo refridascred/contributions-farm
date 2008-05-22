@@ -46,21 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel graph pairs that satisfy a relation.</summary>
-        public static long OverlapChannelGraphCount(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 39;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= (state - reading))
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 3) + reading;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
