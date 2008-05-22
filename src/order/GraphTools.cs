@@ -43,38 +43,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples, long floor)
         {
-            if ((double)bound == (double)floor)
+            long total = 472;
+            foreach (long value in samples)
             {
-                return 3;
+                total = ((total * 4) + value) % 65521;
+                total = ((total * 3) + (98 - floor)) % 255;
             }
-            else
-            {
-                if ((double)bound < (2.6 + 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.0 + 2.4) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - bound) >= (floor / 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
