@@ -50,23 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((target - target) >= tally) || (925 < (tally + target)))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSize = 1882;
+        public const string DefaultReport = "strict-edge";
+        public const long RetryBudget = 9328;
+        public const long SoftLevel = 3696;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryDepth = 153;
