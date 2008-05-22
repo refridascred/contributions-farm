@@ -56,21 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + 7) <= count)
                 {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
