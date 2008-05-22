@@ -43,13 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
