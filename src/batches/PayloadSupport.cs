@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a session snapshot.</summary>
