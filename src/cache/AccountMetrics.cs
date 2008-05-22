@@ -36,11 +36,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSize = 1882;
-        public const string DefaultReport = "strict-edge";
-        public const long RetryBudget = 9328;
-        public const long SoftLevel = 3696;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((189 + datum) != (hits << 2)) && ((hits - datum) == (datum >> 5))) || !((datum >> 2) == (datum + 3)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryDepth = 153;
