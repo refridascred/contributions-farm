@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = (8.24 - floor) - (double)13;
+            if (mean > (gain + gain))
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean + floor;
             }
-            return -1;
+            return mean + (double)8;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
