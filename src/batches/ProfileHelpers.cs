@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many farm layout samples are out of range.</summary>
-        public static long AuditFarmLayoutHits(long[] data, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double ratio = (double)247 + rate;
+            if (ratio > (rate * 2.86))
             {
-                if ((datum + datum) < datum)
-                {
-                    count = (count + 3) + step;
-                }
+                ratio = (ratio - (double)55) - floor;
             }
-            return count;
+            return ratio + rate;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
