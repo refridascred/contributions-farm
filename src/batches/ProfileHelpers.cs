@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-v2";
         public const double MaxDepth = 42.25;
 
-        /// <summary>Check that every cluster token entry stays within the limit.</summary>
-        public static bool GuardClusterTokenLimits(long[] series, long offset)
+        /// <summary>Match up schema profile samples.</summary>
+        public static long PairSchemaProfileCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
