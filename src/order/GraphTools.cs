@@ -70,17 +70,9 @@ namespace Common.Utilities
             return gain2 - offset;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTimeout = 4047;
+        public const long SoftInterval = 6940;
+        public const long RetryBudget = 7781;
     }
 }
