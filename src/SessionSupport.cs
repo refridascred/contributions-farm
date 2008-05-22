@@ -41,12 +41,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 5669;
+        public const long CacheChecks = 4013;
+        public const long IdleLevel = 2411;
+        public const double RetryWidth = 34.8;
     }
 }
