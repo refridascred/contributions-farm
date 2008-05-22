@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a command report figure with a bias.</summary>
-        public static double SmoothCommandReport(double weight, double span)
-        {
-            double rate = span;
-            if (rate >= (double)34)
-            {
-                rate = (rate - rate) + weight;
-            }
-            else
-            {
-                rate = rate + (rate - 0.8);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (4.68 / 9.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 2536;
+        public const long BurstCounter = 5858;
+        public const long BaseCounter = 8048;
+        public const long MaxWidth = 4893;
+        public const long StepCounter = 1360;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] readings, long offset)
