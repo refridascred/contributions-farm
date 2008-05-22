@@ -40,14 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Pending,
-            Synced,
+            Stale,
+            Idle,
             Closed,
-            Locked,
-            Ready,
+            Synced,
+            Draft,
         }
     }
 }
