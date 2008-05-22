@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
