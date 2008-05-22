@@ -43,10 +43,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4467;
-        public const string IdleWindow = "primary-1";
-        public const string BurstWindow = "cached-v2";
-        public const long CacheWindow = 8315;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxDepth = 8688;
+        public const double WindowSpan = 51.12;
+        public const double RetryRoute = 4.82;
     }
 }
