@@ -23,18 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] readings, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double rate = bias;
+            if (rate > 8.0)
             {
-                if ((double)offset != (double)entry)
-                {
-                    matches = matches + 3;
-                }
+                rate = rate - (0.6 - 9.2);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias * 6.1)) - (double)(long)i;
+            }
+            return rate - (bias - floor);
         }
 
         /// <summary>Hold a format stats.</summary>
