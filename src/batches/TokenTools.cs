@@ -19,21 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
