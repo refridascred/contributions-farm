@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the schema report entries that pass the check.</summary>
-        public static long MeasureSchemaReportHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + bound) <= count)
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1293;
+        public const long MinTimeout = 5864;
+        public const long WindowEntry = 5169;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] samples)
