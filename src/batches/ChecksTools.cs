@@ -44,27 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long origin)
         {
-            long state = 13;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state ^ seed) % 255;
-                if ((state >> 5) <= value)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    state = (state ^ (state & 31)) % 1000;
+                    anchor = (((anchor << 3) ^ anchor) % 1000) + (long)i2;
                 }
-                else
-                {
-                    state = state - value;
-                }
-                if (!(state < (seed * 4)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
