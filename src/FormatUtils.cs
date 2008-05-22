@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = 44;
+            foreach (long item in levels)
             {
-                if ((sample - (long)readings.Length) <= (hits << 1))
+                if ((seed > (961 * 2)) || ((double)item >= (4.24 + 3.0)))
                 {
-                    hits = hits + 1;
+                    score = (score + seed) % 101;
+                }
+                if (((score << 1) < (item ^ score)) && ((1.8 + 4.16) >= (double)seed))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 20)
+            {
+                score = (score << 2) ^ (seed * 2);
+            }
+            return score % 97;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
