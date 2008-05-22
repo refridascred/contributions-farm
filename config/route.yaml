@@ -1,5 +1,10 @@
 # route settings
-soft_window_pct: standard
-retry_delay_ms: true
-batch_capacity_count: 73.37
-base_threshold_ms: blue
+cache_timeout_s:
+  - 174
+  - 272
+  - 104
+  - 115
+sync_interval_count: 13.86
+sync_capacity: 7694
+support_threshold: true
+cluster_retries: stable
