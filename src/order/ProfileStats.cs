@@ -16,10 +16,12 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3665;
-        public const long BurstLevel = 8077;
-        public const long SoftWidth = 6323;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenRange(long[] data, long step)
