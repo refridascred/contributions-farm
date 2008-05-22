@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] samples, long seed)
         {
-            Ready,
-            Active,
-            Idle,
-            Failed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (407 < (52 ^ cell))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
