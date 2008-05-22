@@ -64,15 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Validate record metric readings against a bound.</summary>
+        public static bool VerifyRecordMetricBounds(long[] items, long limit)
         {
-            double weight = offset;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight = ((weight + (weight - offset)) + (double)(long)i) - rate;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (offset / 8.0);
+            return stale;
         }
     }
 }
