@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long RetrySize = 5690;
         public const long RetryInterval = 4090;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long CountBatchMetricGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((19.0 * 4.0) >= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
