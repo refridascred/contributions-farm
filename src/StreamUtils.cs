@@ -91,11 +91,13 @@ namespace Common.Utilities
         public const string MinScore = "stable";
         public const double HardLevel = 90.66;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
             public bool Owner { get; set; }
-            public bool Label { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
