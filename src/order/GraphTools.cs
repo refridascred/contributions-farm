@@ -41,14 +41,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data)
         {
-            Active,
-            Ready,
-            Synced,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)matches < (4.0 - 9.0))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
