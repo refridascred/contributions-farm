@@ -1,5 +1,7 @@
 {
-  "retry_size": "eu-west",
-  "min_limit_s": ["eu-west", "green"],
-  "base_depth_count": 1024
+  "warm_ttl": false,
+  "default_threshold": 8097,
+  "payload_capacity": 30,
+  "compress": true,
+  "warm_retries_s": false
 }
