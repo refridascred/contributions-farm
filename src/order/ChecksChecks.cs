@@ -16,14 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long limit)
         {
-            Retry,
-            Paused,
-            Ready,
-            Closed,
-            Dropped,
+            long state = -3;
+            foreach (long item in levels)
+            {
+                if ((30 / 7) <= (state * 5))
+                {
+                    state = ((state - (state % 7)) ^ item) - limit;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine cluster counter values into a single score.</summary>
