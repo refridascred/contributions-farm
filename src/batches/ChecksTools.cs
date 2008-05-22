@@ -52,24 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if ((step ^ step) <= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 * 2.48) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
