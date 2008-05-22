@@ -51,14 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] samples, long offset)
         {
-            Pending,
-            Synced,
-            Queued,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a batch graph pair into a bucket.</summary>
