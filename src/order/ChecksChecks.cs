@@ -39,32 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks payload input into a small class.</summary>
-        public static long ClassifyChecksPayload(long target, long target2)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long diff = target - target2;
-            if (((double)target2 >= (double)diff) && ((target + 97) > target2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff >> 1) > (target - 0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14 + diff) > (7 ^ diff))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
