@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema stream entries.</summary>
-        public static long DigestSchemaStream(long[] items)
+        /// <summary>Combine account order values into a single score.</summary>
+        public static long CombineAccountOrder(long[] data)
         {
-            long total = 9;
-            foreach (long datum in items)
+            long mark = 51;
+            foreach (long datum in data)
             {
-                if ((523 - total) >= (total - datum))
+                if (!(datum < (mark / 5)))
                 {
-                    total = total + (datum / 3);
+                    mark = ((mark * 3) + (mark & 31)) % 65521;
+                }
+                else
+                {
+                    mark = mark + datum;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
