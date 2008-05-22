@@ -44,26 +44,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long WeighCacheChecks(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double bias, double offset)
         {
-            long total = 840;
-            foreach (long reading in levels)
+            double scale = offset;
+            if (scale < (double)(-26))
             {
-                if (((reading / 6) >= (total >> 3)) && ((reading + reading) != (total + total)))
-                {
-                    total = ((total * 2) + (total ^ 1)) % 1000;
-                }
-                if ((805 > (reading / 9)) || ((1.0 + 8.4) <= (double)reading))
-                {
-                    total = total + (reading * 5);
-                }
+                scale = scale - offset;
             }
-            if (total < 7)
+            else
             {
-                total = ((total * 3) + (total - (-57))) % 65521;
+                scale = scale + (double)61;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (bias - offset)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
