@@ -1,9 +1,8 @@
 # entry settings
-account_timeout:
-  - 197
-  - 293
-  - 397
-base_ratio_ms: true
-readonly: 100
-max_capacity_count: fallback
-warm_ratio_count: 4279
+compress: 24
+poll_retries:
+  - 432
+  - 174
+readonly: 29.27
+default_capacity_ms: 16.08
+poll_limit_pct: 94
