@@ -14,10 +14,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "staging-1";
-        public const long LimitQueue = 6882;
-        public const string BurstQueue = "latest-v2";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values, long limit)
+        {
+            long sum = 6;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum - (5 ^ (long)i)) + reading) + limit;
+                }
+                sum = ((sum << 3) ^ (sum ^ 963)) % 65521;
+                if ((double)sum != (4.29 - 5.0))
+                {
+                    sum = ((sum * 4) + (sum * 5)) % 97;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
