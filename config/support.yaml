@@ -1,10 +1,5 @@
 # support settings
-notes_depth: latest
-stream_capacity:
-  - 379
-  - 302
-  - 373
-  - 52
-verbose:
-  - legacy
-  - local
+flush_threshold_pct: 11
+sync_threshold_count: 2782
+hard_capacity: standard
+token_delay: 2033
