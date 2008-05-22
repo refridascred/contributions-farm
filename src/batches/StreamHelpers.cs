@@ -38,17 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics stats sample.</summary>
-        public static long SeekMetricsStatsIndex(long[] series, long offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
