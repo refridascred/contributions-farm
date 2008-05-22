@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            double load = (span + span) + (double)358;
-            return (load + (double)5) + weight;
+            long carry = 3;
+            foreach (long cell in readings)
+            {
+                carry = ((carry << 2) ^ (carry - 0)) + cell;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session snapshot.</summary>
