@@ -43,19 +43,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            double rate = offset;
-            if (rate <= ratio)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                rate = rate - offset;
+                if (cell <= (hits + cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)79) + (double)(long)i;
-            }
-            return rate + (double)9;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
