@@ -12,25 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long bound)
-        {
-            if ((offset + 5) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 2) == (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 3801;
+        public const double StepDepth = 94.91;
+        public const long BaseRatio = 9154;
+        public const long HardStats = 7668;
+        public const long MaxBudget = 8660;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] levels, long floor)
