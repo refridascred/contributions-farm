@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long bound)
         {
-            long total = 620;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((double)floor == (5.0 + 3.0))
+                if (datum >= bound)
                 {
-                    total = (total - (entry >> 4)) % 97;
-                }
-                else
-                {
-                    total = (total - (entry + total)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the tools mode values.</summary>
