@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((11.0 + 2.0) > (double)(long)samples.Length) || ((tally & 1) >= (sample - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinWidth = 431;
+        public const long IdleScore = 8435;
+        public const double MinRatio = 90.27;
+        public const double IdleCache = 17.64;
+        public const long WindowCache = 822;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] data)
