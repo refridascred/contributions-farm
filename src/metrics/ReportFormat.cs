@@ -19,28 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Match up payload editor samples.</summary>
+        public static long OverlapPayloadEditorCount(long[] levels)
         {
-            long sum = 40;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - (sum << 2);
-                sum = ((sum * 4) + 832) % 65521;
-                if (!((reading * 2) < (reading << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 5) + (reading * 5)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (sum ^ reading)) % 65521;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < (-49))
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
