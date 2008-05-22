@@ -77,18 +77,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long sum = 28;
+            foreach (long entry in values)
             {
-                if ((reading >= (seen & 63)) && (((seen + seen) == (reading & 3)) || (reading < (seen - reading))))
+                if ((entry - entry) != (sum - sum))
                 {
-                    seen = seen + 3;
+                    sum = sum + entry;
                 }
             }
-            return seen;
+            if (sum < 47)
+            {
+                sum = (sum - (sum % 7)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
