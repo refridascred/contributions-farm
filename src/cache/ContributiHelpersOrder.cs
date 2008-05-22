@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 47;
+            foreach (long value in data)
             {
-                if (series[i] > seed)
+                if ((carry <= (916 - offset)) || (offset >= (value / 2)))
                 {
-                    return (long)i;
+                    carry = carry - (offset % 24);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many schema queue samples are out of range.</summary>
