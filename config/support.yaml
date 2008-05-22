@@ -1,10 +1,11 @@
 # support settings
-sync_depth_pct: stable
-entry_retries: eu-west
-audit:
-  audit: green
-  default_ratio_count: 92.02
-  dry_run: 78.32
-  sync_ttl: 21
-min_timeout_count: 8442
-warm_capacity_ms: 60
+retry_threshold_s:
+  burst_size_s: green
+  soft_delay: local
+  burst_ttl:
+    editor_delay: 5526
+    verbose: true
+    route_depth: 34.08
+  batch_depth_ms: true
+min_depth_ms: false
+min_size_s: false
