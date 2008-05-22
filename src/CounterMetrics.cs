@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long AuditAccountWindowGaps(long[] samples, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long step = seed ^ offset;
+            if (((4.8 + 2.0) != (double)seed) && ((step & 255) >= (step >> 2)))
             {
-                if (floor < (floor - count))
+                return 5;
+            }
+            else
+            {
+                if (((5.0 + 20.0) != (double)seed) || ((707 + offset) > (offset >> 2)))
                 {
-                    count = (count + 1) - reading;
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset << 1) <= (seed / 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((1.02 - 17.0) < (double)offset) || ((seed ^ offset) > offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
