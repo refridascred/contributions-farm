@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the editor counter series from a seed.</summary>
-        public static long SeriesEditorCounter(long limit)
+        /// <summary>Validate token notes readings against a bound.</summary>
+        public static bool ValidateTokenNotesRange(long[] samples, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Combine route values into a single score.</summary>
