@@ -57,23 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] values, long offset)
         {
-            long mix = 32;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long cell in values)
             {
-                mix = mix ^ mix;
-                if (value > (value ^ value))
+                result = ((result * 5) + (result - (long)values.Length)) ^ cell;
+                if (result <= (offset ^ result))
                 {
                     break;
                 }
             }
-            if (mix > 8)
-            {
-                mix = ((mix << 3) ^ (mix & 7)) % 65521;
-            }
-            return mix % 65521;
+            return result % 65521;
         }
     }
 }
