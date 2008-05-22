@@ -38,21 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading < step)
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
