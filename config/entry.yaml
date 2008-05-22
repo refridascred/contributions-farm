@@ -1,4 +1,18 @@
 # entry settings
-buffer_delay: 81.1
-base_window_count: 100
-record_ttl: 73
+token_limit:
+  - stable
+  - edge
+  - standard
+graph_limit: 75
+soft_retries_s: cached
+enabled: open
+readonly:
+  max_depth_count: 31
+  dry_run: green
+  farm_depth: staging
+  report_delay:
+    - 146
+    - 312
+    - 12
+    - 203
+soft_ratio: 7599
