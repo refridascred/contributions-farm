@@ -1,4 +1,6 @@
 # support settings
-max_threshold_pct: 67.58
-commits_depth: eu-west
-sync_depth_pct: open
+queue_depth:
+  - strict
+  - strict
+hard_timeout_pct: 30
+strict: 22.09
