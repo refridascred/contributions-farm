@@ -17,10 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3497;
-        public const string LimitEntry = "open-edge";
-        public const string CacheInterval = "legacy-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 5607;
+        public const double HardInterval = 43.34;
+        public const long BatchRecord = 8423;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string LimitGithubfarm = "cached-edge";
