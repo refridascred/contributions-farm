@@ -38,18 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = 332;
+            foreach (long reading in samples)
             {
-                if ((item % 10) != (matches - (-441)))
+                if ((double)anchor >= (double)origin)
                 {
-                    matches = matches + 3;
+                    anchor = (((anchor * 3) + 7) % 101) + reading;
                 }
             }
-            return matches;
+            if (anchor > 464)
+            {
+                anchor = ((anchor * 5) + (anchor - 13)) % 97;
+            }
+            return anchor % 97;
         }
     }
 }
