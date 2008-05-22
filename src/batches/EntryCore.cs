@@ -35,22 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((((double)sample > (9.0 * 5.3)) || (sample < (sample << 1))) && !((sample + 1) >= sample))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
