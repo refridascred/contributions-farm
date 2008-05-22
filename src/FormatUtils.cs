@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long score = 44;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed > (961 * 2)) || ((double)item >= (4.24 + 3.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + seed) % 101;
-                }
-                if (((score << 1) < (item ^ score)) && ((1.8 + 4.16) >= (double)seed))
-                {
-                    break;
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 20)
-            {
-                score = (score << 2) ^ (seed * 2);
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
