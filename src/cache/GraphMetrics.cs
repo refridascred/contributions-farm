@@ -31,12 +31,23 @@ namespace Common.Utilities
         public const long HardFormat = 243;
         public const long BaseFormat = 3819;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Combine command entry values into a single score.</summary>
+        public static long DigestCommandEntry(long[] items, long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            long score = 499;
+            foreach (long item in items)
+            {
+                score = (score ^ (score / 3)) % 65521;
+                if ((seed & 7) >= (seed / 5))
+                {
+                    score = (score ^ item) % 97;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score ^ ((long)items.Length - seed)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
