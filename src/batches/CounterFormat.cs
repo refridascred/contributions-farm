@@ -41,11 +41,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 164;
-        public const long BaseStats = 2324;
-        public const long BurstStats = 4;
-        public const double HardStats = 24.37;
-        public const long BatchTimeout = 1593;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 7910;
+        public const long MinToken = 142;
+        public const long BatchSpan = 5343;
     }
 }
