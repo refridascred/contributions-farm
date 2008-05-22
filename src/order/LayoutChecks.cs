@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            if ((double)step <= (7.23 * 3.56))
+            long total = 9;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + 78) >= (limit + limit))
+                if ((68 - value) > (865 >> 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) == (step ^ 84))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step * 5) <= (step % 100)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total * 4) + (total - 0);
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the token state values.</summary>
