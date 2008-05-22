@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            New,
-            Active,
-            Pending,
-            Draft,
-            Done,
+            public double Score { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
