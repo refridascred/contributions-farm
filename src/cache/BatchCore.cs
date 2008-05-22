@@ -44,17 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 67;
+            foreach (long value in series)
             {
-                if (samples[i] >= limit)
+                if ((anchor / 9) > (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (anchor ^ value)) % 101) - step;
                 }
+                anchor = (anchor - value) % 255;
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
