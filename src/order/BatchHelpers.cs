@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long carry = 5;
-            foreach (long entry in items)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)carry > (double)5)
+                if ((9 & 31) >= acc)
                 {
-                    carry = carry ^ (entry - carry);
+                    acc = (acc ^ (target & 7)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (carry < 673)
-            {
-                carry = (carry * 2) + 0;
-            }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
