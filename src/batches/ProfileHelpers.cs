@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double WindowChannel = 67.08;
         public const double MaxChannel = 72.01;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 1703;
-        public const long BurstStream = 1915;
-        public const string BatchScore = "primary-1";
-        public const double RetryStream = 47.08;
-        public const string BatchTimeout = "primary";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 7009;
+        public const string SoftWidth = "staging-v2";
+        public const double MaxDepth = 42.25;
 
         /// <summary>Check that every cluster token entry stays within the limit.</summary>
         public static bool GuardClusterTokenLimits(long[] series, long offset)
