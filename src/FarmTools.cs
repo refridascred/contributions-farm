@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] data, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry >= bound)
                 {
-                    anchor = ((anchor - (bound << 2)) % 4096) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                anchor = anchor - anchor;
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
