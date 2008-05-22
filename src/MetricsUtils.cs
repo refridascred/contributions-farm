@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
             Idle,
-            Locked,
-            Synced,
-            Ready,
+            Draft,
             New,
+            Pending,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
