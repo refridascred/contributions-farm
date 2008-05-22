@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] values, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (value <= seed)
+                if ((1 + step) > seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Adjust a filter reading.</summary>
