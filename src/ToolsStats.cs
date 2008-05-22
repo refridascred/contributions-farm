@@ -86,18 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support cache readings against a rule.</summary>
-        public static long AuditSupportCacheMatches(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((278 >> 5) < (912 ^ cell))
+                if (cell > seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
