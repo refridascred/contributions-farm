@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] series)
         {
-            Done,
-            Draft,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count & 1) <= (count << 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
