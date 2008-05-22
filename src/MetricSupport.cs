@@ -20,18 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading ^ step) > step)
+                if (!((double)state < (double)offset))
                 {
-                    seen = seen + 1;
+                    state = state + (state << 2);
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state - state) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
