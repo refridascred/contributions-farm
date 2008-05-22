@@ -41,12 +41,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank checks payload input into a small class.</summary>
+        public static long ClassifyChecksPayload(long target, long target2)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            long diff = target - target2;
+            if (((double)target2 >= (double)diff) && ((target + 97) > target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff >> 1) > (target - 0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((14 + diff) > (7 ^ diff))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
