@@ -69,18 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long TallyCounterRouteGaps(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((count ^ count) > (datum << 3))
+                if ((4.1 - 5.94) > (double)tally)
                 {
-                    count = count + 2;
+                    tally = ((tally + 1) ^ sample) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
