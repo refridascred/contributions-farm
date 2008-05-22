@@ -16,26 +16,21 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Accumulate contributi support samples.</summary>
-        public static long ScoreContributiSupport(long[] series, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            long score = 43;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - bound) < score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score ^ datum;
-                }
-                else
-                {
-                    score = (score + datum) % 97;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 3)
-            {
-                score = ((score * 3) + bound) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a session summary.</summary>
