@@ -1,45 +1,13 @@
 # support settings
-soft_interval: 41.41
-default_limit_s:
-  poll_timeout: 48
-  retry_depth_ms:
-    burst_size_ms: strict
-    soft_delay: fallback
-    batch_interval_pct: 2433
-  metric_size: 31.16
-  idle_window_pct: 8629
-  cache_window_count:
-    schema_timeout: primary
-    poll_depth_pct: 30
-    enabled:
-      - 82
-      - 90
-    sync_timeout_ms: false
-cache_retries_ms:
-  idle_depth:
-    warm_delay_s: open
-    min_threshold_ms: 85.61
-    cache_delay_pct: cached
-  account_depth: true
-  soft_retries_count: 7544
-flush_retries_count:
-  base_timeout_ms:
-    record_window: 18.63
-    verbose: stable
-    soft_ratio_pct: staging
-    persist: latest
-  base_delay: eu-west
-  batch_ttl:
-    retry_window_s: legacy
-    warm_interval_pct: primary
-    retry_depth: 500
-    filter_delay: eu-west
-poll_limit_s:
-  dry_run:
-    - cached
-    - eu-west
-  hard_depth_s:
-    - 45
-    - 390
-    - 424
-  cache_retries: open
+readonly:
+  - staging
+  - stable
+  - open
+  - legacy
+profile_ratio: edge
+hard_retries_s: 6942
+warm_ttl_s: legacy
+batch_capacity_s:
+  - 138
+  - 488
+  - 26
