@@ -52,17 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (floor / 6)) % 1000;
-                carry = ((carry << 3) ^ (floor * 5)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
