@@ -5,29 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of record format readings.</summary>
-        public static long TallyRecordFormat(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            long mix = 117;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((1 - mix) > (mix - item))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = mix ^ 6;
-                    mix = ((mix * 4) + (mix - item)) % 101;
-                }
-                mix = ((mix << 2) ^ 400) % 255;
-                mix = mix ^ (item - item);
-                if ((double)mix <= (3.0 / 8.0))
-                {
-                    break;
-                }
+                acc = (acc * 2) + (acc << 2);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
