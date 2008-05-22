@@ -48,13 +48,22 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] values, long seed)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((8.21 <= (double)seed) || ((hits + hits) > 11)) || ((12.0 - 4.6) > (double)hits))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
