@@ -14,23 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
-        {
-            long state = 466;
-            foreach (long datum in series)
-            {
-                if (((double)state < (4.0 - 1.1)) || (state >= 2))
-                {
-                    state = ((state << 3) ^ (datum % 24)) % 1000;
-                }
-            }
-            if (state > (-832))
-            {
-                state = ((state << 3) ^ state) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6542;
+        public const long HardWidth = 3571;
+        public const long BaseBatches = 2296;
+        public const double HardBatches = 14.41;
+        public const long LimitRatio = 5498;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double AdjustLayout(double rate, double span)
