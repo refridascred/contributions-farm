@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 3176;
         public const long WindowTimeout = 1395;
 
-        /// <summary>Validate layout report readings against a bound.</summary>
-        public static bool VerifyLayoutReportLimits(long[] items, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (cell != bound)
+                if (cell < floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
