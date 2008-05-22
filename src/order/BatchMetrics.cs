@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepScore = 22.8;
-        public const string MinSize = "standard-edge";
-        public const string BaseCount = "local-v2";
-        public const double MaxWindow = 38.26;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Paused,
+            Ready,
+            Draft,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data)
