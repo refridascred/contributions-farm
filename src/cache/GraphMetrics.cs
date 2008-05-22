@@ -39,15 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Blend two farm route measurements.</summary>
+        public static double BlendFarmRoute(double ratio, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            double mean = span;
+            if (mean > mean)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                mean = mean - (mean - ratio);
             }
-            return mark;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Hold a cache info.</summary>
