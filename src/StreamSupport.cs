@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 36.33;
-        public const double MaxBatches = 32.99;
-        public const string BaseFactor = "primary-v2";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Ready,
+            Done,
+            Retry,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Combine stream schema values into a single score.</summary>
         public static long TallyStreamSchema(long[] levels, long origin)
