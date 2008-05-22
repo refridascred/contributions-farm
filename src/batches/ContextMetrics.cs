@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit counter report readings against a rule.</summary>
-        public static long TallyCounterReportMatches(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if (((8.77 * 5.0) > (double)seed) || (seed >= (seed - seed)))
             {
-                if ((cell + cell) < (tally / 2))
+                return 5;
+            }
+            else
+            {
+                if ((seed >= offset) || ((3.4 + 17.0) != (double)seed))
                 {
-                    tally = (tally + 2) + target;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the editor level values.</summary>
