@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Fold a list of record githubfarm readings.</summary>
