@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Retry,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
