@@ -30,21 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema profile samples.</summary>
-        public static long PairSchemaProfileCount(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= seed)
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
