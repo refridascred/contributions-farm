@@ -79,25 +79,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)8 >= (double)bound) || ((double)(long)i != (1.0 + 9.2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ ((long)i + state)) % 255;
-                    break;
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    state = state + (state << 2);
-                }
-                state = (state - bound) % 1000;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
