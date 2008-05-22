@@ -64,19 +64,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support notes samples.</summary>
-        public static long TotalSupportNotes(long[] series)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mix = 93;
-            foreach (long cell in series)
-            {
-                mix = ((mix * 3) + (cell - cell)) % 255;
-            }
-            if (mix < 1)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
