@@ -16,15 +16,19 @@ namespace Common.Utilities
         public const long CacheSize = 1759;
         public const long DefaultRatio = 7204;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] values, long seed)
         {
-            long score = 516;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                score = (((score << 3) ^ score) ^ datum) - origin;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
