@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values, long step)
+        /// <summary>Find the first order context entry that matches the target.</summary>
+        public static long FindOrderContextIndex(long[] readings, long limit)
         {
-            long carry = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 3) ^ (datum * 4)) - step;
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count order batches pairs that satisfy a relation.</summary>
