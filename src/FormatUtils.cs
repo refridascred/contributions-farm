@@ -90,11 +90,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 1408;
-        public const long MaxMetric = 8115;
-        public const double DefaultTimeout = 49.38;
-        public const double WindowMetric = 1.48;
-        public const string LimitMetric = "strict";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
