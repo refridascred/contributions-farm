@@ -19,11 +19,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1080;
-        public const long DefaultBuffer = 5393;
-        public const double WindowBuffer = 80.15;
-        public const long LimitSize = 5384;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "local-v2";
+        public const long CacheGithubfarm = 8791;
+        public const double BurstBudget = 57.08;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] items, long target)
