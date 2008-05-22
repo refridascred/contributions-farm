@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
