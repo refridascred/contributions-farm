@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            double rate = span;
-            return (rate - (double)454) + gain;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits + hits) < (-711))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
