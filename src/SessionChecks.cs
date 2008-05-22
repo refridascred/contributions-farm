@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
