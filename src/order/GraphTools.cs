@@ -23,18 +23,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] data, long origin)
         {
-            long anchor = 91;
-            foreach (long item in levels)
+            long sum = -38;
+            foreach (long item in data)
             {
-                if ((anchor % 5) >= (anchor + anchor))
+                if ((origin ^ origin) > item)
                 {
-                    anchor = ((((anchor * 2) + (anchor << 1)) % 65521) + item) + origin;
+                    sum = (sum << 2) ^ origin;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + origin);
                 }
             }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
