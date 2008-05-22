@@ -1,9 +1,12 @@
 {
-  "batch_capacity": "green",
-  "queue_size": {
-    "metric_timeout": [159, 402, 120],
-    "min_window_count": "legacy",
-    "flush_depth_count": ["green", "local"]
+  "min_window_s": {
+    "warm_retries": "stable",
+    "warm_threshold_count": true,
+    "readonly": false,
+    "cache_timeout_count": "eu-west",
+    "default_interval": 1024,
+    "counter_ratio": "standard"
   },
-  "idle_threshold_count": false
+  "sync_ttl_ms": 58.2,
+  "burst_window_pct": 4185
 }
