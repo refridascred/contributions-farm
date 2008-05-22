@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 174;
-        public const long RetryLevel = 5839;
-        public const long DefaultWindow = 8250;
-        public const long IdleCount = 5111;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
