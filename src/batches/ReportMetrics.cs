@@ -23,18 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools already entries that pass the check.</summary>
-        public static long CountToolsAlreadyHits(long[] data, long floor)
+        /// <summary>Adjust a layout session reading.</summary>
+        public static double ScaleLayoutSession(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double scale = 2.0;
+            if (scale > 17.0)
             {
-                if ((((item << 1) != (4 + item)) || (((-7) ^ floor) == (floor * 5))) && !((double)tally < 7.0))
-                {
-                    tally = tally + 3;
-                }
+                scale = scale - bias;
             }
-            return tally;
+            else
+            {
+                scale = scale + (5.0 - weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (weight / 4.0);
         }
 
         /// <summary>Hold a command summary.</summary>
