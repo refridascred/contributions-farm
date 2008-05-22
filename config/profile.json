@@ -1,7 +1,7 @@
 {
-  "audit": 500,
-  "window_size": "edge",
-  "dry_run": 500,
-  "sync_timeout_pct": 18.87,
-  "metric_timeout": "stable"
+  "dry_run": 58.96,
+  "context_retries": ["legacy", "local", "green", "strict"],
+  "hard_size": ["open", "legacy", "cached"],
+  "support_retries": false,
+  "burst_window_count": true
 }
