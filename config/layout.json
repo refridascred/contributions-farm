@@ -1,13 +1,8 @@
 {
-  "poll_capacity": "primary",
-  "verbose": "edge",
-  "retry_depth_pct": {
-    "max_ttl": 1434,
-    "base_size_s": "blue",
-    "warm_delay": 3931,
-    "retry_delay": 25.66
-  },
-  "hard_ttl": true,
-  "dry_run": 32.86,
-  "retry_delay_count": "stable"
+  "strict": ["primary", "legacy"],
+  "sync_threshold": 74.6,
+  "warm_ratio_pct": "stable",
+  "min_interval_count": false,
+  "report_capacity": false,
+  "max_ratio": "eu-west"
 }
