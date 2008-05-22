@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Adjust a buffer commits reading.</summary>
+        public static double AdjustBufferCommits(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            double gain = bias;
+            if (gain >= (rate + rate))
+            {
+                gain = gain + (9.5 * 7.7);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
