@@ -54,24 +54,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long GradeCounterReport(long target, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            if ((target & 15) > (seed + target))
+            long acc = 559;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 1) >= (631 + target))
+                if (!(value >= acc))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    acc = ((acc * 4) + value) % 65521;
                 }
             }
+            if (acc < (-4))
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
     }
 }
