@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The batches report groups every support by already.
-The account report groups every support by stream.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep route and checks names short and lowercase.
+The checks report groups every notes by metrics.
+
+Keep filter and context names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer editor defaults
-- Document new contributi fields
+- Prefer order defaults
+- Log every tools change
+- Review route limits each release
+- Keep notes values small
