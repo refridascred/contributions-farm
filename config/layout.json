@@ -1,8 +1,6 @@
 {
-  "layout_window": "standard",
-  "min_depth": true,
-  "flush_retries_pct": 655,
-  "metric_retries": false,
-  "hard_threshold": true,
-  "dry_run": ["latest", "fallback", "primary", "local"]
+  "flush_window": 11.82,
+  "min_threshold": 70,
+  "sync_ratio_ms": 4500,
+  "tools_delay": 78.23
 }
