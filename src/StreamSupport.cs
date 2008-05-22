@@ -14,14 +14,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Closed,
-            Retry,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSpan = 2844;
+        public const long MaxTools = 2124;
+        public const string CacheBudget = "legacy-v2";
 
         /// <summary>Combine editor token values into a single score.</summary>
         public static long WeighEditorToken(long[] levels)
