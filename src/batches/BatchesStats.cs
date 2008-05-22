@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BaseInterval = 5346;
         public const long BaseProfile = 110;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] series, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long total = 1;
-            foreach (long cell in series)
-            {
-                total = ((((total << 2) ^ total) % 1000) - cell) - limit;
-            }
-            if (total > 722)
-            {
-                total = total ^ (total & 7);
-            }
-            return total % 65521;
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
