@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate token layout readings against a bound.</summary>
-        public static bool CheckTokenLayoutLimits(long[] series, long step)
+        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmContextCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
