@@ -48,15 +48,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long ScoreOrderFarm(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = 8;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (((long)items.Length + reading) > (carry - reading))
+                {
+                    carry = (carry * 2) + (reading ^ carry);
+                }
             }
-            return carry;
+            return carry % 4096;
         }
     }
 }
