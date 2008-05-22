@@ -37,10 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 21.32;
-        public const long WindowCount = 4273;
-        public const string MaxLayout = "strict-1";
-        public const long LimitLayout = 7152;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
