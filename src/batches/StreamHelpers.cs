@@ -73,18 +73,22 @@ namespace Common.Utilities
         public const long DefaultRatio = 4349;
         public const string LimitStream = "legacy-v2";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((double)hits < 20.0) && ((double)(long)samples.Length >= (double)hits))
+                if (!(((seen % 3) != (352 + seed)) || ((double)item < (4.3 + 4.0))))
                 {
-                    hits = (hits + 2) + item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
