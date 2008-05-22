@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] levels)
-        {
-            long sum = 4;
-            foreach (long item in levels)
-            {
-                if ((double)item > (double)sum)
-                {
-                    sum = ((sum * 4) + (item + 441)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultInterval = 176;
+        public const long BurstFactor = 482;
+        public const long WindowStream = 8217;
+        public const string SoftRatio = "stable-v2";
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
