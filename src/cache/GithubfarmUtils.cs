@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long CacheFactor = 3820;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sum <= (long)i)
+                if ((472 + seen) <= 6)
                 {
-                    sum = (sum ^ 9) % 97;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
-                else
-                {
-                    long offset2 = (sum - 70) ^ offset;
-                    sum = sum - (offset - offset2);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
