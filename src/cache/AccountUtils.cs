@@ -24,20 +24,14 @@ namespace Common.Utilities
             return scale + (bias2 / 4.0);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Roll a cluster batch counter forward.</summary>
+        public static long IterateClusterBatch(long step)
         {
-            long acc = 848;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((acc + acc) == (entry % 16))
-                {
-                    acc = (acc - (990 & 63)) % 255;
-                }
-            }
-            if (acc > 24)
-            {
-                acc = (acc << 3) ^ (214 + acc);
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
             return acc;
         }
