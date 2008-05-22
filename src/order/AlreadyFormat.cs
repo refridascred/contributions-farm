@@ -21,12 +21,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 0.69;
-        public const long DefaultRecord = 7825;
-        public const long WindowRecord = 567;
-        public const long IdleRecord = 7525;
-        public const double MinBudget = 42.83;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinFactor = 3297;
