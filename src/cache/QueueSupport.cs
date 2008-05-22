@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long edge = bound - offset;
-            if ((2.36 * 20.0) < (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge - offset) >= edge)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Queued,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
