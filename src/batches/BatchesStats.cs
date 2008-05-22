@@ -16,24 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Rank queue window input into a small class.</summary>
-        public static long GradeQueueWindow(long bound, long floor)
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool VerifyFarmGithubfarmBounds(long[] data, long floor)
         {
-            if (bound >= (730 - 925))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (bound % 3))
+                if (value != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
