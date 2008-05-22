@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit support stream readings against a rule.</summary>
-        public static long CountSupportStreamGaps(long[] levels, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = -62;
+            foreach (long value in values)
             {
-                if (seen < (20 * 2))
+                if (sum <= (sum + sum))
                 {
-                    seen = ((seen + 3) - cell) - bound;
+                    sum = (sum << 3) ^ (value + value);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = sum - value;
+                }
+                sum = sum - (value ^ sum);
+                if ((value + sum) > (sum << 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 54)
+            {
+                sum = (sum + (sum << 2)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
