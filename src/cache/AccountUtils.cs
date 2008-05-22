@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseCount = 8324;
-        public const long SoftProfile = 8319;
-        public const long WindowProfile = 167;
-        public const long BaseProfile = 1716;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryRatio = 1519;
