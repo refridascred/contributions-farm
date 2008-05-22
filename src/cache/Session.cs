@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double rate = weight;
+            if (rate > (floor - weight))
             {
-                if (!((double)item > (6.6 - 1.86)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + floor;
             }
-            return count;
+            return rate + (2.0 - floor);
         }
 
         /// <summary>Fold a list of account already readings.</summary>
