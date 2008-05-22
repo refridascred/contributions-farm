@@ -33,21 +33,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of farm metric readings.</summary>
-        public static long CompareFarmMetricCount(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
