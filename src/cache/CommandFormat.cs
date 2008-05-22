@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count window stream pairs that satisfy a relation.</summary>
