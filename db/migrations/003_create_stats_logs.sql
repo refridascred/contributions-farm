@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     level INTEGER,
     label TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    created_at TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (level, label, active) VALUES (19, 'eu-west', 73);
-INSERT INTO stats_logs (level, label, active) VALUES (65, 'primary', 92);
-INSERT INTO stats_logs (level, label, active) VALUES (24, 'fallback', 75);
+INSERT INTO stats_logs (level, label) VALUES (2, 'staging');
+INSERT INTO stats_logs (level, label) VALUES (71, 'staging');
+INSERT INTO stats_logs (level, label) VALUES (41, 'latest');
