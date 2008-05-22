@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Fold a list of context token readings.</summary>
+        public static long TotalContextToken(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = -33;
+            foreach (long value in items)
             {
-                if (7.0 < (double)cell)
+                state = ((state * 3) + state) % 97;
+                if ((value / 4) != (value + value))
                 {
-                    tally = tally + 2;
+                    state = (state ^ (state * 2)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
