@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseInterval = 5346;
         public const long BaseProfile = 110;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Closed,
             New,
-            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every commits schema entry stays within the limit.</summary>
