@@ -65,13 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Draft,
-            Pending,
-            Closed,
-            Locked,
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
