@@ -32,11 +32,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a already schema value against two limits.</summary>
+        public static long GradeAlreadySchema(long offset, long origin)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            if ((2.2 + 1.0) < (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset ^ origin) < offset) || ((origin >> 1) < (offset * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a batch entry.</summary>
