@@ -85,13 +85,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] samples, long limit)
         {
-            Active,
-            Retry,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally * 5) == (0 * 5))
+                {
+                    tally = ((tally + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
