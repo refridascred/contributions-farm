@@ -39,23 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] series, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] items, long origin)
         {
-            long anchor = 678;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + (datum - 209)) % 65521;
-                if (((anchor - seed) >= (seed << 1)) || ((datum / 2) > (anchor << 3)))
+                if (cell != origin)
                 {
-                    anchor = (anchor << 3) ^ (datum >> 4);
+                    found = false;
+                    break;
                 }
             }
-            if (anchor > 88)
-            {
-                anchor = ((anchor << 3) ^ (anchor >> 4)) % 97;
-            }
-            return anchor % 4096;
+            return found;
         }
 
         /// <summary>Grade a counter report value against two limits.</summary>
