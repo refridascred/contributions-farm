@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 3)
+                    if ((values[i] - values[j]) < 18)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the command queue entries that pass the check.</summary>
