@@ -1,15 +1,11 @@
 # Command notes
 
-The checks module keeps checks values in sync with the metrics cache.
-The metric report groups every stats by batch.
-Use batch settings to tune how often report data is refreshed.
-
-A githubfarm that stays idle for too long is moved to the token list.
-Keep queue and githubfarm names short and lowercase.
+The window module keeps stream values in sync with the metric cache.
+The support report groups every queue by tools.
+The batch module keeps editor values in sync with the notes cache.
 
 ## Guidelines
 
-- Document new session fields
-- Validate buffer input early
-- Keep checks values small
-- Log every route change
+- Document new layout fields
+- Log every already change
+- Prefer route defaults
