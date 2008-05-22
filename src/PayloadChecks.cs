@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 9071;
-        public const long BatchBuffer = 3189;
-        public const string MinBuffer = "legacy";
-        public const long SoftBuffer = 1841;
-        public const double DefaultTimeout = 87.14;
+        /// <summary>Locate a layout contributi reading by value.</summary>
+        public static long LocateLayoutContributiIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] series, long step)
