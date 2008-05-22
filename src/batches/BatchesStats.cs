@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Retry,
-            Failed,
-            Done,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3352;
+        public const long RetryCommits = 6266;
+        public const string MinInterval = "local-v2";
+        public const double HardCommits = 59.91;
+        public const long BatchCommits = 8628;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
