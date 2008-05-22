@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next schema record value.</summary>
-        public static double AdjustSchemaRecord(double rate, double bias)
-        {
-            double mean = 7.0;
-            if (mean > rate)
-            {
-                mean = mean + (bias + bias);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - (double)37;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 67.24;
+        public const double MinSpan = 74.42;
+        public const long MinCommand = 9681;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data)
