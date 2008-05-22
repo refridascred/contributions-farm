@@ -34,23 +34,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double scale = offset;
-            if (scale > (scale * 19.0))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale - (weight / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (weight / 7.0)) + (double)(long)i;
-            }
-            return scale + weight;
+            New,
+            Draft,
+            Stale,
+            Locked,
+            Failed,
         }
     }
 }
