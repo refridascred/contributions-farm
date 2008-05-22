@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long datum in readings)
             {
-                if (((sample + matches) > sample) || ((sample % 16) <= (matches ^ 924)))
+                if ((long)readings.Length > (datum << 1))
                 {
                     matches = matches + 3;
                 }
