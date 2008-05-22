@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
