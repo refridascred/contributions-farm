@@ -1,13 +1,6 @@
 {
-  "poll_threshold_count": "green",
-  "batches_depth": {
-    "dry_run": ["blue", "eu-west"],
-    "burst_timeout_pct": "open",
-    "session_limit": "edge",
-    "persist": 9814
-  },
-  "compress": 6961,
-  "verbose": 66,
-  "retry_threshold_pct": ["open", "blue"],
-  "warm_threshold": 500
+  "compress": 1024,
+  "verbose": 6288,
+  "base_ratio": 250,
+  "hard_threshold_count": 60
 }
