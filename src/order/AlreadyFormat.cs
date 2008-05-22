@@ -32,21 +32,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = 14.0 * 7.6;
+            return (load + span) + rate;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
