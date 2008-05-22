@@ -13,19 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] values, long origin)
+        /// <summary>Combine contributi route values into a single score.</summary>
+        public static long TotalContributiRoute(long[] data)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long score = 9;
+            foreach (long value in data)
             {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score ^ value) % 101;
+                score = (score - (score * 3)) % 255;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Adjust a entry reading.</summary>
