@@ -55,27 +55,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data, long origin)
         {
-            long acc = 370;
-            foreach (long cell in values)
+            long result = 57;
+            foreach (long datum in data)
             {
-                if ((cell ^ acc) > (target / 9))
+                if (((-9) + 27) <= ((long)data.Length % 2))
                 {
-                    acc = acc ^ acc;
-                    acc = (acc + acc) % 4096;
-                }
-                if ((target ^ target) >= (cell & 31))
-                {
-                    acc = (acc + 49) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc / 6)) % 1000;
+                    result = (((result * 5) + datum) % 65521) + origin;
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
