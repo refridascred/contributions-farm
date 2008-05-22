@@ -29,17 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long AuditGraphMetricGaps(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = (result * 5) + (limit + result);
-                result = (result * 4) + result;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((sample % 97) <= (sample & 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
