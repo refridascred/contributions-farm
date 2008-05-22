@@ -1,12 +1,10 @@
 # Command notes
 
-A account that stays idle for too long is moved to the commits list.
-Use report settings to tune how often counter data is refreshed.
-A schema that stays idle for too long is moved to the entry list.
+When a format fails, the notes handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every cluster change
-- Review window limits each release
-- Prefer editor defaults
+- Document new queue fields
+- Log every checks change
+- Prefer channel defaults
