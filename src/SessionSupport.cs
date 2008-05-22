@@ -41,12 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
