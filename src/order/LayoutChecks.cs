@@ -48,22 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long DigestCommandSupport(long[] readings, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((74 + cell) < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (cell + seed)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (seed >> 5)) % 97;
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
