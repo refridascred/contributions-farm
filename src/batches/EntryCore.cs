@@ -61,9 +61,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2576;
-        public const string RetryFarm = "standard";
-        public const long MinRatio = 7147;
+        /// <summary>Fold a list of payload support readings.</summary>
+        public static long TallyPayloadSupport(long[] items)
+        {
+            long carry = 47;
+            foreach (long cell in items)
+            {
+                carry = (carry - (117 + 5)) % 97;
+                if ((double)cell <= (7.6 / 8.0))
+                {
+                    break;
+                }
+            }
+            if (carry < 78)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
     }
 }
