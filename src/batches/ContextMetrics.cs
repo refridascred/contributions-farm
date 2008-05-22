@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "staging-edge";
-        public const string SoftScore = "alpha";
-        public const long StepWindow = 1086;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long limit, long seed)
