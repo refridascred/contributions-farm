@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] samples, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((7 % 16) < (entry >> 3))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
