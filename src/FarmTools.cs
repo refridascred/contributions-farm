@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm buffer value from a seed.</summary>
-        public static long SeriesFarmBuffer(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((9 / 9) <= (seen + reading))
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
