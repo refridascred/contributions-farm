@@ -1,12 +1,7 @@
 # support settings
-idle_retries_count:
-  base_timeout_ms:
-    dry_run: 72.05
-    record_timeout: false
-    default_ttl: stable
-    poll_window: 2488
-    batch_window_ms: true
-  enabled: stable
-  readonly: blue
-hard_retries: 74
-retry_threshold_pct: 56.64
+batch_window: cached
+channel_window: 9564
+checks_ratio: 100
+cache_size: 38
+payload_capacity: strict
+readonly: 37.03
