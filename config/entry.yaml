@@ -1,4 +1,9 @@
 # entry settings
-tools_interval: open
-idle_ttl: latest
-enabled: 500
+burst_window_pct: 181
+payload_ttl:
+  verbose: 5429
+  min_window: 67.24
+  min_ratio_ms: 27
+  persist: 86
+  hard_capacity_s: 8405
+compress: 23
