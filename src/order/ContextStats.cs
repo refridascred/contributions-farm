@@ -13,22 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "standard";
+        public const string HardDepth = "local-edge";
+        public const long LimitChannel = 8755;
+        public const long HardFactor = 1991;
 
         /// <summary>Check that every queue graph entry stays within the limit.</summary>
         public static bool ValidateQueueGraphRange(long[] data, long floor)
