@@ -41,19 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two tools entry measurements.</summary>
-        public static double ProjectToolsEntry(double weight, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double gain = offset;
-            if (gain >= gain)
-            {
-                gain = (gain + (double)519) + weight;
-            }
-            else
-            {
-                gain = gain - (double)91;
-            }
-            return gain - (offset - 6.0);
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
