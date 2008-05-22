@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double rate, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] values, long seed)
         {
-            double load = floor / 9.0;
-            return (load + 1.66) + rate;
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
