@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Idle,
-            Paused,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchDepth = 30.22;
+        public const string StepFormat = "primary-edge";
+        public const long RetryFormat = 9364;
+        public const long MaxFormat = 844;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] levels)
