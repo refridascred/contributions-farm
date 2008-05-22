@@ -49,13 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Synced,
-            Active,
-            Paused,
-            Retry,
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every profile stats entry stays within the limit.</summary>
