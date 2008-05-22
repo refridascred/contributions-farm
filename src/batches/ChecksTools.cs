@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i & 1) < mix)
+                {
+                    mix = (mix ^ ((long)i - (long)i)) % 65521;
+                    mix = mix - 40;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a counter commits sample.</summary>
