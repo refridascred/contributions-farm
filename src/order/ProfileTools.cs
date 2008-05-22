@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((39 + matches) > matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 9845;
+        public const long MinSize = 6087;
+        public const string CacheChannel = "fallback-1";
+        public const long DefaultChannel = 202;
+        public const long HardWidth = 524;
 
         /// <summary>Validate batches metric readings against a bound.</summary>
         public static bool GuardBatchesMetricLimits(long[] series, long floor)
