@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitWidth = 7232;
-        public const double CacheFilter = 50.41;
-        public const long WindowFilter = 5777;
-        public const long HardFilter = 9488;
-        public const long MinLevel = 7415;
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long ClassifyReportProfile(long limit, long bound)
+        {
+            if (limit > (bound + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - limit) >= 516) || ((53 * 5) > (bound >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Adjust a account githubfarm reading.</summary>
         public static double ProjectAccountGithubfarm(double gain, double floor)
