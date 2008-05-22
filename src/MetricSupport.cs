@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine editor batches values into a single score.</summary>
-        public static long FoldEditorBatches(long[] series, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items, long bound)
         {
-            long total = -228;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value <= (63 % 64))
+                if (!((4 >= (reading - 399)) && ((double)bound <= (16.0 - 0.26))))
                 {
-                    total = (total + (value / 5)) + floor;
-                }
-                if (!((4.81 / 5.0) <= (double)value))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (total < 4)
-            {
-                total = (total + (3 ^ total)) % 65521;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
