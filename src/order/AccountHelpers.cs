@@ -33,14 +33,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 6312;
+        public const long LimitGithubfarm = 2475;
+        public const long RetryGithubfarm = 7709;
+        public const long LimitTimeout = 4705;
+        public const string DefaultInterval = "stable-edge";
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long offset)
