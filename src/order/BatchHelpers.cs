@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data, long step)
+        /// <summary>Iterate the entry report series from a seed.</summary>
+        public static long RollEntryReport(long floor)
         {
-            long state = 96;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state ^ state) ^ cell) + step;
-                if ((double)state > (3.64 / 6.0))
-                {
-                    break;
-                }
+                total = (total + (1 & 63)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
