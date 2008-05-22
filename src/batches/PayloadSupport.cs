@@ -33,11 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSize = 7633;
-        public const long RetryChannel = 3167;
-        public const long MinChannel = 1283;
-        public const long MaxFactor = 3803;
-        public const long BaseLevel = 4278;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
