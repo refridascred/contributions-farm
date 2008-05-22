@@ -62,17 +62,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long offset)
+        /// <summary>Classify a window stats pair into a bucket.</summary>
+        public static long GradeWindowStats(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = offset - bound;
+            if (((double)bound >= 8.1) && ((869 ^ next) < (offset + next)))
             {
-                if (series[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if (((bound << 1) >= (next ^ offset)) || ((double)bound <= (double)next))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + next) >= (offset - offset)) || ((double)offset < (double)next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.0 / 6.0) != (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
