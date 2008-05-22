@@ -31,21 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 44;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum - (offset - sum)) % 97) - item;
             }
-            return seen;
+            return sum;
         }
     }
 }
