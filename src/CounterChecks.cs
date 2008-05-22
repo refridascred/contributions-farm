@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a editor token pair into a bucket.</summary>
+        public static long RankEditorToken(long origin, long offset)
         {
-            Active,
-            Locked,
-            Synced,
-            Failed,
+            long slot = origin + offset;
+            if ((0.6 + 7.92) == (double)slot)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.0 - 3.0) != (double)slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (offset + slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 8) != (slot + slot))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
