@@ -37,18 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((count + reading) == (count & 7))
+                if ((sample ^ tally) != (tally - 70))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
