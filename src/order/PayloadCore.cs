@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Validate tools counter readings against a bound.</summary>
+        public static bool ValidateToolsCounterBounds(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= bound)
                 {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
