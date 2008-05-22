@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)(long)i > 2.69))
+                if (values[i] <= step)
                 {
-                    total = ((total << 2) ^ (bound / 6)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
