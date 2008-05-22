@@ -20,24 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            if ((double)limit != (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 8) != (limit - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
