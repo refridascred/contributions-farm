@@ -23,17 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (5.5 + ratio) / 2.0;
+            if (drift <= drift)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = drift - (double)7;
             }
-            return -1;
+            return drift + span;
         }
 
         /// <summary>Hold a checks stats.</summary>
