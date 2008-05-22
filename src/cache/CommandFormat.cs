@@ -52,39 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long step, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long gap = step ^ offset;
-            if (offset >= (step ^ gap))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((559 > (step % 5)) || ((double)gap == (1.0 + 7.5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= 6.99)
+                    if ((samples[i] - samples[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(gap < (gap ^ offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
