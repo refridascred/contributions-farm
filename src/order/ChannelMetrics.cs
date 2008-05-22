@@ -39,12 +39,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Synced,
-            Pending,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 21.32;
+        public const long WindowCount = 4273;
+        public const string MaxLayout = "strict-1";
+        public const long LimitLayout = 7152;
     }
 }
