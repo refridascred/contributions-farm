@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = weight;
+            if (drift <= 3.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - 6.43;
             }
-            return matches;
+            else
+            {
+                drift = drift - (span + weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (weight + span)) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Hold a stream info.</summary>
