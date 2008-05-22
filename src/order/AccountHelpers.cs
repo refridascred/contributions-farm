@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 8705;
-        public const long DefaultRatio = 5633;
-        public const double CacheScore = 4.57;
-        public const long LimitCount = 784;
-        public const double StepTimeout = 23.17;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
