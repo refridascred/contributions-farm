@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples, long offset)
         {
-            Queued,
-            New,
-            Paused,
-            Idle,
+            long score = 72;
+            foreach (long entry in samples)
+            {
+                score = ((((score << 3) ^ score) % 97) ^ entry) + offset;
+            }
+            if (score < 7)
+            {
+                score = (score ^ (337 / 7)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many account notes samples are out of range.</summary>
