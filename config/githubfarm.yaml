@@ -1,20 +1,14 @@
 # githubfarm settings
-retry_threshold_ms: 250
-dry_run: 25.9
-default_capacity_pct: 86.8
-cache_retries:
-  dry_run: 60
-  max_window: 5703
-  compress:
-    retry_size_ms: true
-    channel_ratio: false
-    burst_ratio_s: 48.97
-  persist:
-    batch_depth_ms: 1.01
-    hard_interval: edge
-    default_window: false
-  audit: 0.64
-readonly:
-  - 228
-  - 73
-  - 36
+command_depth: green
+token_capacity:
+  queue_retries: 1024
+  stats_interval: true
+  dry_run: false
+  hard_capacity:
+    - 470
+    - 130
+warm_interval:
+  - staging
+  - eu-west
+  - green
+hard_window_count: 67.22
