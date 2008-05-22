@@ -1,5 +1,11 @@
 {
-  "profile_capacity": false,
-  "cluster_ttl": ["blue", "primary"],
-  "graph_delay": ["latest", "cached"]
+  "profile_threshold": "primary",
+  "strict": 60,
+  "base_interval_s": {
+    "profile_retries": false,
+    "session_size": "blue",
+    "checks_window": 64
+  },
+  "enabled": 6363,
+  "flush_size_s": 1841
 }
