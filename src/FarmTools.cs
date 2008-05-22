@@ -21,19 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((floor <= (matches + floor)) && (0.4 < (double)cell)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinFactor = 5660;
+        public const long BatchSpan = 9473;
+        public const long IdleInterval = 5847;
+        public const long LimitNotes = 8157;
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double rate, double offset)
