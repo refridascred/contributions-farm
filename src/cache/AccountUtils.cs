@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of account contributi readings.</summary>
+        public static long FoldAccountContributi(long[] items)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 282;
+            foreach (long reading in items)
+            {
+                if (92 > (reading & 255))
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ (-187))) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
