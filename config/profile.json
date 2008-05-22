@@ -1,7 +1,6 @@
 {
-  "poll_retries_count": 36.96,
-  "poll_window_ms": 1.38,
-  "strict": 5646,
-  "default_retries_count": 17.56,
-  "flush_capacity": ["eu-west", "blue"]
+  "queue_timeout": 1553,
+  "min_retries_ms": 82.74,
+  "verbose": "stable",
+  "batch_delay_pct": "standard"
 }
