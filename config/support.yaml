@@ -1,4 +1,6 @@
 # support settings
-hard_ttl: 0.27
-poll_retries: 1024
-soft_ratio_count: 23.72
+base_capacity_pct: 100
+stats_timeout: staging
+sync_timeout: 6
+verbose: 4
+compress: true
