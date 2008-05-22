@@ -40,15 +40,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double bias2)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            double load = bias2;
-            for (int i = 0; i < 7; i++)
+            double scale = offset;
+            if (scale > (scale * 19.0))
             {
-                load = (load + (double)(long)i) - bias;
+                scale = scale + scale;
             }
-            return load - (bias2 - load);
+            else
+            {
+                scale = scale - (weight / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (weight / 7.0)) + (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
