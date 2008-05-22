@@ -1,13 +1,13 @@
 {
-  "idle_limit": "green",
-  "base_capacity": {
-    "persist": 1024,
-    "flush_capacity_ms": {
-      "hard_capacity_count": "local",
-      "max_ttl_s": 9598,
-      "max_depth_s": 6886
-    },
-    "stats_ratio": 2.23
+  "poll_threshold_count": "green",
+  "batches_depth": {
+    "dry_run": ["blue", "eu-west"],
+    "burst_timeout_pct": "open",
+    "session_limit": "edge",
+    "persist": 9814
   },
-  "batch_timeout_s": 93.05
+  "compress": 6961,
+  "verbose": 66,
+  "retry_threshold_pct": ["open", "blue"],
+  "warm_threshold": 500
 }
