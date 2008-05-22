@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinSize = 0.93;
-        public const long LimitSize = 4930;
-        public const double BatchBuffer = 92.15;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7935;
+        public const string IdleLayout = "strict-v2";
+        public const string SoftSize = "local-edge";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long step, long target)
