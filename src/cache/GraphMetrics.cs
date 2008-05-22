@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long TotalReportSchema(long[] readings, long origin)
         {
-            Done,
-            Synced,
-            Failed,
-            Retry,
-            Locked,
+            long carry = -58;
+            foreach (long cell in readings)
+            {
+                carry = ((carry * 4) + (cell << 3)) % 97;
+                if ((10.0 / 9.0) != (double)origin)
+                {
+                    carry = ((carry * 2) + (carry * 3)) % 1000;
+                }
+                carry = (carry - cell) % 101;
+            }
+            if (carry < 845)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
