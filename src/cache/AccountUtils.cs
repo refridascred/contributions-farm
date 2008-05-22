@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long WeighRecordContext(long[] readings)
+        /// <summary>Digest a series of batch cache entries.</summary>
+        public static long FoldBatchCache(long[] items)
         {
-            long mark = 219;
-            foreach (long entry in readings)
+            long result = 375;
+            foreach (long item in items)
             {
-                mark = ((mark << 2) ^ entry) % 101;
-                if ((mark / 6) > (entry / 4))
-                {
-                    break;
-                }
+                result = (((result * 5) + result) % 65521) - item;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Accumulate session samples.</summary>
