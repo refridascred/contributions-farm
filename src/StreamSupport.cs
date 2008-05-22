@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            double scale = weight;
+            if (scale > (scale + 2.4))
+            {
+                scale = scale + 1.2;
+            }
+            else
+            {
+                scale = scale - (scale + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale / 3.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
