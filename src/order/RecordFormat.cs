@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (entry >= step)
+                if ((value % 16) >= value)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
