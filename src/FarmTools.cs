@@ -33,18 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = 909;
+            foreach (long value in values)
             {
-                if ((9 / 9) <= (seen + reading))
+                result = (result + (bound & 63)) % 1000;
+                if ((bound ^ bound) < bound)
                 {
-                    seen = (seen + 1) + seed;
+                    result = (result ^ (value << 2)) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
