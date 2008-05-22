@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Pending,
-            Active,
-            Idle,
-            Ready,
-            Queued,
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
