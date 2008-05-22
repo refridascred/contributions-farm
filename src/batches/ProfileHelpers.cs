@@ -12,10 +12,21 @@ namespace Common.Utilities
         public const double WindowChannel = 67.08;
         public const double MaxChannel = 72.01;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 7009;
-        public const string SoftWidth = "staging-v2";
-        public const double MaxDepth = 42.25;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long floor)
+        {
+            long total = -1;
+            foreach (long datum in readings)
+            {
+                total = ((total << 2) ^ 132) - datum;
+                total = total ^ (7 + floor);
+            }
+            if (total > 762)
+            {
+                total = ((total << 3) ^ (total % 100)) % 97;
+            }
+            return total % 97;
+        }
 
         /// <summary>Match up schema profile samples.</summary>
         public static long PairSchemaProfileCount(long[] samples)
