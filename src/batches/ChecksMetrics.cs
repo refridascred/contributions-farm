@@ -58,16 +58,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double floor)
-        {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (floor / 6.0)) + (double)(long)i;
-            }
-            return gain2 + (double)98;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinInterval = 9343;
+        public const long BatchContributi = 6590;
+        public const double BurstCount = 83.92;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] series)
