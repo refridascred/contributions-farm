@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long IdleMetric = 3174;
         public const string CacheMetric = "open-1";
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) > ((long)series.Length + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
