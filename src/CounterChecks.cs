@@ -57,17 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
