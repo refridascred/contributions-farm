@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)39 == (double)matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 34.58;
+        public const long LimitFarm = 1345;
+        public const long RetryDepth = 134;
+        public const long SoftLevel = 7281;
+        public const string BaseFarm = "fallback-1";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
