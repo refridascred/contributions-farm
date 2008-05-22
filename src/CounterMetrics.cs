@@ -62,11 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 9175;
-        public const double HardFilter = 16.17;
-        public const string SoftFilter = "strict";
-        public const long DefaultCount = 8718;
-        public const long LimitCount = 2414;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
