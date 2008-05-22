@@ -1,7 +1,18 @@
 {
-  "base_window_pct": "eu-west",
-  "base_timeout_pct": "green",
-  "cache_limit": 22.35,
-  "dry_run": 5551,
-  "record_ttl": 30.68
+  "strict": "open",
+  "default_interval": "strict",
+  "batch_interval": "strict",
+  "command_window": {
+    "soft_limit": "latest",
+    "max_limit_s": {
+      "base_size": "latest",
+      "session_size": 500,
+      "idle_window_count": false
+    },
+    "min_timeout_pct": 73.2,
+    "burst_capacity_s": 24.0,
+    "flush_size": 56.24,
+    "default_window_count": 74
+  },
+  "flush_ttl_s": 2262
 }
