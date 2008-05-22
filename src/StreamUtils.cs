@@ -73,18 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((count / 5) != (item - offset))
+                if ((sample ^ tally) >= (4 + tally))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
