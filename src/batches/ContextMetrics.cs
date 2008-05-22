@@ -51,13 +51,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            New,
+            Synced,
+            Dropped,
+            Stale,
+            Locked,
         }
     }
 }
