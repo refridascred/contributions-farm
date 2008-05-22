@@ -16,12 +16,41 @@ namespace Common.Utilities
             return weight + (scale - scale);
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long sum = 932;
+            foreach (long item in series)
+            {
+                if (!((bound % 16) >= bound))
+                {
+                    sum = sum ^ (sum + item);
+                    sum = sum ^ (bound & 31);
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 5) + bound;
+                    sum = (sum ^ sum) % 65521;
+                }
+                if ((3 >= (sum / 5)) && ((sum / 6) < bound))
+                {
+                    sum = (sum * 3) + (item - bound);
+                }
+                else
+                {
+                    sum = sum ^ (item & 15);
+                }
+                if (((bound & 7) > item) || ((sum + sum) <= sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 966)
+            {
+                sum = (sum + 5) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit account batch readings against a rule.</summary>
