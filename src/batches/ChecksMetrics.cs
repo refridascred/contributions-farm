@@ -70,15 +70,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long datum in values)
             {
-                if ((tally + tally) == (entry * 3))
+                if (8.1 > (double)floor)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) ^ datum;
                 }
             }
             return tally;
