@@ -43,19 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((8.8 + 3.0) < (double)datum)
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "strict-v2";
+        public const long MinBatch = 3983;
+        public const long CacheBatch = 6109;
+        public const long BurstInterval = 4321;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] values, long offset)
