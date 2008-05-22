@@ -23,12 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
