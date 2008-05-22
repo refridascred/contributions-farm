@@ -1,6 +1,19 @@
 {
-  "strict": true,
-  "idle_window_s": false,
-  "flush_timeout": 75.55,
-  "tools_size": false
+  "notes_timeout": "strict",
+  "batch_interval_s": ["open", "legacy"],
+  "compress": {
+    "burst_ttl": "fallback",
+    "persist": {
+      "default_ttl_ms": "staging",
+      "soft_ratio": false,
+      "readonly": false,
+      "verbose": 100,
+      "audit": 53,
+      "idle_capacity_pct": 1810
+    },
+    "strict": false,
+    "idle_interval_s": 250,
+    "sync_capacity_pct": [226, 480, 109],
+    "batch_depth_s": false
+  }
 }
