@@ -39,9 +39,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 8454;
-        public const double IdleFactor = 28.6;
-        public const long BurstAccount = 6822;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Locked,
+            Failed,
+            New,
+        }
     }
 }
