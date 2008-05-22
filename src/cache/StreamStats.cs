@@ -65,15 +65,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double scale, double bias)
+        /// <summary>Derive the next contributi stream value from a seed.</summary>
+        public static long IterateContributiStream(long floor)
         {
-            double ratio = scale - (double)7;
-            if (ratio > (ratio - ratio))
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = (ratio + ratio) + bias;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum + ((long)i ^ 969)) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return ratio + (double)190;
+            return sum;
         }
     }
 }
