@@ -36,32 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long delta = limit - target;
-            if ((limit - limit) < (limit - 108))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)541 > (double)limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + delta) > (target % 3))
+                    if ((data[i] ^ data[j]) > 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
