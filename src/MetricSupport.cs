@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
