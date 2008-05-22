@@ -53,32 +53,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context cache pair into a bucket.</summary>
-        public static long SortContextCache(long offset, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long step)
         {
-            long next = offset - target;
-            if (!((double)offset >= (9.0 - 0.39)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((next ^ next) <= 950) || ((next + next) != (target - target)))
+                if (samples[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next >> 5) == (target ^ next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
