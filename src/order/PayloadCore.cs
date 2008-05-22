@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultRatio = "standard-edge";
+        public const long StepBatch = 8359;
+        public const string CacheBatch = "fallback-edge";
+        public const long HardFactor = 8174;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] samples, long step)
