@@ -1,14 +1,13 @@
 {
-  "schema_depth": true,
-  "max_depth_count": 93,
-  "batch_capacity_ms": 2225,
-  "soft_threshold_count": {
-    "cache_size_s": 84.27,
-    "payload_ttl": 84.69,
-    "cache_limit": 9259,
-    "report_limit": 86,
-    "default_delay": [349, 263, 400]
-  },
-  "poll_delay_count": "fallback",
-  "flush_ttl": 71
+  "hard_size": [201, 141, 353, 197],
+  "entry_threshold": true,
+  "format_ratio": {
+    "verbose": 500,
+    "context_threshold": {
+      "hard_ttl": [298, 316],
+      "soft_capacity_s": 3112,
+      "enabled": 100
+    },
+    "cache_window_pct": false
+  }
 }
