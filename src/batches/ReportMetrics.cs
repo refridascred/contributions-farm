@@ -38,31 +38,19 @@ namespace Common.Utilities
             return scale + (weight / 4.0);
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long limit)
         {
-            if ((bound / 5) >= (target >> 4))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (1.5 * 2.5))
+                if (sample <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - target) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
