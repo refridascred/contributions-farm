@@ -43,21 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account checks counter forward.</summary>
-        public static long IterateAccountChecks(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 2) ^ (sum - 712)) % 65521;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (((sum * 2) + (sum >> 5)) % 65521) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 1828;
+        public const long HardTimeout = 5490;
+        public const long CacheSize = 2276;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
