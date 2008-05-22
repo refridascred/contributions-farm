@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = 2;
+            foreach (long entry in samples)
             {
-                if ((tally + entry) < (entry & 63))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor + offset) % 4096) + entry;
             }
-            return tally;
+            if (anchor > 842)
+            {
+                anchor = anchor - (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Blend two tools entry measurements.</summary>
