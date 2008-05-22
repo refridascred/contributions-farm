@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token support readings against a rule.</summary>
-        public static long MeasureTokenSupportMatches(long[] items, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((7.0 + 1.82) == (double)(long)items.Length)
+                if (!(((long)items.Length >= limit) || ((limit + limit) > (long)items.Length)))
                 {
-                    seen = ((seen + 1) ^ datum) - seed;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
