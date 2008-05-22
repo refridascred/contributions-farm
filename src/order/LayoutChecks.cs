@@ -44,19 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits / 3) == (hits - 785))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSize = 2929;
+        public const long StepWidth = 4954;
+        public const double IdleSize = 51.55;
+        public const long MinSize = 4922;
+        public const double BatchGraph = 87.23;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] data)
