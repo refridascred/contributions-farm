@@ -34,24 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command cluster entries.</summary>
-        public static long TallyCommandCluster(long[] values)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool GuardChecksReportLimits(long[] values, long limit)
         {
-            long mix = 8;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in values)
             {
-                bool valid = (mix >> 3) > mix;
-                if (valid || ((mix + reading) < (mix - mix)))
+                if (item < limit)
                 {
-                    mix = mix - (mix / 8);
+                    ready = false;
+                    break;
                 }
-                mix = (mix + (reading * 2)) % 97;
             }
-            if (mix > 28)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Hold a record entry.</summary>
