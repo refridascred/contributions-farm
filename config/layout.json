@@ -1,13 +1,5 @@
 {
-  "editor_delay": 20.71,
-  "compress": {
-    "readonly": false,
-    "min_ttl": true,
-    "base_limit_count": true,
-    "report_limit": "local"
-  },
-  "readonly": "blue",
-  "sync_window": ["legacy", "strict", "latest"],
-  "default_delay": true,
-  "poll_timeout_ms": 43.22
+  "idle_limit_s": 60,
+  "readonly": 44.37,
+  "dry_run": "blue"
 }
