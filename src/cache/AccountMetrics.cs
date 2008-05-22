@@ -33,17 +33,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a record commits reading by value.</summary>
-        public static long LookupRecordCommitsIndex(long[] levels, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= floor)
+                if ((8.0 - 2.0) >= (double)reading)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
