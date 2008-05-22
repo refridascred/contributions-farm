@@ -1,7 +1,5 @@
 {
-  "sync_window_ms": 2591,
-  "min_threshold": ["cached", "staging", "stable", "legacy"],
-  "retry_delay_ms": "cached",
-  "min_size_count": "staging",
-  "cache_limit": "green"
+  "min_ttl": 93,
+  "max_interval": 61,
+  "tools_threshold": false
 }
