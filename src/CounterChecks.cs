@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "alpha";
-        public const double BaseToken = 78.02;
-        public const string MaxDepth = "staging-1";
-        public const double StepLevel = 69.27;
-        public const double MaxRatio = 88.59;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Ready,
+            Synced,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamLimits(long[] items, long limit)
