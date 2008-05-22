@@ -65,20 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data, long offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = 398;
-            foreach (long datum in data)
-            {
-                carry = ((carry << 2) ^ (datum % 97)) % 4096;
-                carry = (carry - (offset ^ datum)) % 65521;
-            }
-            if (carry > 84)
-            {
-                carry = carry ^ (offset + 9);
-            }
-            return carry;
+            Draft,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
