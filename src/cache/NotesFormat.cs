@@ -21,12 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultLevel = "cached-edge";
-        public const long BatchStats = 6863;
-        public const string HardLevel = "open-v2";
-        public const long RetryStats = 7362;
-        public const long CacheCount = 8611;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix + (long)i;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] values)
