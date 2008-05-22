@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "primary";
-        public const long BurstLayout = 4008;
-        public const long BatchLayout = 756;
-        public const string RetryScore = "primary";
-        public const long MaxLayout = 7186;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = mark + (mark & 255);
+                mark = (mark + mark) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
