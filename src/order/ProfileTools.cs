@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((39 + matches) > matches)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next channel value.</summary>
