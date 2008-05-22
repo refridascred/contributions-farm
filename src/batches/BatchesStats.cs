@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            long mix = 89;
-            foreach (long reading in data)
+            double weight = scale * 2.09;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix ^ reading;
+                weight = (weight + (offset * 6.4)) - (double)(long)i;
             }
-            if (mix < 631)
-            {
-                mix = (mix ^ (mix * 4)) % 4096;
-            }
-            return mix;
+            return weight + weight;
         }
 
         /// <summary>Hold a counter summary.</summary>
