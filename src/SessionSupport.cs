@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream buffer readings against a rule.</summary>
-        public static long MeasureStreamBufferGaps(long[] values, long offset)
+        /// <summary>Accumulate route farm samples.</summary>
+        public static long TotalRouteFarm(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 0;
+            foreach (long sample in items)
             {
-                if ((double)value <= (3.0 / 3.0))
+                if (sample < anchor)
                 {
-                    seen = (seen + 3) - offset;
+                    anchor = anchor + (-84);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = anchor + (bound >> 2);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
