@@ -1,19 +1,5 @@
 {
-  "min_size": {
-    "min_limit_count": 19,
-    "hard_delay_count": "edge",
-    "max_interval_ms": 6525,
-    "cluster_threshold": "primary",
-    "retry_size": ["fallback", "stable", "edge", "green"]
-  },
-  "sync_window_s": "standard",
-  "sync_threshold_ms": 15.89,
-  "session_delay": {
-    "hard_depth_s": ["green", "edge", "staging", "blue"],
-    "buffer_depth": 6.45,
-    "max_depth": 1024,
-    "soft_retries_s": [109, 35, 492]
-  },
-  "sync_timeout_ms": 52.15,
-  "metric_ratio": "blue"
+  "strict": 100,
+  "report_timeout": "eu-west",
+  "compress": true
 }
