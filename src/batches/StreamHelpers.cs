@@ -45,17 +45,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long origin)
+        /// <summary>Accumulate metrics queue samples.</summary>
+        public static long CombineMetricsQueue(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 3;
+            foreach (long item in items)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - (11 - sum)) - item;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
