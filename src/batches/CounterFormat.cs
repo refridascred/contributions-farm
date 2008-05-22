@@ -37,32 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples, long bound)
         {
-            long cur = offset + step;
-            if ((double)step < (10.0 / 8.0))
+            long result = 5;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step << 2) > (step - 7)))
+                if ((bound / 8) != (result + result))
                 {
-                    return 3;
+                    result = (result - (3 / 4)) + entry;
                 }
-                else
+                if ((9.8 * 5.23) > (double)result)
                 {
-                    if ((step ^ offset) > (cur - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (result < 24)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
     }
 }
