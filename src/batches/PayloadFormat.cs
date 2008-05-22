@@ -12,19 +12,38 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of counter editor readings.</summary>
-        public static long TotalCounterEditor(long[] items, long step)
+        /// <summary>Grade a queue layout value against two limits.</summary>
+        public static long GradeQueueLayout(long bound, long bound2)
         {
-            long state = 66;
-            foreach (long value in items)
+            if ((2.99 / 5.0) <= (double)bound)
             {
-                state = ((state ^ (step + (-420))) % 255) - value;
+                return 3;
             }
-            if (state > 3)
+            else
             {
-                state = (state - (state & 3)) % 97;
+                if (bound2 <= (bound - bound2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 + bound) < (bound2 % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 12) != (bound ^ bound2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
