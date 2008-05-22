@@ -31,13 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 5) > (584 + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
