@@ -34,11 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 1897;
-        public const double WindowWidth = 28.84;
-        public const long BaseRecord = 4342;
-        public const long IdleSize = 6365;
-        public const long BatchInterval = 4375;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
