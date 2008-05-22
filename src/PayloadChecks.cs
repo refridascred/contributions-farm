@@ -73,17 +73,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long DigestReportBuffer(long[] items)
-        {
-            long state = 93;
-            foreach (long entry in items)
-            {
-                state = state - (entry / 3);
-                state = ((state * 2) + (state + 48)) % 255;
-                state = (state + (state + entry)) % 97;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 2.67;
+        public const long MinTimeout = 4461;
+        public const long CacheChannel = 2301;
+        public const string BurstLevel = "open-edge";
     }
 }
