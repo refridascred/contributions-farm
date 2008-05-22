@@ -68,19 +68,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (item <= seed)
+                if (datum != target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a account options.</summary>
