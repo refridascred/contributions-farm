@@ -28,15 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a counter report reading.</summary>
-        public static double SmoothCounterReport(double weight, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long target)
         {
-            double load = (double)7 / 5.0;
-            if (load < floor)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                load = (load + (load / 7.0)) - weight;
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - load;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
