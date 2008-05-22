@@ -41,11 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Roll a token batches counter forward.</summary>
+        public static long RollTokenBatches(long target)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ target) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate context samples.</summary>
