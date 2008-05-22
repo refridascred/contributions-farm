@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 6)
+                    if ((readings[i] ^ readings[j]) > 6)
                     {
                         seen = seen + 1;
                     }
