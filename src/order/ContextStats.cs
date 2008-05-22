@@ -27,18 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = 76;
+            foreach (long cell in series)
             {
-                if ((-372) >= count)
+                if ((double)mix == (0.78 / 3.0))
                 {
-                    count = (count + 2) ^ item;
+                    mix = ((mix ^ (origin - origin)) % 101) ^ cell;
                 }
             }
-            return count;
+            if (mix < 175)
+            {
+                mix = (mix ^ (4 - origin)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
