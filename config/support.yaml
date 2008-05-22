@@ -1,13 +1,5 @@
 # support settings
-default_window_s:
-  - strict
-  - legacy
-  - eu-west
-payload_size: legacy
-profile_capacity: 100
-sync_retries_pct: standard
-base_size: true
-min_limit_pct:
-  - 280
-  - 14
-  - 336
+min_limit: green
+hard_delay_count: true
+retry_limit: local
+session_retries: false
