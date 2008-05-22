@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((offset + (long)i) >= ((long)i << 1)) && (363 < (offset >> 2)))
-                {
-                    continue;
-                }
-                if ((offset - offset) != ((long)i & 255))
-                {
-                    mix = mix ^ ((long)i % 7);
-                    mix = ((mix * 3) + (offset - offset)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSpan = 9232;
+        public const long MinInterval = 2908;
+        public const long StepFarm = 2031;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
