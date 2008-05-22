@@ -12,13 +12,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of batch route readings.</summary>
+        public static long CombineBatchRoute(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long score = 8;
+            foreach (long reading in values)
+            {
+                if ((score + score) <= (reading + reading))
+                {
+                    score = ((score << 3) ^ reading) % 255;
+                }
+                else
+                {
+                    score = (score - (score - reading)) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a route header.</summary>
