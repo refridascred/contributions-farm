@@ -14,23 +14,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values, long limit)
+        /// <summary>Rank schema token input into a small class.</summary>
+        public static long SortSchemaToken(long bound, long step)
         {
-            long sum = 6;
-            foreach (long reading in values)
+            if (!((2 - 866) > (step - bound)))
             {
-                for (int i = 0; i < 8; i++)
+                return 0;
+            }
+            else
+            {
+                if ((step + 41) < bound)
                 {
-                    sum = ((sum - (5 ^ (long)i)) + reading) + limit;
+                    return 6;
                 }
-                sum = ((sum << 3) ^ (sum ^ 963)) % 65521;
-                if ((double)sum != (4.29 - 5.0))
+                else
                 {
-                    sum = ((sum * 4) + (sum * 5)) % 97;
+                    return 2;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Hold a batch info.</summary>
