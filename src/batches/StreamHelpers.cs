@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batch route readings.</summary>
