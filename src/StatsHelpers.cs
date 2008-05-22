@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "legacy-edge";
-        public const long BatchCount = 6890;
-        public const string RetryRecord = "staging";
-        public const string HardSize = "latest-edge";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Active,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double scale, double offset)
