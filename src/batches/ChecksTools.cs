@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Idle,
-            Closed,
-            Queued,
-            Synced,
-            Draft,
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
