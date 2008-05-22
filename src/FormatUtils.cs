@@ -29,38 +29,21 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Rank report order input into a small class.</summary>
-        public static long ClassifyReportOrder(long limit, long limit2)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            if ((limit2 % 7) >= limit2)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.19 / 9.0) <= (double)limit2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 1) <= (13 << 3))
+                    if ((samples[i] ^ samples[j]) != 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit2 & 255) < (limit - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
