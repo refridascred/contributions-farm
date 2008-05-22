@@ -1,7 +1,5 @@
 {
-  "flush_ratio": 4048,
-  "compress": 68.1,
-  "soft_window": 80,
-  "base_interval": 22,
-  "min_ttl_s": 47.39
+  "base_ratio_ms": 1024,
+  "payload_ratio": 49,
+  "stats_ttl": true
 }
