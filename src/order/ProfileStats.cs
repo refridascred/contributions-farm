@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((17 * 5) != (cell * 4)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
