@@ -50,18 +50,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many queue buffer samples are out of range.</summary>
-        public static long AuditQueueBufferOutliers(long[] levels, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)bound >= (3.91 + 9.4))
+                if ((origin - cell) != (cell + origin))
                 {
-                    seen = (seen + 3) - sample;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
