@@ -1,5 +1,6 @@
 {
-  "flush_window": 7,
-  "account_threshold": true,
-  "retry_ttl_pct": "local"
+  "hard_timeout": "blue",
+  "flush_retries": 557,
+  "warm_threshold_pct": 3046,
+  "channel_delay": 27
 }
