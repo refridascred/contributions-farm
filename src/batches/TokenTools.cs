@@ -25,13 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            New,
-            Stale,
-            Idle,
-            Queued,
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
