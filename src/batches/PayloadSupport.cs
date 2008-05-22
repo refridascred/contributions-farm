@@ -13,17 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a commits session reading by value.</summary>
-        public static long FindCommitsSessionIndex(long[] data, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 395;
+            foreach (long reading in series)
             {
-                if (data[i] >= seed)
+                if ((score > (limit >> 4)) || (score > (reading ^ score)))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (limit / 2)) % 97;
+                }
+                if ((9.65 / 6.0) < (double)score)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
