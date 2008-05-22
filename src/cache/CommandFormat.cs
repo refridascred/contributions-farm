@@ -67,13 +67,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double mean = span;
+            return (mean + (double)69) + gain;
         }
     }
 }
