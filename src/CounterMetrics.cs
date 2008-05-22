@@ -45,17 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long step)
+        /// <summary>Iterate the metric commits series from a seed.</summary>
+        public static long StepMetricCommits(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] == step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    score = (score + (score - 8)) % 97;
+                    score = ((score * 3) + (long)i2) % 97;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
