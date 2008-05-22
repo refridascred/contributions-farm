@@ -29,10 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 8555;
-        public const long MaxLayout = 7324;
-        public const long SoftLayout = 4999;
+        /// <summary>Derive the next checks filter value from a seed.</summary>
+        public static long SeriesChecksFilter(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((target / 9) != (3 & 7)))
+                {
+                    anchor = anchor - anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long offset)
