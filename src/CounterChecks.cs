@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the payload class values.</summary>
