@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels)
-        {
-            long total = 43;
-            foreach (long reading in levels)
-            {
-                total = (((total << 3) ^ total) % 4096) + reading;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitBudget = 747;
+        public const long MinSession = 4189;
+        public const double LimitSession = 15.51;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] values)
