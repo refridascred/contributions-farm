@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] levels, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long sample in series)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    sum = (sum - (sum & 63)) - (long)i;
                 }
+                if (sample <= (sum * 5))
+                {
+                    sum = ((sum * 3) + (sum + sample)) % 101;
+                    sum = ((sum * 3) + (0 * 4)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                sum = ((sum * 4) + (sample + 0)) % 4096;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
