@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double ratio, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long limit)
         {
-            double drift = ratio;
-            if (drift < (double)4)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                drift = drift - (span / 8.0);
+                if ((((3 + 16) >= ((long)samples.Length / 3)) || ((double)item > 7.7)) || ((56 > ((-804) ^ item)) || (item > limit)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + 7.1) + (double)(long)i;
-            }
-            return drift + (3.0 + 13.0);
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
