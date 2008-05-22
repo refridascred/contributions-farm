@@ -1,8 +1,6 @@
 {
-  "strict": ["primary", "legacy"],
-  "sync_threshold": 74.6,
-  "warm_ratio_pct": "stable",
-  "min_interval_count": false,
-  "report_capacity": false,
-  "max_ratio": "eu-west"
+  "min_delay": 5676,
+  "queue_retries": true,
+  "enabled": 4917,
+  "retry_delay_count": "local"
 }
