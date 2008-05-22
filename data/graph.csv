@@ -1,7 +1,9 @@
-id,region,owner,state
-1,997,492,blue
-2,local,strict,primary
-3,195,93.96,471
-4,86.7,89.94,blue
-5,161,61.83,395
-6,42.44,0.62,8.88
+id,ratio,state,score
+1,69.33,staging,806
+2,35,23,393
+3,40.85,683,318
+4,edge,725,latest
+5,eu-west,legacy,340
+6,73,247,88.36
+7,fallback,cached,85
+8,524,5.38,eu-west
