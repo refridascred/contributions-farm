@@ -1,8 +1,6 @@
 {
-  "hard_depth_s": 10.35,
-  "default_threshold_count": 141,
-  "warm_size_count": "latest",
-  "min_capacity_s": 82.64,
-  "warm_ttl": "standard",
-  "idle_retries": [229, 374, 77, 287]
+  "account_limit": 53,
+  "githubfarm_size": 1451,
+  "enabled": false,
+  "retry_capacity_pct": false
 }
