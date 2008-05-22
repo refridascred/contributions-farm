@@ -1,15 +1,7 @@
 {
-  "schema_limit": 91.0,
-  "flush_timeout_ms": {
-    "window_window": {
-      "readonly": "edge",
-      "sync_size": "blue",
-      "cache_delay_s": 5753,
-      "poll_interval": ["local", "local"]
-    },
-    "burst_window": "strict",
-    "idle_window_s": 48.63,
-    "editor_limit": true
-  },
-  "max_threshold": ["fallback", "staging", "legacy", "latest"]
+  "report_timeout": 13.94,
+  "cache_capacity": [337, 350, 295],
+  "idle_delay": 86.83,
+  "cache_retries_count": 2204,
+  "cache_threshold": false
 }
