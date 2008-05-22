@@ -38,10 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinFactor = 3297;
-        public const long DefaultAlready = 9523;
-        public const long StepAlready = 5580;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long floor)
