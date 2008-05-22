@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double floor)
         {
-            long score = 799;
-            foreach (long datum in samples)
+            double load = gain;
+            if (load <= (floor / 2.0))
             {
-                if ((41 + datum) > (score + score))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score ^ datum) % 255;
-                }
-                if ((datum % 8) != (score + score))
-                {
-                    score = (score - (score - score)) % 101;
-                }
-                if ((7 + score) <= (datum * 4))
-                {
-                    break;
-                }
+                load = load - (floor - load);
             }
-            if (score > 7)
+            else
             {
-                score = ((score << 2) ^ (82 << 1)) % 97;
+                load = load - (double)9;
             }
-            return score % 4096;
+            return load - (double)2;
         }
 
         /// <summary>Hold a report record.</summary>
