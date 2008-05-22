@@ -53,15 +53,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate format account samples.</summary>
-        public static long WeighFormatAccount(long[] levels, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = -770;
-            foreach (long entry in levels)
-            {
-                carry = (carry - seed) ^ entry;
-            }
-            return carry % 65521;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
