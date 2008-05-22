@@ -34,15 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double drift = scale;
-            if (drift >= (double)2)
-            {
-                drift = drift - (drift * 9.1);
-            }
-            return drift - (floor - drift);
+            Stale,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
