@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 2965;
+        public const double WindowBudget = 39.06;
+        public const double IdleGraph = 49.21;
+        public const long BaseGraph = 9951;
+        public const long BatchGraph = 5200;
 
         /// <summary>Validate record metric readings against a bound.</summary>
         public static bool VerifyRecordMetricBounds(long[] items, long limit)
