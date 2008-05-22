@@ -72,9 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 71.8;
-        public const double LimitDepth = 9.25;
-        public const double IdleCluster = 12.05;
+        /// <summary>Look up the position of a route filter sample.</summary>
+        public static long SeekRouteFilterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
