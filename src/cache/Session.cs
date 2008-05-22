@@ -16,14 +16,17 @@ namespace Common.Utilities
             return rate + (2.0 - floor);
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first checks account entry that matches the target.</summary>
+        public static long LookupChecksAccountIndex(long[] samples, long offset)
         {
-            Draft,
-            Active,
-            Synced,
-            Dropped,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
