@@ -1,9 +1,22 @@
 # githubfarm settings
-already_window: 87.15
-default_threshold:
-  persist:
-    - 468
-    - 209
-  sync_ratio: stable
-  poll_interval: true
-batch_window: true
+batch_ratio_pct: legacy
+cache_capacity_count: edge
+default_delay:
+  sync_depth_count: primary
+  persist: 8628
+  metrics_depth: standard
+  cache_interval_s: legacy
+  min_limit_ms: true
+  base_retries_pct: true
+readonly:
+  channel_timeout:
+    - 229
+    - 465
+    - 452
+    - 32
+  min_delay_ms:
+    default_delay_ms: false
+    enabled: local
+    max_depth_ms: blue
+    default_depth_s: true
+  idle_ttl_ms: cached
