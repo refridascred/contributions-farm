@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next batch stream value from a seed.</summary>
-        public static long RollBatchStream(long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = anchor - (step - anchor);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Ready,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Validate profile notes readings against a bound.</summary>
