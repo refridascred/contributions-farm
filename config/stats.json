@@ -1,8 +1,7 @@
 {
-  "context_ttl": "blue",
-  "batch_ratio": [485, 264],
-  "counter_interval": true,
-  "poll_threshold_pct": "cached",
-  "soft_limit": 500,
-  "flush_retries_s": 19
+  "compress": 250,
+  "notes_limit": "strict",
+  "verbose": "local",
+  "default_window_pct": "cached",
+  "base_depth_pct": 91.07
 }
