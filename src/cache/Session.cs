@@ -33,19 +33,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Idle,
+            Active,
         }
     }
 }
