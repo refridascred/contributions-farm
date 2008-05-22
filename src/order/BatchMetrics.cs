@@ -49,12 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of already format entries.</summary>
+        public static long ScoreAlreadyFormat(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long carry = 39;
+            foreach (long reading in readings)
+            {
+                carry = (carry ^ (limit & 1)) % 101;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (carry << 2) ^ ((long)i + reading);
+                    carry = ((carry << 3) ^ limit) % 4096;
+                }
+                carry = (carry * 5) + (limit >> 1);
+            }
+            if (carry > (-17))
+            {
+                carry = (carry ^ (carry + 73)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Check that every profile stats entry stays within the limit.</summary>
