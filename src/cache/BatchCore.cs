@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Done,
-            Ready,
-            Locked,
-            Paused,
             New,
+            Active,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
