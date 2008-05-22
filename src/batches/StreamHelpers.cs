@@ -79,21 +79,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)hits < 20.0) && ((double)(long)samples.Length >= (double)hits))
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
