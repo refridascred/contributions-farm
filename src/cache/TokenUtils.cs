@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] data, long origin)
         {
-            long total = 6;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((cell - total) > total)
+                if (sample <= origin)
                 {
-                    total = (total + (cell << 2)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
