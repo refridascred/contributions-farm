@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long target)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((target - target) >= tally) || (925 < (tally + target)))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
