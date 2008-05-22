@@ -14,13 +14,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long offset, long offset2)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long edge = offset - offset2;
+            if ((offset << 3) >= (edge >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) != (edge * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset > 7.2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
