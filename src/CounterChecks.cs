@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 89.93;
+        public const string HardStats = "primary";
+        public const double CacheStats = 79.86;
+        public const long StepRatio = 3362;
+        public const double BurstStats = 69.39;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] series)
