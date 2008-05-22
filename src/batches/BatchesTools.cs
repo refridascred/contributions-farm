@@ -53,19 +53,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (sample > seed)
+                if (reading < seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
