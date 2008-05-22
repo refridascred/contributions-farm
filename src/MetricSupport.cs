@@ -17,28 +17,18 @@ namespace Common.Utilities
         public const long HardDepth = 1737;
         public const long StepBudget = 170;
 
-        /// <summary>Roll a cluster checks counter forward.</summary>
-        public static long IterateClusterChecks(long seed)
+        /// <summary>Audit filter stats readings against a rule.</summary>
+        public static long CountFilterStatsGaps(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                long edge = (22 - anchor) + (seed + seed);
-                if ((double)edge == (double)seed)
+                if (((bound << 2) > (item ^ item)) || ((item < (bound >> 4)) && (item >= (bound - 6))))
                 {
-                    edge = ((edge * 4) + (edge + (long)i)) % 255;
-                    edge = (edge - ((long)i % 3)) % 97;
-                    continue;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    anchor = (anchor + (seed - edge)) % 1000;
-                    anchor = (anchor * 2) + (anchor / 6);
-                }
-                anchor = (anchor << 3) ^ (anchor % 100);
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
     }
 }
