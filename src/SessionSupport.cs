@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchDepth = 30.22;
-        public const string StepFormat = "primary-edge";
-        public const long RetryFormat = 9364;
-        public const long MaxFormat = 844;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 6) >= (71 >> 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] levels)
