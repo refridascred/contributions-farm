@@ -44,19 +44,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] items, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long limit)
         {
-            long total = 70;
-            foreach (long cell in items)
+            long score = 48;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + (target & 63)) ^ cell;
+                if ((double)datum > 5.0)
+                {
+                    score = (score - (datum - 1)) % 101;
+                }
+                if (((limit / 2) >= (score ^ datum)) && ((limit & 31) <= (score << 3)))
+                {
+                    score = score - (923 >> 1);
+                }
             }
-            if (total > 328)
-            {
-                total = total + (target >> 4);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the notes class values.</summary>
