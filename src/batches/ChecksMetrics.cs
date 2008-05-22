@@ -39,13 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long origin)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long next = floor + origin;
+            if ((floor ^ floor) >= 32)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)84 < (double)floor) || ((floor ^ next) == (next * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
