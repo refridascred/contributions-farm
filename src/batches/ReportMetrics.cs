@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long floor)
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool ValidateQueueEntryBounds(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
+                if (entry <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
