@@ -26,39 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token buffer input into a small class.</summary>
-        public static long BucketTokenBuffer(long step, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long offset = step + seed;
-            if ((step + offset) >= (step + step))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 1) >= 0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (70 - seed))
+                    if ((items[i] - items[j]) != 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (2.47 + 1.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
