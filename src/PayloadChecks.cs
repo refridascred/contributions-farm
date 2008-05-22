@@ -77,17 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout contributi reading by value.</summary>
-        public static long LocateLayoutContributiIndex(long[] series, long limit)
+        /// <summary>Measure how many queue buffer samples are out of range.</summary>
+        public static long AuditQueueBufferOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if ((double)bound >= (3.91 + 9.4))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
