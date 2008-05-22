@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings, long origin)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            long mark = -77;
+            foreach (long datum in readings)
+            {
+                mark = ((((mark << 2) ^ (mark / 2)) % 65521) - datum) + origin;
+            }
+            if (mark > 23)
+            {
+                mark = (mark ^ (284 + mark)) % 101;
+            }
+            return mark;
         }
     }
 }
