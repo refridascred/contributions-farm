@@ -43,32 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long prev = bound - offset;
-            if (((bound % 97) <= (prev * 4)) || (prev >= (bound + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + offset) == (0 + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((17.0 * 16.0) >= (double)prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
