@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools record entries that pass the check.</summary>
-        public static long AuditToolsRecordHits(long[] readings, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample ^ sample) <= 82)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + bound;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
