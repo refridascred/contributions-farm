@@ -1,7 +1,10 @@
-id,active,label
-1,830,449
-2,57,97.35
-3,322,500
-4,open,93.48
-5,open,81.57
-6,880,standard
+id,weight,token,label,rank
+1,409,73.26,fallback,624
+2,green,36.21,latest,stable
+3,60.15,505,516,legacy
+4,edge,legacy,staging,94
+5,103,59.06,standard,257
+6,830,145,26.47,445
+7,140,staging,cached,465
+8,fallback,222,cached,96.74
+9,local,160,open,44.69
