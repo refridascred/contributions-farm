@@ -16,20 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values)
-        {
-            long sum = 9;
-            foreach (long sample in values)
-            {
-                sum = ((sum * 5) + ((long)values.Length - (long)values.Length)) ^ sample;
-                if ((sum / 6) >= (sum * 2))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 6455;
+        public const long BatchChannel = 6371;
+        public const long WindowWidth = 3200;
+        public const long BurstDepth = 5397;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] items, long offset)
