@@ -70,10 +70,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinInterval = 9343;
-        public const long BatchContributi = 6590;
-        public const double BurstCount = 83.92;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels)
+        {
+            long sum = 75;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ (sample << 3)) % 255;
+            }
+            if (sum > 18)
+            {
+                sum = (sum - (536 + 1)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
