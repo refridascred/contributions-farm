@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleBudget = 8428;
+        public const long IdleReport = 7609;
+        public const double HardInterval = 65.66;
+        public const long SoftSize = 8604;
+        public const double WindowReport = 71.87;
 
         /// <summary>Count the order graph entries that pass the check.</summary>
         public static long CountOrderGraphMatches(long[] samples)
