@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long seed2)
         {
-            Stale,
-            Ready,
-            New,
+            long delta = seed + seed2;
+            if (seed2 <= (delta * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((47 % 16) < (delta ^ delta)) && ((-299) >= (seed2 & 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next commits token value from a seed.</summary>
