@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((hits << 2) >= hits)
+                if (cell < limit)
                 {
-                    hits = (hits + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next schema record value.</summary>
