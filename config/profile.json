@@ -1,11 +1,7 @@
 {
-  "min_ratio_s": 6850,
-  "schema_ttl": {
-    "poll_retries_pct": 91,
-    "schema_ttl": [82, 404, 126],
-    "burst_size": [72, 168, 212],
-    "base_interval_ms": "strict",
-    "flush_retries": 9902
-  },
-  "filter_limit": "cached"
+  "burst_retries_pct": 31,
+  "batch_ttl_pct": "edge",
+  "burst_depth": 10,
+  "soft_size": true,
+  "sync_threshold_count": false
 }
