@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long bound)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long cur = seed + bound;
+            if ((7.8 / 9.0) != (double)cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((cur << 3) > (seed / 6)) && ((bound * 5) == (2 * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 3) != (seed * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound == (5.0 + 4.0)) || (319 <= (cur - seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
