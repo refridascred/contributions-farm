@@ -22,38 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] data)
         {
-            if ((0.95 * 6.1) == (double)seed)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor << 1) > (floor ^ floor)) && ((double)(-5) < (double)floor))
+                if ((double)39 == (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) > seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed < (double)994) && ((11.0 + 7.8) > (double)floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
