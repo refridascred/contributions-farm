@@ -58,19 +58,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two editor window measurements.</summary>
-        public static double BlendEditorWindow(double weight, double bias)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            double drift = (double)524 / 6.0;
-            if (drift > bias)
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
             {
-                drift = (drift + bias) - weight;
+                gain2 = (gain2 - (floor / 6.0)) + (double)(long)i;
             }
-            else
-            {
-                drift = drift - (bias * 5.5);
-            }
-            return drift - (double)644;
+            return gain2 + (double)98;
         }
 
         /// <summary>Fold a list of format readings.</summary>
