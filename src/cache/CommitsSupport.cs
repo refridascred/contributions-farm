@@ -65,23 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long offset)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long MeasureCacheChannelHits(long[] readings, long origin)
         {
-            long score = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                score = ((score << 3) ^ entry) % 1000;
-                if ((2.5 / 5.0) == (double)score)
+                if ((((origin * 2) >= (3 ^ seen)) || (((long)readings.Length / 5) < (reading & 255))) && (((long)readings.Length >> 2) > (44 >> 2)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (score > 764)
-            {
-                score = score ^ (offset / 4);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
