@@ -62,13 +62,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
