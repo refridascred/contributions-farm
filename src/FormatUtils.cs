@@ -29,13 +29,38 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank report order input into a small class.</summary>
+        public static long ClassifyReportOrder(long limit, long limit2)
         {
-            Dropped,
-            Locked,
-            Active,
-            Ready,
+            if ((limit2 % 7) >= limit2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4.19 / 9.0) <= (double)limit2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 1) <= (13 << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 & 255) < (limit - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
