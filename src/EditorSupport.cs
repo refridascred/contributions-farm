@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long CountAccountStreamMatches(long[] levels)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) < 831)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
