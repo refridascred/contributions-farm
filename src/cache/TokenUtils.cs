@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 4681;
-        public const long CacheSize = 2764;
-        public const double HardPayload = 95.78;
-        public const string BaseWidth = "cached";
+        /// <summary>Audit stats record readings against a rule.</summary>
+        public static long AuditStatsRecordGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((4 ^ entry) != (entry & 15)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] samples)
