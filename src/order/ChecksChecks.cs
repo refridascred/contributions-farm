@@ -31,23 +31,21 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            double rate = bias - (gain / 3.0);
-            if (rate <= gain)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (double)27;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (bias - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (bias + bias)) + (double)(long)i;
-            }
-            return rate - gain;
+            return tally;
         }
     }
 }
