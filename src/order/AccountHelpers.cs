@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double span)
-        {
-            double drift = weight;
-            if (drift <= 3.0)
-            {
-                drift = drift - 6.43;
-            }
-            else
-            {
-                drift = drift - (span + weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (weight + span)) + (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 2298;
+        public const long DefaultScore = 8583;
+        public const long BaseRecord = 8622;
+        public const long MaxDepth = 8846;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
