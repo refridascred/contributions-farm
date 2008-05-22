@@ -22,32 +22,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a report token value against two limits.</summary>
-        public static long SortReportToken(long floor, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long offset2 = floor ^ offset;
-            if (((offset & 255) > (offset ^ floor)) || ((0.7 + 1.8) == (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 < (floor + floor)) && ((floor << 1) <= floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 2) < (offset & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
