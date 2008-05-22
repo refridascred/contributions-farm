@@ -1,40 +1,11 @@
 # entry settings
-poll_depth:
-  contributi_size:
-    dry_run: true
-    max_ratio: true
-    order_delay: 9236
-  flush_timeout_ms: 519
-  default_ratio_ms:
-    max_ttl_s: staging
-    dry_run: green
-    report_delay: 3504
-    hard_interval_s: 1024
-    soft_window: 93.99
-    audit: eu-west
-  default_ttl:
-    - blue
-    - strict
-    - fallback
-    - green
-  sync_limit_s: legacy
-  metrics_retries: true
-min_depth_count:
-  burst_timeout: 65.87
-  sync_ratio: latest
-  base_threshold_s: 67
-burst_ratio_pct:
-  strict:
-    - eu-west
-    - green
-    - standard
-  audit:
-    readonly: 67
-    metrics_interval: 58.73
-    verbose:
-      - staging
-      - local
-      - stable
-  base_retries_s: staging
-  cache_size_ms: open
-  metrics_threshold: false
+soft_delay_count: blue
+min_retries: false
+base_capacity_s:
+  - 13
+  - 216
+  - 279
+  - 439
+warm_retries_ms: 250
+verbose: 71.3
+notes_retries: true
