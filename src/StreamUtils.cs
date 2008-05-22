@@ -85,11 +85,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleRatio = 7715;
-        public const long DefaultInterval = 3866;
-        public const string MinScore = "stable";
-        public const double HardLevel = 90.66;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Closed,
+            Idle,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
