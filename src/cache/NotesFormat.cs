@@ -37,22 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long limit)
         {
-            long sum = 2;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.48 + 7.3) > (double)sum)
+                if (series[i] <= limit)
                 {
-                    sum = ((sum ^ (sum - 7)) % 101) + value;
+                    return (long)i;
                 }
             }
-            if (sum > 62)
-            {
-                sum = (sum ^ (sum + sum)) % 1000;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
