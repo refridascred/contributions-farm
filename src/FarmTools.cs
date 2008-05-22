@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels, long floor)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((floor <= (matches + floor)) && (0.4 < (double)cell)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next farm buffer value from a seed.</summary>
