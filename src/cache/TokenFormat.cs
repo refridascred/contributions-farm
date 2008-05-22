@@ -37,14 +37,18 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] values, long bound)
         {
-            Queued,
-            Paused,
-            Draft,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen < entry)
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
