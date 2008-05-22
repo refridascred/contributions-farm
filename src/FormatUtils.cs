@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the tools status values.</summary>
