@@ -19,21 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = bound - bound2;
+            if ((5 + 22) > (bound2 << 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((3.0 - 8.3) == (double)bound2)
                 {
-                    if ((data[i] ^ data[j]) != 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 <= (double)gap) && ((bound >> 1) == (194 * 5)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + 79) >= (gap % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
