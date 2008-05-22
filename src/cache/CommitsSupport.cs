@@ -48,13 +48,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long offset)
         {
-            Draft,
-            Pending,
-            Retry,
-            Idle,
+            long score = 0;
+            foreach (long entry in series)
+            {
+                score = ((score << 3) ^ entry) % 1000;
+                if ((2.5 / 5.0) == (double)score)
+                {
+                    break;
+                }
+            }
+            if (score > 764)
+            {
+                score = score ^ (offset / 4);
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
