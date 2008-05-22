@@ -38,13 +38,31 @@ namespace Common.Utilities
             return scale + (weight / 4.0);
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            if ((bound / 5) >= (target >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (1.5 * 2.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - target) <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
