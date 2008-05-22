@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((long)items.Length >= limit) || ((limit + limit) > (long)items.Length)))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two metric measurements.</summary>
