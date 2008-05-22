@@ -1,19 +1,6 @@
 {
-  "dry_run": {
-    "base_capacity_s": 1024,
-    "max_ratio_pct": 11.22,
-    "audit": 22.55,
-    "idle_size_count": 40,
-    "cache_limit": "open",
-    "schema_threshold": 22
-  },
-  "poll_retries": 67,
-  "persist": [319, 76],
-  "default_timeout_pct": {
-    "idle_depth_count": true,
-    "idle_ratio": "edge",
-    "idle_timeout_ms": 23.31,
-    "batches_limit": "cached"
-  },
-  "default_size_s": "standard"
+  "readonly": 38.24,
+  "queue_threshold": 94.19,
+  "idle_depth_count": 100,
+  "cache_capacity": "latest"
 }
