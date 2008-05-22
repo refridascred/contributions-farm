@@ -18,21 +18,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
