@@ -40,15 +40,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double offset)
-        {
-            double rate = offset;
-            if (rate > (double)664)
-            {
-                rate = (rate - (8.34 / 3.0)) - gain;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRoute = 52.68;
+        public const long StepRoute = 8880;
+        public const long SoftFactor = 3620;
     }
 }
