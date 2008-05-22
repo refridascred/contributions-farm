@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long MinInterval = 2908;
         public const long StepFarm = 2031;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Pending,
-            Locked,
-            Idle,
-            Synced,
-            Ready,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Match up filter samples.</summary>
