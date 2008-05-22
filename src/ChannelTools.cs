@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long step)
-        {
-            long delta = offset + step;
-            if ((12.0 - 9.3) >= (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (delta ^ delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((delta - 412) <= delta) && ((step % 60) >= (offset - delta)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 2440;
+        public const long HardSupport = 3633;
+        public const long IdleFactor = 8562;
+        public const string LimitDepth = "strict";
+        public const double BaseBudget = 25.28;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] data)
