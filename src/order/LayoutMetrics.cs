@@ -35,19 +35,13 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] data, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
