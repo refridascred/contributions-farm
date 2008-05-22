@@ -82,11 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "alpha-1";
-        public const double BaseFactor = 45.4;
-        public const long LimitRecord = 8638;
-        public const string CacheSize = "local-edge";
-        public const long SoftCount = 5056;
+        /// <summary>Measure how many command commits samples are out of range.</summary>
+        public static long TallyCommandCommitsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count != (0.02 * 3.25))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
