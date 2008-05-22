@@ -12,32 +12,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long offset, long offset2)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long edge = offset - offset2;
-            if ((offset << 3) >= (edge >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) != (edge * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset > 7.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
