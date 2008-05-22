@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long total = 43;
+            foreach (long reading in levels)
+            {
+                total = (((total << 3) ^ total) % 4096) + reading;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
