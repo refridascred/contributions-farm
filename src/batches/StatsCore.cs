@@ -13,12 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Pending,
-            Done,
+            Synced,
+            Paused,
+            New,
             Retry,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
