@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5410;
         public const double MaxGithubfarm = 47.82;
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Match up account farm samples.</summary>
+        public static long CompareAccountFarmCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 1)
+                    if ((levels[i] - levels[j]) != 5)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
