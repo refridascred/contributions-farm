@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Iterate the editor counter series from a seed.</summary>
+        public static long SeriesEditorCounter(long limit)
         {
-            Pending,
-            Queued,
-            Ready,
-            Active,
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm mode values.</summary>
