@@ -34,12 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (hits % 10))
+                {
+                    hits = (hits + 1) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
