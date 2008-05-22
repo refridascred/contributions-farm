@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every profile entry entry stays within the limit.</summary>
+        public static bool GuardProfileEntryRange(long[] items, long origin)
         {
-            Synced,
-            Active,
-            Done,
-            Pending,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a entry reading.</summary>
