@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of queue checks entries.</summary>
-        public static long TotalQueueChecks(long[] samples, long target)
-        {
-            long score = 722;
-            foreach (long value in samples)
-            {
-                score = ((score - (score ^ target)) % 65521) + value;
-            }
-            if (score < 700)
-            {
-                score = (score + (126 - score)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepScore = 22.8;
+        public const string MinSize = "standard-edge";
+        public const string BaseCount = "local-v2";
+        public const double MaxWindow = 38.26;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data)
