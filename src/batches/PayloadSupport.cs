@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = 3;
-            foreach (long cell in readings)
-            {
-                carry = ((carry << 2) ^ (carry - 0)) + cell;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a session snapshot.</summary>
