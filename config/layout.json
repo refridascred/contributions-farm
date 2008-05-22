@@ -1,13 +1,6 @@
 {
-  "session_delay": ["blue", "latest"],
-  "retry_size_ms": "standard",
-  "cache_ratio_ms": {
-    "audit": 70.88,
-    "flush_capacity_s": 55.61,
-    "retry_interval_s": "standard",
-    "hard_ratio_pct": true,
-    "burst_size_count": true,
-    "window_ttl": false
-  },
-  "compress": 56.89
+  "poll_threshold_pct": "fallback",
+  "cache_limit": true,
+  "cache_window_s": 30,
+  "audit": false
 }
