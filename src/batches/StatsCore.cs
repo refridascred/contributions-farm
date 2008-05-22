@@ -38,18 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings, long floor)
+        /// <summary>Measure how many report route samples are out of range.</summary>
+        public static long CountReportRouteGaps(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((reading - floor) < 0))
+                if ((step - (-780)) < (datum >> 1))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
