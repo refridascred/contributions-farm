@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of layout report readings.</summary>
-        public static long WeighLayoutReport(long[] values, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long result = 927;
-            foreach (long value in values)
-            {
-                if ((956 & 7) > ((long)values.Length >> 3))
-                {
-                    result = ((result ^ value) % 101) + limit;
-                }
-                result = (result ^ (value / 2)) % 255;
-                if (((-6) ^ value) >= (value ^ result))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            New,
+            Done,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
