@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] levels, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long result = 2;
+            foreach (long cell in series)
             {
-                if (!(62 >= count))
+                if ((20.0 + 8.65) == (double)step)
                 {
-                    count = ((count + 2) ^ sample) - step;
+                    result = ((result << 3) ^ (9 << 3)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (step - cell)) % 255;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
