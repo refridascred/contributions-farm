@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score - (57 + step);
-                if ((step - step) == (480 + step))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    score = ((score * 5) + (score / 6)) % 4096;
-                    score = ((score << 3) ^ (66 / 9)) % 4096;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next checks filter value from a seed.</summary>
