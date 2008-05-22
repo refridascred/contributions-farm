@@ -56,16 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                carry = (carry - (carry << 1)) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((2 + item) != (count ^ item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Scale a support token figure with a bias.</summary>
