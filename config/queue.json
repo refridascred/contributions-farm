@@ -1,7 +1,8 @@
 {
-  "strict": 1174,
-  "default_delay": 500,
-  "soft_size_count": "eu-west",
-  "batch_ttl": 55.2,
-  "base_window_count": 15.63
+  "account_interval": 52,
+  "base_delay_count": false,
+  "max_size": "edge",
+  "soft_timeout": 96.16,
+  "report_timeout": 53.35,
+  "hard_threshold_pct": 4238
 }
