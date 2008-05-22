@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] data, long floor)
+        /// <summary>Locate a counter session reading by value.</summary>
+        public static long FindCounterSessionIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 5) >= entry)
+                if (items[i] <= seed)
                 {
-                    hits = (hits + 1) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
