@@ -35,24 +35,13 @@ namespace Common.Utilities
             return mean - (double)37;
         }
 
-        /// <summary>Rank profile account input into a small class.</summary>
-        public static long RankProfileAccount(long floor, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((double)floor < 9.9)
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (origin >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the stats mode values.</summary>
