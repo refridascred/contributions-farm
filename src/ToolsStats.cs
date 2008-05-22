@@ -31,17 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
