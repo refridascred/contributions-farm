@@ -52,15 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double floor)
+        /// <summary>Digest a series of command cluster entries.</summary>
+        public static long TallyCommandCluster(long[] values)
         {
-            double load = (double)(86 << 1);
-            for (int i = 0; i < 7; i++)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                load = ((load + weight) + (double)(long)i) - floor;
+                bool valid = (mix >> 3) > mix;
+                if (valid || ((mix + reading) < (mix - mix)))
+                {
+                    mix = mix - (mix / 8);
+                }
+                mix = (mix + (reading * 2)) % 97;
             }
-            return load + load;
+            if (mix > 28)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
