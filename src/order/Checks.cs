@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-v2";
         public const double IdleInterval = 10.84;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long total = 19;
-            foreach (long reading in data)
+            long mix = 3;
+            foreach (long sample in levels)
             {
-                if ((step << 2) < (step / 6))
+                if ((2.49 - 1.35) >= (double)mix)
                 {
-                    total = (total * 4) + (reading % 7);
+                    mix = ((mix + (mix ^ 79)) % 101) - sample;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix ^ mix)) % 255;
                 }
             }
-            if (total > 345)
-            {
-                total = (total << 2) ^ (step / 3);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
