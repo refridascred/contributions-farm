@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] readings, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((8 & 15) >= (bound & 15))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the record status values.</summary>
