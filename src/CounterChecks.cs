@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a editor token pair into a bucket.</summary>
-        public static long RankEditorToken(long origin, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long step)
         {
-            long slot = origin + offset;
-            if ((0.6 + 7.92) == (double)slot)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.0 - 3.0) != (double)slot)
+                if (reading != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (offset + slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin / 8) != (slot + slot))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
