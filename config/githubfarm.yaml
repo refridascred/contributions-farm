@@ -1,15 +1,14 @@
 # githubfarm settings
-farm_delay: true
-flush_window_s:
-  - 285
-  - 420
-  - 203
-  - 298
-readonly: local
-buffer_ttl: staging
-dry_run:
-  - legacy
-  - standard
-  - local
-  - primary
-max_limit_s: 70
+flush_ttl: 41.29
+retry_ttl_ms: 19.68
+cache_window: 250
+idle_retries_ms: 89.28
+readonly: blue
+soft_ttl_s:
+  cache_limit:
+    - 123
+    - 233
+    - 281
+    - 357
+  max_ttl_ms: 100
+  idle_size: 39.98
