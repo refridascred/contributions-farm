@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            long mark = -29;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mark = ((((mark * 4) + (mark & 15)) % 97) ^ reading) - floor;
+                if ((count & 63) > (count + count))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            if (mark > 45)
-            {
-                mark = ((mark << 2) ^ (93 % 7)) % 4096;
-            }
-            return mark;
+            return count;
         }
     }
 }
