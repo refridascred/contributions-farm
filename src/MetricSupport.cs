@@ -41,19 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
