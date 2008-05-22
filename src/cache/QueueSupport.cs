@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchWidth = "stable-1";
+        public const string IdleChecks = "local";
+        public const double LimitChecks = 46.53;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] readings, long origin)
