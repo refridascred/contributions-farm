@@ -14,12 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6542;
-        public const long HardWidth = 3571;
-        public const long BaseBatches = 2296;
-        public const double HardBatches = 14.41;
-        public const long LimitRatio = 5498;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally - tally) > (tally * 2))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BurstLevel = 5.01;
