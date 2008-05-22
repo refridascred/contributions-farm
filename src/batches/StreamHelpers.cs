@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const string StepToken = "alpha-v2";
         public const string BurstToken = "standard-1";
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate metrics queue samples.</summary>
