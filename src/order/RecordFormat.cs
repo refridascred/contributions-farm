@@ -62,22 +62,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((entry + seen) < (63 >> 1))
+                if (item >= origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
