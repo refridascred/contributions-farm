@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
