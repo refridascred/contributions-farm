@@ -1,7 +1,11 @@
 {
-  "verbose": [74, 282, 201, 425],
-  "readonly": 60,
-  "token_depth": 30,
-  "soft_threshold_pct": 99,
-  "command_threshold": 67.04
+  "min_ratio_s": 6850,
+  "schema_ttl": {
+    "poll_retries_pct": 91,
+    "schema_ttl": [82, 404, 126],
+    "burst_size": [72, 168, 212],
+    "base_interval_ms": "strict",
+    "flush_retries": 9902
+  },
+  "filter_limit": "cached"
 }
