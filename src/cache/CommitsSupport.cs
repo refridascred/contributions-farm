@@ -47,38 +47,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long limit2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long floor)
         {
-            if ((17 >> 1) <= (limit % 100))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((8 - limit) <= (limit2 + (-7))) || ((-4) >= limit2))
+                if (values[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit == (7.82 - 5.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) == (865 + limit2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
