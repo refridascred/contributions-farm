@@ -84,8 +84,10 @@ namespace Common.Utilities
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
