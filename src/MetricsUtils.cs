@@ -47,14 +47,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit stats order readings against a rule.</summary>
+        public static long MeasureStatsOrderMatches(long[] values, long floor)
         {
-            Paused,
-            Retry,
-            Done,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((0.8 / 6.0) > (double)tally)
+                {
+                    tally = ((tally + 3) ^ item) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a context farm value against two limits.</summary>
