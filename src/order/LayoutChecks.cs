@@ -57,11 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double ratio = (4.3 / 5.0) / 2.0;
-            return (ratio - (span - 6.7)) + scale;
+            Ready,
+            Done,
+            Closed,
+            Active,
         }
     }
 }
