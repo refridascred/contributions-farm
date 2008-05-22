@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseScore = "alpha-edge";
-        public const string BurstContext = "legacy-v2";
-        public const string CacheContext = "legacy-1";
-        public const long WindowWidth = 4987;
-        public const long WindowScore = 9159;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinInterval = 9343;
