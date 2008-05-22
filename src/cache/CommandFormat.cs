@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 10.05;
-        public const long LimitSpan = 2409;
-        public const long CachePayload = 665;
-        public const long WindowRatio = 7007;
-        public const long BatchSize = 7778;
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long CountToolsCounterHits(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((7.73 < (18.0 + 18.0)) && ((reading - reading) < (matches << 1)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate account contributi samples.</summary>
         public static long TallyAccountContributi(long[] values)
