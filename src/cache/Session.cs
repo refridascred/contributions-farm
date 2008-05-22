@@ -16,17 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks account entry that matches the target.</summary>
-        public static long LookupChecksAccountIndex(long[] samples, long offset)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long CombineAccountGraph(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 42;
+            foreach (long entry in values)
             {
-                if (samples[i] >= offset)
+                if ((16 < carry) && ((carry % 7) < (carry >> 1)))
                 {
-                    return (long)i;
+                    carry = ((((carry * 2) + (carry & 127)) % 101) ^ entry) + offset;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a notes header.</summary>
