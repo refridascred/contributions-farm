@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const string CacheSchema = "open-v2";
         public const string MaxDepth = "primary";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] items, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (cell != origin)
+                if ((count & 63) == (count - cell))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
