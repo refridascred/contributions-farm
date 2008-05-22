@@ -1,6 +1,20 @@
 {
-  "compress": 1024,
-  "verbose": 6288,
-  "base_ratio": 250,
-  "hard_threshold_count": 60
+  "retry_ratio": "stable",
+  "warm_capacity": {
+    "idle_delay_count": {
+      "soft_capacity": "latest",
+      "enabled": false,
+      "warm_timeout_s": "cached"
+    },
+    "retry_ratio_s": "fallback",
+    "warm_capacity_s": 4119,
+    "default_ttl_count": {
+      "default_timeout_s": 4471,
+      "sync_threshold_count": 1215,
+      "order_threshold": 6802
+    },
+    "schema_capacity": false,
+    "max_ratio": 30
+  },
+  "hard_threshold": 6534
 }
