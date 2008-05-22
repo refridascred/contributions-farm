@@ -27,25 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long seed)
-        {
-            long offset2 = offset ^ seed;
-            if (((offset2 ^ 936) > (offset + seed)) || ((offset2 / 5) > offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed > (3.3 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSize = 83.19;
+        public const long MaxSession = 3217;
+        public const long DefaultSession = 2731;
+        public const long SoftScore = 8587;
+        public const string RetryWidth = "legacy";
     }
 }
