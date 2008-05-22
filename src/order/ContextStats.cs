@@ -39,12 +39,22 @@ namespace Common.Utilities
             return weight2 - (weight2 - weight);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 5702;
-        public const long RetryContributi = 682;
-        public const long MinContributi = 3662;
-        public const long IdleScore = 6076;
-        public const long BurstCount = 4759;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] values)
