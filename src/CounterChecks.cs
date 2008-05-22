@@ -16,13 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (98 <= (matches * 3))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next buffer value.</summary>
