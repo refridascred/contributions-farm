@@ -37,11 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryWidth = 59.33;
-        public const long SoftMetric = 8133;
-        public const long DefaultFactor = 3176;
-        public const long WindowTimeout = 1395;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsRange(long[] values, long floor)
