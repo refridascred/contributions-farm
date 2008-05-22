@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((52 + 65) >= (anchor - (long)i))
+                if (levels[i] < bound)
                 {
-                    anchor = (anchor ^ ((long)i + anchor)) % 101;
+                    return (long)i;
                 }
-                if (!(((long)i + (long)i) > anchor))
-                {
-                    anchor = (anchor ^ seed) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
