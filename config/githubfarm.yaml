@@ -1,5 +1,11 @@
 # githubfarm settings
-retry_capacity_s: 60
-cache_capacity: 60
-min_timeout: 100
-githubfarm_size: edge
+soft_interval_pct:
+  - blue
+  - latest
+buffer_window: staging
+cache_delay: cached
+filter_delay:
+  - standard
+  - edge
+  - local
+min_capacity_ms: true
