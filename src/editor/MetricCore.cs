@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            if (step >= 4)
+            double weight = rate;
+            if (weight <= rate)
             {
-                return 8;
+                weight = weight + span;
             }
-            else
-            {
-                if ((target + step) <= (target - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return weight - (rate - weight);
         }
 
         /// <summary>Describe the graph state values.</summary>
