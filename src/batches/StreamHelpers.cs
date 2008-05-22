@@ -23,14 +23,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            Stale,
-            Closed,
-            Done,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (hits < (hits & 15))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics stats sample.</summary>
