@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long floor, long bound)
         {
-            double rate = (double)165 - (span * 6.0);
-            if (rate <= span)
+            if ((double)513 > (double)bound)
             {
-                rate = (rate - rate) + ratio;
+                return 7;
             }
-            return rate + rate;
+            else
+            {
+                if (bound > (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.94 - 12.0) < 17.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (18.0 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
