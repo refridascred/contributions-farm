@@ -1,28 +1,18 @@
 # githubfarm settings
-cluster_window:
-  queue_interval:
-    - 248
-    - 169
-  flush_size_pct: legacy
-  retry_size:
-    - green
-    - edge
-    - eu-west
-  support_retries:
-    - green
-    - staging
-  cache_limit:
-    token_threshold: 5194
-    batch_timeout: 250
-    default_timeout:
-      - primary
-      - edge
-      - legacy
-    audit:
-      - open
-      - local
-      - blue
-      - fallback
-    hard_limit: 24.58
-idle_ttl_ms: 58
-graph_depth: 12
+retry_threshold: local
+warm_capacity_s:
+  readonly: 45.42
+  audit: 18.84
+  dry_run: 1024
+  filter_threshold:
+    - 336
+    - 203
+  poll_ttl_pct: 5702
+  batch_threshold:
+    - legacy
+    - local
+    - blue
+    - cached
+metrics_delay: edge
+default_capacity: primary
+editor_limit: false
