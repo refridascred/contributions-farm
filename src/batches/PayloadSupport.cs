@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 3355;
-        public const string WindowDepth = "local";
-        public const long DefaultFactor = 2459;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((double)count >= (0.2 + 1.0)) && !((count + count) > datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] series)
