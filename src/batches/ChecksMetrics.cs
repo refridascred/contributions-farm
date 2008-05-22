@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleRatio = 18.85;
-        public const double HardPayload = 58.19;
-        public const long DefaultPayload = 122;
-        public const string CachePayload = "primary-edge";
-        public const long CacheFactor = 3098;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TotalRecord(long[] samples)
