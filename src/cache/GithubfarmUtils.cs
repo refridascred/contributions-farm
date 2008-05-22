@@ -20,18 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long diff = seed ^ floor;
+            if (seed >= (floor >> 3))
             {
-                if ((double)offset == (6.0 - 8.47))
+                return 7;
+            }
+            else
+            {
+                if (seed <= (diff ^ 3))
                 {
-                    hits = (hits + 1) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - seed) != (floor >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
