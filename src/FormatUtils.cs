@@ -45,22 +45,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long score = 90;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score - 1) < (entry + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score - (bound & 127);
-                }
-                else
-                {
-                    score = (score - (entry & 127)) % 97;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
