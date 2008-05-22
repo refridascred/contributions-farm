@@ -12,17 +12,21 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ (step >> 3)) % 65521;
-                mark = mark ^ 37;
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
