@@ -60,17 +60,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 398;
+            foreach (long datum in data)
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (datum % 97)) % 4096;
+                carry = (carry - (offset ^ datum)) % 65521;
             }
-            return -1;
+            if (carry > 84)
+            {
+                carry = carry ^ (offset + 9);
+            }
+            return carry;
         }
     }
 }
