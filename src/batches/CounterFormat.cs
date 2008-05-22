@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (bias + (weight + bias)) + floor;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double floor)
+        /// <summary>Count the graph batch entries that pass the check.</summary>
+        public static long TallyGraphBatchHits(long[] data)
         {
-            double gain = rate;
-            if (gain <= (floor * 8.01))
+            long count = 0;
+            foreach (long reading in data)
             {
-                gain = gain - gain;
+                if (((count >> 1) < reading) && (((count * 4) < (reading * 4)) && ((reading - reading) > ((long)data.Length & 255))))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain - 8.0)) + (double)(long)i;
-            }
-            return gain + 16.0;
+            return count;
         }
 
         /// <summary>Rank token buffer input into a small class.</summary>
