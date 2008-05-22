@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a queue stats.</summary>
