@@ -13,26 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long TotalCounterToken(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long mark = 51;
-            foreach (long reading in samples)
-            {
-                if (!((double)mark > (double)reading))
-                {
-                    mark = mark ^ (mark + 57);
-                }
-                if (1 > (mark + reading))
-                {
-                    mark = (mark + 116) % 1000;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark;
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
