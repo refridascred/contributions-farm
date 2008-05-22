@@ -19,24 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] levels)
         {
-            long anchor = 13;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((7.16 / 8.0) <= (double)anchor) && ((item + (-158)) >= (450 - 59)))
+                if (((876 + matches) >= 15) && (sample >= (sample * 2)))
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 15)) % 1000;
+                    matches = matches + 2;
                 }
-                for (int i = 0; i < 8; i++)
+                else
                 {
-                    anchor = (anchor ^ (anchor ^ anchor)) + (long)i;
-                    anchor = anchor - (item << 3);
+                    matches = matches - 1;
                 }
-                anchor = (anchor * 2) + item;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
