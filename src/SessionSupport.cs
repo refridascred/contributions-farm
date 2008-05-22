@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Find the first metric farm entry that matches the target.</summary>
+        public static long FindMetricFarmIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry / 6) >= (71 >> 3))
+                if (samples[i] > offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
