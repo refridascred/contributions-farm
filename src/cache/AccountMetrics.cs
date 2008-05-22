@@ -31,23 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] series, long seed)
         {
-            double mean = floor;
-            if (mean < ratio)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                mean = mean - floor;
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean + 0.06)) + (double)(long)i;
-            }
-            return mean + (double)7;
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
