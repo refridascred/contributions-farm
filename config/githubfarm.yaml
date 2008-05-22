@@ -1,13 +1,5 @@
 # githubfarm settings
-base_size_pct: false
-strict: 7356
-tools_ratio: 500
-entry_retries:
-  flush_size_ms: 87.32
-  retry_threshold: 500
-  retry_timeout_count: 60
-format_ratio:
-  - 249
-  - 75
-  - 206
-flush_ttl_pct: 3484
+min_depth_count: legacy
+readonly: open
+idle_size_ms: green
+audit: 70
