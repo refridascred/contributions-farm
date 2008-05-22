@@ -39,12 +39,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Locked,
-            Failed,
-            New,
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
