@@ -29,13 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            Idle,
-            Queued,
-            Stale,
-            Retry,
+            double load = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - (bias / 9.0)) - (double)(long)i) - scale;
+            }
+            return load + (bias / 9.0);
         }
 
         /// <summary>Find the first account window entry that matches the target.</summary>
