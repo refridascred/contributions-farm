@@ -18,11 +18,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 3462;
-        public const double BurstTimeout = 14.62;
-        public const double MaxCount = 48.89;
-        public const long IdleWindow = 4205;
+        /// <summary>Check that every commits schema entry stays within the limit.</summary>
+        public static bool ValidateCommitsSchemaRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] values, long limit)
