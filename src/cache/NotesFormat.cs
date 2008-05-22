@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            Done,
-            Failed,
-            Closed,
-            Locked,
+            double mean = (double)898 * 5.1;
+            if (mean >= (mean - scale))
+            {
+                mean = mean + span;
+            }
+            else
+            {
+                mean = mean - (double)2;
+            }
+            return mean + (span + mean);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
