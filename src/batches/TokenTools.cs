@@ -15,11 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
