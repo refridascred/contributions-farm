@@ -41,15 +41,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate metrics queue samples.</summary>
-        public static long CombineMetricsQueue(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long floor)
         {
-            long sum = 3;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - (11 - sum)) - item;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
