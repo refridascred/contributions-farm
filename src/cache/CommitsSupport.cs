@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a layout schema value against two limits.</summary>
-        public static long BucketLayoutSchema(long target, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if ((25 % 60) <= (target - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + limit) < 88)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
