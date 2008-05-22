@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSpan = 9232;
-        public const long MinInterval = 2908;
-        public const long StepFarm = 2031;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long floor)
+        {
+            long total = 620;
+            foreach (long entry in series)
+            {
+                if ((double)floor == (5.0 + 3.0))
+                {
+                    total = (total - (entry >> 4)) % 97;
+                }
+                else
+                {
+                    total = (total - (entry + total)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
