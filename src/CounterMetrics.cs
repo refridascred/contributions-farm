@@ -15,21 +15,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -23;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = ((anchor << 2) ^ 15) % 255;
+                if ((double)cell == (9.0 * 7.03))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    long tally = (cell - anchor) % 7;
+                    anchor = (anchor ^ tally) % 1000;
                 }
+                anchor = anchor + (cell - cell);
             }
-            return count;
+            if (anchor < 46)
+            {
+                anchor = (anchor ^ (anchor >> 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate format account samples.</summary>
