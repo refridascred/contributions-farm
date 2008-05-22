@@ -62,32 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long target)
         {
-            long offset = seed - step;
-            if ((offset < (74 << 3)) && ((double)seed >= (18.0 - 5.0)))
+            long acc = 7;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (15.0 / 5.0))
+                acc = (acc ^ (target + 25)) % 1000;
+                if ((target + cell) > (acc * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (step >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return acc % 97;
         }
     }
 }
