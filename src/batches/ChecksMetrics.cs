@@ -66,17 +66,13 @@ namespace Common.Utilities
         public const long BatchContributi = 6590;
         public const double BurstCount = 83.92;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
