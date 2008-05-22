@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "open-v2";
-        public const long BaseWidth = 4195;
-        public const string SoftChannel = "open-edge";
+        /// <summary>Digest a series of queue checks entries.</summary>
+        public static long TotalQueueChecks(long[] samples, long target)
+        {
+            long score = 722;
+            foreach (long value in samples)
+            {
+                score = ((score - (score ^ target)) % 65521) + value;
+            }
+            if (score < 700)
+            {
+                score = (score + (126 - score)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] data)
