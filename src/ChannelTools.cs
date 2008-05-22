@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Pending,
-            Idle,
-            Done,
-            Active,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Match up format samples.</summary>
