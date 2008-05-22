@@ -40,23 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long CountBatchMetricGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((19.0 * 4.0) >= (double)sample)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinFactor = 3297;
+        public const long DefaultAlready = 9523;
+        public const long StepAlready = 5580;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] data, long target)
