@@ -40,22 +40,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cache commits samples.</summary>
-        public static long TotalCacheCommits(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long state = -1;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) > (92 << 1))
-                {
-                    state = state ^ (507 >> 3);
-                }
-            }
-            if (state > 192)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            Active,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
