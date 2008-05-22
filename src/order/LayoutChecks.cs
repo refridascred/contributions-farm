@@ -51,21 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Accumulate queue stats samples.</summary>
+        public static long ScoreQueueStats(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step / 4) >= score)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (step / 2)) - entry;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
