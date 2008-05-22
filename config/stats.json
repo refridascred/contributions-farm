@@ -1,6 +1,19 @@
 {
-  "verbose": ["cached", "legacy", "fallback"],
-  "cache_interval_count": [333, 117, 219, 275],
-  "dry_run": [498, 61, 51],
-  "burst_delay_count": 61
+  "strict": 2781,
+  "batch_window_s": 41.88,
+  "checks_ttl": 82.84,
+  "verbose": true,
+  "burst_size_ms": {
+    "max_ttl_pct": "eu-west",
+    "retry_ttl": false,
+    "graph_interval": "primary",
+    "format_interval": {
+      "commits_window": "latest",
+      "dry_run": 65,
+      "compress": "staging",
+      "flush_threshold_s": "primary"
+    },
+    "min_limit_ms": 72.23
+  },
+  "flush_threshold_ms": 6672
 }
