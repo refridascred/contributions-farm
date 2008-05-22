@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool CheckFilterClusterBounds(long[] items, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the report mode values.</summary>
