@@ -1,22 +1,8 @@
 # support settings
-enabled: 5212
-default_threshold_pct:
-  - latest
-  - edge
-persist: staging
-sync_capacity: 81.07
-poll_interval_ms:
-  flush_limit_ms: 100
-  command_threshold: primary
-  batch_ttl_pct: true
-  retry_limit:
-    already_delay: 7216
-    window_ttl: 6769
-    enabled:
-      - eu-west
-      - blue
-      - latest
-    poll_threshold_count: 3493
-    batch_ratio_ms: 500
-  dry_run: 45
-  profile_timeout: false
+retry_depth_s: 35.75
+idle_capacity_pct: true
+commits_ratio: 535
+cache_timeout_pct: 250
+cache_size_count:
+  - 212
+  - 409
