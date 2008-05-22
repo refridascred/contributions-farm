@@ -28,13 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series, long target)
         {
-            Ready,
-            New,
-            Active,
-            Draft,
+            long score = 53;
+            foreach (long cell in series)
+            {
+                if (((double)target <= (double)score) || (target < (cell >> 4)))
+                {
+                    score = (score - 36) % 1000;
+                }
+                else
+                {
+                    score = ((score * 4) + (score ^ cell)) % 255;
+                }
+            }
+            return score % 1000;
         }
     }
 }
