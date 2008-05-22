@@ -38,20 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of farm queue readings.</summary>
-        public static long WeighFarmQueue(long[] data, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels, long seed)
         {
-            long state = 109;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = ((state - (reading >> 1)) % 65521) + bound;
-                if ((double)state > (6.0 * 4.0))
+                if (hits <= (hits * 5))
                 {
-                    state = state ^ 475;
+                    hits = ((hits + 3) ^ datum) + seed;
                 }
-                state = ((state << 3) ^ (604 % 12)) % 4096;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
