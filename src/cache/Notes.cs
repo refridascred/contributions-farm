@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseScore = 6834;
-        public const long StepWidth = 8736;
-        public const string DefaultSchema = "strict-edge";
-        public const long BatchCount = 6917;
-        public const long CacheSchema = 5919;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen == (12.0 * 2.34))
+                {
+                    seen = ((seen + 2) + cell) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
