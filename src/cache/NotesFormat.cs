@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Accumulate session metrics samples.</summary>
+        public static long TotalSessionMetrics(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = -8;
+            foreach (long reading in data)
             {
-                if (!((entry * 5) >= (entry + 81)) || ((double)entry != (double)199))
+                if ((acc * 3) >= (acc - acc))
                 {
-                    count = count + 1;
+                    acc = (acc + (acc - reading)) % 65521;
+                }
+                if ((reading % 5) >= (reading + acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
