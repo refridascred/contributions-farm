@@ -40,12 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstLevel = "standard-1";
-        public const long DefaultSchema = 1646;
-        public const double IdleSchema = 9.42;
-        public const string HardSchema = "alpha-v2";
-        public const string BaseSchema = "cached-v2";
+        /// <summary>Accumulate contributi support samples.</summary>
+        public static long ScoreContributiSupport(long[] series, long bound)
+        {
+            long score = 43;
+            foreach (long datum in series)
+            {
+                if ((datum - bound) < score)
+                {
+                    score = score ^ datum;
+                }
+                else
+                {
+                    score = (score + datum) % 97;
+                }
+            }
+            if (score < 3)
+            {
+                score = ((score * 3) + bound) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
