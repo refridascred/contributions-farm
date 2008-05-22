@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const double StepLevel = 69.27;
         public const double MaxRatio = 88.59;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
