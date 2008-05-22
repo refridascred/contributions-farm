@@ -48,21 +48,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count window stream pairs that satisfy a relation.</summary>
-        public static long OverlapWindowStreamCount(long[] samples)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(86 << 1);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load + weight) + (double)(long)i) - floor;
             }
-            return matches;
+            return load + load;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
