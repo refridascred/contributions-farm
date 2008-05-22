@@ -24,13 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum <= (69 << 2)) && ((4.91 * 10.0) >= (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a batch metric sample.</summary>
