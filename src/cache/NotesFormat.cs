@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long sum = 9;
+            foreach (long sample in values)
+            {
+                sum = ((sum * 5) + ((long)values.Length - (long)values.Length)) ^ sample;
+                if ((sum / 6) >= (sum * 2))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
