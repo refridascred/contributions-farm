@@ -29,23 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((3.0 + 3.55) != (double)(long)i)
-                {
-                    total = (total << 3) ^ (0 + (long)i);
-                }
-                if (!((origin * 2) != (origin >> 2)))
-                {
-                    total = (total << 3) ^ (origin + origin);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
