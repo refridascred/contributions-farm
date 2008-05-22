@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a notes counter reading by value.</summary>
-        public static long LookupNotesCounterIndex(long[] levels, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
