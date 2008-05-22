@@ -29,20 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 8555;
+        public const long MaxLayout = 7324;
+        public const long SoftLayout = 4999;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long offset)
