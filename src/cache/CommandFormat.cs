@@ -12,39 +12,22 @@ namespace Common.Utilities
         public const long WindowRatio = 7007;
         public const long BatchSize = 7778;
 
-        /// <summary>Classify a stats cache pair into a bucket.</summary>
-        public static long GradeStatsCache(long bound, long bound2)
+        /// <summary>Accumulate account contributi samples.</summary>
+        public static long TallyAccountContributi(long[] values)
         {
-            long gap = bound + bound2;
-            if ((5 & 127) <= (gap + gap))
+            long state = 232;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)0 > (double)bound2) || (bound2 < (bound & 7)))
+                if (((state & 63) >= (state + state)) || ((-39) >= (reading + reading)))
                 {
-                    return 8;
+                    state = state - (state + reading);
                 }
                 else
                 {
-                    if (bound >= (bound2 % 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((436 + bound) < bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = ((state << 2) ^ reading) % 4096;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Digest a series of command cluster entries.</summary>
