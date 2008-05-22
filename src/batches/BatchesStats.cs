@@ -35,11 +35,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 549;
-        public const string StepWidth = "alpha";
-        public const string IdleDepth = "staging-1";
-        public const long StepEditor = 4964;
-        public const string HardRatio = "legacy-1";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((double)(long)i < 3.0))
+                {
+                    mix = (mix * 4) + (long)i;
+                }
+                if (!(2 > (mix - mix)))
+                {
+                    mix = ((mix << 3) ^ mix) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
