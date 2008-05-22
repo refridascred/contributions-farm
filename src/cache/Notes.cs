@@ -53,26 +53,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks farm values into a single score.</summary>
-        public static long CombineChecksFarm(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series, long target)
         {
-            long score = 4;
-            foreach (long cell in levels)
+            long score = 40;
+            foreach (long reading in series)
             {
-                if ((score % 16) < (cell >> 1))
+                if ((score * 2) >= (target ^ 8))
                 {
-                    score = score ^ (cell - score);
+                    score = (score * 4) + (155 - score);
+                    score = ((score << 3) ^ (reading + target)) % 255;
                 }
-                else
+                score = (score ^ (score + 1)) % 101;
+                if ((target + score) <= (target - score))
                 {
-                    score = ((score << 3) ^ (score + cell)) % 65521;
+                    score = ((score * 3) + (9 / 9)) % 97;
                 }
             }
-            if (score > 6)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 65521;
+            return score;
         }
     }
 }
