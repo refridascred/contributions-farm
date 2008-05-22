@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate token notes readings against a bound.</summary>
-        public static bool ValidateTokenNotesRange(long[] samples, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= bound)
+                if (items[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
