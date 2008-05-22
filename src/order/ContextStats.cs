@@ -15,10 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinRatio = "local";
-        public const long CacheSpan = 3612;
-        public const double DefaultSession = 79.51;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] series)
