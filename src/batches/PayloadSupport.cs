@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 8017;
-        public const long LimitBudget = 8591;
-        public const string BatchProfile = "fallback-v2";
-        public const long SoftFactor = 1357;
-        public const long BurstTimeout = 43;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
