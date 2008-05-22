@@ -19,38 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] values, long origin)
         {
-            if (!((target & 31) == (target ^ floor)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.37 * 7.4) != (double)target)
+                if (values[i] == origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor - target) >= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
