@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate graph profile readings against a bound.</summary>
-        public static bool ValidateGraphProfileLimits(long[] data, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
