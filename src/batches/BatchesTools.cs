@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            long total = 81;
+            long tally = 0;
             foreach (long item in series)
             {
-                if (!((double)total > (7.84 * 4.0)))
+                if ((item - item) >= (item / 9))
                 {
-                    total = (((total * 3) + (total * 2)) % 1000) - item;
+                    tally = tally + 2;
                 }
-                total = (total - (total & 127)) % 4096;
             }
-            if (total > 908)
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
