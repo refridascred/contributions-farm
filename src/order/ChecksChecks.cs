@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the editor state values.</summary>
