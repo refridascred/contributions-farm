@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinInterval = 7832;
-        public const double IdleFactor = 21.16;
-        public const long DefaultTimeout = 3952;
-        public const long RetryWidth = 3548;
-        public const long RetrySize = 6545;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Failed,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Look up the position of a counter commits sample.</summary>
         public static long LookupCounterCommitsIndex(long[] readings, long seed)
