@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = mark + (mark & 255);
-                mark = (mark + mark) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Synced,
+            Paused,
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
