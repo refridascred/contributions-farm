@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
