@@ -45,26 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long acc = 67;
-            foreach (long entry in levels)
-            {
-                if ((origin + acc) >= origin)
-                {
-                    acc = ((acc * 2) + (origin - acc)) - entry;
-                }
-                else
-                {
-                    acc = acc - origin;
-                }
-            }
-            if (acc < 72)
-            {
-                acc = (acc * 5) + (origin + origin);
-            }
-            return acc % 1000;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
