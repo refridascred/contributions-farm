@@ -79,13 +79,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            Queued,
+            Failed,
+            Stale,
+            Pending,
+            New,
         }
     }
 }
