@@ -41,15 +41,13 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long score = -93;
-            foreach (long item in readings)
-            {
-                score = (((score ^ (54 / 2)) % 101) ^ item) + limit;
-            }
-            return score % 65521;
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many queue buffer samples are out of range.</summary>
