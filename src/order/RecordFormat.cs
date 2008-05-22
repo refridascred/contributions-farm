@@ -19,14 +19,17 @@ namespace Common.Utilities
         public const double WindowAlready = 36.96;
         public const long BaseAlready = 5824;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a metric account sample.</summary>
+        public static long FindMetricAccountIndex(long[] readings, long floor)
         {
-            Stale,
-            Idle,
-            Paused,
-            Locked,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
