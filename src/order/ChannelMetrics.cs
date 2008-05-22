@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the context tools series from a seed.</summary>
-        public static long DeriveContextTools(long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] data, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
