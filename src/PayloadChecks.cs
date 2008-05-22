@@ -77,14 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            Queued,
-            Stale,
-            Paused,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >= (seen & 63)) && (((seen + seen) == (reading & 3)) || (reading < (seen - reading))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
