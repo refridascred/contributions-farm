@@ -78,9 +78,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 1755;
-        public const double BaseCommand = 80.76;
-        public const string StepCount = "open-edge";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Failed,
+            Closed,
+            Done,
+            Stale,
+            Paused,
+        }
     }
 }
