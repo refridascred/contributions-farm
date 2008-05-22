@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool ValidateQueueEntryBounds(long[] items, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long state = 12;
+            foreach (long entry in levels)
             {
-                if (entry <= origin)
+                if (state < ((-65) * 3))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (entry - state)) % 101;
                 }
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
