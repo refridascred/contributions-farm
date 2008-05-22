@@ -34,13 +34,13 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            Synced,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
