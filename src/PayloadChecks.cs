@@ -13,14 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] values, long origin)
         {
-            Pending,
-            Active,
-            Stale,
-            Retry,
-            Queued,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a entry reading.</summary>
