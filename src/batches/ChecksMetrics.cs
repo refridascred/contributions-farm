@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 3801;
-        public const double StepDepth = 94.91;
-        public const long BaseRatio = 9154;
-        public const long HardStats = 7668;
-        public const long MaxBudget = 8660;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] levels, long floor)
