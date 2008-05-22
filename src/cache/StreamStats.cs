@@ -13,26 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data, long limit)
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long CountRecordNotesHits(long[] series)
         {
-            long score = 84;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((limit & 63) < reading)
+                if ((hits * 5) > (item + hits))
                 {
-                    score = (score << 2) ^ (limit + limit);
-                }
-                else
-                {
-                    score = (score << 3) ^ (reading << 1);
+                    hits = hits + 1;
                 }
             }
-            if (score > 96)
-            {
-                score = (score - (score >> 3)) % 65521;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
