@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report graph figure with a bias.</summary>
-        public static double ProjectReportGraph(double weight, double span)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double scale = weight;
-            return (scale - (6.0 * 1.0)) + span;
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the report phase values.</summary>
