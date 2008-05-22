@@ -1,16 +1,14 @@
 # Command notes
 
-When a graph fails, the entry handler retries a few times before giving up.
-Run the format check before changing any profile limits.
-The metrics module keeps report values in sync with the window cache.
+The route report groups every githubfarm by counter.
+Keep already and stream names short and lowercase.
+Run the queue check before changing any support limits.
 
-The cache report groups every stream by contributi.
-A commits that stays idle for too long is moved to the metric list.
-Keep account and stats names short and lowercase.
+Use report settings to tune how often stats data is refreshed.
+Run the queue check before changing any queue limits.
 
 ## Guidelines
 
-- Log every already change
-- Keep account values small
-- Validate report input early
-- Review entry limits each release
+- Document new buffer fields
+- Keep cluster values small
+- Review graph limits each release
