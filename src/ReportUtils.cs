@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string RetryCluster = "local-edge";
         public const double CacheBudget = 2.38;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
