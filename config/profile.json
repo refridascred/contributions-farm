@@ -1,7 +1,5 @@
 {
-  "idle_delay_count": "latest",
-  "readonly": true,
-  "record_capacity": 9381,
-  "flush_timeout_ms": true,
-  "max_interval_pct": 500
+  "audit": 40,
+  "enabled": "latest",
+  "retry_depth": false
 }
