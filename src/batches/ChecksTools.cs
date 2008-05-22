@@ -30,12 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
