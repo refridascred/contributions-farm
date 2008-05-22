@@ -31,16 +31,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long acc = 61;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc << 2) ^ (acc + cell)) % 65521) - seed;
-                acc = (acc << 3) ^ (cell * 5);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
