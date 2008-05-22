@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Count the profile cluster entries that pass the check.</summary>
+        public static long CountProfileClusterOutliers(long[] values)
         {
-            double load = (ratio / 4.0) + ratio;
-            if (load > (double)938)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                load = (load + (double)(-23)) + offset;
+                if ((datum - datum) == (matches - datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + (double)8;
+            return matches;
         }
 
         /// <summary>Count the tools already entries that pass the check.</summary>
