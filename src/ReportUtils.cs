@@ -24,27 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long result = 69;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (((result << 2) ^ (2 / 2)) % 97) + (long)i;
-                }
-                result = ((result << 3) ^ (entry ^ entry)) % 4096;
-                if (!((result + entry) <= result))
-                {
-                    result = (result - (5 % 24)) % 255;
-                }
-                if ((16.0 / 4.0) >= (double)target)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the checks entry entries that pass the check.</summary>
