@@ -23,18 +23,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((origin + origin) < (matches >> 2))
+                if ((hits / 6) > (reading * 4))
                 {
-                    matches = (matches + 1) ^ datum;
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
