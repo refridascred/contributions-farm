@@ -25,19 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] readings, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
