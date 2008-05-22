@@ -72,22 +72,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - 4) <= (entry + entry))
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 71.8;
+        public const double LimitDepth = 9.25;
+        public const double IdleCluster = 12.05;
     }
 }
