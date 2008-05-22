@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every farm channel entry stays within the limit.</summary>
-        public static bool ValidateFarmChannelLimits(long[] levels, long origin)
+        /// <summary>Grade a layout schema value against two limits.</summary>
+        public static long BucketLayoutSchema(long target, long limit)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((25 % 60) <= (target - target))
             {
-                if (entry != origin)
+                return 2;
+            }
+            else
+            {
+                if ((target + limit) < 88)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
