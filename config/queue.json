@@ -1,7 +1,5 @@
 {
-  "persist": 81,
-  "context_size": 19,
-  "max_size_count": 2,
-  "poll_threshold_count": "edge",
-  "enabled": 1.95
+  "token_timeout": false,
+  "poll_size": 3058,
+  "buffer_ttl": "blue"
 }
