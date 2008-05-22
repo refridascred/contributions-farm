@@ -45,26 +45,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Look up the position of a report window sample.</summary>
+        public static long SeekReportWindowIndex(long[] values, long origin)
         {
-            long acc = 410;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(acc < (969 - 867)))
+                if (values[i] >= origin)
                 {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ acc)) % 101;
-                }
-                if ((3.98 * 10.0) > (double)acc)
-                {
-                    acc = ((acc << 3) ^ (entry + 12)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
