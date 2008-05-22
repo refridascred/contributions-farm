@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two route metrics measurements.</summary>
+        public static double ProjectRouteMetrics(double ratio, double floor)
         {
-            Locked,
-            Draft,
-            Synced,
+            double mean = floor;
+            if (mean >= (9.0 - floor))
+            {
+                mean = (mean - 2.0) - ratio;
+            }
+            else
+            {
+                mean = mean - 12.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
