@@ -62,39 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long target)
         {
-            long next = limit ^ seed;
-            if ((seed << 1) == (limit - 0))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + next) <= (5 % 12))
+                if ((matches - (long)levels.Length) != (reading + target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (1.0 < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 << 1) > (limit / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first counter payload entry that matches the target.</summary>
