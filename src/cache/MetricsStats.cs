@@ -45,18 +45,14 @@ namespace Common.Utilities
         public const long LimitRoute = 8033;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Count the checks farm entries that pass the check.</summary>
-        public static long AuditChecksFarmHits(long[] samples)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length - cell) < (cell + matches)) && (((cell % 16) > (34 << 1)) && (cell > (45 - matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Retry,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
