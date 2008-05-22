@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] readings, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 & 31) >= acc)
+                if (readings[i] <= step)
                 {
-                    acc = (acc ^ (target & 7)) % 97;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
