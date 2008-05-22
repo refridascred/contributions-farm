@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (reading != bound)
+                if (item <= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
