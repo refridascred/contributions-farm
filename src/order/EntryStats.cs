@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long floor)
         {
-            Queued,
-            Locked,
-            Paused,
-            Done,
-            Active,
+            if ((79 >> 5) > (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(floor <= (floor + 541)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
