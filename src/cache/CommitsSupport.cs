@@ -63,12 +63,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 5.9;
-        public const long BurstScore = 8197;
-        public const long RetrySize = 2045;
-        public const string LimitSpan = "local-edge";
-        public const long DefaultNotes = 8125;
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long AuditReportSupportOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= 1.0)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheRatio = 43.35;
