@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long total = 15;
+            foreach (long reading in samples)
+            {
+                if ((offset + (-5)) == ((-7) % 97))
+                {
+                    total = total - (12 / 5);
+                }
+                if ((double)reading != (6.29 - 5.0))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
