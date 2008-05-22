@@ -35,13 +35,17 @@ namespace Common.Utilities
             return (mean - (6.8 * 0.83)) + floor;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long target)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
