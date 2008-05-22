@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] samples, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell < (cell ^ cell)) && ((cell + seed) < (558 - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the editor class values.</summary>
