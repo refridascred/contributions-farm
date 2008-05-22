@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached open; do
+for item in stable primary open staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=418
+BUFFER_LIMIT=202
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
