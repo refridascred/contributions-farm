@@ -70,15 +70,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            double gain = bias;
-            if (gain <= bias)
+            long total = 730;
+            foreach (long reading in levels)
             {
-                gain = (gain + bias) - ratio;
+                if (((total - reading) >= (total ^ reading)) || ((total - (long)levels.Length) <= (reading + total)))
+                {
+                    total = ((total << 3) ^ (reading >> 1)) % 255;
+                }
             }
-            return gain + (double)8;
+            return total;
         }
     }
 }
