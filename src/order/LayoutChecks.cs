@@ -51,17 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
