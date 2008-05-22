@@ -41,20 +41,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long delta = origin + offset;
+            if (547 <= (offset ^ 4))
             {
-                long step2 = (step / 8) * 5;
-                if (((step2 + step) > step2) && ((long)i > acc))
-                {
-                    step2 = ((step2 * 5) + ((long)i + step2)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (3.4 > (double)57)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((576 & 255) != (origin / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta - origin) == ((-115) + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
