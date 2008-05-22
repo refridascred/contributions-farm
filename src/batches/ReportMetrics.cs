@@ -19,26 +19,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mix = 334;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (2.66 * 15.0))
-                {
-                    mix = (mix + (mix - mix)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (cell & 1)) % 65521;
-                }
-                if (((cell >> 1) != (mix - mix)) && ((cell + 643) >= mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Pending,
+            Paused,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
