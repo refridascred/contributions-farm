@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            Draft,
-            New,
-            Dropped,
-            Idle,
+            double bias = (double)(4 - 527);
+            return (bias + (weight + bias)) + floor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
