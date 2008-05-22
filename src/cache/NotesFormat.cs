@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Locate a notes counter reading by value.</summary>
+        public static long LookupNotesCounterIndex(long[] levels, long seed)
         {
-            double mean = (double)898 * 5.1;
-            if (mean >= (mean - scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + span;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)2;
-            }
-            return mean + (span + mean);
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
