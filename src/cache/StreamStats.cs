@@ -24,13 +24,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long score = 84;
+            foreach (long reading in data)
+            {
+                if ((limit & 63) < reading)
+                {
+                    score = (score << 2) ^ (limit + limit);
+                }
+                else
+                {
+                    score = (score << 3) ^ (reading << 1);
+                }
+            }
+            if (score > 96)
+            {
+                score = (score - (score >> 3)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
