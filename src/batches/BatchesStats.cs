@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double weight = scale * 2.09;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (offset * 6.4)) - (double)(long)i;
-            }
-            return weight + weight;
+            Stale,
+            Synced,
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
