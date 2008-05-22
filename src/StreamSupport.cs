@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long TallyContributiRecordOutliers(long[] values)
         {
-            Stale,
-            Idle,
-            Draft,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((8.1 - 4.7) >= (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
