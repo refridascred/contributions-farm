@@ -63,14 +63,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Synced,
-            Retry,
-            Closed,
-            Active,
-            New,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
