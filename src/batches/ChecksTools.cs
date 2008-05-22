@@ -49,17 +49,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long origin)
+        /// <summary>Project the next account stats value.</summary>
+        public static double BlendAccountStats(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain < (double)3)
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - scale;
             }
-            return -1;
+            return gain - (scale - bias);
         }
     }
 }
