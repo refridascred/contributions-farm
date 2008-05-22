@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool VerifyFarmGithubfarmBounds(long[] data, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
