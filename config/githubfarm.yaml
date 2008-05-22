@@ -1,4 +1,10 @@
 # githubfarm settings
-sync_window_s: true
-retry_ratio_pct: 84.2
-poll_delay_pct: eu-west
+enabled: false
+batch_ttl:
+  - 294
+  - 21
+soft_timeout_count:
+  - strict
+  - stable
+verbose: open
+min_capacity_pct: 66.85
