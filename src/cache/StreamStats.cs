@@ -22,19 +22,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate filter githubfarm readings against a bound.</summary>
-        public static bool ValidateFilterGithubfarmRange(long[] levels, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((origin + origin) <= offset)
             {
-                if (entry != bound)
+                return 1;
+            }
+            else
+            {
+                if (offset < (origin - offset))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 4) <= (origin - 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((8.0 - 5.0) == (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
