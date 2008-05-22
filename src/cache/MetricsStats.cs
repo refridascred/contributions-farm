@@ -15,18 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] data, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5 + 614) < (count - value))
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
