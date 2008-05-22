@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long result = 314;
+            foreach (long value in values)
+            {
+                if ((double)result >= (7.2 / 4.0))
+                {
+                    result = (((result * 3) + (value - (long)values.Length)) % 101) - floor;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
