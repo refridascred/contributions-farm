@@ -65,38 +65,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a batch graph pair into a bucket.</summary>
-        public static long RankBatchGraph(long origin, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            if (!((origin & 255) <= 814))
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 * 4) < (origin - 6))
+                mark = mark - (step & 31);
+                if (step >= ((long)i + step))
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    if (origin <= (target & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (target / 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mark = (mark * 5) + (step + mark);
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
