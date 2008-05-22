@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a tools profile pair into a bucket.</summary>
-        public static long RankToolsProfile(long target, long origin)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            if ((origin - origin) != (origin & 255))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)6 > (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((818 + target) == (target >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5 <= (target * 2)) && ((7 * 4) > (target & 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
