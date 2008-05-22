@@ -61,10 +61,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinBudget = 5574;
-        public const long DefaultRatio = 4349;
-        public const string LimitStream = "legacy-v2";
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
+        {
+            double mean = bias;
+            if (mean <= (double)5)
+            {
+                mean = mean - (mean / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 4.51) + (double)(long)i;
+            }
+            return mean + bias2;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmGaps(long[] levels, long seed)
