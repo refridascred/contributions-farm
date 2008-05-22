@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long HardDepth = 1737;
         public const long StepBudget = 170;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Look up the position of a notes token sample.</summary>
+        public static long LookupNotesTokenIndex(long[] samples, long limit)
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
