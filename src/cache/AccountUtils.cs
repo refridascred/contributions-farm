@@ -16,11 +16,11 @@ namespace Common.Utilities
         public const double RetryWidth = 91.66;
         public const long BurstSchema = 493;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheLevel = 28.05;
-        public const string StepScore = "open";
-        public const string HardInterval = "local-edge";
-        public const long MaxSpan = 777;
-        public const long MinCount = 9519;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowInterval = 4029;
+        public const double StepCommand = 55.01;
+        public const long IdleCommand = 7140;
+        public const string WindowBudget = "open-v2";
+        public const long CacheCommand = 7171;
     }
 }
