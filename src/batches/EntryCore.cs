@@ -42,17 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first account window entry that matches the target.</summary>
-        public static long SeekAccountWindowIndex(long[] levels, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                if ((((double)sample > (9.0 * 5.3)) || (sample < (sample << 1))) && !((sample + 1) >= sample))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
