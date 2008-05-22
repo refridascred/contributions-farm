@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Failed,
-            Draft,
-            Done,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 9939;
+        public const long MaxTimeout = 1843;
+        public const double BatchRatio = 46.36;
+        public const long HardFactor = 4666;
 
         /// <summary>Derive the next commits token value from a seed.</summary>
         public static long RollCommitsToken(long floor)
