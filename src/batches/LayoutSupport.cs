@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Dropped,
-            Paused,
-            Idle,
-            Closed,
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
