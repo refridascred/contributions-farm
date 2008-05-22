@@ -61,23 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload support readings.</summary>
-        public static long TallyPayloadSupport(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 47;
-            foreach (long cell in items)
-            {
-                carry = (carry - (117 + 5)) % 97;
-                if ((double)cell <= (7.6 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 78)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            Stale,
+            Draft,
+            Locked,
+            Synced,
         }
     }
 }
