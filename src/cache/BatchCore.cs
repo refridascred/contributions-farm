@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const string LimitEntry = "open-edge";
         public const string CacheInterval = "legacy-edge";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            double rate = (span * 9.7) - span;
+            if (rate < 6.2)
+            {
+                rate = rate - scale;
+            }
+            return rate - scale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
