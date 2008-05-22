@@ -1,19 +1,8 @@
 {
-  "window_threshold": {
-    "poll_limit_s": "staging",
-    "record_size": 1240,
-    "order_size": "green",
-    "soft_interval": [349, 102, 208, 424]
-  },
-  "stream_interval": "open",
-  "default_depth": {
-    "stream_ratio": 2923,
-    "sync_delay_count": 92.1,
-    "max_ratio": "staging",
-    "sync_limit_count": 60,
-    "window_threshold": "staging"
-  },
-  "githubfarm_window": "eu-west",
-  "burst_ratio_count": "strict",
-  "hard_capacity_s": 500
+  "checks_window": 18.2,
+  "persist": true,
+  "context_retries": 100,
+  "sync_capacity": false,
+  "audit": "stable",
+  "batch_depth_count": 8
 }
