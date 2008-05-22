@@ -37,22 +37,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long carry = 235;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.25 - 8.6) == (double)carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (20 + reading)) % 1000;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry << 2) ^ (33 * 4)) % 65521;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
