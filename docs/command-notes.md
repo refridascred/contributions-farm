@@ -1,10 +1,12 @@
 # Command notes
 
-Each stream is validated before it reaches the githubfarm queue.
-Keep buffer and command names short and lowercase.
+Run the batches check before changing any session limits.
+Run the checks check before changing any batches limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Validate schema input early
-- Prefer queue defaults
+- Review cluster limits each release
+- Keep cluster values small
+- Validate checks input early
+- Prefer batch defaults
