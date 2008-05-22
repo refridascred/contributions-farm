@@ -74,18 +74,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long DigestReportBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 93;
+            foreach (long entry in items)
             {
-                if (datum >= ((long)samples.Length << 2))
-                {
-                    seen = seen + 3;
-                }
+                state = state - (entry / 3);
+                state = ((state * 2) + (state + 48)) % 255;
+                state = (state + (state + entry)) % 97;
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
