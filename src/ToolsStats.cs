@@ -62,19 +62,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] series, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry >= origin)
+                if ((value % 24) == (hits << 2))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit support cache readings against a rule.</summary>
