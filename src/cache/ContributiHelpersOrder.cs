@@ -28,18 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Iterate the channel profile series from a seed.</summary>
+        public static long RollChannelProfile(long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen ^ seen) <= seen)
+                state = (state ^ state) % 1000;
+                if (((state - state) == ((long)i ^ state)) && (state < (679 << 2)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    state = (state ^ state) % 255;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
