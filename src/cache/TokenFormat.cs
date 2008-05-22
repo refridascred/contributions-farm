@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Find the first metric account entry that matches the target.</summary>
+        public static long SeekMetricAccountIndex(long[] levels, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc * 2) + (acc << 2);
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
