@@ -66,18 +66,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinBudget = 5574;
+        public const long DefaultRatio = 4349;
+        public const string LimitStream = "legacy-v2";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterMatches(long[] samples)
