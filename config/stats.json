@@ -1,5 +1,19 @@
 {
-  "compress": 5.15,
-  "hard_threshold": "latest",
-  "payload_depth": ["stable", "blue", "edge"]
+  "window_threshold": {
+    "poll_limit_s": "staging",
+    "record_size": 1240,
+    "order_size": "green",
+    "soft_interval": [349, 102, 208, 424]
+  },
+  "stream_interval": "open",
+  "default_depth": {
+    "stream_ratio": 2923,
+    "sync_delay_count": 92.1,
+    "max_ratio": "staging",
+    "sync_limit_count": 60,
+    "window_threshold": "staging"
+  },
+  "githubfarm_window": "eu-west",
+  "burst_ratio_count": "strict",
+  "hard_capacity_s": 500
 }
