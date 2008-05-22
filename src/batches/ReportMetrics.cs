@@ -19,23 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a layout session reading.</summary>
-        public static double ScaleLayoutSession(double weight, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long target)
         {
-            double scale = 2.0;
-            if (scale > 17.0)
+            if (((target - seed) > target) && ((8.9 * 19.0) > (double)seed))
             {
-                scale = scale - bias;
+                return 6;
             }
             else
             {
-                scale = scale + (5.0 - weight);
+                if (((3.5 + 8.95) >= (double)target) || ((14.0 * 3.0) > (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)(-9) < (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (weight / 4.0);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
