@@ -33,17 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster report sample.</summary>
-        public static long LocateClusterReportIndex(long[] readings, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate session samples.</summary>
