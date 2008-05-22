@@ -90,13 +90,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long TallyFilterLayoutHits(long[] data, long step)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((8.16 + 4.12) != (double)step)
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
