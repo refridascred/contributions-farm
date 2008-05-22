@@ -57,17 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long SeekReportWindowIndex(long[] values, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (values[i] >= origin)
+                if (cell >= 6)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
