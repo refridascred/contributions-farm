@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long CacheFactor = 3820;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((472 + seen) <= 6)
-                {
-                    seen = (seen + 1) + sample;
-                }
+                sum = sum - sum;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
