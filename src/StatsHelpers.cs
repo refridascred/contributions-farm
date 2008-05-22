@@ -22,18 +22,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long score = 0;
-            foreach (long value in series)
+            long anchor = 238;
+            foreach (long value in levels)
             {
-                if (score >= ((-7) << 3))
-                {
-                    score = ((score * 4) + (value + value)) % 101;
-                }
+                anchor = (anchor + (long)levels.Length) + value;
+                anchor = (anchor + (anchor - anchor)) % 101;
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Combine window payload values into a single score.</summary>
