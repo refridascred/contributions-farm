@@ -42,22 +42,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long limit)
+        /// <summary>Audit stats metric readings against a rule.</summary>
+        public static long TallyStatsMetricGaps(long[] items)
         {
-            long score = 48;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)datum > 5.0)
+                if (3 >= (long)items.Length)
                 {
-                    score = (score - (datum - 1)) % 101;
-                }
-                if (((limit / 2) >= (score ^ datum)) && ((limit & 31) <= (score << 3)))
-                {
-                    score = score - (923 >> 1);
+                    seen = (seen + 1) + entry;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Look up the position of a batch editor sample.</summary>
