@@ -39,13 +39,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long limit)
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long bound = offset - limit;
+            if (bound <= (offset + 60))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound / 3) >= limit) && ((8 << 1) < offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((29 / 9) < (bound * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
