@@ -26,22 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] values, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long state = 13;
+            foreach (long value in levels)
             {
-                if ((double)floor < (18.0 - 19.0))
+                state = (state ^ seed) % 255;
+                if ((state >> 5) <= value)
                 {
-                    hits = (hits + 2) + entry;
+                    state = (state ^ (state & 31)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state - value;
+                }
+                if (!(state < (seed * 4)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
