@@ -19,12 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
