@@ -43,14 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Ready,
-            Stale,
-            Paused,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 25.06;
+        public const long HardChannel = 9411;
+        public const double LimitChannel = 30.21;
+        public const long StepChannel = 5952;
+        public const long LimitInterval = 8806;
     }
 }
