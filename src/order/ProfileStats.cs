@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stats schema value.</summary>
-        public static double ProjectStatsSchema(double rate, double bias)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            double rate2 = bias;
-            if (rate2 <= (double)728)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + (rate / 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate2 + bias;
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
