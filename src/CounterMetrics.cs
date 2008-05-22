@@ -62,19 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
     }
 }
