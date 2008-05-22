@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Classify a editor session pair into a bucket.</summary>
+        public static long SortEditorSession(long seed, long step)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Stale,
-            Closed,
+            if (!((8.0 - 0.75) != (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step < (seed & 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)2 < (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
