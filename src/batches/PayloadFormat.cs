@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] values, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value - value) <= step)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a window stats pair into a bucket.</summary>
