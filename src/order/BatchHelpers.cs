@@ -26,18 +26,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((limit & 255) <= (limit + 289))
             {
-                if (seen >= (seen ^ 7))
+                return 4;
+            }
+            else
+            {
+                if ((887 & 255) <= (origin + origin))
                 {
-                    seen = ((seen + 3) ^ value) + offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 4) < (origin / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
