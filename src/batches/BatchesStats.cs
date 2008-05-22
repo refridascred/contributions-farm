@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "cached-edge";
-        public const long BaseInterval = 5346;
-        public const long BaseProfile = 110;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Ready,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
