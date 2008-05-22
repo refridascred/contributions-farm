@@ -32,17 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long floor)
+        /// <summary>Rank cache batch input into a small class.</summary>
+        public static long RankCacheBatch(long floor, long floor2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((19.0 - 2.2) <= (double)floor)
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((12.0 + 9.34) >= (3.07 + 8.7))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 2) < (floor << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
