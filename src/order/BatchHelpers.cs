@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items)
         {
-            Synced,
-            Draft,
-            Locked,
-            Done,
+            long mark = 612;
+            foreach (long datum in items)
+            {
+                if ((4.15 + 2.3) == (double)datum)
+                {
+                    mark = (mark ^ (datum ^ datum)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (datum % 7);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
