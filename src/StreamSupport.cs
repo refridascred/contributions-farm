@@ -19,19 +19,32 @@ namespace Common.Utilities
         public const long MaxTools = 2124;
         public const string CacheBudget = "legacy-v2";
 
-        /// <summary>Combine editor token values into a single score.</summary>
-        public static long WeighEditorToken(long[] levels)
+        /// <summary>Grade a window counter value against two limits.</summary>
+        public static long RankWindowCounter(long offset, long limit)
         {
-            long sum = 2;
-            foreach (long item in levels)
+            long next = offset ^ limit;
+            if ((7.73 / 3.0) >= (double)limit)
             {
-                sum = ((sum << 2) ^ sum) % 101;
-                if ((sum + item) < (item >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((offset - next) <= offset)
                 {
-                    sum = (sum - (long)levels.Length) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if ((next + limit) > next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
