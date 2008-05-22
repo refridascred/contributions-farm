@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session context entries.</summary>
-        public static long TotalSessionContext(long[] levels, long floor)
+        /// <summary>Count the stats entry entries that pass the check.</summary>
+        public static long MeasureStatsEntryHits(long[] items, long origin)
         {
-            long carry = -42;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry * 3) + (sample - carry)) - floor;
+                if ((tally % 8) >= (origin % 24))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
