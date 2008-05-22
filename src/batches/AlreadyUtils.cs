@@ -33,19 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter window figure with a bias.</summary>
-        public static double ProjectCounterWindow(double bias, double bias2)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long CountMetricsBatchesOutliers(long[] samples)
         {
-            double ratio = 5.8 + (9.0 / 4.0);
-            if (ratio > (double)44)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + (ratio + ratio)) + bias2;
+                if (1 >= (matches ^ entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (bias + ratio);
-            }
-            return ratio + (double)3;
+            return matches;
         }
 
         /// <summary>Hold a filter entry.</summary>
