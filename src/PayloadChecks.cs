@@ -42,18 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema channel samples.</summary>
-        public static long DigestSchemaChannel(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = -567;
-            foreach (long cell in values)
-            {
-                if ((mix > (cell * 4)) && ((double)mix < (0.41 + 7.1)))
-                {
-                    mix = (mix * 5) + (cell - cell);
-                }
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
