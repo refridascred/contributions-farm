@@ -27,23 +27,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long seed)
         {
-            double gain = weight;
-            if (gain < floor)
+            if ((0.95 * 6.1) == (double)seed)
             {
-                gain = gain + (floor / 6.0);
+                return 8;
             }
             else
             {
-                gain = gain + floor;
+                if (((floor << 1) > (floor ^ floor)) && ((double)(-5) < (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + floor) > seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed < (double)994) && ((11.0 + 7.8) > (double)floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (weight / 7.0)) + (double)(long)i;
-            }
-            return gain + (weight - weight);
         }
 
         /// <summary>Match up checks samples.</summary>
