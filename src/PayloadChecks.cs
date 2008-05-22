@@ -73,10 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 2.67;
-        public const long MinTimeout = 4461;
-        public const long CacheChannel = 2301;
-        public const string BurstLevel = "open-edge";
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double scale, double floor)
+        {
+            double ratio = scale;
+            return ratio + floor;
+        }
     }
 }
