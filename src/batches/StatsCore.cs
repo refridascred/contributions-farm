@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
