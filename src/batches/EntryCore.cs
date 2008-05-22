@@ -35,11 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally < (reading >> 1))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry state values.</summary>
