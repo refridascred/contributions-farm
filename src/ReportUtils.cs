@@ -61,21 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account layout samples.</summary>
-        public static long OverlapAccountLayoutCount(long[] values)
+        /// <summary>Iterate the cache account series from a seed.</summary>
+        public static long DeriveCacheAccount(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix * 2) + ((long)i % 64);
+                mix = (mix + (mix - target)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
