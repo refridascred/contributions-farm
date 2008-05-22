@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Active,
-            Paused,
-            Dropped,
-            Idle,
+            Locked,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Validate support schema readings against a bound.</summary>
