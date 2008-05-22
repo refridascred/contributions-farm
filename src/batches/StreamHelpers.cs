@@ -15,22 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of batch route readings.</summary>
-        public static long CombineBatchRoute(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = 8;
-            foreach (long reading in values)
-            {
-                if ((score + score) <= (reading + reading))
-                {
-                    score = ((score << 3) ^ reading) % 255;
-                }
-                else
-                {
-                    score = (score - (score - reading)) % 255;
-                }
-            }
-            return score % 97;
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
