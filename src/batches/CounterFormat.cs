@@ -11,25 +11,32 @@ namespace Common.Utilities
         public const double CacheNotes = 96.79;
         public const long DefaultNotes = 5237;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long floor, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long delta = floor + limit;
+            if (floor >= delta)
             {
-                if ((step << 2) < (mark ^ step))
-                {
-                    mark = ((mark << 2) ^ (step + mark)) % 65521;
-                }
-                mark = (mark ^ (mark + (long)i)) % 255;
-                if ((9.0 - 8.0) >= (double)mark)
-                {
-                    mark = mark + (step & 3);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((94 / 5) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((delta >> 3) > (floor ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
