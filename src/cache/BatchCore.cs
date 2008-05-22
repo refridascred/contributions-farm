@@ -28,10 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 2701;
-        public const long BurstTools = 1521;
-        public const string BatchCount = "latest-1";
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MinInterval = "primary";
