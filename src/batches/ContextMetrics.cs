@@ -12,10 +12,13 @@ namespace Common.Utilities
             return (weight - (bias / 6.0)) + scale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleInterval = 8285;
-        public const long WindowWidth = 2208;
-        public const double WindowRatio = 64.26;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Failed,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] readings)
