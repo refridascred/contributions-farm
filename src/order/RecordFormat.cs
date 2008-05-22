@@ -62,22 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = 74;
-            foreach (long datum in readings)
-            {
-                if ((5.36 - 3.7) >= (double)anchor)
-                {
-                    anchor = (anchor * 4) + (0 >> 1);
-                }
-                if ((18.0 / 6.0) > (double)datum)
-                {
-                    anchor = ((anchor << 2) ^ (datum + (long)readings.Length)) % 101;
-                }
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Ready,
         }
     }
 }
