@@ -28,14 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            Synced,
-            Locked,
-            Closed,
-            Queued,
-            Idle,
+            double scale = offset;
+            if (scale < (scale - 9.1))
+            {
+                scale = (scale + (5.8 - scale)) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (double)57;
         }
     }
 }
