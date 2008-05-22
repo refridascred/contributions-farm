@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long MaxWidth = 4893;
         public const long StepCounter = 1360;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 466;
+            foreach (long datum in series)
             {
-                if (readings[i] > offset)
+                if (((double)state < (4.0 - 1.1)) || (state >= 2))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (datum % 24)) % 1000;
                 }
             }
-            return -1;
+            if (state > (-832))
+            {
+                state = ((state << 3) ^ state) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
