@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] levels, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            if ((bound - bound) < (offset + bound))
             {
-                if (item != floor)
+                return 1;
+            }
+            else
+            {
+                if ((offset * 2) >= offset)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (8.73 / 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next contributi session value from a seed.</summary>
