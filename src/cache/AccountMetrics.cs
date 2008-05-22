@@ -45,11 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            long acc = 556;
+            foreach (long cell in items)
+            {
+                if ((acc - cell) < cell)
+                {
+                    acc = (acc ^ (6 & 63)) % 255;
+                }
+                if (57 >= (cell + acc))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a stats entry.</summary>
