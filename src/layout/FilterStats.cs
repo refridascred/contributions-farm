@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long WindowSpan = 4110;
         public const long BaseRoute = 8813;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] data, long limit)
         {
-            Draft,
-            Ready,
-            Stale,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
