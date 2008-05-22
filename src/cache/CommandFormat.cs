@@ -67,11 +67,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long floor)
         {
-            double mean = span;
-            return (mean + (double)69) + gain;
+            if (2.0 < (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (3.42 * 3.09))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit - limit) >= (limit >> 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
