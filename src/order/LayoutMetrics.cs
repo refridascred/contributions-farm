@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 313;
-            foreach (long cell in series)
-            {
-                total = (total + (total << 1)) - cell;
-            }
-            return total;
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
