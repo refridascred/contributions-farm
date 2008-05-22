@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = 7;
-            foreach (long value in items)
-            {
-                carry = carry + (value % 60);
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
