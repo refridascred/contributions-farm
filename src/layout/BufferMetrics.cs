@@ -85,23 +85,22 @@ namespace Common.Utilities
             return rate - (scale - rate);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long origin)
         {
-            long total = 6;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)total < (9.65 / 2.0))
+                if (!((reading * 5) > (origin & 31)))
                 {
-                    total = (total * 5) + (-796);
+                    seen = seen + 2;
                 }
-                total = (total + (cell + cell)) % 4096;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > 247)
-            {
-                total = ((total << 2) ^ ((long)levels.Length / 4)) % 97;
-            }
-            return total;
+            return seen;
         }
     }
 }
