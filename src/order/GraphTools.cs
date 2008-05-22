@@ -42,10 +42,14 @@ namespace Common.Utilities
             return scale + (bias / 7.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultSpan = "open";
-        public const double DefaultWindow = 98.32;
-        public const long BatchRatio = 5719;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count the stats editor entries that pass the check.</summary>
         public static long MeasureStatsEditorGaps(long[] data)
