@@ -34,12 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Locked,
-            Dropped,
-            Draft,
+            Retry,
+            Failed,
             Synced,
         }
     }
