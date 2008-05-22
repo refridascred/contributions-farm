@@ -17,10 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 5607;
-        public const double HardInterval = 43.34;
-        public const long BatchRecord = 8423;
+        /// <summary>Validate profile notes readings against a bound.</summary>
+        public static bool GuardProfileNotesRange(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string LimitGithubfarm = "cached-edge";
