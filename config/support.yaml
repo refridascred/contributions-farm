@@ -1,31 +1,4 @@
 # support settings
-flush_delay_count: green
-min_depth_s: eu-west
-base_ratio_count: cached
-persist:
-  layout_depth:
-    retry_ttl_pct: blue
-    sync_ttl_ms: 86.69
-    idle_window: legacy
-    base_window_s:
-      - 335
-      - 360
-      - 205
-      - 426
-  queue_threshold:
-    - 430
-    - 412
-  session_window:
-    soft_retries_s: 47.99
-    account_timeout: 60
-    flush_limit:
-      - primary
-      - standard
-    audit:
-      - 223
-      - 30
-      - 179
-      - 487
-    burst_capacity: false
-    default_interval: 64.12
-  cluster_threshold: primary
+command_threshold: cached
+flush_window: 30
+batch_size_s: true
