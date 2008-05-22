@@ -40,12 +40,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
