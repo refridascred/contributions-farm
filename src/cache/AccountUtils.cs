@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] levels, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                long step2 = step;
-                anchor = (anchor << 3) ^ step2;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (((entry ^ seen) == (983 & 127)) && ((bound + 224) > 47))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
