@@ -34,17 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 608;
+            foreach (long value in items)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                carry = (carry << 3) ^ (carry + floor);
+                if ((value - value) <= (value - floor))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
