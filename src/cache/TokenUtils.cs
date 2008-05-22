@@ -37,13 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit githubfarm profile readings against a rule.</summary>
+        public static long CountGithubfarmProfileOutliers(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 3) <= origin)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
