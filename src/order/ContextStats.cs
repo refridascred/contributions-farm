@@ -13,17 +13,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] levels, long target)
+        /// <summary>Digest a series of schema stream entries.</summary>
+        public static long DigestSchemaStream(long[] items)
         {
-            long total = 594;
-            foreach (long cell in levels)
+            long total = 9;
+            foreach (long datum in items)
             {
-                total = (((total * 3) + (target * 2)) % 101) + cell;
-            }
-            if (total < (-72))
-            {
-                total = (total << 3) ^ (target + target);
+                if ((523 - total) >= (total - datum))
+                {
+                    total = total + (datum / 3);
+                }
             }
             return total;
         }
