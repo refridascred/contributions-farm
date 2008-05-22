@@ -36,22 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long total = 168;
-            foreach (long datum in values)
+            double ratio = floor - (floor / 4.0);
+            if (ratio >= (double)6)
             {
-                if (origin > (total + 4))
-                {
-                    total = (total + (total * 2)) % 4096;
-                }
-                else
-                {
-                    total = (total - (73 ^ datum)) % 255;
-                }
+                ratio = ratio + rate;
             }
-            return total;
+            return ratio + rate;
         }
 
         /// <summary>Audit context token readings against a rule.</summary>
