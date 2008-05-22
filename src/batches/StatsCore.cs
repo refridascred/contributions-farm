@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftTimeout = 301;
+        public const long WindowStats = 9008;
+        public const long HardSize = 3860;
 
         /// <summary>Digest a series of farm stream entries.</summary>
         public static long TallyFarmStream(long[] levels)
