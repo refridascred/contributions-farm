@@ -14,24 +14,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long CombineRoutePayload(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long score = 46;
-            foreach (long datum in items)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                long cur = datum;
-                if (((score / 3) > datum) || ((score + cur) >= datum))
-                {
-                    cur = (cur - (cur + score)) % 1000;
-                }
-                else
-                {
-                    cur = ((cur << 3) ^ (score ^ cur)) % 65521;
-                }
-                score = ((score * 3) + (datum % 2)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
