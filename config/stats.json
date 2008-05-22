@@ -1,8 +1,9 @@
 {
-  "soft_limit_count": "primary",
-  "checks_window": 59,
-  "format_timeout": "eu-west",
-  "default_interval": "cached",
-  "checks_ratio": 45,
-  "hard_ratio_ms": 49
+  "idle_threshold_pct": 5187,
+  "schema_ttl": {
+    "default_timeout": 93.98,
+    "cluster_limit": ["green", "cached", "latest"],
+    "payload_delay": 100
+  },
+  "min_ttl": [236, 335, 325]
 }
