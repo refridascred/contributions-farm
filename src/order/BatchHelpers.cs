@@ -22,10 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7935;
-        public const string IdleLayout = "strict-v2";
-        public const string SoftSize = "local-edge";
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] levels)
+        {
+            long sum = 4;
+            foreach (long item in levels)
+            {
+                if ((double)item > (double)sum)
+                {
+                    sum = ((sum * 4) + (item + 441)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 255;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
