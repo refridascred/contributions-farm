@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1293;
-        public const long MinTimeout = 5864;
-        public const long WindowEntry = 5169;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 36.33;
+        public const double MaxBatches = 32.99;
+        public const string BaseFactor = "primary-v2";
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
