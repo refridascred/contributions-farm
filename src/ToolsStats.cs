@@ -48,18 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin & 127) != (35 * 2)) && ((3.2 * 1.3) >= (double)origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
