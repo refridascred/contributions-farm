@@ -25,18 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] series, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double scale = bias2;
+            if (scale > (6.76 - 8.3))
             {
-                if ((step - item) > (long)series.Length)
-                {
-                    tally = tally + 2;
-                }
+                scale = scale - scale;
             }
-            return tally;
+            else
+            {
+                scale = scale - (bias2 / 4.0);
+            }
+            return scale + (bias / 7.0);
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
