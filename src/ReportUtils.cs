@@ -24,18 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Blend two window buffer measurements.</summary>
+        public static double BlendWindowBuffer(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double rate = bias;
+            if (rate < (0.6 - ratio))
             {
-                if ((datum <= (69 << 2)) && ((4.91 * 10.0) >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
+                rate = rate - (rate * 9.0);
             }
-            return tally;
+            return rate - ratio;
         }
 
         /// <summary>Look up the position of a batch metric sample.</summary>
