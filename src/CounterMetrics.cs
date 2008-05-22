@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public double Score { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate batch samples.</summary>
