@@ -1,11 +1,15 @@
 # githubfarm settings
-soft_interval_pct:
-  - blue
-  - latest
-buffer_window: staging
-cache_delay: cached
-filter_delay:
+farm_delay: true
+flush_window_s:
+  - 285
+  - 420
+  - 203
+  - 298
+readonly: local
+buffer_ttl: staging
+dry_run:
+  - legacy
   - standard
-  - edge
   - local
-min_capacity_ms: true
+  - primary
+max_limit_s: 70
