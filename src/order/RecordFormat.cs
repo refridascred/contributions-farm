@@ -47,19 +47,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Retry,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
