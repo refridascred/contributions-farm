@@ -39,11 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a already commits figure with a bias.</summary>
+        public static double SmoothAlreadyCommits(double scale, double span)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            double ratio = (double)(297 & 1);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio + span) - (double)(long)i) + scale;
+            }
+            return ratio + (double)10;
         }
     }
 }
