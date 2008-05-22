@@ -42,19 +42,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
