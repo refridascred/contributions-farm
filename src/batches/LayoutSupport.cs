@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinWidth = 431;
-        public const long IdleScore = 8435;
-        public const double MinRatio = 90.27;
-        public const double IdleCache = 17.64;
-        public const long WindowCache = 822;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] data)
