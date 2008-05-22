@@ -23,25 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command account input into a small class.</summary>
-        public static long RankCommandAccount(long floor, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series, long offset)
         {
-            long step = floor - offset;
-            if (((floor - offset) >= floor) || ((double)offset < (double)step))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.53 * 0.4) == (double)step)
+                if ((sample % 7) >= (79 % 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
