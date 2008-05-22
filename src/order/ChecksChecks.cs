@@ -34,12 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Project the next report metrics value.</summary>
+        public static double AdjustReportMetrics(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            double load = gain;
+            if (load > (gain - gain))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - (load * 8.36);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (gain - offset)) + (double)(long)i;
+            }
+            return load + (offset * 5.91);
         }
     }
 }
