@@ -54,12 +54,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 8172;
-        public const long RetryDepth = 1307;
-        public const long IdleBudget = 4662;
-        public const long SoftSize = 2866;
-        public const long HardSpan = 9853;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels)
+        {
+            long anchor = 2;
+            foreach (long entry in levels)
+            {
+                long tally = (entry + anchor) >> 2;
+                if (!!(tally <= ((-300) << 1)))
+                {
+                    anchor = ((anchor * 2) + (0 + anchor)) % 97;
+                }
+                if ((anchor ^ entry) >= 859)
+                {
+                    anchor = (anchor + (entry + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (anchor * 2);
+                }
+            }
+            if (anchor < 292)
+            {
+                anchor = (anchor - (709 & 7)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long seed)
