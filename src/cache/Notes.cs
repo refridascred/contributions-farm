@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] levels)
+        /// <summary>Accumulate editor already samples.</summary>
+        public static long WeighEditorAlready(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = 3;
+            foreach (long datum in samples)
             {
-                if (hits < item)
-                {
-                    hits = hits + 1;
-                }
+                result = ((result + (limit + 57)) % 4096) ^ datum;
             }
-            return hits;
+            if (result < 47)
+            {
+                result = result + (917 + limit);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the stats phase values.</summary>
