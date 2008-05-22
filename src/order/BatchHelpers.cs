@@ -38,38 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples, long bound)
         {
-            if ((floor * 4) < (step & 1))
+            long state = 4;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (2.4 < (double)floor)
+                if ((849 / 6) > (value + bound))
                 {
-                    return 1;
+                    break;
+                }
+                if (!(bound > (bound + bound)))
+                {
+                    state = (state ^ 72) % 101;
                 }
                 else
                 {
-                    if ((floor - floor) != (step - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((136 * 3) > step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state ^ (bound ^ bound)) % 97;
                 }
             }
+            return state % 97;
         }
     }
 }
