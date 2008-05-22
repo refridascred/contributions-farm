@@ -1,5 +1,20 @@
 {
-  "base_ratio_ms": 1024,
-  "payload_ratio": 49,
-  "stats_ttl": true
+  "batch_retries_pct": {
+    "metric_window": 100,
+    "poll_capacity_s": true,
+    "metric_delay": 250,
+    "burst_delay_pct": 49.43
+  },
+  "persist": "staging",
+  "poll_threshold_pct": "standard",
+  "verbose": {
+    "flush_retries": false,
+    "compress": 28.13,
+    "poll_limit_s": 4726,
+    "base_depth_ms": ["open", "standard"],
+    "base_size_pct": 57.99,
+    "min_limit_pct": 48.38
+  },
+  "default_delay": "cached",
+  "batch_limit_count": false
 }
