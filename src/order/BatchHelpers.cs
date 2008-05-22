@@ -23,15 +23,24 @@ namespace Common.Utilities
         public const long LimitSize = 4930;
         public const double BatchBuffer = 92.15;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            long acc = 73;
-            foreach (long cell in series)
+            if ((target < (target + target)) && ((step >> 3) >= (92 + 559)))
             {
-                acc = ((acc * 2) + (cell + acc)) % 97;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((777 + target) >= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
