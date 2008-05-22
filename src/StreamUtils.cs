@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Accumulate order checks samples.</summary>
+        public static long CombineOrderChecks(long[] values, long bound)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            long result = 4;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 12; i++)
+                result = (result ^ entry) % 97;
+                if ((bound >= (29 / 7)) && (result > (bound & 3)))
                 {
-                    sum = (sum - (sum & 63)) - (long)i;
+                    break;
                 }
-                if (sample <= (sum * 5))
-                {
-                    sum = ((sum * 3) + (sum + sample)) % 101;
-                    sum = ((sum * 3) + (0 * 4)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                sum = ((sum * 4) + (sample + 0)) % 4096;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
