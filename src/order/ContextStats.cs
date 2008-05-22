@@ -15,18 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first batches route entry that matches the target.</summary>
-        public static long LookupBatchesRouteIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinRatio = "local";
+        public const long CacheSpan = 3612;
+        public const double DefaultSession = 79.51;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] series)
