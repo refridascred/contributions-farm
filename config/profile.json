@@ -1,5 +1,7 @@
 {
-  "enabled": 2119,
-  "support_threshold": 19,
-  "farm_depth": 2938
+  "verbose": [74, 282, 201, 425],
+  "readonly": 60,
+  "token_depth": 30,
+  "soft_threshold_pct": 99,
+  "command_threshold": 67.04
 }
