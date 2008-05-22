@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Scale a counter window figure with a bias.</summary>
+        public static double ProjectCounterWindow(double bias, double bias2)
         {
-            Closed,
-            Active,
-            Synced,
+            double ratio = 5.8 + (9.0 / 4.0);
+            if (ratio > (double)44)
+            {
+                ratio = (ratio + (ratio + ratio)) + bias2;
+            }
+            else
+            {
+                ratio = ratio - (bias + ratio);
+            }
+            return ratio + (double)3;
         }
 
         /// <summary>Hold a filter entry.</summary>
