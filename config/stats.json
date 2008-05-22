@@ -1,5 +1,18 @@
 {
-  "dry_run": "stable",
-  "compress": "primary",
-  "idle_limit_ms": false
+  "githubfarm_timeout": {
+    "burst_depth_ms": 7628,
+    "dry_run": ["local", "open", "staging"],
+    "soft_interval_pct": 12,
+    "hard_timeout_count": 32.55,
+    "readonly": {
+      "retry_capacity_count": "local",
+      "poll_timeout_s": 34.58,
+      "retry_capacity_pct": ["primary", "staging", "eu-west"]
+    }
+  },
+  "persist": 60,
+  "retry_depth_count": "green",
+  "batch_retries_pct": true,
+  "default_window": true,
+  "entry_delay": 4499
 }
