@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 921;
+            foreach (long reading in data)
+            {
+                result = (((result * 4) + (625 * 2)) + reading) + target;
+            }
+            return result;
         }
 
         /// <summary>Describe the editor class values.</summary>
