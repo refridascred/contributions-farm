@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Active,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 1790;
+        public const double CacheContributi = 15.15;
+        public const double SoftSize = 72.45;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
