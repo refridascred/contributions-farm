@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long FoldEntryAlready(long[] series, long bound)
+        /// <summary>Project the next schema record value.</summary>
+        public static double AdjustSchemaRecord(double rate, double bias)
         {
-            long total = 557;
-            foreach (long reading in series)
+            double mean = 7.0;
+            if (mean > rate)
             {
-                if (!(reading > 3))
-                {
-                    total = ((total << 3) ^ (total / 8)) - bound;
-                }
-                else
-                {
-                    total = (total * 5) + (reading ^ 652);
-                }
+                mean = mean + (bias + bias);
             }
-            return total;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (double)37;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
