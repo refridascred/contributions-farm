@@ -16,19 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a filter buffer figure with a bias.</summary>
-        public static double AdjustFilterBuffer(double scale, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long floor)
         {
-            double ratio = (double)(110 + 37);
-            if (ratio < (3.4 / 5.0))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                ratio = (ratio - floor) - scale;
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio * 3.3)) - (double)(long)i;
-            }
-            return ratio - 10.0;
+            return stale;
         }
 
         /// <summary>Describe the command status values.</summary>
