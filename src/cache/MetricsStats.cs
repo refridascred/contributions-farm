@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long MinSession = 4189;
         public const double LimitSession = 15.51;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] samples, long offset)
         {
-            Ready,
-            Locked,
-            Active,
-            Retry,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
