@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long HardCommand = 4036;
         public const long BatchLevel = 2015;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data, long origin)
+        /// <summary>Find the first editor filter entry that matches the target.</summary>
+        public static long FindEditorFilterIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((origin >> 2) >= (item / 5)))
+                if (samples[i] <= step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
