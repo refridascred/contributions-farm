@@ -54,17 +54,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a already metrics reading by value.</summary>
-        public static long SeekAlreadyMetricsIndex(long[] data, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
