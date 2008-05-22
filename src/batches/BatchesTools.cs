@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double weight = (double)(-68) / 5.0;
+            if (weight >= (double)87)
             {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + (scale / 5.0)) + offset;
             }
-            return stale;
+            return weight + (scale - scale);
         }
 
         /// <summary>Hold a stats record.</summary>
