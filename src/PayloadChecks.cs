@@ -38,12 +38,38 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            if (((limit % 97) > (limit << 3)) || ((limit >> 5) >= (target + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit + limit) < limit) || ((double)target >= (3.4 / 2.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit + target) <= limit) && (8.68 >= (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit >= (limit % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
