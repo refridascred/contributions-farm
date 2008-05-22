@@ -22,25 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches cache value against two limits.</summary>
-        public static long RankBatchesCache(long seed, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long seed)
         {
-            long step2 = seed + step;
-            if ((seed <= (seed & 31)) || ((step2 + step) != (step2 + step2)))
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step >= (9.7 / 8.0)) || ((833 ^ step) <= (30 >> 4)))
+                if (datum > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
