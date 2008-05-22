@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool CheckFilterClusterBounds(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 3014;
+        public const long MaxToken = 8626;
+        public const long RetryLevel = 229;
+        public const double BaseFactor = 75.28;
+        public const double HardToken = 49.81;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
