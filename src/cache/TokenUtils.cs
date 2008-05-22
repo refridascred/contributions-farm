@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long cell in items)
             {
-                if (data[i] == bound)
+                if ((cell - total) > total)
                 {
-                    return (long)i;
+                    total = (total + (cell << 2)) % 1000;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
