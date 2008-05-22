@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=430
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in open blue local; do
+for item in green blue fallback; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=389
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
