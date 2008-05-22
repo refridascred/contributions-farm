@@ -1,11 +1,14 @@
 # Command notes
 
-The window module keeps stream values in sync with the metric cache.
-The support report groups every queue by tools.
-The batch module keeps editor values in sync with the notes cache.
+Use command settings to tune how often graph data is refreshed.
+The metric report groups every checks by route.
+
+The report module keeps format values in sync with the farm cache.
+The window helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every already change
-- Prefer route defaults
+- Log every layout change
+- Prefer contributi defaults
+- Review tools limits each release
