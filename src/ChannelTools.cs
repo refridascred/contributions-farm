@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many window batch samples are out of range.</summary>
-        public static long AuditWindowBatchGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches - matches) < (6 ^ matches))
-                {
-                    matches = ((matches + 3) - item) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 397;
+        public const double MaxFactor = 0.42;
+        public const double WindowLevel = 32.93;
+        public const long HardFarm = 2965;
+        public const long SoftFarm = 7369;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
