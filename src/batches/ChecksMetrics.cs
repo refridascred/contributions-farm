@@ -44,17 +44,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] >= offset)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ (entry & 255)) % 101) + (long)i;
+                }
+                if ((372 + (-29)) >= (4 + floor))
+                {
+                    mark = (mark + (557 + mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (floor * 3)) % 4096;
                 }
             }
-            return -1;
+            if (mark < 445)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
