@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long limit)
         {
-            long anchor = -710;
-            foreach (long value in values)
+            long mix = 88;
+            foreach (long item in samples)
             {
-                if ((value >= ((long)values.Length + anchor)) && (anchor <= value))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                }
-                anchor = (anchor - anchor) % 97;
+                mix = ((mix << 3) ^ (limit + 6)) ^ item;
             }
-            return anchor % 1000;
+            return mix;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
