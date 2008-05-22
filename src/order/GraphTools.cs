@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long score = -482;
-            foreach (long entry in items)
-            {
-                if (!((7 / 2) > (entry + 54)))
-                {
-                    score = (score ^ entry) % 101;
-                }
-            }
-            if (score > 353)
-            {
-                score = (score ^ (score % 10)) % 4096;
-            }
-            return score % 97;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
