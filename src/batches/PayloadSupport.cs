@@ -12,15 +12,12 @@ namespace Common.Utilities
             return (load + (double)5) + weight;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double drift = (double)(73 ^ 114);
-            if (drift > (8.0 - span))
-            {
-                drift = (drift - drift) - rate;
-            }
-            return drift - (span / 9.0);
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
