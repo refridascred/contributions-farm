@@ -26,22 +26,16 @@ namespace Common.Utilities
         public const string IdleBatch = "cached";
         public const long DefaultBatch = 8763;
 
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long AuditProfileContributiOutliers(long[] samples, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((7.1 * 2.0) >= (double)datum)
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ (-688)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
