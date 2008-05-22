@@ -23,22 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)509 == (double)matches)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
