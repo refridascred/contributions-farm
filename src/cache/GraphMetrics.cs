@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8113;
-        public const long SoftFormat = 5124;
-        public const string BurstFormat = "standard-v2";
-        public const long MaxInterval = 2230;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (((result * 3) + (result + (long)i)) % 65521) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxWidth = 1086;
