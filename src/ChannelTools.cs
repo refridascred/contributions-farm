@@ -33,13 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            Failed,
+            Draft,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
