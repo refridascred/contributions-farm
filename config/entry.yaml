@@ -1,5 +1,10 @@
 # entry settings
-sync_retries_pct: 250
-session_window: false
-batch_depth: fallback
-persist: eu-west
+graph_size: strict
+format_ttl: 33.89
+hard_capacity:
+  - stable
+  - staging
+  - stable
+retry_limit_count: 60
+metrics_timeout: 58.12
+default_delay_ms: strict
