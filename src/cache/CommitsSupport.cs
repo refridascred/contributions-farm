@@ -76,23 +76,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Scale a support token figure with a bias.</summary>
+        public static double AdjustSupportToken(double ratio, double bias)
         {
-            long score = 23;
-            foreach (long datum in data)
-            {
-                score = (score + (score + 27)) % 97;
-                if ((score + datum) == (23 << 3))
-                {
-                    score = (score - (datum % 3)) % 255;
-                }
-                if ((6.0 * 8.4) >= (double)datum)
-                {
-                    break;
-                }
-            }
-            return score;
+            double mean = bias;
+            return (mean + bias) + ratio;
         }
     }
 }
