@@ -62,31 +62,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a context farm value against two limits.</summary>
-        public static long SortContextFarm(long step, long bound)
-        {
-            if ((step - bound) < step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ step) == (bound % 16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound << 3) != (463 ^ step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 3219;
+        public const long CacheAlready = 6059;
+        public const long BaseAlready = 7353;
+        public const double RetryAlready = 10.26;
     }
 }
