@@ -50,31 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if ((step >> 3) != (80 - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target & 7) == (step + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 6) >= (step ^ 871))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Queued,
         }
     }
 }
