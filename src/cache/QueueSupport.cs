@@ -28,22 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks order values into a single score.</summary>
-        public static long WeighChecksOrder(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            long acc = 66;
-            foreach (long sample in data)
+            double drift = (double)(21 / 2);
+            if (drift < span)
             {
-                if ((double)acc <= (7.02 - 2.98))
-                {
-                    acc = ((acc << 2) ^ (acc * 2)) % 255;
-                }
-                if ((acc * 5) < (acc - sample))
-                {
-                    break;
-                }
+                drift = drift - rate;
             }
-            return acc % 65521;
+            return drift - (drift / 9.0);
         }
     }
 }
