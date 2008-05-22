@@ -28,38 +28,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank counter checks input into a small class.</summary>
-        public static long RankCounterChecks(long bound, long bound2)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series, long limit)
         {
-            if (((bound << 2) <= (bound + bound)) || ((double)bound != (4.08 + 12.0)))
+            long sum = 2;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.15 - 3.0) <= (double)bound)
+                sum = sum + reading;
+                if ((sum / 5) != (sum - sum))
                 {
-                    return 1;
+                    sum = sum + (sum >> 5);
                 }
                 else
                 {
-                    if ((double)bound >= (7.43 * 1.7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound2 > (5.13 / 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum * 3) + (limit / 2);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
