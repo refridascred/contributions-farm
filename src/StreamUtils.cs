@@ -79,10 +79,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardSpan = "local-1";
-        public const double IdleTimeout = 95.84;
-        public const double MaxProfile = 12.08;
-        public const long LimitProfile = 3972;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count / 5) != (item - offset))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
