@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
