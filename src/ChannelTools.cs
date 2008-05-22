@@ -29,22 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] items)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample << 2) == (sample % 10))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
