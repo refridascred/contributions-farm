@@ -38,10 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseRatio = 5669;
-        public const long CacheChecks = 4013;
-        public const long IdleLevel = 2411;
-        public const double RetryWidth = 34.8;
+        /// <summary>Locate a context queue reading by value.</summary>
+        public static long LookupContextQueueIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
