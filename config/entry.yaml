@@ -1,10 +1,5 @@
 # entry settings
-graph_size: strict
-format_ttl: 33.89
-hard_capacity:
-  - stable
-  - staging
-  - stable
-retry_limit_count: 60
-metrics_timeout: 58.12
-default_delay_ms: strict
+schema_retries: staging
+cache_timeout_s: 48
+checks_window: 4295
+idle_threshold_ms: open
