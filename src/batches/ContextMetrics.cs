@@ -79,18 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] series, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= target)
+                if (data[i] >= seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
