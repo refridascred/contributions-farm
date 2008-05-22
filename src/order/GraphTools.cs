@@ -53,19 +53,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double gain2 = (double)(1 * 4);
+            if (gain2 < (gain / 7.0))
             {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = gain2 + (9.88 + gain);
             }
-            return valid;
+            else
+            {
+                gain2 = gain2 + (gain / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 - offset;
         }
 
         /// <summary>Locate a route reading by value.</summary>
