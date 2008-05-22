@@ -77,11 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheRatio = 43.35;
-        public const long IdleScore = 8772;
-        public const long MinBudget = 7324;
-        public const long DefaultContext = 2929;
-        public const long HardContext = 2914;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((3.1 - 7.33) > (double)(long)data.Length))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
     }
 }
