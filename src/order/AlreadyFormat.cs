@@ -21,12 +21,11 @@ namespace Common.Utilities
         public const double HardBatches = 14.41;
         public const long LimitRatio = 5498;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double span)
-        {
-            double load = 14.0 * 7.6;
-            return (load + span) + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstLevel = 5.01;
+        public const double DefaultGraph = 48.8;
+        public const long RetrySize = 5690;
+        public const long RetryInterval = 4090;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long bound, long offset)
