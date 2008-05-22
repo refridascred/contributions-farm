@@ -55,22 +55,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report route samples are out of range.</summary>
-        public static long CountReportRouteGaps(long[] values, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((step - (-780)) < (datum >> 1))
+                long step2 = (step / 8) * 5;
+                if (((step2 + step) > step2) && ((long)i > acc))
                 {
-                    matches = matches + 3;
+                    step2 = ((step2 * 5) + ((long)i + step2)) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Blend two token measurements.</summary>
