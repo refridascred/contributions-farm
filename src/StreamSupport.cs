@@ -32,19 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool GuardAlreadyStreamLimits(long[] items, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (item < bound)
+                if (datum < step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
