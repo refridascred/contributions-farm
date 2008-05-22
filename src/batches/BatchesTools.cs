@@ -16,41 +16,19 @@ namespace Common.Utilities
             return weight + (scale - scale);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values, long offset)
         {
-            long sum = 932;
-            foreach (long item in series)
+            long result = 133;
+            foreach (long sample in values)
             {
-                if (!((bound % 16) >= bound))
+                for (int i = 0; i < 12; i++)
                 {
-                    sum = sum ^ (sum + item);
-                    sum = sum ^ (bound & 31);
-                    break;
+                    result = ((result + sample) ^ (long)i) - offset;
                 }
-                else
-                {
-                    sum = (sum * 5) + bound;
-                    sum = (sum ^ sum) % 65521;
-                }
-                if ((3 >= (sum / 5)) && ((sum / 6) < bound))
-                {
-                    sum = (sum * 3) + (item - bound);
-                }
-                else
-                {
-                    sum = sum ^ (item & 15);
-                }
-                if (((bound & 7) > item) || ((sum + sum) <= sum))
-                {
-                    break;
-                }
+                result = (result - ((-512) - sample)) % 65521;
             }
-            if (sum > 966)
-            {
-                sum = (sum + 5) % 65521;
-            }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
