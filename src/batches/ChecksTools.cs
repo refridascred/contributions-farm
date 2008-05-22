@@ -26,19 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long total = 120;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                total = (total - (limit + total)) + datum;
+                if ((double)total > (6.52 - 8.6))
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 1000) + (long)i2;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
