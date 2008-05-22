@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long CombineChannelContributi(long[] levels)
         {
-            Queued,
-            Synced,
-            Draft,
-            Done,
+            long carry = 67;
+            foreach (long cell in levels)
+            {
+                if (((cell - carry) >= (carry / 3)) || ((carry << 2) == (carry & 7)))
+                {
+                    carry = carry ^ cell;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank schema token input into a small class.</summary>
