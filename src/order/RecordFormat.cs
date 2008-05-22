@@ -32,19 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long gap = bound ^ step;
+            if ((step > (gap / 6)) || ((bound & 255) < ((-6) + step)))
             {
-                if (item <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((gap * 4) >= (gap + bound))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
