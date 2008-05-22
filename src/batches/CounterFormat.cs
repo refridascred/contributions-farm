@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 5553;
-        public const long CacheWidth = 1273;
-        public const long HardStats = 3460;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long offset, long step)
