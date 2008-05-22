@@ -24,22 +24,22 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series, long step)
+        /// <summary>Fold a list of record githubfarm readings.</summary>
+        public static long DigestRecordGithubfarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = 1;
+            foreach (long value in levels)
             {
-                if ((double)step > (double)tally)
+                if ((453 * 3) <= (value - total))
                 {
-                    tally = (tally + 2) + value;
+                    total = ((total * 3) + (total + total)) % 65521;
                 }
-                else
+                if (value < (value * 4))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
