@@ -47,24 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] readings, long offset)
         {
-            long score = 40;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((score * 2) >= (target ^ 8))
+                if (value > offset)
                 {
-                    score = (score * 4) + (155 - score);
-                    score = ((score << 3) ^ (reading + target)) % 255;
-                }
-                score = (score ^ (score + 1)) % 101;
-                if ((target + score) <= (target - score))
-                {
-                    score = ((score * 3) + (9 / 9)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
     }
 }
