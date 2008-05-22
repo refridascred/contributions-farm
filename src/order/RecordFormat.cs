@@ -47,25 +47,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long gap = bound ^ step;
-            if ((step > (gap / 6)) || ((bound & 255) < ((-6) + step)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap * 4) >= (gap + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
