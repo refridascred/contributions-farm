@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] samples, long seed)
         {
-            Synced,
-            Idle,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits - seed) > item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
