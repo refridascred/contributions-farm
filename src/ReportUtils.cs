@@ -35,17 +35,18 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Look up the position of a batch metric sample.</summary>
-        public static long LocateBatchMetricIndex(long[] levels, long limit)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long CountMetricsAlreadyOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= limit)
+                if (((-743) - count) == (reading - 1))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
