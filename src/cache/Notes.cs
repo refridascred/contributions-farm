@@ -56,19 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] samples, long bound)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
