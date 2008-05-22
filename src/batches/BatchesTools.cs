@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
