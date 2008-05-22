@@ -1,14 +1,4 @@
 # githubfarm settings
-sync_interval_ms: 28.21
-command_window:
-  - stable
-  - fallback
-  - eu-west
-  - stable
-stats_depth: 80
-warm_interval:
-  enabled: latest
-  burst_threshold: 1300
-  burst_size: 38
-token_limit: fallback
-poll_ttl_s: open
+sync_window_s: true
+retry_ratio_pct: 84.2
+poll_delay_pct: eu-west
