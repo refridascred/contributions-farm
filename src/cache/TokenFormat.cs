@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
