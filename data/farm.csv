@@ -1,6 +1,11 @@
-id,region,ratio,count,state
-1,24.26,95.91,85.72,stable
-2,strict,32.83,edge,27.63
-3,793,387,704,365
-4,600,23,386,staging
-5,97.26,316,open,latest
+id,ratio,token
+1,staging,813
+2,111,33.86
+3,592,57.09
+4,293,300
+5,575,462
+6,816,eu-west
+7,308,545
+8,primary,legacy
+9,cached,327
+10,821,61
