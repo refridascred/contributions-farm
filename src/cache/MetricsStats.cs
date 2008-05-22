@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of cluster notes readings.</summary>
-        public static long OverlapClusterNotesCount(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 78;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell >= (cell >> 3)) && ((cell % 5) > (cell + cell)))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
