@@ -31,19 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] items, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double span)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double drift = (double)86;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift + (span - 11.0)) + (double)(long)i) - gain;
             }
-            return ready;
+            return drift + (double)9;
         }
     }
 }
