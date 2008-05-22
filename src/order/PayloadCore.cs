@@ -43,17 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultDepth = "primary";
+        public const double BatchGithubfarm = 7.08;
+        public const long RetryBudget = 4017;
+        public const long StepGithubfarm = 647;
+        public const long StepLevel = 5760;
     }
 }
