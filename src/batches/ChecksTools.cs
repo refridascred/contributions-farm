@@ -34,16 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] values, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                carry = (carry * 3) + carry;
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)floor < (18.0 - 19.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
