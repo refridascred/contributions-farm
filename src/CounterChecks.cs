@@ -33,12 +33,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 469;
-        public const double WindowDepth = 26.33;
-        public const long LimitOrder = 1573;
-        public const double CacheScore = 15.76;
-        public const long LimitSpan = 4097;
+        /// <summary>Compare every pair of farm metric readings.</summary>
+        public static long CompareFarmMetricCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] levels)
