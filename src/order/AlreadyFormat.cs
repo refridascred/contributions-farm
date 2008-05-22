@@ -68,9 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 5675;
-        public const double LimitGithubfarm = 55.67;
-        public const long BatchGithubfarm = 1721;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double bias)
+        {
+            double ratio = (double)7 - bias;
+            if (ratio >= (rate * 2.0))
+            {
+                ratio = ratio - (bias + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (rate + 6.9);
+        }
     }
 }
