@@ -19,18 +19,38 @@ namespace Common.Utilities
         public const long MaxCount = 2329;
         public const double CacheRatio = 6.39;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] samples, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if ((double)bound == (double)floor)
             {
-                if ((entry * 3) <= (bound & 31))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (2.6 + 8.0))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((9.0 + 2.4) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor - bound) >= (floor / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
