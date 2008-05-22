@@ -23,13 +23,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long score = 86;
+            foreach (long reading in samples)
+            {
+                if ((score ^ score) > (reading % 97))
+                {
+                    score = (score ^ (score - reading)) % 97;
+                }
+                else
+                {
+                    score = (score * 5) + (501 + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
