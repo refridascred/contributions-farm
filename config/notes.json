@@ -1,14 +1,5 @@
 {
-  "checks_depth": "edge",
-  "poll_ratio_ms": 3636,
-  "token_timeout": false,
-  "dry_run": "standard",
-  "flush_size": {
-    "cache_ttl_ms": false,
-    "hard_ratio_pct": true,
-    "readonly": "local",
-    "default_delay": "green",
-    "window_delay": "fallback",
-    "cache_limit": "cached"
-  }
+  "max_retries_s": "staging",
+  "min_depth_count": "blue",
+  "readonly": 13
 }
