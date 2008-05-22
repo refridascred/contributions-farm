@@ -1,5 +1,5 @@
 {
-  "warm_threshold_ms": 27,
-  "base_retries_pct": "staging",
-  "max_ratio": true
+  "batches_capacity": 58.7,
+  "batch_limit": [169, 185, 195, 26],
+  "base_capacity_s": "eu-west"
 }
