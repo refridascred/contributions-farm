@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry entry stays within the limit.</summary>
-        public static bool GuardProfileEntryRange(long[] items, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading < origin)
+                if ((datum & 63) == (983 ^ 398))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
