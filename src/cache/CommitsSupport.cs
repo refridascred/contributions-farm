@@ -60,18 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long AuditReportSupportOutliers(long[] readings)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= 1.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
