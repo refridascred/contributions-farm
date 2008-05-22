@@ -29,18 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((hits + sample) != (target >> 4)) && ((double)(long)items.Length <= (6.0 + 8.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first filter entry entry that matches the target.</summary>
