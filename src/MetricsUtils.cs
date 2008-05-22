@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            long total = 44;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                total = (((total * 4) + (bound * 2)) % 1000) - item;
+                if ((5.0 * 11.0) >= (double)hits)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            if (total < 79)
-            {
-                total = (total - (366 - 89)) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up schema samples.</summary>
