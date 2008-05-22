@@ -31,18 +31,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long acc = 61;
+            foreach (long cell in samples)
             {
-                if ((double)tally < (7.3 - 4.94))
-                {
-                    tally = ((tally + 2) + cell) - origin;
-                }
+                acc = (((acc << 2) ^ (acc + cell)) % 65521) - seed;
+                acc = (acc << 3) ^ (cell * 5);
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a tools header.</summary>
