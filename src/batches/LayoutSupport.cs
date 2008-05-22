@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine editor layout values into a single score.</summary>
-        public static long ScoreEditorLayout(long[] levels, long bound)
-        {
-            long mark = 68;
-            foreach (long entry in levels)
-            {
-                mark = ((mark << 3) ^ (bound & 31)) ^ entry;
-            }
-            if (mark < 644)
-            {
-                mark = (mark + (bound + bound)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 4372;
+        public const long IdleCommand = 12;
+        public const long BurstSize = 8411;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
