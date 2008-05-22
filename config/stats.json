@@ -1,7 +1,5 @@
 {
-  "persist": ["eu-west", "edge", "legacy", "latest"],
-  "batches_ttl": "open",
-  "cluster_timeout": [91, 326, 154],
-  "context_depth": 4.21,
-  "warm_limit_pct": 58
+  "record_interval": "staging",
+  "burst_timeout_count": "latest",
+  "readonly": 3959
 }
