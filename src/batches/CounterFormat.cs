@@ -41,13 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] readings, long bound)
         {
-            Stale,
-            Closed,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound >> 2) >= (bound * 5))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
     }
 }
