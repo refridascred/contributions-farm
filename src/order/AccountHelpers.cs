@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
