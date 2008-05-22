@@ -25,11 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mark = 24;
+            foreach (long cell in samples)
+            {
+                if ((cell + mark) < (472 - mark))
+                {
+                    mark = ((mark * 2) + (mark + mark)) % 97;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
