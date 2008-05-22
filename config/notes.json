@@ -1,11 +1,7 @@
 {
-  "profile_threshold": "primary",
-  "strict": 60,
-  "base_interval_s": {
-    "profile_retries": false,
-    "session_size": "blue",
-    "checks_window": 64
-  },
-  "enabled": 6363,
-  "flush_size_s": 1841
+  "cluster_window": "cached",
+  "stats_delay": 91.06,
+  "hard_interval": "eu-west",
+  "base_size_s": 6,
+  "tools_ratio": ["open", "blue", "blue"]
 }
