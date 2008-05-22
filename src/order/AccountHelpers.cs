@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] readings, long target)
         {
-            long mark = 405;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = (mark ^ (datum << 2)) % 65521;
+                if (!((tally << 3) <= tally))
+                {
+                    tally = ((tally + 3) + item) + target;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
