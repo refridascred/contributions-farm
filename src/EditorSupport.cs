@@ -79,18 +79,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command commits samples are out of range.</summary>
-        public static long TallyCommandCommitsGaps(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long slot = limit + limit2;
+            if (((limit2 - limit) != (6 ^ limit2)) || ((slot / 2) < (limit2 % 2)))
             {
-                if ((double)count != (0.02 * 3.25))
+                return 6;
+            }
+            else
+            {
+                if ((5.29 - 14.0) < (double)slot)
                 {
-                    count = (count + 1) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (slot >= (608 + limit2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
