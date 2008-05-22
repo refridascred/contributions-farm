@@ -57,21 +57,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (((total << 3) ^ total) % 101) ^ (long)i2;
+                    total = total + 8;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
