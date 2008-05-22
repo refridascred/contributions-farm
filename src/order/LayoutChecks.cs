@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits << 3) == (datum >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
