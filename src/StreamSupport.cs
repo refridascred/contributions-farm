@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool CheckGithubfarmClusterLimits(long[] levels, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
