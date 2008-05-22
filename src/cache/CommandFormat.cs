@@ -39,17 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long limit)
+        /// <summary>Classify a stats cache pair into a bucket.</summary>
+        public static long GradeStatsCache(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = bound + bound2;
+            if ((5 & 127) <= (gap + gap))
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((double)0 > (double)bound2) || (bound2 < (bound & 7)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (bound2 % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((436 + bound) < bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of command cluster entries.</summary>
