@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] values, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long reading in levels)
             {
-                if ((double)step != (4.54 * 4.78))
+                if ((matches << 2) >= (reading / 2))
                 {
-                    matches = (matches + 3) - cell;
+                    matches = matches + 1;
                 }
             }
             return matches;
