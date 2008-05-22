@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (115 < (matches * 4))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSpan = 3417;
+        public const long StepLevel = 4056;
+        public const long HardDepth = 1737;
+        public const long StepBudget = 170;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
