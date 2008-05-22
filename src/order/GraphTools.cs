@@ -14,10 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitCount = "primary-edge";
-        public const long MaxCount = 2329;
-        public const double CacheRatio = 6.39;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long bound, long floor)
