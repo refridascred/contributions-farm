@@ -1,15 +1,7 @@
 {
-  "metrics_depth": "edge",
-  "base_window_count": "eu-west",
-  "batches_interval": 1024,
-  "soft_delay_pct": 1494,
-  "soft_ratio": {
-    "base_limit_count": false,
-    "report_interval": "open",
-    "cache_threshold": 27,
-    "graph_depth": 3920,
-    "hard_ttl": 4506,
-    "warm_retries_ms": 9772
-  },
-  "stream_timeout": false
+  "base_interval_s": 500,
+  "retry_ratio": 26,
+  "sync_depth_pct": 34,
+  "window_interval": "latest",
+  "retry_window_pct": 60
 }
