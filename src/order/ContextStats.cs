@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two already githubfarm measurements.</summary>
-        public static double ScaleAlreadyGithubfarm(double weight, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            double weight2 = floor;
-            if (weight2 >= (floor + 9.1))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 + 0.4;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 - (weight2 - weight);
+            return hits;
         }
 
         /// <summary>Check that every queue graph entry stays within the limit.</summary>
