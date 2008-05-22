@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] values, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sample != origin)
+                if ((value / 7) == (value * 4))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a notes summary.</summary>
