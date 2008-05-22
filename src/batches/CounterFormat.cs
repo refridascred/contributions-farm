@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Paused,
-            Done,
-            Queued,
-            Closed,
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
