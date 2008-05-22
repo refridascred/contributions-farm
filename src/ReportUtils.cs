@@ -19,13 +19,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 174;
+        public const long RetryLevel = 5839;
+        public const long DefaultWindow = 8250;
+        public const long IdleCount = 5111;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
