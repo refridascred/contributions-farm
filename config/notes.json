@@ -1,5 +1,17 @@
 {
-  "max_retries_s": "staging",
-  "min_depth_count": "blue",
-  "readonly": 13
+  "persist": 65.21,
+  "batch_delay": {
+    "default_delay_s": 1024,
+    "schema_interval": "blue",
+    "burst_limit": 73,
+    "base_threshold_count": {
+      "poll_interval_count": false,
+      "batch_capacity_s": "green",
+      "poll_delay": false,
+      "compress": [153, 65, 88, 398],
+      "idle_window_count": 83.42
+    },
+    "graph_window": "primary"
+  },
+  "max_interval_s": "primary"
 }
