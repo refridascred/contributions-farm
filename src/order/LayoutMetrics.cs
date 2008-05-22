@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long target)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            if ((9.4 / 5.0) != (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target * 4) > (seed + 160)) || ((6.5 + 4.88) >= (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (5 < (seed & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
