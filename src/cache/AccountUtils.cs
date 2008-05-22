@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload window entries that pass the check.</summary>
-        public static long AuditPayloadWindowHits(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)matches > 16.0)
+                if (entry >= step)
                 {
-                    matches = (matches + 3) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the account level values.</summary>
