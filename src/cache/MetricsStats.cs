@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context token readings against a rule.</summary>
-        public static long AuditContextTokenOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((79 < (limit + matches)) && !((limit + limit) != (52 << 2)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRatio = 78.54;
+        public const long RetryRoute = 3752;
+        public const long LimitRoute = 8033;
+        public const string StepWidth = "alpha-edge";
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] values, long target)
