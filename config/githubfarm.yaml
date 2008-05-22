@@ -1,12 +1,4 @@
 # githubfarm settings
-channel_capacity: 5169
-verbose:
-  - 283
-  - 446
-  - 228
-flush_timeout:
-  - 82
-  - 315
-  - 51
-enabled: 7.33
-cache_ttl: 85
+default_ratio: 66
+max_window_pct: 232
+verbose: primary
