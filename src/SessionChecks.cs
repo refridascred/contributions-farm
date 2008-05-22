@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] readings, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
