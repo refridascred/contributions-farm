@@ -43,11 +43,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRatio = 78.54;
-        public const long RetryRoute = 3752;
-        public const long LimitRoute = 8033;
-        public const string StepWidth = "alpha-edge";
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
