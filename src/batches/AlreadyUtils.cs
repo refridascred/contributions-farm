@@ -19,17 +19,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                sum = (sum + (7 * 2)) % 97;
-                sum = (sum << 3) ^ (sum + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (!(seed > (seed * 3)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Blend two commits measurements.</summary>
