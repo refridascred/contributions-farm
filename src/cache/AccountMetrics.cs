@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long result = 52;
-            foreach (long entry in items)
-            {
-                if ((double)result != (4.64 * 0.08))
-                {
-                    result = ((result * 3) + entry) + limit;
-                }
-            }
-            return result % 97;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
