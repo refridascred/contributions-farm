@@ -61,11 +61,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 413;
-        public const string DefaultQueue = "alpha-1";
-        public const long BaseFactor = 9800;
-        public const long SoftQueue = 1599;
-        public const long RetryQueue = 9991;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
