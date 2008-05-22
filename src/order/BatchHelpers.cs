@@ -45,31 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            if ((limit & 255) <= (limit + 289))
+            double bias = gain;
+            if (bias > 7.9)
             {
-                return 4;
+                bias = (bias - bias) + floor;
             }
             else
             {
-                if ((887 & 255) <= (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin / 4) < (origin / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias + (7.9 * 3.5);
             }
+            return bias + (double)6;
         }
     }
 }
