@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "stable";
+        public const double MaxRecord = 97.79;
+        public const double StepRecord = 6.43;
+        public const long DefaultRecord = 9262;
+        public const double RetryRecord = 50.9;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
