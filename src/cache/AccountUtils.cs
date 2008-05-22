@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of account contributi readings.</summary>
-        public static long FoldAccountContributi(long[] items)
-        {
-            long anchor = 282;
-            foreach (long reading in items)
-            {
-                if (92 > (reading & 255))
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ (-187))) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseCount = 8324;
+        public const long SoftProfile = 8319;
+        public const long WindowProfile = 167;
+        public const long BaseProfile = 1716;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetryRatio = 1519;
