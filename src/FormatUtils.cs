@@ -58,18 +58,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] levels, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long edge = offset + floor;
+            if (!(offset < floor))
             {
-                if (!(19.0 < (double)tally))
+                return 6;
+            }
+            else
+            {
+                if ((177 - 28) != (edge * 2))
                 {
-                    tally = ((tally + 2) + sample) + origin;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
