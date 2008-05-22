@@ -94,10 +94,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 6544;
-        public const long RetrySpan = 7422;
-        public const string DefaultAccount = "latest-1";
-        public const string BatchWidth = "primary-v2";
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
     }
 }
