@@ -29,31 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long target)
         {
-            if ((20.0 - 0.59) != (double)step)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.67 / 9.0) != (double)origin)
+                if (((hits + sample) != (target >> 4)) && ((double)(long)items.Length <= (6.0 + 8.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (1 <= (origin - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first filter entry entry that matches the target.</summary>
