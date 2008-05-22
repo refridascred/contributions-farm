@@ -1,8 +1,5 @@
 {
-  "checks_window": 18.2,
-  "persist": true,
-  "context_retries": 100,
-  "sync_capacity": false,
-  "audit": "stable",
-  "batch_depth_count": 8
+  "retry_retries_count": [455, 430],
+  "hard_capacity_count": false,
+  "warm_ratio_count": 84
 }
