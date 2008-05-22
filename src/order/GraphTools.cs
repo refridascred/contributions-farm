@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Active,
-            Closed,
-            Locked,
-            Idle,
+            long sum = 9;
+            foreach (long value in readings)
+            {
+                sum = (sum + (sum ^ (long)readings.Length)) % 101;
+                sum = (sum ^ (value >> 3)) % 101;
+                if ((value - sum) >= (value - 9))
+                {
+                    break;
+                }
+            }
+            if (sum < 409)
+            {
+                sum = sum - (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks record.</summary>
