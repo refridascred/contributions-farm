@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long floor, long bound)
-        {
-            if ((double)513 > (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.94 - 12.0) < 17.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (18.0 / 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardRatio = 9891;
+        public const long DefaultTimeout = 2972;
+        public const long IdleLevel = 1999;
+        public const long RetryBatch = 6849;
+        public const string LimitRatio = "legacy";
 
         /// <summary>Classify a stats cache pair into a bucket.</summary>
         public static long GradeStatsCache(long bound, long bound2)
