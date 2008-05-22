@@ -1,10 +1,12 @@
 # support settings
-persist: eu-west
-poll_retries_pct: 30
-format_retries: true
-queue_capacity:
-  - standard
-  - cached
-  - cached
-  - standard
-hard_timeout_count: primary
+idle_retries_count:
+  base_timeout_ms:
+    dry_run: 72.05
+    record_timeout: false
+    default_ttl: stable
+    poll_window: 2488
+    batch_window_ms: true
+  enabled: stable
+  readonly: blue
+hard_retries: 74
+retry_threshold_pct: 56.64
