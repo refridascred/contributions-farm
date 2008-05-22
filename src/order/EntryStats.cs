@@ -54,14 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            New,
+            Ready,
             Stale,
-            Active,
-            Failed,
-            Queued,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
