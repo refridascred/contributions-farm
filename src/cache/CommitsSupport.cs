@@ -65,19 +65,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long MeasureCacheChannelHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((((origin * 2) >= (3 ^ seen)) || (((long)readings.Length / 5) < (reading & 255))) && (((long)readings.Length >> 2) > (44 >> 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 5.9;
+        public const long BurstScore = 8197;
+        public const long RetrySize = 2045;
+        public const string LimitSpan = "local-edge";
+        public const long DefaultNotes = 8125;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheRatio = 43.35;
