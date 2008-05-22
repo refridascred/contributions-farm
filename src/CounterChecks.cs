@@ -57,19 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
         {
-            double drift = 3.86;
-            if (drift < (double)0)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - ratio;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (bias - ratio)) + (double)(long)i;
-            }
-            return drift - (double)520;
+            return -1;
         }
     }
 }
