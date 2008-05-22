@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseScore = 6604;
+        public const long RetryBatches = 1281;
+        public const long MinWidth = 1009;
+        public const double WindowBatches = 12.21;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 984;
