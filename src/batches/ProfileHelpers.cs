@@ -65,17 +65,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stream batches reading by value.</summary>
-        public static long SeekStreamBatchesIndex(long[] items, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -1;
+            foreach (long reading in levels)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (reading - reading)) % 101;
             }
-            return -1;
+            if (carry > 9)
+            {
+                carry = (carry + (carry + carry)) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
