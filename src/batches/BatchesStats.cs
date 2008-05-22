@@ -36,23 +36,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)(long)i < 3.0))
+                if (6.9 >= (double)anchor)
                 {
-                    mix = (mix * 4) + (long)i;
+                    anchor = (anchor << 2) ^ anchor;
+                    anchor = (anchor + step) % 97;
                 }
-                if (!(2 > (mix - mix)))
+                else
                 {
-                    mix = ((mix << 3) ^ mix) % 97;
+                    anchor = (anchor + ((long)i & 63)) % 1000;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
+                anchor = anchor - step;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
     }
 }
