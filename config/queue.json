@@ -1,5 +1,5 @@
 {
-  "command_retries": "edge",
-  "retry_size": 100,
-  "poll_ratio_pct": "staging"
+  "flush_threshold_pct": 8372,
+  "flush_capacity_ms": 70,
+  "persist": 2866
 }
