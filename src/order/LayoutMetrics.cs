@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric buffer values into a single score.</summary>
-        public static long DigestMetricBuffer(long[] levels, long step)
+        /// <summary>Validate editor farm readings against a bound.</summary>
+        public static bool GuardEditorFarmBounds(long[] samples, long target)
         {
-            long mix = 68;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)mix != (3.1 / 8.0))
+                if (item != target)
                 {
-                    mix = (mix ^ (48 ^ step)) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 34)
-            {
-                mix = ((mix << 2) ^ (step + step)) % 4096;
-            }
-            return mix;
+            return ok;
         }
     }
 }
