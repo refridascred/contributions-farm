@@ -1,6 +1,7 @@
-id,count,label,rank
-1,179,309,79.48
-2,202,224,378
-3,eu-west,standard,open
-4,88.5,86.63,7
-5,781,57.24,545
+id,state,rank
+1,staging,493
+2,open,98.15
+3,316,411
+4,38.49,blue
+5,staging,72.93
+6,496,567
