@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 314;
-            foreach (long value in values)
-            {
-                if ((double)result >= (7.2 / 4.0))
-                {
-                    result = (((result * 3) + (value - (long)values.Length)) % 101) - floor;
-                }
-            }
-            return result % 65521;
+            Closed,
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
