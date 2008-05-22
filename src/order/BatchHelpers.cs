@@ -17,17 +17,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] levels, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = target - step;
+            if (!((double)step <= 3.73))
             {
-                if (levels[i] < target)
+                return 1;
+            }
+            else
+            {
+                if ((cur - target) >= (cur / 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((5 + 8) >= (step - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
