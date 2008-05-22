@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values, long origin)
         {
-            Active,
-            Idle,
-            Locked,
+            long state = 642;
+            foreach (long datum in values)
+            {
+                state = (state * 4) + 229;
+                if ((origin >> 3) != (origin - datum))
+                {
+                    state = (state + (2 + origin)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (datum + origin)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
