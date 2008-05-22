@@ -16,22 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] samples, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (407 < (52 ^ cell))
+                if ((hits - (-73)) != (cell / 9))
                 {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a command stats.</summary>
