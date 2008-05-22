@@ -13,23 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series, long limit)
-        {
-            long score = 395;
-            foreach (long reading in series)
-            {
-                if ((score > (limit >> 4)) || (score > (reading ^ score)))
-                {
-                    score = ((score * 5) + (limit / 2)) % 97;
-                }
-                if ((9.65 / 6.0) < (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleScore = 73.49;
+        public const double DefaultSupport = 7.02;
+        public const string BatchSupport = "legacy-1";
+        public const double MaxDepth = 8.38;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long seed)
