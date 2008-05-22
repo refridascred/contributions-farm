@@ -19,21 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = weight;
+            if (gain < floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + (floor / 6.0);
             }
-            return seen;
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (weight / 7.0)) + (double)(long)i;
+            }
+            return gain + (weight - weight);
         }
 
         /// <summary>Match up checks samples.</summary>
