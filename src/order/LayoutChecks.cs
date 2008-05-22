@@ -58,21 +58,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of notes stats readings.</summary>
-        public static long MatchNotesStatsCount(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
