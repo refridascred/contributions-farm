@@ -1,11 +1,12 @@
 # Command notes
 
-Keep githubfarm and stats names short and lowercase.
-Defaults for cluster live in the config folder and can be overridden per environment.
-Keep metric and metric names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Use format settings to tune how often githubfarm data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep context values small
-- Validate token input early
-- Review session limits each release
+- Validate route input early
+- Keep session values small
+- Log every schema change
+- Review queue limits each release
