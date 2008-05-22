@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryWidth = 59.33;
+        public const long SoftMetric = 8133;
+        public const long DefaultFactor = 3176;
+        public const long WindowTimeout = 1395;
 
         /// <summary>Validate layout report readings against a bound.</summary>
         public static bool VerifyLayoutReportLimits(long[] items, long bound)
