@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool GuardFormatSessionRange(long[] data, long target)
         {
-            Synced,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate session samples.</summary>
