@@ -1,19 +1,4 @@
 # githubfarm settings
-audit: stable
-metrics_retries: edge
-poll_ratio_pct:
-  - 187
-  - 290
-  - 198
-  - 115
-compress:
-  flush_ttl: blue
-  min_threshold:
-    - blue
-    - eu-west
-    - edge
-  notes_size:
-    - green
-    - staging
-    - green
-    - fallback
+hard_timeout: false
+payload_delay: 18
+support_ttl: blue
