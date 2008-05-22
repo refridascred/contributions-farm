@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
