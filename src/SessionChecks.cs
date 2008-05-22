@@ -54,11 +54,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "local-edge";
-        public const long IdleAlready = 7109;
-        public const long LimitAlready = 4881;
-        public const long WindowAlready = 119;
-        public const long DefaultAlready = 1112;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Queued,
+            Pending,
+            Locked,
+            Synced,
+            Retry,
+        }
     }
 }
