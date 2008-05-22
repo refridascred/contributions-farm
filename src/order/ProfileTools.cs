@@ -20,14 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Stale,
-            Draft,
-            Queued,
-            New,
-            Pending,
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
