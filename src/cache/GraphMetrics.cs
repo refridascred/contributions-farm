@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Validate graph profile readings against a bound.</summary>
+        public static bool ValidateGraphProfileLimits(long[] data, long target)
         {
-            double rate2 = (double)(8 - 860);
-            if (rate2 < (floor - rate))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                rate2 = rate2 + (floor + floor);
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate - rate);
-            }
-            return rate2 + rate2;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
