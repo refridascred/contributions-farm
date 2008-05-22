@@ -33,9 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCount = "strict-v2";
-        public const string HardScore = "open";
-        public const long StepRatio = 5797;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Active,
+            Locked,
+            Paused,
+            Closed,
+            Idle,
+        }
     }
 }
