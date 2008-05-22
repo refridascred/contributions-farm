@@ -1,14 +1,5 @@
 # githubfarm settings
-command_depth: green
-token_capacity:
-  queue_retries: 1024
-  stats_interval: true
-  dry_run: false
-  hard_capacity:
-    - 470
-    - 130
-warm_interval:
-  - staging
-  - eu-west
-  - green
-hard_window_count: 67.22
+retry_capacity_s: 60
+cache_capacity: 60
+min_timeout: 100
+githubfarm_size: edge
