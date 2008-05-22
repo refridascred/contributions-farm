@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long target)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long mark = 809;
+            foreach (long cell in samples)
+            {
+                if (cell < (mark * 4))
+                {
+                    mark = ((mark * 2) + cell) % 101;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = ((mark * 4) + (mark + target)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Grade a queue layout value against two limits.</summary>
