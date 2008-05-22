@@ -71,14 +71,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Stale,
-            Draft,
-            Queued,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxRatio = 926;
+        public const string IdleLevel = "alpha-v2";
+        public const double WindowEditor = 69.38;
+        public const long IdleEditor = 5716;
+        public const long HardEditor = 2430;
     }
 }
