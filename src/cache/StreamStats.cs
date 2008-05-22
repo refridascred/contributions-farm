@@ -24,14 +24,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstFactor = 83.26;
+        public const double WindowOrder = 67.75;
+        public const double RetryOrder = 42.23;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
