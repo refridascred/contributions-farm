@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinSpan = "cached-edge";
-        public const double BurstChannel = 61.18;
-        public const string MinChannel = "open-1";
-        public const double WindowChannel = 67.08;
-        public const double MaxChannel = 72.01;
+        /// <summary>Check that every checks support entry stays within the limit.</summary>
+        public static bool ValidateChecksSupportBounds(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] levels)
