@@ -67,12 +67,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
+        public static long MatchMetricsProfileCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
