@@ -79,9 +79,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxSize = "fallback-edge";
-        public const double MaxBuffer = 37.54;
-        public const long IdleBuffer = 6403;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardSpan = "local-1";
+        public const double IdleTimeout = 95.84;
+        public const double MaxProfile = 12.08;
+        public const long LimitProfile = 3972;
     }
 }
