@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 7592;
-        public const long StepSpan = 8650;
-        public const long CacheNotes = 3060;
-        public const string IdleRatio = "strict-v2";
+        /// <summary>Find the first batch metrics entry that matches the target.</summary>
+        public static long LocateBatchMetricsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] samples, long step)
