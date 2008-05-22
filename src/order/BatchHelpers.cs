@@ -38,22 +38,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long floor)
         {
-            long anchor = 332;
-            foreach (long reading in samples)
+            if ((floor * 4) < (step & 1))
             {
-                if ((double)anchor >= (double)origin)
+                return 3;
+            }
+            else
+            {
+                if (2.4 < (double)floor)
                 {
-                    anchor = (((anchor * 3) + 7) % 101) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - floor) != (step - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((136 * 3) > step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (anchor > 464)
-            {
-                anchor = ((anchor * 5) + (anchor - 13)) % 97;
-            }
-            return anchor % 97;
         }
     }
 }
