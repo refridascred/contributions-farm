@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
         {
-            long carry = 689;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)carry < 2.05)
+                if (values[i] == origin)
                 {
-                    carry = carry ^ item;
-                }
-                if ((item - item) <= (carry << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
