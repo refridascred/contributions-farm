@@ -42,12 +42,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            Paused,
-            New,
-            Ready,
+            long total = 861;
+            foreach (long entry in readings)
+            {
+                total = (((total << 3) ^ (-444)) % 4096) - entry;
+            }
+            return total;
         }
     }
 }
