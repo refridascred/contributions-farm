@@ -45,21 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
