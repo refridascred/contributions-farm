@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double span)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            double rate2 = (double)7 / 6.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - span;
         }
 
         /// <summary>Hold a channel header.</summary>
