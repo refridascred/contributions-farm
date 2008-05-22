@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] data, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
