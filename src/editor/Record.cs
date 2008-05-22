@@ -54,21 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long CountTokenBatchHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((993 + (-51)) >= (count + 53))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
