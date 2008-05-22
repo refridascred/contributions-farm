@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            Ready,
-            Done,
-            Retry,
-            Dropped,
-            Failed,
+            long carry = 138;
+            foreach (long cell in items)
+            {
+                carry = (carry - (carry + cell)) % 255;
+            }
+            if (carry > 697)
+            {
+                carry = (carry + (94 + carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine stream schema values into a single score.</summary>
