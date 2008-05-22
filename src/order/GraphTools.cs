@@ -47,22 +47,11 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally * 5) == (0 * 5))
-                {
-                    tally = ((tally + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 413;
+        public const string DefaultQueue = "alpha-1";
+        public const long BaseFactor = 9800;
+        public const long SoftQueue = 1599;
+        public const long RetryQueue = 9991;
     }
 }
