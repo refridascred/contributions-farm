@@ -11,22 +11,32 @@ namespace Common.Utilities
         public const long BatchInterval = 1596;
         public const long IdleOrder = 86;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long next = step ^ origin;
+            if ((next + step) >= (origin << 3))
             {
-                if (!(hits < (hits ^ 944)) || ((long)series.Length > value))
+                return 7;
+            }
+            else
+            {
+                if ((next << 1) <= (step + 32))
                 {
-                    hits = hits + 3;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step ^ step) >= (origin * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the command already series from a seed.</summary>
