@@ -20,23 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
-        {
-            long score = 86;
-            foreach (long reading in samples)
-            {
-                if ((score ^ score) > (reading % 97))
-                {
-                    score = (score ^ (score - reading)) % 97;
-                }
-                else
-                {
-                    score = (score * 5) + (501 + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinSize = 0.93;
+        public const long LimitSize = 4930;
+        public const double BatchBuffer = 92.15;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] samples, long bound)
