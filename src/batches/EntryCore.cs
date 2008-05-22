@@ -29,13 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result * 5) + (limit + result);
+                result = (result * 4) + result;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first account window entry that matches the target.</summary>
