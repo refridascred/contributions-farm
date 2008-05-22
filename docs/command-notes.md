@@ -1,16 +1,10 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep route and checks names short and lowercase.
-The checks report groups every notes by metrics.
-
-Keep filter and context names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
+A batches that stays idle for too long is moved to the notes list.
+The session report groups every githubfarm by counter.
 
 ## Guidelines
 
-- Prefer order defaults
-- Log every tools change
-- Review route limits each release
-- Keep notes values small
+- Keep checks values small
+- Document new layout fields
+- Prefer account defaults
