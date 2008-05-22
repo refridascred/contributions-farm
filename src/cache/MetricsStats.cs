@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 8791;
         public const double BurstBudget = 57.08;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long target)
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long CountRouteAccountHits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading != target)
+                if (5.98 >= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
