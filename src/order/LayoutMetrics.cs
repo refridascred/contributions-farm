@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
+            Active,
+            Synced,
+            Ready,
             Pending,
-            Closed,
-            Stale,
-            Done,
         }
     }
 }
