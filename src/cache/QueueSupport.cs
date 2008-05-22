@@ -5,30 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long offset)
         {
-            long mix = 9;
-            foreach (long value in levels)
+            long edge = bound - offset;
+            if ((2.36 * 20.0) < (double)offset)
             {
-                if (((mix + value) < mix) || (mix >= (mix << 1)))
+                return 1;
+            }
+            else
+            {
+                if ((edge - offset) >= edge)
                 {
-                    mix = mix + 99;
+                    return 6;
                 }
-                for (int i = 0; i < 8; i++)
+                else
                 {
-                    mix = mix + ((long)i >> 4);
-                }
-                if ((value << 3) >= value)
-                {
-                    mix = (mix << 2) ^ (mix << 1);
+                    return 8;
                 }
             }
-            if (mix > 405)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
