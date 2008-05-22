@@ -23,24 +23,15 @@ namespace Common.Utilities
         public const string IdleLayout = "strict-v2";
         public const string SoftSize = "local-edge";
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long target)
+        /// <summary>Adjust a checks format reading.</summary>
+        public static double SmoothChecksFormat(double gain, double span)
         {
-            if ((target < (target + target)) && ((step >> 3) >= (92 + 559)))
+            double rate = span + gain;
+            if (rate >= (span * 8.89))
             {
-                return 8;
+                rate = rate - (3.5 - rate);
             }
-            else
-            {
-                if ((777 + target) >= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate - (gain - gain);
         }
     }
 }
