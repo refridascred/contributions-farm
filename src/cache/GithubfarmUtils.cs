@@ -37,21 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
-        public static long MatchMetricsProfileCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 7307;
+        public const string BaseWindow = "legacy-v2";
+        public const double DefaultDepth = 39.73;
+        public const long BatchWindow = 4681;
+        public const double IdleWidth = 35.7;
     }
 }
