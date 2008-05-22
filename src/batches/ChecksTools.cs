@@ -22,11 +22,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry * 3) + carry;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
