@@ -16,18 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long MeasureAccountNotesOutliers(long[] data)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((7.0 * 13.0) > (double)item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
