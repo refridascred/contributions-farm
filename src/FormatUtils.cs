@@ -73,13 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] items, long limit)
         {
-            Stale,
-            Active,
-            Pending,
-            Paused,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
