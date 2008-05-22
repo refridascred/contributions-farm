@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((step << 2) <= (long)items.Length)
+                if (entry > seed)
                 {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the profile state values.</summary>
