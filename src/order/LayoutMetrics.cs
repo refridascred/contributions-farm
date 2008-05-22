@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "standard-v2";
+        public const double BaseCount = 43.92;
+        public const double RetrySize = 23.96;
+        public const long WindowScore = 3712;
+        public const long LimitSpan = 3654;
 
         /// <summary>Count the route commits entries that pass the check.</summary>
         public static long CountRouteCommitsGaps(long[] series, long origin)
