@@ -1,7 +1,7 @@
 {
-  "poll_delay_ms": 12,
-  "order_limit": "stable",
-  "filter_ratio": 997,
-  "burst_ratio_ms": "stable",
-  "warm_depth_s": 56.28
+  "strict": 1174,
+  "default_delay": 500,
+  "soft_size_count": "eu-west",
+  "batch_ttl": 55.2,
+  "base_window_count": 15.63
 }
