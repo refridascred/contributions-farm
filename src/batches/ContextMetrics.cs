@@ -43,17 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] values, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a support entry.</summary>
