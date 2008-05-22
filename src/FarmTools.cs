@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
