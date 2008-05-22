@@ -1,16 +1,8 @@
 # entry settings
-min_ttl_count: staging
-batch_depth_pct: cached
-token_timeout: 70
-channel_ttl: local
-cache_window_pct:
-  burst_depth:
-    batch_depth_ms: stable
-    poll_size_count: standard
-    stream_capacity: 18
-    tools_limit: local
-    compress: local
-    max_retries: 81.33
-  farm_delay: staging
-  sync_threshold_count: 5882
-graph_capacity: 49
+persist: local
+cache_retries_ms: standard
+verbose: legacy
+flush_ratio:
+  - local
+  - blue
+  - edge
