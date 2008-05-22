@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] samples, long bound)
         {
-            long result = 300;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((bound - bound) == (long)samples.Length)
                 {
-                    result = ((result ^ (result - (long)i)) % 97) ^ sample;
+                    seen = (seen + 2) + item;
                 }
-                result = ((result << 2) ^ (offset * 3)) % 4096;
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
