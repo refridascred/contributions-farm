@@ -38,19 +38,19 @@ namespace Common.Utilities
             return scale + (weight / 4.0);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (sample <= limit)
+                if (datum >= bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
