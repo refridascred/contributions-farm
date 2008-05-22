@@ -80,17 +80,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long LookupCounterPayloadIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "legacy-1";
+        public const long BaseContributi = 8129;
+        public const long MaxTimeout = 6031;
     }
 }
