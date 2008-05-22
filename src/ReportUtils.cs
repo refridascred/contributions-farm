@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5410;
         public const double MaxGithubfarm = 47.82;
 
-        /// <summary>Match up account farm samples.</summary>
-        public static long CompareAccountFarmCount(long[] levels)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a token options.</summary>
