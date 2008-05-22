@@ -15,10 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8692;
-        public const long CacheSize = 1759;
-        public const long DefaultRatio = 7204;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] values, long seed)
