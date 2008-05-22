@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
             Ready,
-            Done,
-            Pending,
-            Draft,
-            Locked,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
