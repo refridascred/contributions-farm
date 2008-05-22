@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 9506;
+        public const long SoftLayout = 7690;
+        public const long IdleBudget = 8572;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] data, long offset)
