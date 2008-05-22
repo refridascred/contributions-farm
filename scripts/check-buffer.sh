@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=408
+log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback legacy local staging; do
+for item in green fallback blue stable; do
     log "checking ${item}"
 done
