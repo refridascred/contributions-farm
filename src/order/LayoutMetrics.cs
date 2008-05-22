@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long offset)
         {
-            Failed,
-            Synced,
-            Pending,
+            long total = -87;
+            foreach (long value in data)
+            {
+                if (((value + total) <= (offset ^ offset)) || (value < (668 + total)))
+                {
+                    total = (total - (offset ^ value)) % 1000;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
