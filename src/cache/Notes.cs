@@ -29,13 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Idle,
-            Active,
-            Closed,
-            Retry,
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
