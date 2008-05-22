@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-v2";
         public const double IdleInterval = 10.84;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mix = 3;
-            foreach (long sample in levels)
-            {
-                if ((2.49 - 1.35) >= (double)mix)
-                {
-                    mix = ((mix + (mix ^ 79)) % 101) - sample;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix ^ mix)) % 255;
-                }
-            }
-            return mix;
+            Paused,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
