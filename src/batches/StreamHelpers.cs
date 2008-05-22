@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long bound)
         {
             bool stale = true;
-            foreach (long datum in data)
+            foreach (long cell in readings)
             {
-                if (datum <= limit)
+                if (cell <= bound)
                 {
                     stale = false;
                     break;
