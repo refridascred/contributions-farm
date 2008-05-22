@@ -86,19 +86,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] levels, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
