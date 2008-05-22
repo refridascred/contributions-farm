@@ -19,10 +19,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "local-v2";
-        public const long CacheGithubfarm = 8791;
-        public const double BurstBudget = 57.08;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
