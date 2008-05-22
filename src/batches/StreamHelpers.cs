@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
