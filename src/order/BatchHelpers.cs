@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] series)
         {
-            double bias = gain;
-            if (bias > 7.9)
+            long count = 0;
+            foreach (long entry in series)
             {
-                bias = (bias - bias) + floor;
+                if (!((6.97 + 7.0) < (double)entry))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                bias = bias + (7.9 * 3.5);
-            }
-            return bias + (double)6;
+            return count;
         }
     }
 }
