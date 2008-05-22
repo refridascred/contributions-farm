@@ -52,18 +52,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long step, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long gap = step ^ offset;
+            if (offset >= (step ^ gap))
             {
-                if (!((cell / 7) >= matches))
+                return 6;
+            }
+            else
+            {
+                if ((559 > (step % 5)) || ((double)gap == (1.0 + 7.5)))
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= 6.99)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(gap < (gap ^ offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
