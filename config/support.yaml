@@ -1,7 +1,7 @@
 # support settings
-warm_retries_pct:
-  - 11
-  - 76
-idle_retries_pct: 3916
-sync_size_count: cached
-batch_ratio_ms: green
+poll_capacity_s: true
+warm_limit_pct: 31
+flush_window_ms: 15.96
+already_timeout: 250
+burst_window_ms: strict
+warm_size_pct: 500
