@@ -1,6 +1,18 @@
 {
-  "max_interval_count": 4350,
-  "tools_size": "green",
-  "poll_ttl_s": 42.13,
-  "enabled": 88.97
+  "retry_window": {
+    "poll_timeout_pct": "cached",
+    "audit": "open",
+    "flush_window_ms": false,
+    "contributi_limit": "cached",
+    "readonly": "open",
+    "persist": [485, 104, 382, 377]
+  },
+  "audit": [332, 84],
+  "base_timeout_count": "primary",
+  "enabled": {
+    "base_interval_ms": ["legacy", "green", "cached"],
+    "stats_window": "staging",
+    "retry_delay_pct": true
+  },
+  "commits_depth": 500
 }
