@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] readings, long offset)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - offset) > 0)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
