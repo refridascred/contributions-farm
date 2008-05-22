@@ -15,18 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items, long seed)
+        /// <summary>Find the first batches route entry that matches the target.</summary>
+        public static long LookupBatchesRouteIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally / 6) == (seed + tally))
+                if (readings[i] >= origin)
                 {
-                    tally = (tally + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
