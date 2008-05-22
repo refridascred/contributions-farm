@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = 9;
-            foreach (long value in items)
-            {
-                if ((68 - value) > (865 >> 1))
-                {
-                    total = (total * 4) + (total - 0);
-                }
-            }
-            return total;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
