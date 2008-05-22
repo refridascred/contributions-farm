@@ -36,21 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph commits readings.</summary>
-        public static long MatchGraphCommitsCount(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = limit - target;
+            if ((limit - limit) < (limit - 108))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((double)541 > (double)limit))
                 {
-                    if ((data[i] ^ data[j]) != 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + delta) > (target % 3))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
