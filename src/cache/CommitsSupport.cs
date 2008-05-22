@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (sample > offset)
+                if (value >= seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
