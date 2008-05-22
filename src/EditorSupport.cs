@@ -82,21 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric window pairs that satisfy a relation.</summary>
-        public static long MatchMetricWindowCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "alpha-1";
+        public const double BaseFactor = 45.4;
+        public const long LimitRecord = 8638;
+        public const string CacheSize = "local-edge";
+        public const long SoftCount = 5056;
     }
 }
