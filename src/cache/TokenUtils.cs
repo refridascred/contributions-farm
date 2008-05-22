@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long step)
         {
-            Stale,
-            Queued,
-            Idle,
-            Draft,
-            Synced,
+            if ((offset + step) <= (offset ^ step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= 59)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 127) <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step > (offset ^ offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
