@@ -28,21 +28,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (double)((-4) + 2);
+            if (ratio2 > (span * 0.6))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (double)2) - ratio;
             }
-            return matches;
+            return ratio2 - (double)89;
         }
     }
 }
