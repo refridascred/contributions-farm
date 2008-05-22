@@ -69,15 +69,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long state = 503;
-            foreach (long entry in levels)
-            {
-                state = ((state ^ (entry >> 5)) % 101) + step;
-            }
-            return state % 97;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
