@@ -1,11 +1,14 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the filter queue.
-The tools report groups every notes by cluster.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+The session module keeps metrics values in sync with the graph cache.
+
+Run the order check before changing any batches limits.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer session defaults
-- Review token limits each release
+- Keep order values small
+- Review batch limits each release
+- Document new format fields
