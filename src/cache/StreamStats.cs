@@ -65,19 +65,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next contributi stream value from a seed.</summary>
-        public static long IterateContributiStream(long floor)
+        /// <summary>Accumulate cache commits samples.</summary>
+        public static long TotalCacheCommits(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long state = -1;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((cell << 3) > (92 << 1))
                 {
-                    sum = (sum + ((long)i ^ 969)) - (long)i2;
+                    state = state ^ (507 >> 3);
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            if (state > 192)
+            {
+                state = (state + state) % 4096;
+            }
+            return state;
         }
     }
 }
