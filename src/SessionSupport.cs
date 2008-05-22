@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Audit stream buffer readings against a rule.</summary>
+        public static long MeasureStreamBufferGaps(long[] values, long offset)
         {
-            long mark = 414;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((1 < (mark ^ reading)) && ((mark - mark) > 41))
+                if ((double)value <= (3.0 / 3.0))
                 {
-                    mark = (mark * 4) + (mark << 3);
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark > 5)
-            {
-                mark = (mark << 3) ^ (140 % 60);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
