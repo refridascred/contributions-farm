@@ -33,21 +33,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the command class values.</summary>
