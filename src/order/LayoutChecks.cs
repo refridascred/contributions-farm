@@ -85,19 +85,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] items, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (entry >= offset)
+                if ((8.0 - 2.5) > (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ reading) - origin;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
