@@ -25,12 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
+            double scale = (ratio - ratio) * 9.0;
+            return (scale + (double)99) + span;
         }
 
         /// <summary>Hold a already record.</summary>
