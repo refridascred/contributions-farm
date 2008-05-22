@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long carry = 47;
-            foreach (long value in data)
-            {
-                if ((carry <= (916 - offset)) || (offset >= (value / 2)))
-                {
-                    carry = carry - (offset % 24);
-                }
-            }
-            return carry;
+            Closed,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Compare every pair of graph commits readings.</summary>
