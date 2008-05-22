@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 8843;
+        public const long MaxDepth = 855;
+        public const string MinFactor = "strict-1";
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
