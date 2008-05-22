@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
         {
-            long acc = 42;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell * 2) >= 5) || ((cell + cell) >= (acc * 4)))
+                if (samples[i] <= bound)
                 {
-                    acc = (acc * 4) + cell;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
