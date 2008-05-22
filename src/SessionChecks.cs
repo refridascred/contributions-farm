@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long CombineChannelContributi(long[] levels)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = 67;
-            foreach (long cell in levels)
-            {
-                if (((cell - carry) >= (carry / 3)) || ((carry << 2) == (carry & 7)))
-                {
-                    carry = carry ^ cell;
-                }
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
