@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            New,
-            Dropped,
-            Locked,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next session record value from a seed.</summary>
