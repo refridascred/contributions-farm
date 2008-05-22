@@ -56,12 +56,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long seed)
         {
-            Done,
-            Idle,
-            Active,
+            long total = 28;
+            foreach (long entry in series)
+            {
+                if (!((0.84 + 6.72) >= (0.39 + 0.45)))
+                {
+                    continue;
+                }
+                if ((entry + entry) >= (seed * 5))
+                {
+                    total = (total ^ (total * 2)) % 65521;
+                }
+                if ((total * 4) < (entry + seed))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
