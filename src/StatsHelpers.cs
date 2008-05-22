@@ -58,22 +58,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long GradeCounterReport(long target, long seed)
         {
-            long mark = -886;
-            foreach (long datum in levels)
+            if ((target & 15) > (seed + target))
             {
-                if ((8 > (datum * 4)) && ((mark % 100) == (datum / 6)))
+                return 0;
+            }
+            else
+            {
+                if ((target & 1) >= (631 + target))
                 {
-                    mark = (mark << 3) ^ mark;
+                    return 3;
                 }
                 else
                 {
-                    mark = (mark * 5) + (797 + mark);
+                    return 5;
                 }
             }
-            return mark;
         }
     }
 }
