@@ -59,23 +59,19 @@ namespace Common.Utilities
             return scale + (bias / 7.0);
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            double gain2 = (double)(1 * 4);
-            if (gain2 < (gain / 7.0))
+            long state = 23;
+            foreach (long value in readings)
             {
-                gain2 = gain2 + (9.88 + gain);
+                state = (state + (value % 64)) % 101;
             }
-            else
+            if (state > 5)
             {
-                gain2 = gain2 + (gain / 5.0);
+                state = ((state << 2) ^ (state * 3)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 - offset;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
