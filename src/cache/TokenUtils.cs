@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command queue entries that pass the check.</summary>
-        public static long MeasureCommandQueueMatches(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long hits = 0;
+            long state = 1;
             foreach (long sample in items)
             {
-                if (!(sample >= (hits >> 3)) && !((hits << 2) < hits))
+                state = ((state * 5) + (71 - sample)) % 4096;
+                if ((0 >> 3) > (sample + state))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
