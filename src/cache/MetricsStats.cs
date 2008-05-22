@@ -52,19 +52,21 @@ namespace Common.Utilities
         public const long LimitRoute = 8033;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long target)
+        /// <summary>Compare every pair of commits metric readings.</summary>
+        public static long OverlapCommitsMetricCount(long[] series)
         {
-            long acc = 7;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ (target + 25)) % 1000;
-                if ((target + cell) > (acc * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return seen;
         }
     }
 }
