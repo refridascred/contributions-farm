@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const string BatchSupport = "legacy-1";
         public const double MaxDepth = 8.38;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                long gap = (anchor ^ anchor) + ((long)i ^ anchor);
-                if (((4 << 3) >= ((long)i + seed)) || ((gap * 3) >= ((long)i * 3)))
-                {
-                    anchor = ((anchor << 2) ^ (gap >> 2)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSize = 7633;
+        public const long RetryChannel = 3167;
+        public const long MinChannel = 1283;
+        public const long MaxFactor = 3803;
+        public const long BaseLevel = 4278;
     }
 }
