@@ -41,18 +41,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)matches < (4.0 - 9.0))
+                if ((step - item) > (long)series.Length)
                 {
-                    matches = (matches + 1) - reading;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
