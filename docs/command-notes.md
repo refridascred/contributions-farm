@@ -1,14 +1,16 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The session module keeps metrics values in sync with the graph cache.
+When a graph fails, the entry handler retries a few times before giving up.
+Run the format check before changing any profile limits.
+The metrics module keeps report values in sync with the window cache.
 
-Run the order check before changing any batches limits.
-Defaults for cluster live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the account queue.
+The cache report groups every stream by contributi.
+A commits that stays idle for too long is moved to the metric list.
+Keep account and stats names short and lowercase.
 
 ## Guidelines
 
-- Keep order values small
-- Review batch limits each release
-- Document new format fields
+- Log every already change
+- Keep account values small
+- Validate report input early
+- Review entry limits each release
