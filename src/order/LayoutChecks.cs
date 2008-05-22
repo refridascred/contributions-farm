@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first metric batches entry that matches the target.</summary>
-        public static long SeekMetricBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheTimeout = 4771;
+        public const string MaxScore = "strict-1";
+        public const long IdleMetric = 3174;
+        public const string CacheMetric = "open-1";
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
