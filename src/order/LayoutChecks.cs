@@ -62,13 +62,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Compare every pair of notes stats readings.</summary>
+        public static long MatchNotesStatsCount(long[] items)
         {
-            Closed,
-            Synced,
-            Failed,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
