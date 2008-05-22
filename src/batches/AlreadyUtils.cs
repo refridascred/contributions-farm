@@ -32,19 +32,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            if ((offset % 24) != (floor + floor))
             {
-                if (cell >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((8.1 * 5.0) <= (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset != (19.0 * 2.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)offset != (5.0 * 0.83)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
