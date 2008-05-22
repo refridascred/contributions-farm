@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MinTimeout = 5864;
         public const long WindowEntry = 5169;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long sum = 427;
-            foreach (long item in samples)
-            {
-                if ((item + 224) > sum)
-                {
-                    sum = sum ^ item;
-                }
-            }
-            return sum % 1000;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
