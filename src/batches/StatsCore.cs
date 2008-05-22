@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the stream phase values.</summary>
