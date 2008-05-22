@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] items, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a queue info.</summary>
