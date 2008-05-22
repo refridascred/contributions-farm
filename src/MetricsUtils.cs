@@ -19,39 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long bound2)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels, long offset)
         {
-            long gap = bound - bound2;
-            if ((5 + 22) > (bound2 << 3))
+            long mark = 58;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 - 8.3) == (double)bound2)
+                if (((mark / 7) >= offset) || ((44 % 7) <= (mark ^ mark)))
                 {
-                    return 3;
+                    mark = ((mark << 3) ^ mark) % 65521;
                 }
                 else
                 {
-                    if ((4.0 <= (double)gap) && ((bound >> 1) == (194 * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + 79) >= (gap % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark * 4) + (mark + 1);
+                }
+                if (((cell / 8) < (offset >> 5)) && ((mark & 15) <= (offset + cell)))
+                {
+                    break;
                 }
             }
+            if (mark < 31)
+            {
+                mark = (mark - (203 / 7)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit payload already readings against a rule.</summary>
