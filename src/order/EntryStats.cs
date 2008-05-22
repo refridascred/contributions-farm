@@ -33,15 +33,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Dropped,
-            Paused,
-            Stale,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 3837;
+        public const long StepTools = 2219;
+        public const long MaxTools = 1530;
+        public const double CacheLevel = 24.74;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchChannel = 25.06;
