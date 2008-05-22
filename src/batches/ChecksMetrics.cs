@@ -34,16 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples)
-        {
-            long carry = 75;
-            foreach (long datum in samples)
-            {
-                carry = (carry ^ (413 + 4)) ^ datum;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseScore = "alpha-edge";
+        public const string BurstContext = "legacy-v2";
+        public const string CacheContext = "legacy-1";
+        public const long WindowWidth = 4987;
+        public const long WindowScore = 9159;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinInterval = 9343;
