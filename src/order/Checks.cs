@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long step)
         {
-            Ready,
-            Draft,
-            Active,
-            Dropped,
+            long carry = 1;
+            foreach (long cell in readings)
+            {
+                if ((step & 3) != (carry % 60))
+                {
+                    carry = carry + cell;
+                }
+                carry = ((carry << 3) ^ (step >> 3)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
