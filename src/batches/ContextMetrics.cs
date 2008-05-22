@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Measure how many context command samples are out of range.</summary>
+        public static long MeasureContextCommandOutliers(long[] levels, long bound)
         {
-            double weight = (bias - 14.0) / 5.0;
-            return (weight - (bias / 6.0)) + scale;
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (count < (count << 3))
+                {
+                    count = ((count + 2) + item) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
