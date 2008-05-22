@@ -1,11 +1,13 @@
 # support settings
-retry_threshold_s:
-  burst_size_s: green
-  soft_delay: local
-  burst_ttl:
-    editor_delay: 5526
-    verbose: true
-    route_depth: 34.08
-  batch_depth_ms: true
-min_depth_ms: false
-min_size_s: false
+base_size: primary
+hard_depth_count:
+  flush_interval_s: false
+  default_size_pct: 7.94
+  base_ttl_s:
+    warm_size_pct: 61.32
+    poll_window_s: 7139
+    cache_limit:
+      - 363
+      - 348
+      - 40
+sync_interval_ms: 97
