@@ -1,12 +1,12 @@
 # Command notes
 
-Keep cluster and layout names short and lowercase.
-When a token fails, the layout handler retries a few times before giving up.
-The githubfarm report groups every account by contributi.
+Use token settings to tune how often entry data is refreshed.
+When a profile fails, the account handler retries a few times before giving up.
+Each metrics is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new batch fields
-- Keep contributi values small
-- Validate stats input early
+- Validate metric input early
+- Prefer profile defaults
+- Review tools limits each release
+- Keep notes values small
