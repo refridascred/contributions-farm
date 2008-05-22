@@ -60,12 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Synced,
-            Idle,
-            Stale,
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
