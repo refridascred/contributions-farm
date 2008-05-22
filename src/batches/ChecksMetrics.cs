@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (anchor <= (target & 127))
+                {
+                    anchor = ((anchor * 2) + (target - target)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
