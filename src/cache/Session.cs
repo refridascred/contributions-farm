@@ -23,18 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long total = 746;
+            foreach (long reading in readings)
             {
-                if ((sample % 7) >= (79 % 3))
+                if (!(total > (total & 3)))
                 {
-                    hits = (hits + 1) - offset;
+                    total = total ^ 0;
+                    total = (total - (total + 13)) % 1000;
                 }
+                total = (total << 3) ^ (reading >> 2);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
