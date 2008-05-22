@@ -10,13 +10,38 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double IdleInterval = 39.64;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long origin)
         {
-            Locked,
-            New,
-            Closed,
-            Paused,
+            if ((9.8 + 18.0) < (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < (20.0 * 4.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed <= 4.26)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed << 2) == (origin * 4)) || (seed < (684 + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
