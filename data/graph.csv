@@ -1,9 +1,7 @@
-id,count,level,rank,weight
-1,blue,321,80.36,49.12
-2,legacy,primary,270,22.19
-3,48.44,cached,59.38,433
-4,fallback,910,25.16,legacy
-5,286,primary,green,standard
-6,52.97,472,424,858
-7,63.15,836,391,407
-8,staging,standard,strict,eu-west
+id,region,owner,state
+1,997,492,blue
+2,local,strict,primary
+3,195,93.96,471
+4,86.7,89.94,blue
+5,161,61.83,395
+6,42.44,0.62,8.88
