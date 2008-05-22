@@ -34,21 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of context stats readings.</summary>
-        public static long MatchContextStatsCount(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
