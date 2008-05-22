@@ -30,15 +30,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine payload contributi values into a single score.</summary>
-        public static long WeighPayloadContributi(long[] samples)
-        {
-            long acc = 238;
-            foreach (long value in samples)
-            {
-                acc = (acc + value) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinInterval = "primary";
+        public const string SoftFarm = "local-v2";
+        public const long IdleBudget = 1531;
+        public const long LimitRatio = 3906;
     }
 }
