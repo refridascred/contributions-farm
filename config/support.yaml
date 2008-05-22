@@ -1,34 +1,33 @@
 # support settings
-idle_threshold_pct: legacy
-sync_interval_ms: staging
-soft_interval_count:
-  warm_timeout_s:
-    batch_ratio: open
-    default_capacity: 5162
-    hard_ratio: 3
-    soft_ttl_ms: 6758
-    max_ttl_pct: cached
-    compress: 9496
-  poll_capacity: true
-  flush_interval_pct: cached
-  stream_interval:
-    audit: 23.45
-    flush_limit: 4057
-    flush_ttl_ms: 23.86
-    batch_retries:
-      - 496
-      - 94
-      - 43
-    entry_ttl: stable
-burst_retries_pct: standard
-persist:
-  default_ttl:
-    - local
+sync_ttl_count: 250
+flush_timeout_s:
+  warm_capacity: true
+  max_delay: 250
+  max_retries_pct: edge
+  max_ttl_count: 60
+  hard_interval: 8038
+  cache_window_count: standard
+idle_size_pct:
+  batch_size_s: 250
+  dry_run:
+    - 318
+    - 137
+  hard_threshold_pct:
+    - edge
+    - fallback
+    - fallback
+  default_size_ms:
+    - edge
     - standard
-  verbose:
     - open
-    - standard
-    - staging
-  default_timeout: local
-  persist: stable
-batches_size: green
+    - stable
+  metrics_timeout: 66
+cache_ttl_count:
+  flush_threshold_count: true
+  retry_size:
+    flush_timeout_pct: true
+    sync_timeout_s: 57.41
+    hard_ratio: 62.55
+    strict: 1024
+  strict: 125
+  cache_depth_s: 433
