@@ -20,22 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate route farm samples.</summary>
-        public static long TotalRouteFarm(long[] items, long bound)
+        /// <summary>Derive the next contributi session value from a seed.</summary>
+        public static long RollContributiSession(long offset)
         {
-            long anchor = 0;
-            foreach (long sample in items)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < anchor)
-                {
-                    anchor = anchor + (-84);
-                }
-                else
-                {
-                    anchor = anchor + (bound >> 2);
-                }
+                acc = ((acc << 3) ^ offset) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
