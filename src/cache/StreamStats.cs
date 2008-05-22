@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data, long floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((floor - tally) > reading) && ((32 < tally) || (tally > floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
