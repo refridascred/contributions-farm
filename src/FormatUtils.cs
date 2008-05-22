@@ -63,17 +63,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route filter sample.</summary>
-        public static long SeekRouteFilterIndex(long[] samples, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
