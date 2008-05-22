@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((tally * 3) <= 34) || ((double)datum <= 2.72)) && ((465 - datum) >= (tally << 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
