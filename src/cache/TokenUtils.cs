@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const double HardPayload = 95.78;
         public const string BaseWidth = "cached";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "strict-v2";
-        public const double CacheCluster = 82.42;
-        public const string StepFactor = "primary-edge";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            Done,
+            Retry,
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long RollRoute(long origin)
