@@ -26,12 +26,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long origin)
         {
-            Active,
-            Idle,
-            Ready,
+            if ((20.0 - 0.59) != (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.67 / 9.0) != (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 <= (origin - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
