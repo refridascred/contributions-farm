@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of counter editor readings.</summary>
+        public static long TotalCounterEditor(long[] items, long step)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long state = 66;
+            foreach (long value in items)
+            {
+                state = ((state ^ (step + (-420))) % 255) - value;
+            }
+            if (state > 3)
+            {
+                state = (state - (state & 3)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
