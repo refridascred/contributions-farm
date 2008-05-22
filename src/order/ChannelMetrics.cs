@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstDepth = "cached-edge";
+        public const double MinGithubfarm = 68.44;
+        public const long MinScore = 6925;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long StepMetrics(long floor)
