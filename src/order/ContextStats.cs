@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate command record readings against a bound.</summary>
+        public static bool CheckCommandRecordRange(long[] series, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two already githubfarm measurements.</summary>
