@@ -24,22 +24,22 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long AuditSchemaPayloadOutliers(long[] items, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((1.0 / 3.0) > (double)seed)
+                if ((double)step > (double)tally)
                 {
-                    count = (count + 1) - cell;
+                    tally = (tally + 2) + value;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
