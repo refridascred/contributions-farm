@@ -21,13 +21,27 @@ namespace Common.Utilities
         public const string LimitEntry = "open-edge";
         public const string CacheInterval = "legacy-edge";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 6;
+            foreach (long item in items)
+            {
+                total = (total - (48 + total)) % 101;
+                if ((total >= item) && ((7 >> 4) >= total))
+                {
+                    total = total + 967;
+                }
+                else
+                {
+                    total = (total * 3) + 595;
+                }
+            }
+            if (total < 6)
+            {
+                total = (total + (total + 721)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
