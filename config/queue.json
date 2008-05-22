@@ -1,5 +1,26 @@
 {
-  "flush_capacity": 60,
-  "queue_retries": true,
-  "poll_ttl_s": 30
+  "cluster_delay": {
+    "flush_interval_ms": 47,
+    "hard_capacity": "open",
+    "session_limit": "legacy",
+    "order_ttl": "latest"
+  },
+  "cache_depth": 2795,
+  "batches_depth": {
+    "hard_size_ms": 31,
+    "hard_ttl": {
+      "sync_ttl": false,
+      "base_window": 60.08,
+      "account_delay": 30,
+      "compress": "open"
+    },
+    "retry_limit": "standard",
+    "sync_window_count": {
+      "graph_ttl": "local",
+      "burst_interval_ms": 88.31,
+      "filter_timeout": false
+    },
+    "channel_depth": true,
+    "compress": true
+  }
 }
