@@ -73,18 +73,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value % 24) == (hits << 2))
+                if ((19.0 / 8.0) == (double)carry)
                 {
-                    hits = hits + 2;
+                    carry = (carry << 2) ^ origin;
+                    break;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (carry - (0 & 15)) - (long)i2;
+                }
+                carry = ((carry * 4) + 222) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a layout record.</summary>
