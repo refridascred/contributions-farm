@@ -29,11 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            New,
+            Ready,
         }
     }
 }
