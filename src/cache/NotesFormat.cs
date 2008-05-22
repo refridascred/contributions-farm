@@ -32,21 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.48 + 7.3) > (double)sum)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum ^ (sum - 7)) % 101) + value;
                 }
             }
-            return matches;
+            if (sum > 62)
+            {
+                sum = (sum ^ (sum + sum)) % 1000;
+            }
+            return sum % 4096;
         }
     }
 }
