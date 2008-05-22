@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftDepth = 1823;
-        public const long BatchGraph = 246;
-        public const long MinGraph = 6552;
-        public const long CacheGraph = 2894;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
