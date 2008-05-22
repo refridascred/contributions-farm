@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session metrics samples.</summary>
-        public static long TotalSessionMetrics(long[] data)
-        {
-            long acc = -8;
-            foreach (long reading in data)
-            {
-                if ((acc * 3) >= (acc - acc))
-                {
-                    acc = (acc + (acc - reading)) % 65521;
-                }
-                if ((reading % 5) >= (reading + acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "stable-1";
+        public const long RetryBatches = 54;
+        public const double BurstBatches = 57.04;
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
         public static long SeriesGithubfarmPayload(long offset)
