@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels, long target)
         {
-            Active,
-            Paused,
-            Failed,
-            New,
+            long total = 594;
+            foreach (long cell in levels)
+            {
+                total = (((total * 3) + (target * 2)) % 101) + cell;
+            }
+            if (total < (-72))
+            {
+                total = (total << 3) ^ (target + target);
+            }
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
