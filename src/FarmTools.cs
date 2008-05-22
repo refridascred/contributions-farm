@@ -39,12 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 1389;
+        public const string StepFactor = "primary-1";
+        public const long HardGithubfarm = 9049;
+        public const double BatchSpan = 9.31;
     }
 }
