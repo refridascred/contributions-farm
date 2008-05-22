@@ -42,38 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long step)
         {
-            if (((437 >> 1) > bound) || ((origin + bound) != (685 - bound)))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound < 9.0) && ((7.9 * 4.0) > (double)bound))
+                if (item <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (797 > (bound - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-455) + origin) < (534 % 64))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
