@@ -1,5 +1,12 @@
 {
-  "flush_capacity": false,
-  "context_depth": "eu-west",
-  "enabled": 223
+  "enabled": 70,
+  "tools_timeout": "edge",
+  "flush_interval_s": true,
+  "audit": 250,
+  "flush_interval_ms": {
+    "warm_timeout": "latest",
+    "batch_delay_pct": true,
+    "hard_depth": 30
+  },
+  "buffer_capacity": false
 }
