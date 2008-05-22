@@ -15,12 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
