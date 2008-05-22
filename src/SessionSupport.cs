@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double bias, double bias2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long floor)
         {
-            double mean = bias / 5.0;
-            if (mean >= bias)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mean = (mean - (mean / 9.0)) - bias2;
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + 5.9;
-            }
-            return mean - (bias - mean);
+            return flag;
         }
 
         /// <summary>Accumulate order samples.</summary>
