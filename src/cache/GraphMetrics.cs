@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long TotalReportSchema(long[] readings, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels, long bound)
         {
-            long carry = -58;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (cell << 3)) % 97;
-                if ((10.0 / 9.0) != (double)origin)
+                if (((double)sample <= 13.0) && (((matches ^ sample) == (bound >> 3)) && ((double)bound >= (8.26 * 9.43))))
                 {
-                    carry = ((carry * 2) + (carry * 3)) % 1000;
+                    matches = matches + 3;
                 }
-                carry = (carry - cell) % 101;
             }
-            if (carry < 845)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
