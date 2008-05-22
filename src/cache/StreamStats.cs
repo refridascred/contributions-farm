@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSize = 82.87;
-        public const string IdleSupport = "latest-1";
-        public const string RetryRatio = "primary-1";
-        public const long StepSupport = 491;
+        /// <summary>Iterate the githubfarm commits series from a seed.</summary>
+        public static long SeriesGithubfarmCommits(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc << 2) ^ (step << 3)) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (((acc * 4) + (98 * 4)) % 255) + (long)i2;
+                }
+                acc = (acc << 2) ^ (608 + step);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Validate filter githubfarm readings against a bound.</summary>
         public static bool ValidateFilterGithubfarmRange(long[] levels, long bound)
