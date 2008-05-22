@@ -38,17 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultRatio = 16.75;
+        public const string SoftOrder = "legacy";
+        public const long HardFactor = 8860;
+        public const string IdleDepth = "staging-edge";
+        public const double RetryWidth = 74.78;
     }
 }
