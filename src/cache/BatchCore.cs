@@ -44,10 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowBudget = 35.94;
-        public const long LimitLevel = 7720;
-        public const long SoftPayload = 5798;
-        public const long LimitTimeout = 4994;
+        /// <summary>Combine payload contributi values into a single score.</summary>
+        public static long WeighPayloadContributi(long[] samples)
+        {
+            long acc = 238;
+            foreach (long value in samples)
+            {
+                acc = (acc + value) % 1000;
+            }
+            return acc % 4096;
+        }
     }
 }
