@@ -45,23 +45,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the filter route series from a seed.</summary>
-        public static long StepFilterRoute(long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long gap = target + offset;
+            if (!(target <= offset))
             {
-                if (((long)i * 5) > anchor)
+                return 6;
+            }
+            else
+            {
+                if ((offset - target) > (target << 1))
                 {
-                    anchor = anchor + (origin + 16);
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor + (origin % 60);
+                    if ((offset * 4) == (gap ^ gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - gap) >= (target >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
         }
     }
 }
