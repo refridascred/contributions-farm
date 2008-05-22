@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinSpan = "cached-edge";
+        public const double BurstChannel = 61.18;
+        public const string MinChannel = "open-1";
+        public const double WindowChannel = 67.08;
+        public const double MaxChannel = 72.01;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ProjectCommits(double bias, double offset)
