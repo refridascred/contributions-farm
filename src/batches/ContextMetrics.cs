@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many context command samples are out of range.</summary>
-        public static long MeasureContextCommandOutliers(long[] levels, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (count < (count << 3))
+                if (cell >= target)
                 {
-                    count = ((count + 2) + item) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the tools level values.</summary>
