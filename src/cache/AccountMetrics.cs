@@ -62,15 +62,32 @@ namespace Common.Utilities
         public const long BaseSchema = 1238;
         public const double RetryFactor = 49.33;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Rank contributi farm input into a small class.</summary>
+        public static long GradeContributiFarm(long floor, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long edge = floor ^ limit;
+            if ((floor + floor) == (edge + floor))
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((edge ^ edge) >= (319 % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (7 < (edge - edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
