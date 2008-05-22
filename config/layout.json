@@ -1,6 +1,11 @@
 {
-  "min_delay": 5676,
-  "queue_retries": true,
-  "enabled": 4917,
-  "retry_delay_count": "local"
+  "sync_ratio_ms": true,
+  "farm_window": {
+    "stream_threshold": 15.96,
+    "persist": [243, 324, 11],
+    "warm_depth_ms": 62.84
+  },
+  "burst_threshold_count": false,
+  "context_ratio": "open",
+  "channel_ratio": ["staging", "staging", "latest"]
 }
