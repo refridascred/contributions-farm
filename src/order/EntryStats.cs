@@ -15,16 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            double bias = span;
+            if (bias >= (bias / 5.0))
             {
-                state = (state * 5) + (target << 2);
-                state = ((state * 3) + (long)i) % 1000;
+                bias = (bias - bias) + gain;
             }
-            return state;
+            else
+            {
+                bias = bias + (double)284;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the session state values.</summary>
