@@ -25,25 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long delta = seed - target;
-            if (((double)delta > (2.94 * 4.0)) && ((target - seed) != (delta - seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (9.4 - 18.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
