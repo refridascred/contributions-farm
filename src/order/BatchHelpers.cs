@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const long LimitSize = 4930;
         public const double BatchBuffer = 92.15;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 73;
+            foreach (long cell in series)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (cell + acc)) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
