@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark - step) ^ (long)i2;
-                }
-                mark = mark + mark;
-                if ((mark & 3) >= mark)
-                {
-                    mark = mark ^ ((long)i + 683);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
