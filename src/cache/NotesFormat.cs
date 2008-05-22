@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen * 2) < seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Active,
+            Draft,
         }
     }
 }
