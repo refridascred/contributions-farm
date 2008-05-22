@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings, long origin)
         {
-            long acc = 1;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((acc - datum) > (datum - datum))
+                if ((double)item >= 2.3)
                 {
-                    acc = ((acc * 2) + (acc << 2)) % 101;
+                    count = (count + 2) - origin;
                 }
             }
-            if (acc > 55)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
