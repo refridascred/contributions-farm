@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long origin)
+        /// <summary>Audit support stream readings against a rule.</summary>
+        public static long CountSupportStreamGaps(long[] levels, long bound)
         {
-            if (!((floor + floor) <= floor))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor <= (1.74 + 8.39))
+                if (seen < (20 * 2))
                 {
-                    return 1;
+                    seen = ((seen + 3) - cell) - bound;
                 }
                 else
                 {
-                    if ((origin + 1) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
