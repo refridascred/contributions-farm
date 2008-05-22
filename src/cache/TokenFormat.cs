@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double span)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            double rate2 = (double)7 / 6.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 - rate) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate2 - span;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
