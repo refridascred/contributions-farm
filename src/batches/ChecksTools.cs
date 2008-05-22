@@ -49,15 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next account stats value.</summary>
-        public static double BlendAccountStats(double scale, double bias)
-        {
-            double gain = bias;
-            if (gain < (double)3)
-            {
-                gain = gain - scale;
-            }
-            return gain - (scale - bias);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxDepth = 8478;
+        public const long CacheAccount = 2661;
+        public const string RetryBudget = "standard";
+        public const long IdleSpan = 5391;
+        public const long WindowWidth = 2805;
     }
 }
