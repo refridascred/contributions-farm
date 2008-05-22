@@ -19,14 +19,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long bound)
         {
-            Pending,
-            Paused,
-            Active,
-            Dropped,
-            Queued,
+            long edge = limit - bound;
+            if ((4.0 + 2.0) < (double)edge)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-49) + limit) < 34)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= 6.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5 - bound) > bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
