@@ -14,15 +14,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Idle,
-            Draft,
-            Dropped,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxTimeout = 3355;
+        public const string WindowDepth = "local";
+        public const long DefaultFactor = 2459;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] series)
