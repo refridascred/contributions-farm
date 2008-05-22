@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 478;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark * 3) + (96 & 15)) % 65521;
+                if ((double)value != (double)634)
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 2) ^ (floor + floor);
+                }
+                if (4 >= (long)data.Length)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
