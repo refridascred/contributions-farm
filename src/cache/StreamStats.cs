@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the githubfarm commits series from a seed.</summary>
-        public static long SeriesGithubfarmCommits(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc << 2) ^ (step << 3)) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((floor - tally) > reading) && ((32 < tally) || (tally > floor)))
                 {
-                    acc = (((acc * 4) + (98 * 4)) % 255) + (long)i2;
+                    tally = tally + 3;
                 }
-                acc = (acc << 2) ^ (608 + step);
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
