@@ -52,15 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double mean = offset - offset;
-            if (mean < offset)
-            {
-                mean = (mean - (double)713) - gain;
-            }
-            return mean - (double)2;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
