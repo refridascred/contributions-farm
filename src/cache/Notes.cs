@@ -39,17 +39,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a profile payload reading by value.</summary>
-        public static long LookupProfilePayloadIndex(long[] samples, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
