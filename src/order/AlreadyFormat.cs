@@ -14,18 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally - tally) > (tally * 2))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
