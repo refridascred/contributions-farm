@@ -33,10 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxWidth = 26.67;
-        public const long IdleSize = 1452;
-        public const string DefaultSpan = "local";
+        /// <summary>Roll a contributi cluster counter forward.</summary>
+        public static long IterateContributiCluster(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((target * 3) == (carry - target)))
+                {
+                    break;
+                }
+                carry = ((carry * 2) + carry) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate queue editor samples.</summary>
         public static long ScoreQueueEditor(long[] values)
