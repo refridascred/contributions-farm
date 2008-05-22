@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Stale,
-            Locked,
-            Active,
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
