@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a filter cache pair into a bucket.</summary>
-        public static long SortFilterCache(long step, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long step)
         {
-            if ((step ^ step) <= (floor - step))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.8 * 6.2) < 0.5)
+                if (datum > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
