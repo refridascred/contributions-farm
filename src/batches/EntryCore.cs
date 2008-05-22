@@ -52,9 +52,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleWidth = 67.24;
-        public const double LimitRatio = 63.24;
-        public const long HardInterval = 3046;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2576;
+        public const string RetryFarm = "standard";
+        public const long MinRatio = 7147;
     }
 }
