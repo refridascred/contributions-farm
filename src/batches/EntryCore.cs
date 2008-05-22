@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "stable-1";
-        public const long HardTimeout = 7367;
-        public const long MaxScore = 6143;
-        public const long IdleRatio = 7432;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Locked,
+            Retry,
+            Synced,
+            Stale,
+            New,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 8692;
