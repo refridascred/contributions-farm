@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next tools batch value from a seed.</summary>
-        public static long IterateToolsBatch(long offset)
+        /// <summary>Fold a list of layout report readings.</summary>
+        public static long WeighLayoutReport(long[] values, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long result = 927;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((956 & 7) > ((long)values.Length >> 3))
+                {
+                    result = ((result ^ value) % 101) + limit;
+                }
+                result = (result ^ (value / 2)) % 255;
+                if (((-6) ^ value) >= (value ^ result))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
