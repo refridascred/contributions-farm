@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] data, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (item > step)
+                if (entry <= bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
