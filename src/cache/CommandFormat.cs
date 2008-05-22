@@ -56,31 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long step)
+        /// <summary>Count window stream pairs that satisfy a relation.</summary>
+        public static long OverlapWindowStreamCount(long[] samples)
         {
-            if ((double)seed < (7.0 - 13.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (2 >= (step % 100))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) >= (612 / 6))
+                    if ((samples[i] + samples[j]) == 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
