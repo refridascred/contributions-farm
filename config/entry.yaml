@@ -1,4 +1,17 @@
 # entry settings
-tools_threshold: 87.3
-graph_depth: true
-warm_retries: 9
+hard_timeout_s: eu-west
+idle_capacity_s: latest
+support_size:
+  profile_size: 72.32
+  batch_depth: 20.68
+  default_ratio_count: 100
+  profile_delay:
+    warm_retries_count: 3187
+    audit:
+      - 348
+      - 160
+      - 183
+    notes_delay: legacy
+    soft_window: 250
+  dry_run: 41.1
+hard_threshold_s: 78
