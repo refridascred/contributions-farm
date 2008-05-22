@@ -14,26 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Audit format filter readings against a rule.</summary>
+        public static long TallyFormatFilterHits(long[] readings, long floor)
         {
-            long acc = 423;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((acc + 406) != (entry >> 5))
+                if ((5 - item) < ((long)readings.Length * 3))
                 {
-                    acc = acc - (entry & 3);
-                }
-                if (!((double)entry > (double)acc))
-                {
-                    acc = (acc + (acc / 4)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc << 1)) % 1000;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
