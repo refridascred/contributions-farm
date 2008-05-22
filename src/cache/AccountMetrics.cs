@@ -24,16 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                mix = (mix + (mix + mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((seen << 3) > (7 + seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
