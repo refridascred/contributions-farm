@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first commits buffer entry that matches the target.</summary>
-        public static long SeekCommitsBufferIndex(long[] data, long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
