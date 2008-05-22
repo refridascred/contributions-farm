@@ -44,22 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long mix = 43;
-            foreach (long sample in levels)
-            {
-                if ((52 + offset) >= mix)
-                {
-                    mix = ((mix + (mix & 3)) % 101) - sample;
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
-                }
-            }
-            return mix;
+            double drift = floor * 2.23;
+            return drift + (scale + scale);
         }
     }
 }
