@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of filter profile entries.</summary>
-        public static long WeighFilterProfile(long[] levels, long seed)
+        /// <summary>Blend two farm already measurements.</summary>
+        public static double AdjustFarmAlready(double bias, double span)
         {
-            long state = -4;
-            foreach (long sample in levels)
-            {
-                if (sample >= seed)
-                {
-                    state = ((state << 2) ^ (seed * 3)) % 65521;
-                }
-            }
-            return state % 4096;
+            double ratio = bias;
+            return (ratio - (ratio * 0.3)) + span;
         }
 
         /// <summary>Describe the report class values.</summary>
