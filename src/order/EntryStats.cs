@@ -57,22 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi farm readings.</summary>
-        public static long PairContributiFarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepWidth = 23.34;
+        public const long BaseSupport = 8710;
+        public const double HardSupport = 27.1;
+        public const double BatchBudget = 28.07;
+        public const string BatchSupport = "legacy";
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long FindEditorFilterIndex(long[] samples, long step)
