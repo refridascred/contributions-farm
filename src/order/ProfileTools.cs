@@ -25,13 +25,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long target)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long delta = seed - target;
+            if (((double)delta > (2.94 * 4.0)) && ((target - seed) != (delta - seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (9.4 - 18.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
