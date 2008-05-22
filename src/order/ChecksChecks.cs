@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a tools cache reading.</summary>
-        public static double ProjectToolsCache(double weight, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] series, long limit)
         {
-            double ratio = 0.36;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                ratio = ((ratio + (offset * 7.6)) + (double)(long)i) + weight;
+                if ((cell + 767) < cell)
+                {
+                    hits = (hits + 3) + limit;
+                }
             }
-            return ratio + offset;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
