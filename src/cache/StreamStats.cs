@@ -22,13 +22,13 @@ namespace Common.Utilities
         public const double WindowOrder = 67.75;
         public const double RetryOrder = 42.23;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Done,
-            Synced,
-            Paused,
-            Retry,
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
