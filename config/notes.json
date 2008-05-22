@@ -1,5 +1,7 @@
 {
-  "min_ttl": 93,
-  "max_interval": 61,
-  "tools_threshold": false
+  "base_window_pct": "eu-west",
+  "base_timeout_pct": "green",
+  "cache_limit": 22.35,
+  "dry_run": 5551,
+  "record_ttl": 30.68
 }
