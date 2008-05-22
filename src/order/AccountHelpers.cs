@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long acc = 695;
+            foreach (long item in samples)
+            {
+                acc = ((acc * 3) + (item - acc)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a report header.</summary>
