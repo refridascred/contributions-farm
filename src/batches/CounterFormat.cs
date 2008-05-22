@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long origin2)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long bound = origin + origin2;
-            if ((double)bound <= 7.31)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin + origin2) < (bound + (-53))) || ((bound % 7) <= (bound / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin >> 5) == (bound - origin2)) && ((origin - 21) < (origin / 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - origin) > bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
