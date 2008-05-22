@@ -1,10 +1,12 @@
 # entry settings
-cache_timeout:
-  - legacy
-  - open
-  - local
-filter_retries: false
-base_ratio_pct: blue
-batch_timeout: strict
-token_limit: 48.93
-batch_capacity: legacy
+persist: 52.96
+githubfarm_depth:
+  persist: true
+  strict:
+    idle_capacity_s: 100
+    base_capacity: eu-west
+    order_retries: latest
+  enabled: primary
+burst_window_pct: cached
+default_retries: 3.63
+token_ratio: 1792
