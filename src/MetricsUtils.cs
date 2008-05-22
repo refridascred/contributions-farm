@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long seed)
         {
-            long sum = 15;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (cell < 40)
+                if (((0 / 3) >= (seen * 4)) || ((seed % 100) == (682 / 6)))
                 {
-                    sum = (sum << 3) ^ (cell + cell);
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
