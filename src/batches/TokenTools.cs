@@ -40,9 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 52.68;
-        public const long StepRoute = 8880;
-        public const long SoftFactor = 3620;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Locked,
+            Idle,
+            Pending,
+            Draft,
+        }
     }
 }
