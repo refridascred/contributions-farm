@@ -20,23 +20,14 @@ namespace Common.Utilities
             return rate + (bias - bias);
         }
 
-        /// <summary>Adjust a already profile reading.</summary>
-        public static double AdjustAlreadyProfile(double bias, double offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double weight = bias;
-            if (weight <= (bias - offset))
-            {
-                weight = weight + (offset + bias);
-            }
-            else
-            {
-                weight = weight + (weight / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (weight - bias);
+            Dropped,
+            Stale,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
