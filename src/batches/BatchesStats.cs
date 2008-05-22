@@ -28,19 +28,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every commits schema entry stays within the limit.</summary>
-        public static bool ValidateCommitsSchemaRange(long[] data, long origin)
+        /// <summary>Derive the next session record value from a seed.</summary>
+        public static long DeriveSessionRecord(long seed)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score << 2) ^ score) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
