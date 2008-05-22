@@ -13,15 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Synced,
+            Done,
+            Retry,
+            Paused,
+            Closed,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
