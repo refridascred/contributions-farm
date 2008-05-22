@@ -23,26 +23,17 @@ namespace Common.Utilities
         public const long LimitSize = 4930;
         public const double BatchBuffer = 92.15;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long offset)
         {
-            long state = 4;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((849 / 6) > (value + bound))
+                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
                 {
-                    break;
-                }
-                if (!(bound > (bound + bound)))
-                {
-                    state = (state ^ 72) % 101;
-                }
-                else
-                {
-                    state = (state ^ (bound ^ bound)) % 97;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
