@@ -29,13 +29,19 @@ namespace Common.Utilities
             return rate2 - span;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
