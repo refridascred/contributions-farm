@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (samples[i] < floor)
+                if (((long)series.Length * 4) < (matches & 255))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + value) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
