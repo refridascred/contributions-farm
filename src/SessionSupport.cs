@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mean - (bias - mean);
         }
 
-        /// <summary>Derive the next commits token value from a seed.</summary>
-        public static long RollCommitsToken(long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 414;
+            foreach (long reading in series)
             {
-                if (!((double)floor < (7.0 - 1.3)))
+                if ((1 < (mark ^ reading)) && ((mark - mark) > 41))
                 {
-                    result = (result ^ result) % 1000;
+                    mark = (mark * 4) + (mark << 3);
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            if (mark > 5)
+            {
+                mark = (mark << 3) ^ (140 % 60);
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
