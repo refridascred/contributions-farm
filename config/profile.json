@@ -1,7 +1,5 @@
 {
-  "dry_run": 58.96,
-  "context_retries": ["legacy", "local", "green", "strict"],
-  "hard_size": ["open", "legacy", "cached"],
-  "support_retries": false,
-  "burst_window_count": true
+  "enabled": 2119,
+  "support_threshold": 19,
+  "farm_depth": 2938
 }
