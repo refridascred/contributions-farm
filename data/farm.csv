@@ -1,6 +1,8 @@
-id,region,ratio
-1,edge,30.99
-2,657,585
-3,930,395
-4,547,local
-5,primary,35
+id,ratio,level,score
+1,staging,620,133
+2,163,latest,62.03
+3,55.21,84.36,874
+4,502,240,305
+5,blue,150,60.31
+6,blue,617,stable
+7,37.32,strict,196
