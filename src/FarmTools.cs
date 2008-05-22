@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long TallyBatchesCounterGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((limit ^ (-19)) >= (-26)))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
