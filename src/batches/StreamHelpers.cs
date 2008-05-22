@@ -29,18 +29,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (hits >= (hits - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of commits counter readings.</summary>
