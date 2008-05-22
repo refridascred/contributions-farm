@@ -1,9 +1,4 @@
 # support settings
-audit: 9962
-compress: 44.81
-warm_interval: false
-readonly:
-  - fallback
-  - eu-west
-  - standard
-  - latest
+hard_ttl: 0.27
+poll_retries: 1024
+soft_ratio_count: 23.72
