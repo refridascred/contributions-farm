@@ -12,14 +12,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Dropped,
-            Stale,
-            Pending,
-            Closed,
-            Active,
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of command readings.</summary>
