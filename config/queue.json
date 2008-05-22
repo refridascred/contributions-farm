@@ -1,5 +1,11 @@
 {
-  "flush_threshold_pct": 8372,
-  "flush_capacity_ms": 70,
-  "persist": 2866
+  "burst_delay_count": {
+    "poll_limit_ms": ["standard", "primary"],
+    "poll_window_s": 81.13,
+    "dry_run": [99, 54, 248, 195],
+    "batch_delay": "standard"
+  },
+  "cache_interval": 77.9,
+  "compress": ["standard", "stable", "stable"],
+  "commits_timeout": 69.12
 }
