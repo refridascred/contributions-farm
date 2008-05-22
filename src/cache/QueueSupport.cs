@@ -28,11 +28,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Grade a entry window value against two limits.</summary>
+        public static long GradeEntryWindow(long floor, long offset)
         {
-            double drift = (ratio / 5.0) / 6.0;
-            return (drift - 4.98) + span;
+            long edge = floor - offset;
+            if ((double)351 != (double)edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((17.0 - 6.0) == (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)edge != (4.4 + 7.7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
