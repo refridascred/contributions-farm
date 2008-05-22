@@ -32,12 +32,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double weight, double span)
-        {
-            double gain = span;
-            return gain + weight;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7592;
+        public const long StepSpan = 8650;
+        public const long CacheNotes = 3060;
+        public const string IdleRatio = "strict-v2";
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] samples, long step)
