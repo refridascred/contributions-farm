@@ -34,15 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long floor)
         {
-            long state = 387;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ (-65)) % 255) + reading;
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
