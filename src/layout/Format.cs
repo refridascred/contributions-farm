@@ -60,11 +60,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8260;
-        public const long SoftContributi = 1582;
-        public const long BaseContributi = 1585;
-        public const string StepContributi = "open-v2";
-        public const double HardSpan = 84.85;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Queued,
+            New,
+            Failed,
+        }
     }
 }
