@@ -1,10 +1,11 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the notes list.
-The session report groups every githubfarm by counter.
+Defaults for graph live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep checks values small
-- Document new layout fields
-- Prefer account defaults
+- Document new cache fields
+- Log every support change
+- Validate stream input early
