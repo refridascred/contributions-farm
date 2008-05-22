@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Combine profile buffer values into a single score.</summary>
+        public static long CombineProfileBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mix = 95;
+            foreach (long entry in levels)
             {
-                if ((double)tally == (13.0 + 0.9))
+                if (((entry * 2) <= (4 + 71)) || (mix <= (mix - mix)))
                 {
-                    tally = (tally + 2) - sample;
+                    mix = (mix ^ 8) % 4096;
+                }
+                if (((13.0 - 10.0) > (double)mix) && ((double)mix == (6.34 - 9.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
