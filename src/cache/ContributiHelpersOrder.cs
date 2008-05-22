@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first editor token entry that matches the target.</summary>
-        public static long LocateEditorTokenIndex(long[] levels, long bound)
+        /// <summary>Accumulate buffer farm samples.</summary>
+        public static long FoldBufferFarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 13;
+            foreach (long reading in levels)
             {
-                if (levels[i] > bound)
+                if (!(mark >= (mark + reading)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (mark - reading)) % 97;
+                }
+                if ((4.1 - 9.59) > (double)reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
