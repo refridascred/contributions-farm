@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = 416;
+            foreach (long sample in samples)
             {
-                if ((floor % 2) <= 9)
+                if (((3 >> 1) == (carry << 3)) || ((carry << 2) != (sample + 1)))
                 {
-                    count = (count + 3) ^ reading;
+                    carry = ((carry << 2) ^ carry) % 255;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
