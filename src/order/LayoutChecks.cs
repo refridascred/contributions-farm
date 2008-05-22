@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools account entries that pass the check.</summary>
-        public static long CountToolsAccountGaps(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if ((double)step <= (7.23 * 3.56))
             {
-                if (!((entry / 9) < (entry + 190)))
+                return 7;
+            }
+            else
+            {
+                if ((step + 78) >= (limit + limit))
                 {
-                    hits = hits + 2;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step + step) == (step ^ 84))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step * 5) <= (step % 100)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
