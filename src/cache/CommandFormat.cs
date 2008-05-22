@@ -50,38 +50,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if (2.0 < (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (3.42 * 3.09))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (floor >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit - limit) >= (limit >> 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
