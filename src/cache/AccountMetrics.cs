@@ -31,22 +31,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((189 + datum) != (hits << 2)) && ((hits - datum) == (datum >> 5))) || !((datum >> 2) == (datum + 3)))
+                if (items[i] < bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
