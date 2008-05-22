@@ -49,21 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support route pairs that satisfy a relation.</summary>
-        public static long CompareSupportRouteCount(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != step)
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
