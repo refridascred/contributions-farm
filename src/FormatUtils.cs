@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up channel editor samples.</summary>
-        public static long CompareChannelEditorCount(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((3.82 - 5.9) >= (double)offset)
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
