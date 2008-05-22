@@ -63,17 +63,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = bound - offset;
+            if (((bound % 97) <= (prev * 4)) || (prev >= (bound + offset)))
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound + offset) == (0 + offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((17.0 * 16.0) >= (double)prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
