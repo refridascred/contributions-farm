@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] levels, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((target + tally) <= tally)
+                if (reading > step)
                 {
-                    tally = (tally + 2) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
