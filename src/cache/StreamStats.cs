@@ -17,10 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstFactor = 83.26;
-        public const double WindowOrder = 67.75;
-        public const double RetryOrder = 42.23;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
