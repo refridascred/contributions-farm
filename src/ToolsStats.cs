@@ -43,22 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter notes samples are out of range.</summary>
-        public static long MeasureFilterNotesGaps(long[] readings, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((limit - limit) <= limit)
-                {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
