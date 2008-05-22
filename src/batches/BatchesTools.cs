@@ -34,19 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long floor)
+        /// <summary>Compare every pair of context stats readings.</summary>
+        public static long MatchContextStatsCount(long[] levels)
         {
-            long carry = 608;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry << 3) ^ (carry + floor);
-                if ((value - value) <= (value - floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
