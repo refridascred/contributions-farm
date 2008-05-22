@@ -37,18 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] samples, long bound)
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long AuditSchemaPayloadOutliers(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((tally - tally) >= reading)
+                if ((1.0 / 3.0) > (double)seed)
                 {
-                    tally = (tally + 1) - bound;
+                    count = (count + 1) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the batches state values.</summary>
