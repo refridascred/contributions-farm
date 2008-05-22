@@ -1,5 +1,18 @@
 {
-  "idle_window_s": "cached",
-  "flush_size_pct": 5953,
-  "dry_run": true
+  "hard_limit": {
+    "stats_retries": "green",
+    "min_limit_ms": "latest",
+    "audit": "standard",
+    "queue_delay": 250,
+    "warm_threshold": {
+      "max_limit": 100,
+      "order_interval": 28.37,
+      "dry_run": true,
+      "warm_timeout_s": false,
+      "max_ttl": [149, 285, 200]
+    },
+    "graph_timeout": 98.78
+  },
+  "burst_ratio": "stable",
+  "strict": true
 }
