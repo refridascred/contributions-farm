@@ -1,11 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often metrics data is refreshed.
-Run the githubfarm check before changing any payload limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+The batches report groups every support by already.
+The account report groups every support by stream.
 
 ## Guidelines
 
-- Log every counter change
-- Validate stats input early
-- Review account limits each release
-- Prefer cache defaults
+- Keep batch values small
+- Prefer editor defaults
+- Document new contributi fields
