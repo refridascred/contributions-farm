@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const double MinLevel = 40.91;
         public const long IdleContributi = 4873;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] data, long target)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((-956) >= (target ^ sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
