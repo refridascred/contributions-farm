@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] series, long step)
         {
-            long result = 442;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((cell >> 2) > (39 * 2))
+                if (entry < step)
                 {
-                    result = ((result << 2) ^ (result ^ 628)) - step;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 108)
-            {
-                result = (result ^ (95 - result)) % 101;
-            }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Locate a record reading by value.</summary>
