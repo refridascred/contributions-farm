@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long step)
         {
-            long state = 5;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((state * 3) > (reading + state)) && ((double)offset > (6.86 / 5.0)))
+                if (entry >= step)
                 {
-                    state = (state + ((-484) / 6)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 114)
-            {
-                state = (state - (offset << 1)) % 97;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Scale a account tools figure with a bias.</summary>
