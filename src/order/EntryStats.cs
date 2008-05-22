@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mix = 88;
-            foreach (long item in samples)
-            {
-                mix = ((mix << 3) ^ (limit + 6)) ^ item;
-            }
-            return mix;
+            Queued,
+            Locked,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
