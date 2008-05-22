@@ -32,22 +32,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 4705;
         public const string DefaultInterval = "stable-edge";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long sum = 270;
-            foreach (long value in samples)
-            {
-                if ((limit > value) && (sum < (sum & 31)))
-                {
-                    sum = sum - limit;
-                }
-                else
-                {
-                    sum = sum ^ (limit % 7);
-                }
-            }
-            return sum % 97;
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
