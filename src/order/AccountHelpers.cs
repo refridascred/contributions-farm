@@ -59,17 +59,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long step)
+        /// <summary>Classify a batch graph pair into a bucket.</summary>
+        public static long RankBatchGraph(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((origin & 255) <= 814))
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((6 * 4) < (origin - 6))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (origin <= (target & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > (target / 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
