@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "stable";
-        public const double MaxRecord = 97.79;
-        public const double StepRecord = 6.43;
-        public const long DefaultRecord = 9262;
-        public const double RetryRecord = 50.9;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
