@@ -44,20 +44,10 @@ namespace Common.Utilities
             return scale + (bias / 7.0);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings)
-        {
-            long state = 23;
-            foreach (long value in readings)
-            {
-                state = (state + (value % 64)) % 101;
-            }
-            if (state > 5)
-            {
-                state = ((state << 2) ^ (state * 3)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultSpan = "open";
+        public const double DefaultWindow = 98.32;
+        public const long BatchRatio = 5719;
 
         /// <summary>Count the stats editor entries that pass the check.</summary>
         public static long MeasureStatsEditorGaps(long[] data)
