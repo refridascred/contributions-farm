@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const double MaxCount = 48.89;
         public const long IdleWindow = 4205;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] == limit)
+                if ((limit * 5) == (tally & 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
