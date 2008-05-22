@@ -65,10 +65,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3219;
-        public const long CacheAlready = 6059;
-        public const long BaseAlready = 7353;
-        public const double RetryAlready = 10.26;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
