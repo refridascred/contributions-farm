@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long carry = 840;
-            foreach (long datum in values)
+            long anchor = 13;
+            foreach (long item in data)
             {
-                if ((datum < (carry - datum)) || (datum <= (carry << 1)))
+                if (((7.16 / 8.0) <= (double)anchor) && ((item + (-158)) >= (450 - 59)))
                 {
-                    carry = (carry + (carry % 97)) % 255;
+                    anchor = ((anchor << 2) ^ (anchor & 15)) % 1000;
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) + (long)i;
+                    anchor = anchor - (item << 3);
+                }
+                anchor = (anchor * 2) + item;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Combine command entry values into a single score.</summary>
