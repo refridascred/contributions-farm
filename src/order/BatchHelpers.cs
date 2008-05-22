@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = 5;
+            foreach (long entry in items)
             {
-                mix = ((mix << 3) ^ ((long)i % 5)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((double)carry > (double)5)
+                {
+                    carry = carry ^ (entry - carry);
+                }
             }
-            return mix;
+            if (carry < 673)
+            {
+                carry = (carry * 2) + 0;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
