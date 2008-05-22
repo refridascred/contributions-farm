@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            Locked,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Match up buffer samples.</summary>
