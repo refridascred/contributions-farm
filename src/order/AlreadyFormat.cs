@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long RetrySize = 5690;
         public const long RetryInterval = 4090;
 
-        /// <summary>Adjust a support batch reading.</summary>
-        public static double AdjustSupportBatch(double rate, double floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double mean = rate - 8.86;
-            return (mean - (6.8 * 0.83)) + floor;
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
