@@ -24,18 +24,22 @@ namespace Common.Utilities
             return scale + (bias2 / 4.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = 848;
+            foreach (long entry in samples)
             {
-                if ((item % 5) >= item)
+                if ((acc + acc) == (entry % 16))
                 {
-                    hits = hits + 2;
+                    acc = (acc - (990 & 63)) % 255;
                 }
             }
-            return hits;
+            if (acc > 24)
+            {
+                acc = (acc << 3) ^ (214 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
