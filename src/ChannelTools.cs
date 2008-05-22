@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long step)
         {
-            Queued,
-            Paused,
-            Stale,
+            if ((step & 15) <= 31)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((10 > bound) || (3 > (step + 542)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (6.11 - 3.47))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step < 8.01)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up format samples.</summary>
