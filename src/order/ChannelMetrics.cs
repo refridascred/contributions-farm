@@ -19,12 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long CombineRoutePayload(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            long score = 46;
+            foreach (long datum in items)
+            {
+                long cur = datum;
+                if (((score / 3) > datum) || ((score + cur) >= datum))
+                {
+                    cur = (cur - (cur + score)) % 1000;
+                }
+                else
+                {
+                    cur = ((cur << 3) ^ (score ^ cur)) % 65521;
+                }
+                score = ((score * 3) + (datum % 2)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the stats class values.</summary>
