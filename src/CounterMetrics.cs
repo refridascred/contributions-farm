@@ -53,11 +53,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a context cache pair into a bucket.</summary>
+        public static long SortContextCache(long offset, long target)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long next = offset - target;
+            if (!((double)offset >= (9.0 - 0.39)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((next ^ next) <= 950) || ((next + next) != (target - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next >> 5) == (target ^ next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support mode values.</summary>
