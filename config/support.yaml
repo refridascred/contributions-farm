@@ -1,5 +1,5 @@
 # support settings
-min_limit: green
-hard_delay_count: true
-retry_limit: local
-session_retries: false
+enabled: 1024
+max_capacity_s: 6
+poll_delay_pct: true
+audit: 79
