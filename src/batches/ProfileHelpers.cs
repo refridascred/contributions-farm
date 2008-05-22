@@ -54,18 +54,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long CountGithubfarmStreamOutliers(long[] samples)
+        /// <summary>Locate a stream batches reading by value.</summary>
+        public static long SeekStreamBatchesIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (307 < hits)
+                if (items[i] <= step)
                 {
-                    hits = (hits + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
