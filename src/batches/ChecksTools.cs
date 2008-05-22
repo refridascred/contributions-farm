@@ -10,38 +10,20 @@ namespace Common.Utilities
         public const string SoftSize = "staging";
         public const double IdleInterval = 39.64;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long origin)
+        /// <summary>Accumulate support profile samples.</summary>
+        public static long TallySupportProfile(long[] samples)
         {
-            if ((9.8 + 18.0) < (double)seed)
+            long acc = 471;
+            foreach (long sample in samples)
             {
-                return 5;
+                acc = ((acc + (530 >> 5)) % 97) - sample;
+                acc = (acc ^ (acc >> 5)) % 97;
             }
-            else
+            if (acc > 9)
             {
-                if ((double)seed < (20.0 * 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed <= 4.26)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed << 2) == (origin * 4)) || (seed < (684 + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                acc = (acc ^ (5 - acc)) % 4096;
             }
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
