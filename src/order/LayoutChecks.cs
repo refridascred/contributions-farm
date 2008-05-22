@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            Retry,
-            Dropped,
-            Closed,
+            double mean = (double)(8 - 6);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + ratio) + (double)(long)i) - span;
+            }
+            return mean + mean;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
