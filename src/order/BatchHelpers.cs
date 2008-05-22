@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the entry report series from a seed.</summary>
-        public static long RollEntryReport(long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = (total + (1 & 63)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                if (((tally - reading) != (reading % 64)) || (((5.0 / 4.0) < (double)tally) || ((double)reading > 6.74)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
