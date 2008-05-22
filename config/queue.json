@@ -1,21 +1,6 @@
 {
-  "persist": 9418,
-  "support_retries": false,
-  "enabled": "blue",
-  "compress": {
-    "batches_capacity": "local",
-    "strict": {
-      "base_size": "cached",
-      "soft_capacity": 31,
-      "default_capacity_s": 78.27,
-      "soft_interval_s": true,
-      "warm_retries": false,
-      "warm_timeout_s": 19.99
-    },
-    "base_ratio": 74.01,
-    "readonly": true,
-    "token_delay": [382, 154, 89]
-  },
-  "poll_size_s": false,
-  "strict": ["fallback", "strict"]
+  "report_delay": 16.85,
+  "batch_window_count": "eu-west",
+  "enabled": "eu-west",
+  "default_interval_ms": ["blue", "open", "eu-west"]
 }
