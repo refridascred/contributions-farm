@@ -42,12 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings, long origin)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((origin & 127) != (35 * 2)) && ((3.2 * 1.3) >= (double)origin))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
