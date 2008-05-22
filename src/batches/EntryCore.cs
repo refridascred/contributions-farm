@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftLayout = 7690;
         public const long IdleBudget = 8572;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] data, long offset)
+        /// <summary>Audit stats token readings against a rule.</summary>
+        public static long MeasureStatsTokenHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (data[i] > offset)
+                if (((seen > (78 + seen)) || ((seen % 7) != (1 << 2))) || (cell > seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
