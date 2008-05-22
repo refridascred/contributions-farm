@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long mark = 478;
-            foreach (long value in data)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 3) + (96 & 15)) % 65521;
-                if ((double)value != (double)634)
-                {
-                    mark = (mark << 2) ^ (floor + floor);
-                }
-                if (4 >= (long)data.Length)
-                {
-                    break;
-                }
+                result = (result ^ (long)i) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
