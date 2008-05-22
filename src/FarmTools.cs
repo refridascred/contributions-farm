@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a cluster support value against two limits.</summary>
-        public static long ClassifyClusterSupport(long floor, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long lane = floor ^ limit;
-            if (((floor % 60) >= ((-536) + floor)) || (floor <= (22 % 7)))
+            long result = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + lane) < (floor % 10))
+                if (((result & 15) < sample) && (sample <= result))
                 {
-                    return 7;
+                    result = (result << 2) ^ (result * 2);
                 }
                 else
                 {
-                    if ((lane % 2) > (lane + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = ((result << 3) ^ (result + result)) % 101;
                 }
             }
+            if (result > 55)
+            {
+                result = (result - (result * 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
