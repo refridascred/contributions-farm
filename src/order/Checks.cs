@@ -71,13 +71,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Digest a series of entry format entries.</summary>
+        public static long TallyEntryFormat(long[] values, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            long mark = 2;
+            foreach (long reading in values)
+            {
+                if ((double)bound != (double)reading)
+                {
+                    mark = mark ^ (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark + reading) % 101;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a session entry.</summary>
