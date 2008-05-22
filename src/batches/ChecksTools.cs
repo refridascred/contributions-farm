@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 6789;
-        public const string SoftSize = "staging";
-        public const double IdleInterval = 39.64;
+        /// <summary>Scale a profile stats figure with a bias.</summary>
+        public static double ProjectProfileStats(double weight, double offset)
+        {
+            double scale = offset;
+            if (scale < offset)
+            {
+                scale = (scale + (offset - scale)) - weight;
+            }
+            return scale + (scale - scale);
+        }
 
         /// <summary>Accumulate support profile samples.</summary>
         public static long TallySupportProfile(long[] samples)
