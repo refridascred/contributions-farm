@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const double WindowChannel = 67.08;
         public const double MaxChannel = 72.01;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double offset)
-        {
-            double load = (offset - offset) - (offset + bias);
-            if (load > (offset + bias))
-            {
-                load = load - offset;
-            }
-            else
-            {
-                load = load - (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load * 1.9)) - (double)(long)i;
-            }
-            return load + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 1703;
+        public const long BurstStream = 1915;
+        public const string BatchScore = "primary-1";
+        public const double RetryStream = 47.08;
+        public const string BatchTimeout = "primary";
 
         /// <summary>Check that every cluster token entry stays within the limit.</summary>
         public static bool GuardClusterTokenLimits(long[] series, long offset)
