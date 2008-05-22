@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a editor session pair into a bucket.</summary>
-        public static long SortEditorSession(long seed, long step)
-        {
-            if (!((8.0 - 0.75) != (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step < (seed & 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)2 < (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "primary";
+        public const long BurstLayout = 4008;
+        public const long BatchLayout = 756;
+        public const string RetryScore = "primary";
+        public const long MaxLayout = 7186;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
