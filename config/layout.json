@@ -1,11 +1,14 @@
 {
-  "sync_ratio_ms": true,
-  "farm_window": {
-    "stream_threshold": 15.96,
-    "persist": [243, 324, 11],
-    "warm_depth_ms": 62.84
+  "command_capacity": 3383,
+  "batch_ratio": true,
+  "hard_timeout_count": {
+    "dry_run": 100,
+    "burst_delay": 6906,
+    "order_ratio": {
+      "cache_window_count": 74.37,
+      "batch_capacity": ["eu-west", "eu-west", "staging", "standard"],
+      "max_ratio": "local"
+    }
   },
-  "burst_threshold_count": false,
-  "context_ratio": "open",
-  "channel_ratio": ["staging", "staging", "latest"]
+  "batch_limit": 7846
 }
