@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches + 972) > (360 + item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
