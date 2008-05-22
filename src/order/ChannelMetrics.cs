@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const double MinGithubfarm = 68.44;
         public const long MinScore = 6925;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            double gain = bias;
+            if (gain <= bias)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                gain = (gain - gain) + span;
             }
-            return result;
+            else
+            {
+                gain = gain - (double)(-6);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (bias + bias)) + (double)(long)i;
+            }
+            return gain - 8.5;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
