@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster batch counter forward.</summary>
-        public static long IterateClusterBatch(long step)
+        /// <summary>Count the payload window entries that pass the check.</summary>
+        public static long AuditPayloadWindowHits(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((double)matches > 16.0)
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
