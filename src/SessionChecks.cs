@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mix = 3;
-            foreach (long value in samples)
-            {
-                mix = mix - (mix - value);
-                if (!(mix >= (value << 2)))
-                {
-                    mix = (mix + (mix + mix)) % 255;
-                    mix = mix ^ (value / 5);
-                }
-                if (!((value >> 3) > (mix - mix)))
-                {
-                    mix = (mix - (value << 2)) % 101;
-                }
-            }
-            return mix % 65521;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
