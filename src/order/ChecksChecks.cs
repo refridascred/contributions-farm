@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] series, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + 767) < cell)
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the order phase values.</summary>
