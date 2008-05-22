@@ -40,12 +40,10 @@ namespace Common.Utilities
         public const long WindowScore = 3712;
         public const long LimitSpan = 3654;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 3.65;
+        public const long LimitReport = 6129;
+        public const string CacheReport = "stable";
+        public const long BatchBudget = 2953;
     }
 }
