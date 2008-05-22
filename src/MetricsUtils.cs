@@ -50,12 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            Draft,
-            New,
-            Locked,
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum - (origin - (-6))) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
