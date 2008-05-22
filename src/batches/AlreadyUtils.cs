@@ -37,19 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double drift = (bias - scale) + (scale + bias);
-            if (drift > drift)
-            {
-                drift = drift + (double)961;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (6.24 * 9.2)) + (double)(long)i;
-            }
-            return drift - bias;
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate counter record samples.</summary>
