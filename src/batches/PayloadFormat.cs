@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 3014;
-        public const long MaxToken = 8626;
-        public const long RetryLevel = 229;
-        public const double BaseFactor = 75.28;
-        public const double HardToken = 49.81;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Locked,
+            Done,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
