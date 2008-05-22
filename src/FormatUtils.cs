@@ -96,12 +96,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - 4) <= (entry + entry))
+                {
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
