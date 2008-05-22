@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout notes readings against a bound.</summary>
-        public static bool CheckLayoutNotesRange(long[] series, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value < seed)
+                if (!((cell / 7) >= matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
