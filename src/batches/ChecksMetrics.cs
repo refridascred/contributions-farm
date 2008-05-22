@@ -61,18 +61,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] values, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (8.1 > (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up cluster report samples.</summary>
