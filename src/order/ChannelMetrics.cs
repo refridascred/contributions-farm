@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] samples, long seed)
+        /// <summary>Iterate the payload counter series from a seed.</summary>
+        public static long RollPayloadCounter(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((hits - seed) > item)
+                if (((long)i <= floor) || (6 >= (long)i))
                 {
-                    hits = hits + 3;
+                    score = ((score * 4) + (score ^ floor)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
