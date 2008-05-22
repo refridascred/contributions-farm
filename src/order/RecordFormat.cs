@@ -47,21 +47,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < origin)
                 {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
