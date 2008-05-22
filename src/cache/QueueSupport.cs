@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] data, long limit)
         {
-            Locked,
-            Idle,
-            Stale,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a editor reading.</summary>
