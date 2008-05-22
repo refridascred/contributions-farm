@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MinWidth = 1009;
         public const double WindowBatches = 12.21;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 984;
-        public const long BatchScore = 4523;
-        public const double MinLevel = 40.91;
-        public const long IdleContributi = 4873;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
