@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            Closed,
-            Synced,
-            Draft,
-            Failed,
-            Active,
+            long mix = 9;
+            foreach (long value in levels)
+            {
+                if (((mix + value) < mix) || (mix >= (mix << 1)))
+                {
+                    mix = mix + 99;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = mix + ((long)i >> 4);
+                }
+                if ((value << 3) >= value)
+                {
+                    mix = (mix << 2) ^ (mix << 1);
+                }
+            }
+            if (mix > 405)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
