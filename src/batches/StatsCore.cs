@@ -12,21 +12,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Digest a series of farm stream entries.</summary>
+        public static long TallyFarmStream(long[] levels)
         {
-            long anchor = 369;
-            foreach (long entry in values)
+            long anchor = 711;
+            foreach (long sample in levels)
             {
-                anchor = (anchor ^ anchor) % 1000;
-                if ((anchor + anchor) >= (entry >> 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 952)
-            {
-                anchor = ((anchor << 3) ^ (anchor >> 1)) % 65521;
+                anchor = (anchor * 2) + (sample << 1);
             }
             return anchor;
         }
