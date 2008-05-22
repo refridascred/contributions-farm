@@ -43,11 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxDepth = 8478;
-        public const long CacheAccount = 2661;
-        public const string RetryBudget = "standard";
-        public const long IdleSpan = 5391;
-        public const long WindowWidth = 2805;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+        }
     }
 }
