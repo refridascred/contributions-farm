@@ -42,21 +42,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 67;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((origin + acc) >= origin)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 2) + (origin - acc)) - entry;
+                }
+                else
+                {
+                    acc = acc - origin;
                 }
             }
-            return hits;
+            if (acc < 72)
+            {
+                acc = (acc * 5) + (origin + origin);
+            }
+            return acc % 1000;
         }
     }
 }
