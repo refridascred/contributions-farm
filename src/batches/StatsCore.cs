@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftTimeout = 301;
-        public const long WindowStats = 9008;
-        public const long HardSize = 3860;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
