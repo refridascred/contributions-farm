@@ -37,31 +37,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache batch input into a small class.</summary>
-        public static long RankCacheBatch(long floor, long floor2)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            if ((19.0 - 2.2) <= (double)floor)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((12.0 + 9.34) >= (3.07 + 8.7))
+                if ((double)origin == (6.46 + 4.2))
                 {
-                    return 6;
+                    mix = (mix + (mix >> 5)) % 65521;
                 }
                 else
                 {
-                    if ((floor << 2) < (floor << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix << 3) ^ (31 / 3);
+                    mix = mix + ((long)i % 2);
                 }
+                if (!((8.4 / 5.0) > (double)origin))
+                {
+                    mix = (mix + ((long)i ^ mix)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
     }
 }
