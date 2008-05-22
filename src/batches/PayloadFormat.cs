@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] values, long step)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value - value) <= step)
                 {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
