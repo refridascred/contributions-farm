@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long TallyBatchesCounterGaps(long[] readings, long limit)
+        /// <summary>Grade a cluster support value against two limits.</summary>
+        public static long ClassifyClusterSupport(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long lane = floor ^ limit;
+            if (((floor % 60) >= ((-536) + floor)) || (floor <= (22 % 7)))
             {
-                if (!((limit ^ (-19)) >= (-26)))
+                return 0;
+            }
+            else
+            {
+                if ((floor + lane) < (floor % 10))
                 {
-                    matches = (matches + 1) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((lane % 2) > (lane + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
