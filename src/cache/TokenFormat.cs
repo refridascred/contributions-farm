@@ -35,38 +35,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            if ((limit >> 1) > 835)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 4) >= (step / 8))
+                if ((carry - seed) >= ((long)i / 4))
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    if (!((limit + 4) == (70 / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (8.05 / 3.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = (carry ^ ((long)i + seed)) % 255;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
     }
 }
