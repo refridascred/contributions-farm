@@ -57,12 +57,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepWidth = 23.34;
-        public const long BaseSupport = 8710;
-        public const double HardSupport = 27.1;
-        public const double BatchBudget = 28.07;
-        public const string BatchSupport = "legacy";
+        /// <summary>Derive the next stats payload value from a seed.</summary>
+        public static long SeriesStatsPayload(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long FindEditorFilterIndex(long[] samples, long step)
