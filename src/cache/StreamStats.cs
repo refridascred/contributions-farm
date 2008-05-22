@@ -52,11 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            Locked,
+            Done,
+            Retry,
         }
     }
 }
