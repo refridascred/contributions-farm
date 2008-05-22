@@ -39,10 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 1389;
-        public const string StepFactor = "primary-1";
-        public const long HardGithubfarm = 9049;
-        public const double BatchSpan = 9.31;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels, long offset)
+        {
+            long mix = 43;
+            foreach (long sample in levels)
+            {
+                if ((52 + offset) >= mix)
+                {
+                    mix = ((mix + (mix & 3)) % 101) - sample;
+                }
+                else
+                {
+                    mix = mix - (mix - mix);
+                }
+            }
+            return mix;
+        }
     }
 }
