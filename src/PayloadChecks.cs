@@ -63,18 +63,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = 5;
+            foreach (long value in items)
             {
-                if ((origin - cell) != (cell + origin))
+                sum = ((sum - origin) % 97) ^ value;
+                if (318 > origin)
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
