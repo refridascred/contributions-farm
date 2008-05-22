@@ -1,22 +1,8 @@
 {
-  "audit": 4324,
-  "max_ratio_count": 500,
-  "account_depth": {
-    "base_size_s": false,
-    "flush_limit": {
-      "verbose": 58,
-      "batch_threshold_count": true,
-      "readonly": true,
-      "warm_timeout_s": true
-    },
-    "warm_depth": "standard",
-    "audit": "primary",
-    "default_depth": {
-      "strict": "primary",
-      "hard_timeout_count": "eu-west",
-      "support_capacity": [232, 273, 111],
-      "hard_capacity": 79.22,
-      "tools_depth": false
-    }
-  }
+  "layout_window": "standard",
+  "min_depth": true,
+  "flush_retries_pct": 655,
+  "metric_retries": false,
+  "hard_threshold": true,
+  "dry_run": ["latest", "fallback", "primary", "local"]
 }
