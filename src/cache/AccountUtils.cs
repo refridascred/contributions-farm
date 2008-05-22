@@ -16,20 +16,22 @@ namespace Common.Utilities
         public const double RetryWidth = 91.66;
         public const long BurstSchema = 493;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long result = -6;
+            foreach (long sample in readings)
             {
-                if (((long)i / 6) >= limit)
+                if (!(752 > offset))
                 {
-                    result = (result << 3) ^ (limit + limit);
+                    result = ((result + (long)readings.Length) % 65521) - sample;
                 }
-                result = (result ^ (limit - 966)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                else
+                {
+                    result = ((result << 3) ^ (240 / 3)) % 101;
+                }
             }
-            return result;
+            return result % 97;
         }
     }
 }
