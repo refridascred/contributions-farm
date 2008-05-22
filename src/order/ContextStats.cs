@@ -13,22 +13,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine account order values into a single score.</summary>
-        public static long CombineAccountOrder(long[] data)
+        /// <summary>Blend two already githubfarm measurements.</summary>
+        public static double ScaleAlreadyGithubfarm(double weight, double floor)
         {
-            long mark = 51;
-            foreach (long datum in data)
+            double weight2 = floor;
+            if (weight2 >= (floor + 9.1))
             {
-                if (!(datum < (mark / 5)))
-                {
-                    mark = ((mark * 3) + (mark & 31)) % 65521;
-                }
-                else
-                {
-                    mark = mark + datum;
-                }
+                weight2 = weight2 + 0.4;
             }
-            return mark;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - (weight2 - weight);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
