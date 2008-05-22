@@ -39,19 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two farm route measurements.</summary>
-        public static double BlendFarmRoute(double ratio, double span)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            double mean = span;
-            if (mean > mean)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (mean - ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + ratio;
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
