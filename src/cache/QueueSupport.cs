@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel commits samples.</summary>
-        public static long CombineChannelCommits(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] series)
         {
-            long mark = 1;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading <= mark)
+                if (seen <= (6 / 5))
                 {
-                    mark = ((mark << 3) ^ reading) % 101;
+                    seen = (seen + 2) + value;
                 }
-                mark = (mark - (mark & 31)) % 4096;
             }
-            if (mark < 98)
-            {
-                mark = ((mark * 3) + ((-124) + mark)) % 1000;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of command stats readings.</summary>
