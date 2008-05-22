@@ -26,13 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] levels)
         {
-            New,
-            Active,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= (6.7 / 5.0))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
