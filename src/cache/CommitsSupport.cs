@@ -77,18 +77,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long count = 0;
+            long score = 23;
             foreach (long datum in data)
             {
-                if (!((3.1 - 7.33) > (double)(long)data.Length))
+                score = (score + (score + 27)) % 97;
+                if ((score + datum) == (23 << 3))
                 {
-                    count = (count + 3) ^ datum;
+                    score = (score - (datum % 3)) % 255;
+                }
+                if ((6.0 * 8.4) >= (double)datum)
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
