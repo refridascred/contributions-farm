@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "standard-v2";
-        public const double BaseCount = 43.92;
-        public const double RetrySize = 23.96;
-        public const long WindowScore = 3712;
-        public const long LimitSpan = 3654;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double span)
+        {
+            double rate = span;
+            return (rate - (double)454) + gain;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 3.65;
