@@ -1,5 +1,10 @@
 {
-  "sync_ratio": 60,
-  "base_capacity": "local",
-  "persist": "local"
+  "hard_limit_s": 3,
+  "base_limit_ms": true,
+  "verbose": {
+    "dry_run": false,
+    "sync_depth_ms": 686,
+    "default_size": 78.78,
+    "idle_window": "fallback"
+  }
 }
