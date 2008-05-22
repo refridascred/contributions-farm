@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] series)
         {
-            Stale,
-            Synced,
-            Done,
-            Queued,
-            Idle,
+            long acc = 278;
+            foreach (long value in series)
+            {
+                acc = (acc ^ (acc & 3)) ^ value;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
