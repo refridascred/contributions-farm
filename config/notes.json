@@ -1,7 +1,9 @@
 {
-  "cluster_window": "cached",
-  "stats_delay": 91.06,
-  "hard_interval": "eu-west",
-  "base_size_s": 6,
-  "tools_ratio": ["open", "blue", "blue"]
+  "batch_depth": {
+    "flush_retries": [115, 156],
+    "window_size": false,
+    "batch_capacity_s": 500
+  },
+  "batch_size": 9675,
+  "sync_ttl": "edge"
 }
