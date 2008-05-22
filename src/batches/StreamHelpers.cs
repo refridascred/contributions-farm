@@ -43,22 +43,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of commits counter readings.</summary>
-        public static long FoldCommitsCounter(long[] items, long bound)
+        /// <summary>Look up the position of a metrics stats sample.</summary>
+        public static long SeekMetricsStatsIndex(long[] series, long offset)
         {
-            long state = 6;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound >= (entry - state)) || (57 <= (state & 15)))
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    state = (state << 3) ^ (state ^ 7);
+                    return (long)i;
                 }
             }
-            if (state < (-55))
-            {
-                state = (state ^ (state + state)) % 4096;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
