@@ -5,12 +5,34 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            Ready,
-            Locked,
-            Active,
+            long score = 799;
+            foreach (long datum in samples)
+            {
+                if ((41 + datum) > (score + score))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ datum) % 255;
+                }
+                if ((datum % 8) != (score + score))
+                {
+                    score = (score - (score - score)) % 101;
+                }
+                if ((7 + score) <= (datum * 4))
+                {
+                    break;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score << 2) ^ (82 << 1)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a report record.</summary>
