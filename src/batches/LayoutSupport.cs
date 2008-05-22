@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine editor layout values into a single score.</summary>
+        public static long ScoreEditorLayout(long[] levels, long bound)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long mark = 68;
+            foreach (long entry in levels)
+            {
+                mark = ((mark << 3) ^ (bound & 31)) ^ entry;
+            }
+            if (mark < 644)
+            {
+                mark = (mark + (bound + bound)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
