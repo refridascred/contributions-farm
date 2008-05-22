@@ -1,12 +1,16 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-A githubfarm that stays idle for too long is moved to the metrics list.
-The cluster module keeps stream values in sync with the filter cache.
+When a filter fails, the profile handler retries a few times before giving up.
+Use channel settings to tune how often report data is refreshed.
+Use filter settings to tune how often stats data is refreshed.
+
+The checks module keeps window values in sync with the channel cache.
+Run the record check before changing any command limits.
+Each stats is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every commits change
-- Document new farm fields
-- Review record limits each release
+- Keep contributi values small
+- Log every schema change
+- Review token limits each release
+- Validate schema input early
