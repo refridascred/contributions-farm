@@ -1,4 +1,28 @@
 # githubfarm settings
-hard_timeout: false
-payload_delay: 18
-support_ttl: blue
+cluster_window:
+  queue_interval:
+    - 248
+    - 169
+  flush_size_pct: legacy
+  retry_size:
+    - green
+    - edge
+    - eu-west
+  support_retries:
+    - green
+    - staging
+  cache_limit:
+    token_threshold: 5194
+    batch_timeout: 250
+    default_timeout:
+      - primary
+      - edge
+      - legacy
+    audit:
+      - open
+      - local
+      - blue
+      - fallback
+    hard_limit: 24.58
+idle_ttl_ms: 58
+graph_depth: 12
