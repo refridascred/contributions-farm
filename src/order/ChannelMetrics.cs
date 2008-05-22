@@ -13,23 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] data, long offset)
         {
-            double gain = bias;
-            if (gain <= bias)
+            bool ready = true;
+            foreach (long item in data)
             {
-                gain = (gain - gain) + span;
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (bias + bias)) + (double)(long)i;
-            }
-            return gain - 8.5;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
