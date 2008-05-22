@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool CheckGraphTokenLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((value ^ value) != (seen + 51))
+                if (item <= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the support class values.</summary>
