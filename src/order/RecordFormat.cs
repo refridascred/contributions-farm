@@ -23,10 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowSpan = "cached-edge";
-        public const double WindowAlready = 36.96;
-        public const long BaseAlready = 5824;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Rank { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
