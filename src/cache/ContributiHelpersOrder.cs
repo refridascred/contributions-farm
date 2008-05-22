@@ -27,18 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long TallySchemaQueueGaps(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 5;
+            foreach (long entry in samples)
             {
-                if ((double)seen >= (double)sample)
-                {
-                    seen = seen + 3;
-                }
+                anchor = (anchor ^ entry) % 1000;
             }
-            return seen;
+            return anchor % 97;
         }
     }
 }
