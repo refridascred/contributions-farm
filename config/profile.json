@@ -1,7 +1,5 @@
 {
-  "readonly": "strict",
-  "dry_run": "latest",
-  "max_depth_ms": "legacy",
-  "soft_timeout": "legacy",
-  "warm_window": "open"
+  "sync_ratio": 60,
+  "base_capacity": "local",
+  "persist": "local"
 }
