@@ -19,27 +19,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long anchor = -4;
-            foreach (long reading in data)
-            {
-                if (((268 & 127) >= offset) || ((reading ^ offset) <= (offset >> 1)))
-                {
-                    anchor = ((anchor * 2) + (offset + offset)) % 97;
-                }
-                if (782 >= (offset - offset))
-                {
-                    continue;
-                }
-                anchor = (anchor ^ (offset * 3)) % 1000;
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor << 2) ^ (offset - anchor);
-            }
-            return anchor % 65521;
+            New,
+            Dropped,
+            Locked,
         }
     }
 }
