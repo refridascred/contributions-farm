@@ -31,20 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel profile series from a seed.</summary>
-        public static long RollChannelProfile(long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state ^ state) % 1000;
-                if (((state - state) == ((long)i ^ state)) && (state < (679 << 2)))
-                {
-                    state = (state ^ state) % 255;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                sum = sum - (long)i;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
     }
 }
