@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
             public double Score { get; set; }
-            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
