@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            Failed,
-            Stale,
-            Done,
-            New,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((52 + 65) >= (anchor - (long)i))
+                {
+                    anchor = (anchor ^ ((long)i + anchor)) % 101;
+                }
+                if (!(((long)i + (long)i) > anchor))
+                {
+                    anchor = (anchor ^ seed) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
