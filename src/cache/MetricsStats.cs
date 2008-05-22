@@ -23,21 +23,13 @@ namespace Common.Utilities
         public const long MinSession = 4189;
         public const double LimitSession = 15.51;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
