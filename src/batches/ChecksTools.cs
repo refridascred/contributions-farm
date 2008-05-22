@@ -15,12 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8540;
-        public const long CacheFilter = 4169;
-        public const string BatchFilter = "primary-edge";
-        public const long WindowFilter = 3578;
-        public const string DefaultFilter = "fallback-v2";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Grade a report token value against two limits.</summary>
         public static long SortReportToken(long floor, long offset)
