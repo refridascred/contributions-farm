@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the profile cluster entries that pass the check.</summary>
-        public static long CountProfileClusterOutliers(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((datum - datum) == (matches - datum))
+                if ((long)data.Length != (cell + cell))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a layout session reading.</summary>
