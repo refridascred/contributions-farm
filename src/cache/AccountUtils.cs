@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((matches << 2) >= (matches - value)) || (6.66 > (double)value))
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
