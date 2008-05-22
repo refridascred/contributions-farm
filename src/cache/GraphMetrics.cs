@@ -40,24 +40,21 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long acc = 8;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc + (reading / 3);
-                acc = ((acc << 2) ^ (reading / 3)) % 1000;
-                if (((double)floor == (13.0 + 8.0)) && ((638 * 3) >= (floor % 60)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > (-606))
-            {
-                acc = acc + (acc << 2);
-            }
-            return acc;
+            return tally;
         }
     }
 }
