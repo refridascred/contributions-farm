@@ -22,13 +22,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                long gap = (anchor ^ anchor) + ((long)i ^ anchor);
+                if (((4 << 3) >= ((long)i + seed)) || ((gap * 3) >= ((long)i * 3)))
+                {
+                    anchor = ((anchor << 2) ^ (gap >> 2)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
