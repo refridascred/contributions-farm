@@ -65,15 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long limit)
         {
-            double drift = weight * 9.0;
-            if (drift < weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - drift) - bias;
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + weight;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
