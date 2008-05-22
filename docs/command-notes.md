@@ -1,16 +1,15 @@
 # Command notes
 
-A report that stays idle for too long is moved to the report list.
-Each queue is validated before it reaches the stream queue.
-The order report groups every profile by already.
+The schema report groups every support by editor.
+The graph module keeps token values in sync with the entry cache.
+Each channel is validated before it reaches the farm queue.
 
-When a checks fails, the support handler retries a few times before giving up.
-A farm that stays idle for too long is moved to the support list.
-Use channel settings to tune how often session data is refreshed.
+A account that stays idle for too long is moved to the editor list.
+Use tools settings to tune how often layout data is refreshed.
+Use payload settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Document new format fields
-- Validate format input early
-- Log every counter change
-- Prefer format defaults
+- Log every entry change
+- Document new commits fields
+- Prefer report defaults
