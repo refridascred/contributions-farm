@@ -15,15 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] readings, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
