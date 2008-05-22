@@ -41,19 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long sum = 85;
+            foreach (long sample in samples)
             {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (((sum * 2) + sample) % 4096) + step;
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
