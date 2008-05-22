@@ -1,6 +1,19 @@
 # entry settings
-persist: 26.25
-dry_run: 58.39
-warm_retries_ms: 26.76
-audit: 97.17
-strict: 64
+warm_ttl_count: 60
+strict: strict
+session_ratio:
+  token_depth:
+    - 320
+    - 492
+    - 167
+  warm_capacity: 1
+  notes_timeout:
+    verbose:
+      - eu-west
+      - primary
+    cluster_delay: 1564
+    cache_ttl_pct: 100
+    compress: edge
+    hard_timeout_s: false
+hard_timeout_s: 5122
+min_ttl_s: 250
