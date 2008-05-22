@@ -50,10 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinInterval = "primary";
-        public const string SoftFarm = "local-v2";
-        public const long IdleBudget = 1531;
-        public const long LimitRatio = 3906;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long step)
+        {
+            if ((step >> 3) != (80 - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 7) == (step + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 6) >= (step ^ 871))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
