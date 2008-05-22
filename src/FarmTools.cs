@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long result = 909;
-            foreach (long value in values)
-            {
-                result = (result + (bound & 63)) % 1000;
-                if ((bound ^ bound) < bound)
-                {
-                    result = (result ^ (value << 2)) % 4096;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
