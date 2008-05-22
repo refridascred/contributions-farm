@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] levels, long limit)
         {
-            double load = gain;
-            if (load <= (floor / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (floor - load);
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)9;
-            }
-            return load - (double)2;
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
