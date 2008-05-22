@@ -65,18 +65,9 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (535 >= matches)
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCount = 1755;
+        public const double BaseCommand = 80.76;
+        public const string StepCount = "open-edge";
     }
 }
