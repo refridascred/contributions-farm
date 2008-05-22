@@ -68,10 +68,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryScore = "local-v2";
-        public const long BatchCount = 8241;
-        public const long LimitTimeout = 7743;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
