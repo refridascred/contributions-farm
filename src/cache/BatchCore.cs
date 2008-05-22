@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long floor)
+        /// <summary>Derive the next tools batch value from a seed.</summary>
+        public static long IterateToolsBatch(long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
