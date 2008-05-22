@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long SoftEntry = 5792;
         public const string CacheEntry = "primary";
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the entry mode values.</summary>
