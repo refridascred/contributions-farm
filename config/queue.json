@@ -1,8 +1,6 @@
 {
-  "soft_ratio_count": [326, 97, 237, 144],
-  "commits_capacity": 500,
-  "record_capacity": 61.85,
-  "min_depth_pct": "fallback",
-  "persist": [500, 463],
-  "githubfarm_delay": 32.54
+  "default_capacity": ["open", "strict"],
+  "poll_depth_pct": ["green", "edge"],
+  "dry_run": true,
+  "format_capacity": [397, 37, 474, 470]
 }
