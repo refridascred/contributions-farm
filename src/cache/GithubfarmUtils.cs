@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = -1;
+            foreach (long datum in readings)
             {
-                if (88 <= (value / 7))
+                mix = (mix * 3) + (84 >> 3);
+                if ((bound <= (mix << 1)) && (datum <= mix))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
