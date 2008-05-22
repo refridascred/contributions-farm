@@ -39,15 +39,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 4705;
         public const string DefaultInterval = "stable-edge";
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = 270;
+            foreach (long value in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((limit > value) && (sum < (sum & 31)))
+                {
+                    sum = sum - limit;
+                }
+                else
+                {
+                    sum = sum ^ (limit % 7);
+                }
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
