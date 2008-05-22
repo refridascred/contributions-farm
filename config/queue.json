@@ -1,12 +1,17 @@
 {
-  "min_window_s": {
-    "warm_retries": "stable",
-    "warm_threshold_count": true,
-    "readonly": false,
-    "cache_timeout_count": "eu-west",
-    "default_interval": 1024,
-    "counter_ratio": "standard"
+  "cache_interval_s": {
+    "counter_ttl": "fallback",
+    "graph_size": 842,
+    "readonly": {
+      "account_capacity": [92, 2],
+      "audit": 8123,
+      "readonly": "green",
+      "counter_window": 56.96,
+      "base_timeout_count": 6352,
+      "retry_limit_pct": true
+    }
   },
-  "sync_ttl_ms": 58.2,
-  "burst_window_pct": 4185
+  "idle_ttl_ms": 8787,
+  "cache_timeout": 90.92,
+  "verbose": "legacy"
 }
