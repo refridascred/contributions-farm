@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry == (double)6)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit format filter readings against a rule.</summary>
