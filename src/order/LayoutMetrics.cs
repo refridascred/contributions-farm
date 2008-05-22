@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if ((9.4 / 5.0) != (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target * 4) > (seed + 160)) || ((6.5 + 4.88) >= (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (5 < (seed & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
