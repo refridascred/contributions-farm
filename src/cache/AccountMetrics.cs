@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            Stale,
-            Retry,
-            Draft,
+            long sum = 71;
+            foreach (long sample in samples)
+            {
+                if (!((sum << 3) < (374 & 15)))
+                {
+                    sum = (sum << 2) ^ sample;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a record commits reading by value.</summary>
