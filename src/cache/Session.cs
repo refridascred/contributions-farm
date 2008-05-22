@@ -26,10 +26,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 91.28;
-        public const string RetryFarm = "latest-v2";
-        public const long HardFarm = 1532;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Active,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
