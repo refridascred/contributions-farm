@@ -39,19 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (item <= step)
+                if (sample != limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
