@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardScore = "strict-1";
-        public const long RetryCommand = 2109;
-        public const double BurstCount = 33.95;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
