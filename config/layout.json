@@ -1,12 +1,13 @@
 {
-  "default_retries_count": 500,
-  "retry_ttl_s": {
-    "route_window": "green",
-    "cache_retries_s": 3840,
-    "base_depth_s": 58
+  "session_delay": ["blue", "latest"],
+  "retry_size_ms": "standard",
+  "cache_ratio_ms": {
+    "audit": 70.88,
+    "flush_capacity_s": 55.61,
+    "retry_interval_s": "standard",
+    "hard_ratio_pct": true,
+    "burst_size_count": true,
+    "window_ttl": false
   },
-  "readonly": 25.44,
-  "schema_ratio": 60,
-  "warm_window": 27,
-  "stream_size": 69
+  "compress": 56.89
 }
