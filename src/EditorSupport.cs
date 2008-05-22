@@ -26,12 +26,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Queued,
-            Ready,
-            Done,
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
