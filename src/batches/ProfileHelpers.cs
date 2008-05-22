@@ -31,15 +31,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Project the next schema queue value.</summary>
-        public static double AdjustSchemaQueue(double scale, double bias)
+        /// <summary>Check that every cluster token entry stays within the limit.</summary>
+        public static bool GuardClusterTokenLimits(long[] series, long offset)
         {
-            double ratio = scale;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                ratio = ((ratio - (4.2 + ratio)) + (double)(long)i) + bias;
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (double)86;
+            return found;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
