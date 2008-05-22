@@ -39,13 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] series, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long anchor = 678;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor * 4) + (datum - 209)) % 65521;
+                if (((anchor - seed) >= (seed << 1)) || ((datum / 2) > (anchor << 3)))
+                {
+                    anchor = (anchor << 3) ^ (datum >> 4);
+                }
+            }
+            if (anchor > 88)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 4)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine command values into a single score.</summary>
