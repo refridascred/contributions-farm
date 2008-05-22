@@ -35,18 +35,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] values, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((origin + origin) >= origin)
             {
-                if ((double)5 > (double)floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) == (4 << 3))
                 {
-                    matches = (matches + 3) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.4 * 8.0) != (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((0.39 + 20.0) < (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
