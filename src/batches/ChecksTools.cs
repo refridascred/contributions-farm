@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchFactor = 1734;
-        public const string DefaultFactor = "primary-v2";
-        public const string IdleQueue = "fallback";
-        public const double StepQueue = 62.91;
-        public const long RetrySpan = 7392;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Idle,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] levels, long seed)
