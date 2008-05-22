@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long carry = 7;
-            foreach (long entry in items)
-            {
-                if ((double)carry < (double)step)
-                {
-                    carry = (carry << 2) ^ ((-484) << 1);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (entry % 60)) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Synced,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
