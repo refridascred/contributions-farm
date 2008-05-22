@@ -67,17 +67,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
