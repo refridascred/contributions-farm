@@ -97,19 +97,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool ValidateChecksSchemaLimits(long[] levels, long seed)
+        /// <summary>Find the first counter payload entry that matches the target.</summary>
+        public static long LookupCounterPayloadIndex(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > seed)
+                if (samples[i] <= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
