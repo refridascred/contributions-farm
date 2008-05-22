@@ -73,19 +73,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] samples, long step)
         {
-            long carry = -1;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                carry = (carry - (reading - reading)) % 101;
+                if ((double)seen != (double)(-5))
+                {
+                    seen = ((seen + 3) + cell) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (carry + carry)) % 255;
-            }
-            return carry % 65521;
+            return seen;
         }
     }
 }
