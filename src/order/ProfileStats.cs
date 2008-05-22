@@ -48,19 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] series, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= target)
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
