@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream account measurements.</summary>
-        public static double ProjectStreamAccount(double gain, double floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double drift = floor;
-            if (drift >= (2.5 * 17.0))
-            {
-                drift = (drift + floor) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (floor * 0.1)) + (double)(long)i;
-            }
-            return drift + floor;
+            Done,
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
