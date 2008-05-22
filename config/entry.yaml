@@ -1,17 +1,15 @@
 # entry settings
-hard_timeout_s: eu-west
-idle_capacity_s: latest
-support_size:
-  profile_size: 72.32
-  batch_depth: 20.68
-  default_ratio_count: 100
-  profile_delay:
-    warm_retries_count: 3187
-    audit:
-      - 348
-      - 160
-      - 183
-    notes_delay: legacy
-    soft_window: 250
-  dry_run: 41.1
-hard_threshold_s: 78
+min_capacity: 94
+poll_threshold_pct: 61.31
+token_interval: 61
+default_limit_count: 500
+poll_delay_pct:
+  - local
+  - blue
+  - latest
+  - fallback
+cache_interval:
+  - strict
+  - cached
+  - eu-west
+  - cached
