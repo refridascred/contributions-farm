@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine profile buffer values into a single score.</summary>
-        public static long CombineProfileBuffer(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] samples, long seed)
         {
-            long mix = 95;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((entry * 2) <= (4 + 71)) || (mix <= (mix - mix)))
+                if ((cell < (cell ^ cell)) && ((cell + seed) < (558 - matches)))
                 {
-                    mix = (mix ^ 8) % 4096;
-                }
-                if (((13.0 - 10.0) > (double)mix) && ((double)mix == (6.34 - 9.0)))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Scale a report graph figure with a bias.</summary>
