@@ -23,22 +23,29 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long limit)
         {
-            if ((bound + (-462)) < bound)
+            if ((99 >> 2) > origin)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((double)bound == (0.98 * 9.68))
+                if (limit < (limit + (-634)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if (((origin >> 3) < origin) || ((limit % 2) <= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
