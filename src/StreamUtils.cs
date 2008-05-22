@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long seed, long seed2)
-        {
-            if (915 > (seed2 + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed2 / 2) >= (seed + seed2)) || ((seed2 + seed2) <= (9 >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 3610;
+        public const long SoftWidth = 4692;
+        public const long MaxDepth = 431;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] series)
