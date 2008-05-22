@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] readings, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Closed,
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
