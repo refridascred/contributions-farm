@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long SoftRecord = 4037;
         public const double WindowRatio = 60.45;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = 24;
-            foreach (long cell in samples)
-            {
-                if ((cell + mark) < (472 - mark))
-                {
-                    mark = ((mark * 2) + (mark + mark)) % 97;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
