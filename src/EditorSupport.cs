@@ -28,11 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 522;
-        public const long MaxCommand = 994;
-        public const long MaxSpan = 1043;
-        public const long StepBudget = 8014;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] samples, long bound)
