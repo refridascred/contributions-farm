@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 8843;
-        public const long MaxDepth = 855;
-        public const string MinFactor = "strict-1";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 3) ^ ((long)i & 31)) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
