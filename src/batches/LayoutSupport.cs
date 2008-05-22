@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((step - sample) < (3 / 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel state values.</summary>
