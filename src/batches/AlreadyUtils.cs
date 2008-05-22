@@ -19,12 +19,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum + 1) < (datum + 5)) || ((hits >= (829 + hits)) || ((5.52 * 9.1) > (double)datum)))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a counter window figure with a bias.</summary>
