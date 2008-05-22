@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (weight - (bias / 6.0)) + scale;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((6.0 * 1.5) == (double)step)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleInterval = 8285;
+        public const long WindowWidth = 2208;
+        public const double WindowRatio = 64.26;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] readings)
