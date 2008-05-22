@@ -1,4 +1,9 @@
 # entry settings
-sync_timeout_count: 5790
-min_window_count: legacy
-warm_depth_ms: 30.39
+command_window: latest
+already_window: 46.15
+audit: 9
+commits_ratio: open
+cluster_interval: local
+buffer_retries:
+  - 155
+  - 15
