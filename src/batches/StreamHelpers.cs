@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftDepth = 1823;
+        public const long BatchGraph = 246;
+        public const long MinGraph = 6552;
+        public const long CacheGraph = 2894;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
