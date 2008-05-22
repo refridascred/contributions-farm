@@ -21,19 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (datum > bound)
+                if ((double)509 == (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
