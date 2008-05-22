@@ -15,19 +15,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate profile notes readings against a bound.</summary>
-        public static bool GuardProfileNotesRange(long[] samples, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if ((62 << 1) >= bound)
             {
-                if (sample >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((bound + 7) <= (target + bound))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target - bound) > (target % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound < 1.0) || ((double)bound >= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
