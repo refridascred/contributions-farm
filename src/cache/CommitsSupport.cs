@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] items, long seed)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two stream measurements.</summary>
