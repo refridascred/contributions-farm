@@ -48,17 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already layout entry that matches the target.</summary>
-        public static long LocateAlreadyLayoutIndex(long[] readings, long step)
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long DigestCommandSupport(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 1;
+            foreach (long cell in readings)
             {
-                if (readings[i] <= step)
+                if ((74 + cell) < seed)
                 {
-                    return (long)i;
+                    state = (state + (cell + seed)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (seed >> 5)) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
