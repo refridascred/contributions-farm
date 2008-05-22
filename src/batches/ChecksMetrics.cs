@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings, long offset)
         {
-            long next = offset + floor;
-            if ((next % 100) > (next + next))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((4.7 * 16.0) == (double)offset))
+                if (((offset + 243) == (hits << 3)) || !((59 * 5) >= (6 - entry)))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
