@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 2;
-            foreach (long cell in series)
-            {
-                if ((20.0 + 8.65) == (double)step)
-                {
-                    result = ((result << 3) ^ (9 << 3)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (step - cell)) % 255;
-                }
-            }
-            return result;
+            Active,
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
