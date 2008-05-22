@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mean + (span + mean);
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 96;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mix + sample) < sample) && (((-51) - mix) > (sample ^ sample)))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 4) + (mix << 1);
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
