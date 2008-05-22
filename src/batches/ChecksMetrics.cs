@@ -57,12 +57,19 @@ namespace Common.Utilities
         public const long BatchContributi = 6590;
         public const double BurstCount = 83.92;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
