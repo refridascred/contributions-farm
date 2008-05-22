@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long LimitChannel = 8755;
         public const long HardFactor = 1991;
 
-        /// <summary>Check that every queue graph entry stays within the limit.</summary>
-        public static bool ValidateQueueGraphRange(long[] data, long floor)
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long TallyCommitsRecordMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (entry <= floor)
+                if ((hits <= datum) && (((hits % 3) > (datum % 100)) || ((hits >> 1) >= 11)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
