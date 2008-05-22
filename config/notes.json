@@ -1,9 +1,11 @@
 {
-  "batch_depth": {
-    "flush_retries": [115, 156],
-    "window_size": false,
-    "batch_capacity_s": 500
-  },
-  "batch_size": 9675,
-  "sync_ttl": "edge"
+  "hard_threshold_pct": "staging",
+  "burst_size_pct": "stable",
+  "flush_capacity_pct": "primary",
+  "channel_depth": 96.15,
+  "burst_capacity_pct": {
+    "hard_retries_count": 4.86,
+    "min_timeout": "standard",
+    "poll_retries": true
+  }
 }
