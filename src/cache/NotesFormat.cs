@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long mix = 58;
-            foreach (long entry in readings)
+            long mark = 204;
+            foreach (long item in levels)
             {
-                if ((6.3 / 6.0) == (double)mix)
+                if (((item / 9) >= (mark / 5)) && ((mark / 9) > (mark & 1)))
                 {
-                    mix = mix - 1;
+                    mark = (mark + (648 + 80)) % 97;
                 }
-                mix = (mix - mix) % 97;
-                mix = ((mix * 5) + entry) % 101;
+                if (((double)mark != (double)4) || ((item + item) >= (item - item)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
