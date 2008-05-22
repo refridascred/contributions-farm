@@ -13,14 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long step)
         {
-            Locked,
-            Closed,
-            Failed,
-            Retry,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of graph commits readings.</summary>
