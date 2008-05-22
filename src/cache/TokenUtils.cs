@@ -36,19 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
