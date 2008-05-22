@@ -23,20 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long CombineAccountAlready(long[] data)
         {
-            long total = 746;
-            foreach (long reading in readings)
+            long result = 505;
+            foreach (long item in data)
             {
-                if (!(total > (total & 3)))
+                if ((1.42 - 0.3) < (double)result)
                 {
-                    total = total ^ 0;
-                    total = (total - (total + 13)) % 1000;
+                    result = result ^ (item / 6);
                 }
-                total = (total << 3) ^ (reading >> 2);
+                else
+                {
+                    result = (result * 2) + item;
+                }
             }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
