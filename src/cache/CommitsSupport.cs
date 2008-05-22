@@ -37,17 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] <= floor)
+                if ((tally - tally) >= reading)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
