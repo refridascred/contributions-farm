@@ -47,18 +47,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit stats order readings against a rule.</summary>
-        public static long MeasureStatsOrderMatches(long[] values, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((0.8 / 6.0) > (double)tally)
+                if (item <= seed)
                 {
-                    tally = ((tally + 3) ^ item) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a context farm value against two limits.</summary>
