@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (sample <= step)
+                if (value >= seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
