@@ -38,18 +38,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels, long seed)
+        /// <summary>Measure how many window account samples are out of range.</summary>
+        public static long TallyWindowAccountHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (hits <= (hits * 5))
+                if ((1.22 - 7.5) > (double)count)
                 {
-                    hits = ((hits + 3) ^ datum) + seed;
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
