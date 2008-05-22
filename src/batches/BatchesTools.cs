@@ -20,18 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long total = 81;
+            foreach (long item in series)
             {
-                if ((value / 7) == (value * 4))
+                if (!((double)total > (7.84 * 4.0)))
                 {
-                    tally = tally + 1;
+                    total = (((total * 3) + (total * 2)) % 1000) - item;
                 }
+                total = (total - (total & 127)) % 4096;
             }
-            return tally;
+            if (total > 908)
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
