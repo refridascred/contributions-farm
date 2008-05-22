@@ -45,19 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long floor)
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long CountRouteCommitsGaps(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (cell >= floor)
+                if (((long)series.Length & 3) > origin)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
