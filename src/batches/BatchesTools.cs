@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item - item) >= (item / 9))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
