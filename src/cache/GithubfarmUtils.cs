@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            Done,
-            Closed,
-            Active,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count << 2) < 3)
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
