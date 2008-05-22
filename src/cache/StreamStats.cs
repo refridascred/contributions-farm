@@ -22,39 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long offset)
-        {
-            if ((origin + origin) <= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < (origin - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 4) <= (origin - 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((8.0 - 5.0) == (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 43.66;
+        public const long StepDepth = 5009;
+        public const double IdleAccount = 41.35;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
