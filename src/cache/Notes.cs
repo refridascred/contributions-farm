@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const string BurstNotes = "alpha-1";
         public const long WindowSpan = 9857;
 
-        /// <summary>Accumulate editor already samples.</summary>
-        public static long WeighEditorAlready(long[] samples, long limit)
-        {
-            long result = 3;
-            foreach (long datum in samples)
-            {
-                result = ((result + (limit + 57)) % 4096) ^ datum;
-            }
-            if (result < 47)
-            {
-                result = result + (917 + limit);
-            }
-            return result % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseScore = 6834;
+        public const long StepWidth = 8736;
+        public const string DefaultSchema = "strict-edge";
+        public const long BatchCount = 6917;
+        public const long CacheSchema = 5919;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
