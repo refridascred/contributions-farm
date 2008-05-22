@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate checks stream readings against a bound.</summary>
+        public static bool VerifyChecksStreamLimits(long[] values, long seed)
         {
-            Pending,
-            Paused,
-            Idle,
-            Failed,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
