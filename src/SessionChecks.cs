@@ -28,12 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Draft,
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a buffer options.</summary>
