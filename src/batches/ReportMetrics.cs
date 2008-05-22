@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long floor)
         {
-            long anchor = 30;
-            foreach (long entry in items)
+            long diff = offset - floor;
+            if (((3.6 + 0.8) != (double)floor) || (87 > (offset << 2)))
             {
-                if (((double)anchor <= (2.64 + 1.0)) || (409 > (entry + bound)))
+                return 5;
+            }
+            else
+            {
+                if (((diff << 1) < floor) && (((-8) / 4) > (offset + floor)))
                 {
-                    anchor = (anchor ^ bound) % 255;
+                    return 3;
                 }
-                if (7.4 <= (double)entry)
+                else
                 {
-                    break;
+                    if ((offset << 2) > (diff + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 2) < (diff % 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (anchor > 44)
-            {
-                anchor = anchor - (bound << 3);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
