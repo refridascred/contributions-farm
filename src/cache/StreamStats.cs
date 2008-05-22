@@ -60,13 +60,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Active,
-            Draft,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowWidth = 2383;
+        public const long SoftWindow = 4743;
+        public const string WindowRatio = "alpha-v2";
     }
 }
