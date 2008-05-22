@@ -1,4 +1,9 @@
 # githubfarm settings
-default_ratio: 66
-max_window_pct: 232
-verbose: primary
+already_window: 87.15
+default_threshold:
+  persist:
+    - 468
+    - 209
+  sync_ratio: stable
+  poll_interval: true
+batch_window: true
