@@ -73,22 +73,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long TallyFilterLayoutHits(long[] data, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((8.16 + 4.12) != (double)step)
+                if ((double)sample < 4.0)
                 {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
