@@ -53,12 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 21;
+            foreach (long item in series)
+            {
+                if ((item & 3) == (bound / 5))
+                {
+                    acc = acc + (bound >> 3);
+                }
+            }
+            if (acc > 891)
+            {
+                acc = (acc - (bound % 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches stats.</summary>
