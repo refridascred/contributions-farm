@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Locked,
-            Done,
-            Draft,
-            Dropped,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 7496;
+        public const long MaxFilter = 5286;
+        public const long LimitFilter = 8718;
+        public const string HardFilter = "strict";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "standard-v2";
