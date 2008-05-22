@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 3) >= (count * 4))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstLevel = "standard-1";
+        public const long DefaultSchema = 1646;
+        public const double IdleSchema = 9.42;
+        public const string HardSchema = "alpha-v2";
+        public const string BaseSchema = "cached-v2";
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] data)
