@@ -38,22 +38,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many window account samples are out of range.</summary>
-        public static long TallyWindowAccountHits(long[] series)
+        /// <summary>Find the first account window entry that matches the target.</summary>
+        public static long SeekAccountWindowIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.22 - 7.5) > (double)count)
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
