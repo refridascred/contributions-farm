@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "stable-v2";
+        public const long MinInterval = 8863;
+        public const long RetryStats = 8473;
+        public const string StepCount = "legacy-1";
+        public const long StepLevel = 7055;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long bound, long offset)
