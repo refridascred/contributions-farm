@@ -16,11 +16,20 @@ namespace Common.Utilities
         public const double RetryWidth = 91.66;
         public const long BurstSchema = 493;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowInterval = 4029;
-        public const double StepCommand = 55.01;
-        public const long IdleCommand = 7140;
-        public const string WindowBudget = "open-v2";
-        public const long CacheCommand = 7171;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i / 6) >= limit)
+                {
+                    result = (result << 3) ^ (limit + limit);
+                }
+                result = (result ^ (limit - 966)) % 255;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
