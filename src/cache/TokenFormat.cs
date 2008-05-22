@@ -39,15 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a already commits figure with a bias.</summary>
-        public static double SmoothAlreadyCommits(double scale, double span)
-        {
-            double ratio = (double)(297 & 1);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + span) - (double)(long)i) + scale;
-            }
-            return ratio + (double)10;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseInterval = 3798;
+        public const string MaxCount = "alpha-1";
+        public const long LimitAlready = 9266;
+        public const long RetryAlready = 472;
+        public const long StepLevel = 5572;
     }
 }
