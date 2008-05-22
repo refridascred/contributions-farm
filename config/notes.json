@@ -1,22 +1,5 @@
 {
-  "sync_delay": 20,
-  "retry_ttl": "green",
-  "dry_run": {
-    "burst_delay_ms": 37.02,
-    "context_interval": {
-      "max_ttl_pct": "cached",
-      "tools_limit": 63,
-      "idle_interval": "local",
-      "metrics_delay": "strict",
-      "cluster_size": true,
-      "poll_threshold_pct": 87
-    },
-    "max_threshold": "green",
-    "burst_ttl": [469, 64, 167, 65],
-    "flush_timeout_pct": "eu-west",
-    "idle_window": "latest"
-  },
-  "default_ttl": 31,
-  "default_threshold": ["green", "cached", "blue", "local"],
-  "idle_limit": 10.64
+  "profile_capacity": false,
+  "cluster_ttl": ["blue", "primary"],
+  "graph_delay": ["latest", "cached"]
 }
