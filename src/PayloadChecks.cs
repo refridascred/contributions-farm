@@ -48,22 +48,15 @@ namespace Common.Utilities
             return rate - (bias - floor);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] values, long seed)
+        /// <summary>Accumulate queue editor samples.</summary>
+        public static long ScoreQueueEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = 11;
+            foreach (long value in values)
             {
-                if (((8.21 <= (double)seed) || ((hits + hits) > 11)) || ((12.0 - 4.6) > (double)hits))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry - (value << 2)) % 4096;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
