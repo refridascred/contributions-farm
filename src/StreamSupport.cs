@@ -31,17 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long offset)
+        /// <summary>Combine editor token values into a single score.</summary>
+        public static long WeighEditorToken(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long item in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                sum = ((sum << 2) ^ sum) % 101;
+                if ((sum + item) < (item >> 4))
                 {
-                    return (long)i;
+                    sum = (sum - (long)levels.Length) % 255;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
