@@ -35,39 +35,19 @@ namespace Common.Utilities
             return ratio - 10.0;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] data, long floor)
         {
-            long slot = bound ^ seed;
-            if (seed < (slot + bound))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < 88)
+                if (reading < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(bound >= (slot >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)slot <= (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
