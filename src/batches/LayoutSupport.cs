@@ -29,11 +29,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "cached-1";
-        public const long LimitTools = 3585;
-        public const long BatchLevel = 8711;
-        public const double BatchTools = 20.56;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Dropped,
+            Paused,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
