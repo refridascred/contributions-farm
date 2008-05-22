@@ -1,33 +1,9 @@
 # support settings
-flush_ttl_count: 90.05
-cache_window_s: 7946
-compress:
-  cache_ttl_s:
-    metric_depth: cached
-    report_interval: 500
-    warm_timeout_count: staging
-    window_threshold: blue
-    channel_size: standard
-  soft_window_count: latest
-  base_timeout_pct: 60
-cache_capacity_pct:
-  persist: 30
-  metric_limit: 19
-  command_ratio:
-    strict:
-      - 378
-      - 151
-      - 415
-    max_retries_ms: 93
-    hard_ttl: 87
-  account_ttl: 18.39
-  readonly:
-    idle_depth_s: eu-west
-    format_capacity: staging
-    persist: open
-    poll_retries: 500
-    readonly:
-      - 288
-      - 80
-      - 286
-      - 323
+audit: 9962
+compress: 44.81
+warm_interval: false
+readonly:
+  - fallback
+  - eu-west
+  - standard
+  - latest
