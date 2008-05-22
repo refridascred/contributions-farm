@@ -23,32 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a window counter value against two limits.</summary>
-        public static long RankWindowCounter(long offset, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long next = offset ^ limit;
-            if ((7.73 / 3.0) >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset - next) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((next + limit) > next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
