@@ -1,5 +1,10 @@
 # entry settings
-record_threshold: 5036
-dry_run: 79
-readonly: 7909
-entry_threshold: local
+poll_delay_ms:
+  - 341
+  - 280
+  - 154
+  - 44
+command_ratio: 100
+retry_ratio: open
+enabled: true
+readonly: latest
