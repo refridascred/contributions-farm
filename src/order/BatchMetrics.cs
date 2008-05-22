@@ -37,12 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count + reading) == (count & 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
