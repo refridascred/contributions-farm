@@ -1,18 +1,24 @@
 {
-  "retry_window": {
-    "poll_timeout_pct": "cached",
-    "audit": "open",
-    "flush_window_ms": false,
-    "contributi_limit": "cached",
-    "readonly": "open",
-    "persist": [485, 104, 382, 377]
+  "idle_size_pct": [440, 186, 175, 395],
+  "schema_timeout": {
+    "counter_interval": "latest",
+    "layout_depth": ["primary", "staging", "eu-west", "standard"],
+    "enabled": ["latest", "eu-west", "eu-west"]
   },
-  "audit": [332, 84],
-  "base_timeout_count": "primary",
-  "enabled": {
-    "base_interval_ms": ["legacy", "green", "cached"],
-    "stats_window": "staging",
-    "retry_delay_pct": true
+  "persist": {
+    "graph_limit": ["latest", "primary"],
+    "poll_limit_count": 22.42,
+    "counter_window": "blue",
+    "soft_size": ["local", "strict"],
+    "min_threshold_s": "blue",
+    "base_limit": {
+      "audit": ["blue", "strict", "local", "green"],
+      "batches_retries": 3901,
+      "compress": "standard",
+      "sync_retries_pct": [141, 265, 436, 22],
+      "sync_threshold": "blue"
+    }
   },
-  "commits_depth": 500
+  "idle_timeout_count": [185, 137, 206],
+  "batch_depth_pct": 1024
 }
