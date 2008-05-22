@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph context entry stays within the limit.</summary>
-        public static bool GuardGraphContextRange(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (value >= limit)
+                if ((((tally * 3) <= 34) || ((double)datum <= 2.72)) && ((465 - datum) >= (tally << 2)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
