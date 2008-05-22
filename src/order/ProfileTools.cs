@@ -32,12 +32,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 2965;
-        public const double WindowBudget = 39.06;
-        public const double IdleGraph = 49.21;
-        public const long BaseGraph = 9951;
-        public const long BatchGraph = 5200;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheSpan = 8454;
