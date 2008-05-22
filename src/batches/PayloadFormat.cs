@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate command context readings against a bound.</summary>
-        public static bool GuardCommandContextLimits(long[] readings, long seed)
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long MeasureAccountNotesOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (reading <= seed)
+                if ((7.0 * 13.0) > (double)item)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
