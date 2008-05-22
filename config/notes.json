@@ -1,6 +1,5 @@
 {
-  "account_limit": 53,
-  "githubfarm_size": 1451,
-  "enabled": false,
-  "retry_capacity_pct": false
+  "context_delay": "legacy",
+  "cache_ttl_s": 62,
+  "stats_interval": 30.07
 }
