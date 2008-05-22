@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long limit, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long delta = limit ^ floor;
-            if (!((limit + floor) != (delta & 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta - delta) < (limit + 480))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
