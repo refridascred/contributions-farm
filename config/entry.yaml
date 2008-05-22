@@ -1,5 +1,10 @@
 # entry settings
-schema_retries: staging
-cache_timeout_s: 48
-checks_window: 4295
-idle_threshold_ms: open
+cache_timeout:
+  - legacy
+  - open
+  - local
+filter_retries: false
+base_ratio_pct: blue
+batch_timeout: strict
+token_limit: 48.93
+batch_capacity: legacy
