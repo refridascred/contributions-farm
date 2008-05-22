@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            New,
-            Closed,
+            Ready,
+            Done,
+            Pending,
+            Draft,
             Locked,
-            Active,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
