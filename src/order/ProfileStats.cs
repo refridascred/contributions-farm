@@ -41,15 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long step)
+        /// <summary>Check that every graph account entry stays within the limit.</summary>
+        public static bool GuardGraphAccountBounds(long[] data, long origin)
         {
-            long sum = 85;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = (((sum * 2) + sample) % 4096) + step;
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
