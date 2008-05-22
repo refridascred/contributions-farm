@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 7496;
-        public const long MaxFilter = 5286;
-        public const long LimitFilter = 8718;
-        public const string HardFilter = "strict";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long seed, long bound)
+        {
+            long step = seed + bound;
+            if ((double)step >= (3.58 - 0.68))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((726 - seed) > (bound & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.91 + 7.7) >= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "standard-v2";
