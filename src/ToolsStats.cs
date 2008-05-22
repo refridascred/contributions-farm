@@ -78,18 +78,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool ValidateChecksSchemaLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)sample < 4.0)
+                if (item > seed)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
