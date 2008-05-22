@@ -37,22 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series, long target)
+        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
+        public static long SeriesGithubfarmPayload(long offset)
         {
-            long score = 53;
-            foreach (long cell in series)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((double)target <= (double)score) || (target < (cell >> 4)))
+                acc = ((acc * 2) + (acc + offset)) % 65521;
+                if ((offset & 1) <= ((long)i / 8))
                 {
-                    score = (score - 36) % 1000;
+                    acc = (acc - (offset + 16)) % 4096;
                 }
-                else
-                {
-                    score = ((score * 4) + (score ^ cell)) % 255;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return score % 1000;
+            return acc;
         }
     }
 }
