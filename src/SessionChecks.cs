@@ -34,12 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((5.9 * 7.3) == (double)item)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
