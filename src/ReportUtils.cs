@@ -61,18 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache account series from a seed.</summary>
-        public static long DeriveCacheAccount(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix * 2) + ((long)i % 64);
-                mix = (mix + (mix - target)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowBudget = 422;
+        public const double SoftContributi = 15.29;
+        public const long RetryContributi = 1792;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
