@@ -1,11 +1,18 @@
 # entry settings
-soft_delay_count: blue
-min_retries: false
-base_capacity_s:
-  - 13
-  - 216
-  - 279
-  - 439
-warm_retries_ms: 250
-verbose: 71.3
-notes_retries: true
+burst_retries:
+  - 12
+  - 10
+  - 18
+strict:
+  - legacy
+  - eu-west
+persist:
+  verbose: 3686
+  burst_capacity_count: 12.36
+  token_ttl: false
+  cache_depth: 56.67
+  hard_window_s: 91
+  persist: true
+poll_limit: false
+record_retries: 100
+min_interval_s: 43
