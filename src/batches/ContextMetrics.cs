@@ -22,37 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long seed)
+        /// <summary>Grade a batches cache value against two limits.</summary>
+        public static long RankBatchesCache(long seed, long step)
         {
-            long diff = limit - seed;
-            if ((limit << 2) <= diff)
+            long step2 = seed + step;
+            if ((seed <= (seed & 31)) || ((step2 + step) != (step2 + step2)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((7 * 4) == (limit + seed))
+                if (((double)step >= (9.7 / 8.0)) || ((833 ^ step) <= (30 >> 4)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)diff < 8.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit + limit)) && ((limit & 7) >= (diff / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
