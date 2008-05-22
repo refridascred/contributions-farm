@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long IdleCommand = 12;
         public const long BurstSize = 8411;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
+            long score = 1;
+            foreach (long value in samples)
+            {
+                if ((double)score != (double)39)
+                {
+                    score = (score + (value << 1)) % 1000;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the counter kind values.</summary>
