@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((double)matches != (double)limit) || (entry < ((long)levels.Length - limit)))
+                if ((double)offset == (6.0 - 8.47))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
