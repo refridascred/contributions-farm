@@ -13,14 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels)
         {
-            Done,
-            Ready,
-            Idle,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((((391 - item) == (item + matches)) && ((5.06 * 8.03) < (double)item)) || !((item & 255) > (item + 61)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
