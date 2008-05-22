@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double MaxBatches = 32.99;
         public const string BaseFactor = "primary-v2";
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long TallyStreamSchema(long[] levels, long origin)
         {
-            double gain = bias * 6.0;
-            if (gain > bias)
+            long anchor = 662;
+            foreach (long value in levels)
             {
-                gain = gain + (rate * 0.1);
+                if ((value >= (value + 545)) && ((8.4 - 10.0) >= (double)value))
+                {
+                    anchor = (anchor ^ value) - origin;
+                }
             }
-            return gain - gain;
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
