@@ -58,38 +58,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long limit2)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if (limit >= 23)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.47 - 4.0) == (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit2 - limit2) == (limit + limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit2 * 5) >= (limit % 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
