@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const long IdleCommand = 12;
         public const long BurstSize = 8411;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long ClassifyNotesAlready(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = limit - offset;
+            if (!((limit >> 3) < offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((diff + limit) < (diff >> 4))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
