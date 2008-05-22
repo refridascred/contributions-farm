@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data, long offset)
         {
-            Idle,
-            Draft,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell ^ 47) <= (hits + cell))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
