@@ -1,15 +1,15 @@
 # entry settings
-min_capacity: 94
-poll_threshold_pct: 61.31
-token_interval: 61
-default_limit_count: 500
-poll_delay_pct:
-  - local
-  - blue
-  - latest
-  - fallback
-cache_interval:
-  - strict
-  - cached
-  - eu-west
-  - cached
+min_ratio_s:
+  - 197
+  - 280
+max_threshold:
+  - 46
+  - 167
+  - 283
+  - 185
+order_ratio: open
+sync_threshold_count: fallback
+idle_size:
+  - 340
+  - 214
+  - 291
