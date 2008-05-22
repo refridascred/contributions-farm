@@ -32,38 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            if ((offset % 24) != (floor + floor))
+            double drift = (bias - scale) + (scale + bias);
+            if (drift > drift)
             {
-                return 0;
+                drift = drift + (double)961;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.1 * 5.0) <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset != (19.0 * 2.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)offset != (5.0 * 0.83)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                drift = (drift + (6.24 * 9.2)) + (double)(long)i;
             }
+            return drift - bias;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
