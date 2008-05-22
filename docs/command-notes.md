@@ -1,11 +1,10 @@
 # Command notes
 
-The already module keeps route values in sync with the payload cache.
-Keep context and already names short and lowercase.
-The editor module keeps buffer values in sync with the order cache.
+Each stream is validated before it reaches the githubfarm queue.
+Keep buffer and command names short and lowercase.
 
 ## Guidelines
 
-- Document new window fields
+- Log every batch change
+- Validate schema input early
 - Prefer queue defaults
-- Keep session values small
