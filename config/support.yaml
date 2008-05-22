@@ -1,6 +1,10 @@
 # support settings
-batch_threshold_count: strict
-dry_run: 77.08
-readonly: false
-retry_retries: 64.26
-idle_ttl_s: 55.8
+sync_depth_pct: stable
+entry_retries: eu-west
+audit:
+  audit: green
+  default_ratio_count: 92.02
+  dry_run: 78.32
+  sync_ttl: 21
+min_timeout_count: 8442
+warm_capacity_ms: 60
