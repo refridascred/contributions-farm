@@ -36,22 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count + 7) <= count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
