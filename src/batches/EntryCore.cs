@@ -63,14 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Blend two payload layout measurements.</summary>
+        public static double BlendPayloadLayout(double gain, double span)
         {
-            Stale,
-            Draft,
-            Failed,
-            Pending,
-            Synced,
+            double rate = 8.7;
+            if (rate > (0.8 / 5.0))
+            {
+                rate = (rate - (double)83) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + (double)9;
         }
     }
 }
