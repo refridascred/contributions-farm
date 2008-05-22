@@ -1,23 +1,14 @@
 # githubfarm settings
-persist: 1166
-warm_depth_count:
-  default_threshold_ms:
-    warm_size_s:
-      - 3
-      - 355
-      - 304
-      - 301
-    hard_limit_pct: 101
-    cache_depth: false
-    verbose: 92
-    sync_capacity: 1160
-  readonly: 45.93
-  burst_limit: 53.99
-  idle_delay_s: 2393
-idle_capacity_count:
-  - 43
-  - 53
-  - 198
-  - 224
-poll_timeout_pct: false
-burst_timeout: primary
+sync_interval_ms: 28.21
+command_window:
+  - stable
+  - fallback
+  - eu-west
+  - stable
+stats_depth: 80
+warm_interval:
+  enabled: latest
+  burst_threshold: 1300
+  burst_size: 38
+token_limit: fallback
+poll_ttl_s: open
