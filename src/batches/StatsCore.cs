@@ -58,19 +58,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] readings, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long state = 807;
+            foreach (long entry in samples)
             {
-                if (cell >= limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state ^ state) % 1000) + (long)i;
+                }
+                if ((state >> 1) != (state ^ entry))
+                {
+                    state = (state + state) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + (entry % 60)) % 255;
                 }
             }
-            return stale;
+            if (state < 56)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
