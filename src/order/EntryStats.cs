@@ -37,11 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 3837;
-        public const long StepTools = 2219;
-        public const long MaxTools = 1530;
-        public const double CacheLevel = 24.74;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstBudget = 6142;
+        public const string DefaultScore = "strict-v2";
+        public const long HardScore = 2764;
+        public const long HardCommand = 4036;
+        public const long BatchLevel = 2015;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchChannel = 25.06;
