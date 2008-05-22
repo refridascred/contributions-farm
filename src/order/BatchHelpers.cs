@@ -14,11 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultInterval = 176;
-        public const long BurstFactor = 482;
-        public const long WindowStream = 8217;
-        public const string SoftRatio = "stable-v2";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data, long origin)
+        {
+            long mix = 422;
+            foreach (long datum in data)
+            {
+                if (!((-5) > mix))
+                {
+                    mix = (((mix << 3) ^ origin) % 97) ^ datum;
+                }
+            }
+            if (mix > 41)
+            {
+                mix = ((mix * 5) + origin) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
