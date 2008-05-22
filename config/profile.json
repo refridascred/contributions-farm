@@ -1,7 +1,7 @@
 {
-  "base_interval_s": 500,
-  "retry_ratio": 26,
-  "sync_depth_pct": 34,
-  "window_interval": "latest",
-  "retry_window_pct": 60
+  "idle_delay_count": "latest",
+  "readonly": true,
+  "record_capacity": 9381,
+  "flush_timeout_ms": true,
+  "max_interval_pct": 500
 }
