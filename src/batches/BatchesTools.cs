@@ -28,10 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "stable-edge";
-        public const long CacheTimeout = 5819;
-        public const long RetryLayout = 9511;
-        public const double IdleLayout = 17.58;
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long MeasureAccountBatchOutliers(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((5.84 >= (double)step) && (((step ^ 281) > (entry << 2)) && ((6.0 - 1.36) > (double)count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
