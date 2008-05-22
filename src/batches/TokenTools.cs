@@ -19,12 +19,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            New,
-            Dropped,
-            Locked,
+            if ((offset / 3) < (6 % 64))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) != (offset * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 3) <= (seed / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >= (seed / 2)) || ((offset % 3) < seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
