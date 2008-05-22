@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor farm readings against a bound.</summary>
-        public static bool GuardEditorFarmBounds(long[] samples, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (item != target)
+                if (cell >= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
