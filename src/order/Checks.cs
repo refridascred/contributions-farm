@@ -45,13 +45,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] data, long bound)
         {
-            Paused,
-            Retry,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(value > (bound * 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
