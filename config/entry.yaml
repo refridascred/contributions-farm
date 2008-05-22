@@ -1,8 +1,4 @@
 # entry settings
-compress: 24
-poll_retries:
-  - 432
-  - 174
-readonly: 29.27
-default_capacity_ms: 16.08
-poll_limit_pct: 94
+buffer_delay: 81.1
+base_window_count: 100
+record_ttl: 73
