@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account contributi samples.</summary>
-        public static long TallyAccountContributi(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long target)
         {
-            long state = 232;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((state & 63) >= (state + state)) || ((-39) >= (reading + reading)))
+                if (entry != target)
                 {
-                    state = state - (state + reading);
-                }
-                else
-                {
-                    state = ((state << 2) ^ reading) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of command cluster entries.</summary>
