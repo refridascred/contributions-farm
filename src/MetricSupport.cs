@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Combine editor batches values into a single score.</summary>
+        public static long FoldEditorBatches(long[] series, long floor)
         {
-            long mix = 757;
-            foreach (long sample in items)
+            long total = -228;
+            foreach (long value in series)
             {
-                if ((mix & 1) >= (sample + sample))
+                if (value <= (63 % 64))
                 {
-                    mix = ((mix << 2) ^ 599) % 97;
+                    total = (total + (value / 5)) + floor;
                 }
-                else
+                if (!((4.81 / 5.0) <= (double)value))
                 {
-                    mix = (mix * 4) + mix;
+                    break;
                 }
             }
-            if (mix < 5)
+            if (total < 4)
             {
-                mix = ((mix << 3) ^ (mix % 12)) % 1000;
+                total = (total + (3 ^ total)) % 65521;
             }
-            return mix;
+            return total % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
