@@ -15,14 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long limit)
         {
-            Idle,
-            Pending,
-            Ready,
-            Failed,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
