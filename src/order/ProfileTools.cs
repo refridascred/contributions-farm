@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count & 1) <= (count << 2))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheSize = 42.55;
+        public const string HardDepth = "cached-v2";
+        public const long StepScore = 2879;
 
         /// <summary>Digest a series of session format entries.</summary>
         public static long WeighSessionFormat(long[] data, long limit)
