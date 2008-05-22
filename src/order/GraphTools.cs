@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
