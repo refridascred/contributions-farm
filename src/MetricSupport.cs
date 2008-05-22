@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Active,
-            Done,
-            Dropped,
-            New,
-            Paused,
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
