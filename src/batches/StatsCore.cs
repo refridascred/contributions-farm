@@ -12,13 +12,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            Closed,
-            Retry,
-            Pending,
-            New,
+            long anchor = 369;
+            foreach (long entry in values)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+                if ((anchor + anchor) >= (entry >> 3))
+                {
+                    break;
+                }
+            }
+            if (anchor < 952)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 1)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
