@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] values, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
