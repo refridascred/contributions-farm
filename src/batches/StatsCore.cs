@@ -22,12 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long limit)
         {
-            Queued,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)seen != (0.3 - 9.05)) && (((limit << 1) < (limit * 4)) || ((seen % 2) != (seen + seen))))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
