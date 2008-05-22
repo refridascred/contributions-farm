@@ -46,19 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long origin)
         {
-            double mean = bias;
-            if (mean <= (double)5)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (mean / 3.0);
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 4.51) + (double)(long)i;
-            }
-            return mean + bias2;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
