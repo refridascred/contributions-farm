@@ -75,14 +75,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long step)
         {
-            Failed,
-            Closed,
-            Done,
-            Stale,
-            Paused,
+            if ((9.8 - 11.0) != (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 - step) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
