@@ -41,10 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxFactor = 18.49;
-        public const double BaseAccount = 8.51;
-        public const double CacheAccount = 80.9;
-        public const string SoftAccount = "open-v2";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            New,
+            Retry,
+            Queued,
+        }
     }
 }
