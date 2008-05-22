@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long CacheFactor = 3820;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Check that every farm channel entry stays within the limit.</summary>
+        public static bool ValidateFarmChannelBounds(long[] samples, long step)
         {
-            long carry = 242;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                carry = (carry + (datum * 3)) % 1000;
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 85)
-            {
-                carry = carry - (carry >> 5);
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
