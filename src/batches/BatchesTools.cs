@@ -31,15 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double span)
-        {
-            double drift = (double)86;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + (span - 11.0)) + (double)(long)i) - gain;
-            }
-            return drift + (double)9;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitFactor = 798;
+        public const long SoftLevel = 9675;
+        public const long DefaultSupport = 1690;
+        public const string IdleSupport = "strict-1";
+        public const double BaseSupport = 12.26;
     }
 }
