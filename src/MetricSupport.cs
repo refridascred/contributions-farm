@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a cluster support reading.</summary>
-        public static double BlendClusterSupport(double weight, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series)
         {
-            double mean = (double)(3 + 5);
-            if (mean > (double)785)
+            long acc = 42;
+            foreach (long cell in series)
             {
-                mean = mean + (bias + weight);
+                if (((cell * 2) >= 5) || ((cell + cell) >= (acc * 4)))
+                {
+                    acc = (acc * 4) + cell;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (double)84;
+            return acc % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
