@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "open";
-        public const string MinAccount = "open-1";
-        public const long DefaultSpan = 4414;
-        public const long HardFactor = 5802;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Stale,
+            Queued,
+            Idle,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaHits(long[] data, long offset)
