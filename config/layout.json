@@ -1,6 +1,6 @@
 {
-  "readonly": 38.24,
-  "queue_threshold": 94.19,
-  "idle_depth_count": 100,
-  "cache_capacity": "latest"
+  "persist": "stable",
+  "batch_interval_count": 37.44,
+  "readonly": 94,
+  "enabled": 16
 }
