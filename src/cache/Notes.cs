@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 46.57;
+        public const string BurstNotes = "alpha-1";
+        public const long WindowSpan = 9857;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] levels)
