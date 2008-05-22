@@ -1,10 +1,6 @@
-id,count,region,score,ratio
-1,696,975,blue,green
-2,open,eu-west,52.98,60.4
-3,993,47.45,524,staging
-4,15.48,710,edge,24.35
-5,cached,101,296,973
-6,55.67,open,95.76,stable
-7,388,34.79,eu-west,419
-8,67.24,7.78,local,244
-9,eu-west,124,446,483
+id,owner,count,score
+1,934,83.06,4.26
+2,28.47,fallback,91.48
+3,995,498,fallback
+4,8.67,fallback,97.46
+5,929,cached,19.75
