@@ -1,8 +1,6 @@
 {
-  "retry_threshold_pct": 78.34,
-  "readonly": 66.01,
-  "default_interval_pct": "green",
-  "retry_delay": 6.54,
-  "burst_interval_s": 4707,
-  "flush_retries_ms": [137, 90, 157]
+  "support_size": true,
+  "support_interval": 28.74,
+  "report_ttl": ["eu-west", "eu-west", "local"],
+  "context_size": 29.42
 }
