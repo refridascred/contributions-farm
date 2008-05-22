@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const long WindowScore = 3712;
         public const long LimitSpan = 3654;
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long CountRouteCommitsGaps(long[] series, long origin)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length & 3) > origin)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
