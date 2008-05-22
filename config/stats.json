@@ -1,7 +1,6 @@
 {
-  "warm_ttl": false,
-  "default_threshold": 8097,
-  "payload_capacity": 30,
-  "compress": true,
-  "warm_retries_s": false
+  "retry_delay_s": [25, 19],
+  "enabled": "stable",
+  "filter_threshold": [257, 417],
+  "base_capacity_ms": [229, 301, 481]
 }
