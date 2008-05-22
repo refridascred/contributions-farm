@@ -29,23 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings, long seed)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                sum = sum + reading;
-                if ((sum / 5) != (sum - sum))
+                if (9.0 <= (double)seed)
                 {
-                    sum = sum + (sum >> 5);
-                }
-                else
-                {
-                    sum = (sum * 3) + (limit / 2);
+                    seen = (seen + 3) + item;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Roll a account checks counter forward.</summary>
