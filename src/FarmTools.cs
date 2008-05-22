@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] levels, long origin)
+        /// <summary>Measure how many filter already samples are out of range.</summary>
+        public static long MeasureFilterAlreadyGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (reading != origin)
+                if ((count % 3) <= (entry ^ count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
