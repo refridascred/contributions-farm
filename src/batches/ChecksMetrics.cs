@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 631;
+            foreach (long entry in samples)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (89 & 3)) % 65521) + entry;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Combine queue batches values into a single score.</summary>
