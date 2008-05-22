@@ -12,18 +12,17 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value + hits) < (hits * 3))
-                {
-                    hits = hits + 3;
-                }
+                mark = (mark ^ (step >> 3)) % 65521;
+                mark = mark ^ 37;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
