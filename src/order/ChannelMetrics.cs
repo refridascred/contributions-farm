@@ -40,12 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the notes report entries that pass the check.</summary>
+        public static long MeasureNotesReportHits(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((target ^ sample) > target)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
