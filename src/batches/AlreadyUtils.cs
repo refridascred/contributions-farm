@@ -35,19 +35,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate counter record samples.</summary>
-        public static long DigestCounterRecord(long[] levels)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long offset)
         {
-            long result = 25;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - result) ^ item;
-                if ((190 - result) < (result << 3))
+                if (levels[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
