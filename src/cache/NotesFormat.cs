@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((7.63 * 8.0) <= (double)count)
+                if (!((cell / 6) <= tally))
                 {
-                    count = (count + 1) + datum;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate editor samples.</summary>
