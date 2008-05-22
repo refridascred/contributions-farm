@@ -1,5 +1,12 @@
 {
-  "token_timeout": false,
-  "poll_size": 3058,
-  "buffer_ttl": "blue"
+  "min_ttl": {
+    "poll_threshold_pct": "local",
+    "dry_run": [301, 173, 5],
+    "payload_timeout": 23,
+    "soft_timeout": 4086,
+    "warm_depth_s": 93,
+    "idle_window_s": 9671
+  },
+  "compress": 86.76,
+  "poll_delay_ms": 61
 }
