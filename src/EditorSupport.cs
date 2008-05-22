@@ -61,38 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long bound)
+        /// <summary>Accumulate support notes samples.</summary>
+        public static long TotalSupportNotes(long[] series)
         {
-            if ((double)limit != (double)bound)
+            long mix = 93;
+            foreach (long cell in series)
             {
-                return 5;
+                mix = ((mix * 3) + (cell - cell)) % 255;
             }
-            else
+            if (mix < 1)
             {
-                if ((9.0 + 4.73) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= (4.2 - 7.8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound <= (9 + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + mix) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Measure how many command commits samples are out of range.</summary>
