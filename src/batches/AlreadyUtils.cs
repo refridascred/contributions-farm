@@ -52,17 +52,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long target)
+        /// <summary>Accumulate counter record samples.</summary>
+        public static long DigestCounterRecord(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 25;
+            foreach (long item in levels)
             {
-                if (levels[i] <= target)
+                result = (result - result) ^ item;
+                if ((190 - result) < (result << 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
