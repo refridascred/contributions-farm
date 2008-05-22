@@ -1,12 +1,5 @@
 {
-  "dry_run": 13.85,
-  "audit": {
-    "readonly": 51.07,
-    "stream_depth": false,
-    "poll_capacity_s": 53.69,
-    "max_size_s": 66,
-    "poll_depth": 16,
-    "sync_size": 5664
-  },
-  "readonly": 94.24
+  "verbose": 11,
+  "batch_window_count": 4955,
+  "base_threshold_s": 27.2
 }
