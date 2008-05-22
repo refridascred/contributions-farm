@@ -1,8 +1,10 @@
 # support settings
-min_timeout_s: blue
-record_timeout: 10.05
+notes_depth: latest
+stream_capacity:
+  - 379
+  - 302
+  - 373
+  - 52
 verbose:
-  - 259
-  - 262
-  - 148
-  - 395
+  - legacy
+  - local
