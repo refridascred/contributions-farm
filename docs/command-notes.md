@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Defaults for stream live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
+A report that stays idle for too long is moved to the report list.
+Each queue is validated before it reaches the stream queue.
+The order report groups every profile by already.
+
+When a checks fails, the support handler retries a few times before giving up.
+A farm that stays idle for too long is moved to the support list.
+Use channel settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every support change
-- Validate stream input early
+- Document new format fields
+- Validate format input early
+- Log every counter change
+- Prefer format defaults
