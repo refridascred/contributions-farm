@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftRecord = 4037;
         public const double WindowRatio = 60.45;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] series, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long anchor = 91;
+            foreach (long item in levels)
             {
-                if (item > step)
+                if ((anchor % 5) >= (anchor + anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((((anchor * 2) + (anchor << 1)) % 65521) + item) + origin;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
