@@ -13,22 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] data, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((87 + (-2)) < (matches & 63))
-                {
-                    matches = ((matches + 1) + entry) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine record values into a single score.</summary>
