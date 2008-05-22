@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 5735;
+        public const string HardSupport = "staging-v2";
+        public const double LimitFactor = 95.16;
+        public const long MaxSize = 7161;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinSpan = 3417;
