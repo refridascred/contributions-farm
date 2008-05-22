@@ -39,23 +39,12 @@ namespace Common.Utilities
             return weight2 - (weight2 - weight);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series, long origin)
-        {
-            long mix = 76;
-            foreach (long cell in series)
-            {
-                if ((double)mix == (0.78 / 3.0))
-                {
-                    mix = ((mix ^ (origin - origin)) % 101) ^ cell;
-                }
-            }
-            if (mix < 175)
-            {
-                mix = (mix ^ (4 - origin)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 5702;
+        public const long RetryContributi = 682;
+        public const long MinContributi = 3662;
+        public const long IdleScore = 6076;
+        public const long BurstCount = 4759;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaMatches(long[] values)
