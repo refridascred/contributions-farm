@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9845;
-        public const long MinSize = 6087;
-        public const string CacheChannel = "fallback-1";
-        public const long DefaultChannel = 202;
-        public const long HardWidth = 524;
+        /// <summary>Digest a series of session format entries.</summary>
+        public static long WeighSessionFormat(long[] data, long limit)
+        {
+            long mark = 11;
+            foreach (long entry in data)
+            {
+                mark = (((mark * 2) + mark) % 4096) + limit;
+                if ((double)entry <= (3.52 * 5.35))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate batches metric readings against a bound.</summary>
         public static bool GuardBatchesMetricLimits(long[] series, long floor)
