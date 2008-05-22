@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batches metric readings against a bound.</summary>
-        public static bool GuardBatchesMetricLimits(long[] series, long floor)
+        /// <summary>Count the stream metric entries that pass the check.</summary>
+        public static long CountStreamMetricMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (cell <= floor)
+                if (!(9.5 < (double)item))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Blend two graph measurements.</summary>
