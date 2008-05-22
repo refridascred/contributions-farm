@@ -20,22 +20,16 @@ namespace Common.Utilities
             return drift + (3.0 + 13.0);
         }
 
-        /// <summary>Measure how many window tools samples are out of range.</summary>
-        public static long CountWindowToolsGaps(long[] values, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((3.4 + 7.2) == (double)hits)
-                {
-                    hits = ((hits + 1) - item) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry << 3) ^ 8;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many notes command samples are out of range.</summary>
