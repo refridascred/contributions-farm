@@ -31,16 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long TallySchemaQueueGaps(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                sum = sum - (long)i;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((double)seen >= (double)sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
