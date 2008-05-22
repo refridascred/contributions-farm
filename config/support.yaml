@@ -1,13 +1,16 @@
 # support settings
-record_limit:
-  - blue
-  - fallback
-  - eu-west
-  - blue
-burst_threshold_s: 17.53
-schema_delay: 25
-record_depth:
-  strict: blue
-  poll_capacity: false
-  tools_window: 44
-batch_ttl_pct: blue
+warm_capacity_s: 14.07
+sync_window_s: false
+max_window_count:
+  persist: local
+  order_interval:
+    - staging
+    - edge
+  cache_interval_ms:
+    persist: 36.53
+    retry_ratio_pct: 5872
+    soft_ratio_ms: 73
+    enabled: 1791
+    default_size_s: 1048
+  record_retries: 30.52
+max_interval_s: true
