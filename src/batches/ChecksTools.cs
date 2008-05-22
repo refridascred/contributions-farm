@@ -13,18 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a counter commits sample.</summary>
-        public static long LookupCounterCommitsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchFactor = 1734;
+        public const string DefaultFactor = "primary-v2";
+        public const string IdleQueue = "fallback";
+        public const double StepQueue = 62.91;
+        public const long RetrySpan = 7392;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] levels, long seed)
