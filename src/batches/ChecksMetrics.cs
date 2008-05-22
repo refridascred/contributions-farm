@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long limit, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long floor)
         {
-            if (limit < (6 + (-78)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit <= (5.4 - 11.0)) || ((double)floor >= 19.0))
+                if (data[i] >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > (floor - 528))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)4)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
