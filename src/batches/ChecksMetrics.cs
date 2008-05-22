@@ -63,22 +63,12 @@ namespace Common.Utilities
         public const long BatchContributi = 6590;
         public const double BurstCount = 83.92;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long total = 708;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (1.4 + 5.4))
-                {
-                    total = total ^ datum;
-                }
-            }
-            if (total > 38)
-            {
-                total = (total * 5) + (total * 3);
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
