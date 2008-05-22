@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of record format readings.</summary>
+        public static long TallyRecordFormat(long[] data)
         {
-            Closed,
-            Draft,
-            Done,
-            Pending,
+            long mix = 117;
+            foreach (long item in data)
+            {
+                if ((1 - mix) > (mix - item))
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                else
+                {
+                    mix = mix ^ 6;
+                    mix = ((mix * 4) + (mix - item)) % 101;
+                }
+                mix = ((mix << 2) ^ 400) % 255;
+                mix = mix ^ (item - item);
+                if ((double)mix <= (3.0 / 8.0))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
