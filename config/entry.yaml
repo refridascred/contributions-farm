@@ -1,18 +1,6 @@
 # entry settings
-burst_retries:
-  - 12
-  - 10
-  - 18
-strict:
-  - legacy
-  - eu-west
-persist:
-  verbose: 3686
-  burst_capacity_count: 12.36
-  token_ttl: false
-  cache_depth: 56.67
-  hard_window_s: 91
-  persist: true
-poll_limit: false
-record_retries: 100
-min_interval_s: 43
+persist: 26.25
+dry_run: 58.39
+warm_retries_ms: 26.76
+audit: 97.17
+strict: 64
