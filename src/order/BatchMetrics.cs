@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (cell < limit)
+                if (item > origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Project the next schema record value.</summary>
