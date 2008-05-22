@@ -55,36 +55,29 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long target)
         {
-            long gap = target + offset;
-            if (!(target <= offset))
+            long next = limit + target;
+            if ((1.2 > (double)limit) && ((1.6 * 9.9) == (double)limit))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((offset - target) > (target << 1))
+                if (!((4.28 / 2.0) >= (5.5 / 6.0)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset * 4) == (gap ^ gap))
+                    if ((next > (target + target)) || ((limit * 4) > (target % 12)))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset - gap) >= (target >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
