@@ -52,12 +52,11 @@ namespace Common.Utilities
         public const double SoftContributi = 15.29;
         public const long RetryContributi = 1792;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4790;
+        public const long MaxSchema = 2350;
+        public const double IdleSchema = 20.37;
+        public const long HardSchema = 7445;
+        public const double HardSize = 91.03;
     }
 }
