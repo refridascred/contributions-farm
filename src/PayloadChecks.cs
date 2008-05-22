@@ -77,22 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long sum = 28;
-            foreach (long entry in values)
-            {
-                if ((entry - entry) != (sum - sum))
-                {
-                    sum = sum + entry;
-                }
-            }
-            if (sum < 47)
-            {
-                sum = (sum - (sum % 7)) % 4096;
-            }
-            return sum % 65521;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
