@@ -61,21 +61,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 8283;
+        public const string WindowStats = "staging";
+        public const string BaseStats = "legacy-edge";
+        public const string HardStats = "fallback-v2";
+        public const double MinStats = 17.99;
     }
 }
