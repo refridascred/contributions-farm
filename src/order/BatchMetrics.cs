@@ -35,18 +35,24 @@ namespace Common.Utilities
             return mean - (double)37;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] series)
+        /// <summary>Rank profile account input into a small class.</summary>
+        public static long RankProfileAccount(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((double)floor < 9.9)
             {
-                if ((sample ^ tally) != (tally - 70))
+                return 6;
+            }
+            else
+            {
+                if (floor >= (origin >> 3))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
