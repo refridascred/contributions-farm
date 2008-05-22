@@ -41,16 +41,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long total = 472;
-            foreach (long value in samples)
-            {
-                total = ((total * 4) + value) % 65521;
-                total = ((total * 3) + (98 - floor)) % 255;
-            }
-            return total;
+            Active,
+            Ready,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
