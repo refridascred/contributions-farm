@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchWidth = "stable-1";
-        public const string IdleChecks = "local";
-        public const double LimitChecks = 46.53;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Closed,
+            Synced,
+            Draft,
+            Failed,
+            Active,
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] readings, long origin)
