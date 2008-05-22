@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 1790;
-        public const double CacheContributi = 15.15;
-        public const double SoftSize = 72.45;
+        /// <summary>Digest a series of filter profile entries.</summary>
+        public static long WeighFilterProfile(long[] levels, long seed)
+        {
+            long state = -4;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    state = ((state << 2) ^ (seed * 3)) % 65521;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
