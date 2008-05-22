@@ -53,18 +53,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long MeasureAccountBatchOutliers(long[] items, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((5.84 >= (double)step) && (((step ^ 281) > (entry << 2)) && ((6.0 - 1.36) > (double)count)))
+                if (((2.0 / 3.0) == (double)datum) && ((datum << 2) == (hits / 6)))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
