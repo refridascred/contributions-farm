@@ -26,17 +26,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a command checks reading by value.</summary>
-        public static long SeekCommandChecksIndex(long[] items, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
