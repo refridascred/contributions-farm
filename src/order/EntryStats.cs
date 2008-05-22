@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            if ((79 >> 5) > (bound + bound))
+            long acc = 1;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(floor <= (floor + 541)))
+                if ((acc - datum) > (datum - datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    acc = ((acc * 2) + (acc << 2)) % 101;
                 }
             }
+            if (acc > 55)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
