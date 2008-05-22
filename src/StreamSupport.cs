@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long carry = 138;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (carry + cell)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry > 697)
-            {
-                carry = (carry + (94 + carry)) % 255;
-            }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Combine stream schema values into a single score.</summary>
