@@ -32,12 +32,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 2701;
+        public const long BurstTools = 1521;
+        public const string BatchCount = "latest-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MinInterval = "primary";
