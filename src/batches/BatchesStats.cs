@@ -39,15 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double span)
-        {
-            double gain2 = span + (5.0 - gain);
-            if (gain2 > 1.6)
-            {
-                gain2 = gain2 - (8.91 * 5.3);
-            }
-            return gain2 + gain;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 549;
+        public const string StepWidth = "alpha";
+        public const string IdleDepth = "staging-1";
+        public const long StepEditor = 4964;
+        public const string HardRatio = "legacy-1";
     }
 }
