@@ -1,5 +1,25 @@
 # githubfarm settings
-min_depth_count: legacy
-readonly: open
-idle_size_ms: green
-audit: 70
+audit:
+  persist:
+    warm_ratio_s: 59.52
+    support_delay: staging
+    profile_limit: true
+    soft_ratio: false
+    idle_timeout_ms: eu-west
+    warm_window_s: 1338
+  layout_interval: 22
+  queue_capacity:
+    - fallback
+    - legacy
+    - local
+  farm_size:
+    - 212
+    - 159
+  metrics_ttl:
+    - stable
+    - fallback
+    - fallback
+  dry_run: staging
+sync_threshold_pct: latest
+sync_depth_s: 96
+batch_retries_count: green
