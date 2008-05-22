@@ -28,13 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((-372) >= count)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
