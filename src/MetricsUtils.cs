@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((0 / 3) >= (seen * 4)) || ((seed % 100) == (682 / 6)))
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
