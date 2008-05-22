@@ -35,11 +35,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 2886;
-        public const string MinFilter = "standard-1";
-        public const long IdleFilter = 7505;
-        public const long MaxDepth = 5077;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double floor)
+        {
+            double rate2 = (double)(8 - 860);
+            if (rate2 < (floor - rate))
+            {
+                rate2 = rate2 + (floor + floor);
+            }
+            else
+            {
+                rate2 = rate2 - (rate - rate);
+            }
+            return rate2 + rate2;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] readings, long floor)
