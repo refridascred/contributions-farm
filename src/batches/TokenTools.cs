@@ -18,11 +18,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels, long floor)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((8.0 < (double)floor) || ((cell * 5) > (cell >> 4)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
