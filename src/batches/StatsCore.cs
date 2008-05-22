@@ -73,30 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            long state = 807;
-            foreach (long entry in samples)
+            double drift = weight * 9.0;
+            if (drift < weight)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state ^ state) % 1000) + (long)i;
-                }
-                if ((state >> 1) != (state ^ entry))
-                {
-                    state = (state + state) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + (entry % 60)) % 255;
-                }
+                drift = (drift - drift) - bias;
             }
-            if (state < 56)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state % 1000;
+            return drift + weight;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
