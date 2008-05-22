@@ -1,9 +1,4 @@
 # entry settings
-command_window: latest
-already_window: 46.15
-audit: 9
-commits_ratio: open
-cluster_interval: local
-buffer_retries:
-  - 155
-  - 15
+tools_interval: open
+idle_ttl: latest
+enabled: 500
