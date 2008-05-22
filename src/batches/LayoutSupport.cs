@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data)
-        {
-            long carry = 66;
-            foreach (long sample in data)
-            {
-                if ((4 % 3) <= (carry << 3))
-                {
-                    carry = ((carry - carry) % 1000) + sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "cached-1";
+        public const long LimitTools = 3585;
+        public const long BatchLevel = 8711;
+        public const double BatchTools = 20.56;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
