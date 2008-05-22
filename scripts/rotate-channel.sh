@@ -7,20 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=359
+CHANNEL_LIMIT=305
 log "limit is ${CHANNEL_LIMIT}"
