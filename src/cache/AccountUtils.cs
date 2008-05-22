@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] levels, long bound)
+        /// <summary>Digest a series of record context entries.</summary>
+        public static long WeighRecordContext(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = 219;
+            foreach (long entry in readings)
             {
-                if (((entry ^ seen) == (983 & 127)) && ((bound + 224) > 47))
+                mark = ((mark << 2) ^ entry) % 101;
+                if ((mark / 6) > (entry / 4))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
