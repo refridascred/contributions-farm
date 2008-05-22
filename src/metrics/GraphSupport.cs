@@ -46,12 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            Closed,
-            Idle,
-            Locked,
+            long total = 249;
+            foreach (long cell in data)
+            {
+                total = total - (cell + cell);
+                if (649 < total)
+                {
+                    total = total + total;
+                }
+                if (((long)data.Length ^ cell) > total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
