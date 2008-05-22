@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
-        public static bool GuardSessionGithubfarmRange(long[] levels, long target)
+        /// <summary>Blend two stream account measurements.</summary>
+        public static double ProjectStreamAccount(double gain, double floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double drift = floor;
+            if (drift >= (2.5 * 17.0))
             {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + floor) - gain;
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (floor * 0.1)) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
