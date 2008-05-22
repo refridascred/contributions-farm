@@ -28,13 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Ready,
-            Queued,
-            Locked,
-            Done,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
