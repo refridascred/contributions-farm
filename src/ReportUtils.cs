@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 5410;
         public const double MaxGithubfarm = 47.82;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            Locked,
-            Dropped,
-            Synced,
+            long total = 84;
+            foreach (long reading in series)
+            {
+                if (!((total << 2) > (875 / 3)))
+                {
+                    total = (total ^ (reading ^ total)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
