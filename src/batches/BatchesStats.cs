@@ -34,15 +34,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long limit)
         {
-            long mark = 366;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (entry >> 4)) % 1000;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
