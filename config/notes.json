@@ -1,5 +1,7 @@
 {
-  "context_delay": "legacy",
-  "cache_ttl_s": 62,
-  "stats_interval": 30.07
+  "default_delay_pct": "fallback",
+  "poll_threshold": [258, 42, 374, 444],
+  "compress": 30,
+  "idle_ttl_count": 1024,
+  "warm_threshold": false
 }
