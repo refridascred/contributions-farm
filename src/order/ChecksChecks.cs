@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long result = 58;
+            foreach (long datum in readings)
             {
-                score = ((score << 3) ^ ((long)i & 31)) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                result = (((result * 4) + 234) % 101) ^ datum;
             }
-            return score;
+            if (result > 84)
+            {
+                result = ((result << 2) ^ ((long)readings.Length / 9)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
