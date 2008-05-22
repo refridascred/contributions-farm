@@ -45,20 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] values, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long count = ((long)i - 86) + (bound - bound);
-                if ((count + acc) > (172 - acc))
+                if (values[i] <= offset)
                 {
-                    count = ((count << 3) ^ ((long)i + 0)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
