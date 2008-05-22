@@ -1,8 +1,15 @@
 {
-  "persist": false,
-  "cluster_retries": 27.91,
-  "command_ratio": false,
-  "min_delay": 8360,
-  "token_delay": 65.74,
-  "idle_interval_ms": 53.17
+  "flush_window_s": "blue",
+  "batch_threshold": "green",
+  "verbose": [334, 52, 49],
+  "tools_ratio": {
+    "burst_limit": 1830,
+    "retry_depth_pct": 97,
+    "retry_ratio_ms": 93.82,
+    "sync_capacity_pct": 15.76,
+    "min_ratio_count": 2,
+    "strict": 90.11
+  },
+  "batch_delay_ms": [76, 221, 93, 353],
+  "persist": 100
 }
