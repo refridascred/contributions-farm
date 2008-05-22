@@ -39,11 +39,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long anchor = -193;
+            foreach (long sample in levels)
+            {
+                if (((sample - 460) < (sample - sample)) && ((sample + anchor) < (82 + sample)))
+                {
+                    anchor = (anchor - sample) % 4096;
+                }
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            if (anchor < 32)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
