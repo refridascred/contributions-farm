@@ -30,10 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "alpha-edge";
-        public const long BasePayload = 5447;
-        public const string StepFactor = "standard-edge";
-        public const long MaxFactor = 6729;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 51.1;
+        public const long SoftCluster = 5985;
+        public const double MinCluster = 60.13;
+        public const double LimitSpan = 21.42;
+        public const string BurstSpan = "legacy";
     }
 }
