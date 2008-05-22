@@ -37,11 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 7307;
-        public const string BaseWindow = "legacy-v2";
-        public const double DefaultDepth = 39.73;
-        public const long BatchWindow = 4681;
-        public const double IdleWidth = 35.7;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Retry,
+            Dropped,
+            Synced,
+        }
     }
 }
