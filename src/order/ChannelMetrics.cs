@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] series, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((seed << 3) < 1)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of route payload entries.</summary>
