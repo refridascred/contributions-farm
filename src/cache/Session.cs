@@ -29,12 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a command checks reading by value.</summary>
+        public static long SeekCommandChecksIndex(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
