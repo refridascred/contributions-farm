@@ -13,19 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target >> 3) == (target + (long)i))
-                {
-                    anchor = (anchor << 2) ^ (anchor * 5);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            Active,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
