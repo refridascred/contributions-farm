@@ -50,16 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Audit payload already readings against a rule.</summary>
+        public static long TallyPayloadAlreadyHits(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum - (origin - (-6))) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (!((8 % 64) > (matches & 255)))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
