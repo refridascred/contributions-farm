@@ -25,12 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long limit, long floor)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long delta = limit ^ floor;
+            if (!((limit + floor) != (delta & 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((delta - delta) < (limit + 480))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a channel header.</summary>
