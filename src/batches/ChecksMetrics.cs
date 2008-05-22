@@ -61,21 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Blend two editor window measurements.</summary>
+        public static double BlendEditorWindow(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)524 / 6.0;
+            if (drift > bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + bias) - weight;
             }
-            return count;
+            else
+            {
+                drift = drift - (bias * 5.5);
+            }
+            return drift - (double)644;
         }
 
         /// <summary>Match up cluster report samples.</summary>
