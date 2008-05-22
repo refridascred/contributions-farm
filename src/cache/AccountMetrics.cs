@@ -24,13 +24,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
         {
-            Queued,
-            Ready,
-            Idle,
-            Synced,
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
