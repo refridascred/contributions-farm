@@ -17,17 +17,12 @@ namespace Common.Utilities
         public const string BatchCluster = "strict-v2";
         public const string SoftCluster = "cached-edge";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
