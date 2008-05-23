@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const string HardEntry = "alpha-edge";
         public const long BurstEntry = 4291;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
