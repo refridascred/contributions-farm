@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const string DefaultContributi = "cached-edge";
         public const string CacheLevel = "primary-1";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (cell > (cell + cell))
+                if (value >= step)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
