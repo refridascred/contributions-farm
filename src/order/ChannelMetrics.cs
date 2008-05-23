@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitRatio = 76.37;
-        public const double StepQueue = 46.7;
-        public const string HardCount = "latest-v2";
-        public const double IdleQueue = 15.72;
-        public const double BaseWidth = 72.71;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long target, long target2)
+        {
+            if ((target2 + target) >= (target2 * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target > target2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target << 2) == (target2 + target)) || ((double)target2 == (16.0 - 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double bias, double bias2)
