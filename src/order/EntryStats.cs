@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] readings, long step)
+        /// <summary>Count farm commits pairs that satisfy a relation.</summary>
+        public static long PairFarmCommitsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step == (5.09 + 10.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + sample;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
