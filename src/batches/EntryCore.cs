@@ -51,18 +51,31 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long CombineAccountGraph(long[] values)
+        /// <summary>Rank window profile input into a small class.</summary>
+        public static long GradeWindowProfile(long limit, long limit2)
         {
-            long score = -73;
-            foreach (long datum in values)
+            if ((5.7 / 8.0) < (double)limit2)
             {
-                if ((score ^ score) <= (16 / 4))
+                return 7;
+            }
+            else
+            {
+                if ((limit / 3) == (limit * 2))
                 {
-                    score = ((score ^ (score % 97)) % 101) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if (limit2 <= (limit - limit2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Adjust a checks schema reading.</summary>
