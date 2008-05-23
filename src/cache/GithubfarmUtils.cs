@@ -58,15 +58,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Count format payload pairs that satisfy a relation.</summary>
+        public static long MatchFormatPayloadCount(long[] readings)
         {
-            double ratio = (double)(44 + (-4));
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio + (offset - offset)) + (double)(long)i) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)(-11);
+            return tally;
         }
     }
 }
