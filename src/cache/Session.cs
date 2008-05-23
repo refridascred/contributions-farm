@@ -31,24 +31,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            if ((floor & 1) != (floor << 2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor < (step * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
