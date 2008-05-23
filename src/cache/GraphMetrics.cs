@@ -43,13 +43,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a farm cluster pair into a bucket.</summary>
+        public static long ClassifyFarmCluster(long floor, long seed)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Synced,
+            if ((seed <= (seed - 814)) || ((double)seed == (5.0 / 5.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + floor) != (97 + 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a account stats.</summary>
