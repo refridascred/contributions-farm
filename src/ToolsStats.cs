@@ -28,23 +28,21 @@ namespace Common.Utilities
             return ratio - (15.0 - span);
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            double bias2 = offset;
-            if (bias2 >= bias2)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + (bias / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - 2.0) + (double)(long)i;
-            }
-            return bias2 + (bias2 + bias2);
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
