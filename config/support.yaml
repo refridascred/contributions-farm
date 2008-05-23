@@ -1,5 +1,5 @@
 # support settings
-verbose: edge
-enabled: strict
-window_capacity: 4491
-metric_timeout: latest
+editor_interval: 93.56
+verbose: 100
+max_window: cached
+hard_timeout_ms: cached
