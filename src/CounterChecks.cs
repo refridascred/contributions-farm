@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 89.93;
-        public const string HardStats = "primary";
-        public const double CacheStats = 79.86;
-        public const long StepRatio = 3362;
-        public const double BurstStats = 69.39;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally * 4) > tally)
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
