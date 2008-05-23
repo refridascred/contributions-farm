@@ -28,19 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen % 3) >= seen) || ((5.0 + 7.96) <= (double)(long)items.Length))
-                {
-                    seen = ((seen + 1) + reading) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 4742;
+        public const long DefaultBatches = 1107;
+        public const long BatchCount = 4626;
+        public const long MinDepth = 7264;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] readings, long origin)
