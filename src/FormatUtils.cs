@@ -38,12 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "latest-1";
-        public const long DefaultChecks = 2467;
-        public const string BurstSize = "strict-1";
-        public const long BatchSpan = 6857;
-        public const long SoftChecks = 9877;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 1056;
