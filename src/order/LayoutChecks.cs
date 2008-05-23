@@ -43,23 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long floor)
         {
-            long total = -1;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.7 + 1.09) != (double)cell)
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
                 {
-                    total = (total ^ ((-320) + cell)) % 97;
-                    total = total - (668 << 3);
-                }
-                if ((double)step <= (double)total)
-                {
-                    total = ((total * 4) + (total % 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
