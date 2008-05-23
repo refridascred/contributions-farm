@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit checks filter readings against a rule.</summary>
+        public static long TallyChecksFilterMatches(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!!((reading + 278) <= (count - reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
