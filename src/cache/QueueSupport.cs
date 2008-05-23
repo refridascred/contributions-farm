@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchInterval = 8811;
+        public const double HardLevel = 53.6;
+        public const long StepSpan = 2147;
+        public const double BaseTimeout = 11.71;
+        public const long DefaultNotes = 3291;
 
         /// <summary>Compare every pair of payload window readings.</summary>
         public static long MatchPayloadWindowCount(long[] items)
