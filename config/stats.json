@@ -1,7 +1,7 @@
 {
-  "persist": 3657,
-  "readonly": 100,
-  "schema_delay": "edge",
-  "counter_depth": 1024,
-  "default_depth": true
+  "cache_window": 36.97,
+  "dry_run": "strict",
+  "base_depth_count": "green",
+  "base_ratio_count": [43, 78],
+  "sync_threshold_pct": "staging"
 }
