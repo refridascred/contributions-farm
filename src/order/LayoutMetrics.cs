@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long bound)
         {
-            long state = 88;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state ^ (long)series.Length) % 4096) ^ item) - seed;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
