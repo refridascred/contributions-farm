@@ -39,12 +39,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 3859;
-        public const long SoftRatio = 2525;
-        public const string HardContext = "latest-1";
-        public const long HardWidth = 7155;
-        public const string BurstTimeout = "alpha-v2";
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long CountStreamProfileHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)hits >= (9.79 / 3.0))
+                {
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseWidth = 4593;
