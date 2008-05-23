@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            long state = 24;
+            foreach (long cell in items)
+            {
+                if ((double)state > (2.54 / 6.0))
+                {
+                    state = ((state - (cell - 3)) % 65521) - offset;
+                    state = state - state;
+                }
+                state = (state + state) % 255;
+                state = ((state * 4) + (731 / 5)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
