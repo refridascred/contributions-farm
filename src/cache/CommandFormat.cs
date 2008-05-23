@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a stream metric sample.</summary>
-        public static long SeekStreamMetricIndex(long[] series, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] > step)
+                if ((double)1 < (double)carry)
                 {
-                    return (long)i;
+                    break;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
