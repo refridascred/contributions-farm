@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a metric stats.</summary>
