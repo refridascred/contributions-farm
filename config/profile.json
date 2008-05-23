@@ -1,8 +1,5 @@
 {
-  "graph_ratio": 1024,
-  "poll_delay_pct": 7355,
-  "warm_ttl_s": false,
-  "retry_size": "green",
-  "audit": 30,
-  "soft_ratio_count": 5733
+  "contributi_ttl": 500,
+  "default_threshold": [461, 199],
+  "batches_timeout": 37.81
 }
