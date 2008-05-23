@@ -60,21 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < bound)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
