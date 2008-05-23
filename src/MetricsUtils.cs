@@ -68,12 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Draft,
-            Pending,
-            Ready,
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
