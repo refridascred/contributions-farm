@@ -49,39 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route context pair into a bucket.</summary>
-        public static long RankRouteContext(long target, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long slot = target ^ step;
-            if ((0 - step) < 9)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((1.0 / 5.0) != (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot % 60) != (target & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - step) <= target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
