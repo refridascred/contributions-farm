@@ -34,22 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric batches series from a seed.</summary>
-        public static long StepMetricBatches(long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark ^ (98 / 4);
-                if ((double)mark < (7.0 / 5.0))
-                {
-                    mark = mark ^ (mark + mark);
-                    mark = (mark + 4) % 65521;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
