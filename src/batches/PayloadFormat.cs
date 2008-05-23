@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8108;
-        public const long SoftNotes = 2912;
-        public const long BurstDepth = 73;
-        public const string CacheNotes = "fallback-edge";
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double floor)
+        {
+            double bias = (double)9;
+            if (bias >= floor)
+            {
+                bias = (bias + (double)659) - scale;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
