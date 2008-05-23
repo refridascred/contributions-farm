@@ -21,17 +21,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (bound - (long)i)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
