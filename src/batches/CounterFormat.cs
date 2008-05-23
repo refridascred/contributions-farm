@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long LocateChannelFormatIndex(long[] values, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine context buffer values into a single score.</summary>
