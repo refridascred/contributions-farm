@@ -34,18 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long delta = bound - offset;
+            if ((delta - delta) > delta)
             {
-                if (0 >= (hits % 7))
+                return 6;
+            }
+            else
+            {
+                if (!((bound * 3) >= offset))
                 {
-                    hits = (hits + 2) + reading;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 5) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((279 + delta) != (offset + delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
