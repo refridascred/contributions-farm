@@ -27,22 +27,13 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long ScoreEditorRecord(long[] items)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = -7;
-            foreach (long item in items)
-            {
-                if (!(item <= (item - score)))
-                {
-                    score = (score + (score - score)) % 65521;
-                }
-            }
-            if (score < 530)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
