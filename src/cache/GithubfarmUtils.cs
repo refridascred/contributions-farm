@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long TallyClusterFarmHits(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry - (origin / 7)) % 4096;
-                carry = (carry + (973 & 15)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((sample / 7) > (8 * 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
