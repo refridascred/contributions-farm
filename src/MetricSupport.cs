@@ -36,18 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter stats readings against a rule.</summary>
-        public static long CountFilterStatsGaps(long[] readings, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((bound << 2) > (item ^ item)) || ((item < (bound >> 4)) && (item >= (bound - 6))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
