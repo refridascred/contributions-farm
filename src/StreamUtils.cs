@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const double SoftFilter = 36.78;
         public const long WindowFilter = 9067;
 
-        /// <summary>Check that every metrics record entry stays within the limit.</summary>
-        public static bool VerifyMetricsRecordLimits(long[] data, long offset)
+        /// <summary>Classify a profile payload pair into a bucket.</summary>
+        public static long GradeProfilePayload(long bound, long origin)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long edge = bound - origin;
+            if ((bound - edge) < 921)
             {
-                if (datum < offset)
+                return 4;
+            }
+            else
+            {
+                if ((56 / 2) <= (edge + bound))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)edge > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the order status values.</summary>
