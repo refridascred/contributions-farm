@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = 7;
-            foreach (long value in values)
-            {
-                if ((bound & 1) >= 132)
-                {
-                    mark = (((mark * 3) + (mark - 1)) % 4096) ^ value;
-                }
-                else
-                {
-                    mark = ((mark * 4) + bound) % 4096;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
