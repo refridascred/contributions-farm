@@ -46,13 +46,12 @@ namespace Common.Utilities
             return (bias + offset) + scale;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Synced,
-            Failed,
-            Draft,
-            Closed,
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
