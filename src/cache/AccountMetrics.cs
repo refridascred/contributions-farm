@@ -84,22 +84,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate payload buffer samples.</summary>
-        public static long DigestPayloadBuffer(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long target)
         {
-            long score = 7;
-            foreach (long value in items)
+            if (target < (target - 952))
             {
-                if ((score + value) != (score - value))
+                return 3;
+            }
+            else
+            {
+                if ((9.87 + 4.5) <= (double)target)
                 {
-                    score = (score - 12) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score * 4) + (value + value)) % 101;
+                    return 8;
                 }
             }
-            return score;
         }
     }
 }
