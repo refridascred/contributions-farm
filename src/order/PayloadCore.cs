@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            Dropped,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
