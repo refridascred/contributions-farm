@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const string MaxDepth = "standard";
         public const long WindowPayload = 3212;
 
-        /// <summary>Measure how many metrics tools samples are out of range.</summary>
-        public static long CountMetricsToolsHits(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = -30;
+            foreach (long item in data)
             {
-                if ((3.6 * 12.0) <= (double)matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                total = ((total << 2) ^ item) % 255;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
