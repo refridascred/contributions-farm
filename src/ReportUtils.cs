@@ -46,22 +46,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitScore = 894;
+        public const long HardToken = 8740;
+        public const long WindowTimeout = 9090;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
