@@ -1,15 +1,13 @@
 # githubfarm settings
-dry_run: primary
-batch_size:
-  idle_retries_pct: standard
-  default_retries_count: false
-  dry_run:
-    counter_threshold: false
-    report_timeout: open
-    min_retries: fallback
-  order_capacity:
-    - standard
-    - open
-compress: false
-idle_timeout_count: blue
-soft_ratio_ms: 2
+token_ratio:
+  - 235
+  - 466
+  - 328
+  - 287
+readonly:
+  - green
+  - stable
+  - primary
+  - staging
+verbose: 8384
+soft_capacity_count: 65.99
