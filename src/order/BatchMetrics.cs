@@ -28,12 +28,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Done,
+            New,
             Active,
-            Synced,
+            Failed,
         }
 
         /// <summary>Match up stats filter samples.</summary>
