@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const string LimitStats = "staging-1";
         public const long BatchStats = 177;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (entry != limit)
+                if (entry != offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
