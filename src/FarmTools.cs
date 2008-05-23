@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 522;
+            foreach (long sample in values)
+            {
+                if ((anchor ^ anchor) < anchor)
+                {
+                    anchor = ((anchor * 2) + (sample / 3)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a format info.</summary>
