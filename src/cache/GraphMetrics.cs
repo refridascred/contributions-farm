@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (((bound * 4) > (-6)) && ((443 & 255) >= (step + bound)))
             {
-                if (((-28) - seen) <= (seen ^ 882))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (5.0 + 13.0))
                 {
-                    seen = ((seen + 2) - reading) - target;
+                    return 6;
+                }
+                else
+                {
+                    if (((176 - bound) > (step + bound)) || (17.0 > (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (step * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
