@@ -34,31 +34,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long step)
         {
-            long delta = bound - offset;
-            if ((delta - delta) > delta)
+            if ((double)limit > 2.0)
             {
                 return 6;
             }
             else
             {
-                if (!((bound * 3) >= offset))
+                if ((double)limit >= (13.0 - 1.61))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((offset >> 5) > offset)
+                    if ((limit <= (385 + limit)) || ((step + step) <= (5 + limit)))
                     {
                         return 3;
                     }
                     else
                     {
-                        if ((279 + delta) != (offset + delta))
+                        if ((528 << 2) < (step % 8))
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
