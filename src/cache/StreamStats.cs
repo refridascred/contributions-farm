@@ -15,18 +15,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mix = -48;
+            foreach (long cell in values)
             {
-                if ((cell - limit) <= (seen >> 2))
+                mix = (mix + (cell >> 1)) % 65521;
+                if (!(cell > (cell + mix)))
                 {
-                    seen = seen + 1;
+                    mix = (mix - mix) % 101;
+                    mix = (mix + cell) % 65521;
+                }
+                if ((mix < (cell / 4)) || (((-963) - 0) >= (mix + mix)))
+                {
+                    mix = ((mix << 3) ^ (87 + 1)) % 97;
+                }
+                else
+                {
+                    mix = mix + mix;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Blend two token measurements.</summary>
