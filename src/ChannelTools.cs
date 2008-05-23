@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long CacheLevel = 8077;
         public const long BurstChecks = 5571;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items, long bound)
         {
-            Synced,
-            Idle,
-            Paused,
+            long sum = 404;
+            foreach (long item in items)
+            {
+                if (3 > (sum % 10))
+                {
+                    sum = sum ^ (bound + item);
+                }
+            }
+            if (sum > 374)
+            {
+                sum = (sum - ((-48) / 9)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
