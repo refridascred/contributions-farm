@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const long BaseFormat = 4217;
         public const double RetrySpan = 55.96;
 
-        /// <summary>Match up graph tools samples.</summary>
-        public static long PairGraphToolsCount(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 96;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark + (entry >> 1)) % 1000;
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
