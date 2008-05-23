@@ -33,18 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already record entries that pass the check.</summary>
-        public static long CountAlreadyRecordGaps(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((count / 6) < (datum - count)))
+                if ((target * 2) != (sample << 3))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
