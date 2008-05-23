@@ -34,25 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long bound = limit ^ origin;
-            if ((double)origin > (12.0 * 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7 >> 1) >= (451 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Stale,
+            Failed,
         }
     }
 }
