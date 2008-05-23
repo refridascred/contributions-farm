@@ -33,19 +33,25 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] readings, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > step)
+                if (((long)i << 2) >= ((-40) + mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 2) + (761 + target)) % 1000;
                 }
+                else
+                {
+                    mark = mark + (205 + 947);
+                }
+                mark = mark ^ target;
+                mark = (mark + (target - target)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
