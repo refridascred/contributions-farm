@@ -20,16 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 926;
+        public const string BaseDepth = "cached-v2";
+        public const string IdleContext = "fallback";
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long origin, long bound)
