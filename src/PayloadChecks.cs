@@ -63,18 +63,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = 3;
-            foreach (long reading in items)
-            {
-                if (!((-8) >= (score * 5)))
-                {
-                    score = ((score ^ (score + 88)) + reading) + bound;
-                }
-            }
-            return score % 97;
+            Closed,
+            Stale,
+            Queued,
+            Locked,
         }
     }
 }
