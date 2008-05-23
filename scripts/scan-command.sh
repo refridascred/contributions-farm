@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest blue cached; do
+    log "checking ${item}"
+done
+
 mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+COMMAND_LIMIT=391
+log "limit is ${COMMAND_LIMIT}"
