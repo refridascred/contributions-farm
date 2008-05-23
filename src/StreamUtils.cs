@@ -48,24 +48,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if (((81 / 4) != (offset / 7)) || ((844 + bound) >= (offset / 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
