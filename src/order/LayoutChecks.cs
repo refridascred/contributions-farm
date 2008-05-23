@@ -41,13 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            Retry,
-            Pending,
-            Failed,
-            Dropped,
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the schema filter entries that pass the check.</summary>
