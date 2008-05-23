@@ -17,18 +17,20 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] values, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (matches > (matches << 2))
+                mark = (mark * 2) + floor;
+                if ((double)mark <= (17.0 - 7.3))
                 {
-                    matches = ((matches + 2) ^ entry) + bound;
+                    mark = ((mark * 5) + (floor * 4)) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
