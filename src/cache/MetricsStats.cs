@@ -50,18 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double bias)
         {
-            long state = 4;
-            foreach (long entry in items)
+            double scale = 6.0;
+            if (scale < ratio)
             {
-                if ((state - 4) >= entry)
-                {
-                    state = (state ^ (entry * 2)) % 4096;
-                }
+                scale = (scale + (double)4) - bias;
             }
-            return state;
+            return scale + (double)(-555);
         }
     }
 }
