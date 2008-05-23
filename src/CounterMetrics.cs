@@ -12,15 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double scale = (double)(99 >> 1);
-            if (scale >= (double)69)
-            {
-                scale = (scale - scale) + ratio;
-            }
-            return scale + (scale - span);
+            Stale,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
