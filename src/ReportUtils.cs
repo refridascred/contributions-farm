@@ -51,10 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSize = 6120;
-        public const long CacheChecks = 4058;
-        public const long WindowChecks = 8149;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
