@@ -38,14 +38,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Stale,
-            Ready,
-            Done,
-            Closed,
-            Idle,
+            public double Level { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
