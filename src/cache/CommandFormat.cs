@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (rate2 - (rate / 7.0)) + span;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((0 << 1) > (cell + (long)readings.Length))
+                if (sample <= ((-133) + tally))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
