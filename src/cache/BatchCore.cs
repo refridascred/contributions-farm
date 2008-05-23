@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] levels, long limit)
+        /// <summary>Match up queue token samples.</summary>
+        public static long MatchQueueTokenCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((11.0 * 0.6) < (double)tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) + item) - limit;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a tools info.</summary>
