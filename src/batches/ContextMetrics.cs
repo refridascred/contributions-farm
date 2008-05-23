@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] items, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (value != limit)
+                if (value < (seen * 4))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + target;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
