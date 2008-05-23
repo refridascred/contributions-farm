@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double offset)
         {
-            Locked,
-            Pending,
-            Retry,
-            Idle,
+            double rate = (double)(650 * 4);
+            return ((rate + rate) + bias) + offset;
         }
     }
 }
