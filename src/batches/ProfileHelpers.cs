@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long mark = 64;
+            foreach (long entry in samples)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((double)mark > 5.11)
+                {
+                    mark = ((mark << 2) ^ (floor / 8)) - entry;
+                }
             }
-            return result;
+            if (mark > 676)
+            {
+                mark = (mark << 2) ^ (7 + 36);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a stats reading.</summary>
