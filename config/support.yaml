@@ -1,25 +1,28 @@
 # support settings
-command_interval: fallback
-min_retries_s: 92.16
-cache_retries:
-  batch_capacity: cached
-  strict:
-    default_capacity_count:
-      - stable
-      - latest
-    max_ratio: 89
-    poll_threshold_s:
-      - 37
-      - 46
-      - 457
-      - 361
-    default_timeout_s: 35
-    enabled: local
-    contributi_interval: 46.06
-  audit: 11.48
-  metrics_capacity: 93.04
-  dry_run: 22
-cache_timeout:
+enabled: 75.99
+farm_capacity: 3475
+counter_threshold:
+  - strict
+  - cached
   - open
-  - eu-west
-  - eu-west
+  - latest
+batch_depth: 72.92
+cache_capacity_ms:
+  burst_capacity_pct: 84.88
+  min_capacity_ms:
+    compress: 51
+    context_size: 1
+    stats_delay: standard
+    enabled: false
+  min_capacity:
+    audit: 7169
+    dry_run: 7502
+    strict: primary
+    commits_ttl: 9262
+    burst_retries: 85.35
+    batches_interval: true
+  retry_ratio:
+    - staging
+    - cached
+    - open
+  retry_window_s: false
