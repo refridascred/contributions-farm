@@ -49,17 +49,15 @@ namespace Common.Utilities
         public const double CacheNotes = 10.18;
         public const string MaxSize = "strict-1";
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next notes value.</summary>
