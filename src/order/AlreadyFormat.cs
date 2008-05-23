@@ -56,18 +56,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long ScoreOrderFarm(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
-            long carry = 8;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((long)items.Length + reading) > (carry - reading))
+                if ((sample >> 2) > (seen % 8))
                 {
-                    carry = (carry * 2) + (reading ^ carry);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
     }
 }
