@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((9.3 + 9.32) >= (double)target) && ((target >> 2) >= count))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseTimeout = 97.32;
+        public const double CacheFactor = 75.41;
+        public const double HardBuffer = 5.86;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
