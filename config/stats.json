@@ -1,18 +1,5 @@
 {
-  "flush_ratio": {
-    "enabled": ["standard", "local", "primary"],
-    "dry_run": 3.91,
-    "flush_timeout_count": {
-      "hard_capacity_pct": "legacy",
-      "warm_limit": ["green", "open", "cached", "stable"],
-      "command_limit": 6150,
-      "cache_ttl_ms": "cached",
-      "flush_delay_ms": 15.56
-    },
-    "default_retries_count": 3679,
-    "strict": "stable"
-  },
-  "base_capacity_s": 46,
-  "idle_window": "local",
-  "token_delay": "primary"
+  "enabled": 76.49,
+  "hard_timeout": 36.97,
+  "batch_size_pct": [295, 30, 54, 95]
 }
