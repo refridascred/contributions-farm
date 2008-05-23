@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a checks graph sample.</summary>
-        public static long SeekChecksGraphIndex(long[] values, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                if (cell < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
