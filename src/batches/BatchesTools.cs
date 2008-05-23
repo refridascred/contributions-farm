@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] series, long offset)
+        /// <summary>Rank entry context input into a small class.</summary>
+        public static long RankEntryContext(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((-8) + bound) < offset)
             {
-                if ((series[i] < offset) && ((series[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((offset % 5) > (bound + (-316))) || ((bound << 2) < (bound + 11)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((9 + bound) <= bound) || (bound <= (offset / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((0.66 * 5.5) > (double)offset) && ((bound / 8) <= offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
