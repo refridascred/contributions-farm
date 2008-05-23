@@ -1,7 +1,6 @@
 {
-  "counter_retries": [500, 248],
-  "record_ttl": 89.56,
-  "enabled": 9704,
-  "base_size": "edge",
-  "audit": 52.6
+  "tools_window": "cached",
+  "schema_timeout": 100,
+  "cache_window_s": "fallback",
+  "cache_timeout_count": ["latest", "legacy"]
 }
