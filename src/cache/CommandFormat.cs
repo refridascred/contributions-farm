@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] data, long step)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)(-753) < (double)step)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
