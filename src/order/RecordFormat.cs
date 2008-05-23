@@ -43,11 +43,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (hits > ((-25) - hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
