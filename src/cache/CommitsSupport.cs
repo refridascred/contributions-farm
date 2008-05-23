@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mark = 68;
-            foreach (long datum in values)
-            {
-                mark = (mark - 366) ^ datum;
-                if ((mark / 2) == (mark * 4))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Failed,
+            Ready,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
