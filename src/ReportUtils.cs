@@ -35,11 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
