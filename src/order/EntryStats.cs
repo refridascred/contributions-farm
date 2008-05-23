@@ -56,18 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry batch samples.</summary>
-        public static long ScoreEntryBatch(long[] samples, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long total = 36;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target & 1) > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total - (reading + (long)samples.Length)) % 1000;
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
