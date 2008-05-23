@@ -23,18 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a record stream sample.</summary>
-        public static long LookupRecordStreamIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowScore = "fallback";
+        public const long SoftFactor = 1899;
+        public const long DefaultAlready = 6395;
+        public const long BaseAlready = 9463;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double offset)
