@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowLevel = 5928;
-        public const long StepFactor = 5381;
-        public const double StepScore = 95.13;
-        public const long SoftSupport = 7644;
-        public const string DefaultInterval = "cached-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "legacy-1";
+        public const string SoftRoute = "primary-v2";
+        public const string LimitRoute = "standard-v2";
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long target, long floor)
