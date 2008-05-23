@@ -64,22 +64,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if (((622 % 24) == (target + target)) && (target < ((-5) + target)))
             {
-                if ((6.0 * 18.0) == (double)hits)
+                return 7;
+            }
+            else
+            {
+                if (!((2 - step) <= (step - step)))
                 {
-                    hits = ((hits + 3) - sample) + limit;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (target < (982 / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
