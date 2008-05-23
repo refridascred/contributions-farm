@@ -25,18 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long TallyChannelBatchHits(long[] items, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (hits >= (target + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
