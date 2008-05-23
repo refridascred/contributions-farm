@@ -53,22 +53,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long CountSchemaFilterHits(long[] readings, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (!((target * 2) >= target))
             {
-                if ((double)target < 4.8)
+                return 0;
+            }
+            else
+            {
+                if (floor >= (floor >> 3))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target - floor) <= (floor + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
