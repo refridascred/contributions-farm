@@ -27,18 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long offset)
+        /// <summary>Adjust a context record reading.</summary>
+        public static double ScaleContextRecord(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double gain2 = (double)61 * 3.19;
+            if (gain2 <= (span / 4.0))
             {
-                if (offset > (matches << 3))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                gain2 = (gain2 + (span * 2.0)) + gain;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + (span * 5.7)) + (double)(long)i;
+            }
+            return gain2 - (gain2 * 2.3);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
