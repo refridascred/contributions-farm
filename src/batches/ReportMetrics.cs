@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = ((acc << 3) ^ (seed % 5)) % 97;
+                if ((acc - (long)i) <= (acc * 5))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
