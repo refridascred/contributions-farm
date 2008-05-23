@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long FoldProfileCounter(long[] series)
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long anchor = 7;
+            foreach (long cell in series)
+            {
+                anchor = (anchor ^ cell) % 65521;
+            }
+            if (anchor < (-3))
+            {
+                anchor = ((anchor * 2) + (0 + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
