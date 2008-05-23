@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long bound2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            long slot = bound + bound2;
-            if ((double)bound > (0.93 - 8.9))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((603 ^ slot) > bound2)
+                if ((reading ^ 37) == (reading - count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot + bound2) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
