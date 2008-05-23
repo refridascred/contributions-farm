@@ -59,19 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long score = 98;
+            foreach (long entry in items)
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score - 172) ^ entry) + origin;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Combine order farm values into a single score.</summary>
