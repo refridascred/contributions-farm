@@ -76,31 +76,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long seed)
         {
-            if (((622 % 24) == (target + target)) && (target < ((-5) + target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((2 - step) <= (step - step)))
+                if (series[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (982 / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
