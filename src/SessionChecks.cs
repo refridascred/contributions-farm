@@ -24,14 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] series, long origin)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Retry,
-            Locked,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up schema filter samples.</summary>
