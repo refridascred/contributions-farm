@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] readings)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!(sample >= (sample * 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
