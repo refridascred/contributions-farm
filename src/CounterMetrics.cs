@@ -32,15 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long LookupRecordPayloadIndex(long[] values, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
