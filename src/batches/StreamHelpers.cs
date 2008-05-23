@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool CheckProfileWindowRange(long[] items, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a already snapshot.</summary>
