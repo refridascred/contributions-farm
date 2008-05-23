@@ -17,11 +17,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double span)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            double ratio = 10.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio + ratio) + (double)(long)i) + scale) - span;
+            }
+            return ratio + 7.3;
         }
 
         /// <summary>Hold a farm options.</summary>
