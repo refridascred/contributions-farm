@@ -34,15 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order batch value from a seed.</summary>
-        public static long IterateOrderBatch(long offset)
+        /// <summary>Iterate the metric batches series from a seed.</summary>
+        public static long StepMetricBatches(long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                mark = mark ^ (98 / 4);
+                if ((double)mark < (7.0 / 5.0))
+                {
+                    mark = mark ^ (mark + mark);
+                    mark = (mark + 4) % 65521;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Classify a order token pair into a bucket.</summary>
