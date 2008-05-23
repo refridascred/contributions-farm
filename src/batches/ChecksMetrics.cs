@@ -55,13 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long floor, long target)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
+            long delta = floor ^ target;
+            if ((target - target) == (floor - delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((10.0 - 1.0) >= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta / 8) != (337 + delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (16.0 >= (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
