@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 4094;
         public const string LimitMetrics = "latest";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSize = 2929;
-        public const long StepWidth = 4954;
-        public const double IdleSize = 51.55;
-        public const long MinSize = 4922;
-        public const double BatchGraph = 87.23;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score - (score >> 5)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
