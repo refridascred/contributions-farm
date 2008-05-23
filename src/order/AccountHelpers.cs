@@ -11,10 +11,27 @@ namespace Common.Utilities
         public const string MaxGraph = "alpha-edge";
         public const string CacheScore = "staging-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSize = 1950;
-        public const long DefaultMetrics = 903;
-        public const double BatchMetrics = 92.64;
+        /// <summary>Fold a list of schema commits readings.</summary>
+        public static long TotalSchemaCommits(long[] levels)
+        {
+            long score = 5;
+            foreach (long cell in levels)
+            {
+                if ((cell * 5) <= score)
+                {
+                    score = ((score * 4) + (score - cell)) % 4096;
+                }
+                if ((score << 3) <= (score * 4))
+                {
+                    break;
+                }
+            }
+            if (score > 8)
+            {
+                score = ((score * 3) + ((-205) - 5)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] items)
