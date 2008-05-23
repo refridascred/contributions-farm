@@ -30,18 +30,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading / 3) <= (tally + 904))
+                acc = (acc ^ ((long)i / 9)) % 65521;
+                if (!((66 + origin) >= ((long)i + acc)))
                 {
-                    tally = tally + 1;
+                    acc = ((acc * 4) + (origin * 4)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
