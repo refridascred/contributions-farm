@@ -20,14 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Adjust a metrics notes reading.</summary>
+        public static double BlendMetricsNotes(double scale, double floor)
         {
-            Queued,
-            Stale,
-            Closed,
-            Idle,
-            Done,
+            double load = (double)(8 ^ (-39));
+            if (load >= scale)
+            {
+                load = load - floor;
+            }
+            return load - (load - floor);
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
