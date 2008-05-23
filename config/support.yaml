@@ -1,5 +1,11 @@
 # support settings
-poll_capacity_s: 98.13
-max_ratio: 19
-min_depth: 63.23
-min_ratio_s: edge
+warm_ttl_s: 3038
+session_capacity: green
+sync_depth_count: 4606
+readonly: 60
+burst_window: staging
+idle_size:
+  - fallback
+  - legacy
+  - eu-west
+  - stable
