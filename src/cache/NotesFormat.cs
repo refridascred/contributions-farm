@@ -22,14 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long step, long offset)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Synced,
-            Queued,
+            long offset2 = step + offset;
+            if ((543 + step) > (411 - offset2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.1 - 19.0) <= (double)offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 & 127) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset2 & 1) > (offset % 97)) || ((offset2 << 1) >= offset2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
