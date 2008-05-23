@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Stale,
-            Synced,
+            Dropped,
             Retry,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
