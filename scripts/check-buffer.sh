@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-standard}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard green strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=389
+log "limit is ${BUFFER_LIMIT}"
