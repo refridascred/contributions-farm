@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchScore = 2911;
+        public const long BurstFactor = 2311;
+        public const string RetrySize = "latest-v2";
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
         public static bool VerifyMetricsRecordLimits(long[] data, long offset)
