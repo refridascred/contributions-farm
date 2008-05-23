@@ -40,10 +40,14 @@ namespace Common.Utilities
             return (weight + (double)136) + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheTimeout = 2774;
-        public const long DefaultInterval = 8550;
-        public const long HardSize = 882;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
