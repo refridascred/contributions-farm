@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long BatchWidth = 9451;
         public const long BurstEditor = 9401;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit entry already readings against a rule.</summary>
