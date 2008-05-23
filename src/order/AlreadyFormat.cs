@@ -58,21 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order already samples.</summary>
-        public static long PairOrderAlreadyCount(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != floor)
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine order farm values into a single score.</summary>
