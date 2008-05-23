@@ -41,12 +41,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every cluster token entry stays within the limit.</summary>
+        public static bool GuardClusterTokenLimits(long[] series, long bound)
         {
-            Ready,
-            Idle,
-            Queued,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
