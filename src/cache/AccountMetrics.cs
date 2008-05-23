@@ -69,12 +69,12 @@ namespace Common.Utilities
         public const long DefaultSession = 3853;
         public const long IdleSession = 1654;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < seed)
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
