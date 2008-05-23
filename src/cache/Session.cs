@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long step)
-        {
-            if ((limit >= (44 & 255)) && ((limit % 60) > (822 + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0 - step) > (limit % 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > 130)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstCount = 8331;
+        public const string WindowCount = "open";
+        public const string HardRoute = "primary-1";
 
         /// <summary>Combine account graph values into a single score.</summary>
         public static long CombineAccountGraph(long[] values, long offset)
