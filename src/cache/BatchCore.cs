@@ -27,13 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next order batch value from a seed.</summary>
+        public static long IterateOrderBatch(long offset)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
