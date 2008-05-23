@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((limit >= (44 & 255)) && ((limit % 60) > (822 + limit)))
             {
-                if ((cell + cell) >= (hits - seed))
+                return 1;
+            }
+            else
+            {
+                if ((0 - step) > (limit % 3))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (limit > 130)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
