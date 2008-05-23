@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count farm commits pairs that satisfy a relation.</summary>
-        public static long PairFarmCommitsCount(long[] values)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] < offset)
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
