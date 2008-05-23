@@ -12,15 +12,22 @@ namespace Common.Utilities
             return (ratio - (ratio * 0.3)) + span;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double ratio, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            double drift = (double)(586 >> 4);
-            if (drift >= (double)68)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                drift = drift - floor;
+                if (matches <= 53)
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - ratio;
+            return matches;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
