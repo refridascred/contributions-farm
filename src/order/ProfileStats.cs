@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = (span * 9.0) * 15.0;
+            if (scale2 >= (double)28)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (scale2 + span);
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - (span - 7.91);
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Accumulate command samples.</summary>
