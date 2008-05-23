@@ -1,8 +1,8 @@
-id,rank,ratio,count,weight
-1,33.61,blue,66,10.2
-2,69.57,285,standard,fallback
-3,cached,246,8.5,local
-4,legacy,72.61,67.81,4.97
-5,legacy,89.32,80.7,335
-6,stable,strict,legacy,9.42
-7,open,872,55.65,448
+id,count,rank,ratio
+1,strict,2.95,704
+2,677,260,768
+3,953,latest,586
+4,primary,cached,97.51
+5,194,1.42,blue
+6,primary,347,fallback
+7,primary,522,7.81
