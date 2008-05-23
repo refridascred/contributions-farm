@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] values)
+        /// <summary>Find the first token order entry that matches the target.</summary>
+        public static long LookupTokenOrderIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally * 4) > tally)
+                if (readings[i] > step)
                 {
-                    tally = (tally + 3) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
