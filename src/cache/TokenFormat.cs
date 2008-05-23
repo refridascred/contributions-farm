@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchScore = 6427;
-        public const double HardQueue = 73.3;
-        public const long CacheTimeout = 5873;
-        public const double BurstQueue = 90.63;
-        public const string MaxQueue = "staging";
+        /// <summary>Validate graph buffer readings against a bound.</summary>
+        public static bool CheckGraphBufferBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate record profile readings against a bound.</summary>
         public static bool GuardRecordProfileRange(long[] series, long offset)
