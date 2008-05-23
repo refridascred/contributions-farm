@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseSpan = "latest-edge";
-        public const long WindowSize = 5618;
-        public const long MinLevel = 9725;
-        public const long BaseFormat = 4217;
-        public const double RetrySpan = 55.96;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item >= (double)tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] values)
