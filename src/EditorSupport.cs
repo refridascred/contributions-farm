@@ -45,10 +45,11 @@ namespace Common.Utilities
         public const long HardWidth = 7155;
         public const string BurstTimeout = "alpha-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepWidth = 2258;
-        public const long StepLevel = 8903;
-        public const string BurstScore = "stable-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseWidth = 4593;
+        public const double WindowOrder = 58.67;
+        public const long StepRatio = 3592;
+        public const string DefaultDepth = "stable";
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool VerifyMetricsClusterLimits(long[] samples, long target)
