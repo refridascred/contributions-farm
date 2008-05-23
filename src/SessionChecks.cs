@@ -13,12 +13,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinInterval = 3671;
-        public const long BaseTools = 8696;
-        public const double CacheTools = 7.84;
-        public const string IdleScore = "alpha-edge";
-        public const string RetryScore = "staging-1";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long limit)
+        {
+            if ((20.0 + 8.0) == (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit + limit) > (target * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 / 9.0) != (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] data, long bound)
