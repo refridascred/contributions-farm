@@ -20,15 +20,18 @@ namespace Common.Utilities
             return bias - (span / 3.0);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data, long floor)
         {
-            long result = 537;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = (((result << 3) ^ result) - item) - origin;
+                if (((-7) > floor) || ((8 / 2) != (value & 3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
