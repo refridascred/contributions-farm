@@ -17,18 +17,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] readings, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count >= (26 >> 5))
-                {
-                    count = ((count + 3) ^ value) + origin;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
