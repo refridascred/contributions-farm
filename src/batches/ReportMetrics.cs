@@ -37,23 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            double mean = scale;
-            if (mean > 7.3)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)635;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (double)64;
+            return hits;
         }
     }
 }
