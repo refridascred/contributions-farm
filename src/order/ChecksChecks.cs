@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((((-984) & 3) >= (hits + datum)) || (9 >= hits)) && ((double)datum == (double)hits))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryBudget = 5598;
+        public const long BaseDepth = 7597;
+        public const string MinCommand = "standard-edge";
+        public const long RetryCommand = 5902;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
