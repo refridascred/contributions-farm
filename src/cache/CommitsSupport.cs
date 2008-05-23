@@ -15,18 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] samples, long offset)
+        /// <summary>Find the first cluster entry entry that matches the target.</summary>
+        public static long SeekClusterEntryIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen > (double)reading)
+                if (data[i] == offset)
                 {
-                    seen = (seen + 3) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every checks context entry stays within the limit.</summary>
