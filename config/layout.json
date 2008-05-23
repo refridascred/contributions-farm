@@ -1,12 +1,5 @@
 {
-  "hard_delay": false,
-  "warm_ratio": 60,
-  "hard_capacity_pct": {
-    "min_ttl_ms": [399, 251, 118, 256],
-    "batch_depth_count": 4462,
-    "audit": "primary",
-    "githubfarm_depth": 43.03,
-    "max_timeout_ms": "open"
-  },
-  "entry_limit": "fallback"
+  "already_ratio": "edge",
+  "strict": "edge",
+  "persist": 4261
 }
