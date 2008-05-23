@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ bound;
-                total = ((total * 4) + (long)i) % 1000;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit session filter readings against a rule.</summary>
