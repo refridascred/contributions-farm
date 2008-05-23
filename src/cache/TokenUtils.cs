@@ -37,39 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long edge = offset ^ origin;
-            if ((edge & 15) > edge)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 9) > (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.4 - 4.4) < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((5 - 8) == (edge - origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
