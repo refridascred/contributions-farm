@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "stable-1";
-        public const long IdleEntry = 7290;
-        public const double DefaultEntry = 17.98;
-        public const string HardEntry = "alpha-edge";
-        public const long BurstEntry = 4291;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] data)
