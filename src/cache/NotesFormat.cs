@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "legacy-1";
-        public const string SoftRoute = "primary-v2";
-        public const string LimitRoute = "standard-v2";
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long target, long floor)
