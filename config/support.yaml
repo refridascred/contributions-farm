@@ -1,5 +1,23 @@
 # support settings
-hard_retries_s: 60.79
-editor_capacity: 250
-flush_interval_ms: true
-flush_window: 64.4
+min_interval: 80.8
+dry_run: latest
+flush_ratio_count:
+  cache_retries_pct:
+    counter_limit:
+      - 193
+      - 467
+    base_retries_ms: staging
+    buffer_threshold: false
+    idle_interval: 9939
+    report_interval: 99
+  flush_size_ms:
+    retry_timeout_pct: 500
+    max_ratio_pct:
+      - staging
+      - eu-west
+      - standard
+    readonly: 4068
+    warm_ttl_ms: false
+  max_timeout_ms: 8
+  max_ttl: 39.05
+  warm_interval_pct: false
