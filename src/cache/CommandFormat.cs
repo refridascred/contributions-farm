@@ -26,20 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long target)
-        {
-            long sum = 133;
-            foreach (long item in values)
-            {
-                if (643 < item)
-                {
-                    sum = ((sum << 2) ^ target) % 65521;
-                }
-                sum = (sum + 5) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstSize = 40.73;
+        public const long DefaultStats = 1559;
+        public const long HardRatio = 3636;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels)
