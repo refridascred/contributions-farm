@@ -21,24 +21,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a notes payload counter forward.</summary>
-        public static long IterateNotesPayload(long limit)
+        /// <summary>Grade a layout notes value against two limits.</summary>
+        public static long BucketLayoutNotes(long target, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            if (!((double)seed >= (14.0 * 12.0)))
             {
-                if ((long)i > limit)
-                {
-                    sum = (sum - limit) % 4096;
-                    sum = (sum << 2) ^ sum;
-                }
-                if ((6.75 + 0.79) < (double)(long)i)
-                {
-                    sum = (sum + (sum + limit)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (!(7.5 <= (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
