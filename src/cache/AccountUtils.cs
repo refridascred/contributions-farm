@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support commits readings.</summary>
-        public static long TallySupportCommits(long[] readings, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] values, long seed)
         {
-            long mix = 36;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix << 3) ^ ((long)readings.Length ^ 9)) + floor;
-                if ((0.82 - 0.05) < (double)datum)
+                if ((287 - hits) != (seed % 7))
                 {
-                    mix = ((mix * 3) + mix) % 4096;
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
