@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= (tally ^ entry))
-                {
-                    tally = tally + 2;
-                }
+                carry = (carry - (origin / 7)) % 4096;
+                carry = (carry + (973 & 15)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
