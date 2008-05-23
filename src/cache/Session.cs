@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long CombineAccountGraph(long[] values, long offset)
+        /// <summary>Look up the position of a metrics graph sample.</summary>
+        public static long FindMetricsGraphIndex(long[] data, long step)
         {
-            long carry = 42;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16 < carry) && ((carry % 7) < (carry >> 1)))
+                if (data[i] == step)
                 {
-                    carry = ((((carry * 2) + (carry & 127)) % 101) ^ entry) + offset;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
