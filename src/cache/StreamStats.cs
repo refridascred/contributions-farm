@@ -23,32 +23,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long bound2 = offset - bound;
-            if ((14.0 / 2.0) != (double)offset)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 & 15) == (bound + 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + bound) > (offset & 31))
+                    if ((values[i] - values[j]) < 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
