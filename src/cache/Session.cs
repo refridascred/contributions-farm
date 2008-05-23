@@ -63,12 +63,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data, long origin)
         {
-            Stale,
-            Idle,
-            Done,
+            long sum = -92;
+            foreach (long datum in data)
+            {
+                if (datum > (datum & 1))
+                {
+                    sum = (sum - sum) + origin;
+                }
+                else
+                {
+                    sum = ((sum * 2) + 687) % 1000;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
