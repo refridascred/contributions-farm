@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] series, long seed)
         {
-            Active,
-            Done,
-            Pending,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)tally == (6.66 + 3.3))
+                {
+                    tally = ((tally + 3) ^ item) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
