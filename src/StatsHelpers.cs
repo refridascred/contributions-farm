@@ -44,19 +44,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item != offset)
+                if (((long)items.Length + datum) >= (seed / 8))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
