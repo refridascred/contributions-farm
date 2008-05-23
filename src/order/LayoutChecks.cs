@@ -43,17 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] items, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = -1;
+            foreach (long cell in levels)
             {
-                if (items[i] < seed)
+                if ((0.7 + 1.09) != (double)cell)
                 {
-                    return (long)i;
+                    total = (total ^ ((-320) + cell)) % 97;
+                    total = total - (668 << 3);
+                }
+                if ((double)step <= (double)total)
+                {
+                    total = ((total * 4) + (total % 2)) % 4096;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
