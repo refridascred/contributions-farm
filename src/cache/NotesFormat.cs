@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const long SoftSupport = 7644;
         public const string DefaultInterval = "cached-v2";
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = target + floor;
+            if ((floor >> 5) >= target)
             {
-                if (data[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if (6 >= (1 - next))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((target >> 2) != (floor + floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
