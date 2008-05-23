@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long AuditLayoutChecksOutliers(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)(long)data.Length <= (double)42)
-                {
-                    matches = ((matches + 2) ^ sample) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 7084;
+        public const long HardBatch = 4726;
+        public const long DefaultInterval = 5634;
+        public const long MinBatch = 1417;
 
         /// <summary>Project the next cluster order value.</summary>
         public static double SmoothClusterOrder(double rate, double bias)
