@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long RetryQueue = 7353;
         public const long SoftFactor = 9308;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Retry,
-            Pending,
-            Closed,
-            New,
-            Queued,
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of profile counter entries.</summary>
