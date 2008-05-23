@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] samples, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((double)item < (12.0 * 1.9)) && (((origin >> 4) >= (origin / 2)) || (tally < (item / 6))))
+                if ((cell % 10) >= cell)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
