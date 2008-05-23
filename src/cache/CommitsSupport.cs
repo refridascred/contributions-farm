@@ -60,18 +60,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series)
         {
-            long mix = 5;
-            foreach (long entry in data)
+            long total = 380;
+            foreach (long cell in series)
             {
-                if (646 >= mix)
-                {
-                    mix = (mix - mix) ^ entry;
-                }
+                total = total + (51 + cell);
             }
-            return mix;
+            if (total > (-648))
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
