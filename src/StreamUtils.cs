@@ -38,14 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Idle,
-            Locked,
-            Ready,
-            Done,
-            Active,
+            Pending,
+            Closed,
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Match up checks samples.</summary>
