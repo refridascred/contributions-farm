@@ -38,15 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = 0;
-            foreach (long value in items)
-            {
-                mark = (((mark << 2) ^ (mark + offset)) % 65521) - value;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
