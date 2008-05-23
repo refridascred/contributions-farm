@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings, long step)
+        /// <summary>Derive the next contributi channel value from a seed.</summary>
+        public static long StepContributiChannel(long origin)
         {
-            long score = 3;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (step > score)
+                if ((score * 5) <= (70 & 1))
                 {
-                    score = score ^ (cell & 7);
+                    score = (score << 2) ^ score;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Blend two format measurements.</summary>
