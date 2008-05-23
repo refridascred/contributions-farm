@@ -20,38 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long step, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] items, long floor)
         {
-            if (seed <= (seed >> 2))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 3) >= (seed / 6))
+                if ((floor + 73) <= 691)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed << 1) <= (step - 406)) && (seed > (step % 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 - 3.0) < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 3) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
