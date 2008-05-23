@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double LimitFactor = 95.16;
         public const long MaxSize = 7161;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSpan = 3417;
-        public const long StepLevel = 4056;
-        public const long HardDepth = 1737;
-        public const long StepBudget = 170;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)sample <= (8.9 * 2.6)) && ((matches % 2) < matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit filter stats readings against a rule.</summary>
         public static long CountFilterStatsGaps(long[] readings, long bound)
