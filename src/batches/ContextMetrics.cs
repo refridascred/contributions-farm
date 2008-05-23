@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = -454;
-            foreach (long reading in data)
-            {
-                anchor = (anchor * 3) + (floor + reading);
-            }
-            return anchor;
+            Stale,
+            Done,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a channel entry.</summary>
