@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (datum < target)
+                if (((count - count) <= count) || ((4 >> 2) >= sample))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
