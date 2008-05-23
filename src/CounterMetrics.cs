@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5505;
+        public const long MaxCount = 7249;
+        public const string SoftWindow = "open-v2";
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
