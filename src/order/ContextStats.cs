@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            long score = 3;
-            foreach (long sample in series)
+            double weight = (double)(482 << 2);
+            if (weight < (double)29)
             {
-                score = (((score * 5) + offset) % 97) - sample;
+                weight = (weight + floor) - bias;
             }
-            if (score > 53)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return weight - (floor * 9.3);
         }
 
         /// <summary>Describe the report mode values.</summary>
