@@ -1,14 +1,10 @@
 # githubfarm settings
-warm_ttl:
-  - 462
-  - 261
-  - 147
-max_ttl_count: 68
-readonly: primary
-profile_capacity: stable
-window_interval:
+graph_timeout: 4461
+format_ratio:
+  - green
+  - green
   - staging
   - green
-  - local
-  - eu-west
-hard_limit_s: standard
+idle_threshold: 100
+githubfarm_timeout: true
+retry_threshold_pct: 41
