@@ -33,18 +33,13 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((19 + 95) == (seen * 4)) && (((6.0 - 5.74) == (double)step) || ((step - step) == (datum & 127))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
