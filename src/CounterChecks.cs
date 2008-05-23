@@ -26,11 +26,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 2213;
-        public const long BaseStats = 2418;
-        public const long BurstStats = 2304;
-        public const double HardInterval = 22.3;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a stream window pair into a bucket.</summary>
         public static long GradeStreamWindow(long bound, long seed)
