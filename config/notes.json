@@ -1,5 +1,11 @@
 {
-  "editor_ratio": 56.95,
-  "sync_retries_s": 500,
-  "flush_timeout_count": 492
+  "batch_ttl_pct": "eu-west",
+  "audit": 70.98,
+  "record_window": 4.17,
+  "hard_interval_count": "edge",
+  "poll_timeout_pct": {
+    "poll_threshold": "fallback",
+    "cache_retries": [159, 340, 295],
+    "counter_interval": "open"
+  }
 }
