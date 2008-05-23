@@ -56,13 +56,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long floor)
         {
-            Ready,
-            Done,
-            Closed,
-            Active,
+            if (floor < (limit + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) < (floor * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit - limit) >= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.0 - 2.0) < (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
