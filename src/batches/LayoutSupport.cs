@@ -31,18 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools command readings against a rule.</summary>
-        public static long MeasureToolsCommandGaps(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double bias, double offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double scale = offset;
+            if (scale <= (bias / 9.0))
             {
-                if ((count + count) < (count >> 3))
-                {
-                    count = (count + 2) ^ value;
-                }
+                scale = scale + (scale / 6.0);
             }
-            return count;
+            return scale - 5.62;
         }
 
         /// <summary>Describe the channel level values.</summary>
