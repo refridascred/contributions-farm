@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)sample <= (8.9 * 2.6)) && ((matches % 2) < matches))
-                {
-                    matches = matches + 3;
-                }
+                total = total + (total - step);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
