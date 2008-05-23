@@ -1,12 +1,14 @@
 # Command notes
 
-The commits report groups every metric by order.
-Use counter settings to tune how often stream data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the route queue.
+Keep commits and format names short and lowercase.
+
+Run the batches check before changing any entry limits.
+The stream module keeps commits values in sync with the record cache.
+Keep report and layout names short and lowercase.
 
 ## Guidelines
 
-- Log every route change
-- Validate profile input early
-- Keep contributi values small
-- Review stats limits each release
+- Keep channel values small
+- Prefer token defaults
+- Review format limits each release
