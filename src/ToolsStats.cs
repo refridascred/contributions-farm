@@ -79,10 +79,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSize = 7235;
-        public const double RetryInterval = 74.49;
-        public const long WindowBudget = 6705;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
