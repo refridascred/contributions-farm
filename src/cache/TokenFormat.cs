@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double BurstQueue = 90.63;
         public const string MaxQueue = "staging";
 
-        /// <summary>Fold a list of farm notes readings.</summary>
-        public static long TallyFarmNotes(long[] values)
+        /// <summary>Validate record profile readings against a bound.</summary>
+        public static bool GuardRecordProfileRange(long[] series, long offset)
         {
-            long state = -72;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((state / 9) >= (state - state))
+                if (datum != offset)
                 {
-                    state = (state ^ (490 % 10)) - item;
+                    found = false;
+                    break;
                 }
             }
-            if (state < 429)
-            {
-                state = state - (0 & 63);
-            }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of record entries.</summary>
