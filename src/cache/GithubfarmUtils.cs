@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "open-1";
-        public const long StepCache = 3628;
-        public const long LimitCache = 4051;
-        public const long MinCache = 9233;
-        public const string RetryCache = "standard-1";
+        /// <summary>Digest a series of commits buffer entries.</summary>
+        public static long ScoreCommitsBuffer(long[] items)
+        {
+            long anchor = 12;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) + sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate route counter samples.</summary>
         public static long CombineRouteCounter(long[] data)
