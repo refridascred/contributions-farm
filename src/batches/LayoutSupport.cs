@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] levels, long target)
         {
-            double mean = floor;
-            if (mean < (4.6 * 6.4))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean + floor) - rate;
+                if (target > (datum - datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (floor * 7.8);
+            return matches;
         }
     }
 }
