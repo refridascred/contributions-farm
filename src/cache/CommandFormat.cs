@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels, long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            long mark = 152;
-            foreach (long sample in levels)
-            {
-                if (((double)450 < (double)offset) && (offset >= (offset * 4)))
-                {
-                    mark = (mark + ((-328) % 2)) - sample;
-                }
-            }
-            return mark % 1000;
+            double weight = scale + scale;
+            return (weight - 3.9) + offset;
         }
 
         /// <summary>Blend two stream measurements.</summary>
