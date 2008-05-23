@@ -37,15 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double span)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double drift = span;
-            if (drift < drift)
-            {
-                drift = (drift + span) - scale;
-            }
-            return drift + (double)5;
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
