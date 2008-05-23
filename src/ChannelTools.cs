@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 8366;
-        public const long StepSpan = 1427;
-        public const double IdleContext = 38.22;
-        public const long BaseContext = 4127;
-        public const long RetryContext = 6598;
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples, long offset)
+        {
+            long anchor = 651;
+            foreach (long entry in samples)
+            {
+                if ((13.0 * 5.45) == (double)anchor)
+                {
+                    anchor = (((anchor * 4) + entry) % 97) - offset;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
