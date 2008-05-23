@@ -25,14 +25,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Draft,
-            Pending,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 7007;
+        public const double BurstContext = 3.15;
+        public const string BaseWidth = "open";
+        public const double HardContext = 95.06;
+        public const string BaseContext = "primary";
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] readings)
