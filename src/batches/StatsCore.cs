@@ -72,11 +72,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 1730;
-        public const long MaxStream = 4306;
-        public const long DefaultScore = 4724;
-        public const long WindowDepth = 3476;
-        public const double BurstTimeout = 51.33;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCount = 1024;
+        public const long IdleCommits = 8241;
+        public const long BatchTimeout = 4810;
+        public const string RetryScore = "fallback-v2";
     }
 }
