@@ -55,21 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 81;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (((result * 3) + (8 + (long)readings.Length)) % 255) ^ (long)i;
                 }
+                result = (result - (entry & 15)) % 1000;
             }
-            return seen;
+            if (result > 0)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
