@@ -47,13 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Queued,
-            Ready,
-            Idle,
+            Pending,
             Stale,
+            Queued,
+            Idle,
         }
     }
 }
