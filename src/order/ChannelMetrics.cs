@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long target, long target2)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings, long origin)
         {
-            if ((target2 + target) >= (target2 * 4))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > target2)
+                if ((7 ^ tally) >= (tally << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target << 2) == (target2 + target)) || ((double)target2 == (16.0 - 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = ((tally + 2) + item) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
