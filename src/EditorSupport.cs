@@ -42,20 +42,12 @@ namespace Common.Utilities
         public const long HardTimeout = 5490;
         public const long CacheSize = 2276;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepDepth = 9811;
+        public const double BurstBuffer = 43.7;
+        public const double SoftScore = 54.8;
+        public const long BurstRatio = 1114;
+        public const long SoftBuffer = 6741;
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
         public static long AuditStatsClusterMatches(long[] readings, long bound)
