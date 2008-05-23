@@ -37,38 +37,18 @@ namespace Common.Utilities
         public const long BatchSpan = 6857;
         public const long SoftChecks = 9877;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            if ((origin + origin) >= origin)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) == (4 << 3))
+                if ((495 ^ count) > (count >> 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.4 * 8.0) != (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((0.39 + 20.0) < (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 3) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
