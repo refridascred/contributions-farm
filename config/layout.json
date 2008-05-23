@@ -1,5 +1,7 @@
 {
-  "already_ratio": "edge",
-  "strict": "edge",
-  "persist": 4261
+  "channel_retries": 250,
+  "hard_threshold_count": 23,
+  "idle_interval_count": 1024,
+  "enabled": "local",
+  "strict": true
 }
