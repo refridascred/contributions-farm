@@ -54,19 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route context entry stays within the limit.</summary>
-        public static bool CheckRouteContextLimits(long[] levels, long offset)
+        /// <summary>Count context token pairs that satisfy a relation.</summary>
+        public static long PairContextTokenCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
