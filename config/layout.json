@@ -1,8 +1,5 @@
 {
-  "stats_window": ["primary", "cached"],
-  "buffer_interval": 79,
-  "enabled": 1024,
-  "default_delay_count": 60,
-  "context_timeout": 500,
-  "audit": ["stable", "legacy"]
+  "support_delay": "local",
+  "already_ttl": 87.22,
+  "support_ratio": 7.83
 }
