@@ -52,19 +52,10 @@ namespace Common.Utilities
             return rate + (rate * 5.92);
         }
 
-        /// <summary>Audit cache record readings against a rule.</summary>
-        public static long TallyCacheRecordGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((6.8 * 2.0) <= (double)step)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheDepth = 16.37;
+        public const long HardRatio = 3356;
+        public const long RetryCounter = 3009;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] series)
