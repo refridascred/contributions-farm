@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const string IdleAlready = "staging-edge";
         public const string RetryAlready = "primary-v2";
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
