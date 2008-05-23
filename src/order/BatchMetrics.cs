@@ -46,17 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 3.4;
+            if (rate < (7.4 * 16.0))
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (rate * 3.21)) - scale;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - span) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
