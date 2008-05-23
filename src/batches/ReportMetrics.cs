@@ -13,12 +13,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            Dropped,
-            Retry,
-            New,
+            if (floor <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < (floor >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
