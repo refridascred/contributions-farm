@@ -29,23 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Check that every checks context entry stays within the limit.</summary>
+        public static bool GuardChecksContextBounds(long[] values, long limit)
         {
-            long sum = 958;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (sample <= limit)
                 {
-                    sum = (sum - cell) % 97;
-                    sum = sum - ((long)i ^ (long)i);
-                }
-                if ((cell & 1) != (790 + 1))
-                {
-                    sum = (sum * 5) + (cell - 90);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
