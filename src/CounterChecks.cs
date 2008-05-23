@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const string IdleAlready = "stable-v2";
         public const double StepRatio = 94.4;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long step)
         {
-            long state = 889;
-            foreach (long reading in levels)
+            long lane = target - step;
+            if (step < (target ^ target))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (((state - state) % 101) ^ (long)i) + reading;
-                }
-                state = ((state * 4) + ((-74) & 1)) % 4096;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((lane - lane) < (step << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of batches cluster readings.</summary>
