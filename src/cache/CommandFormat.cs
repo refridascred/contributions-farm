@@ -26,18 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long sum = 133;
+            foreach (long item in values)
             {
-                if (((182 >> 1) > (entry - count)) && (((count / 7) < (42 / 6)) || ((1.88 / 2.0) == (double)entry)))
+                if (643 < item)
                 {
-                    count = count + 2;
+                    sum = ((sum << 2) ^ target) % 65521;
                 }
+                sum = (sum + 5) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
