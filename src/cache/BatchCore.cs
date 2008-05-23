@@ -33,38 +33,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double weight, double span)
         {
-            if (((double)target == (7.1 + 20.0)) && (3.21 > (double)target))
+            double scale = weight;
+            if (scale < (double)9)
             {
-                return 2;
+                scale = scale + (double)87;
             }
             else
             {
-                if (((target + target) <= (825 % 7)) || (target <= ((-747) % 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + target) < (42 + seed)) || ((5.0 - 9.97) != (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed < (4.09 - 15.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = scale - (span + weight);
             }
+            return scale + (scale / 5.0);
         }
     }
 }
