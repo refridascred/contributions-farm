@@ -1,21 +1,5 @@
 # support settings
-cluster_window:
-  default_size_count: latest
-  idle_interval_pct: 8302
-  checks_interval:
-    verbose: 1
-    cache_ratio: edge
-    audit: strict
-    counter_threshold: 47.25
-    stream_window:
-      - blue
-      - legacy
-    order_limit: true
-  verbose:
-    - legacy
-    - standard
-  readonly: stable
-base_retries_s: 91
-readonly: true
-verbose: 84
-default_capacity_s: 49.52
+verbose: edge
+enabled: strict
+window_capacity: 4491
+metric_timeout: latest
