@@ -53,22 +53,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = 43;
+            foreach (long reading in readings)
             {
-                if (hits > ((-25) - hits))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum << 3) ^ (sum % 12)) - reading;
             }
-            return hits;
+            if (sum < 537)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
