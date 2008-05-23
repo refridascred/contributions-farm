@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 9487;
-        public const string StepSchema = "alpha-edge";
-        public const double HardBudget = 72.98;
-        public const string LimitSchema = "staging-edge";
-        public const long BatchScore = 1728;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series, long seed)
+        {
+            long state = 88;
+            foreach (long item in series)
+            {
+                state = (((state ^ (long)series.Length) % 4096) ^ item) - seed;
+            }
+            return state;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long target, long seed)
