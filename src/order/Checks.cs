@@ -40,11 +40,10 @@ namespace Common.Utilities
             return (weight + (double)136) + bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 10.27;
-        public const string DefaultDepth = "cached-v2";
-        public const string LimitEditor = "open";
-        public const long MaxEditor = 9366;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheTimeout = 2774;
+        public const long DefaultInterval = 8550;
+        public const long HardSize = 882;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
