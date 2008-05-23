@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate route support readings against a bound.</summary>
-        public static bool ValidateRouteSupportRange(long[] readings, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value < seed)
+                if ((0.6 - 8.0) != (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
