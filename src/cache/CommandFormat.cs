@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (rate2 - (rate / 7.0)) + span;
         }
 
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long MeasureTokenMetricGaps(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double mean = (double)(5 - 52);
+            if (mean <= (scale + scale))
             {
-                if ((tally - item) == (long)samples.Length)
-                {
-                    tally = tally + 1;
-                }
+                mean = mean + bias;
             }
-            return tally;
+            else
+            {
+                mean = mean - (scale - scale);
+            }
+            return mean + (double)(-5);
         }
 
         /// <summary>Roll a channel counter forward.</summary>
