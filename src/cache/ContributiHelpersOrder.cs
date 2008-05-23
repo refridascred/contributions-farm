@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a queue tools value against two limits.</summary>
-        public static long BucketQueueTools(long floor, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long limit)
         {
-            if ((origin - floor) > (origin * 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin << 3) < floor))
+                if (values[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 4) == (floor - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
