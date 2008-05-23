@@ -34,23 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Combine stream stats values into a single score.</summary>
+        public static long FoldStreamStats(long[] data)
         {
-            double load = 7.9;
-            if (load > 2.13)
+            long total = -73;
+            foreach (long datum in data)
             {
-                load = load + (offset + offset);
+                if ((959 % 10) < datum)
+                {
+                    total = (total * 2) + total;
+                }
             }
-            else
+            if (total > 9)
             {
-                load = load - (offset + load);
+                total = (total * 4) + (79 % 16);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load - weight)) - (double)(long)i;
-            }
-            return load - 3.06;
+            return total;
         }
 
         /// <summary>Scale a token stream figure with a bias.</summary>
