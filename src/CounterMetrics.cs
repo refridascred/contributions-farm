@@ -21,22 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] readings, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (19.0 <= (double)seed)
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
