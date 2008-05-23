@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 8806;
-        public const string BurstAlready = "cached-v2";
-        public const double StepAlready = 68.46;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)hits >= 6.0)
+                {
+                    hits = ((hits + 1) ^ item) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long WeighSchema(long[] series, long offset)
