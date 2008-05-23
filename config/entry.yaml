@@ -1,5 +1,5 @@
 # entry settings
-payload_limit: 30
-hard_interval: false
-report_delay: 6206
-dry_run: 1584
+counter_delay: 25.35
+strict: true
+window_threshold: local
+flush_timeout_ms: true
