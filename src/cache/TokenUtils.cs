@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stats record readings against a rule.</summary>
-        public static long AuditStatsRecordGaps(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long count = 0;
+            long state = 28;
             foreach (long entry in series)
             {
-                if (!((4 ^ entry) != (entry & 15)))
+                if (((entry << 3) >= (entry + entry)) || ((entry / 7) >= (entry + state)))
                 {
-                    count = count + 3;
+                    state = ((state * 5) + (entry / 7)) % 65521;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
