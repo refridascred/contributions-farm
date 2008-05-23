@@ -30,10 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 162;
-        public const long HardTimeout = 7069;
-        public const string RetryCommand = "alpha-v2";
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
