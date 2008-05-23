@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series, long seed)
+        /// <summary>Adjust a filter payload reading.</summary>
+        public static double ProjectFilterPayload(double rate, double span)
         {
-            long result = 13;
-            foreach (long reading in series)
+            double gain = 3.0;
+            if (gain > rate)
             {
-                if (((double)seed == (9.0 + 4.95)) && ((seed / 5) > (result / 5)))
-                {
-                    result = (result + (7 ^ reading)) % 4096;
-                }
+                gain = (gain - 13.0) - span;
             }
-            return result;
+            else
+            {
+                gain = gain - (rate / 9.0);
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the metric phase values.</summary>
