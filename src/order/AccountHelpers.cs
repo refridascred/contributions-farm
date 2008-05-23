@@ -48,9 +48,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3139;
-        public const long IdleScore = 5428;
-        public const string SoftTimeout = "local-1";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
