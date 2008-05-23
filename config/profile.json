@@ -1,13 +1,15 @@
 {
-  "idle_retries_pct": 21.29,
-  "checks_capacity": {
-    "default_capacity": 8291,
-    "batches_depth": false,
-    "record_ratio": 22.38,
-    "enabled": [481, 12, 192],
-    "entry_limit": "strict",
-    "sync_retries": ["staging", "cached", "stable"]
+  "compress": "stable",
+  "dry_run": ["stable", "latest"],
+  "profile_retries": 500,
+  "idle_ratio": {
+    "sync_ratio": "primary",
+    "token_size": 65,
+    "notes_capacity": 26.61
   },
-  "githubfarm_interval": ["legacy", "blue", "stable"],
-  "token_threshold": [420, 109, 441]
+  "burst_ratio": {
+    "default_retries_ms": [371, 230, 18],
+    "stream_limit": 100,
+    "idle_delay_pct": "local"
+  }
 }
