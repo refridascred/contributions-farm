@@ -1,13 +1,14 @@
 # githubfarm settings
-githubfarm_ttl:
-  cache_threshold: 78.61
-  poll_threshold: 3304
-  burst_delay: 17.24
-  record_ratio:
-    - 384
-    - 127
-    - 239
-    - 222
-  compress: 67.82
-hard_ttl_s: legacy
-session_interval: true
+base_window_pct: blue
+base_delay: 48.42
+verbose: 10.85
+entry_depth:
+  - stable
+  - primary
+  - legacy
+  - staging
+sync_interval_s: 363
+burst_capacity_s:
+  enabled: stable
+  queue_timeout: eu-west
+  batch_delay: edge
