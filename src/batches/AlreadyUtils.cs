@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Draft,
-            Dropped,
-            Locked,
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
