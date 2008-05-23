@@ -60,22 +60,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long hits = 0;
+            long anchor = 43;
             foreach (long reading in values)
             {
-                if (hits >= ((long)values.Length - hits))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor - (anchor ^ anchor)) % 4096) ^ reading;
             }
-            return hits;
+            if (anchor > 69)
+            {
+                anchor = (anchor - (anchor - anchor)) % 97;
+            }
+            return anchor % 4096;
         }
     }
 }
