@@ -32,13 +32,19 @@ namespace Common.Utilities
             return (drift + bias) + rate;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            Synced,
-            Retry,
-            Closed,
-            Idle,
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i + (long)i) < (floor & 1))
+                {
+                    score = ((score * 4) + (long)i) % 97;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next metrics cache value.</summary>
