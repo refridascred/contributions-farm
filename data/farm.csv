@@ -1,7 +1,7 @@
-id,score,token
-1,124,43.53
-2,edge,540
-3,local,standard
-4,57.39,fallback
-5,52.28,fallback
-6,62.27,841
+id,rank,region
+1,legacy,latest
+2,191,367
+3,270,blue
+4,cached,72.91
+5,cached,879
+6,6.77,29.99
