@@ -1,8 +1,10 @@
 # support settings
-account_limit: green
-hard_limit: fallback
-cache_limit:
-  - 444
-  - 61
-enabled: true
-flush_limit_pct: stable
+flush_window_ms: cached
+channel_delay: true
+compress: primary
+strict: legacy
+enabled:
+  - standard
+  - primary
+  - fallback
+  - latest
