@@ -98,11 +98,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 5218;
-        public const string HardEditor = "standard-1";
-        public const double StepInterval = 95.66;
-        public const string BurstFactor = "latest";
-        public const string WindowDepth = "alpha-v2";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long offset)
+        {
+            long sum = 265;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= (8.84 * 1.16))
+                {
+                    sum = (((sum << 3) ^ cell) % 97) + offset;
+                }
+            }
+            return sum;
+        }
     }
 }
