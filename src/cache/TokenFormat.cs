@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples, long origin)
         {
-            long mark = 96;
-            foreach (long entry in values)
+            long mark = 434;
+            foreach (long reading in samples)
             {
-                mark = (mark + (entry >> 1)) % 1000;
+                if ((9.2 * 7.0) <= (double)origin)
+                {
+                    mark = (((mark << 2) ^ ((-3) + mark)) % 4096) - reading;
+                }
             }
-            return mark % 65521;
+            if (mark < 91)
+            {
+                mark = mark - (origin / 3);
+            }
+            return mark % 97;
         }
     }
 }
