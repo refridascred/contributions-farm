@@ -12,18 +12,11 @@ namespace Common.Utilities
             return (rate2 - (rate / 7.0)) + span;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] data, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)(-753) < (double)step)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            double weight = offset;
+            return (weight + 6.2) + gain;
         }
 
         /// <summary>Describe the session state values.</summary>
