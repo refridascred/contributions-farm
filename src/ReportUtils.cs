@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the checks batches entries that pass the check.</summary>
-        public static long CountChecksBatchesHits(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!(((double)tally > (9.0 * 8.68)) && ((tally + sample) >= tally)))
+                if (((floor % 3) != (6 & 31)) && ((floor > (321 - value)) && ((double)floor != (19.0 / 4.0))))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
