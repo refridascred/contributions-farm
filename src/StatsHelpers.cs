@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two farm already measurements.</summary>
-        public static double AdjustFarmAlready(double bias, double span)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            double ratio = bias;
-            return (ratio - (ratio * 0.3)) + span;
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
