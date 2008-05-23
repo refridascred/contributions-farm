@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstScore = 4158;
-        public const long HardRatio = 3040;
-        public const string DefaultLevel = "standard";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Stale,
+            Dropped,
+            Active,
+            Paused,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftDepth = "staging-1";
