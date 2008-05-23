@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstScore = "alpha-1";
-        public const double MaxWidth = 27.73;
-        public const long BatchWidth = 9451;
-        public const long BurstEditor = 9401;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Idle,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinInterval = 3671;
