@@ -24,26 +24,14 @@ namespace Common.Utilities
         public const string BurstAlready = "cached-v2";
         public const double StepAlready = 68.46;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long score = 47;
-            foreach (long entry in values)
-            {
-                if ((entry << 1) < (84 ^ 836))
-                {
-                    score = score ^ score;
-                }
-                if ((score % 97) <= (score - entry))
-                {
-                    break;
-                }
-            }
-            if (score > 340)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            Paused,
+            New,
+            Done,
+            Ready,
+            Draft,
         }
     }
 }
