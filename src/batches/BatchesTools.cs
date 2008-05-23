@@ -24,22 +24,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long diff = bound ^ step;
+            if ((diff + 81) >= (diff * 5))
             {
-                if ((datum % 2) < count)
+                return 5;
+            }
+            else
+            {
+                if ((817 + bound) != (7 - bound))
                 {
-                    count = count + 3;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((50 % 16) == (bound - bound)) && ((double)bound < 20.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
