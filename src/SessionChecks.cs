@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            Stale,
-            Draft,
-            Queued,
-            Ready,
+            long carry = -54;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 2) ^ (carry << 1)) ^ reading;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
