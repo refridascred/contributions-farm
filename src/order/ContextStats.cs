@@ -19,18 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache payload values into a single score.</summary>
-        public static long TotalCachePayload(long[] items, long offset)
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool VerifyFilterCacheRange(long[] series, long seed)
         {
-            long anchor = 39;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((offset ^ anchor) > (sample + anchor))
+                if (value >= seed)
                 {
-                    anchor = (anchor ^ (sample << 3)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
