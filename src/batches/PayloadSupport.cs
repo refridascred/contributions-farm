@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 76.06;
+        public const long BaseDepth = 1168;
+        public const long MinBudget = 6033;
+        public const long IdleCount = 8430;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
