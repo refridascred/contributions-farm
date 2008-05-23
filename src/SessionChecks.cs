@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings)
-        {
-            long carry = -54;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 2) ^ (carry << 1)) ^ reading;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstScore = "alpha-1";
+        public const double MaxWidth = 27.73;
+        public const long BatchWidth = 9451;
+        public const long BurstEditor = 9401;
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
         public static bool VerifyCommitsCounterLimits(long[] levels, long seed)
