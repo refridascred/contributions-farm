@@ -35,27 +35,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long seed)
         {
-            long carry = 639;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 2) ^ (item >> 2)) % 101;
-                if ((658 / 6) < carry)
+                if (items[i] == seed)
                 {
-                    carry = carry - (item << 2);
-                }
-                else
-                {
-                    carry = carry + 110;
+                    return (long)i;
                 }
             }
-            if (carry < 74)
-            {
-                carry = ((carry << 2) ^ (carry & 63)) % 4096;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
