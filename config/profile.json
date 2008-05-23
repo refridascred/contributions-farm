@@ -1,10 +1,11 @@
 {
-  "token_timeout": [105, 331, 353, 136],
-  "hard_limit_count": "open",
-  "hard_timeout": {
-    "report_ratio": 23.8,
-    "queue_retries": true,
-    "readonly": true,
-    "hard_threshold_s": false
+  "base_ttl_pct": ["blue", "green", "local"],
+  "readonly": 33.08,
+  "sync_depth": {
+    "retry_delay_count": false,
+    "editor_depth": 30,
+    "default_delay_s": 1.35,
+    "retry_capacity_ms": [377, 38],
+    "sync_depth_count": 53
   }
 }
