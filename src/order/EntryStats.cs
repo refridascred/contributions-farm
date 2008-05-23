@@ -47,19 +47,13 @@ namespace Common.Utilities
             return rate + (rate * 5.92);
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((target - target) > (score >> 2))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate entry batch samples.</summary>
