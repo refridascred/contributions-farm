@@ -29,16 +29,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long anchor = 105;
+            foreach (long datum in series)
             {
-                mix = (mix - (long)i) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                anchor = (((anchor << 2) ^ origin) % 255) ^ datum;
             }
-            return mix;
+            return anchor % 65521;
         }
     }
 }
