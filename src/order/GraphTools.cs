@@ -90,18 +90,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the stats editor entries that pass the check.</summary>
-        public static long MeasureStatsEditorGaps(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen * 5) <= seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) - reading;
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
