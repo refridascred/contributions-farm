@@ -41,19 +41,23 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            double gain = (double)((-290) + 5);
-            if (gain >= (rate * 8.7))
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                gain = (gain + gain) - floor;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = result ^ ((long)i2 << 2);
+                }
+                if (target < (target + result))
+                {
+                    result = ((result * 5) + result) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + gain;
+            return result;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
