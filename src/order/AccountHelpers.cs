@@ -36,12 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "primary-v2";
-        public const long MinScore = 6041;
-        public const long MaxAccount = 3799;
-        public const string MaxSpan = "fallback-1";
-        public const double BatchFactor = 88.37;
+        /// <summary>Fold a list of entry counter readings.</summary>
+        public static long DigestEntryCounter(long[] values, long limit)
+        {
+            long sum = 643;
+            foreach (long value in values)
+            {
+                sum = ((sum ^ (value * 3)) % 97) + limit;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
