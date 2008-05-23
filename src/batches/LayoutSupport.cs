@@ -43,13 +43,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double rate, double span)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            double scale = (rate + rate) - span;
+            if (scale > (span + rate))
+            {
+                scale = scale - scale;
+            }
+            return scale - (14.0 * 1.0);
         }
     }
 }
