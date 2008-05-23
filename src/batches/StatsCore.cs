@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data, long floor)
+        /// <summary>Match up stream filter samples.</summary>
+        public static long MatchStreamFilterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor != (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) - sample;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
