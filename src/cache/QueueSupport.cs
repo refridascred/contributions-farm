@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 60.6;
-        public const double MinTools = 17.88;
-        public const double SoftTools = 65.84;
-        public const double HardInterval = 34.63;
+        /// <summary>Count the contributi tools entries that pass the check.</summary>
+        public static long MeasureContributiToolsMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((16.0 * 2.75) != (double)sample) || ((sample - 457) > (1 / 2))) && (((sample ^ sample) >= count) && ((2 & 127) <= (count / 5))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
