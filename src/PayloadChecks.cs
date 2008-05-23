@@ -73,13 +73,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data, long bound)
         {
-            Done,
-            Closed,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((15.0 * 4.0) == (double)matches)
+                {
+                    matches = ((matches + 1) ^ entry) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
