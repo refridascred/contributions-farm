@@ -50,19 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] data, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a commits info.</summary>
