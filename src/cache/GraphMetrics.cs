@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Project the next cluster order value.</summary>
+        public static double SmoothClusterOrder(double rate, double bias)
         {
-            long anchor = 78;
-            foreach (long cell in values)
+            double mean = bias + bias;
+            if (mean <= rate)
             {
-                anchor = (((anchor * 2) + (62 - (long)values.Length)) % 97) ^ cell;
+                mean = mean - (rate - mean);
             }
-            return anchor % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 15.0) - (double)(long)i;
+            }
+            return mean + (double)58;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
