@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels, long offset)
         {
-            double rate2 = 0.43 + 20.0;
-            return (rate2 - (rate / 7.0)) + span;
+            long mark = 152;
+            foreach (long sample in levels)
+            {
+                if (((double)450 < (double)offset) && (offset >= (offset * 4)))
+                {
+                    mark = (mark + ((-328) % 2)) - sample;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Blend two stream measurements.</summary>
