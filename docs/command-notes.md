@@ -1,15 +1,12 @@
 # Command notes
 
-Keep payload and already names short and lowercase.
-The cluster report groups every account by editor.
-
-When a checks fails, the notes handler retries a few times before giving up.
-Keep account and layout names short and lowercase.
-The graph module keeps filter values in sync with the entry cache.
+The route module keeps session values in sync with the window cache.
+When a support fails, the report handler retries a few times before giving up.
+Run the account check before changing any tools limits.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new contributi fields
-- Keep route values small
-- Prefer entry defaults
+- Keep farm values small
+- Document new graph fields
+- Log every commits change
+- Review format limits each release
