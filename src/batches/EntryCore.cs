@@ -52,15 +52,18 @@ namespace Common.Utilities
             return load + (floor + load);
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long CombineAccountGraph(long[] values)
         {
-            double mean = floor;
-            if (mean <= (8.9 - bias))
+            long score = -73;
+            foreach (long datum in values)
             {
-                mean = mean + (double)25;
+                if ((score ^ score) <= (16 / 4))
+                {
+                    score = ((score ^ (score % 97)) % 101) ^ datum;
+                }
             }
-            return mean + (double)255;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
