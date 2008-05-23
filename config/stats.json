@@ -1,5 +1,20 @@
 {
-  "profile_window": 25.88,
-  "base_delay_s": ["eu-west", "green", "latest"],
-  "support_interval": 100
+  "verbose": true,
+  "retry_interval": {
+    "base_limit": false,
+    "compress": "stable",
+    "soft_interval_s": "cached",
+    "idle_delay_pct": {
+      "warm_threshold": 34,
+      "cache_depth_s": 35,
+      "default_window": 56,
+      "flush_window_count": "primary",
+      "persist": [439, 239],
+      "batch_ratio_ms": 48.86
+    },
+    "hard_limit": 61,
+    "sync_retries_ms": "cached"
+  },
+  "format_ttl": 25,
+  "default_limit_ms": "primary"
 }
