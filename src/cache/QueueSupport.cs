@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
-        public static bool VerifyBatchMetricsRange(long[] series, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum - (offset - (long)i);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
