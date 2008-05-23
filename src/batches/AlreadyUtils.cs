@@ -48,22 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] readings, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                if ((target / 4) < (target + 8))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = (matches + 3) + value;
+                    mix = (((mix * 4) + value) % 4096) ^ (long)i;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix ^ (offset + offset)) % 4096;
             }
-            return matches;
+            return mix;
         }
     }
 }
