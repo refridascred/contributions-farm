@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long score = 20;
+            long mark = 975;
             foreach (long reading in readings)
             {
-                if (!((5.0 + 3.0) > (double)(long)readings.Length))
+                if ((reading < (mark ^ reading)) && ((mark & 7) > (mark + reading)))
                 {
-                    score = ((score << 3) ^ (reading / 8)) % 65521;
+                    mark = (mark << 2) ^ (reading & 255);
                 }
-                score = score - (reading * 5);
-                if ((9.5 + 6.0) >= (double)score)
+                else
                 {
-                    score = score + (629 ^ score);
+                    mark = ((mark * 3) + (reading + mark)) % 101;
                 }
             }
-            return score;
+            if (mark > 159)
+            {
+                mark = (mark << 2) ^ (mark & 127);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the editor kind values.</summary>
