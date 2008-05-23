@@ -62,19 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report schema figure with a bias.</summary>
-        public static double ProjectReportSchema(double scale, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] data)
         {
-            double scale2 = 1.69;
-            if (scale2 <= (span - 6.0))
+            long result = 346;
+            foreach (long datum in data)
             {
-                scale2 = scale2 - span;
+                result = (((result * 3) + (976 & 7)) % 97) - datum;
             }
-            else
-            {
-                scale2 = scale2 + (7.3 + span);
-            }
-            return scale2 + (span - scale);
+            return result;
         }
     }
 }
