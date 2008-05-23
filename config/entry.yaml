@@ -1,27 +1,5 @@
 # entry settings
-burst_window_s:
-  - primary
-  - blue
-  - edge
-  - primary
-max_size: 76
-min_interval_s:
-  min_ttl:
-    flush_threshold: strict
-    flush_interval_ms: 4185
-    checks_delay:
-      - 405
-      - 339
-    max_threshold: open
-  idle_delay: standard
-  soft_size_s:
-    - eu-west
-    - local
-    - strict
-    - stable
-  flush_retries: 30.03
-  batch_window: staging
-farm_timeout:
-  - cached
-  - strict
-batch_limit_count: 3.39
+payload_limit: 30
+hard_interval: false
+report_delay: 6206
+dry_run: 1584
