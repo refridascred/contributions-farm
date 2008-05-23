@@ -34,13 +34,23 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Project the next batch entry value.</summary>
+        public static double ProjectBatchEntry(double bias, double span)
         {
-            Synced,
-            Queued,
-            Draft,
-            Active,
+            double gain = bias;
+            if (gain < bias)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (span + gain)) - (double)(long)i;
+            }
+            return gain + (double)52;
         }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
