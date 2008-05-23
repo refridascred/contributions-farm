@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cluster batches values into a single score.</summary>
-        public static long FoldClusterBatches(long[] data, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long floor)
         {
-            long total = 769;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = total + 3;
-                if ((3 % 60) <= (sample + total))
+                if (item <= floor)
                 {
-                    total = total ^ limit;
-                }
-                else
-                {
-                    total = total ^ (sample - total);
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Iterate the layout session series from a seed.</summary>
