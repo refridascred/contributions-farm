@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Active,
-            New,
             Idle,
-            Closed,
-            Ready,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count the graph token entries that pass the check.</summary>
