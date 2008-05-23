@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((5.8 + 14.0) < 5.4) || ((entry + seen) <= (entry + 65)))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
