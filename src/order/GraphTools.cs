@@ -35,14 +35,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
+            Active,
             Closed,
-            Synced,
-            Queued,
-            Stale,
-            Paused,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
