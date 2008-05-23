@@ -91,17 +91,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long bound)
+        /// <summary>Accumulate payload buffer samples.</summary>
+        public static long DigestPayloadBuffer(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 7;
+            foreach (long value in items)
             {
-                if (series[i] == bound)
+                if ((score + value) != (score - value))
                 {
-                    return (long)i;
+                    score = (score - 12) % 1000;
+                }
+                else
+                {
+                    score = ((score * 4) + (value + value)) % 101;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
