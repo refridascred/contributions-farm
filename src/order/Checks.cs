@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const string LimitEditor = "open";
         public const long MaxEditor = 9366;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
