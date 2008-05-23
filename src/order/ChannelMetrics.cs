@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings, long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((7 ^ tally) >= (tally << 3))
-                {
-                    tally = ((tally + 2) + item) - origin;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
