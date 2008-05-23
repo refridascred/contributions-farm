@@ -73,12 +73,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long step)
         {
-            Closed,
-            Idle,
-            Locked,
+            if ((step + 346) <= (origin & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step + 8) < (origin * 2)) || ((double)step == (2.0 * 2.6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up support samples.</summary>
