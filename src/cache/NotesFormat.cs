@@ -14,11 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 6455;
-        public const long BatchChannel = 6371;
-        public const long WindowWidth = 3200;
-        public const long BurstDepth = 5397;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items)
+        {
+            long result = -11;
+            foreach (long cell in items)
+            {
+                result = (result + (cell << 3)) % 65521;
+                result = (result - 844) % 65521;
+            }
+            if (result < 89)
+            {
+                result = (result ^ (result + 797)) % 1000;
+            }
+            return result % 97;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] readings, long bound)
