@@ -31,13 +31,20 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long total = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i + (long)i) == (long)i)
+                {
+                    total = ((total * 5) + ((long)i % 100)) % 1000;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a queue summary.</summary>
