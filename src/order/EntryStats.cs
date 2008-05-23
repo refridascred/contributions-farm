@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] values, long bound)
+        /// <summary>Adjust a graph filter reading.</summary>
+        public static double BlendGraphFilter(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (1.2 + 3.0))
-                {
-                    matches = (matches + 1) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double drift = (double)5 * 1.31;
+            return (drift + bias) + rate;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
