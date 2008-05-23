@@ -43,10 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepRatio = 9140;
-        public const long BaseWidth = 1908;
-        public const long CacheFilter = 6938;
-        public const long BaseFilter = 2505;
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
