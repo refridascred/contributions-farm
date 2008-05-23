@@ -65,21 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > step)
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
