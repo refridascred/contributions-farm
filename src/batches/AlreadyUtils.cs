@@ -34,22 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double load = 7.9;
+            if (load > 2.13)
             {
-                if (((hits % 10) < 42) || (73 < (hits ^ item)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + (offset + offset);
             }
-            return hits;
+            else
+            {
+                load = load - (offset + load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load - weight)) - (double)(long)i;
+            }
+            return load - 3.06;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
