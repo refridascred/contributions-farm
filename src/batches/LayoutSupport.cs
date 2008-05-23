@@ -26,12 +26,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next stats cache value from a seed.</summary>
