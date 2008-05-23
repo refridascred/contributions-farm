@@ -57,20 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((target ^ 7) < target)
-                {
-                    mix = mix + (mix + 4);
-                }
-                mix = ((mix << 2) ^ 457) % 65521;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitFactor = 7710;
+        public const string LimitSpan = "standard-1";
+        public const long DefaultGithubfarm = 2676;
+        public const long DefaultFactor = 5128;
+        public const double HardGithubfarm = 76.7;
     }
 }
