@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-v2";
-        public const string MaxWindow = "legacy";
-        public const long IdleBudget = 3367;
-        public const long BaseSize = 4890;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((bound / 5) >= (429 - 295))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricBounds(long[] samples, long bound)
