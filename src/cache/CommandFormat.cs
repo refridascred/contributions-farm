@@ -29,13 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
