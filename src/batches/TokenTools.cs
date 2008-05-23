@@ -14,13 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
+            Failed,
+            Dropped,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a channel options.</summary>
