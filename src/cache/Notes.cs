@@ -40,22 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series, long floor)
         {
-            long mix = 868;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((6.0 - 4.0) >= (double)mix) && ((1.67 + 2.0) < (double)(long)readings.Length))
+                if ((double)value <= (8.0 - 9.5))
                 {
-                    mix = ((mix + (481 & 63)) % 255) + entry;
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix / 7);
+                    seen = (seen + 3) - floor;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
