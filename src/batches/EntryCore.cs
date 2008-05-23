@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "latest-1";
-        public const long HardLevel = 8017;
-        public const double BurstSpan = 53.26;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)tally < 15.0))
+                {
+                    tally = ((tally + 3) + reading) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long GradeNotes(long floor, long seed)
