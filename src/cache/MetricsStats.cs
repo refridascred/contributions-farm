@@ -50,15 +50,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Paused,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the layout mode values.</summary>
