@@ -62,11 +62,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchWidth = 498;
-        public const double LimitContributi = 75.29;
-        public const long IdleDepth = 5663;
-        public const long MaxContributi = 8848;
-        public const long BatchSpan = 4665;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 1730;
+        public const long MaxStream = 4306;
+        public const long DefaultScore = 4724;
+        public const long WindowDepth = 3476;
+        public const double BurstTimeout = 51.33;
     }
 }
