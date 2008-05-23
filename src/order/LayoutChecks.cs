@@ -53,31 +53,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            if (!((target * 2) >= target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (floor >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - floor) <= (floor + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Retry,
+            Paused,
+            Draft,
         }
     }
 }
