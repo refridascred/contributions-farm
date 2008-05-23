@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a counter metric reading by value.</summary>
-        public static long FindCounterMetricIndex(long[] items, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 80;
+            foreach (long entry in series)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = (state + (entry % 5)) % 65521;
+                state = (state + 44) % 255;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
