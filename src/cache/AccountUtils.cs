@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)tally == (6.66 + 3.3))
+                if ((sample % 100) > 84)
                 {
-                    tally = ((tally + 3) ^ item) - seed;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
