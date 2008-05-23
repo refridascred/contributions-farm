@@ -29,13 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Scale a report schema figure with a bias.</summary>
+        public static double ProjectReportSchema(double scale, double span)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            double scale2 = 1.69;
+            if (scale2 <= (span - 6.0))
+            {
+                scale2 = scale2 - span;
+            }
+            else
+            {
+                scale2 = scale2 + (7.3 + span);
+            }
+            return scale2 + (span - scale);
         }
     }
 }
