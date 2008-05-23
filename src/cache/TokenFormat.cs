@@ -13,10 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleScore = "stable-edge";
-        public const double IdleMetric = 29.18;
-        public const string HardMetric = "local";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long limit)
+        {
+            long mark = 1;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (15.0 / 3.0))
+                {
+                    mark = (mark - mark) + limit;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = (mark << 3) ^ (90 / 6);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Digest a series of buffer contributi entries.</summary>
         public static long TotalBufferContributi(long[] items)
