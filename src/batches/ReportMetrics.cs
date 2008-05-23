@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a githubfarm stats counter forward.</summary>
-        public static long DeriveGithubfarmStats(long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((limit + state) <= (long)i)
-                {
-                    state = (state << 3) ^ (limit % 100);
-                    state = (state << 3) ^ (64 + (long)i);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
