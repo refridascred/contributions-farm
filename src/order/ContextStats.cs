@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format contributi readings against a rule.</summary>
-        public static long CountFormatContributiOutliers(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = 3;
+            foreach (long sample in series)
             {
-                if ((count >= (bound + 344)) || ((-7) > bound))
-                {
-                    count = (count + 3) ^ reading;
-                }
+                score = (((score * 5) + offset) % 97) - sample;
             }
-            return count;
+            if (score > 53)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the report mode values.</summary>
