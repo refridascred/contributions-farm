@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const long CacheDepth = 5747;
         public const long MinFilter = 8079;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 9) == (seen * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstSize = "staging-1";
+        public const long MinWidth = 5121;
+        public const long BurstBudget = 4982;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long seed, long seed2)
