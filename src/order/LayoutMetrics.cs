@@ -27,19 +27,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] data, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Stale,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
