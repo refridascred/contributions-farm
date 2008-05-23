@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((step & 31) < 79)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
