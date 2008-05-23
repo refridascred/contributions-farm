@@ -58,12 +58,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = 6;
+            foreach (long item in readings)
+            {
+                mix = (((mix << 3) ^ (110 << 1)) % 97) ^ item;
+            }
+            if (mix > 11)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix;
         }
     }
 }
