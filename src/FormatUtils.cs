@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long CountCounterOrderHits(long[] readings)
+        /// <summary>Combine context layout values into a single score.</summary>
+        public static long WeighContextLayout(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = 19;
+            foreach (long item in data)
             {
-                if ((hits + hits) <= (value % 97))
+                anchor = anchor - (bound / 5);
+                if ((double)item >= (8.3 - 1.0))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
