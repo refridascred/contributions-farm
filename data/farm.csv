@@ -1,9 +1,7 @@
-id,level,token
-1,958,31.46
-2,21.0,89.77
-3,202,608
-4,81.61,green
-5,primary,local
-6,937,800
-7,standard,open
-8,green,431
+id,level,weight,rank
+1,cached,10.12,26.58
+2,blue,staging,green
+3,4.92,45.06,35.14
+4,763,blue,open
+5,38,local,strict
+6,899,latest,115
