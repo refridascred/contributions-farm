@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Look up the position of a checks graph sample.</summary>
+        public static long SeekChecksGraphIndex(long[] values, long bound)
         {
-            Synced,
-            Pending,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
