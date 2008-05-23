@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const double SoftContributi = 15.29;
         public const long RetryContributi = 1792;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] values, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((target * 5) != (value + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
