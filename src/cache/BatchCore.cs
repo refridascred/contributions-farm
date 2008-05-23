@@ -33,19 +33,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double drift = ratio;
-            if (drift < (6.1 - ratio))
-            {
-                drift = (drift + (ratio / 5.0)) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - ratio) - (double)(long)i;
-            }
-            return drift - (ratio + drift);
+            Paused,
+            Done,
+            Failed,
+            New,
         }
     }
 }
