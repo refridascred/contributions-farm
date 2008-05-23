@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next farm tools value from a seed.</summary>
-        public static long IterateFarmTools(long floor)
+        /// <summary>Measure how many route queue samples are out of range.</summary>
+        public static long AuditRouteQueueHits(long[] levels, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = (mix << 3) ^ (mix + floor);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((0.5 * 5.3) > (double)tally)
+                {
+                    tally = ((tally + 1) + cell) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
