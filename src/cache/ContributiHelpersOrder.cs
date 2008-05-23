@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Compare every pair of batch stats readings.</summary>
+        public static long OverlapBatchStatsCount(long[] samples)
         {
-            long score = 551;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + cell;
-                score = (score ^ score) % 255;
-                score = score - (209 + cell);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score > 2)
-            {
-                score = score + (score / 3);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next session layout value from a seed.</summary>
