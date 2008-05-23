@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
