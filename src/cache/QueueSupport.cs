@@ -31,11 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitBudget = 4940;
-        public const long WindowCount = 8637;
-        public const long BaseInterval = 3896;
-        public const long BatchCache = 9527;
-        public const string LimitWidth = "alpha-edge";
+        /// <summary>Compare every pair of payload window readings.</summary>
+        public static long MatchPayloadWindowCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
