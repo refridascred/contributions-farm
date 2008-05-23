@@ -23,31 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            if ((origin - seed) >= (seed * 2))
+            double ratio = span;
+            if (ratio >= (double)9)
             {
-                return 3;
+                ratio = ratio + bias;
             }
             else
             {
-                if (0 >= (164 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed < (11.0 * 0.9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                ratio = ratio + 6.0;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (bias + 3.9);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
