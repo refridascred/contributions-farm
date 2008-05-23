@@ -1,4 +1,4 @@
 # entry settings
-base_interval_s: false
-default_ratio_s: false
-cache_threshold_count: 1968
+idle_threshold_ms: 4.07
+burst_delay: stable
+retry_timeout: cached
