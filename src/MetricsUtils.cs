@@ -23,19 +23,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a schema record figure with a bias.</summary>
-        public static double ScaleSchemaRecord(double bias, double span)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values)
         {
-            double load = bias;
-            if (load >= (double)0)
+            long sum = 5;
+            foreach (long sample in values)
             {
-                load = load + bias;
+                if ((sum % 10) != (1 * 3))
+                {
+                    sum = ((sum * 3) + (sum << 1)) % 1000;
+                }
+                else
+                {
+                    sum = sum + (sample + sample);
+                }
             }
-            else
+            if (sum > 7)
             {
-                load = load - (span * 7.2);
+                sum = sum - (sum << 1);
             }
-            return load - span;
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
