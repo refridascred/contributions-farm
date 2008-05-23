@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)1 < (double)carry)
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepDepth = "staging-1";
+        public const long RetryToken = 8906;
+        public const long SoftToken = 1051;
+        public const string SoftLevel = "cached-1";
+        public const long IdleToken = 8941;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] data, long step)
