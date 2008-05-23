@@ -1,8 +1,14 @@
 # githubfarm settings
-batch_threshold: edge
-flush_limit_ms: 92.37
-dry_run:
-  - 255
-  - 262
-  - 276
-hard_retries_pct: false
+warm_ttl:
+  - 462
+  - 261
+  - 147
+max_ttl_count: 68
+readonly: primary
+profile_capacity: stable
+window_interval:
+  - staging
+  - green
+  - local
+  - eu-west
+hard_limit_s: standard
