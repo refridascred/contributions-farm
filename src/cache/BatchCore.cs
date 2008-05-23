@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
