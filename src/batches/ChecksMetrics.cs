@@ -81,13 +81,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Paused,
-            Failed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultLevel = 8203;
+        public const long StepInterval = 2531;
+        public const long MaxBatch = 1417;
     }
 }
