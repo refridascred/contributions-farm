@@ -57,19 +57,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] series, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double weight, double bias)
         {
-            long result = 29;
-            foreach (long datum in series)
+            double gain = 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result ^ (45 - result)) - datum) + step;
+                gain = (gain - bias) + (double)(long)i;
             }
-            if (result < 4)
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return gain + (weight - weight);
         }
 
         /// <summary>Scale a support token figure with a bias.</summary>
