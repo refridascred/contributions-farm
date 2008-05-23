@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] values, long offset)
         {
-            Idle,
-            Failed,
-            Draft,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!(((count / 5) >= (804 << 1)) && (entry > (entry - 155))))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
