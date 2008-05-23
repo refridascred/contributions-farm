@@ -1,4 +1,16 @@
 # githubfarm settings
-default_threshold: 73.95
-audit: 2883
-max_size: 8571
+format_limit: false
+contributi_window:
+  - blue
+  - blue
+  - strict
+  - blue
+verbose: 30
+batch_delay:
+  - standard
+  - standard
+max_delay: 87
+persist:
+  - local
+  - latest
+  - standard
