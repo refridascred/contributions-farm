@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the buffer phase values.</summary>
