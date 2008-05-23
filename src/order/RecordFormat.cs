@@ -63,19 +63,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every report account entry stays within the limit.</summary>
-        public static bool CheckReportAccountRange(long[] data, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
