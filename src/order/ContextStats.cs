@@ -34,18 +34,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long TallyCommitsRecordMatches(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits <= datum) && (((hits % 3) > (datum % 100)) || ((hits >> 1) >= 11)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
