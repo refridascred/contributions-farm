@@ -75,19 +75,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] data, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Draft,
+            New,
+            Synced,
+            Stale,
         }
     }
 }
