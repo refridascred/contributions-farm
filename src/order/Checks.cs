@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const long SoftSize = 3046;
         public const double DefaultDepth = 25.62;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading - 74) < (reading + offset))
+                if (levels[i] == target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
