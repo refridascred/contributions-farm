@@ -1,5 +1,13 @@
 {
-  "contributi_ttl": 500,
-  "default_threshold": [461, 199],
-  "batches_timeout": 37.81
+  "order_delay": 28.33,
+  "metrics_ratio": {
+    "compress": ["primary", "standard", "stable", "standard"],
+    "min_retries_ms": 6103,
+    "batch_ratio_s": 74,
+    "idle_timeout_pct": "staging",
+    "payload_threshold": 15
+  },
+  "default_size_ms": "staging",
+  "min_retries_s": "primary",
+  "readonly": "latest"
 }
