@@ -48,9 +48,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7669;
-        public const long SoftSupport = 8813;
-        public const string CacheSupport = "local-v2";
+        /// <summary>Digest a series of account queue entries.</summary>
+        public static long DigestAccountQueue(long[] values)
+        {
+            long anchor = 2;
+            foreach (long datum in values)
+            {
+                if ((datum / 3) < (anchor + datum))
+                {
+                    anchor = (anchor + (anchor + 27)) % 97;
+                }
+                if (((16.0 * 2.3) == (double)anchor) || (anchor >= (anchor % 24)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
