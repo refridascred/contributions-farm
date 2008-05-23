@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Grade a queue tools value against two limits.</summary>
+        public static long BucketQueueTools(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin - floor) > (origin * 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((origin << 3) < floor))
                 {
-                    if ((items[i] + items[j]) == 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin * 4) == (floor - floor))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
