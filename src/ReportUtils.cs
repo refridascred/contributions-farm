@@ -59,11 +59,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            Active,
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
