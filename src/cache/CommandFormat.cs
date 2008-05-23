@@ -19,14 +19,14 @@ namespace Common.Utilities
             return (weight + 6.2) + gain;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Locked,
-            Dropped,
-            Closed,
-            Paused,
-            Idle,
+            Pending,
+            Done,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Scale a report schema figure with a bias.</summary>
