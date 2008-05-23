@@ -56,11 +56,24 @@ namespace Common.Utilities
             return bias - 7.0;
         }
 
-        /// <summary>Blend two channel tools measurements.</summary>
-        public static double ProjectChannelTools(double gain, double offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long floor)
         {
-            double weight = (double)((-25) ^ 75);
-            return (weight - (offset * 1.0)) + gain;
+            if (8.7 > (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.1 + 3.0) < (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
