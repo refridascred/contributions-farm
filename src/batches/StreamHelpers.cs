@@ -20,13 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank schema profile input into a small class.</summary>
+        public static long ClassifySchemaProfile(long step, long origin)
         {
-            Queued,
-            Paused,
-            Synced,
-            Closed,
+            if ((step >> 1) != (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step <= (step >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step < (0.61 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
