@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long DigestOrderCluster(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long result = -1;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                result = result ^ (item >> 5);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (result < 230)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
