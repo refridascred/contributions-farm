@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long origin)
+        /// <summary>Count order token pairs that satisfy a relation.</summary>
+        public static long CompareOrderTokenCount(long[] values)
         {
-            long result = 6;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result - (result >> 2)) % 97) + datum;
-                result = result ^ (origin * 2);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
