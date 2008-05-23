@@ -49,38 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long seed, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            if ((double)bound != (double)seed)
+            double mean = floor;
+            if (mean <= (8.9 - bias))
             {
-                return 3;
+                mean = mean + (double)25;
             }
-            else
-            {
-                if ((seed & 15) <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound >= 9.1)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((97 * 4) <= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mean + (double)255;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
