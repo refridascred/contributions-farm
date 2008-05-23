@@ -1,6 +1,5 @@
 {
-  "githubfarm_retries": ["staging", "strict", "open"],
-  "command_ttl": "stable",
-  "max_limit_pct": "staging",
-  "verbose": [295, 71, 315, 79]
+  "sync_retries": false,
+  "poll_ttl_s": true,
+  "schema_interval": ["edge", "legacy"]
 }
