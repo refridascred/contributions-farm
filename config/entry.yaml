@@ -1,7 +1,16 @@
 # entry settings
-compress:
-  - 294
-  - 479
-burst_interval_pct: standard
-min_interval: open
-dry_run: 83.36
+queue_window: legacy
+buffer_depth:
+  already_timeout:
+    soft_threshold: stable
+    strict: false
+    readonly: 93.59
+    sync_ratio: green
+    farm_limit: 58.88
+    idle_ttl: staging
+  retry_depth_count: 67.04
+  session_delay: 4737
+  burst_timeout_pct: true
+min_limit_ms: 33
+default_ttl: 2.93
+flush_capacity: blue
