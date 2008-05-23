@@ -57,13 +57,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            Retry,
+            Synced,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a token header.</summary>
