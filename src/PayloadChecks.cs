@@ -31,18 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long TallyEditorFilterGaps(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((cell / 6) < cell)
+                if (datum < floor)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate queue editor samples.</summary>
