@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context layout values into a single score.</summary>
-        public static long WeighContextLayout(long[] data, long bound)
+        /// <summary>Measure how many stream format samples are out of range.</summary>
+        public static long AuditStreamFormatHits(long[] samples, long bound)
         {
-            long anchor = 19;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                anchor = anchor - (bound / 5);
-                if ((double)item >= (8.3 - 1.0))
+                if ((2.7 / 5.0) > (double)cell)
                 {
-                    break;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Derive the next farm report value from a seed.</summary>
