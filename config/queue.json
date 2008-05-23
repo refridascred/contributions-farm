@@ -1,5 +1,6 @@
 {
-  "soft_depth": 32.44,
-  "compress": "staging",
-  "audit": 8164
+  "route_retries": true,
+  "burst_timeout_pct": "standard",
+  "command_timeout": "cached",
+  "profile_delay": 9739
 }
