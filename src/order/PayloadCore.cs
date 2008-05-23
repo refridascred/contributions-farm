@@ -21,16 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (bound - (long)i)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((series[i] < seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next entry value.</summary>
