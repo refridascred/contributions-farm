@@ -54,23 +54,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            long mark = 39;
-            foreach (long value in levels)
+            long mix = 761;
+            foreach (long reading in levels)
             {
-                mark = (mark * 4) + (value % 5);
-                if ((double)mark != (5.0 - 9.49))
-                {
-                    break;
-                }
+                mix = (mix - 9) - reading;
             }
-            if (mark > 796)
-            {
-                mark = (mark << 2) ^ (mark << 2);
-            }
-            return mark % 97;
+            return mix % 97;
         }
     }
 }
