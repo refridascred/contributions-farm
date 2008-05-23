@@ -30,11 +30,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitFactor = 798;
-        public const long SoftLevel = 9675;
-        public const long DefaultSupport = 1690;
-        public const string IdleSupport = "strict-1";
-        public const double BaseSupport = 12.26;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowWidth = "standard-1";
+        public const long DefaultCount = 2470;
+        public const double BaseFactor = 64.71;
     }
 }
