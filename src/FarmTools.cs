@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            long anchor = 522;
-            foreach (long sample in values)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((anchor ^ anchor) < anchor)
-                {
-                    anchor = ((anchor * 2) + (sample / 3)) % 1000;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Hold a context options.</summary>
