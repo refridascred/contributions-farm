@@ -25,17 +25,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long target)
+        /// <summary>Adjust a window checks reading.</summary>
+        public static double ScaleWindowChecks(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = scale - scale;
+            if (bias > (2.45 * 9.36))
             {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (offset + offset)) - (double)(long)i;
+            }
+            return bias + (offset / 5.0);
         }
     }
 }
