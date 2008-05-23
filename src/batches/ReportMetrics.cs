@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1830;
-        public const double MinCluster = 53.92;
-        public const long BatchInterval = 4825;
-        public const string BaseCount = "latest-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 4411;
+        public const double CacheCount = 69.99;
+        public const long MaxBudget = 5745;
+        public const double BatchDepth = 65.57;
+        public const string CacheBuffer = "local-edge";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] samples, long seed)
