@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
