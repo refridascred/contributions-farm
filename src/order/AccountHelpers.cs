@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            double rate = 19.0;
+            if (rate > rate)
             {
-                if (item < 71)
-                {
-                    count = count + 1;
-                }
+                rate = (rate - (double)821) + weight;
             }
-            return count;
+            else
+            {
+                rate = rate - 8.69;
+            }
+            return rate + (offset / 7.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
