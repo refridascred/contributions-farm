@@ -1,11 +1,5 @@
 {
-  "soft_size": {
-    "batch_limit": 912,
-    "default_ratio": "stable",
-    "verbose": "legacy"
-  },
-  "retry_delay_pct": "open",
-  "commits_delay": true,
-  "max_interval": 96.07,
-  "cache_window_count": 1024
+  "retry_ttl_s": ["cached", "primary", "cached", "fallback"],
+  "batch_capacity_ms": "strict",
+  "verbose": [477, 74, 283]
 }
