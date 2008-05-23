@@ -34,23 +34,18 @@ namespace Common.Utilities
         public const long BaseCount = 206;
         public const long LimitSize = 1783;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double bias, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
         {
-            double weight = (double)(71 >> 3);
-            if (weight > weight)
+            long score = 1;
+            foreach (long cell in data)
             {
-                weight = (weight + bias) - span;
+                if ((score % 8) >= score)
+                {
+                    score = ((score * 3) + (score + cell)) % 1000;
+                }
             }
-            else
-            {
-                weight = weight - (bias + 2.36);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight / 6.0)) + (double)(long)i;
-            }
-            return weight - bias;
+            return score;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
