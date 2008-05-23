@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long AuditRecordToolsMatches(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long state = 291;
+            foreach (long value in readings)
             {
-                if (((seen + (long)levels.Length) > (value + seen)) || ((215 % 3) > (595 + seen)))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state + (0 << 1)) - value) - target;
             }
-            return seen;
+            if (state < 719)
+            {
+                state = ((state * 2) + (43 % 12)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the route phase values.</summary>
