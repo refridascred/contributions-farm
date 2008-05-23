@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((matches << 2) >= (reading / 2))
+                if ((entry << 2) >= entry)
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
