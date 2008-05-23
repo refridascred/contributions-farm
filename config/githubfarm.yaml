@@ -1,23 +1,7 @@
 # githubfarm settings
-already_limit:
-  - 109
-  - 349
-retry_window: 36
-warm_interval_ms:
-  compress: staging
-  window_retries: 50.82
-  buffer_capacity: staging
-  base_ratio_pct: 69
-  cache_ttl_pct:
-    flush_window:
-      - legacy
-      - standard
-      - eu-west
-    cache_interval: 54.12
-    flush_size_s: standard
-    retry_threshold_ms:
-      - 105
-      - 496
-      - 251
-    account_ttl: true
-  checks_size: 21
+max_size: false
+cache_threshold_pct: true
+githubfarm_timeout: stable
+dry_run: 66
+channel_limit: true
+retry_delay_s: staging
