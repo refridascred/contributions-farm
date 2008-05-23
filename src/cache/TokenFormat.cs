@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long HardCluster = 4000;
         public const double MaxCluster = 35.27;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate batch samples.</summary>
