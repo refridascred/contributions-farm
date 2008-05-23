@@ -53,17 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (anchor * 5)) % 101) - value;
+                anchor = (anchor * 3) + (anchor + anchor);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
