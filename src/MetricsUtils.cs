@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Draft,
-            Idle,
             Done,
-            Pending,
-            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
