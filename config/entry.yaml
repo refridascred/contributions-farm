@@ -1,10 +1,4 @@
 # entry settings
-burst_capacity_ms: 4930
-sync_size_ms: 60
-retry_window: 36
-warm_delay: green
-min_timeout_pct: 58
-hard_threshold_s:
-  soft_size_pct: 4151
-  default_ratio: fallback
-  burst_retries_s: 27
+flush_delay_ms: 7013
+poll_ratio: 83.92
+entry_window: 81
