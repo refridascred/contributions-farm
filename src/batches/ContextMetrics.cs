@@ -30,12 +30,15 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            Pending,
-            Draft,
-            Ready,
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
