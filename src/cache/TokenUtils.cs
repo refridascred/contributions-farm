@@ -37,22 +37,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long CountGithubfarmProfileOutliers(long[] series, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((step & 255) < (1 & 63))
             {
-                if ((entry * 3) <= origin)
+                return 6;
+            }
+            else
+            {
+                if (floor <= (floor + step))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor * 4) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + step) == (987 << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
