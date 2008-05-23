@@ -21,12 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
