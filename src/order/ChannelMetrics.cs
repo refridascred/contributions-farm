@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxWidth = 1920;
-        public const long CacheProfile = 9469;
-        public const string MinCount = "open-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitRatio = 76.37;
+        public const double StepQueue = 46.7;
+        public const string HardCount = "latest-v2";
+        public const double IdleQueue = 15.72;
+        public const double BaseWidth = 72.71;
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double bias, double bias2)
