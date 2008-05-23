@@ -23,13 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "latest-1";
+        public const long HardLevel = 8017;
+        public const double BurstSpan = 53.26;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] readings, long bound)
