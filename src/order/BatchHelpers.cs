@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Closed,
             Stale,
-            Locked,
-            New,
-            Pending,
+            Retry,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
