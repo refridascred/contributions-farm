@@ -20,10 +20,18 @@ namespace Common.Utilities
         public const string IdleScore = "alpha-edge";
         public const string RetryScore = "staging-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 1.51;
-        public const string WindowToken = "stable-edge";
-        public const long RetryToken = 1891;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
