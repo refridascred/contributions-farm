@@ -37,26 +37,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] levels, long limit)
         {
-            long mark = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((double)item > 8.18)
+                if (entry >= limit)
                 {
-                    mark = (mark * 4) + (-204);
-                }
-                if ((6 + 9) == (item * 4))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 74)
-            {
-                mark = ((mark * 4) + (mark + (-43))) % 1000;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Match up tools samples.</summary>
