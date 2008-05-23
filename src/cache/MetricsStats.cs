@@ -38,14 +38,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
         {
-            Dropped,
-            New,
-            Done,
-            Active,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
