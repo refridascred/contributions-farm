@@ -1,7 +1,19 @@
 {
-  "readonly": [397, 257],
-  "enabled": 1621,
-  "sync_window_count": 30,
-  "sync_depth_s": 32,
-  "counter_ratio": "fallback"
+  "dry_run": 63,
+  "queue_depth": ["fallback", "blue", "edge"],
+  "metric_ratio": false,
+  "min_timeout_count": {
+    "command_capacity": "standard",
+    "idle_limit": "staging",
+    "layout_ttl": {
+      "verbose": 60,
+      "idle_ttl_pct": 94,
+      "profile_ttl": false,
+      "commits_interval": "blue",
+      "audit": ["local", "latest", "legacy", "strict"]
+    },
+    "order_ratio": true
+  },
+  "layout_timeout": [391, 490],
+  "burst_depth": 250
 }
