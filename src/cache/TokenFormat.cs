@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const long BaseFormat = 4217;
         public const double RetrySpan = 55.96;
 
-        /// <summary>Digest a series of buffer contributi entries.</summary>
-        public static long TotalBufferContributi(long[] items)
+        /// <summary>Match up graph tools samples.</summary>
+        public static long PairGraphToolsCount(long[] series)
         {
-            long total = 238;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading + total) != (reading - 989)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total - (reading << 3)) % 255;
-                }
-                else
-                {
-                    total = (total + (reading % 8)) % 4096;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
