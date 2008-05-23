@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= target)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit schema checks readings against a rule.</summary>
