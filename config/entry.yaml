@@ -1,20 +1,10 @@
 # entry settings
-max_retries_count:
-  batch_capacity_ms:
-    - stable
-    - legacy
-    - stable
-    - stable
-  base_limit: staging
-  retry_window: 21.31
-  base_ratio_s: latest
-poll_size: fallback
-warm_capacity: 100
-retry_window: false
-batches_ratio:
-  tools_delay: 250
-  max_limit: 100
-  min_retries_s: cached
-  support_size: standard
-  support_limit: 44.52
-readonly: 87.21
+sync_depth_count: true
+cache_window:
+  - green
+  - open
+  - open
+  - standard
+default_threshold_s: false
+verbose: 30
+batches_capacity: green
