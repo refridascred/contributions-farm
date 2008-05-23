@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
