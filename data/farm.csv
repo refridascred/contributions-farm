@@ -1,9 +1,6 @@
-id,rank
-1,staging
-2,eu-west
-3,primary
-4,655
-5,263
-6,392
-7,191
-8,33
+id,score,state,active,token
+1,standard,staging,19.23,standard
+2,835,0.91,71,447
+3,legacy,staging,edge,403
+4,105,827,394,blue
+5,eu-west,228,54.53,12.15
