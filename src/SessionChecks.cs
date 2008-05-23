@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchWidth = 9451;
         public const long BurstEditor = 9401;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == floor)
+                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
