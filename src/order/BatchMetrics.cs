@@ -31,17 +31,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        public static long TallySchemaGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((-171) / 4) < (cell >> 4))
+                if ((reading / 3) <= (tally + 904))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
