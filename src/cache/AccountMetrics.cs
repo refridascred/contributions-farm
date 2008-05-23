@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = state ^ (offset + state);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
