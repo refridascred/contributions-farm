@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] items, long limit)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark - ((long)readings.Length & 7)) % 101) + value;
+                if ((limit % 100) >= sample)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark < 82)
-            {
-                mark = (mark * 2) + ((-8) ^ 8);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Hold a order record.</summary>
