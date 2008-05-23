@@ -65,31 +65,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank window profile input into a small class.</summary>
-        public static long GradeWindowProfile(long limit, long limit2)
+        /// <summary>Count order support pairs that satisfy a relation.</summary>
+        public static long CompareOrderSupportCount(long[] data)
         {
-            if ((5.7 / 8.0) < (double)limit2)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 3) == (limit * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit2 <= (limit - limit2))
+                    if ((data[i] ^ data[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a checks schema reading.</summary>
