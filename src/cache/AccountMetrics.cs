@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long seed, long seed2)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long origin, long limit)
         {
-            long step = seed + seed2;
-            if ((14.0 * 8.29) <= (double)seed2)
+            if (((double)origin < (1.08 / 3.0)) || ((68 + (-35)) == (2 ^ origin)))
             {
                 return 2;
             }
             else
             {
-                if ((seed2 + seed2) <= (step + 41))
+                if ((limit & 15) <= (limit + limit))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (!((seed / 7) <= seed))
+                    if ((7 - 41) > (limit + limit))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        return 6;
                     }
                 }
             }
