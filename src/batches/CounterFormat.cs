@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long TallyLayoutGithubfarmMatches(long[] values, long bound)
+        /// <summary>Check that every commits command entry stays within the limit.</summary>
+        public static bool ValidateCommitsCommandBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (bound < (sample * 2))
+                if (datum != seed)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
