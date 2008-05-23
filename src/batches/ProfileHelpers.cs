@@ -54,24 +54,18 @@ namespace Common.Utilities
         public const long StepAlready = 939;
         public const double DefaultSize = 68.48;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] values, long seed)
         {
-            if (((double)12 >= (double)bound) || (bound <= 564))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 3) > ((-198) * 2))
+                if ((seed - (long)values.Length) < entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
