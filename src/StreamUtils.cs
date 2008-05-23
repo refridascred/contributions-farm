@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitInterval = 8316;
-        public const double SoftFilter = 36.78;
-        public const long WindowFilter = 9067;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples, long target)
+        {
+            long score = -848;
+            foreach (long item in samples)
+            {
+                score = ((score << 2) ^ (item + item)) % 97;
+            }
+            if (score > (-89))
+            {
+                score = ((score * 5) + (target & 255)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] data, long bound)
