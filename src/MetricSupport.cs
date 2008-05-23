@@ -37,18 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] items, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if ((bound + bound) <= origin)
             {
-                if (((seen / 3) < reading) && ((offset <= (seen >> 2)) && ((reading / 3) == (seen - reading))))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 1) == (bound - bound))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (17.0 + 2.35))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
