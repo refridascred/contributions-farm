@@ -43,13 +43,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "primary";
+        public const long BatchCommits = 6043;
+        public const long MaxCommits = 7269;
 
         /// <summary>Digest a series of buffer stream entries.</summary>
         public static long FoldBufferStream(long[] readings, long seed)
