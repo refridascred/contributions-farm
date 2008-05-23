@@ -74,19 +74,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings, long bound)
         {
-            long mix = 55;
-            foreach (long reading in values)
+            long result = 99;
+            foreach (long item in readings)
             {
-                if ((origin + reading) < (reading >> 3))
-                {
-                    mix = (mix + (mix + mix)) % 65521;
-                }
-                mix = ((mix << 2) ^ (mix + origin)) % 1000;
+                result = (((result + (result % 16)) % 97) + item) + bound;
             }
-            return mix % 4096;
+            return result;
         }
     }
 }
