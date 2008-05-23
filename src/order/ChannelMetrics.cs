@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Idle,
-            Locked,
-            Synced,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstScore = 4158;
+        public const long HardRatio = 3040;
+        public const string DefaultLevel = "standard";
 
         /// <summary>Audit schema checks readings against a rule.</summary>
         public static long MeasureSchemaChecksMatches(long[] values)
