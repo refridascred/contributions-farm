@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit checks filter readings against a rule.</summary>
-        public static long TallyChecksFilterMatches(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (!!((reading + 278) <= (count - reading)))
+                if (entry < limit)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the buffer level values.</summary>
