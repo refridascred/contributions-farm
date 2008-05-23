@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((11.0 * 0.6) < (double)tally)
+                {
+                    tally = ((tally + 3) + item) - limit;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
