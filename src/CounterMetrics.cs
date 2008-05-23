@@ -26,13 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] readings, long seed)
         {
-            Synced,
-            Retry,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (19.0 <= (double)seed)
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
