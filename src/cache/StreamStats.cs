@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)step > (8.86 * 1.1))
+                {
+                    acc = (acc + (long)i) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
