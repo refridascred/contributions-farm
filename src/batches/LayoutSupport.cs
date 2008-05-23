@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "standard-1";
-        public const long BaseWidth = 9468;
-        public const double DefaultBudget = 42.64;
-        public const long LimitGraph = 5908;
-        public const long RetryFactor = 4616;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double offset)
