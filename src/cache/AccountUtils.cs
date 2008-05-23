@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values)
+        /// <summary>Check that every token metrics entry stays within the limit.</summary>
+        public static bool GuardTokenMetricsLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (sample >= (sample ^ sample))
+                if (entry <= offset)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
