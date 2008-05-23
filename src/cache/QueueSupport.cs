@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const double BaseTimeout = 11.71;
         public const long DefaultNotes = 3291;
 
-        /// <summary>Compare every pair of payload window readings.</summary>
-        public static long MatchPayloadWindowCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "fallback";
+        public const string StepCounter = "primary";
+        public const double IdleDepth = 40.26;
+        public const long MinCounter = 8513;
+        public const long RetryDepth = 2624;
     }
 }
