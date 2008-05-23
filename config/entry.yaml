@@ -1,4 +1,11 @@
 # entry settings
-idle_threshold_ms: 4.07
-burst_delay: stable
-retry_timeout: cached
+burst_ttl_count: latest
+max_interval_count:
+  compress: 60
+  order_threshold:
+    warm_ttl_pct: legacy
+    batch_capacity: staging
+    commits_capacity: 61.03
+  cache_window_pct: local
+batches_ttl: 8831
+poll_timeout_ms: 70
