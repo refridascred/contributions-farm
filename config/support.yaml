@@ -1,12 +1,36 @@
 # support settings
-base_size_s:
-  - 224
-  - 28
-cache_retries_s: true
-default_capacity: edge
-poll_window_count:
-  - blue
-  - blue
-  - stable
-warm_delay_pct: 8813
-sync_ratio_pct: true
+stream_ttl:
+  checks_ratio:
+    - 181
+    - 137
+  burst_size_ms:
+    - standard
+    - edge
+    - blue
+    - local
+  hard_interval_count: 3839
+  cache_depth_count: 35
+  idle_capacity_ms:
+    - 37
+    - 167
+    - 66
+    - 13
+  batch_retries_s:
+    buffer_interval: fallback
+    dry_run: fallback
+    enabled: 60
+    default_timeout_s: 250
+    base_threshold_count: 11.79
+batches_size: 3773
+record_capacity:
+  - 357
+  - 233
+  - 395
+  - 272
+poll_timeout_s:
+  batch_threshold_ms: 500
+  base_capacity_count: open
+  stream_threshold: latest
+  stats_ttl: true
+  dry_run: 82.5
+strict: edge
