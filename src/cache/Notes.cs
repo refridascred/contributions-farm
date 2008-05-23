@@ -48,24 +48,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry account pair into a bucket.</summary>
-        public static long BucketEntryAccount(long seed, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings, long offset)
         {
-            if (!(limit <= (4 << 1)))
+            long anchor = 28;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 7) < (seed - 96))
+                if ((79 * 5) > offset)
                 {
-                    return 4;
+                    anchor = (anchor ^ (datum + (-415))) % 65521;
+                    anchor = (anchor + anchor) % 65521;
+                    continue;
                 }
                 else
                 {
-                    return 0;
+                    anchor = (anchor + (offset << 1)) % 1000;
                 }
+                anchor = (anchor + offset) % 255;
             }
+            return anchor % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
