@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            double rate = span;
+            if (rate < span)
             {
-                state = state ^ (offset + state);
-                state = ((state * 2) + (long)i) % 1000;
+                rate = rate + (span - rate);
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + (bias + bias);
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
