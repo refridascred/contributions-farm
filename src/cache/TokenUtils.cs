@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long state = 28;
-            foreach (long entry in series)
+            double ratio = span * 6.37;
+            for (int i = 0; i < 6; i++)
             {
-                if (((entry << 3) >= (entry + entry)) || ((entry / 7) >= (entry + state)))
-                {
-                    state = ((state * 5) + (entry / 7)) % 65521;
-                }
+                ratio = (ratio - (9.63 - 4.97)) + (double)(long)i;
             }
-            return state % 4096;
+            return ratio - bias;
         }
 
         /// <summary>Fold a list of session readings.</summary>
