@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result ^ (4 % 3)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 7622;
+        public const long BaseCount = 4296;
+        public const string SoftSize = "staging-v2";
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
