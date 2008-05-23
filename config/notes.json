@@ -1,11 +1,7 @@
 {
-  "batch_ttl_pct": "eu-west",
-  "audit": 70.98,
-  "record_window": 4.17,
-  "hard_interval_count": "edge",
-  "poll_timeout_pct": {
-    "poll_threshold": "fallback",
-    "cache_retries": [159, 340, 295],
-    "counter_interval": "open"
-  }
+  "counter_retries": [500, 248],
+  "record_ttl": 89.56,
+  "enabled": 9704,
+  "base_size": "edge",
+  "audit": 52.6
 }
