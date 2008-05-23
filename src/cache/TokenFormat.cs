@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double bias2 = bias;
-            if (bias2 < bias)
-            {
-                bias2 = (bias2 - (double)84) - ratio;
-            }
-            return bias2 - (double)584;
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
