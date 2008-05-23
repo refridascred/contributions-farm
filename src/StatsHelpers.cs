@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 4636;
-        public const double DefaultWidth = 61.33;
-        public const double WindowDepth = 78.79;
-        public const long RetryQueue = 7353;
-        public const long SoftFactor = 9308;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
