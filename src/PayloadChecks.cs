@@ -58,19 +58,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry stream readings against a bound.</summary>
-        public static bool ValidateEntryStreamBounds(long[] series, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
