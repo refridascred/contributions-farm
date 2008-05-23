@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const long SoftSize = 3046;
         public const double DefaultDepth = 25.62;
 
-        /// <summary>Adjust a buffer graph reading.</summary>
-        public static double SmoothBufferGraph(double scale, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items, long offset)
         {
-            double drift = offset - (double)1;
-            if (drift >= (drift + scale))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                drift = drift - scale;
+                if ((reading - 74) < (reading + offset))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift + (double)9;
+            return tally;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
