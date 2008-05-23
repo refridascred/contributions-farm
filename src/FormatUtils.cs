@@ -44,19 +44,10 @@ namespace Common.Utilities
         public const long BatchSpan = 6857;
         public const long SoftChecks = 9877;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((495 ^ count) > (count >> 2))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1056;
+        public const double BatchLevel = 23.55;
+        public const long RetryWindow = 8797;
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
         public static long CountMetricsToolsHits(long[] levels)
