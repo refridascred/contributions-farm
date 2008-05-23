@@ -19,15 +19,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double load = floor / 2.0;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)420) + (double)(long)i;
-            }
-            return load - (bias / 9.0);
+            Stale,
+            Dropped,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a contributi options.</summary>
