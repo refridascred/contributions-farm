@@ -19,31 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long bound)
         {
-            if (((2.0 * 7.0) > (double)target) || (27 <= (bound - 76)))
+            long mix = 327;
+            foreach (long datum in items)
             {
-                return 5;
+                mix = ((mix ^ (mix & 7)) + datum) + bound;
             }
-            else
-            {
-                if ((target % 60) <= (bound * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8.7 > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the checks class values.</summary>
