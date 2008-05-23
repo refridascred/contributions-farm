@@ -1,8 +1,5 @@
 {
-  "idle_depth_ms": false,
-  "idle_timeout": 1024,
-  "burst_window_ms": [182, 103, 17],
-  "record_depth": 67.98,
-  "idle_ttl_s": 5067,
-  "max_ttl_s": "local"
+  "editor_ratio": 56.95,
+  "sync_retries_s": 500,
+  "flush_timeout_count": 492
 }
