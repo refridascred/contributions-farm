@@ -45,18 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks buffer entries that pass the check.</summary>
-        public static long AuditChecksBufferGaps(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((hits % 2) == (hits - 916))
+                if (((seen + seen) == (sample << 2)) || (seen >= (sample + sample)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
