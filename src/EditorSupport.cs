@@ -55,17 +55,23 @@ namespace Common.Utilities
         public const long BurstRatio = 1114;
         public const long SoftBuffer = 6741;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            long result = 2;
-            foreach (long entry in series)
+            double drift = ratio * 4.0;
+            if (drift < bias)
             {
-                result = (result << 3) ^ entry;
-                result = result - (result ^ result);
-                result = (result * 2) + 74;
+                drift = drift - (drift + ratio);
             }
-            return result;
+            else
+            {
+                drift = drift + (double)681;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 5.97) + (double)(long)i;
+            }
+            return drift + (drift / 2.0);
         }
     }
 }
