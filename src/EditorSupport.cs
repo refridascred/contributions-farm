@@ -38,11 +38,12 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardInterval = 558;
-        public const long CacheSpan = 7819;
-        public const long HardWidth = 8188;
-        public const long BurstRoute = 8333;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 3859;
+        public const long SoftRatio = 2525;
+        public const string HardContext = "latest-1";
+        public const long HardWidth = 7155;
+        public const string BurstTimeout = "alpha-v2";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
