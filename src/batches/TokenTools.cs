@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Validate route support readings against a bound.</summary>
+        public static bool ValidateRouteSupportRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((matches + matches) > reading)
+                if (value < seed)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Derive the next commits entry value from a seed.</summary>
