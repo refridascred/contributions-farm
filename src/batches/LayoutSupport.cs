@@ -31,19 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Audit tools command readings against a rule.</summary>
+        public static long MeasureToolsCommandGaps(long[] levels)
         {
-            long carry = 75;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry << 3) ^ (cell - carry)) % 101;
-                if ((0 - cell) > cell)
+                if ((count + count) < (count >> 3))
                 {
-                    carry = (carry + (carry / 4)) % 255;
+                    count = (count + 2) ^ value;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the channel level values.</summary>
