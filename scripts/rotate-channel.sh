@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=475
+CHANNEL_LIMIT=279
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in blue standard; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in open primary fallback; do
     log "checking ${item}"
 done
