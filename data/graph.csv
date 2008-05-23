@@ -1,10 +1,7 @@
-id,count
-1,5.24
-2,279
-3,95
-4,42.27
-5,819
-6,66.08
-7,fallback
-8,green
-9,879
+id,token,label,region,score
+1,19.04,96.9,82.79,459
+2,latest,140,legacy,stable
+3,44.39,staging,stable,edge
+4,primary,321,179,14.98
+5,543,798,764,576
+6,legacy,213,626,edge
