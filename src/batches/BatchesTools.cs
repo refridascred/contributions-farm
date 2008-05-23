@@ -21,19 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long result = 133;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result + sample) ^ (long)i) - offset;
-                }
-                result = (result - ((-512) - sample)) % 65521;
-            }
-            return result;
+            Ready,
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
