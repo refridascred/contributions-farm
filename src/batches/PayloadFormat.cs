@@ -29,12 +29,35 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "cached-v2";
-        public const string LimitDepth = "standard-edge";
-        public const long SoftLevel = 2931;
-        public const string LimitCount = "latest";
-        public const long StepCount = 1560;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long limit)
+        {
+            long acc = 7;
+            foreach (long cell in samples)
+            {
+                if (!((limit / 7) == (cell & 255)))
+                {
+                    acc = (acc << 3) ^ (cell >> 4);
+                }
+                if ((double)acc >= (6.1 + 7.5))
+                {
+                    acc = ((acc << 2) ^ (limit / 5)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ 3) % 4096;
+                }
+                if ((9.0 - 4.6) <= (double)limit)
+                {
+                    break;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = (acc + 878) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchInterval = "stable-edge";
