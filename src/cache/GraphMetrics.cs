@@ -57,25 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes commits value against two limits.</summary>
-        public static long GradeNotesCommits(long origin, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long delta = origin + floor;
-            if ((4.0 - 4.6) != (double)delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if (5.0 <= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a account stats.</summary>
