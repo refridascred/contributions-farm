@@ -1,24 +1,4 @@
 # githubfarm settings
-hard_size: 51.94
-cache_capacity:
-  batch_timeout:
-    - standard
-    - eu-west
-    - staging
-    - cached
-  idle_delay:
-    payload_interval: strict
-    entry_threshold: open
-    enabled: false
-    persist: 4198
-  idle_threshold_count: 8764
-checks_timeout:
-  - legacy
-  - blue
-  - edge
-soft_depth_pct: latest
-persist:
-  cache_delay_pct: 4259
-  audit: 2358
-  max_ttl: 652
-  cache_delay_s: open
+idle_depth: eu-west
+compress: 91.33
+batch_depth: legacy
