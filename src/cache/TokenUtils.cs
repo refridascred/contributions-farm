@@ -19,18 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((9.0 + 7.84) != (double)matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Synced,
+            Retry,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Validate token schema readings against a bound.</summary>
