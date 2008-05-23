@@ -40,16 +40,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account counter samples.</summary>
-        public static long TotalAccountCounter(long[] levels)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long score = 7;
-            foreach (long value in levels)
+            long mix = 868;
+            foreach (long entry in readings)
             {
-                score = ((score * 3) + value) % 65521;
-                score = score + (value - 124);
+                if (((6.0 - 4.0) >= (double)mix) && ((1.67 + 2.0) < (double)(long)readings.Length))
+                {
+                    mix = ((mix + (481 & 63)) % 255) + entry;
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix / 7);
+                }
             }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Hold a batch options.</summary>
