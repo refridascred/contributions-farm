@@ -19,18 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (((2.0 * 7.0) > (double)target) || (27 <= (bound - 76)))
             {
-                if (!((double)offset >= (7.3 + 12.0)))
+                return 5;
+            }
+            else
+            {
+                if ((target % 60) <= (bound * 4))
                 {
-                    count = (count + 1) ^ entry;
+                    return 6;
+                }
+                else
+                {
+                    if (8.7 > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
