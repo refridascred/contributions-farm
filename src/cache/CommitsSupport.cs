@@ -42,25 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            long bound = step - target;
-            if ((2.8 + 16.0) <= (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound - bound) >= bound) && ((target >> 1) < (target + bound)))
+                if (values[i] <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
