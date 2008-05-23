@@ -1,12 +1,11 @@
 # Command notes
 
-Each report is validated before it reaches the filter queue.
-Defaults for stats live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the tools list.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Keep schema and profile names short and lowercase.
+Keep format and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review batch limits each release
-- Log every layout change
-- Keep batch values small
+- Log every session change
+- Document new support fields
+- Validate session input early
