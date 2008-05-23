@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double rate = scale;
-            if (rate < scale)
-            {
-                rate = (rate + (rate / 8.0)) - floor;
-            }
-            else
-            {
-                rate = rate + 3.11;
-            }
-            return rate + (double)35;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
