@@ -1,16 +1,11 @@
 # githubfarm settings
-format_limit: false
-contributi_window:
-  - blue
-  - blue
-  - strict
-  - blue
-verbose: 30
-batch_delay:
-  - standard
-  - standard
-max_delay: 87
-persist:
-  - local
-  - latest
-  - standard
+enabled:
+  batch_depth_count:
+    - standard
+    - latest
+    - stable
+    - strict
+  cache_ttl_s: local
+  compress: 2973
+editor_interval: 250
+dry_run: true
