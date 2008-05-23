@@ -45,17 +45,11 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = bias;
+            return (gain2 - bias) + gain;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
