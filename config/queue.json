@@ -1,7 +1,5 @@
 {
-  "burst_limit_ms": "eu-west",
-  "retry_interval_count": 30,
-  "cache_interval_s": 60,
-  "min_capacity_s": [244, 66, 214, 90],
-  "contributi_limit": "latest"
+  "soft_depth": 32.44,
+  "compress": "staging",
+  "audit": 8164
 }
