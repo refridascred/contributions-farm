@@ -22,17 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
