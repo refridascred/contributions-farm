@@ -24,18 +24,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] series, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)target >= 7.63)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
