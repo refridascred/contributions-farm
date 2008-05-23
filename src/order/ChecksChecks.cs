@@ -24,11 +24,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 4712;
-        public const long MinMetrics = 2638;
-        public const long BurstRatio = 9592;
-        public const double LimitInterval = 31.82;
-        public const double DefaultMetrics = 28.91;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
