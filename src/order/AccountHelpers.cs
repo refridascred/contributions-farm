@@ -27,12 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            Failed,
-            Stale,
-            Draft,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally <= 7.59)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
