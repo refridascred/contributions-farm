@@ -16,14 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Done,
-            Ready,
-            Stale,
-            Queued,
-            Idle,
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
