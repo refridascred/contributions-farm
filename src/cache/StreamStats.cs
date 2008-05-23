@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long RankBufferChecks(long seed, long floor)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
+            long cur = seed - floor;
+            if ((floor <= (7 - cur)) && ((cur & 255) <= (seed ^ floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)cur > (double)15)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
