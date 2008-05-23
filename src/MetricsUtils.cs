@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] series, long step)
         {
-            if (seed > (limit ^ seed))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (double)seed) && ((1.0 + 0.6) < (double)seed))
+                if (value > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a already entry.</summary>
