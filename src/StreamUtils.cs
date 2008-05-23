@@ -45,14 +45,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            Queued,
-            Closed,
-            Idle,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value == (18.0 / 7.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
