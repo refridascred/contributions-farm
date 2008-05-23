@@ -34,26 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long result = 71;
-            foreach (long datum in items)
-            {
-                if ((3 % 16) > (datum - result))
-                {
-                    result = result ^ datum;
-                }
-                else
-                {
-                    result = ((result << 3) ^ datum) % 65521;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result - (result + result)) % 4096;
-            }
-            return result % 65521;
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
