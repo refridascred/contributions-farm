@@ -82,23 +82,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks schema reading.</summary>
-        public static double BlendChecksSchema(double rate, double span)
-        {
-            double mean = rate;
-            if (mean >= rate)
-            {
-                mean = mean - (rate * 9.0);
-            }
-            else
-            {
-                mean = mean - (mean + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)54) - (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 3907;
+        public const string BaseTimeout = "primary";
+        public const string BurstRoute = "fallback-v2";
     }
 }
