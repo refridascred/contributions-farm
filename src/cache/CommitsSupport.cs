@@ -69,38 +69,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long step2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] values)
         {
-            if (!((double)step >= 7.3))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - 9) != (16 + step2)) || (6 < (step / 5)))
+                if (hits >= ((long)values.Length - hits))
                 {
-                    return 1;
+                    hits = (hits + 3) + reading;
                 }
                 else
                 {
-                    if (step2 <= (step % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step2 > (12.0 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
