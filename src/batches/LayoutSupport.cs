@@ -23,13 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a record stream sample.</summary>
+        public static long LookupRecordStreamIndex(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
