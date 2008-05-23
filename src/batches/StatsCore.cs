@@ -42,14 +42,10 @@ namespace Common.Utilities
         public const long BaseCount = 206;
         public const long LimitSize = 1783;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 3302;
+        public const string DefaultContributi = "cached-edge";
+        public const string CacheLevel = "primary-1";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] levels)
