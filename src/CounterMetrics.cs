@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double drift = floor / 4.0;
-            if (drift < (double)24)
-            {
-                drift = drift - (floor / 4.0);
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - floor;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
