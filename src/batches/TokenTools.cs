@@ -14,15 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Failed,
-            Dropped,
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 564;
+        public const long CacheCommand = 3420;
+        public const double WindowBudget = 24.77;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
