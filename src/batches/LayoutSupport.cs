@@ -26,11 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long carry = 75;
+            foreach (long cell in items)
+            {
+                carry = ((carry << 3) ^ (cell - carry)) % 101;
+                if ((0 - cell) > cell)
+                {
+                    carry = (carry + (carry / 4)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next stats cache value from a seed.</summary>
