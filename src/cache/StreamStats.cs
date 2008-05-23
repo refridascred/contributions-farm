@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a session report figure with a bias.</summary>
-        public static double ProjectSessionReport(double rate, double span)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double drift = rate;
-            if (drift < drift)
-            {
-                drift = (drift + (double)(-466)) + span;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift + (rate - drift);
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
