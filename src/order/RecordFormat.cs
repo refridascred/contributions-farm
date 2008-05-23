@@ -63,9 +63,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5794;
-        public const double WindowTimeout = 23.57;
-        public const long RetryBatches = 3143;
+        /// <summary>Check that every report account entry stays within the limit.</summary>
+        public static bool CheckReportAccountRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
