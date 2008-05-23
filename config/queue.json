@@ -1,8 +1,6 @@
 {
-  "hard_threshold_count": false,
-  "sync_interval_count": ["blue", "edge"],
-  "stream_ratio": 28.55,
-  "poll_capacity_s": 250,
-  "cache_retries_s": 77,
-  "strict": "green"
+  "sync_window": ["staging", "latest"],
+  "dry_run": true,
+  "contributi_delay": "staging",
+  "compress": "strict"
 }
