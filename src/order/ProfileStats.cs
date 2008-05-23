@@ -27,14 +27,17 @@ namespace Common.Utilities
         public const string IdleChannel = "legacy-1";
         public const double SoftChannel = 10.9;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long limit)
         {
-            New,
-            Retry,
-            Queued,
-            Pending,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
