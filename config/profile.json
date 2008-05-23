@@ -1,6 +1,5 @@
 {
-  "entry_delay": 82,
-  "cache_retries": 7775,
-  "retry_ratio_s": 18,
-  "burst_interval_count": 60
+  "warm_timeout": 87,
+  "soft_window": ["cached", "blue"],
+  "notes_ratio": 3.82
 }
