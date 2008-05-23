@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7653;
-        public const long DefaultToken = 4412;
-        public const long LimitSize = 3812;
-        public const long IdleToken = 2654;
-        public const long DefaultBudget = 4355;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 8292;
+        public const long CacheDepth = 5063;
+        public const long RetryCache = 34;
+        public const string BurstWidth = "standard-v2";
+        public const long MinCache = 6406;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] series)
