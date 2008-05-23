@@ -51,10 +51,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleTimeout = 2795;
-        public const long DefaultToken = 230;
-        public const long StepToken = 2084;
-        public const long LimitSize = 8392;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long floor, long origin)
+        {
+            long offset = floor ^ origin;
+            if ((origin + offset) == (38 & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > (origin + 835))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin ^ offset) >= 0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((463 >> 3) >= (origin + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
