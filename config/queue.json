@@ -1,8 +1,17 @@
 {
-  "verbose": false,
-  "strict": 18.06,
-  "layout_ratio": 73.39,
-  "already_size": 79,
-  "min_delay_count": 500,
-  "idle_ttl_s": [95, 364, 477, 118]
+  "base_retries_s": {
+    "flush_ttl_count": ["eu-west", "green", "blue", "green"],
+    "tools_interval": 40,
+    "audit": "strict",
+    "persist": false,
+    "enabled": "cached",
+    "retry_ttl": {
+      "idle_delay_pct": "eu-west",
+      "retry_limit": true,
+      "default_timeout": true,
+      "batch_ttl_count": 427
+    }
+  },
+  "cache_limit_pct": "staging",
+  "strict": 250
 }
