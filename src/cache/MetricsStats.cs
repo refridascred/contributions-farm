@@ -67,13 +67,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Active,
-            Failed,
-            Draft,
             Retry,
+            Failed,
+            New,
+            Locked,
+            Ready,
         }
     }
 }
