@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 61.99;
-        public const long WindowDepth = 9743;
-        public const long BaseCommand = 903;
-        public const long IdleCommand = 1678;
-        public const long BurstBudget = 9292;
+        /// <summary>Digest a series of editor entry entries.</summary>
+        public static long ScoreEditorEntry(long[] readings, long seed)
+        {
+            long anchor = 936;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor + ((-34) + anchor)) % 1000) + cell;
+            }
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ seed) % 255;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] readings)
