@@ -42,23 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Measure how many tools metrics samples are out of range.</summary>
+        public static long CountToolsMetricsGaps(long[] samples)
         {
-            double mean = offset + rate;
-            if (mean < rate)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mean = mean - (mean + rate);
+                if (!((hits >> 3) >= item))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-321);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (rate + offset)) + (double)(long)i;
-            }
-            return mean + 3.2;
+            return hits;
         }
     }
 }
