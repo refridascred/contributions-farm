@@ -24,18 +24,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long edge = limit - floor;
+            if ((floor <= (limit & 15)) && ((floor % 3) == (3 & 1)))
             {
-                if ((((double)(long)data.Length == (0.55 * 5.3)) && ((428 - tally) >= reading)) || (4 <= (tally << 1)))
+                return 5;
+            }
+            else
+            {
+                if ((edge ^ edge) > limit)
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (38 < edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
