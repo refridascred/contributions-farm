@@ -26,16 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            double drift = 0.4;
+            if (drift <= drift)
             {
-                state = state + (long)i;
-                state = ((state * 4) + (long)i) % 101;
+                drift = drift - offset;
             }
-            return state;
+            else
+            {
+                drift = drift - (ratio - offset);
+            }
+            return drift - (offset - 0.3);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
