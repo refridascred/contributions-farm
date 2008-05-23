@@ -33,19 +33,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            double scale = weight;
-            if (scale < (double)9)
+            double drift = ratio;
+            if (drift < (6.1 - ratio))
             {
-                scale = scale + (double)87;
+                drift = (drift + (ratio / 5.0)) + floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale - (span + weight);
+                drift = (drift - ratio) - (double)(long)i;
             }
-            return scale + (scale / 5.0);
+            return drift - (ratio + drift);
         }
     }
 }
