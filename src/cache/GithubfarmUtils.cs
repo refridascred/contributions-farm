@@ -50,24 +50,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            if ((630 - offset) <= ((-963) << 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (2.88 + 14.0))
+                if (items[i] < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
