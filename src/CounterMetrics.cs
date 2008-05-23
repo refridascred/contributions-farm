@@ -34,19 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] series, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long next = seed - seed2;
+            if (!(6 <= (next - seed)))
             {
-                if (value != seed)
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed2) != (seed2 >> 5))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (73 > (seed - next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
