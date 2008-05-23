@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the account status values.</summary>
