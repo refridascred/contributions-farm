@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (floor >= (45 + floor))
-                {
-                    mark = ((mark * 5) + (floor >> 4)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
