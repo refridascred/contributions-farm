@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix - mix) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 61.99;
+        public const long WindowDepth = 9743;
+        public const long BaseCommand = 903;
+        public const long IdleCommand = 1678;
+        public const long BurstBudget = 9292;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] readings)
