@@ -57,12 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "strict-edge";
+        public const long WindowLevel = 7824;
+        public const long MinOrder = 3779;
+        public const double BurstTimeout = 22.56;
     }
 }
