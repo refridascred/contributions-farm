@@ -40,18 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long bound = step - target;
+            if ((2.8 + 16.0) <= (double)target)
             {
-                if ((hits - hits) < 7)
+                return 0;
+            }
+            else
+            {
+                if (((bound - bound) >= bound) && ((target >> 1) < (target + bound)))
                 {
-                    hits = (hits + 1) ^ value;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
