@@ -54,22 +54,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] readings, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (matches >= (495 & 1))
+                if ((count * 2) != (target + count))
                 {
-                    matches = ((matches + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
