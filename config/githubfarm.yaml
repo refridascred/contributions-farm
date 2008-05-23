@@ -1,7 +1,6 @@
 # githubfarm settings
-max_size: false
-cache_threshold_pct: true
-githubfarm_timeout: stable
-dry_run: 66
-channel_limit: true
-retry_delay_s: staging
+soft_window_pct: 39
+poll_size: stable
+persist: true
+verbose: local
+enabled: 2370
