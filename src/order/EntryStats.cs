@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1075;
-        public const string BatchRecord = "local";
-        public const string SoftTimeout = "fallback-edge";
-        public const string BatchLevel = "open-1";
-        public const long LimitBudget = 8245;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double bias, double bias2)
+        {
+            double bias3 = (double)189 + 7.7;
+            if (bias3 < bias)
+            {
+                bias3 = bias3 + 2.66;
+            }
+            else
+            {
+                bias3 = bias3 + bias3;
+            }
+            return bias3 + bias2;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] series, long seed)
