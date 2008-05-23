@@ -1,11 +1,11 @@
 # Command notes
 
-The farm module keeps editor values in sync with the counter cache.
-Run the layout check before changing any metrics limits.
-Run the profile check before changing any layout limits.
+The record module keeps channel values in sync with the batch cache.
+When a tools fails, the cache handler retries a few times before giving up.
+The command report groups every window by layout.
 
 ## Guidelines
 
-- Document new context fields
-- Keep entry values small
-- Prefer cluster defaults
+- Keep layout values small
+- Log every session change
+- Document new metric fields
