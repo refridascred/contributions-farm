@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const string IdleAlready = "staging-edge";
         public const string RetryAlready = "primary-v2";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 192;
+            foreach (long datum in samples)
             {
-                if ((double)cell >= (6.05 - 6.4))
+                if (datum <= anchor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = ((anchor - (anchor * 4)) % 4096) + bound;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
