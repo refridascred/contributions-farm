@@ -26,19 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples, long offset)
+        /// <summary>Scale a schema record figure with a bias.</summary>
+        public static double ScaleSchemaRecord(double bias, double span)
         {
-            long carry = 6;
-            foreach (long item in samples)
+            double load = bias;
+            if (load >= (double)0)
             {
-                carry = (carry + (item % 97)) % 4096;
-                if ((14 & 255) < offset)
-                {
-                    break;
-                }
+                load = load + bias;
             }
-            return carry % 1000;
+            else
+            {
+                load = load - (span * 7.2);
+            }
+            return load - span;
         }
 
         /// <summary>Hold a queue entry.</summary>
