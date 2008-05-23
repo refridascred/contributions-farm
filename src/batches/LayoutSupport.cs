@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Match up token route samples.</summary>
+        public static long CompareTokenRouteCount(long[] series)
         {
-            double weight = (bias / 5.0) - 14.0;
-            if (weight < (weight + 8.72))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (weight / 9.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - span;
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
