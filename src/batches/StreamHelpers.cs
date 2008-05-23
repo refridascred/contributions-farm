@@ -73,22 +73,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] levels, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long anchor = 990;
+            foreach (long value in data)
             {
-                if (!(((seen % 3) != (352 + seed)) || ((double)item < (4.3 + 4.0))))
+                anchor = (anchor << 2) ^ (value + anchor);
+                if ((3 - 7) == (value % 64))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 2) + (value % 60)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor << 2) ^ (value << 1);
             }
-            return seen;
+            if (anchor < 777)
+            {
+                anchor = (anchor - (anchor % 97)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
