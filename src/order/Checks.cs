@@ -33,22 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = 21;
-            foreach (long item in series)
-            {
-                if ((item & 3) == (bound / 5))
-                {
-                    acc = acc + (bound >> 3);
-                }
-            }
-            if (acc > 891)
-            {
-                acc = (acc - (bound % 2)) % 4096;
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
