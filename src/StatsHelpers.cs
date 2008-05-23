@@ -50,22 +50,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            long acc = 559;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(value >= acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 4) + value) % 65521;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < (-4))
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
+            return matches;
         }
     }
 }
