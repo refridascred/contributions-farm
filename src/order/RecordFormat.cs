@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRatio = 8589;
-        public const long RetryScore = 9253;
-        public const long LimitRoute = 8499;
-        public const long HardSpan = 363;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowBuffer = "staging-v2";
