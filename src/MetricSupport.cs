@@ -45,22 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] levels)
+        /// <summary>Count the checks buffer entries that pass the check.</summary>
+        public static long AuditChecksBufferGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((6 - 69) < count)
+                if ((hits % 2) == (hits - 916))
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
