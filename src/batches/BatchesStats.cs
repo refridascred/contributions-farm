@@ -33,14 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the profile notes entries that pass the check.</summary>
+        public static long MeasureProfileNotesOutliers(long[] series, long origin)
         {
-            Synced,
-            Retry,
-            Active,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (0 <= (origin + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
