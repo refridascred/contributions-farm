@@ -53,17 +53,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] readings, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long step)
         {
-            long carry = 866;
-            foreach (long item in readings)
+            long carry = 59;
+            foreach (long reading in items)
             {
-                carry = carry + target;
-                if (((long)readings.Length ^ 9) < (item + target))
-                {
-                    carry = (carry + (target & 1)) % 65521;
-                }
+                carry = (carry ^ (carry / 5)) ^ reading;
+                carry = (carry * 3) + (step ^ 990);
+                carry = (carry + carry) % 65521;
             }
             return carry;
         }
