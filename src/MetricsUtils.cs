@@ -26,26 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long origin)
         {
-            long sum = 5;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((sum % 10) != (1 * 3))
+                if (item > origin)
                 {
-                    sum = ((sum * 3) + (sum << 1)) % 1000;
-                }
-                else
-                {
-                    sum = sum + (sample + sample);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum - (sum << 1);
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
