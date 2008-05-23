@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long total = 501;
+            foreach (long cell in series)
             {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total - (long)series.Length) % 255) + cell;
             }
-            return flag;
+            if (total < 79)
+            {
+                total = ((total * 5) + (total % 8)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the profile notes entries that pass the check.</summary>
