@@ -1,13 +1,12 @@
 {
-  "order_retries": 1024,
-  "batch_threshold": 52,
-  "notes_ttl": {
-    "retry_ratio": "green",
-    "payload_capacity": 500,
-    "cache_timeout": 81.9,
-    "warm_ttl_ms": 9189
+  "base_size_pct": {
+    "flush_ratio_count": 87.15,
+    "idle_window_s": 1.51,
+    "burst_limit_pct": "standard"
   },
-  "base_threshold": false,
-  "verbose": 500,
-  "default_capacity_pct": 84
+  "enabled": 27,
+  "sync_timeout": 44.96,
+  "cache_timeout_s": true,
+  "notes_threshold": "stable",
+  "editor_retries": 70
 }
