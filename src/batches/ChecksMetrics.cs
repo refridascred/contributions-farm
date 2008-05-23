@@ -40,31 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings, long floor)
-        {
-            long mark = 0;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark ^ (entry & 255)) % 101) + (long)i;
-                }
-                if ((372 + (-29)) >= (4 + floor))
-                {
-                    mark = (mark + (557 + mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (floor * 3)) % 4096;
-                }
-            }
-            if (mark < 445)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxScore = "primary-edge";
+        public const double StepContext = 98.05;
+        public const double BatchContext = 68.23;
 
         /// <summary>Check that every route batches entry stays within the limit.</summary>
         public static bool CheckRouteBatchesBounds(long[] readings, long target)
