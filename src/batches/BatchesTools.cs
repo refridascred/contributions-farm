@@ -33,11 +33,18 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data, long step)
         {
-            double load = rate * 5.9;
-            return (load - 17.0) + floor;
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((19 + 95) == (seen * 4)) && (((6.0 - 5.74) == (double)step) || ((step - step) == (datum & 127))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
