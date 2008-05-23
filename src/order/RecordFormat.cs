@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                if (readings[i] <= seed)
                 {
                     return (long)i;
                 }
