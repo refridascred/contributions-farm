@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long seed)
+        /// <summary>Compare every pair of notes filter readings.</summary>
+        public static long PairNotesFilterCount(long[] items)
         {
-            long carry = 26;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry <= (9.91 / 9.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (value + carry)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (seed * 2)) % 101;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
