@@ -1,5 +1,28 @@
 # support settings
-dry_run: 100
-max_window_s: eu-west
-soft_interval: true
-sync_limit_ms: fallback
+soft_timeout_ms: false
+support_size: 28.54
+strict:
+  max_interval_pct: blue
+  soft_depth:
+    batch_ratio: 41.3
+    flush_timeout_pct: latest
+    readonly:
+      - edge
+      - legacy
+      - eu-west
+    stream_size:
+      - strict
+      - standard
+      - standard
+    metrics_ttl: 3431
+    cluster_threshold: 250
+  flush_interval_pct: true
+already_interval: open
+idle_window_pct: open
+token_capacity:
+  poll_window_ms: 582
+  farm_window: 26.4
+  default_window: true
+  soft_delay: false
+  compress: fallback
+  base_interval_count: eu-west
