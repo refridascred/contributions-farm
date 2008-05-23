@@ -54,17 +54,24 @@ namespace Common.Utilities
         public const long StepAlready = 939;
         public const double DefaultSize = 68.48;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)12 >= (double)bound) || (bound <= 564))
             {
-                if (values[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if ((bound & 3) > ((-198) * 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
