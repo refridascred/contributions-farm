@@ -26,14 +26,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            Active,
-            Locked,
-            Idle,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (0 >= (hits % 7))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
