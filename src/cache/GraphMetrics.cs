@@ -59,15 +59,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long result = 99;
-            foreach (long item in readings)
-            {
-                result = (((result + (result % 16)) % 97) + item) + bound;
-            }
-            return result;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
