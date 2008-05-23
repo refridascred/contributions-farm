@@ -44,11 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardFactor = 68.33;
-        public const double CacheBatches = 29.91;
-        public const double HardBatches = 86.46;
-        public const double LimitBatches = 54.04;
-        public const string BatchSize = "cached-edge";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
