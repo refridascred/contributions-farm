@@ -44,18 +44,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] samples)
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool CheckTokenSchemaRange(long[] samples, long floor)
         {
-            long hits = 0;
+            bool flag = true;
             foreach (long entry in samples)
             {
-                if (((8.08 - 3.2) >= (double)entry) || ((40 + entry) <= (hits >> 2)))
+                if (entry >= floor)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
