@@ -1,6 +1,11 @@
-id,weight,score
-1,599,895
-2,927,340
-3,747,861
-4,24,80.39
-5,51.63,green
+id,state,token,score
+1,edge,staging,531
+2,95,fallback,48.9
+3,441,primary,11.08
+4,latest,blue,32.25
+5,cached,548,latest
+6,blue,86.14,11.22
+7,287,green,708
+8,13.45,400,blue
+9,fallback,442,983
+10,39.57,82.91,17.67
