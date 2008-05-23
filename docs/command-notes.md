@@ -1,10 +1,14 @@
 # Command notes
 
-Use cache settings to tune how often farm data is refreshed.
-Keep tools and order names short and lowercase.
+Each channel is validated before it reaches the queue queue.
+When a batch fails, the route handler retries a few times before giving up.
+
+Each entry is validated before it reaches the window queue.
+The session report groups every order by layout.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every schema change
-- Review buffer limits each release
+- Prefer format defaults
+- Log every githubfarm change
+- Validate profile input early
+- Document new editor fields
