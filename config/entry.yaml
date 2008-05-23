@@ -1,10 +1,15 @@
 # entry settings
-dry_run:
-  - green
-  - primary
-  - staging
-readonly: blue
-githubfarm_ratio:
-  - 358
-  - 11
-  - 240
+strict: 13
+batch_window:
+  - fallback
+  - open
+  - eu-west
+  - edge
+min_limit_ms: 79.11
+compress:
+  notes_ttl:
+    hard_ttl_s: blue
+    burst_threshold_pct: 55
+    readonly: 11
+  batch_ttl: standard
+  flush_ttl_s: 45
