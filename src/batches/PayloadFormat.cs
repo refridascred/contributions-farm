@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metrics notes reading.</summary>
