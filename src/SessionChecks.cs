@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryFactor = 14.54;
-        public const double MinRecord = 44.83;
-        public const long MaxRecord = 4397;
-        public const double HardRecord = 64.45;
-        public const string SoftRecord = "staging-v2";
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Idle,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryBudget = 5903;
