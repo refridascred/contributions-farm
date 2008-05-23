@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 76.06;
-        public const long BaseDepth = 1168;
-        public const long MinBudget = 6033;
-        public const long IdleCount = 8430;
+        /// <summary>Count the support notes entries that pass the check.</summary>
+        public static long TallySupportNotesMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches + matches) != (item << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
