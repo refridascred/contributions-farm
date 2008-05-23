@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Keep schema and profile names short and lowercase.
-Keep format and stats names short and lowercase.
+The cluster module keeps profile values in sync with the session cache.
+Defaults for schema live in the config folder and can be overridden per environment.
+
+Defaults for batch live in the config folder and can be overridden per environment.
+Use githubfarm settings to tune how often layout data is refreshed.
+The account report groups every layout by batch.
 
 ## Guidelines
 
-- Log every session change
-- Document new support fields
-- Validate session input early
+- Validate schema input early
+- Log every account change
+- Document new metric fields
+- Keep metrics values small
