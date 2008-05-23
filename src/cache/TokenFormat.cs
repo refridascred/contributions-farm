@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample > (2.9 + 8.9))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7238;
+        public const double BaseLevel = 15.17;
+        public const long CacheCluster = 8501;
+        public const long HardCluster = 4000;
+        public const double MaxCluster = 35.27;
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] samples)
