@@ -1,8 +1,15 @@
 {
-  "hard_threshold": 8778,
-  "retry_delay_pct": ["staging", "edge"],
-  "hard_ttl_ms": 23.37,
-  "max_interval_count": "primary",
-  "dry_run": ["latest", "open"],
-  "poll_delay": "edge"
+  "retry_timeout": 60.83,
+  "hard_depth_count": {
+    "readonly": 9,
+    "queue_ratio": [87, 417],
+    "filter_retries": 2,
+    "compress": {
+      "burst_size": true,
+      "order_retries": 30,
+      "cache_depth_s": ["legacy", "standard", "legacy", "blue"],
+      "burst_interval": false
+    }
+  },
+  "tools_ratio": "cached"
 }
