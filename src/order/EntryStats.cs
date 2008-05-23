@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Ready,
-            Stale,
-            Synced,
+            Dropped,
+            Queued,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Adjust a farm reading.</summary>
