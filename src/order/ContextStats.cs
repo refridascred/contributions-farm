@@ -43,38 +43,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if ((target % 8) <= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= 3)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - 72) <= (target + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset <= 14.0) || (9.6 <= (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
