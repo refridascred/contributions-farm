@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings)
         {
-            long step = target - floor;
-            if (((target - (-873)) >= (floor + floor)) && ((double)step <= 1.41))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 4) > (step + target))
+                if ((tally << 1) == (tally ^ entry))
                 {
-                    return 7;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
