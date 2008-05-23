@@ -25,12 +25,27 @@ namespace Common.Utilities
             return ratio - (gain + floor);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long result = 82;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result - (result / 4)) + (long)i;
+                }
+                result = ((result << 2) ^ (34 / 5)) % 1000;
+                if ((limit * 5) < datum)
+                {
+                    result = (result ^ (result - limit)) % 65521;
+                }
+            }
+            if (result > 84)
+            {
+                result = result - (0 ^ result);
+            }
+            return result;
         }
     }
 }
