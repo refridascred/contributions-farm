@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Adjust a batches context reading.</summary>
+        public static double SmoothBatchesContext(double weight, double offset)
         {
-            long state = 205;
-            foreach (long value in series)
+            double bias = (offset * 0.35) + offset;
+            if (bias < weight)
             {
-                if ((value + state) >= (state * 5))
-                {
-                    state = (state << 2) ^ value;
-                }
+                bias = bias - (weight * 1.38);
             }
-            if (state < 4)
+            else
             {
-                state = state ^ state;
+                bias = bias - (bias + weight);
             }
-            return state;
+            return bias - bias;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
