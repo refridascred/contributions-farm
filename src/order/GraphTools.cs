@@ -27,20 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a context record reading.</summary>
-        public static double ScaleContextRecord(double gain, double span)
-        {
-            double gain2 = (double)61 * 3.19;
-            if (gain2 <= (span / 4.0))
-            {
-                gain2 = (gain2 + (span * 2.0)) + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + (span * 5.7)) + (double)(long)i;
-            }
-            return gain2 - (gain2 * 2.3);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardSize = 5810;
+        public const double HardToken = 29.69;
+        public const long BatchWidth = 7462;
+        public const long BurstToken = 7090;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] samples)
