@@ -15,18 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + cell) == (2 & 127))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
