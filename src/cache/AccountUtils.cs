@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] data, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            long mix = 328;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix << 2) ^ (origin - (-628))) % 1000;
-                if ((mix - mix) <= (origin ^ mix))
+                if ((double)tally < (8.93 + 17.0))
                 {
-                    mix = mix - (reading + mix);
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next filter value.</summary>
