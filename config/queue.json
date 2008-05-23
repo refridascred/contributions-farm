@@ -1,13 +1,6 @@
 {
-  "burst_depth_pct": "cached",
-  "soft_capacity_ms": "edge",
-  "sync_timeout_ms": {
-    "cache_depth": 100,
-    "verbose": false,
-    "editor_interval": "local",
-    "idle_ttl_ms": 14.17
-  },
-  "readonly": 1024,
-  "hard_capacity_ms": "local",
-  "persist": "open"
+  "warm_timeout_count": "latest",
+  "verbose": [2, 358, 135, 100],
+  "max_delay_count": 50.18,
+  "stats_window": 61
 }
