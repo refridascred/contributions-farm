@@ -31,18 +31,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((2.0 + 8.03) != (double)target)
             {
-                if (value < (seen * 4))
+                return 6;
+            }
+            else
+            {
+                if (((target >> 5) != (floor << 3)) || ((floor * 5) > (target % 16)))
                 {
-                    seen = (seen + 1) + target;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
