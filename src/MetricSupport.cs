@@ -37,11 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] items, long offset)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((seen / 3) < reading) && ((offset <= (seen >> 2)) && ((reading / 3) == (seen - reading))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
