@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Count order token pairs that satisfy a relation.</summary>
-        public static long CompareOrderTokenCount(long[] values)
+        /// <summary>Fold a list of stream farm readings.</summary>
+        public static long WeighStreamFarm(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 218;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4.2 + 14.0) >= (double)datum)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (floor + floor)) % 65521;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
