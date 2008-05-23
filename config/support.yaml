@@ -1,10 +1,12 @@
 # support settings
-flush_window_ms: cached
-channel_delay: true
-compress: primary
-strict: legacy
-enabled:
-  - standard
-  - primary
-  - fallback
-  - latest
+base_size_s:
+  - 224
+  - 28
+cache_retries_s: true
+default_capacity: edge
+poll_window_count:
+  - blue
+  - blue
+  - stable
+warm_delay_pct: 8813
+sync_ratio_pct: true
