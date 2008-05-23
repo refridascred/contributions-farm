@@ -1,7 +1,18 @@
 {
-  "burst_threshold": 80,
-  "stats_size": 70,
-  "max_ratio_count": [136, 246],
-  "checks_ratio": "open",
-  "min_timeout_pct": 15.29
+  "warm_timeout": "blue",
+  "default_ttl_ms": 250,
+  "default_limit": {
+    "cache_depth_s": true,
+    "compress": "standard",
+    "retry_ratio_ms": ["cached", "local", "staging"],
+    "hard_threshold_count": true,
+    "min_ttl": {
+      "cache_window": [268, 486, 101],
+      "metrics_retries": 43,
+      "compress": "green",
+      "queue_limit": true
+    },
+    "verbose": ["primary", "local", "legacy"]
+  },
+  "sync_depth_ms": "stable"
 }
