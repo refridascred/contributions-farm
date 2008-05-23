@@ -49,18 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((37 + datum) <= (seen % 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
