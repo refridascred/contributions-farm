@@ -28,11 +28,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 4763;
-        public const long SoftNotes = 1207;
-        public const double CacheNotes = 10.18;
-        public const string MaxSize = "strict-1";
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long step)
