@@ -1,8 +1,6 @@
-id,count,rank,ratio
-1,strict,2.95,704
-2,677,260,768
-3,953,latest,586
-4,primary,cached,97.51
-5,194,1.42,blue
-6,primary,347,fallback
-7,primary,522,7.81
+id,region,ratio
+1,929,284
+2,0.8,896
+3,blue,477
+4,cached,primary
+5,579,684
