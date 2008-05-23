@@ -1,5 +1,5 @@
 {
-  "verbose": 11,
-  "batch_window_count": 4955,
-  "base_threshold_s": 27.2
+  "audit": 32.6,
+  "verbose": 29,
+  "hard_threshold_pct": 250
 }
