@@ -31,13 +31,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
