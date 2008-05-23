@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long total = 292;
+            foreach (long value in samples)
+            {
+                if (((value ^ total) < (total + value)) && ((total & 3) < total))
+                {
+                    total = (total ^ total) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a commits record.</summary>
