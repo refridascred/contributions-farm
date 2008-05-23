@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches > (matches ^ origin))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
