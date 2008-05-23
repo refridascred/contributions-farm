@@ -25,18 +25,11 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 13.07;
+        public const long BatchSpan = 6440;
+        public const string CacheEditor = "primary";
+        public const long BatchTimeout = 1280;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] items, long offset)
