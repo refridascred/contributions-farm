@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Queued,
-            Synced,
-            Done,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Classify a farm layout pair into a bucket.</summary>
