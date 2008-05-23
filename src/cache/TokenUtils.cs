@@ -19,31 +19,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
-        public static long GradeBufferGithubfarm(long offset, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            if (((offset / 4) >= (offset / 6)) || ((target + 607) <= (target % 8)))
+            double bias = (double)398 / 9.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                bias = ((bias - (double)994) + (double)(long)i) - floor;
             }
-            else
-            {
-                if (!((double)target > 11.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (target >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return bias - gain;
         }
     }
 }
