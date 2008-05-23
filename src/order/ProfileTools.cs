@@ -42,11 +42,18 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long acc = 3;
+            foreach (long reading in items)
+            {
+                if ((71 * 5) == (acc % 3))
+                {
+                    acc = ((acc ^ (-69)) % 4096) ^ reading;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a session entry.</summary>
