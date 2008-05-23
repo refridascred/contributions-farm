@@ -73,10 +73,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSpan = 9703;
-        public const long WindowLevel = 6037;
-        public const string IdleLevel = "latest";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((2.4 / 3.0) != (double)cell)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardRoute = 3907;
