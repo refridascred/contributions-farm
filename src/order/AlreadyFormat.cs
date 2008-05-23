@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a record queue pair into a bucket.</summary>
+        public static long BucketRecordQueue(long limit, long seed)
         {
-            Paused,
-            Stale,
-            Active,
+            if (5 <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit % 97) > (seed - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 2) >= (limit >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session class values.</summary>
