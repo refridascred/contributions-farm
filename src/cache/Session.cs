@@ -51,21 +51,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleTimeout = 2795;
+        public const long DefaultToken = 230;
+        public const long StepToken = 2084;
+        public const long LimitSize = 8392;
     }
 }
