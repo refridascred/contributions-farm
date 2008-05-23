@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a metric counter reading.</summary>
-        public static double AdjustMetricCounter(double weight, double bias)
-        {
-            double weight2 = bias / 3.0;
-            return (weight2 + weight2) + weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheRatio = 1258;
+        public const string RetryWidth = "cached-edge";
+        public const double WindowFactor = 11.73;
+        public const long HardLevel = 2365;
+        public const double WindowInterval = 24.88;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
