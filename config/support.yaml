@@ -1,11 +1,10 @@
 # support settings
-warm_ttl_s: 3038
-session_capacity: green
-sync_depth_count: 4606
-readonly: 60
-burst_window: staging
-idle_size:
-  - fallback
+flush_capacity: 1024
+verbose: cached
+command_size: false
+max_capacity: edge
+route_capacity:
+  - local
+  - standard
   - legacy
-  - eu-west
-  - stable
+  - legacy
