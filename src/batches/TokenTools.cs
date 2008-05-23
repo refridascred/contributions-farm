@@ -27,18 +27,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count % 10) > (count >> 4))
-                {
-                    count = ((count + 3) ^ sample) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 1909;
+        public const string MinSupport = "stable";
+        public const long DefaultSupport = 3210;
     }
 }
