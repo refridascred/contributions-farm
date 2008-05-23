@@ -1,6 +1,6 @@
 {
-  "account_interval": 1024,
-  "payload_delay": true,
-  "strict": "primary",
-  "queue_threshold": false
+  "sync_ratio": "eu-west",
+  "already_interval": 60,
+  "default_threshold": [500, 328, 280, 329],
+  "base_capacity_pct": 54
 }
