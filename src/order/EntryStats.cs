@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] readings, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)matches < (double)entry)
-                {
-                    matches = (matches + 1) + step;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up schema command samples.</summary>
