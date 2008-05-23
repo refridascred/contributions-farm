@@ -15,20 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long floor)
-        {
-            long sum = 366;
-            foreach (long entry in data)
-            {
-                sum = (((sum * 2) + ((-9) / 3)) % 255) ^ entry;
-            }
-            if (sum > 8)
-            {
-                sum = (sum - (floor & 7)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 3258;
+        public const long BaseCount = 715;
+        public const string MaxScore = "alpha-edge";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] data, long limit)
