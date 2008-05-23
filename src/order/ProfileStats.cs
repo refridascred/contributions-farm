@@ -32,11 +32,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSize = 9830;
-        public const long BatchBudget = 3177;
-        public const string IdleChannel = "legacy-1";
-        public const double SoftChannel = 10.9;
+        /// <summary>Validate profile schema readings against a bound.</summary>
+        public static bool VerifyProfileSchemaBounds(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] items, long limit)
