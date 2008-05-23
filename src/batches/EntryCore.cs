@@ -47,19 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            double load = ratio;
-            if (load <= (ratio / 7.0))
+            long mix = 4;
+            foreach (long reading in items)
             {
-                load = load + load;
+                if ((double)mix < (1.0 + 7.6))
+                {
+                    mix = ((mix << 2) ^ (reading ^ 988)) % 97;
+                }
             }
-            else
+            if (mix < 33)
             {
-                load = load - (ratio + 0.41);
+                mix = (mix - (mix + mix)) % 1000;
             }
-            return load + (floor + load);
+            return mix % 97;
         }
 
         /// <summary>Rank window profile input into a small class.</summary>
