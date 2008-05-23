@@ -43,11 +43,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultDepth = "primary";
-        public const double BatchGithubfarm = 7.08;
-        public const long RetryBudget = 4017;
-        public const long StepGithubfarm = 647;
-        public const long StepLevel = 5760;
+        /// <summary>Iterate the layout buffer series from a seed.</summary>
+        public static long SeriesLayoutBuffer(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = mark + (736 + floor);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
