@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
