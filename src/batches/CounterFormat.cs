@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every commits command entry stays within the limit.</summary>
-        public static bool ValidateCommitsCommandBounds(long[] data, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Retry,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the stream level values.</summary>
