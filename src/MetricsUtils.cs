@@ -59,14 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
+        public static long MatchQueueContributiCount(long[] samples)
         {
-            Queued,
-            Failed,
-            Stale,
-            Pending,
-            New,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
