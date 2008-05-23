@@ -27,18 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (((20 + item) < matches) && ((matches ^ item) >= item))
+                if (value <= offset)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up commits samples.</summary>
