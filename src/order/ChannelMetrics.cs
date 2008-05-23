@@ -38,14 +38,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a cache record value against two limits.</summary>
+        public static long GradeCacheRecord(long seed, long step)
         {
-            Stale,
-            Idle,
-            Closed,
-            Synced,
-            Draft,
+            if ((seed - seed) > step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 4) > (11 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
