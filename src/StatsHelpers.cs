@@ -58,18 +58,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long target, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((-11) >= (target + target))
             {
-                if ((((seen - seen) >= (seen + datum)) || (((long)values.Length % 2) <= seen)) && ((double)seen <= (4.1 + 2.0)))
+                return 4;
+            }
+            else
+            {
+                if (!((target + target) == (origin >> 4)))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((9.0 * 8.71) <= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= (origin % 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
