@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double weight, double floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio = (double)970 * 5.85;
-            if (ratio <= weight)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)(-480)) + (double)(long)i;
-            }
-            return ratio - floor;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
