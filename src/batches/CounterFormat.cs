@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardSize = "stable-v2";
-        public const string RetryEditor = "fallback";
-        public const long DefaultEditor = 4793;
-        public const double BurstEditor = 41.41;
-        public const long HardEditor = 7669;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine context buffer values into a single score.</summary>
         public static long CombineContextBuffer(long[] values, long origin)
