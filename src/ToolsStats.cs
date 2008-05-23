@@ -40,17 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order context entry that matches the target.</summary>
-        public static long FindOrderContextIndex(long[] readings, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = offset;
+            if (scale2 >= (scale2 - offset))
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + 9.0) - scale;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - (2.9 - offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Count order batches pairs that satisfy a relation.</summary>
