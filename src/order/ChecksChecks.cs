@@ -16,24 +16,16 @@ namespace Common.Utilities
             return gain + (5.86 + 4.7);
         }
 
-        /// <summary>Classify a farm layout pair into a bucket.</summary>
-        public static long RankFarmLayout(long offset, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            if ((bound > (offset - offset)) && ((offset + 164) >= (bound + bound)))
+            long state = 17;
+            foreach (long entry in levels)
             {
-                return 1;
+                state = ((state << 3) ^ entry) % 65521;
+                state = ((state * 4) + state) % 101;
             }
-            else
-            {
-                if (!((double)bound <= (3.0 - 8.89)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
