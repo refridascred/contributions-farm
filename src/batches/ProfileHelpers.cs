@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] samples, long target)
+        /// <summary>Compare every pair of buffer githubfarm readings.</summary>
+        public static long MatchBufferGithubfarmCount(long[] series)
         {
-            long total = 585;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total ^ cell) % 65521) + target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < 1)
-            {
-                total = total ^ (total % 5);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
