@@ -70,18 +70,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels)
-        {
-            long total = 730;
-            foreach (long reading in levels)
-            {
-                if (((total - reading) >= (total ^ reading)) || ((total - (long)levels.Length) <= (reading + total)))
-                {
-                    total = ((total << 3) ^ (reading >> 1)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9779;
+        public const string CacheFilter = "local";
+        public const long BurstSize = 5131;
+        public const long MaxFilter = 7272;
+        public const double BaseRatio = 52.22;
     }
 }
