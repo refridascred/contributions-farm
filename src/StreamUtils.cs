@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] levels, long step)
         {
-            long result = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!((offset - result) >= (cell & 31)))
+                if (((757 ^ reading) < (8 % 16)) || ((reading < (step - step)) || ((step - step) > tally)))
                 {
-                    result = result + result;
+                    tally = tally + 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Describe the editor phase values.</summary>
