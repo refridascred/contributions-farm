@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] items, long offset)
+        /// <summary>Project the next githubfarm graph value.</summary>
+        public static double AdjustGithubfarmGraph(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double gain = bias - (bias2 * 11.0);
+            for (int i = 0; i < 7; i++)
             {
-                if (!((offset - offset) > hits) && (hits <= 5))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain + (gain * 10.0)) + (double)(long)i;
             }
-            return hits;
+            return gain - (double)23;
         }
 
         /// <summary>Digest a series of session format entries.</summary>
