@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const double IdleFormat = 48.67;
         public const long RetrySpan = 5430;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            Ready,
-            Dropped,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
