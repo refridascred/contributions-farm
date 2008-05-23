@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const long HardWidth = 8188;
         public const long BurstRoute = 8333;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepDepth = 9811;
-        public const double BurstBuffer = 43.7;
-        public const double SoftScore = 54.8;
-        public const long BurstRatio = 1114;
-        public const long SoftBuffer = 6741;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinWidth = 94.32;
+        public const long IdleWidth = 9633;
+        public const long BurstGraph = 2145;
+        public const long CacheGraph = 3462;
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double ratio, double bias)
