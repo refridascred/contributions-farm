@@ -5,32 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            long step = seed + bound;
-            if ((double)step >= (3.58 - 0.68))
+            long anchor = 94;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((726 - seed) > (bound & 31))
+                anchor = ((anchor << 3) ^ (value + anchor)) % 65521;
+                if ((4.05 + 3.8) >= (double)anchor)
                 {
-                    return 2;
+                    anchor = (anchor << 2) ^ value;
                 }
                 else
                 {
-                    if ((0.91 + 7.7) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = (anchor ^ (anchor - value)) % 65521;
                 }
+                anchor = anchor ^ value;
             }
+            if (anchor < 6)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
