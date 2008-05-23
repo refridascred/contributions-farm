@@ -1,10 +1,6 @@
 {
-  "min_size_ms": "stable",
-  "readonly": {
-    "flush_depth_pct": true,
-    "batch_ratio": 82.77,
-    "soft_limit": 6481,
-    "min_delay": [14, 205, 260]
-  },
-  "persist": "local"
+  "default_ttl_pct": 250,
+  "base_delay": "open",
+  "max_size": 23.49,
+  "sync_timeout_pct": [302, 270, 189]
 }
