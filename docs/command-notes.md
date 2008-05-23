@@ -1,11 +1,11 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
+A batches that stays idle for too long is moved to the tools list.
+Keep graph and layout names short and lowercase.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate notes input early
-- Document new batches fields
-- Log every token change
+- Validate tools input early
+- Document new format fields
+- Keep payload values small
+- Prefer support defaults
