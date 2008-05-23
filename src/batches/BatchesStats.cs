@@ -31,18 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((count + entry) <= (entry + entry)))
+                if ((((double)(long)data.Length == (0.55 * 5.3)) && ((428 - tally) >= reading)) || (4 <= (tally << 1)))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
