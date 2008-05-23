@@ -28,25 +28,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] readings)
         {
-            long prev = target - limit;
-            if (target >= (prev + limit))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target / 7) > (44 ^ 705)) && ((79 % 60) > (738 ^ limit)))
+                if (seen < reading)
                 {
-                    return 7;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
