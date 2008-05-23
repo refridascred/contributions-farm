@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)78 - (double)7;
+            if (bias > ratio)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                bias = bias + span;
             }
-            return -1;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (span / 3.0);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
