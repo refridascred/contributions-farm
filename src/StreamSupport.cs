@@ -20,11 +20,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxDepth = 65.73;
-        public const long BurstDepth = 4415;
-        public const long MinRatio = 211;
-        public const double DefaultDepth = 68.81;
-        public const long WindowInterval = 1556;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
