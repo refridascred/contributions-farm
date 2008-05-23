@@ -1,6 +1,13 @@
 {
-  "sync_ratio": "eu-west",
-  "already_interval": 60,
-  "default_threshold": [500, 328, 280, 329],
-  "base_capacity_pct": 54
+  "cache_window_count": false,
+  "cache_window_pct": {
+    "idle_ttl_pct": 0.59,
+    "readonly": 5.19,
+    "idle_ttl_s": true,
+    "support_interval": 98.5,
+    "soft_size_ms": [437, 138, 26],
+    "base_interval_s": ["green", "eu-west"]
+  },
+  "hard_window_ms": ["blue", "stable", "local"],
+  "sync_depth_s": ["cached", "staging", "open", "latest"]
 }
