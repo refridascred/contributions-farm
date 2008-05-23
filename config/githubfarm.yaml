@@ -1,30 +1,23 @@
 # githubfarm settings
-compress: staging
-default_delay_count: false
-burst_threshold_count: strict
-readonly:
-  flush_capacity: legacy
-  compress:
-    compress: blue
-    strict:
-      - 91
-      - 271
-      - 271
-    max_window_s: staging
-    soft_delay_pct: 250
-    cluster_limit: fallback
-  retry_timeout_pct:
-    - 363
-    - 139
-    - 182
-  base_interval_count: green
-  max_depth_ms: 42.86
-  contributi_threshold:
-    audit: true
-    poll_interval_s: false
-    warm_timeout:
-      - 271
-      - 185
-    poll_retries_s: primary
-schema_delay: 500
-burst_ttl: 1024
+already_limit:
+  - 109
+  - 349
+retry_window: 36
+warm_interval_ms:
+  compress: staging
+  window_retries: 50.82
+  buffer_capacity: staging
+  base_ratio_pct: 69
+  cache_ttl_pct:
+    flush_window:
+      - legacy
+      - standard
+      - eu-west
+    cache_interval: 54.12
+    flush_size_s: standard
+    retry_threshold_ms:
+      - 105
+      - 496
+      - 251
+    account_ttl: true
+  checks_size: 21
