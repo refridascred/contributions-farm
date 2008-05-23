@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5505;
-        public const long MaxCount = 7249;
-        public const string SoftWindow = "open-v2";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 2145;
