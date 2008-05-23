@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long result = 490;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (13.0 * 5.08))
+                {
+                    result = (result + ((long)values.Length % 24)) % 255;
+                }
+                else
+                {
+                    result = result - (608 + 72);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the session class values.</summary>
