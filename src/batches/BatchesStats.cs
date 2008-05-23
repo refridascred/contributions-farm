@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 0;
+            foreach (long item in values)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum + (8 + sum)) % 65521) ^ item) + bound;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
