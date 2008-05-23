@@ -41,19 +41,35 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every cluster token entry stays within the limit.</summary>
-        public static bool GuardClusterTokenLimits(long[] series, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                if (cell < bound)
+                if ((reading & 127) < (acc & 127))
                 {
-                    found = false;
                     break;
                 }
+                else
+                {
+                    acc = acc + (acc >> 4);
+                    acc = (acc + (reading & 1)) % 1000;
+                }
+                if ((double)reading >= (double)acc)
+                {
+                    acc = (acc * 4) + acc;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (46 / 4)) % 97;
+                }
             }
-            return found;
+            if (acc > 42)
+            {
+                acc = acc ^ (547 / 7);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
