@@ -17,15 +17,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double span)
+        /// <summary>Count the schema farm entries that pass the check.</summary>
+        public static long MeasureSchemaFarmMatches(long[] items)
         {
-            double ratio = 10.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                ratio = (((ratio + ratio) + (double)(long)i) + scale) - span;
+                if (((4 + reading) >= reading) || ((reading ^ reading) == (reading * 2)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio + 7.3;
+            return matches;
         }
 
         /// <summary>Hold a farm options.</summary>
