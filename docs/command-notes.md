@@ -1,11 +1,11 @@
 # Command notes
 
-Each tools is validated before it reaches the commits queue.
-Keep entry and command names short and lowercase.
+Keep batch and graph names short and lowercase.
+Each batches is validated before it reaches the commits queue.
+When a payload fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate buffer input early
-- Prefer filter defaults
-- Document new entry fields
-- Log every route change
+- Keep metric values small
+- Validate cluster input early
+- Document new format fields
