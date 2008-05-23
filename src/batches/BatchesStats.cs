@@ -32,17 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long LocateBufferBatchIndex(long[] readings, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long lane = 654;
-                mark = (mark ^ lane) % 97;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
