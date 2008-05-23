@@ -23,14 +23,13 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            long anchor = 238;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (anchor + (long)levels.Length) + value;
-                anchor = (anchor + (anchor - anchor)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
             return anchor;
         }
