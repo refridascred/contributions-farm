@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] items, long seed)
         {
-            Done,
-            Dropped,
-            Retry,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item < (-34))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
