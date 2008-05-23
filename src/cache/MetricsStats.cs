@@ -56,15 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double bias)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double scale = 6.0;
-            if (scale < ratio)
-            {
-                scale = (scale + (double)4) - bias;
-            }
-            return scale + (double)(-555);
+            Active,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
