@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples, long offset)
+        /// <summary>Count the already record entries that pass the check.</summary>
+        public static long CountAlreadyRecordGaps(long[] series)
         {
-            long anchor = 651;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((13.0 * 5.45) == (double)anchor)
+                if (!((count / 6) < (datum - count)))
                 {
-                    anchor = (((anchor * 4) + entry) % 97) - offset;
+                    count = count + 2;
                 }
             }
-            return anchor % 97;
+            return count;
         }
     }
 }
