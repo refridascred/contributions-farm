@@ -15,12 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] samples, long offset)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)seen > (double)reading)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
