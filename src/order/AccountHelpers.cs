@@ -46,14 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            Draft,
-            New,
-            Idle,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)matches < (3.37 * 7.2))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
