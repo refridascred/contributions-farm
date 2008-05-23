@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data)
         {
-            Pending,
-            Synced,
-            New,
+            long total = 2;
+            foreach (long datum in data)
+            {
+                total = ((total + (16 % 5)) % 65521) ^ datum;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
