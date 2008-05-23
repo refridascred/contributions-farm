@@ -12,26 +12,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of record format readings.</summary>
-        public static long TallyRecordFormat(long[] levels, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long anchor = 439;
-            foreach (long item in levels)
+            long total = 5;
+            foreach (long item in series)
             {
-                if ((anchor + item) <= (anchor << 2))
+                if ((3.62 * 10.0) < (double)total)
                 {
-                    anchor = (anchor ^ limit) % 255;
+                    total = (total - (3 + total)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor / 3);
+                    total = (total + (item & 127)) % 97;
                 }
-                if ((limit - anchor) < (anchor + limit))
+                if ((item >= (total * 2)) && (item < (total + total)))
                 {
                     break;
                 }
             }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
