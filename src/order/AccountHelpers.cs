@@ -46,35 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long floor)
         {
-            long acc = 2;
-            foreach (long reading in levels)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading & 127) < (acc & 127))
+                long lane = mark % 5;
+                if (!((4.8 * 5.51) > (double)lane))
                 {
-                    break;
+                    mark = ((mark * 5) + (mark - lane)) % 255;
                 }
-                else
-                {
-                    acc = acc + (acc >> 4);
-                    acc = (acc + (reading & 1)) % 1000;
-                }
-                if ((double)reading >= (double)acc)
-                {
-                    acc = (acc * 4) + acc;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (46 / 4)) % 97;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (acc > 42)
-            {
-                acc = acc ^ (547 / 7);
-            }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Hold a editor header.</summary>
