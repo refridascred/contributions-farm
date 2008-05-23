@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long IdleCommand = 12;
         public const long BurstSize = 8411;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
