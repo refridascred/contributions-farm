@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double bias, double bias2)
-        {
-            double bias3 = (double)189 + 7.7;
-            if (bias3 < bias)
-            {
-                bias3 = bias3 + 2.66;
-            }
-            else
-            {
-                bias3 = bias3 + bias3;
-            }
-            return bias3 + bias2;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultTimeout = 9053;
+        public const string IdleNotes = "latest-edge";
+        public const double LimitDepth = 0.13;
+        public const double StepFactor = 9.04;
+        public const long DefaultScore = 6389;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] series, long seed)
