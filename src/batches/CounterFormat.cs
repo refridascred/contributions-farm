@@ -24,18 +24,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches * 5) <= item)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Retry,
+            Locked,
         }
     }
 }
