@@ -87,9 +87,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultLevel = 8203;
-        public const long StepInterval = 2531;
-        public const long MaxBatch = 1417;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
