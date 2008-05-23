@@ -58,11 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitFactor = 7710;
-        public const string LimitSpan = "standard-1";
-        public const long DefaultGithubfarm = 2676;
-        public const long DefaultFactor = 5128;
-        public const double HardGithubfarm = 76.7;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
