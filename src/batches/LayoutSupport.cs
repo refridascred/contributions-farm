@@ -42,12 +42,32 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long floor)
         {
-            Pending,
-            Ready,
-            Active,
+            long cur = bound - floor;
+            if ((double)cur >= (2.6 / 3.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor / 6) <= (bound << 3)) && ((cur >> 3) <= (floor - cur)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 1) <= (1 - cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
