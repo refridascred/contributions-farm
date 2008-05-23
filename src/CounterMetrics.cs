@@ -38,31 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = 2;
-            foreach (long entry in levels)
-            {
-                long tally = (entry + anchor) >> 2;
-                if (!!(tally <= ((-300) << 1)))
-                {
-                    anchor = ((anchor * 2) + (0 + anchor)) % 97;
-                }
-                if ((anchor ^ entry) >= 859)
-                {
-                    anchor = (anchor + (entry + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (anchor * 2);
-                }
-            }
-            if (anchor < 292)
-            {
-                anchor = (anchor - (709 & 7)) % 4096;
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
