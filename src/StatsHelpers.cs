@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 4636;
+        public const double DefaultWidth = 61.33;
+        public const double WindowDepth = 78.79;
+        public const long RetryQueue = 7353;
+        public const long SoftFactor = 9308;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long IterateWindow(long origin)
