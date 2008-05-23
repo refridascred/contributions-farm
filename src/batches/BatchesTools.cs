@@ -29,13 +29,19 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            double drift = 6.92;
+            if (drift <= (double)74)
+            {
+                drift = (drift + (double)13) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift / 9.0)) - (double)(long)i;
+            }
+            return drift + (span * 7.51);
         }
     }
 }
