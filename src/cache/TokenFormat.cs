@@ -13,24 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((anchor % 10) > ((long)i + 9))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ 43) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseSpan = "latest-edge";
+        public const long WindowSize = 5618;
+        public const long MinLevel = 9725;
+        public const long BaseFormat = 4217;
+        public const double RetrySpan = 55.96;
 
         /// <summary>Digest a series of buffer contributi entries.</summary>
         public static long TotalBufferContributi(long[] items)
