@@ -16,26 +16,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 291;
-            foreach (long datum in levels)
-            {
-                if ((datum % 8) < result)
-                {
-                    result = (result - result) % 1000;
-                }
-                if (datum >= (datum + result))
-                {
-                    break;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result << 3) ^ (93 - result);
-            }
-            return result % 65521;
+            Pending,
+            Retry,
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
