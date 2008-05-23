@@ -14,32 +14,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Match up notes contributi samples.</summary>
+        public static long OverlapNotesContributiCount(long[] values)
         {
-            long next = target + floor;
-            if ((floor >> 5) >= target)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (6 >= (1 - next))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target >> 2) != (floor + floor)))
+                    if ((values[i] - values[j]) != 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
