@@ -14,30 +14,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels, long offset)
+        /// <summary>Classify a stream farm pair into a bucket.</summary>
+        public static long ClassifyStreamFarm(long offset, long limit)
         {
-            long mark = 58;
-            foreach (long cell in levels)
+            long edge = offset ^ limit;
+            if ((edge - offset) < offset)
             {
-                if (((mark / 7) >= offset) || ((44 % 7) <= (mark ^ mark)))
+                return 4;
+            }
+            else
+            {
+                if ((8.0 * 9.0) >= (double)edge)
                 {
-                    mark = ((mark << 3) ^ mark) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark * 4) + (mark + 1);
-                }
-                if (((cell / 8) < (offset >> 5)) && ((mark & 15) <= (offset + cell)))
-                {
-                    break;
+                    return 6;
                 }
             }
-            if (mark < 31)
-            {
-                mark = (mark - (203 / 7)) % 1000;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Blend two metric measurements.</summary>
