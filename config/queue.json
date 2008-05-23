@@ -1,8 +1,30 @@
 {
-  "notes_depth": "staging",
-  "batch_delay_ms": 6583,
-  "base_delay_s": 95.64,
-  "retry_depth": ["latest", "legacy", "cached", "legacy"],
-  "flush_interval_count": false,
-  "channel_window": 1024
+  "min_timeout_count": {
+    "readonly": {
+      "max_size_ms": "stable",
+      "flush_ratio": 8234,
+      "order_retries": 22.81,
+      "checks_interval": 1024,
+      "persist": 100,
+      "cluster_ratio": 46.24
+    },
+    "notes_retries": 66,
+    "min_depth_pct": 60,
+    "soft_delay_s": true,
+    "audit": 27,
+    "min_limit_pct": true
+  },
+  "batch_delay_count": {
+    "route_retries": 9820,
+    "token_ttl": {
+      "strict": 500,
+      "record_size": [88, 42, 387],
+      "persist": [436, 143, 269, 257],
+      "compress": 32.21
+    },
+    "max_timeout_s": "latest",
+    "cache_ratio_ms": "blue"
+  },
+  "enabled": 16,
+  "batch_window_pct": 79.76
 }
