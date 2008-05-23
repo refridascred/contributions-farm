@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next githubfarm graph value.</summary>
-        public static double AdjustGithubfarmGraph(double bias, double bias2)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            double gain = bias - (bias2 * 11.0);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                gain = (gain + (gain * 10.0)) + (double)(long)i;
+                if ((6 << 3) <= (datum + datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - (double)23;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
