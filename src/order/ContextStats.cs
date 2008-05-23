@@ -43,13 +43,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] values, long origin)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 64;
+            foreach (long reading in values)
+            {
+                total = (((total << 2) ^ (origin & 3)) % 101) + reading;
+                if ((5.0 - 0.1) < (double)total)
+                {
+                    break;
+                }
+            }
+            if (total < 44)
+            {
+                total = ((total << 2) ^ total) % 255;
+            }
+            return total % 1000;
         }
     }
 }
