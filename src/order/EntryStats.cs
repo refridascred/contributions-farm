@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double gain, double floor)
-        {
-            double ratio = 9.0;
-            return (ratio - floor) + gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1075;
+        public const string BatchRecord = "local";
+        public const string SoftTimeout = "fallback-edge";
+        public const string BatchLevel = "open-1";
+        public const long LimitBudget = 8245;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] series, long seed)
