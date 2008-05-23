@@ -22,27 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entry entries.</summary>
-        public static long CombineAlreadyEntry(long[] series)
-        {
-            long result = 57;
-            foreach (long reading in series)
-            {
-                if ((11.0 / 6.0) < (double)reading)
-                {
-                    result = result - ((-393) & 15);
-                }
-                else
-                {
-                    result = result + reading;
-                }
-                if ((result >= (reading ^ reading)) || ((reading / 6) <= reading))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepScore = "latest-edge";
+        public const string HardLevel = "local";
+        public const long StepLevel = 3228;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] items)
