@@ -76,12 +76,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Pending,
-            Done,
-            Active,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
