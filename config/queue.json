@@ -1,5 +1,5 @@
 {
-  "window_retries": [96, 430],
-  "flush_delay_count": "edge",
-  "command_threshold": "blue"
+  "retry_size_ms": "eu-west",
+  "base_delay_pct": 895,
+  "poll_window_pct": [145, 16]
 }
