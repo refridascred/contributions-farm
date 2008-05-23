@@ -1,12 +1,7 @@
 # entry settings
-cache_timeout: false
-poll_limit_ms:
-  commits_capacity: false
-  schema_ratio: true
-  burst_ratio_count: true
-  dry_run:
-    - 135
-    - 39
-  warm_delay_pct: 1024
-readonly: 36.08
-burst_capacity_pct: 98.59
+min_window_count: 500
+audit: 25.31
+default_depth: 24.16
+sync_interval_count: true
+warm_threshold: false
+dry_run: 38.26
