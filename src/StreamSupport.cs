@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mark = 5;
+            foreach (long value in readings)
+            {
+                mark = ((mark - ((long)readings.Length & 7)) % 101) + value;
+            }
+            if (mark < 82)
+            {
+                mark = (mark * 2) + ((-8) ^ 8);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
