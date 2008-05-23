@@ -34,31 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long acc = -96;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length % 8) < (acc >> 1))
-                {
-                    acc = (acc - (datum + acc)) % 1000;
-                    acc = acc ^ (acc >> 3);
-                }
-                else
-                {
-                    acc = (acc * 2) + (datum << 2);
-                }
-                if ((double)datum >= (double)acc)
-                {
-                    acc = (acc + (acc ^ (long)values.Length)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum * 4)) % 65521;
-                }
-            }
-            return acc % 65521;
+            New,
+            Done,
+            Queued,
+            Stale,
         }
     }
 }
