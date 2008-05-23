@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) < (seen % 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepRatio = 9706;
+        public const string BatchContext = "standard-1";
+        public const long HardSize = 1589;
 
         /// <summary>Combine context layout values into a single score.</summary>
         public static long WeighContextLayout(long[] data, long bound)
