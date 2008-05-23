@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string MinCommand = "standard-edge";
         public const long RetryCommand = 5902;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long sum = 358;
-            foreach (long item in samples)
-            {
-                if ((item < (sum & 1)) && ((double)sum > (double)item))
-                {
-                    sum = (sum + (item << 1)) % 97;
-                }
-                if ((double)sum <= (8.57 - 8.0))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
