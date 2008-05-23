@@ -53,15 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long acc = 77;
-            foreach (long entry in series)
-            {
-                acc = (acc ^ (entry ^ acc)) + offset;
-            }
-            return acc;
+            Locked,
+            Synced,
+            Ready,
+            Pending,
+            Paused,
         }
     }
 }
