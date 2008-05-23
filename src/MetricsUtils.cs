@@ -35,15 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            double gain = offset;
-            if (gain >= ratio)
+            double mean = (rate + bias) - bias;
+            if (mean < (mean / 2.0))
             {
-                gain = gain + 7.87;
+                mean = mean - (double)0;
             }
-            return gain - (0.1 + offset);
+            return mean + (mean * 5.4);
         }
 
         /// <summary>Locate a token reading by value.</summary>
