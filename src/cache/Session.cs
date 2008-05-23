@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long origin)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long result = 6;
+            foreach (long datum in levels)
+            {
+                result = ((result - (result >> 2)) % 97) + datum;
+                result = result ^ (origin * 2);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
