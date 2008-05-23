@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 2020;
-        public const long RetryLevel = 510;
-        public const string BatchStream = "stable-edge";
-        public const long LimitWidth = 1348;
-        public const string StepInterval = "open-1";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((5.8 + 14.0) < 5.4) || ((entry + seen) <= (entry + 65)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
