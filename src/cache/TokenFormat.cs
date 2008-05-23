@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many schema editor samples are out of range.</summary>
-        public static long CountSchemaEditorOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((double)count < 8.56) && !(item < count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 66.59;
+        public const double MaxBatches = 97.27;
+        public const long DefaultBatches = 6087;
+        public const long LimitDepth = 7377;
+        public const string BaseBatches = "local-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] samples)
