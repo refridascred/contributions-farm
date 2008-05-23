@@ -1,8 +1,7 @@
 {
-  "max_timeout_s": [144, 279, 249, 198],
-  "token_ratio": 100,
-  "dry_run": [326, 237, 350, 164],
-  "base_capacity_ms": "primary",
-  "order_ttl": 15.76,
-  "readonly": ["primary", "fallback", "open", "strict"]
+  "route_ratio": "cached",
+  "enabled": "latest",
+  "batch_retries_pct": 100,
+  "retry_delay": 1024,
+  "retry_size": 7334
 }
