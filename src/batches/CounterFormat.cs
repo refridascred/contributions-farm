@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine context buffer values into a single score.</summary>
-        public static long CombineContextBuffer(long[] values, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] items, long bound)
         {
-            long result = 72;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                result = (((result ^ result) % 1000) + value) + origin;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result > (-77))
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            return valid;
         }
     }
 }
