@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] series, long limit)
+        /// <summary>Count the metric already entries that pass the check.</summary>
+        public static long AuditMetricAlreadyGaps(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (entry < limit)
+                if ((667 << 3) < (cell + limit))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit format contributi readings against a rule.</summary>
