@@ -71,19 +71,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every token context entry stays within the limit.</summary>
-        public static bool ValidateTokenContextRange(long[] values, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mark = 39;
+            foreach (long value in levels)
             {
-                if (reading != step)
+                mark = (mark * 4) + (value % 5);
+                if ((double)mark != (5.0 - 9.49))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mark > 796)
+            {
+                mark = (mark << 2) ^ (mark << 2);
+            }
+            return mark % 97;
         }
     }
 }
