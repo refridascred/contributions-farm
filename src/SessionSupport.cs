@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long slot = bound + bound2;
+            if ((double)bound > (0.93 - 8.9))
             {
-                if ((tally << 1) == (tally ^ entry))
+                return 3;
+            }
+            else
+            {
+                if ((603 ^ slot) > bound2)
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((slot + bound2) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
