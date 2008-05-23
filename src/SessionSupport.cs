@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] items, long seed)
         {
-            long carry = 7;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                carry = (carry + (sample ^ carry)) % 1000;
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry << 2) ^ ((long)samples.Length >> 5);
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
