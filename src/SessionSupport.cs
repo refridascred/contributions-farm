@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double rate = (double)(78 - 62);
+            if (rate <= (gain + gain))
             {
-                if ((double)tally == (3.51 / 7.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - floor;
             }
-            return tally;
+            else
+            {
+                rate = rate + (gain / 2.0);
+            }
+            return rate + (double)2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
