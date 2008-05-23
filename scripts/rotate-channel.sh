@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached legacy; do
+for item in cached latest open green; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
