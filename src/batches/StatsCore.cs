@@ -37,22 +37,37 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long floor, long origin)
+        /// <summary>Classify a route context pair into a bucket.</summary>
+        public static long RankRouteContext(long target, long step)
         {
-            if ((origin < (origin & 127)) || (origin >= (75 & 255)))
+            long slot = target ^ step;
+            if ((0 - step) < 9)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((0.6 * 18.0) > (double)floor)
+                if ((1.0 / 5.0) != (double)target)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if ((slot % 60) != (target & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - step) <= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
