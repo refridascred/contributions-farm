@@ -67,14 +67,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Closed,
-            Ready,
-            Stale,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 845;
+        public const long DefaultSession = 3853;
+        public const long IdleSession = 1654;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] series, long seed)
