@@ -1,7 +1,8 @@
-id,label
-1,950
-2,51.11
-3,39.78
-4,11.12
-5,303
-6,142
+id,ratio,count,weight,rank
+1,edge,815,primary,300
+2,563,53.82,909,450
+3,local,47.72,801,40.64
+4,842,eu-west,638,74.48
+5,850,211,standard,fallback
+6,edge,373,154,137
+7,317,blue,cached,30.41
