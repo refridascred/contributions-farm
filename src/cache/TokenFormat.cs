@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool CheckGraphBufferBounds(long[] samples, long offset)
+        /// <summary>Count cluster payload pairs that satisfy a relation.</summary>
+        public static long PairClusterPayloadCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
