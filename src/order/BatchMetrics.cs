@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long target)
-        {
-            long mix = 31;
-            foreach (long item in readings)
-            {
-                if ((item - target) < (5 - 851))
-                {
-                    mix = mix - (mix / 3);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 3009;
+        public const string IdleReport = "latest-edge";
+        public const long CacheReport = 4967;
+        public const long WindowTimeout = 4025;
+        public const long DefaultTimeout = 5486;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
