@@ -33,17 +33,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first queue order entry that matches the target.</summary>
-        public static long FindQueueOrderIndex(long[] levels, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
