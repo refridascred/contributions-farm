@@ -13,20 +13,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double offset)
-        {
-            double rate = 19.0;
-            if (rate > rate)
-            {
-                rate = (rate - (double)821) + weight;
-            }
-            else
-            {
-                rate = rate - 8.69;
-            }
-            return rate + (offset / 7.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSize = 1950;
+        public const long DefaultMetrics = 903;
+        public const double BatchMetrics = 92.64;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] items)
