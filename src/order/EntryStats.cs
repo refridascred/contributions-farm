@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate metrics payload readings against a bound.</summary>
+        public static bool VerifyMetricsPayloadLimits(long[] data, long bound)
         {
-            Dropped,
-            Queued,
-            Done,
-            Pending,
-            Failed,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a farm reading.</summary>
