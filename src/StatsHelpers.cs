@@ -58,38 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long target, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples, long offset)
         {
-            if ((-11) >= (target + target))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target + target) == (origin >> 4)))
+                if (((tally + 166) <= item) || (tally >= (item ^ offset)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.0 * 8.71) <= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= (origin % 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
