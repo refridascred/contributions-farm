@@ -1,5 +1,4 @@
 # githubfarm settings
-command_ttl: fallback
-base_retries: strict
-verbose: 2797
-warm_size: true
+hard_retries_pct: 4112
+githubfarm_ttl: 1024
+batches_depth: 81.24
