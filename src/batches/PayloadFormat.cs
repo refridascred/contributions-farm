@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6221;
-        public const double BatchWidth = 77.18;
-        public const string WindowWidth = "cached-1";
-        public const long DefaultBatches = 1256;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Queued,
+            Stale,
+            Closed,
+            Idle,
+            Done,
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long floor)
