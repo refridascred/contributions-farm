@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long target)
         {
-            Active,
-            Queued,
-            New,
-            Synced,
-            Stale,
+            long next = origin + target;
+            if ((4.0 - 10.0) == (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin >= (next >> 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin % 97) != (origin + origin)) && ((double)next < (4.2 - 6.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target << 1) <= (2 + 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
