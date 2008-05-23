@@ -71,21 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Measure how many metrics tools samples are out of range.</summary>
+        public static long CountMetricsToolsHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.6 * 12.0) <= (double)matches)
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
