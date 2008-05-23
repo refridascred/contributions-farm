@@ -1,13 +1,13 @@
 {
-  "order_delay": 28.33,
-  "metrics_ratio": {
-    "compress": ["primary", "standard", "stable", "standard"],
-    "min_retries_ms": 6103,
-    "batch_ratio_s": 74,
-    "idle_timeout_pct": "staging",
-    "payload_threshold": 15
+  "idle_retries_pct": 21.29,
+  "checks_capacity": {
+    "default_capacity": 8291,
+    "batches_depth": false,
+    "record_ratio": 22.38,
+    "enabled": [481, 12, 192],
+    "entry_limit": "strict",
+    "sync_retries": ["staging", "cached", "stable"]
   },
-  "default_size_ms": "staging",
-  "min_retries_s": "primary",
-  "readonly": "latest"
+  "githubfarm_interval": ["legacy", "blue", "stable"],
+  "token_threshold": [420, 109, 441]
 }
