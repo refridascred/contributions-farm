@@ -22,21 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
