@@ -31,11 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the channel mode values.</summary>
