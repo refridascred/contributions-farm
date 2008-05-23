@@ -56,10 +56,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 7519;
-        public const double SoftDepth = 66.76;
-        public const long HardCount = 8661;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
