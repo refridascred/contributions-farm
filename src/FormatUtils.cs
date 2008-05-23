@@ -73,13 +73,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 9460;
+        public const string LimitBatch = "alpha-v2";
+        public const double StepSize = 57.54;
+        public const long MinBatch = 1195;
     }
 }
