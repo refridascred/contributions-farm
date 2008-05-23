@@ -34,12 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "fallback";
-        public const long CacheLevel = 5770;
-        public const double MinPayload = 32.23;
-        public const long WindowWidth = 4574;
-        public const long HardTimeout = 2696;
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool VerifyMetricsCounterRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadRange(long[] data, long target)
