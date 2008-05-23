@@ -27,17 +27,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = step - offset;
+            if ((gap <= offset) || ((offset - gap) < (offset + offset)))
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (offset > (offset >> 5))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
