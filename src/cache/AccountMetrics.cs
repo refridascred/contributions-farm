@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const string RetryTools = "fallback-edge";
         public const string HardTools = "local";
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((37 + datum) <= (seen % 2))
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
