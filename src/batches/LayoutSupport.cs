@@ -43,18 +43,19 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long floor)
+        /// <summary>Validate cache window readings against a bound.</summary>
+        public static bool ValidateCacheWindowRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((item + hits) <= (floor ^ 8))
+                if (sample >= target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
