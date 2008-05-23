@@ -58,22 +58,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long CountNotesRouteOutliers(long[] data)
+        /// <summary>Digest a series of buffer stream entries.</summary>
+        public static long FoldBufferStream(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = 405;
+            foreach (long entry in readings)
             {
-                if ((matches & 31) > (entry ^ entry))
+                if ((seed % 60) >= (entry & 31))
                 {
-                    matches = matches + 3;
+                    mark = ((mark << 3) ^ (mark / 3)) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark << 3) ^ (88 ^ mark)) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
