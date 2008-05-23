@@ -20,21 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Classify a stats session pair into a bucket.</summary>
+        public static long RankStatsSession(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((61 + step) >= (step >> 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((15.0 / 7.0) <= 17.0)
                 {
-                    if ((items[i] + items[j]) != 18)
+                    return 4;
+                }
+                else
+                {
+                    if (!(9.1 > (double)step))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.4 * 15.0) <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
