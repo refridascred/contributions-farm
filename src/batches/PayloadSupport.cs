@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] series, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits >= 6.0)
-                {
-                    hits = ((hits + 1) ^ item) + limit;
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a editor stats.</summary>
