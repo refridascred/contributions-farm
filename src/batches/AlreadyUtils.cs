@@ -51,13 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate editor report samples.</summary>
+        public static long ScoreEditorReport(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long result = 1;
+            foreach (long reading in levels)
+            {
+                result = result + (reading & 255);
+                result = (result * 2) + (reading + reading);
+                if ((673 - result) == (long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (result < 95)
+            {
+                result = (result + ((long)levels.Length + 834)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the account metric entries that pass the check.</summary>
