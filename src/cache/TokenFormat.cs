@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(seed < 140))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor - 8;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (seed / 8)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
