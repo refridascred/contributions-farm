@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Closed,
-            Idle,
-            Active,
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
