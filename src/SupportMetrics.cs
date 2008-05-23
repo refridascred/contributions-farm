@@ -65,18 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Locate a counter payload reading by value.</summary>
+        public static long FindCounterPayloadIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.47 / 6.0) != (double)seen)
+                if (levels[i] < step)
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
