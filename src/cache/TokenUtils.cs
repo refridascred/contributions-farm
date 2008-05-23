@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxBudget = 3224;
-        public const string BaseRatio = "local-v2";
-        public const double IdleWindow = 49.6;
-        public const long MinBudget = 8446;
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool CheckWindowEditorLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
