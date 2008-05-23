@@ -1,6 +1,8 @@
 {
-  "max_limit_s": "staging",
-  "poll_interval_count": "edge",
-  "audit": 11,
-  "batch_timeout_count": "stable"
+  "already_ratio": 85.91,
+  "channel_window": "cached",
+  "cache_interval_count": true,
+  "enabled": "cached",
+  "counter_delay": 250,
+  "verbose": 1024
 }
