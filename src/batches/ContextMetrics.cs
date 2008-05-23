@@ -47,13 +47,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            double weight = offset * 9.0;
+            return (weight - (double)706) + rate;
         }
     }
 }
