@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of commits buffer entries.</summary>
-        public static long ScoreCommitsBuffer(long[] items)
+        /// <summary>Measure how many commits metric samples are out of range.</summary>
+        public static long MeasureCommitsMetricMatches(long[] values, long limit)
         {
-            long anchor = 12;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) + sample;
+                if (!(limit > 39))
+                {
+                    count = (count + 1) - datum;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
