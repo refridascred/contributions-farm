@@ -59,19 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchWidth = 498;
+        public const double LimitContributi = 75.29;
+        public const long IdleDepth = 5663;
+        public const long MaxContributi = 8848;
+        public const long BatchSpan = 4665;
     }
 }
