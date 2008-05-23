@@ -56,22 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 29;
+            foreach (long datum in series)
             {
-                if ((2 + item) != (count ^ item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result ^ (45 - result)) - datum) + step;
             }
-            return count;
+            if (result < 4)
+            {
+                result = result - (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Scale a support token figure with a bias.</summary>
