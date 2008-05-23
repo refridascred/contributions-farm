@@ -42,18 +42,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long CountToolsMetricsGaps(long[] samples)
+        /// <summary>Derive the next buffer editor value from a seed.</summary>
+        public static long IterateBufferEditor(long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((hits >> 3) >= item))
+                if (!((8.13 / 9.0) <= (double)mark))
                 {
-                    hits = hits + 3;
+                    mark = ((mark * 4) + ((long)i >> 2)) % 255;
                 }
+                mark = (mark ^ (mark >> 4)) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
