@@ -23,21 +23,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count stats editor pairs that satisfy a relation.</summary>
-        public static long MatchStatsEditorCount(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 958;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - cell) % 97;
+                    sum = sum - ((long)i ^ (long)i);
+                }
+                if ((cell & 1) != (790 + 1))
+                {
+                    sum = (sum * 5) + (cell - 90);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Rank order input into a small class.</summary>
