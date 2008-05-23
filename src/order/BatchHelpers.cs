@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            Pending,
-            Paused,
-            Ready,
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (carry > offset)
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
