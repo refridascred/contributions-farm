@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepRatio = 9706;
-        public const string BatchContext = "standard-1";
-        public const long HardSize = 1589;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((limit ^ limit) >= matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine context layout values into a single score.</summary>
         public static long WeighContextLayout(long[] data, long bound)
