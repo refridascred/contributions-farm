@@ -71,11 +71,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheFactor = 37.41;
-        public const long SoftCount = 2088;
-        public const long RetryBatches = 1815;
-        public const double BaseBatches = 59.76;
-        public const long SoftBatches = 9462;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "strict-v2";
+        public const double BaseDepth = 4.55;
+        public const long SoftWidth = 1490;
+        public const double HardSpan = 5.77;
+        public const long WindowChannel = 5889;
     }
 }
