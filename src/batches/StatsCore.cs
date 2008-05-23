@@ -42,10 +42,24 @@ namespace Common.Utilities
         public const long BaseCount = 206;
         public const long LimitSize = 1783;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 3302;
-        public const string DefaultContributi = "cached-edge";
-        public const string CacheLevel = "primary-1";
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double bias, double span)
+        {
+            double weight = (double)(71 >> 3);
+            if (weight > weight)
+            {
+                weight = (weight + bias) - span;
+            }
+            else
+            {
+                weight = weight - (bias + 2.36);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight / 6.0)) + (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesRange(long[] levels, long step)
