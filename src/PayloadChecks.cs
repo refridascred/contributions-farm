@@ -67,19 +67,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] series, long origin)
         {
-            long sum = 5;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum - origin) % 97) ^ value;
-                if (318 > origin)
+                if (sample < (33 * 5))
                 {
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
