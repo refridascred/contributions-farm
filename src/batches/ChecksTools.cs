@@ -46,19 +46,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Classify a cache schema pair into a bucket.</summary>
+        public static long SortCacheSchema(long origin, long limit)
         {
-            long acc = -739;
-            foreach (long item in readings)
+            long edge = origin - limit;
+            if ((limit - limit) < (978 + 7))
             {
-                if (item > (acc ^ acc))
-                {
-                    acc = (acc * 2) + item;
-                }
-                acc = ((acc << 2) ^ acc) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((717 - origin) < (edge * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.66 - 1.0) >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
