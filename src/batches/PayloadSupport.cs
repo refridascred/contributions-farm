@@ -12,12 +12,38 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long target)
         {
-            Paused,
-            Locked,
-            Retry,
+            if ((target - target) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.83 - 20.0) <= (double)target) || ((double)bound > (1.2 / 4.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (bound + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7 & 7) >= (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor stats.</summary>
