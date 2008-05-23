@@ -37,39 +37,13 @@ namespace Common.Utilities
         public const long BaseCount = 206;
         public const long LimitSize = 1783;
 
-        /// <summary>Classify a support window pair into a bucket.</summary>
-        public static long SortSupportWindow(long step, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long cur = step ^ offset;
-            if (((offset % 24) > (142 / 4)) || (609 <= (cur >> 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (cur > 5)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((25 - cur) != (step << 2)) && ((3.5 * 6.0) < (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(offset < (cur - 205)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
