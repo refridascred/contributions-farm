@@ -1,8 +1,7 @@
 {
-  "batch_window": 64.01,
-  "compress": 66.66,
-  "batch_ttl_ms": 80.34,
-  "sync_limit_pct": "cached",
-  "strict": "green",
-  "cluster_delay": "cached"
+  "min_ratio_pct": false,
+  "audit": false,
+  "flush_size_s": false,
+  "verbose": 73.58,
+  "hard_window_pct": "legacy"
 }
