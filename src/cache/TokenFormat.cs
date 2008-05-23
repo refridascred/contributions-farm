@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double BurstQueue = 90.63;
         public const string MaxQueue = "staging";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Fold a list of farm notes readings.</summary>
+        public static long TallyFarmNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = -72;
+            foreach (long item in values)
             {
-                if ((double)item >= (double)tally)
+                if ((state / 9) >= (state - state))
                 {
-                    tally = tally + 3;
+                    state = (state ^ (490 % 10)) - item;
                 }
             }
-            return tally;
+            if (state < 429)
+            {
+                state = state - (0 & 63);
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of record entries.</summary>
