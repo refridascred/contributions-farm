@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Validate format route readings against a bound.</summary>
-        public static bool CheckFormatRouteRange(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 49.95;
+        public const long StepBudget = 2559;
+        public const long BaseCounter = 3076;
+        public const long WindowBudget = 3077;
     }
 }
