@@ -37,19 +37,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((17.0 / 7.0) > (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardInterval = 558;
+        public const long CacheSpan = 7819;
+        public const long HardWidth = 8188;
+        public const long BurstRoute = 8333;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepDepth = 9811;
