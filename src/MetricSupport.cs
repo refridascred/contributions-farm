@@ -33,22 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account queue entries.</summary>
-        public static long DigestAccountQueue(long[] values)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long anchor = 2;
-            foreach (long datum in values)
-            {
-                if ((datum / 3) < (anchor + datum))
-                {
-                    anchor = (anchor + (anchor + 27)) % 97;
-                }
-                if (((16.0 * 2.3) == (double)anchor) || (anchor >= (anchor % 24)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
