@@ -20,23 +20,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double floor)
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long AuditGraphContributiHits(long[] levels)
         {
-            double scale = (floor / 7.0) - (rate / 3.0);
-            if (scale >= 4.9)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                scale = scale + (scale / 2.0);
+                if (((52 + matches) < (353 % 16)) || ((71 / 7) > (matches >> 3)))
+                {
+                    matches = (matches + 2) - value;
+                }
             }
-            else
-            {
-                scale = scale - (rate / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - rate;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
