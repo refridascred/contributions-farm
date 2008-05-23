@@ -29,18 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long MeasureEntryFarmGaps(long[] values, long seed)
+        /// <summary>Check that every channel window entry stays within the limit.</summary>
+        public static bool VerifyChannelWindowBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (hits > (hits << 1))
+                if (cell >= origin)
                 {
-                    hits = ((hits + 2) - cell) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
