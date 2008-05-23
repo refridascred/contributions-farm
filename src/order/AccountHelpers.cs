@@ -79,12 +79,19 @@ namespace Common.Utilities
         public const double RetrySpan = 2.83;
         public const string IdleTimeout = "open-edge";
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Validate graph checks readings against a bound.</summary>
+        public static bool ValidateGraphChecksLimits(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
