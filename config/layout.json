@@ -1,7 +1,8 @@
 {
-  "channel_retries": 250,
-  "hard_threshold_count": 23,
-  "idle_interval_count": 1024,
-  "enabled": "local",
-  "strict": true
+  "max_timeout_s": [144, 279, 249, 198],
+  "token_ratio": 100,
+  "dry_run": [326, 237, 350, 164],
+  "base_capacity_ms": "primary",
+  "order_ttl": 15.76,
+  "readonly": ["primary", "fallback", "open", "strict"]
 }
