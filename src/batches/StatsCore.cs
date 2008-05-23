@@ -87,17 +87,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a farm context reading by value.</summary>
-        public static long FindFarmContextIndex(long[] readings, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
