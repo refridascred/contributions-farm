@@ -31,21 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
