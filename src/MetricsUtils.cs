@@ -26,19 +26,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long origin)
+        /// <summary>Rank cluster graph input into a small class.</summary>
+        public static long ClassifyClusterGraph(long floor, long target)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long step = floor ^ target;
+            if (((double)target == (3.21 - 18.0)) && (30 < (step - step)))
             {
-                if (item > origin)
+                return 2;
+            }
+            else
+            {
+                if (!((floor + step) != (step % 60)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + 91) <= (floor - 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - step) <= ((-8) - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
