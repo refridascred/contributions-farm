@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxRatio = 3366;
+        public const long BaseSpan = 8253;
+        public const long MinCount = 4657;
+        public const string SoftWidth = "stable";
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long target, long floor)
