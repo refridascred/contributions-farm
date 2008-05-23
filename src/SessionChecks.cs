@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            Idle,
-            Synced,
-            Stale,
+            double scale = (double)((-74) + 485);
+            if (scale >= (4.3 - ratio))
+            {
+                scale = scale + (double)(-237);
+            }
+            else
+            {
+                scale = scale - (floor / 5.0);
+            }
+            return scale - (floor - ratio);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
