@@ -34,10 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxScore = "primary-edge";
-        public const double StepContext = 98.05;
-        public const double BatchContext = 68.23;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items, long offset)
+        {
+            long mark = 0;
+            foreach (long value in items)
+            {
+                mark = (((mark << 2) ^ (mark + offset)) % 65521) - value;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every route batches entry stays within the limit.</summary>
         public static bool CheckRouteBatchesBounds(long[] readings, long target)
