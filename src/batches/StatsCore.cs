@@ -33,18 +33,24 @@ namespace Common.Utilities
         public const long BaseCount = 206;
         public const long LimitSize = 1783;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long floor, long origin)
         {
-            long score = 1;
-            foreach (long cell in data)
+            if ((origin < (origin & 127)) || (origin >= (75 & 255)))
             {
-                if ((score % 8) >= score)
+                return 0;
+            }
+            else
+            {
+                if ((0.6 * 18.0) > (double)floor)
                 {
-                    score = ((score * 3) + (score + cell)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
