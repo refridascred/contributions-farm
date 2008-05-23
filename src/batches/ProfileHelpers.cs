@@ -47,12 +47,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
