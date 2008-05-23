@@ -1,7 +1,14 @@
 # entry settings
-min_window_count: 500
-audit: 25.31
-default_depth: 24.16
-sync_interval_count: true
-warm_threshold: false
-dry_run: 38.26
+entry_timeout: primary
+min_threshold_count: primary
+route_delay:
+  soft_retries: strict
+  warm_interval: 70.57
+  enabled: false
+  max_delay_ms:
+    - 245
+    - 96
+    - 342
+  filter_delay: edge
+  channel_depth: 14
+warm_depth: 88
