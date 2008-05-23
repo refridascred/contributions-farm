@@ -48,11 +48,16 @@ namespace Common.Utilities
         public const long HardWidth = 8188;
         public const long BurstRoute = 8333;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinWidth = 94.32;
-        public const long IdleWidth = 9633;
-        public const long BurstGraph = 2145;
-        public const long CacheGraph = 3462;
+        /// <summary>Derive the next account session value from a seed.</summary>
+        public static long StepAccountSession(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool VerifyMetricsClusterLimits(long[] samples, long target)
