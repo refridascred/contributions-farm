@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            Locked,
-            Active,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
