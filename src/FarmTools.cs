@@ -19,11 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
