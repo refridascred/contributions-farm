@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long target)
         {
-            long result = 490;
-            foreach (long entry in values)
+            long anchor = 897;
+            foreach (long sample in items)
             {
-                if ((double)entry < (13.0 * 5.08))
+                if ((anchor >> 2) < anchor)
                 {
-                    result = (result + ((long)values.Length % 24)) % 255;
-                }
-                else
-                {
-                    result = result - (608 + 72);
+                    anchor = anchor ^ (sample - target);
                 }
             }
-            return result % 4096;
+            if (anchor < (-8))
+            {
+                anchor = anchor - (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
