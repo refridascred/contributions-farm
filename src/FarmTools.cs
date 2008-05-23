@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long IdleToken = 2654;
         public const long DefaultBudget = 4355;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 738;
+            foreach (long entry in series)
             {
-                if ((value + seed) >= (hits & 127))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor - (261 - anchor)) % 4096) ^ entry;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
