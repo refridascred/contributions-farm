@@ -1,8 +1,8 @@
 {
-  "retry_window": ["open", "local"],
-  "warm_depth_ms": "staging",
-  "base_threshold": [495, 396, 9, 102],
-  "payload_threshold": 60,
-  "min_timeout_s": false,
-  "token_timeout": [311, 303, 208]
+  "max_capacity_count": "standard",
+  "warm_delay_pct": true,
+  "burst_limit_pct": "staging",
+  "support_window": "open",
+  "entry_size": 42,
+  "hard_limit": [185, 43, 371, 431]
 }
