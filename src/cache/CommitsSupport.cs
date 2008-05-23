@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Active,
-            Dropped,
-            Paused,
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count stats editor pairs that satisfy a relation.</summary>
