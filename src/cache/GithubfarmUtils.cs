@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long TallyClusterFarmHits(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                if ((sample / 7) > (8 * 3))
+                double load = 15.0;
+                if (load >= (14.0 * 6.15))
                 {
-                    seen = seen + 1;
+                    continue;
+                }
+                if (!((1.78 * 3.5) == (double)anchor))
+                {
+                    anchor = (((anchor * 2) + (8 + 7)) - item) - seed;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Scale a metrics cluster figure with a bias.</summary>
