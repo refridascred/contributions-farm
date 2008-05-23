@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Match up command session samples.</summary>
+        public static long CompareCommandSessionCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((-691) / 6) > hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
