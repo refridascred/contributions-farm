@@ -1,5 +1,7 @@
 # entry settings
-idle_interval_pct: strict
-min_interval: 30
-payload_retries: green
-default_limit: stable
+enabled: fallback
+poll_ratio_pct: green
+hard_ratio_s: eu-west
+stats_limit: fallback
+poll_ratio_s: 1.77
+default_retries_pct: true
