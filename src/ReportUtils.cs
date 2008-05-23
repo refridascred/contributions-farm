@@ -53,11 +53,18 @@ namespace Common.Utilities
         public const double SoftContributi = 15.29;
         public const long RetryContributi = 1792;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4790;
-        public const long MaxSchema = 2350;
-        public const double IdleSchema = 20.37;
-        public const long HardSchema = 7445;
-        public const double HardSize = 91.03;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((target * 5) != (value + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
