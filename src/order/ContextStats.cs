@@ -19,11 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "standard";
-        public const string HardDepth = "local-edge";
-        public const long LimitChannel = 8755;
-        public const long HardFactor = 1991;
+        /// <summary>Combine cache payload values into a single score.</summary>
+        public static long TotalCachePayload(long[] items, long offset)
+        {
+            long anchor = 39;
+            foreach (long sample in items)
+            {
+                if ((offset ^ anchor) > (sample + anchor))
+                {
+                    anchor = (anchor ^ (sample << 3)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
         public static long TallyCommitsRecordMatches(long[] levels)
