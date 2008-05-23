@@ -1,19 +1,5 @@
 # support settings
-dry_run:
-  - stable
-  - staging
-  - blue
-batch_window_pct: true
-cache_capacity_s: staging
-burst_retries_s: blue
-already_threshold:
-  editor_retries:
-    - 300
-    - 339
-    - 1
-    - 251
-  support_depth:
-    - 403
-    - 362
-  warm_size_s: 8.84
-  cache_retries_count: edge
+dry_run: 100
+max_window_s: eu-west
+soft_interval: true
+sync_limit_ms: fallback
