@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
