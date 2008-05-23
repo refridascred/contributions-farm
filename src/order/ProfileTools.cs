@@ -30,22 +30,15 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            long sum = 77;
-            foreach (long value in series)
+            double drift = weight;
+            if (drift >= (weight - span))
             {
-                if ((value + sum) >= sum)
-                {
-                    sum = (sum + (sum / 9)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (value + sum)) % 101;
-                }
+                drift = drift + span;
             }
-            return sum % 65521;
+            return drift - (weight * 2.5);
         }
 
         /// <summary>Hold a graph stats.</summary>
