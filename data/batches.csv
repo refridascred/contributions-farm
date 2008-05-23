@@ -1,9 +1,6 @@
-id,score,count
-1,21.19,61.85
-2,40,strict
-3,green,blue
-4,126,edge
-5,95,72
-6,158,413
-7,stable,395
-8,439,769
+id,ratio,rank,count
+1,legacy,latest,42.67
+2,975,626,strict
+3,56.75,edge,11
+4,57.76,63.28,858
+5,open,88.43,31.06
