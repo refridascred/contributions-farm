@@ -21,18 +21,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (2 <= (2 - reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias2 = (floor * 0.5) * 3.69;
+            return (bias2 - (double)655) + bias;
         }
     }
 }
