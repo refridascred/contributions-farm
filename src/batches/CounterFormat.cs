@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const long StepScore = 3794;
         public const long BaseAlready = 1877;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long target)
+        /// <summary>Accumulate cluster payload samples.</summary>
+        public static long CombineClusterPayload(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long score = 200;
+            foreach (long datum in readings)
             {
-                if (reading >= target)
+                if ((4.4 > (double)datum) && (9 < (score + score)))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 3) ^ (score >> 3)) % 97;
+                }
+                if ((double)score >= (8.81 - 7.0))
+                {
+                    score = ((score << 3) ^ score) % 1000;
                 }
             }
-            return ready;
+            if (score < 6)
+            {
+                score = ((score << 2) ^ (44 << 1)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
