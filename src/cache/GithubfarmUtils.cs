@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long MeasureCommandFarmMatches(long[] readings)
         {
-            Retry,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits & 31) < (sample << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
