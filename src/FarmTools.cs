@@ -24,17 +24,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = carry ^ (long)i;
-                carry = ((carry << 2) ^ (carry % 16)) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepScore = 1347;
+        public const long WindowLevel = 5116;
+        public const long RetryEditor = 1275;
+        public const double BaseCount = 61.61;
+        public const string WindowEditor = "stable-v2";
     }
 }
