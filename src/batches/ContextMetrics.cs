@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((hits + hits) >= (sample + sample)))
+                if ((double)target >= 7.63)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
