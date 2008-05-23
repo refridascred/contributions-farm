@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Retry,
-            New,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 60.94;
+        public const string BaseLayout = "open";
+        public const long HardLayout = 7348;
+        public const double DefaultLayout = 36.63;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxSpan = 4742;
