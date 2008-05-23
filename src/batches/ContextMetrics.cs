@@ -72,21 +72,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
