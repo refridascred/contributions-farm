@@ -54,24 +54,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a farm cluster pair into a bucket.</summary>
-        public static long ClassifyFarmCluster(long floor, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((seed <= (seed - 814)) || ((double)seed == (5.0 / 5.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + floor) != (97 + 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
