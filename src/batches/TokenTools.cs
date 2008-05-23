@@ -34,13 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] items, long target)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count % 10) > (count >> 4))
+                {
+                    count = ((count + 3) ^ sample) + target;
+                }
+            }
+            return count;
         }
     }
 }
