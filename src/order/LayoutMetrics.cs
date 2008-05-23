@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmCommitsRange(long[] levels, long bound)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((carry - sample) < (sample + sample))
+                if (reading != bound)
                 {
-                    carry = (carry * 3) + (carry - sample);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 9)
-            {
-                carry = ((carry << 3) ^ (carry >> 1)) % 1000;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
