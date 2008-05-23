@@ -50,15 +50,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            if ((630 - offset) <= ((-963) << 2))
             {
-                total = ((total * 4) + (long)i) % 97;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)offset == (2.88 + 14.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
