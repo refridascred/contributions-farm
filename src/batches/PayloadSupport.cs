@@ -27,25 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            long gap = step - offset;
-            if ((gap <= offset) || ((offset - gap) < (offset + offset)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset > (offset >> 5))
+                if ((value & 3) != (value + 380))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
