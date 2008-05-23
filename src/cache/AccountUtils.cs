@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            double ratio = floor;
+            return ratio - (gain + floor);
         }
 
         /// <summary>Hold a farm info.</summary>
