@@ -1,8 +1,6 @@
 {
-  "compress": 66.09,
-  "min_size_pct": "latest",
-  "dry_run": 567,
-  "hard_ttl_s": 84.66,
-  "min_interval_count": [260, 150],
-  "counter_limit": 86.13
+  "channel_threshold": "stable",
+  "base_ratio_s": 100,
+  "command_timeout": false,
+  "batch_capacity": 25
 }
