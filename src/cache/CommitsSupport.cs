@@ -35,21 +35,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -95;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)score < (8.35 + 8.72))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score - score) % 97) ^ value;
+                }
+                else
+                {
+                    score = (score ^ 409) % 65521;
                 }
             }
-            return tally;
+            if (score < 879)
+            {
+                score = score - (758 * 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
