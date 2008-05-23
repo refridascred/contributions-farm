@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long TallyFormatStatsMatches(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches + 8) == (matches << 3))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
