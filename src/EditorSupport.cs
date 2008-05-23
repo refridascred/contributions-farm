@@ -20,15 +20,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two tools buffer measurements.</summary>
-        public static double ScaleToolsBuffer(double scale, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            double scale2 = (double)(7 - 13);
-            if (scale2 > (scale - bias))
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                scale2 = scale2 - scale;
+                acc = (acc + (acc ^ acc)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return scale2 + scale;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
