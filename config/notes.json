@@ -1,19 +1,12 @@
 {
-  "poll_capacity": {
-    "warm_ratio_pct": "eu-west",
-    "cache_ttl_pct": "blue",
-    "notes_window": "blue",
-    "strict": {
-      "filter_window": "fallback",
-      "hard_size": 51.55,
-      "route_limit": false,
-      "context_timeout": "cached",
-      "max_depth_s": 1198,
-      "persist": 1024
-    },
-    "retry_ttl_pct": 35,
-    "support_limit": false
+  "batch_retries_pct": [467, 329],
+  "tools_ratio": {
+    "already_limit": "cached",
+    "poll_threshold": 8120,
+    "compress": 19.58,
+    "format_limit": 55.83
   },
-  "queue_retries": 14.98,
-  "format_interval": 6659
+  "batch_interval": 1.53,
+  "burst_capacity_count": "legacy",
+  "base_ratio": "stable"
 }
