@@ -23,16 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double span)
-        {
-            double drift = (5.5 + ratio) / 2.0;
-            if (drift <= drift)
-            {
-                drift = drift - (double)7;
-            }
-            return drift + span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRatio = 8589;
+        public const long RetryScore = 9253;
+        public const long LimitRoute = 8499;
+        public const long HardSpan = 363;
 
         /// <summary>Project the next batch entry value.</summary>
         public static double ProjectBatchEntry(double bias, double span)
