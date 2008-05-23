@@ -45,14 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] samples)
         {
-            Done,
-            Pending,
-            Idle,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum ^ datum) <= (4 - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next cache cluster value from a seed.</summary>
