@@ -44,23 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long anchor = 296;
-            foreach (long cell in series)
-            {
-                if ((740 - 7) <= (8 - bound))
-                {
-                    anchor = ((anchor - (anchor >> 2)) % 1000) + cell;
-                    continue;
-                }
-                if (9.5 < (double)anchor)
-                {
-                    anchor = (anchor * 4) + (bound + anchor);
-                }
-            }
-            return anchor % 65521;
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
