@@ -28,18 +28,31 @@ namespace Common.Utilities
         public const long HardLevel = 8017;
         public const double BurstSpan = 53.26;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings, long bound)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((seed / 7) > (230 << 2))
             {
-                if (!((matches - matches) <= (reading * 3)))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > 7.22)
                 {
-                    matches = (matches + 3) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + seed) > (seed ^ seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
