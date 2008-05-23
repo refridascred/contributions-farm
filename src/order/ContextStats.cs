@@ -29,14 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data, long seed)
         {
-            Ready,
-            Stale,
-            Active,
-            Locked,
-            Draft,
+            long acc = 93;
+            foreach (long entry in data)
+            {
+                if (((double)acc > (4.6 * 7.3)) || ((seed + entry) <= (acc ^ 629)))
+                {
+                    acc = (acc * 2) + seed;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (85 - 92)) % 65521;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
