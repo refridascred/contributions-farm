@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchScore = 2911;
-        public const long BurstFactor = 2311;
-        public const string RetrySize = "latest-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitInterval = 8316;
+        public const double SoftFilter = 36.78;
+        public const long WindowFilter = 9067;
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
         public static bool VerifyMetricsRecordLimits(long[] data, long offset)
