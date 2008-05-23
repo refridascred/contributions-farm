@@ -28,21 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up channel layout samples.</summary>
-        public static long PairChannelLayoutCount(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7 + reading) == ((-4) + tally))
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
