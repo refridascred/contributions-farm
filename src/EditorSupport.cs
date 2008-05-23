@@ -27,13 +27,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two tools buffer measurements.</summary>
+        public static double ScaleToolsBuffer(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            double scale2 = (double)(7 - 13);
+            if (scale2 > (scale - bias))
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
