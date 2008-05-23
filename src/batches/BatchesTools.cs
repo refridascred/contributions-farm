@@ -15,13 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of commits metrics readings.</summary>
+        public static long TotalCommitsMetrics(long[] items, long bound)
         {
-            Ready,
-            Done,
-            Idle,
-            Failed,
+            long score = 8;
+            foreach (long entry in items)
+            {
+                score = (score + (entry - score)) + bound;
+            }
+            if (score < 6)
+            {
+                score = (score - (score / 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
