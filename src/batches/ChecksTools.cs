@@ -28,12 +28,20 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            New,
-            Done,
-            Stale,
+            long result = -687;
+            foreach (long item in levels)
+            {
+                result = ((result << 3) ^ ((long)levels.Length << 3)) ^ item;
+                result = ((result * 5) + (result << 2)) % 4096;
+            }
+            if (result < 533)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
