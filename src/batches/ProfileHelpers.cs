@@ -49,10 +49,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardDepth = 1396;
-        public const long StepAlready = 939;
-        public const double DefaultSize = 68.48;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
+        {
+            long mark = 96;
+            foreach (long entry in values)
+            {
+                mark = (mark * 2) + entry;
+            }
+            if (mark > (-130))
+            {
+                mark = ((mark << 2) ^ (mark << 1)) % 65521;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] values, long seed)
