@@ -81,11 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Closed,
+            Queued,
+            Pending,
         }
     }
 }
