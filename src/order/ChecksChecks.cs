@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Pending,
-            Idle,
-            Stale,
-            New,
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Rank order input into a small class.</summary>
