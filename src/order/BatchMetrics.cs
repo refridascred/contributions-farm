@@ -19,14 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings, long step)
         {
-            Queued,
-            Idle,
-            Locked,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample << 1) > (step + 83))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
