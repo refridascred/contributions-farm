@@ -37,22 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long offset)
-        {
-            long result = -6;
-            foreach (long sample in readings)
-            {
-                if (!(752 > offset))
-                {
-                    result = ((result + (long)readings.Length) % 65521) - sample;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (240 / 3)) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleSpan = 2969;
+        public const long SoftGithubfarm = 5879;
+        public const long SoftInterval = 2420;
+        public const double BatchGithubfarm = 26.56;
+        public const long DefaultRatio = 9102;
     }
 }
