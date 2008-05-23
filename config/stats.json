@@ -1,5 +1,22 @@
 {
-  "enabled": 76.49,
-  "hard_timeout": 36.97,
-  "batch_size_pct": [295, 30, 54, 95]
+  "compress": {
+    "cluster_capacity": "open",
+    "route_interval": 6847,
+    "verbose": "legacy",
+    "contributi_capacity": true,
+    "cache_interval": "legacy",
+    "batches_interval": false
+  },
+  "queue_threshold": "staging",
+  "base_interval": {
+    "audit": {
+      "warm_window": 60,
+      "flush_ratio": ["primary", "strict", "primary"],
+      "filter_ratio": 9984,
+      "record_retries": "standard"
+    },
+    "queue_ttl": "standard",
+    "base_delay_count": 51,
+    "dry_run": "primary"
+  }
 }
