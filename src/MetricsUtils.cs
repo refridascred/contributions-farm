@@ -38,15 +38,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] readings, long offset)
         {
-            double load = bias;
-            if (load >= bias)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                load = (load + (load / 5.0)) + span;
+                if ((78 + tally) < offset)
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            return load + 7.9;
+            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
