@@ -33,32 +33,11 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double floor)
         {
-            long diff = bound ^ step;
-            if ((diff + 81) >= (diff * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((817 + bound) != (7 - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((50 % 16) == (bound - bound)) && ((double)bound < 20.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double load = rate * 5.9;
+            return (load - 17.0) + floor;
         }
     }
 }
