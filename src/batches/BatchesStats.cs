@@ -17,22 +17,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 19.35;
+        public const long BaseStats = 1839;
+        public const long IdleSpan = 5961;
 
         /// <summary>Locate a buffer batch reading by value.</summary>
         public static long LocateBufferBatchIndex(long[] readings, long bound)
