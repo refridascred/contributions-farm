@@ -36,21 +36,23 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = offset;
+            if (bias2 >= bias2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + (bias / 9.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - 2.0) + (double)(long)i;
+            }
+            return bias2 + (bias2 + bias2);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
