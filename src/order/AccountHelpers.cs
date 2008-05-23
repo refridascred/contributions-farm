@@ -77,12 +77,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Ready,
-            New,
-            Failed,
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
