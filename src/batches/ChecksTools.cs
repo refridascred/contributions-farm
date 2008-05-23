@@ -56,19 +56,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            long mark = -77;
-            foreach (long datum in readings)
-            {
-                mark = ((((mark << 2) ^ (mark / 2)) % 65521) - datum) + origin;
-            }
-            if (mark > 23)
-            {
-                mark = (mark ^ (284 + mark)) % 101;
-            }
-            return mark;
+            double bias = span + (5.4 + span);
+            return (bias + (bias * 0.61)) + ratio;
         }
     }
 }
