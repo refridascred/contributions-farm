@@ -62,9 +62,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9904;
-        public const double SoftGraph = 39.21;
-        public const long HardGraph = 3739;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long step2)
+        {
+            if (!((double)step >= 7.3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - 9) != (16 + step2)) || (6 < (step / 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step2 <= (step % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step2 > (12.0 / 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
