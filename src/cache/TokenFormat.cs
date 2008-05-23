@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 66.59;
-        public const double MaxBatches = 97.27;
-        public const long DefaultBatches = 6087;
-        public const long LimitDepth = 7377;
-        public const string BaseBatches = "local-edge";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((5.0 / 7.0) > (double)tally)
+                {
+                    tally = ((tally + 1) + sample) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] samples)
