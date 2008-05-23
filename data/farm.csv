@@ -1,6 +1,9 @@
-id,count,ratio
-1,91,55
-2,88.42,13.72
-3,39,local
-4,staging,63.24
-5,931,86.18
+id,level,region,rank,token
+1,651,48,7.9,74.2
+2,753,732,green,edge
+3,814,909,507,998
+4,strict,602,open,917
+5,75.62,956,147,826
+6,blue,local,staging,local
+7,85.33,542,primary,471
+8,875,882,90.99,79
