@@ -38,13 +38,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Done,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleScore = 727;
+        public const long MinFactor = 3893;
+        public const string RetryProfile = "standard-edge";
+        public const double StepRatio = 70.69;
     }
 }
