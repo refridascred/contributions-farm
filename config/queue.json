@@ -1,6 +1,11 @@
 {
-  "route_retries": true,
-  "burst_timeout_pct": "standard",
-  "command_timeout": "cached",
-  "profile_delay": 9739
+  "schema_interval": "local",
+  "stream_interval": 250,
+  "cache_retries_pct": ["blue", "staging", "legacy"],
+  "report_capacity": {
+    "base_ratio_count": "cached",
+    "window_retries": "legacy",
+    "command_retries": 55.76
+  },
+  "base_timeout_s": 15.86
 }
