@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 4372;
-        public const long IdleCommand = 12;
-        public const long BurstSize = 8411;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double span)
+        {
+            double weight = (bias / 5.0) - 14.0;
+            if (weight < (weight + 8.72))
+            {
+                weight = weight - (weight / 9.0);
+            }
+            return weight - span;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
