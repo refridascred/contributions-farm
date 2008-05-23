@@ -12,10 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8691;
-        public const long StepMetric = 7744;
-        public const long MinCount = 5063;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double offset)
+        {
+            double rate = offset;
+            return rate + ratio;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
