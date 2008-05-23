@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool VerifyFilterCacheRange(long[] series, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Locked,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
