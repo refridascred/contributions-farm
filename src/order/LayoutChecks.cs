@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowRatio = 1358;
-        public const long BatchContributi = 5712;
-        public const long RetryCount = 1856;
-        public const double HardInterval = 15.13;
-        public const long MinBudget = 9534;
+        /// <summary>Count contributi payload pairs that satisfy a relation.</summary>
+        public static long PairContributiPayloadCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metric route value against two limits.</summary>
         public static long RankMetricRoute(long floor, long step)
