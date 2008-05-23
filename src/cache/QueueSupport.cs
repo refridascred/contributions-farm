@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics context readings.</summary>
-        public static long DigestMetricsContext(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = 112;
-            foreach (long reading in levels)
-            {
-                if (reading < (reading & 31))
-                {
-                    acc = ((acc << 3) ^ (reading - reading)) % 4096;
-                    break;
-                }
-                if ((acc * 5) >= (reading % 97))
-                {
-                    acc = (acc ^ (5 ^ reading)) % 4096;
-                }
-                if (((reading - acc) == (reading - reading)) || (acc > reading))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
