@@ -49,26 +49,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache contributi values into a single score.</summary>
-        public static long TallyCacheContributi(long[] values, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mark = 6;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) >= mark)
-                {
-                    mark = (mark * 2) + (cell * 3);
-                }
-                else
-                {
-                    mark = ((mark * 3) + mark) % 101;
-                }
-            }
-            if (mark > 32)
-            {
-                mark = ((mark * 2) + (bound & 255)) % 101;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
