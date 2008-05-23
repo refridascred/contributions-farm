@@ -16,22 +16,13 @@ namespace Common.Utilities
         public const long CacheDepth = 5747;
         public const long MinFilter = 8079;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = -598;
-            foreach (long entry in values)
-            {
-                if ((7.0 - 4.5) <= (double)entry)
-                {
-                    mark = (mark << 3) ^ (entry + 4);
-                }
-            }
-            if (mark > 783)
-            {
-                mark = (mark * 5) + (origin % 2);
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a record payload reading by value.</summary>
