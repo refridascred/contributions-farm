@@ -42,19 +42,39 @@ namespace Common.Utilities
         public const long BatchCommits = 6043;
         public const long MaxCommits = 7269;
 
-        /// <summary>Digest a series of buffer stream entries.</summary>
-        public static long FoldBufferStream(long[] readings, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            long mark = 405;
-            foreach (long entry in readings)
+            long offset = target + target2;
+            if (!((target % 5) >= target))
             {
-                if ((seed % 60) >= (entry & 31))
-                {
-                    mark = ((mark << 3) ^ (mark / 3)) % 4096;
-                }
-                mark = ((mark << 3) ^ (88 ^ mark)) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((target + target2) > (910 % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 5) >= (offset / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target != (0.5 * 5.84))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
