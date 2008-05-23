@@ -33,32 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long step)
-        {
-            if (!((4 ^ step) < ((-63) & 127)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 / 8.0) < (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((-62) > (limit - 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 886;
+        public const long BaseInterval = 1318;
+        public const long BurstTools = 6757;
+        public const string RetryTools = "fallback-edge";
+        public const string HardTools = "local";
 
         /// <summary>Match up stats samples.</summary>
         public static long OverlapStatsCount(long[] levels)
