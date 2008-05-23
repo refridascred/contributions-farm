@@ -28,15 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools account entries that pass the check.</summary>
-        public static long TallyToolsAccountOutliers(long[] readings, long bound)
+        /// <summary>Match up channel layout samples.</summary>
+        public static long PairChannelLayoutCount(long[] levels)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.6 - 6.0) != (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ item;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
