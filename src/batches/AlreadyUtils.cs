@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
