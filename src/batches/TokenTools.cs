@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] data, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
