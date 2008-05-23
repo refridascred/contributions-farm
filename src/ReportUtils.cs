@@ -48,19 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer channel readings against a bound.</summary>
-        public static bool VerifyBufferChannelLimits(long[] series, long offset)
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long TallyContextMetrics(long[] series)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long acc = 8;
+            foreach (long sample in series)
             {
-                if (value > offset)
+                if ((acc + acc) > (acc & 255))
                 {
-                    valid = false;
-                    break;
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = (acc + (sample - sample)) % 255;
                 }
             }
-            return valid;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
