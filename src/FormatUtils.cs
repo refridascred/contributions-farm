@@ -44,14 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 792;
+        public const string CachePayload = "alpha-v2";
+        public const long LimitPayload = 454;
+        public const string MaxDepth = "standard";
+        public const long WindowPayload = 3212;
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
         public static long CountMetricsToolsHits(long[] levels)
