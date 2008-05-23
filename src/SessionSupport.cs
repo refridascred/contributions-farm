@@ -20,11 +20,14 @@ namespace Common.Utilities
         public const long RetryLevel = 8533;
         public const long IdleDepth = 6804;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheCount = 5072;
-        public const long WindowLevel = 8045;
-        public const double BatchEntry = 24.48;
-        public const string MinTimeout = "cached-1";
-        public const long DefaultTimeout = 4688;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            New,
+            Failed,
+            Pending,
+            Queued,
+            Active,
+        }
     }
 }
