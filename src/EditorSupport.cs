@@ -54,23 +54,19 @@ namespace Common.Utilities
         public const long BurstGraph = 2145;
         public const long CacheGraph = 3462;
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool VerifyMetricsClusterLimits(long[] samples, long target)
         {
-            double drift = ratio * 4.0;
-            if (drift < bias)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                drift = drift - (drift + ratio);
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)681;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 5.97) + (double)(long)i;
-            }
-            return drift + (drift / 2.0);
+            return valid;
         }
     }
 }
