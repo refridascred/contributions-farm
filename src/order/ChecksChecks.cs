@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long HardLevel = 2365;
         public const double WindowInterval = 24.88;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((((-984) & 3) >= (hits + datum)) || (9 >= hits)) && ((double)datum == (double)hits))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
