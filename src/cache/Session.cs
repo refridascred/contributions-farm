@@ -30,19 +30,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long state = 52;
+            foreach (long item in samples)
             {
-                if (value < target)
+                long seen = state * 3;
+                if ((seen + item) != (seen * 5))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 3) ^ (state << 3)) % 1000;
+                    state = (state + (item % 64)) % 4096;
                 }
+                else
+                {
+                    seen = (seen << 3) ^ state;
+                }
+                state = state + (state >> 1);
             }
-            return ready;
+            return state % 1000;
         }
 
         /// <summary>Match up commits samples.</summary>
