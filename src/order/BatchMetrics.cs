@@ -65,22 +65,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] values, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4.1 - 5.94) > (double)tally)
-                {
-                    tally = ((tally + 1) ^ sample) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
