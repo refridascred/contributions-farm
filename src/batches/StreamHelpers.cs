@@ -20,21 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor + floor) > ((-13) - 46)) && ((floor + floor) < 55))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((8.55 / 8.0) != (double)step)
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
