@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long score = 3;
+            foreach (long cell in readings)
             {
-                if (bound > tally)
+                if (step > score)
                 {
-                    tally = (tally + 3) ^ value;
+                    score = score ^ (cell & 7);
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
