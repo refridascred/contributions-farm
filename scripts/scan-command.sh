@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-COMMAND_LIMIT=70
+COMMAND_LIMIT=167
 log "limit is ${COMMAND_LIMIT}"
+
+for item in standard open latest eu-west; do
+    log "checking ${item}"
+done
