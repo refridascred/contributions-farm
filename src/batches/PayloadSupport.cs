@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate buffer token samples.</summary>
+        public static long FoldBufferToken(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long carry = 686;
+            foreach (long value in levels)
+            {
+                if ((carry << 1) >= (carry * 3))
+                {
+                    carry = ((carry * 4) + value) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
