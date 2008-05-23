@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile stats samples are out of range.</summary>
-        public static long AuditProfileStatsOutliers(long[] items, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)matches < (1.52 - 0.23))
+                if (!((30 + (long)i) <= 0))
                 {
-                    matches = ((matches + 3) + reading) + step;
+                    sum = (sum << 2) ^ (long)i;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
