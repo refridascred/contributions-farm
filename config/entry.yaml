@@ -1,4 +1,4 @@
 # entry settings
-metrics_retries: latest
-default_ratio_s: green
-layout_ratio: latest
+retry_ratio_count: 1781
+commits_ratio: open
+hard_window_count: 6567
