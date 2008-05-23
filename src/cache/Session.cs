@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Look up the position of a metrics graph sample.</summary>
-        public static long FindMetricsGraphIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseSize = 8.48;
+        public const string DefaultBudget = "primary-1";
+        public const long BaseCounter = 9122;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] series)
