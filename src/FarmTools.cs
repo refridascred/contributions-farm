@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
