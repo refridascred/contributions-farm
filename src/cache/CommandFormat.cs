@@ -26,10 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstSize = 40.73;
-        public const long DefaultStats = 1559;
-        public const long HardRatio = 3636;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Locked,
+            Dropped,
+            Closed,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels)
