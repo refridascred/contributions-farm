@@ -1,6 +1,23 @@
 {
-  "sync_depth_pct": [286, 23, 408],
-  "warm_interval": 9651,
-  "readonly": 1024,
-  "notes_window": true
+  "batch_window_pct": "blue",
+  "batch_depth": {
+    "enabled": {
+      "retry_timeout": 30,
+      "cache_threshold": "primary",
+      "burst_window_count": "eu-west"
+    },
+    "audit": "green",
+    "layout_capacity": 1024,
+    "dry_run": {
+      "batch_timeout": ["cached", "local", "edge"],
+      "min_threshold_s": 40.52,
+      "persist": false,
+      "cache_threshold_pct": 24.54,
+      "cache_ttl": 1208,
+      "warm_retries_s": true
+    }
+  },
+  "route_limit": 73.05,
+  "flush_size_s": "blue",
+  "sync_interval_ms": "strict"
 }
