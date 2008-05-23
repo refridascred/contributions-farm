@@ -17,17 +17,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (series[i] > offset)
+                if ((sample * 3) >= (tally >> 3))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
