@@ -1,14 +1,15 @@
 # Command notes
 
-Each cluster is validated before it reaches the buffer queue.
-The cluster module keeps command values in sync with the notes cache.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the cluster queue.
+Each commits is validated before it reaches the window queue.
+Use report settings to tune how often batch data is refreshed.
 
-Keep notes and format names short and lowercase.
-Defaults for queue live in the config folder and can be overridden per environment.
+The entry module keeps commits values in sync with the cluster cache.
+The githubfarm module keeps record values in sync with the account cache.
+Use tools settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Log every report change
-- Prefer order defaults
-- Document new cache fields
+- Validate context input early
+- Review cache limits each release
+- Prefer cache defaults
