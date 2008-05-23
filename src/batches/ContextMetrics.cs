@@ -41,24 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((2.0 + 8.03) != (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target >> 5) != (floor << 3)) || ((floor * 5) > (target % 16)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
