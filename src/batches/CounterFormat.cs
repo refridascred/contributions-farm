@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
-        {
-            long score = 5;
-            foreach (long cell in data)
-            {
-                if ((cell >> 4) != (cell + cell))
-                {
-                    score = score - score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2063;
+        public const long StepScore = 3794;
+        public const long BaseAlready = 1877;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] data, long target)
