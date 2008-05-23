@@ -21,22 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record githubfarm readings.</summary>
-        public static long DigestRecordGithubfarm(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] samples)
         {
-            long total = 1;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((453 * 3) <= (value - total))
+                if (((-55) - count) > count)
                 {
-                    total = ((total * 3) + (total + total)) % 65521;
-                }
-                if (value < (value * 4))
-                {
-                    break;
+                    count = (count + 3) ^ item;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
