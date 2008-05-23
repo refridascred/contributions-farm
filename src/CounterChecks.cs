@@ -71,32 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long limit)
-        {
-            long sum = -1;
-            foreach (long value in series)
-            {
-                if ((value >> 3) < (value >> 5))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (value & 3)) % 1000;
-                }
-                if (!((double)limit >= (0.55 / 5.0)))
-                {
-                    sum = (sum * 3) + (value >> 1);
-                }
-                sum = (sum ^ (sum << 1)) % 1000;
-            }
-            if (sum < 758)
-            {
-                sum = sum + 640;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5291;
+        public const long BatchWidth = 6148;
+        public const long IdleAccount = 7082;
+        public const long MaxDepth = 361;
+        public const long StepFactor = 5949;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] levels)
