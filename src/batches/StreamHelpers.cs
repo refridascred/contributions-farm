@@ -50,17 +50,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Measure how many notes route samples are out of range.</summary>
+        public static long CountNotesRouteOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (values[i] < floor)
+                if ((matches & 31) > (entry ^ entry))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
