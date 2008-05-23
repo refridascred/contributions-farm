@@ -17,10 +17,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 19.35;
-        public const long BaseStats = 1839;
-        public const long IdleSpan = 5961;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] data)
