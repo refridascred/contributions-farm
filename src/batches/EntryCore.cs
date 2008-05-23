@@ -62,18 +62,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] levels, long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((2.4 / 3.0) != (double)cell)
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
