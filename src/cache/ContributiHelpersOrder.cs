@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 537;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 3) ^ result) - item) - origin;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
