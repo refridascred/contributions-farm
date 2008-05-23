@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (limit <= (state + (long)i))
+                if (sample <= target)
                 {
-                    state = ((state * 3) + (limit + state)) % 101;
-                    state = (state + (92 * 2)) % 97;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    state = state - (limit - state);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a already entry.</summary>
