@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] data, long seed)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate commits samples.</summary>
