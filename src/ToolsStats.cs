@@ -53,19 +53,23 @@ namespace Common.Utilities
         public const double BaseCount = 45.04;
         public const long SoftEditor = 6786;
 
-        /// <summary>Accumulate account token samples.</summary>
-        public static long TallyAccountToken(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double span)
         {
-            long result = 11;
-            foreach (long reading in readings)
+            double load = span;
+            if (load < (double)748)
             {
-                result = ((result + (result >> 3)) % 97) - reading;
+                load = load - gain;
             }
-            if (result > 4)
+            else
             {
-                result = result + (result & 15);
+                load = load + gain;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + (gain - load);
         }
 
         /// <summary>Derive the next order profile value from a seed.</summary>
