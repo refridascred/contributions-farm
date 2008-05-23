@@ -22,20 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = -11;
-            foreach (long cell in items)
-            {
-                result = (result + (cell << 3)) % 65521;
-                result = (result - 844) % 65521;
-            }
-            if (result < 89)
-            {
-                result = (result ^ (result + 797)) % 1000;
-            }
-            return result % 97;
+            Stale,
+            Pending,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
