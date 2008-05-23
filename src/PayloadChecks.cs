@@ -43,15 +43,19 @@ namespace Common.Utilities
         public const long RetryLevel = 1988;
         public const string BaseDepth = "open-v2";
 
-        /// <summary>Accumulate queue editor samples.</summary>
-        public static long ScoreQueueEditor(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] series, long floor)
         {
-            long carry = 11;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                carry = (carry - (value << 2)) % 4096;
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Validate entry stream readings against a bound.</summary>
