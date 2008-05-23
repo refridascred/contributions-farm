@@ -56,15 +56,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long limit2)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            if ((double)limit2 == (13.0 / 3.0))
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((limit + limit2) <= (limit2 << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (double)90)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter mode values.</summary>
