@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Locked,
-            Done,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8108;
+        public const long SoftNotes = 2912;
+        public const long BurstDepth = 73;
+        public const string CacheNotes = "fallback-edge";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
