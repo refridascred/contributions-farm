@@ -74,10 +74,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchDepth = 4796;
-        public const string SoftToken = "standard-edge";
-        public const double DefaultToken = 98.69;
-        public const long BaseToken = 2044;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
