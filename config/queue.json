@@ -1,17 +1,7 @@
 {
-  "batch_retries": {
-    "readonly": "open",
-    "profile_delay": 5.96,
-    "burst_interval_ms": 3033,
-    "verbose": [103, 309, 261],
-    "dry_run": 3885,
-    "audit": "stable"
-  },
-  "soft_depth": {
-    "flush_capacity_s": 48.07,
-    "poll_delay": 1024,
-    "soft_size_ms": 92
-  },
-  "soft_retries_count": false,
-  "soft_interval_ms": 62
+  "compress": [7, 480],
+  "default_threshold_pct": "local",
+  "stream_interval": true,
+  "default_delay_s": 27,
+  "poll_ratio": 60
 }
