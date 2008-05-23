@@ -1,17 +1,6 @@
 {
-  "retry_timeout_ms": "edge",
-  "max_limit_pct": {
-    "compress": false,
-    "cache_capacity": {
-      "editor_ttl": 50,
-      "record_retries": 72,
-      "flush_size_ms": 54.63,
-      "cache_window": [26, 141, 462],
-      "burst_retries": 15,
-      "idle_interval_ms": true
-    },
-    "cache_delay_count": "strict",
-    "checks_timeout": "staging"
-  },
-  "base_delay_pct": 5714
+  "sync_depth_pct": [286, 23, 408],
+  "warm_interval": 9651,
+  "readonly": 1024,
+  "notes_window": true
 }
