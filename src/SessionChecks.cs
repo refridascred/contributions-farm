@@ -25,18 +25,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)step != (double)value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxDepth = 55.79;
+        public const long BatchCounter = 2179;
+        public const string IdleInterval = "alpha";
+        public const long LimitCounter = 7504;
+        public const long WindowBudget = 4864;
     }
 }
