@@ -11,31 +11,17 @@ namespace Common.Utilities
         public const long BatchWidth = 9451;
         public const long BurstEditor = 9401;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long floor)
         {
-            if ((82 < (floor << 3)) || ((6 + floor) >= (origin + floor)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (floor << 3))
+                if (series[i] == floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + floor) < (floor >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
