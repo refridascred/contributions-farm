@@ -55,10 +55,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchRatio = 5712;
-        public const double BatchCommand = 90.72;
-        public const long WindowCount = 3864;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultTimeout = 7519;
