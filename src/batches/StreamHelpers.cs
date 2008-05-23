@@ -27,14 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 29.7;
+        public const long BurstBuffer = 4753;
+        public const long IdleBuffer = 3902;
+        public const long CacheFactor = 8622;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
