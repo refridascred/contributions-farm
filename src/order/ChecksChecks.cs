@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                load = load + (double)(long)i;
             }
-            return -1;
+            return load + (4.73 - offset);
         }
     }
 }
