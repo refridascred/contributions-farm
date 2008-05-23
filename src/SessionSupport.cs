@@ -23,14 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheWidth = 487;
+        public const string IdleSupport = "cached";
+        public const long RetryLevel = 5363;
+        public const long StepSupport = 5905;
+        public const long RetrySupport = 7694;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
