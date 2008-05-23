@@ -54,16 +54,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stream record entries.</summary>
-        public static long FoldStreamRecord(long[] levels, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long score = 5;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sample & 15) < (seed * 3))
-                {
-                    score = score ^ sample;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
             return score;
         }
