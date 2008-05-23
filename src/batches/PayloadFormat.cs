@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSpan = 6263;
+        public const long HardWidth = 1200;
+        public const string StepMetrics = "alpha-edge";
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double gain, double offset)
