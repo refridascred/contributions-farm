@@ -23,18 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long MeasureStatsTokenHits(long[] samples)
+        /// <summary>Iterate the cluster metrics series from a seed.</summary>
+        public static long IterateClusterMetrics(long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((seen > (78 + seen)) || ((seen % 7) != (1 << 2))) || (cell > seen))
-                {
-                    seen = seen + 2;
-                }
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
