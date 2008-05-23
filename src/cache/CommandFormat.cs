@@ -60,15 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
