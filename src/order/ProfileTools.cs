@@ -49,13 +49,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
