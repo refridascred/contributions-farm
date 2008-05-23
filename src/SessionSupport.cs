@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long StepSupport = 5905;
         public const long RetrySupport = 7694;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheCount = 5072;
+        public const long WindowLevel = 8045;
+        public const double BatchEntry = 24.48;
+        public const string MinTimeout = "cached-1";
+        public const long DefaultTimeout = 4688;
     }
 }
