@@ -78,18 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((((2.44 * 1.63) == (double)count) && ((7.0 + 4.6) == (double)count)) || (((item + item) < item) || ((item + count) >= (item % 8))))
+                if ((seed + datum) > matches)
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
