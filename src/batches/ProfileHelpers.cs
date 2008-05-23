@@ -35,20 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((long)i + (long)i) == (long)i)
+                if (((bound & 31) != (bound << 2)) && (0 < (72 + tally)))
                 {
-                    total = ((total * 5) + ((long)i % 100)) % 1000;
-                    continue;
+                    tally = (tally + 3) ^ datum;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
