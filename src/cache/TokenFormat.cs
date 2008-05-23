@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Paused,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
