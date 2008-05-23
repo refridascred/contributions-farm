@@ -38,13 +38,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of editor metric entries.</summary>
+        public static long TotalEditorMetric(long[] data)
         {
-            public double Level { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long state = 1;
+            foreach (long sample in data)
+            {
+                if (state <= (state - state))
+                {
+                    break;
+                }
+                else
+                {
+                    state = ((state * 5) + 605) % 4096;
+                    state = (state + (sample << 3)) % 101;
+                }
+                if ((state - state) != (252 >> 1))
+                {
+                    state = state - (340 + sample);
+                }
+            }
+            return state % 4096;
         }
     }
 }
