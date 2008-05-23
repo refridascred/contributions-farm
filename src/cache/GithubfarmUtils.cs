@@ -30,39 +30,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank buffer payload input into a small class.</summary>
-        public static long RankBufferPayload(long target, long target2)
+        /// <summary>Iterate the cache batches series from a seed.</summary>
+        public static long DeriveCacheBatches(long target)
         {
-            long bound = target ^ target2;
-            if ((target2 & 7) < (29 - 142))
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 3) > 5)
+                if (score <= (target + target))
                 {
-                    return 2;
+                    continue;
                 }
                 else
                 {
-                    if ((target2 % 24) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target + target2) == (31 ^ 18)) && ((target2 ^ target2) <= (bound + target2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = (score + score) % 4096;
                 }
+                score = (score * 3) + ((long)i - 489);
+                score = ((score * 2) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
