@@ -28,22 +28,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] readings)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double mean = scale;
+            if (mean > 7.3)
             {
-                if (seen < reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - scale;
             }
-            return seen;
+            else
+            {
+                mean = mean - (double)635;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (double)64;
         }
     }
 }
