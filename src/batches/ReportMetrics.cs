@@ -25,17 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)(387 + 95);
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (drift + rate)) + (double)(long)i) - offset;
             }
-            return -1;
+            return drift + (double)372;
         }
     }
 }
