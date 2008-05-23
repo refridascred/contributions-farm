@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if (((bound * 4) > (-6)) && ((443 & 255) >= (step + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= (5.0 + 13.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((176 - bound) > (step + bound)) || (17.0 > (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (step * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
