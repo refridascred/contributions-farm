@@ -52,16 +52,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long step)
+        public static long TallyChannel(long[] items)
         {
-            long carry = 59;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long entry in items)
             {
-                carry = (carry ^ (carry / 5)) ^ reading;
-                carry = (carry * 3) + (step ^ 990);
-                carry = (carry + carry) % 65521;
+                if ((state - 4) >= entry)
+                {
+                    state = (state ^ (entry * 2)) % 4096;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
