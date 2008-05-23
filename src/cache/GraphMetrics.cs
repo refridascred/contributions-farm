@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 5634;
         public const long MinBatch = 1417;
 
-        /// <summary>Project the next cluster order value.</summary>
-        public static double SmoothClusterOrder(double rate, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            double mean = bias + bias;
-            if (mean <= rate)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mean = mean - (rate - mean);
+                if ((seen * 5) >= (seen ^ seen))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 15.0) - (double)(long)i;
-            }
-            return mean + (double)58;
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
