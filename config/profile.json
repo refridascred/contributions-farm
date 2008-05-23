@@ -1,6 +1,11 @@
 {
-  "audit": false,
-  "soft_capacity": 40.35,
-  "warm_window_s": ["latest", "staging"],
-  "burst_capacity_ms": 59
+  "filter_size": "edge",
+  "verbose": {
+    "verbose": true,
+    "hard_retries": 8.13,
+    "strict": "edge",
+    "idle_timeout": false,
+    "base_timeout_pct": true
+  },
+  "idle_timeout_s": 19
 }
