@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long HardLevel = 315;
         public const double IdlePayload = 78.27;
 
-        /// <summary>Match up notes contributi samples.</summary>
-        public static long OverlapNotesContributiCount(long[] values)
+        /// <summary>Locate a payload format reading by value.</summary>
+        public static long LocatePayloadFormatIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] == bound)
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
