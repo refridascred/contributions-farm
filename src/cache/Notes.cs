@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long limit)
         {
-            Queued,
-            Dropped,
-            Idle,
-            New,
+            long result = 39;
+            foreach (long sample in items)
+            {
+                result = result - sample;
+            }
+            if (result < 76)
+            {
+                result = (result << 3) ^ (limit & 63);
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
