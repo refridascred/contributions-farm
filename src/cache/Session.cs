@@ -30,11 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
