@@ -1,7 +1,17 @@
 {
-  "warm_ratio_s": 60,
-  "min_limit": 1.47,
-  "cache_ratio": 1049,
-  "record_limit": [168, 187, 171, 205],
-  "cache_window": 2195
+  "dry_run": false,
+  "stream_threshold": 1303,
+  "commits_interval": {
+    "contributi_ttl": 53.97,
+    "compress": "standard",
+    "persist": "cached",
+    "burst_interval": true,
+    "batch_window": "cached",
+    "profile_threshold": {
+      "idle_ratio_s": false,
+      "cache_capacity_ms": [186, 288, 402, 163],
+      "min_retries_count": "staging"
+    }
+  },
+  "default_threshold_count": 44
 }
