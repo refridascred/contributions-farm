@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxRatio = 3366;
-        public const long BaseSpan = 8253;
-        public const long MinCount = 4657;
-        public const string SoftWidth = "stable";
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long target, long floor)
