@@ -1,10 +1,36 @@
 # githubfarm settings
-graph_timeout: 4461
-format_ratio:
-  - green
-  - green
+base_window:
+  idle_limit_pct: 32.42
+  batch_ttl_ms: 8
+  audit:
+    base_retries_pct: stable
+    persist: true
+    session_size: 8.0
+    enabled: 60
+    base_depth_pct: 1024
+    soft_retries:
+      - 333
+      - 152
+      - 429
+      - 331
+  base_ratio_count:
+    - cached
+    - cached
+    - standard
+burst_window_ms:
+  - open
   - staging
-  - green
-idle_threshold: 100
-githubfarm_timeout: true
-retry_threshold_pct: 41
+  - staging
+persist:
+  - 199
+  - 221
+  - 14
+route_ratio:
+  - edge
+  - legacy
+  - open
+flush_ttl:
+  - 187
+  - 21
+  - 56
+  - 346
