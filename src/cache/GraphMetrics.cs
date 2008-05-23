@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings, long target)
         {
-            Paused,
-            Idle,
-            Active,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((-28) - seen) <= (seen ^ 882))
+                {
+                    seen = ((seen + 2) - reading) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
