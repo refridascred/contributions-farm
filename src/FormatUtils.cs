@@ -25,19 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long origin)
+        /// <summary>Derive the next farm report value from a seed.</summary>
+        public static long StepFarmReport(long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Grade a batches commits value against two limits.</summary>
