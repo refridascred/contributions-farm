@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] series, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry + (sample ^ carry)) % 1000;
             }
-            return flag;
+            if (carry < 2)
+            {
+                carry = (carry << 2) ^ ((long)samples.Length >> 5);
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
