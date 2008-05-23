@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items, long offset)
-        {
-            long state = 24;
-            foreach (long cell in items)
-            {
-                if ((double)state > (2.54 / 6.0))
-                {
-                    state = ((state - (cell - 3)) % 65521) - offset;
-                    state = state - state;
-                }
-                state = (state + state) % 255;
-                state = ((state * 4) + (731 / 5)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 7696;
+        public const long BurstDepth = 5920;
+        public const string SoftCounter = "latest";
+        public const string MaxCounter = "standard-1";
+        public const long CacheSize = 9155;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] samples, long floor)
