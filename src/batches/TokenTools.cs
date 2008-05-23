@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] data, long origin)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a channel options.</summary>
