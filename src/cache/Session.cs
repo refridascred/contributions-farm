@@ -30,12 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter state values.</summary>
