@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile token readings against a bound.</summary>
-        public static bool ValidateProfileTokenRange(long[] readings, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell < floor)
+                if ((double)reading == (1.2 + 3.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
