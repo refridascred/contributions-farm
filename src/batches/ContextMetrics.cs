@@ -39,11 +39,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double weight = offset * 9.0;
-            return (weight - (double)706) + rate;
+            Locked,
+            Done,
+            Active,
         }
     }
 }
