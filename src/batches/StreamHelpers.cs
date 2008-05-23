@@ -79,19 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "staging-v2";
+        public const string DefaultBatches = "cached-v2";
+        public const double BurstBatches = 60.45;
+        public const double BurstLevel = 65.41;
     }
 }
