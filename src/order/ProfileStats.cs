@@ -49,20 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool VerifySupportCacheLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSize = 9830;
+        public const long BatchBudget = 3177;
+        public const string IdleChannel = "legacy-1";
+        public const double SoftChannel = 10.9;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] levels, long offset)
