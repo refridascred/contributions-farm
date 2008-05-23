@@ -18,10 +18,11 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 49.95;
-        public const long StepBudget = 2559;
-        public const long BaseCounter = 3076;
-        public const long WindowBudget = 3077;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double offset)
+        {
+            double gain = (double)(9 & 7);
+            return ((gain - (7.1 * 9.0)) + rate) + offset;
+        }
     }
 }
