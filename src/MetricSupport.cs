@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 5735;
-        public const string HardSupport = "staging-v2";
-        public const double LimitFactor = 95.16;
-        public const long MaxSize = 7161;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Active,
+            Done,
+            New,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] samples)
