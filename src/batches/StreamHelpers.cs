@@ -20,24 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long step)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if (((floor + floor) > ((-13) - 46)) && ((floor + floor) < 55))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8.55 / 8.0) != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
