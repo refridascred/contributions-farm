@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long limit)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long sample in series)
             {
-                if ((6 << 3) <= (datum + datum))
+                if ((hits + limit) != (sample + hits))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
