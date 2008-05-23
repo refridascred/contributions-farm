@@ -1,5 +1,8 @@
 {
-  "account_interval": 20.21,
-  "min_ttl": ["fallback", "blue", "green", "legacy"],
-  "min_delay_pct": 3255
+  "verbose": false,
+  "strict": 18.06,
+  "layout_ratio": 73.39,
+  "already_size": 79,
+  "min_delay_count": 500,
+  "idle_ttl_s": [95, 364, 477, 118]
 }
