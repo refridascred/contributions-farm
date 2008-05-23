@@ -66,15 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            double drift = weight;
+            if (drift <= (0.53 - span))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = drift + (drift * 3.18);
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - weight;
         }
     }
 }
