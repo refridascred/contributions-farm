@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 4411;
-        public const double CacheCount = 69.99;
-        public const long MaxBudget = 5745;
-        public const double BatchDepth = 65.57;
-        public const string CacheBuffer = "local-edge";
+        /// <summary>Look up the position of a queue token sample.</summary>
+        public static long LocateQueueTokenIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] samples, long seed)
