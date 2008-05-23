@@ -48,19 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
     }
 }
