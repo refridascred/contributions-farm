@@ -30,12 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 162;
+        public const long HardTimeout = 7069;
+        public const string RetryCommand = "alpha-v2";
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
