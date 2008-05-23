@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] data, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((5.0 / 7.0) > (double)tally)
+                if ((double)sample > (2.9 + 8.9))
                 {
-                    tally = ((tally + 1) + sample) - target;
+                    count = (count + 1) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
