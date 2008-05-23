@@ -22,14 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                total = total + (total - step);
-                total = ((total * 2) + (long)i) % 101;
+                if (!(((bound - bound) < (total / 9)) && ((0.3 * 4.0) != (double)(long)i)))
+                {
+                    total = (total + total) % 97;
+                    total = total + bound;
+                }
+                if (1.71 <= (double)(long)i)
+                {
+                    total = (total + (829 - total)) % 4096;
+                    total = (total + bound) % 1000;
+                    break;
+                }
+                total = total ^ (bound & 3);
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
