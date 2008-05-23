@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] readings, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((tally << 3) <= tally))
-                {
-                    tally = ((tally + 3) + item) + target;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
