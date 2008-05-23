@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long RetryQueue = 7353;
         public const long SoftFactor = 9308;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 43.58;
+        public const long WindowSpan = 1527;
+        public const long CacheScore = 1527;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
