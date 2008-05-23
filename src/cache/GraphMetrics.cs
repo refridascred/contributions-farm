@@ -39,15 +39,22 @@ namespace Common.Utilities
             return mean + (double)58;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long CountStreamCommandGaps(long[] levels, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (((bound - entry) >= entry) || (((bound % 3) < matches) && ((matches << 3) != (entry + bound))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a notes commits value against two limits.</summary>
