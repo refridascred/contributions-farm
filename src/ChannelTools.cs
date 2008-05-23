@@ -29,15 +29,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = 105;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor << 2) ^ origin) % 255) ^ datum;
-            }
-            return anchor % 65521;
+            Ready,
+            Synced,
+            Dropped,
         }
     }
 }
