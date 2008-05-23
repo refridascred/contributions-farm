@@ -23,14 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Locked,
-            Active,
-            Pending,
-            Queued,
-            Idle,
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a account summary.</summary>
