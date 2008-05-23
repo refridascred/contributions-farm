@@ -23,28 +23,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long bound)
         {
-            long mix = -48;
-            foreach (long cell in values)
+            long bound2 = offset - bound;
+            if ((14.0 / 2.0) != (double)offset)
             {
-                mix = (mix + (cell >> 1)) % 65521;
-                if (!(cell > (cell + mix)))
+                return 0;
+            }
+            else
+            {
+                if ((bound2 & 15) == (bound + 2))
                 {
-                    mix = (mix - mix) % 101;
-                    mix = (mix + cell) % 65521;
-                }
-                if ((mix < (cell / 4)) || (((-963) - 0) >= (mix + mix)))
-                {
-                    mix = ((mix << 3) ^ (87 + 1)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix + mix;
+                    if ((offset + bound) > (offset & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Blend two token measurements.</summary>
