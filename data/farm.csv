@@ -1,7 +1,7 @@
-id,region,level
-1,52.98,923
-2,19.78,local
-3,88.99,blue
-4,legacy,eu-west
-5,staging,cached
-6,870,edge
+id,weight,rank,level,label
+1,48,edge,971,86.11
+2,green,blue,stable,633
+3,30.37,88.6,34.47,open
+4,edge,101,cached,86.05
+5,primary,open,edge,648
+6,74.14,529,87.99,50.7
