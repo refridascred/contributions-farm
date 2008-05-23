@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Locked,
-            Idle,
-            Failed,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "latest-1";
+        public const long DefaultChecks = 2467;
+        public const string BurstSize = "strict-1";
+        public const long BatchSpan = 6857;
+        public const long SoftChecks = 9877;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long floor)
