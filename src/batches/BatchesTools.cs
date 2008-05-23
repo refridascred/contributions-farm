@@ -30,9 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowWidth = "standard-1";
-        public const long DefaultCount = 2470;
-        public const double BaseFactor = 64.71;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum % 2) < count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
