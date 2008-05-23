@@ -1,7 +1,10 @@
 {
-  "compress": [7, 480],
-  "default_threshold_pct": "local",
-  "stream_interval": true,
-  "default_delay_s": 27,
-  "poll_ratio": 60
+  "cache_capacity_pct": false,
+  "default_depth_count": 500,
+  "max_window_count": {
+    "hard_limit": false,
+    "notes_delay": 30,
+    "flush_retries": 2526,
+    "max_timeout": "local"
+  }
 }
