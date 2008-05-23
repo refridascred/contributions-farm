@@ -1,18 +1,5 @@
 {
-  "sync_interval_s": {
-    "enabled": true,
-    "burst_interval_ms": {
-      "default_limit": "cached",
-      "default_threshold": false,
-      "batch_window_pct": true,
-      "sync_ttl": "primary"
-    },
-    "schema_size": 6017,
-    "dry_run": 9,
-    "flush_window_pct": ["standard", "blue"]
-  },
-  "batch_delay": "latest",
-  "channel_limit": 30,
-  "batch_size": 31.14,
-  "persist": false
+  "base_size": "latest",
+  "warm_capacity_count": 500,
+  "route_capacity": 50.62
 }
