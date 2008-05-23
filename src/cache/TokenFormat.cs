@@ -30,14 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Paused,
-            Failed,
-            Synced,
-            Draft,
-            Dropped,
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
