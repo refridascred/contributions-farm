@@ -52,13 +52,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long AuditFilterProfileHits(long[] items)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits << 1) < (datum * 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
