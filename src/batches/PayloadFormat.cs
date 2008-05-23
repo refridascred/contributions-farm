@@ -31,20 +31,21 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 2) + floor;
-                if ((double)mark <= (17.0 - 7.3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 5) + (floor * 4)) % 65521;
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
