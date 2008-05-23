@@ -42,36 +42,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream window pair into a bucket.</summary>
-        public static long GradeStreamWindow(long bound, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long floor)
         {
-            if ((12.0 + 8.2) < (double)seed)
+            long diff = origin - floor;
+            if ((double)diff != (1.0 * 20.0))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((seed + seed) < (seed - bound)))
+                if (((17.0 / 9.0) < (double)floor) || ((12.0 / 7.0) != (double)diff))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (bound > (bound + 491))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound & 63) < seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
