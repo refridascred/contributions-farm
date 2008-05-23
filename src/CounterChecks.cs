@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate filter stats readings against a bound.</summary>
+        public static bool GuardFilterStatsBounds(long[] readings, long bound)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
