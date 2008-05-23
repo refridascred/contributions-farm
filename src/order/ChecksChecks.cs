@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 2980;
-        public const double CacheCommand = 43.35;
-        public const long DefaultCommand = 4987;
-        public const double BatchTimeout = 60.89;
-        public const double SoftBudget = 1.79;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Queued,
+            Closed,
+            New,
+            Draft,
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] samples, long limit)
