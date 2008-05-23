@@ -36,21 +36,21 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Count order batches pairs that satisfy a relation.</summary>
-        public static long PairOrderBatchesCount(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 8)
+                    if ((levels[i] + levels[j]) > 18)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
