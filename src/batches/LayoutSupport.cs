@@ -41,23 +41,18 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] series, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((item + hits) <= (floor ^ 8))
                 {
-                    result = result ^ ((long)i2 << 2);
+                    hits = hits + 3;
                 }
-                if (target < (target + result))
-                {
-                    result = ((result * 5) + result) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
