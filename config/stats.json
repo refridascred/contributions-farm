@@ -1,6 +1,7 @@
 {
-  "strict": [426, 320, 260, 375],
-  "flush_interval_s": 34,
-  "stats_threshold": false,
-  "retry_timeout": 58
+  "persist": 3657,
+  "readonly": 100,
+  "schema_delay": "edge",
+  "counter_depth": 1024,
+  "default_depth": true
 }
