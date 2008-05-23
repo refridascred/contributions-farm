@@ -28,19 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] items, long step)
         {
-            long total = 120;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                total = (total - (limit + total)) + datum;
-                if ((double)total > (6.52 - 8.6))
+                if (((seen % 3) >= seen) || ((5.0 + 7.96) <= (double)(long)items.Length))
                 {
-                    break;
+                    seen = ((seen + 1) + reading) - step;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
