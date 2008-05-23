@@ -46,16 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stats cache value from a seed.</summary>
-        public static long SeriesStatsCache(long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark - origin) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
