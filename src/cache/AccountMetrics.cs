@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a entry command pair into a bucket.</summary>
-        public static long RankEntryCommand(long seed, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long seed, long seed2)
         {
-            if (5.63 >= (double)target)
+            long step = seed + seed2;
+            if ((14.0 * 8.29) <= (double)seed2)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((seed * 5) < target)
+                if ((seed2 + seed2) <= (step + 41))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((double)seed < 2.18) || (((-42) - target) <= (45 / 4)))
+                    if (!((seed / 7) <= seed))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)seed > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 8;
                     }
                 }
             }
