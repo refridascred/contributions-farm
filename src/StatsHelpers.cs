@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches <= 53)
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
