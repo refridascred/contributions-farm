@@ -1,10 +1,8 @@
 # support settings
-flush_capacity: 1024
-verbose: cached
-command_size: false
-max_capacity: edge
-route_capacity:
-  - local
-  - standard
-  - legacy
-  - legacy
+account_limit: green
+hard_limit: fallback
+cache_limit:
+  - 444
+  - 61
+enabled: true
+flush_limit_pct: stable
