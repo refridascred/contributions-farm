@@ -30,22 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
-            long acc = 93;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((double)acc > (4.6 * 7.3)) || ((seed + entry) <= (acc ^ 629)))
+                if ((reading ^ reading) >= (reading & 255))
                 {
-                    acc = (acc * 2) + seed;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (85 - 92)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
