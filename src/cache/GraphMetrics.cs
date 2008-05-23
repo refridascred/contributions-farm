@@ -67,12 +67,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long offset)
         {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            if (((double)origin < (0.83 - 2.0)) && ((offset + 3) < origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset << 3) != (1 << 2)) || ((origin % 16) > (offset << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (605 - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
