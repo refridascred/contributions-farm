@@ -10,10 +10,17 @@ namespace Common.Utilities
         public const double SoftFilter = 36.78;
         public const long WindowFilter = 9067;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 6386;
-        public const long BatchProfile = 982;
-        public const long CacheDepth = 8430;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor ^ (anchor % 64);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
