@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            Paused,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item <= (hits % 97)) && !((double)hits > (3.5 + 8.37)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
