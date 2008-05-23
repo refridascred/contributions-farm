@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double bias = (double)9;
-            if (bias >= floor)
-            {
-                bias = (bias + (double)659) - scale;
-            }
-            return bias - floor;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
