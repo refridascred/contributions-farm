@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstCount = 8331;
-        public const string WindowCount = "open";
-        public const string HardRoute = "primary-1";
+        /// <summary>Scale a command route figure with a bias.</summary>
+        public static double BlendCommandRoute(double gain, double bias)
+        {
+            double gain2 = (bias - 6.3) + gain;
+            if (gain2 >= gain2)
+            {
+                gain2 = gain2 - (bias / 3.0);
+            }
+            return gain2 + gain;
+        }
 
         /// <summary>Fold a list of stream farm readings.</summary>
         public static long WeighStreamFarm(long[] samples, long floor)
