@@ -1,5 +1,17 @@
 {
-  "enabled": 96.44,
-  "batch_capacity_count": false,
-  "max_timeout_s": 30
+  "retry_timeout_ms": "edge",
+  "max_limit_pct": {
+    "compress": false,
+    "cache_capacity": {
+      "editor_ttl": 50,
+      "record_retries": 72,
+      "flush_size_ms": 54.63,
+      "cache_window": [26, 141, 462],
+      "burst_retries": 15,
+      "idle_interval_ms": true
+    },
+    "cache_delay_count": "strict",
+    "checks_timeout": "staging"
+  },
+  "base_delay_pct": 5714
 }
