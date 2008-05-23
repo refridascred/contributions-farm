@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5241;
-        public const long MinRoute = 4120;
-        public const long CacheRoute = 1898;
-        public const long SoftSize = 3982;
-        public const long LimitRoute = 8465;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
+        {
+            long score = 551;
+            foreach (long cell in readings)
+            {
+                score = score + cell;
+                score = (score ^ score) % 255;
+                score = score - (209 + cell);
+            }
+            if (score > 2)
+            {
+                score = score + (score / 3);
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] values, long step)
