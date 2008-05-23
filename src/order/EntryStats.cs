@@ -30,21 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up schema command samples.</summary>
-        public static long PairSchemaCommandCount(long[] samples)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = offset;
+            if (rate < (rate / 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return hits;
+            else
+            {
+                rate = rate + (9.0 - ratio);
+            }
+            return rate + (rate * 5.92);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
