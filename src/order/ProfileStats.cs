@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 2;
-            foreach (long datum in data)
-            {
-                total = ((total + (16 % 5)) % 65521) ^ datum;
-            }
-            return total % 65521;
+            Closed,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
