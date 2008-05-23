@@ -10,33 +10,10 @@ namespace Common.Utilities
         public const double SoftFilter = 36.78;
         public const long WindowFilter = 9067;
 
-        /// <summary>Classify a profile payload pair into a bucket.</summary>
-        public static long GradeProfilePayload(long bound, long origin)
-        {
-            long edge = bound - origin;
-            if ((bound - edge) < 921)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((56 / 2) <= (edge + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)edge > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 6386;
+        public const long BatchProfile = 982;
+        public const long CacheDepth = 8430;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
