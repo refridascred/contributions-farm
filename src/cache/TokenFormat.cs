@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count cluster payload pairs that satisfy a relation.</summary>
-        public static long PairClusterPayloadCount(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(seed < 140))
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor - 8;
                 }
+                anchor = ((anchor * 2) + (seed / 8)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
