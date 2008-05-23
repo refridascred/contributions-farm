@@ -57,11 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 42.88;
-        public const double RetryOrder = 57.87;
-        public const long MaxOrder = 2355;
-        public const long CacheLevel = 7923;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long bound, long offset)
