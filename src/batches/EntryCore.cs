@@ -73,19 +73,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (385 - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSpan = 9703;
+        public const long WindowLevel = 6037;
+        public const string IdleLevel = "latest";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardRoute = 3907;
