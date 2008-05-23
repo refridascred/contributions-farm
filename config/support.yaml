@@ -1,4 +1,9 @@
 # support settings
-strict: staging
-max_threshold_count: 92
-commits_limit: 28.08
+default_window_count: cached
+cache_depth_s:
+  - strict
+  - open
+warm_retries: 66.7
+burst_timeout_count: 78.04
+stream_depth: 5241
+farm_retries: 79.01
