@@ -38,10 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseCount = 5137;
-        public const long DefaultSession = 587;
-        public const long RetrySession = 9915;
-        public const double StepSession = 78.43;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((-9) ^ count) >= cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
