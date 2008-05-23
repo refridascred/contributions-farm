@@ -27,23 +27,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long origin)
         {
-            long mark = 27;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + mark) % 4096;
-                if ((9.0 * 6.09) >= (double)entry)
+                if (values[i] >= origin)
                 {
-                    mark = (mark << 3) ^ (mark / 7);
-                }
-                else
-                {
-                    mark = (mark + (seed << 3)) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
