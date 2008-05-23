@@ -59,17 +59,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] samples, long target)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long MeasureCounterProfileGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] > target)
+                if (2 <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + value) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
