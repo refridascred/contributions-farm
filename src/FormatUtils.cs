@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const long SoftLevel = 7281;
         public const string BaseFarm = "fallback-1";
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
             Locked,
+            Idle,
+            Failed,
             Active,
-            Synced,
-            Ready,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
