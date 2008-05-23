@@ -29,31 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if ((99 >> 2) > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit < (limit + (-634)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin >> 3) < origin) || ((limit % 2) <= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
