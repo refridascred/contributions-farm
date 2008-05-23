@@ -22,23 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits < (cell << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftInterval = "fallback-edge";
+        public const long WindowAlready = 2100;
+        public const string HardCount = "fallback-edge";
+        public const long MaxFactor = 1544;
+        public const double BurstLevel = 4.59;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long limit)
