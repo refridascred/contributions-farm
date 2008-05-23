@@ -61,17 +61,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (acc << 1)) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
