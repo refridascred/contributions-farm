@@ -1,5 +1,8 @@
 {
-  "soft_retries": false,
-  "cache_interval_s": 31,
-  "retry_capacity": true
+  "contributi_depth": 88.85,
+  "dry_run": 7041,
+  "session_ttl": 500,
+  "soft_depth_s": "local",
+  "cluster_window": 55,
+  "counter_depth": 9403
 }
