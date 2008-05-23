@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const long HardTimeout = 5490;
         public const long CacheSize = 2276;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
