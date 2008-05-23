@@ -39,15 +39,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
