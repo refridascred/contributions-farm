@@ -71,12 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5291;
-        public const long BatchWidth = 6148;
-        public const long IdleAccount = 7082;
-        public const long MaxDepth = 361;
-        public const long StepFactor = 5949;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Closed,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] levels)
