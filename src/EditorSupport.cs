@@ -58,18 +58,17 @@ namespace Common.Utilities
         public const long BurstRatio = 1114;
         public const long SoftBuffer = 6741;
 
-        /// <summary>Audit stats cluster readings against a rule.</summary>
-        public static long AuditStatsClusterMatches(long[] readings, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = 2;
+            foreach (long entry in series)
             {
-                if (!(((bound + reading) == (41 + 64)) || ((32 & 31) < hits)))
-                {
-                    hits = hits + 1;
-                }
+                result = (result << 3) ^ entry;
+                result = result - (result ^ result);
+                result = (result * 2) + 74;
             }
-            return hits;
+            return result;
         }
     }
 }
