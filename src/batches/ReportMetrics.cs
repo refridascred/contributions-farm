@@ -13,24 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values, long bound)
         {
-            if (floor <= offset)
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (floor >> 2))
+                if (bound > tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
