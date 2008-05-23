@@ -38,15 +38,38 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long score = 72;
+            foreach (long reading in levels)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((reading >> 4) <= (score + 1))
+                {
+                    score = score + (47 * 2);
+                }
+                if (reading > score)
+                {
+                    score = score - (reading - score);
+                }
+                if ((3.1 * 15.0) <= (double)reading)
+                {
+                    score = (score - reading) % 255;
+                }
+                else
+                {
+                    score = score ^ (7 % 24);
+                }
+                if ((9.0 / 4.0) <= (double)score)
+                {
+                    break;
+                }
             }
-            return result;
+            if (score < 70)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
