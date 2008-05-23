@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many route queue samples are out of range.</summary>
-        public static long AuditRouteQueueHits(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((0.5 * 5.3) > (double)tally)
-                {
-                    tally = ((tally + 1) + cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryCount = 3148;
+        public const long StepToken = 6389;
+        public const long IdleToken = 1687;
+        public const string WindowBudget = "staging";
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double span)
