@@ -1,5 +1,7 @@
 # support settings
-editor_interval: 93.56
-verbose: 100
-max_window: cached
-hard_timeout_ms: cached
+enabled: primary
+githubfarm_size: 68
+idle_retries_s:
+  - 317
+  - 224
+  - 61
