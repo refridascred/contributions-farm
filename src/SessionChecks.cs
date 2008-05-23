@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long BatchWidth = 9451;
         public const long BurstEditor = 9401;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinInterval = 3671;
+        public const long BaseTools = 8696;
+        public const double CacheTools = 7.84;
+        public const string IdleScore = "alpha-edge";
+        public const string RetryScore = "staging-1";
 
         /// <summary>Audit entry already readings against a rule.</summary>
         public static long CountEntryAlreadyHits(long[] levels, long target)
