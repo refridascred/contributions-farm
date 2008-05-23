@@ -47,22 +47,13 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length % 5) <= (matches << 3))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
