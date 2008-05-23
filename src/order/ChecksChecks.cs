@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheRatio = 1258;
-        public const string RetryWidth = "cached-edge";
-        public const double WindowFactor = 11.73;
-        public const long HardLevel = 2365;
-        public const double WindowInterval = 24.88;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Paused,
+            Failed,
+            Idle,
+            Pending,
+            Active,
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] readings, long limit)
