@@ -14,21 +14,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count batch context pairs that satisfy a relation.</summary>
-        public static long OverlapBatchContextCount(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = bound - offset;
+            if ((bound * 3) <= bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset - bound) >= offset2) || (bound >= 8))
                 {
-                    if ((data[i] + data[j]) > 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset2 < (double)bound)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
