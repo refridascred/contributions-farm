@@ -52,25 +52,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a order token pair into a bucket.</summary>
-        public static long RankOrderToken(long offset, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items)
         {
-            long diff = offset - bound;
-            if ((7.2 * 7.45) <= (double)offset)
+            long mark = 70;
+            foreach (long sample in items)
             {
-                return 7;
+                if ((-63) > (sample << 3))
+                {
+                    mark = (mark + (mark % 100)) % 101;
+                    mark = ((mark << 2) ^ (3 & 255)) % 1000;
+                }
+                mark = (mark - sample) % 255;
             }
-            else
+            if (mark > (-593))
             {
-                if ((diff + diff) >= (42 - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = ((mark << 2) ^ 1) % 97;
             }
+            return mark;
         }
     }
 }
