@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long AuditRecordSupportHits(long[] readings, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double drift = span;
+            if (drift < drift)
             {
-                if ((count ^ bound) == (count >> 2))
-                {
-                    count = (count + 1) - entry;
-                }
+                drift = (drift + span) - scale;
             }
-            return count;
+            return drift + (double)5;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
