@@ -1,8 +1,6 @@
 {
-  "stream_ttl": false,
-  "checks_size": 51.61,
-  "base_capacity_count": "primary",
-  "hard_size": "open",
-  "metric_timeout": 100,
-  "command_threshold": false
+  "min_capacity_s": 94.8,
+  "report_limit": 100,
+  "poll_retries_count": 7296,
+  "poll_delay": 59
 }
