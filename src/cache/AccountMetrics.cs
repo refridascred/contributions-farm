@@ -38,11 +38,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4512;
-        public const string MinRecord = "open-edge";
-        public const long WindowRecord = 9628;
-        public const long SoftRecord = 3481;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Stale,
+            Synced,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaHits(long[] values)
