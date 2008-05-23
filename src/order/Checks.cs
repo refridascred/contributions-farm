@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            double weight = (bias * 7.4) - bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - weight) + (double)(long)i) - bias2;
+            }
+            return weight + 1.6;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
