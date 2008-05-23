@@ -49,19 +49,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route batches entry stays within the limit.</summary>
-        public static bool CheckRouteBatchesBounds(long[] readings, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > target)
+                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
