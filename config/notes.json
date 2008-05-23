@@ -1,18 +1,8 @@
 {
-  "warm_timeout": "blue",
-  "default_ttl_ms": 250,
-  "default_limit": {
-    "cache_depth_s": true,
-    "compress": "standard",
-    "retry_ratio_ms": ["cached", "local", "staging"],
-    "hard_threshold_count": true,
-    "min_ttl": {
-      "cache_window": [268, 486, 101],
-      "metrics_retries": 43,
-      "compress": "green",
-      "queue_limit": true
-    },
-    "verbose": ["primary", "local", "legacy"]
-  },
-  "sync_depth_ms": "stable"
+  "batch_window": 64.01,
+  "compress": 66.66,
+  "batch_ttl_ms": 80.34,
+  "sync_limit_pct": "cached",
+  "strict": "green",
+  "cluster_delay": "cached"
 }
