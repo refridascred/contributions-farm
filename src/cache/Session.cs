@@ -27,13 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            Stale,
-            Pending,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((20 + item) < matches) && ((matches ^ item) >= item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up commits samples.</summary>
