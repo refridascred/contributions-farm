@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Adjust a stats reading.</summary>
