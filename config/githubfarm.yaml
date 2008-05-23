@@ -1,6 +1,13 @@
 # githubfarm settings
-soft_window_pct: 39
-poll_size: stable
-persist: true
-verbose: local
-enabled: 2370
+max_timeout_s: true
+strict:
+  base_depth_ms:
+    batch_ratio: eu-west
+    command_delay: false
+    schema_size:
+      - legacy
+      - green
+  batches_threshold: 81.47
+  hard_window_pct: latest
+  retry_timeout_ms: 5.88
+hard_size_pct: 6913
