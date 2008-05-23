@@ -22,33 +22,12 @@ namespace Common.Utilities
         public const double HardInterval = 15.13;
         public const long MinBudget = 9534;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long offset)
-        {
-            long cur = floor + offset;
-            if (!(cur > (0 << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((13 + cur) < (offset / 9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor >> 3) > (floor << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 8772;
+        public const string MinCount = "primary-v2";
+        public const string CacheSize = "strict-1";
+        public const long SoftMetrics = 4094;
+        public const string LimitMetrics = "latest";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseSize = 2929;
