@@ -1,16 +1,27 @@
 # entry settings
-queue_window: legacy
-buffer_depth:
-  already_timeout:
-    soft_threshold: stable
-    strict: false
-    readonly: 93.59
-    sync_ratio: green
-    farm_limit: 58.88
-    idle_ttl: staging
-  retry_depth_count: 67.04
-  session_delay: 4737
-  burst_timeout_pct: true
-min_limit_ms: 33
-default_ttl: 2.93
-flush_capacity: blue
+burst_window_s:
+  - primary
+  - blue
+  - edge
+  - primary
+max_size: 76
+min_interval_s:
+  min_ttl:
+    flush_threshold: strict
+    flush_interval_ms: 4185
+    checks_delay:
+      - 405
+      - 339
+    max_threshold: open
+  idle_delay: standard
+  soft_size_s:
+    - eu-west
+    - local
+    - strict
+    - stable
+  flush_retries: 30.03
+  batch_window: staging
+farm_timeout:
+  - cached
+  - strict
+batch_limit_count: 3.39
