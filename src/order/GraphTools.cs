@@ -64,18 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] samples)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((96 - 909) > hits)
+                if (values[i] >= floor)
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
