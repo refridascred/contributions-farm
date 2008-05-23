@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Find the first checks batch entry that matches the target.</summary>
+        public static long LocateChecksBatchIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
