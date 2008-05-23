@@ -41,19 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a queue tools reading.</summary>
-        public static double ScaleQueueTools(double rate, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] data, long step)
         {
-            double bias = floor + floor;
-            if (bias < floor)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                bias = (bias + (double)801) + rate;
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (bias + 5.9)) + (double)(long)i;
-            }
-            return bias - 7.0;
+            return flag;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
