@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of batch stats readings.</summary>
-        public static long OverlapBatchStatsCount(long[] samples)
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long MeasureProfileAccountGaps(long[] data, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading - reading) >= (reading - origin))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
