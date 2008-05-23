@@ -14,10 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 564;
-        public const long CacheCommand = 3420;
-        public const double WindowBudget = 24.77;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public double Count { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
