@@ -14,11 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark ^ mark) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
