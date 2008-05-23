@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] values)
         {
-            Locked,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (20.0 + 7.9))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
