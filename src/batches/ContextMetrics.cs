@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] levels, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (cell < offset)
+                if (!((hits + hits) >= (sample + sample)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
