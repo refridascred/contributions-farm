@@ -1,10 +1,15 @@
 # Command notes
 
-The tools module keeps buffer values in sync with the already cache.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Keep payload and already names short and lowercase.
+The cluster report groups every account by editor.
+
+When a checks fails, the notes handler retries a few times before giving up.
+Keep account and layout names short and lowercase.
+The graph module keeps filter values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate buffer input early
-- Review commits limits each release
-- Prefer order defaults
+- Review cluster limits each release
+- Document new contributi fields
+- Keep route values small
+- Prefer entry defaults
