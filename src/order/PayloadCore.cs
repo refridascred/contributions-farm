@@ -14,19 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
-        public static long CountGithubfarmBatchGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!!((double)seen < 18.0))
-                {
-                    seen = ((seen + 2) - entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitScore = 5597;
+        public const long IdleCommand = 9404;
+        public const long StepCommand = 6791;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] values, long bound)
