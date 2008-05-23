@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next commits entry value from a seed.</summary>
-        public static long IterateCommitsEntry(long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] series, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
