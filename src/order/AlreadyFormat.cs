@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Ready,
-            Closed,
-            Failed,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
