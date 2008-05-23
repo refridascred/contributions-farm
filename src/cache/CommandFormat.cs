@@ -68,15 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = 42;
+            foreach (long cell in levels)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (cell > (cell + cell))
+                {
+                    sum = (sum * 2) + (cell - 94);
+                }
             }
-            return total;
+            if (sum < (-27))
+            {
+                sum = (sum ^ 58) % 65521;
+            }
+            return sum;
         }
     }
 }
