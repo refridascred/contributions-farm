@@ -41,9 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxDepth = 8688;
-        public const double WindowSpan = 51.12;
-        public const double RetryRoute = 4.82;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 968;
+        public const string DefaultWidth = "standard-1";
+        public const long LimitCount = 4206;
+        public const long MaxRatio = 8656;
+        public const string MinStats = "latest";
     }
 }
