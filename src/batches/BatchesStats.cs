@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values, long bound)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long FindCounterMetricIndex(long[] items, long bound)
         {
-            long sum = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum + (8 + sum)) % 65521) ^ item) + bound;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
