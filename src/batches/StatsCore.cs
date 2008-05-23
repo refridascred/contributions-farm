@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine farm format values into a single score.</summary>
+        public static long WeighFarmFormat(long[] samples, long seed)
         {
-            Synced,
-            Paused,
-            New,
-            Retry,
-            Draft,
+            long acc = 20;
+            foreach (long value in samples)
+            {
+                acc = ((acc + (acc + value)) % 255) - seed;
+                if (((5.0 + 2.0) >= (double)value) || (4.2 < (double)value))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
