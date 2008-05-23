@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long seed)
         {
-            double gain = (double)(9 & 7);
-            return ((gain - (7.1 * 9.0)) + rate) + offset;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
