@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long StepRatio = 3362;
         public const double BurstStats = 69.39;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (98 <= (matches * 3))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
