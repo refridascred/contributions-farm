@@ -27,23 +27,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items, long bound)
-        {
-            long sum = 404;
-            foreach (long item in items)
-            {
-                if (3 > (sum % 10))
-                {
-                    sum = sum ^ (bound + item);
-                }
-            }
-            if (sum > 374)
-            {
-                sum = (sum - ((-48) / 9)) % 1000;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftRatio = 8998;
+        public const long LimitSpan = 9919;
+        public const string RetrySchema = "local-v2";
+        public const double StepSchema = 95.28;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
