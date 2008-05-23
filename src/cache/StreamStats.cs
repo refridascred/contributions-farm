@@ -45,11 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length % 5) <= (matches << 3))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
