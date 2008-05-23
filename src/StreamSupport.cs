@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long offset)
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long TotalStreamPayload(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 31;
+            foreach (long value in samples)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                total = (((total << 3) ^ (333 << 3)) + value) + target;
             }
-            return -1;
+            if (total > 4)
+            {
+                total = ((total * 4) + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the graph token entries that pass the check.</summary>
