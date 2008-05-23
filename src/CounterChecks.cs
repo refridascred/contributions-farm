@@ -77,16 +77,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long limit)
         {
-            long sum = 7;
-            foreach (long entry in levels)
+            long sum = -1;
+            foreach (long value in series)
             {
-                if ((double)0 < (double)sum)
+                if ((value >> 3) < (value >> 5))
                 {
-                    sum = ((sum * 3) + (-1)) + entry;
+                    break;
                 }
+                else
+                {
+                    sum = (sum - (value & 3)) % 1000;
+                }
+                if (!((double)limit >= (0.55 / 5.0)))
+                {
+                    sum = (sum * 3) + (value >> 1);
+                }
+                sum = (sum ^ (sum << 1)) % 1000;
+            }
+            if (sum < 758)
+            {
+                sum = sum + 640;
             }
             return sum;
         }
