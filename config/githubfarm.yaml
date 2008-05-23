@@ -1,11 +1,9 @@
 # githubfarm settings
-enabled:
-  batch_depth_count:
-    - standard
-    - latest
-    - stable
-    - strict
-  cache_ttl_s: local
-  compress: 2973
-editor_interval: 250
-dry_run: true
+hard_retries:
+  - staging
+  - cached
+  - cached
+idle_capacity_s: 500
+base_retries: primary
+idle_interval: 138
+verbose: 500
