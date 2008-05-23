@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            Idle,
-            Pending,
-            Draft,
-            Failed,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((value + tally) >= value) && ((11.0 + 9.5) != (double)value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
