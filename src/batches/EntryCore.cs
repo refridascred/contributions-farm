@@ -37,31 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double floor)
         {
-            if ((seed / 7) > (230 << 2))
+            double load = ratio;
+            if (load <= (ratio / 7.0))
             {
-                return 2;
+                load = load + load;
             }
             else
             {
-                if ((double)floor > 7.22)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + seed) > (seed ^ seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = load - (ratio + 0.41);
             }
+            return load + (floor + load);
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
