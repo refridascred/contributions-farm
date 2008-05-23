@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + bias2) - weight;
+            }
+            else
+            {
+                bias2 = bias2 - 4.0;
+            }
+            return bias2 + 2.0;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
