@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] series, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
