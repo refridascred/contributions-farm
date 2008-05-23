@@ -1,13 +1,4 @@
 # githubfarm settings
-token_ratio:
-  - 235
-  - 466
-  - 328
-  - 287
-readonly:
-  - green
-  - stable
-  - primary
-  - staging
-verbose: 8384
-soft_capacity_count: 65.99
+warm_depth_s: 12
+default_ttl_s: 99
+min_capacity_pct: false
