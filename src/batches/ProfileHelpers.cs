@@ -53,11 +53,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
