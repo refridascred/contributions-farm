@@ -58,13 +58,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Match up order already samples.</summary>
+        public static long PairOrderAlreadyCount(long[] items)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine order farm values into a single score.</summary>
