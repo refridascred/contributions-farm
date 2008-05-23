@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 38.5;
-        public const long WindowSpan = 9678;
-        public const long RetryBudget = 2572;
-        public const long BatchInterval = 1228;
-        public const long BaseFactor = 6542;
+        /// <summary>Iterate the layout session series from a seed.</summary>
+        public static long SeriesLayoutSession(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score + (step * 4)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
