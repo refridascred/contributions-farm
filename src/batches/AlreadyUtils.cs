@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a editor account reading.</summary>
-        public static double ScaleEditorAccount(double scale, double floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double ratio = scale;
-            if (ratio <= scale)
-            {
-                ratio = ratio - 8.0;
-            }
-            else
-            {
-                ratio = ratio + (floor + 1.31);
-            }
-            return ratio - ratio;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
