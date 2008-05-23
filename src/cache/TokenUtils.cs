@@ -37,28 +37,36 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long origin, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long origin)
         {
-            if (((seed + 296) > (seed % 7)) && ((0.9 * 7.0) == (double)origin))
+            long edge = offset ^ origin;
+            if ((edge & 15) > edge)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (754 <= (origin % 2))
+                if ((origin / 9) > (origin + origin))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin >> 5) <= origin)
+                    if ((8.4 - 4.4) < (double)origin)
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        if (!((5 - 8) == (edge - origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
