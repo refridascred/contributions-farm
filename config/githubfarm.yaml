@@ -1,21 +1,5 @@
 # githubfarm settings
-soft_capacity_count: false
-verbose: 71
-flush_window_s:
-  batches_limit: 32.08
-  counter_capacity: latest
-  retry_delay_ms:
-    - 457
-    - 417
-    - 365
-  order_delay: 43
-  format_ratio:
-    metrics_depth: 31
-    poll_delay_count: 100
-    warm_interval_s:
-      - primary
-      - stable
-    soft_depth: 2.51
-    metrics_ratio: 8674
-    retry_interval: edge
-enabled: 1024
+command_ttl: fallback
+base_retries: strict
+verbose: 2797
+warm_size: true
