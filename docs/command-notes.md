@@ -1,12 +1,11 @@
 # Command notes
 
-The route module keeps session values in sync with the window cache.
-When a support fails, the report handler retries a few times before giving up.
-Run the account check before changing any tools limits.
+Use batch settings to tune how often buffer data is refreshed.
+A record that stays idle for too long is moved to the contributi list.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new graph fields
-- Log every commits change
-- Review format limits each release
+- Prefer format defaults
+- Validate editor input early
+- Review token limits each release
