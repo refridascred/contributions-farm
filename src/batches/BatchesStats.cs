@@ -24,32 +24,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long limit, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long edge = limit - floor;
-            if ((floor <= (limit & 15)) && ((floor % 3) == (3 & 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge ^ edge) > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (38 < edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
