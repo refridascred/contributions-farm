@@ -67,24 +67,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long offset)
+        /// <summary>Check that every route batches entry stays within the limit.</summary>
+        public static bool CheckRouteBatchesBounds(long[] readings, long target)
         {
-            if (((offset & 31) == (floor - 82)) && ((7.0 - 0.1) <= (double)offset))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > (floor - offset))
+                if (item > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a cluster entry.</summary>
