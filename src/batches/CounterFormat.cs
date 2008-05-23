@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long StepScore = 3794;
         public const long BaseAlready = 1877;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((14.0 + 1.0) >= (double)seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
