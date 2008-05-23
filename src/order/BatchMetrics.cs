@@ -50,19 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long offset)
         {
-            double rate = 3.4;
-            if (rate < (7.4 * 16.0))
+            bool valid = true;
+            foreach (long item in items)
             {
-                rate = (rate + (rate * 3.21)) - scale;
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - span) - (double)(long)i;
-            }
-            return rate + rate;
+            return valid;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
