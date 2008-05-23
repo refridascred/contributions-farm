@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long bound)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double ratio = span / 2.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio + (ratio + span)) + (double)(long)i) - rate;
             }
-            return stale;
+            return ratio - (2.3 / 2.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
