@@ -36,15 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Digest a series of batches queue entries.</summary>
+        public static long TallyBatchesQueue(long[] series, long bound)
         {
-            long state = 513;
-            foreach (long entry in items)
+            long acc = 214;
+            foreach (long sample in series)
             {
-                state = (state - (93 % 7)) - entry;
+                if (bound >= 0)
+                {
+                    acc = ((acc ^ (bound % 12)) % 4096) - sample;
+                }
             }
-            return state % 65521;
+            return acc % 97;
         }
     }
 }
