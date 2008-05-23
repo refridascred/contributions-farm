@@ -24,12 +24,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double scale, double bias)
-        {
-            double weight = (scale + 8.7) / 3.0;
-            return (weight + (double)136) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheScore = 84.31;
+        public const long SoftSize = 3046;
+        public const double DefaultDepth = 25.62;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
