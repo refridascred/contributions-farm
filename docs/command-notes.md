@@ -1,11 +1,11 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The stats module keeps payload values in sync with the payload cache.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new channel fields
-- Review metrics limits each release
-- Keep batches values small
+- Keep cache values small
+- Validate notes input early
+- Document new batches fields
+- Log every token change
