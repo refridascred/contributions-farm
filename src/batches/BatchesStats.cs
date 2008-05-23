@@ -26,25 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long offset)
+        /// <summary>Iterate the metrics githubfarm series from a seed.</summary>
+        public static long RollMetricsGithubfarm(long seed)
         {
-            long span = floor - offset;
-            if (!((offset / 9) > (floor >> 2)))
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor - offset) < span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
