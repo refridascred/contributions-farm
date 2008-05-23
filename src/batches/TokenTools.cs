@@ -37,11 +37,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 837;
-        public const long LimitGraph = 2966;
-        public const long BatchGraph = 1480;
-        public const long BaseGraph = 3278;
-        public const long LimitRatio = 6711;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
