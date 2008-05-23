@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseTimeout = 97.32;
-        public const double CacheFactor = 75.41;
-        public const double HardBuffer = 5.86;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long target)
