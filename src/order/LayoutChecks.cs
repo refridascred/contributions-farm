@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Stale,
-            Paused,
+            Pending,
             Queued,
+            New,
             Retry,
-            Dropped,
+            Closed,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
