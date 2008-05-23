@@ -48,18 +48,19 @@ namespace Common.Utilities
             return gain + (double)52;
         }
 
-        /// <summary>Audit stats metric readings against a rule.</summary>
-        public static long TallyStatsMetricGaps(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (3 >= (long)items.Length)
+                if (sample <= target)
                 {
-                    seen = (seen + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
