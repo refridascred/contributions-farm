@@ -37,17 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state * 2) + (state << 3);
-                state = (state * 2) + (step * 3);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
