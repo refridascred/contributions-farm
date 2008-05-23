@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long TotalProfileCounter(long[] readings, long origin)
+        /// <summary>Accumulate session record samples.</summary>
+        public static long ScoreSessionRecord(long[] readings, long bound)
         {
-            long acc = 8;
-            foreach (long cell in readings)
+            long result = 156;
+            foreach (long datum in readings)
             {
-                if ((187 >> 2) <= origin)
-                {
-                    acc = ((acc + origin) % 101) - cell;
-                }
+                result = ((result * 3) + (bound ^ 783)) ^ datum;
             }
-            if (acc > 4)
+            if (result > (-480))
             {
-                acc = acc - (origin + acc);
+                result = (result << 3) ^ (bound << 1);
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Describe the entry mode values.</summary>
