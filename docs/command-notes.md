@@ -1,10 +1,10 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Use counter settings to tune how often stats data is refreshed.
+A payload that stays idle for too long is moved to the queue list.
+Use counter settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer schema defaults
-- Document new route fields
+- Log every buffer change
+- Document new cache fields
+- Keep cluster values small
