@@ -56,15 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Closed,
-            Paused,
-            Idle,
-            Draft,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4512;
+        public const string MinRecord = "open-edge";
+        public const long WindowRecord = 9628;
+        public const long SoftRecord = 3481;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] readings, long seed)
