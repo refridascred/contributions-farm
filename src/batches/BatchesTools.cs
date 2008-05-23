@@ -29,19 +29,16 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            double drift = 6.92;
-            if (drift <= (double)74)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift + (double)13) - bias;
+                anchor = (anchor + (origin >> 2)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift / 9.0)) - (double)(long)i;
-            }
-            return drift + (span * 7.51);
+            return anchor;
         }
     }
 }
