@@ -1,8 +1,5 @@
 {
-  "report_size": 5619,
-  "burst_interval_ms": "eu-west",
-  "cache_timeout": 8.02,
-  "compress": "stable",
-  "dry_run": true,
-  "cache_delay": false
+  "verbose": "stable",
+  "format_window": 1349,
+  "soft_retries": false
 }
