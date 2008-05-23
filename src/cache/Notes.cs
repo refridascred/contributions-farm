@@ -49,18 +49,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry * 3) > matches) && ((matches + matches) >= (401 ^ 828)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
