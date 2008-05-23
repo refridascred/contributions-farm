@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] values, long step)
         {
-            double rate = span;
-            if (rate < span)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                rate = rate + (span - rate);
+                if (!((seen / 5) != (seen ^ seen)))
+                {
+                    seen = ((seen + 3) - entry) - step;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (bias + bias);
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
