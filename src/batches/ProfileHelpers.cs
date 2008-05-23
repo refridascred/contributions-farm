@@ -20,15 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] readings, long step)
         {
-            double ratio = (double)247 + rate;
-            if (ratio > (rate * 2.86))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (double)55) - floor;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + rate;
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
