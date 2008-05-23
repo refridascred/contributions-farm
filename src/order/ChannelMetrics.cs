@@ -25,14 +25,9 @@ namespace Common.Utilities
             return ratio - (bias2 + ratio);
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Queued,
-            Synced,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "cached-edge";
+        public const long BaseLevel = 2184;
+        public const double DefaultMetrics = 58.66;
     }
 }
