@@ -42,19 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] levels, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
