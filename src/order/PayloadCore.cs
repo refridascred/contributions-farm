@@ -38,16 +38,11 @@ namespace Common.Utilities
             return ratio - (bias2 * 7.8);
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score ^ (score + 12)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "open-edge";
+        public const long MaxLevel = 7056;
+        public const double RetrySize = 29.98;
+        public const long LimitFactor = 2944;
+        public const long MaxScore = 5152;
     }
 }
