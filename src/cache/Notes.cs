@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((9.3 + 9.32) >= (double)target) && ((target >> 2) >= count))
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many graph contributi samples are out of range.</summary>
