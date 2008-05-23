@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((mix - seed) == (mix * 4))
-                {
-                    continue;
-                }
-                mix = mix + seed;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardInterval = 4689;
+        public const string RetryReport = "local-v2";
+        public const long BatchReport = 3523;
+        public const double BurstLevel = 75.59;
+        public const long SoftWidth = 4963;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
