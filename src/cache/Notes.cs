@@ -23,20 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Check that every order token entry stays within the limit.</summary>
+        public static bool GuardOrderTokenRange(long[] readings, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 3) + (898 >> 1)) % 4096;
-                if ((mark << 3) == (mark ^ mark))
+                if (datum >= target)
                 {
-                    mark = (mark * 2) + mark;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
