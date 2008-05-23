@@ -39,11 +39,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double offset)
+        /// <summary>Match up stats filter samples.</summary>
+        public static long MatchStatsFilterCount(long[] data)
         {
-            double bias = offset;
-            return (bias + offset) + scale;
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account snapshot.</summary>
