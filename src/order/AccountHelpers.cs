@@ -79,19 +79,17 @@ namespace Common.Utilities
         public const double RetrySpan = 2.83;
         public const string IdleTimeout = "open-edge";
 
-        /// <summary>Validate graph checks readings against a bound.</summary>
-        public static bool ValidateGraphChecksLimits(long[] series, long offset)
+        /// <summary>Find the first profile filter entry that matches the target.</summary>
+        public static long LocateProfileFilterIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= offset)
+                if (samples[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
