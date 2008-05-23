@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long bound)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            if (3.6 < (double)limit)
+            double ratio = 0.19;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                ratio = ((ratio - (span - span)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if (!((bound ^ limit) <= limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return ratio + span;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
