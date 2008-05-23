@@ -59,21 +59,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache cluster value from a seed.</summary>
-        public static long SeriesCacheCluster(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum ^ origin;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum + (origin << 2)) % 255) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSize = 7235;
+        public const double RetryInterval = 74.49;
+        public const long WindowBudget = 6705;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
