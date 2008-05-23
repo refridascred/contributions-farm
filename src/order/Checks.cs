@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseCount = 8964;
-        public const double MinChannel = 62.45;
-        public const long DefaultBudget = 5113;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry & 15) == (entry % 100))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] readings)
