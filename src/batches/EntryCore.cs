@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long cur = step + origin;
-            if (!((6 >> 5) < (cur + origin)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 463) <= (step * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((441 + origin) >= cur))
+                    if ((values[i] ^ values[j]) > 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of already entry entries.</summary>
