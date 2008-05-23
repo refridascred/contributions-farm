@@ -45,12 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long target)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
