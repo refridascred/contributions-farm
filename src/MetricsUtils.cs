@@ -48,21 +48,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
-        public static long MatchQueueContributiCount(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
