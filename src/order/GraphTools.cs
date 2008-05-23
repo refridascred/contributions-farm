@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
