@@ -17,12 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchInterval = 8811;
-        public const double HardLevel = 53.6;
-        public const long StepSpan = 2147;
-        public const double BaseTimeout = 11.71;
-        public const long DefaultNotes = 3291;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Failed,
+            Stale,
+            Active,
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] items, long target)
