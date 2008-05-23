@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstScore = 561;
-        public const long WindowToken = 8097;
-        public const string StepToken = "strict-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 626;
+        public const long LimitGraph = 6982;
+        public const string MaxGraph = "alpha-edge";
+        public const string CacheScore = "staging-1";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseSize = 1950;
