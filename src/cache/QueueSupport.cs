@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 60.6;
+        public const double MinTools = 17.88;
+        public const double SoftTools = 65.84;
+        public const double HardInterval = 34.63;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] readings, long origin)
