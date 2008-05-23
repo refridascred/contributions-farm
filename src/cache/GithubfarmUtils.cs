@@ -55,11 +55,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series)
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long state = 0;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (state - (cell + (long)i)) % 4096;
+                }
+                if (((state & 63) == (state + cell)) && ((double)state < 9.9))
+                {
+                    state = (state + (cell + (-81))) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
