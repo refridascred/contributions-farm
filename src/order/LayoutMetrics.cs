@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultInterval = 13.76;
-        public const double SoftLevel = 66.27;
-        public const double CacheFilter = 22.91;
-        public const string IdleFilter = "strict-1";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] items)
