@@ -39,20 +39,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long result = -687;
-            foreach (long item in levels)
-            {
-                result = ((result << 3) ^ ((long)levels.Length << 3)) ^ item;
-                result = ((result * 5) + (result << 2)) % 4096;
-            }
-            if (result < 533)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
