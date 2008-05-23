@@ -19,39 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long step, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long limit)
         {
-            long offset2 = step + offset;
-            if ((543 + step) > (411 - offset2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.1 - 19.0) <= (double)offset2)
+                if (data[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 & 127) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset2 & 1) > (offset % 97)) || ((offset2 << 1) >= offset2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of editor metric entries.</summary>
