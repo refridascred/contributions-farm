@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstScore = 561;
+        public const long WindowToken = 8097;
+        public const string StepToken = "strict-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseSize = 1950;
