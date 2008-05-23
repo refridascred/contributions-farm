@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples, long step)
         {
-            Stale,
-            Done,
-            Failed,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (step >= (41 + hits))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
