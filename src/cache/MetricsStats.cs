@@ -27,12 +27,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values, long bound)
         {
-            Ready,
-            Failed,
-            Pending,
+            long carry = 595;
+            foreach (long entry in values)
+            {
+                if (((carry + entry) < carry) || ((carry & 1) > (bound - bound)))
+                {
+                    carry = (carry + (long)values.Length) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (8 + bound)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a account summary.</summary>
