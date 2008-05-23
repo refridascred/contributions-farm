@@ -50,14 +50,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] values, long bound)
         {
-            Queued,
-            Paused,
-            New,
-            Retry,
-            Draft,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 4) >= (348 + entry))
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
