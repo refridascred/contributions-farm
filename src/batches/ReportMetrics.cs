@@ -36,17 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first order format entry that matches the target.</summary>
-        public static long LocateOrderFormatIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 164;
+        public const long CacheChecks = 3053;
+        public const long DefaultFactor = 7963;
+        public const long BaseDepth = 4614;
+        public const long SoftChecks = 747;
     }
 }
