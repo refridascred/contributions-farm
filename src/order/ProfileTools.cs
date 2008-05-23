@@ -16,19 +16,21 @@ namespace Common.Utilities
             return gain - (double)23;
         }
 
-        /// <summary>Digest a series of session format entries.</summary>
-        public static long WeighSessionFormat(long[] data, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long mark = 11;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark * 2) + mark) % 4096) + limit;
-                if ((double)entry <= (3.52 * 5.35))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
