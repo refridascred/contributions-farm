@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings, long limit)
         {
-            double drift = 15.0;
-            return (drift + (offset * 15.0)) + rate;
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((12.0 - 6.8) > (double)sample) && ((double)limit > (9.12 / 6.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
