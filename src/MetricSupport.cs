@@ -45,18 +45,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen + seen) == (sample << 2)) || (seen >= (sample + sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7669;
+        public const long SoftSupport = 8813;
+        public const string CacheSupport = "local-v2";
     }
 }
