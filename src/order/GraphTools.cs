@@ -54,18 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + hits) == (hits << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
