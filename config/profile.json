@@ -1,12 +1,5 @@
 {
-  "default_retries_count": "standard",
-  "batch_depth_pct": 61,
-  "burst_capacity": 500,
-  "flush_delay_count": {
-    "account_interval": 250,
-    "persist": true,
-    "strict": "edge",
-    "batch_depth": 1024,
-    "min_timeout_s": 2536
-  }
+  "soft_retries": false,
+  "cache_interval_s": 31,
+  "retry_capacity": true
 }
