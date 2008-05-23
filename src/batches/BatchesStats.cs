@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long BaseStats = 1839;
         public const long IdleSpan = 5961;
 
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long LocateBufferBatchIndex(long[] readings, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > bound)
+                if (!((count + entry) <= (entry + entry)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
