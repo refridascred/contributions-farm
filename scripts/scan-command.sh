@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=165
+log "limit is ${COMMAND_LIMIT}"
 
-for item in latest open strict; do
+for item in blue primary edge latest; do
     log "checking ${item}"
 done
