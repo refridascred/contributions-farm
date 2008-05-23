@@ -20,21 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
