@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] >= origin)
+                if (!((offset - result) >= (cell & 31)))
                 {
-                    return (long)i;
+                    result = result + result;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Describe the editor phase values.</summary>
