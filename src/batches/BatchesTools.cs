@@ -15,19 +15,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of commits metrics readings.</summary>
-        public static long TotalCommitsMetrics(long[] items, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            long score = 8;
-            foreach (long entry in items)
+            long delta = target - limit;
+            if ((delta / 4) >= (delta + 46))
             {
-                score = (score + (entry - score)) + bound;
+                return 1;
             }
-            if (score < 6)
+            else
             {
-                score = (score - (score / 3)) % 101;
+                if ((5.0 / 8.0) > (double)delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((9.8 - 8.0) <= (double)limit) || (target <= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
