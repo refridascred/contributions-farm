@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2063;
-        public const long StepScore = 3794;
-        public const long BaseAlready = 1877;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenMatches(long[] series)
