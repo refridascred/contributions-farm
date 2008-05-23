@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings, long limit)
         {
-            Paused,
-            Closed,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (5.0 < (double)reading)
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats token readings against a rule.</summary>
