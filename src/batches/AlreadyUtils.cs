@@ -63,19 +63,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] readings, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= bound)
+                if (readings[i] > bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
