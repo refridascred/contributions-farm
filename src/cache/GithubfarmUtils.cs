@@ -50,17 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(44 + (-4));
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (offset - offset)) + (double)(long)i) - bias;
             }
-            return -1;
+            return ratio + (double)(-11);
         }
     }
 }
