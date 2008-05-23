@@ -46,19 +46,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format stream readings.</summary>
-        public static long FoldFormatStream(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double floor)
         {
-            long mark = 527;
-            foreach (long reading in readings)
+            double bias2 = floor;
+            if (bias2 > (bias2 / 4.0))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = mark - (long)i;
-                }
-                mark = (mark + reading) % 97;
+                bias2 = bias2 + (bias - 16.0);
             }
-            return mark;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - floor;
         }
     }
 }
