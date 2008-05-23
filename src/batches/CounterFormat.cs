@@ -31,12 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine context buffer values into a single score.</summary>
+        public static long CombineContextBuffer(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 72;
+            foreach (long value in values)
+            {
+                result = (((result ^ result) % 1000) + value) + origin;
+            }
+            if (result > (-77))
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
