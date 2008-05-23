@@ -73,9 +73,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "legacy-1";
-        public const long BaseContributi = 8129;
-        public const long MaxTimeout = 6031;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
