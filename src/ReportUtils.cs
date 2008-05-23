@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool VerifyWindowEditorLimits(long[] items, long offset)
+        /// <summary>Count the checks batches entries that pass the check.</summary>
+        public static long CountChecksBatchesHits(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (datum < offset)
+                if (!(((double)tally > (9.0 * 8.68)) && ((tally + sample) >= tally)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
