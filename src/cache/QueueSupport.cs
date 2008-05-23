@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double SoftTools = 65.84;
         public const double HardInterval = 34.63;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long origin)
+        /// <summary>Locate a already schema reading by value.</summary>
+        public static long LocateAlreadySchemaIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= origin)
+                if ((items[i] < target) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
