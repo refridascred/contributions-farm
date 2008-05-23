@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ mark) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
