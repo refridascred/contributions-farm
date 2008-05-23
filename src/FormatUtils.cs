@@ -51,15 +51,11 @@ namespace Common.Utilities
         public const string MaxDepth = "standard";
         public const long WindowPayload = 3212;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long total = -30;
-            foreach (long item in data)
-            {
-                total = ((total << 2) ^ item) % 255;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
