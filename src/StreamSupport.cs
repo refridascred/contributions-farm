@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long TotalStreamPayload(long[] samples, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = 31;
-            foreach (long value in samples)
-            {
-                total = (((total << 3) ^ (333 << 3)) + value) + target;
-            }
-            if (total > 4)
-            {
-                total = ((total * 4) + total) % 1000;
-            }
-            return total;
+            Active,
+            New,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the graph token entries that pass the check.</summary>
