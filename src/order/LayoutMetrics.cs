@@ -37,10 +37,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 3.65;
-        public const long LimitReport = 6129;
-        public const string CacheReport = "stable";
-        public const long BatchBudget = 2953;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowRatio = 7744;
+        public const string RetryDepth = "legacy-1";
+        public const double RetryBatches = 86.54;
     }
 }
