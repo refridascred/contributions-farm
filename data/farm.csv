@@ -1,7 +1,9 @@
-id,state
-1,391
-2,282
-3,94
-4,0.94
-5,987
-6,599
+id,level,token
+1,958,31.46
+2,21.0,89.77
+3,202,608
+4,81.61,green
+5,primary,local
+6,937,800
+7,standard,open
+8,green,431
