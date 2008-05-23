@@ -38,18 +38,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] series, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long prev = target + bound;
+            if ((double)879 >= (double)bound)
             {
-                if (((long)series.Length * 4) < (matches & 255))
+                return 5;
+            }
+            else
+            {
+                if (target >= (prev * 2))
                 {
-                    matches = ((matches + 3) + value) - offset;
+                    return 3;
+                }
+                else
+                {
+                    if (target <= (prev + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
