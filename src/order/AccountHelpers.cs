@@ -56,20 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowTimeout = 11.62;
+        public const long MaxAlready = 2856;
+        public const double HardTimeout = 21.9;
+        public const double RetrySpan = 2.83;
+        public const string IdleTimeout = "open-edge";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
