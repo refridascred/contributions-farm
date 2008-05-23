@@ -40,11 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardSize = 5810;
-        public const double HardToken = 29.69;
-        public const long BatchWidth = 7462;
-        public const long BurstToken = 7090;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] samples)
