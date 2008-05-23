@@ -48,12 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long target)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
