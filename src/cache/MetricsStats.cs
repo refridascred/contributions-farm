@@ -27,13 +27,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] samples, long origin)
         {
-            Ready,
-            Active,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)item < (12.0 * 1.9)) && (((origin >> 4) >= (origin / 2)) || (tally < (item / 6))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
