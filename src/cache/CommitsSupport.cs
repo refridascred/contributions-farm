@@ -78,11 +78,18 @@ namespace Common.Utilities
             return gain + (weight - weight);
         }
 
-        /// <summary>Scale a support token figure with a bias.</summary>
-        public static double AdjustSupportToken(double ratio, double bias)
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long MeasureBatchesRouteOutliers(long[] data, long origin)
         {
-            double mean = bias;
-            return (mean + bias) + ratio;
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((4.1 * 8.0) == (double)origin)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
