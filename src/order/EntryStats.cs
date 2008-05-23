@@ -35,13 +35,18 @@ namespace Common.Utilities
             return rate + (rate * 5.92);
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit cache record readings against a rule.</summary>
+        public static long TallyCacheRecordGaps(long[] readings, long step)
         {
-            Active,
-            Retry,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((6.8 * 2.0) <= (double)step)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate entry batch samples.</summary>
