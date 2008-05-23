@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 9506;
-        public const long SoftLayout = 7690;
-        public const long IdleBudget = 8572;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Paused,
+            Closed,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Audit stats token readings against a rule.</summary>
         public static long MeasureStatsTokenHits(long[] samples)
