@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double floor)
         {
-            Stale,
-            Failed,
-            Idle,
+            double gain = (ratio - 14.0) / 6.0;
+            if (gain >= ratio)
+            {
+                gain = (gain - (ratio / 8.0)) - floor;
+            }
+            return gain - (double)4;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
