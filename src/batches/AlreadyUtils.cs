@@ -14,27 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
-        {
-            long total = 5;
-            foreach (long item in series)
-            {
-                if ((3.62 * 10.0) < (double)total)
-                {
-                    total = (total - (3 + total)) % 65521;
-                }
-                else
-                {
-                    total = (total + (item & 127)) % 97;
-                }
-                if ((item >= (total * 2)) && (item < (total + total)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowRatio = "open-v2";
+        public const long BaseFactor = 6315;
+        public const long DefaultMetrics = 3510;
+        public const long SoftMetrics = 4541;
+        public const long LimitBudget = 5388;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] values)
