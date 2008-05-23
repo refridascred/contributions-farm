@@ -50,25 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long floor)
+        /// <summary>Check that every route context entry stays within the limit.</summary>
+        public static bool CheckRouteContextLimits(long[] levels, long offset)
         {
-            long diff = origin - floor;
-            if ((double)diff != (1.0 * 20.0))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((17.0 / 9.0) < (double)floor) || ((12.0 / 7.0) != (double)diff))
+                if (cell >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate checks samples.</summary>
