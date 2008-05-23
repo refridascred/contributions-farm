@@ -25,18 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] items, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item < (-34))
+                if ((double)step != (double)value)
                 {
-                    seen = (seen + 1) - seed;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
