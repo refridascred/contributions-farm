@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] items, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (reading >= origin)
+                if ((step + step) > item)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
