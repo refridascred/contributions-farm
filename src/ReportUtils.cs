@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two window buffer measurements.</summary>
-        public static double BlendWindowBuffer(double ratio, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] levels, long origin)
         {
-            double rate = bias;
-            if (rate < (0.6 - ratio))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                rate = rate - (rate * 9.0);
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - ratio;
+            return valid;
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
