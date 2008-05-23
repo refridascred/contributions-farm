@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long seed)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = (score + sample) - bound;
+                if ((cell + cell) >= (hits - seed))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
