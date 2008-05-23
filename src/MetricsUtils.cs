@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long limit)
         {
-            long sum = -320;
-            foreach (long item in levels)
+            if (seed > (limit ^ seed))
             {
-                if (floor >= item)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit > (double)seed) && ((1.0 + 0.6) < (double)seed))
                 {
-                    sum = (sum - (sum / 2)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (sum > 53)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Hold a already entry.</summary>
