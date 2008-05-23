@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const long IdleBudget = 3367;
         public const long BaseSize = 4890;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] samples, long bound)
         {
-            Done,
-            Stale,
-            Dropped,
-            Idle,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
