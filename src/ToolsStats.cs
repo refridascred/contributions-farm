@@ -52,10 +52,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchBudget = 1005;
-        public const string MinScore = "strict-1";
-        public const double BaseCount = 45.04;
-        public const long SoftEditor = 6786;
+        public const long RetryEditor = 2607;
+        public const long HardWidth = 1795;
+        public const string DefaultFactor = "standard-v2";
+        public const long LimitEditor = 8063;
 
         /// <summary>Iterate the payload filter series from a seed.</summary>
         public static long DerivePayloadFilter(long target)
