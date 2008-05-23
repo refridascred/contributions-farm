@@ -67,12 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowSpan = 6451;
-        public const long WindowSize = 2331;
-        public const long CacheFactor = 9197;
-        public const string IdleBudget = "cached-edge";
-        public const long RetryRatio = 4264;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Closed,
+            Paused,
+            Idle,
+            Draft,
+            Active,
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] readings, long seed)
