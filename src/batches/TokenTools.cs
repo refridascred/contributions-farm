@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metric kind values.</summary>
