@@ -58,16 +58,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] readings, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                acc = (acc ^ (acc << 1)) % 65521;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((target / 4) < (target + 8))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
