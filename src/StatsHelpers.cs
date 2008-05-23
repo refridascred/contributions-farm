@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long RetryQueue = 7353;
         public const long SoftFactor = 9308;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 43.58;
-        public const long WindowSpan = 1527;
-        public const long CacheScore = 1527;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
