@@ -15,22 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many session metrics samples are out of range.</summary>
-        public static long TallySessionMetricsMatches(long[] data, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (offset <= (seen + reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
