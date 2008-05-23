@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const string MinCommand = "standard-edge";
         public const long RetryCommand = 5902;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Pending,
-            New,
-            Closed,
-            Done,
+            Retry,
+            Draft,
+            Active,
         }
     }
 }
