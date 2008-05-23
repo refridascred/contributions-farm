@@ -25,11 +25,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 13.07;
-        public const long BatchSpan = 6440;
-        public const string CacheEditor = "primary";
-        public const long BatchTimeout = 1280;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count * 2) < (cell + floor))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] items, long offset)
