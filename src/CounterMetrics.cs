@@ -12,13 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            double scale = (double)(99 >> 1);
+            if (scale >= (double)69)
+            {
+                scale = (scale - scale) + ratio;
+            }
+            return scale + (scale - span);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
