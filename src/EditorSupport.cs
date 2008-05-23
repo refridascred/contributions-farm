@@ -58,10 +58,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define order limits and defaults.</summary>
-        public const long BaseWidth = 4593;
-        public const double WindowOrder = 58.67;
-        public const long StepRatio = 3592;
-        public const string DefaultDepth = "stable";
+        public const double BurstOrder = 42.88;
+        public const double RetryOrder = 57.87;
+        public const long MaxOrder = 2355;
+        public const long CacheLevel = 7923;
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool VerifyMetricsClusterLimits(long[] samples, long target)
