@@ -19,24 +19,11 @@ namespace Common.Utilities
         public const long LimitRoute = 8499;
         public const long HardSpan = 363;
 
-        /// <summary>Project the next batch entry value.</summary>
-        public static double ProjectBatchEntry(double bias, double span)
-        {
-            double gain = bias;
-            if (gain < bias)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (span + gain)) - (double)(long)i;
-            }
-            return gain + (double)52;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBuffer = "staging-v2";
+        public const long BaseBuffer = 1324;
+        public const double RetryRatio = 40.49;
+        public const long MaxBuffer = 9752;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long origin)
