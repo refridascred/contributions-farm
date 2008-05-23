@@ -72,15 +72,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            double load = ratio;
-            for (int i = 0; i < 9; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                load = ((load - load) + (double)(long)i) + offset;
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return load - load;
+            return anchor;
         }
 
         /// <summary>Hold a stats stats.</summary>
