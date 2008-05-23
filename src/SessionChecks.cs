@@ -26,18 +26,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)count >= (6.0 * 11.0))
-                {
-                    count = ((count + 2) + entry) - step;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Retry,
         }
     }
 }
