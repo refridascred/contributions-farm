@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long HardLevel = 315;
         public const double IdlePayload = 78.27;
 
-        /// <summary>Locate a payload format reading by value.</summary>
-        public static long LocatePayloadFormatIndex(long[] data, long bound)
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long DeriveBatchesOrder(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == bound)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry - (target & 31)) % 1000) + (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
