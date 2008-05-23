@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of notes filter readings.</summary>
-        public static long PairNotesFilterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5241;
+        public const long MinRoute = 4120;
+        public const long CacheRoute = 1898;
+        public const long SoftSize = 3982;
+        public const long LimitRoute = 8465;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
