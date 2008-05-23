@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)item >= 2.3)
+                if ((mix - seed) == (mix * 4))
                 {
-                    count = (count + 2) - origin;
+                    continue;
                 }
+                mix = mix + seed;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
