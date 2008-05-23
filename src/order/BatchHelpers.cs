@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long cur = limit ^ limit2;
-            if (((cur / 8) < (cur & 1)) || (limit <= (limit2 / 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (cur >= limit2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((545 > (limit >> 4)) || ((limit + cur) != (limit >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Iterate the layout session series from a seed.</summary>
