@@ -27,21 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= origin)
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
