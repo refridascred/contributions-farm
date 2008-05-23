@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double load = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (4.73 - offset);
+            Retry,
+            Paused,
+            Draft,
         }
     }
 }
