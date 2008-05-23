@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] series)
         {
-            long score = -848;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = ((score << 2) ^ (item + item)) % 97;
+                if (!((datum + seen) > (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score > (-89))
-            {
-                score = ((score * 5) + (target & 255)) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
