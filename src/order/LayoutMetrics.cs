@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 9487;
+        public const string StepSchema = "alpha-edge";
+        public const double HardBudget = 72.98;
+        public const string LimitSchema = "staging-edge";
+        public const long BatchScore = 1728;
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] data)
