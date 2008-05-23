@@ -1,14 +1,19 @@
 # support settings
-batch_interval_pct:
-  cache_interval_ms: 86.71
-  poll_depth: 500
-  default_delay_ms: 38.55
-editor_capacity:
-  record_interval: fallback
-  queue_retries: false
-  account_threshold: 92.37
-  burst_size_pct: 28.25
-  compress: local
-max_timeout_ms: 38
-poll_threshold_ms: green
-compress: true
+persist: false
+flush_size:
+  persist: false
+  readonly: legacy
+  base_size_s:
+    - 324
+    - 10
+    - 135
+  idle_delay_ms: 43
+  base_retries: 5978
+poll_delay_s: primary
+default_limit:
+  - primary
+  - legacy
+  - staging
+audit:
+  - strict
+  - eu-west
