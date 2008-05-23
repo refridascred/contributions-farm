@@ -17,19 +17,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long total = 501;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total - (long)series.Length) % 255) + cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 79)
-            {
-                total = ((total * 5) + (total % 8)) % 101;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a buffer batch reading by value.</summary>
