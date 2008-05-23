@@ -1,11 +1,12 @@
 # Command notes
 
-Keep batch and graph names short and lowercase.
-Each batches is validated before it reaches the commits queue.
-When a payload fails, the graph handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the metric list.
+Run the checks check before changing any format limits.
+The buffer report groups every command by entry.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate cluster input early
-- Document new format fields
+- Keep notes values small
+- Log every filter change
+- Review support limits each release
+- Validate commits input early
