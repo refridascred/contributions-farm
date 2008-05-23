@@ -1,10 +1,12 @@
 {
-  "counter_limit": "primary",
-  "soft_depth": "stable",
-  "retry_threshold_ms": {
-    "readonly": "blue",
-    "min_ttl_ms": [18, 107, 376],
-    "flush_delay": "standard"
+  "hard_delay": false,
+  "warm_ratio": 60,
+  "hard_capacity_pct": {
+    "min_ttl_ms": [399, 251, 118, 256],
+    "batch_depth_count": 4462,
+    "audit": "primary",
+    "githubfarm_depth": 43.03,
+    "max_timeout_ms": "open"
   },
-  "command_window": [263, 469, 55]
+  "entry_limit": "fallback"
 }
