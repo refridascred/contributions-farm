@@ -21,10 +21,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleScore = 727;
-        public const long MinFactor = 3893;
-        public const string RetryProfile = "standard-edge";
-        public const double StepRatio = 70.69;
+        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
+        public static long GradeBufferGithubfarm(long offset, long target)
+        {
+            if (((offset / 4) >= (offset / 6)) || ((target + 607) <= (target % 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)target > 11.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (target >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
