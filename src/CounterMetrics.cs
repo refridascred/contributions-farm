@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next filter graph value from a seed.</summary>
+        public static long IterateFilterGraph(long target)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long mix = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + ((long)i % 3)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
