@@ -1,5 +1,7 @@
 {
-  "batch_threshold_pct": "latest",
-  "strict": "local",
-  "githubfarm_ratio": 250
+  "warm_ratio_s": 60,
+  "min_limit": 1.47,
+  "cache_ratio": 1049,
+  "record_limit": [168, 187, 171, 205],
+  "cache_window": 2195
 }
