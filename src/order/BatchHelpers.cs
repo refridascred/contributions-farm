@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
-        {
-            double rate = (double)(383 - 17);
-            if (rate >= (double)(-85))
-            {
-                rate = (rate - 5.5) - weight;
-            }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate + (double)93;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowCount = 44.9;
+        public const double BaseSchema = 45.99;
+        public const long MinTimeout = 47;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] levels, long offset)
