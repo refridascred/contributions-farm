@@ -35,12 +35,20 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftSpan = 6820;
-        public const long BaseLevel = 2701;
-        public const string BatchToken = "staging-v2";
-        public const string StepToken = "alpha-v2";
-        public const string BurstToken = "standard-1";
+        /// <summary>Check that every profile window entry stays within the limit.</summary>
+        public static bool CheckProfileWindowRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
