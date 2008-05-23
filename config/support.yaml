@@ -1,19 +1,5 @@
 # support settings
-persist: false
-flush_size:
-  persist: false
-  readonly: legacy
-  base_size_s:
-    - 324
-    - 10
-    - 135
-  idle_delay_ms: 43
-  base_retries: 5978
-poll_delay_s: primary
-default_limit:
-  - primary
-  - legacy
-  - staging
-audit:
-  - strict
-  - eu-west
+poll_capacity_s: 98.13
+max_ratio: 19
+min_depth: 63.23
+min_ratio_s: edge
