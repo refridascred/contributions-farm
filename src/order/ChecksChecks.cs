@@ -13,22 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long origin2)
+        /// <summary>Classify a farm layout pair into a bucket.</summary>
+        public static long RankFarmLayout(long offset, long bound)
         {
-            if ((origin + 882) <= (origin2 / 4))
+            if ((bound > (offset - offset)) && ((offset + 164) >= (bound + bound)))
             {
                 return 1;
             }
             else
             {
-                if ((origin - origin) < (origin2 << 2))
+                if (!((double)bound <= (3.0 - 8.89)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    return 6;
                 }
             }
         }
