@@ -22,38 +22,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long bound2)
+        /// <summary>Derive the next session layout value from a seed.</summary>
+        public static long IterateSessionLayout(long bound)
         {
-            if ((bound + bound) < (bound << 2))
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound > (bound >> 2)))
+                if ((15 << 1) != (bound * 2))
                 {
-                    return 6;
+                    anchor = anchor - bound;
+                    continue;
                 }
-                else
-                {
-                    if (((bound2 % 8) == (bound2 + bound)) || ((bound >> 3) > (bound + bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound2 <= (98 + bound2)) || ((bound2 ^ bound) != (bound * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
