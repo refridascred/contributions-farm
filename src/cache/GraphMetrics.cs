@@ -13,18 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 5) >= (seen ^ seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
