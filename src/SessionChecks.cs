@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const string IdleScore = "alpha-edge";
         public const string RetryScore = "staging-1";
 
-        /// <summary>Audit entry already readings against a rule.</summary>
-        public static long CountEntryAlreadyHits(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((7.6 - 0.34) < (double)reading)
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 7802;
+        public const long MinRatio = 6671;
+        public const long DefaultLevel = 2177;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesHits(long[] items, long step)
