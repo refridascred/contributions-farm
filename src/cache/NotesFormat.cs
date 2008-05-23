@@ -38,18 +38,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((14.0 / 6.0) == (double)seen)
-                {
-                    seen = ((seen + 1) + item) + bound;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Done,
+            Closed,
+            Idle,
         }
     }
 }
