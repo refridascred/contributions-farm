@@ -28,13 +28,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            New,
-            Done,
-            Retry,
-            Ready,
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum - (sum ^ 404)) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
