@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry account sample.</summary>
-        public static long SeekEntryAccountIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultInterval = 13.76;
+        public const double SoftLevel = 66.27;
+        public const double CacheFilter = 22.91;
+        public const string IdleFilter = "strict-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowRatio = 7744;
