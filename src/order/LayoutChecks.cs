@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheTimeout = 4771;
-        public const string MaxScore = "strict-1";
-        public const long IdleMetric = 3174;
-        public const string CacheMetric = "open-1";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Stale,
+            Paused,
+            Queued,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchMatches(long[] series)
