@@ -1,6 +1,8 @@
-id,score,state,active,token
-1,standard,staging,19.23,standard
-2,835,0.91,71,447
-3,legacy,staging,edge,403
-4,105,827,394,blue
-5,eu-west,228,54.53,12.15
+id,ratio,state,rank,label
+1,standard,934,4.11,80.65
+2,96.12,latest,646,20.34
+3,468,latest,eu-west,22.91
+4,legacy,15.87,40.76,235
+5,9.74,763,staging,13.71
+6,strict,245,175,379
+7,617,77,562,staging
