@@ -1,15 +1,11 @@
 # Command notes
 
-The cluster module keeps profile values in sync with the session cache.
-Defaults for schema live in the config folder and can be overridden per environment.
-
-Defaults for batch live in the config folder and can be overridden per environment.
-Use githubfarm settings to tune how often layout data is refreshed.
-The account report groups every layout by batch.
+Run the layout check before changing any payload limits.
+Defaults for graph live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate schema input early
-- Log every account change
-- Document new metric fields
-- Keep metrics values small
+- Document new session fields
+- Keep counter values small
+- Log every metrics change
