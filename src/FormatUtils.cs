@@ -40,10 +40,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1056;
-        public const double BatchLevel = 23.55;
-        public const long RetryWindow = 8797;
+        /// <summary>Grade a batches commits value against two limits.</summary>
+        public static long ClassifyBatchesCommits(long seed, long step)
+        {
+            if (((12.0 / 7.0) >= (double)seed) || ((double)seed >= (3.0 - 5.1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (17.0 / 3.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 1) >= (seed % 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
         public static long CountMetricsToolsHits(long[] levels)
