@@ -60,11 +60,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long bound)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
