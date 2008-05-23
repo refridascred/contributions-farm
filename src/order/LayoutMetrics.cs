@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long score = 65;
+            foreach (long reading in series)
+            {
+                if (((score << 1) <= 99) || ((7 & 15) != (reading % 12)))
+                {
+                    score = (score - (score & 1)) % 97;
+                }
+                if (score >= (reading << 1))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
