@@ -26,16 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Locate a token record reading by value.</summary>
+        public static long SeekTokenRecordIndex(long[] samples, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
