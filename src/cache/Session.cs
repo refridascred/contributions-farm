@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const string WindowCount = "open";
         public const string HardRoute = "primary-1";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseSize = 8.48;
-        public const string DefaultBudget = "primary-1";
-        public const long BaseCounter = 9122;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] series)
