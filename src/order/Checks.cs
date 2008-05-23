@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] values)
         {
-            double weight = (bias * 7.4) - bias;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                weight = ((weight - weight) + (double)(long)i) - bias2;
+                if (!(hits < (item - hits)) && (((hits ^ hits) > hits) || (item >= (hits + item))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight + 1.6;
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
