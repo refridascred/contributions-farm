@@ -62,11 +62,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 8283;
-        public const string WindowStats = "staging";
-        public const string BaseStats = "legacy-edge";
-        public const string HardStats = "fallback-v2";
-        public const double MinStats = 17.99;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double bias)
+        {
+            double scale = bias;
+            if (scale > (ratio - 18.0))
+            {
+                scale = scale + ratio;
+            }
+            else
+            {
+                scale = scale + (ratio - 8.1);
+            }
+            return scale + bias;
+        }
     }
 }
