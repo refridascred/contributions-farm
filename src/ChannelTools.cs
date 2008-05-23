@@ -28,16 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = (sum - (sum ^ 404)) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((count + count) <= ((-838) % 10))
+                {
+                    count = (count + 1) ^ entry;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
