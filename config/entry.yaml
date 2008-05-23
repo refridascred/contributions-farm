@@ -1,22 +1,7 @@
 # entry settings
-githubfarm_window: 75
-stats_ratio:
-  notes_capacity: edge
-  githubfarm_capacity: local
-  stats_capacity: 250
-  strict: 84.84
-  cache_ratio_pct:
-    - 442
-    - 396
-    - 426
-    - 20
-  cache_ratio_s:
-    - 378
-    - 84
-entry_timeout: 19
-default_limit_count: 8.2
-audit:
-  - 370
-  - 15
-  - 247
-  - 63
+compress:
+  - 294
+  - 479
+burst_interval_pct: standard
+min_interval: open
+dry_run: 83.36
