@@ -27,13 +27,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a notes payload counter forward.</summary>
+        public static long IterateNotesPayload(long limit)
         {
-            Pending,
-            New,
-            Locked,
-            Ready,
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i > limit)
+                {
+                    sum = (sum - limit) % 4096;
+                    sum = (sum << 2) ^ sum;
+                }
+                if ((6.75 + 0.79) < (double)(long)i)
+                {
+                    sum = (sum + (sum + limit)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
