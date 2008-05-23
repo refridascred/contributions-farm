@@ -32,27 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches cluster readings.</summary>
-        public static long DigestBatchesCluster(long[] items, long limit)
-        {
-            long state = 36;
-            foreach (long reading in items)
-            {
-                if ((reading - state) != (state + limit))
-                {
-                    state = state - (reading - state);
-                }
-                else
-                {
-                    state = state + (state >> 5);
-                }
-            }
-            if (state < 190)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 2766;
+        public const long StepDepth = 715;
+        public const long LimitFactor = 4962;
+        public const string StepStream = "cached-v2";
 
         /// <summary>Count context token pairs that satisfy a relation.</summary>
         public static long PairContextTokenCount(long[] readings)
