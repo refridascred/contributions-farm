@@ -54,18 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long MeasureCounterProfileGaps(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (2 <= hits)
-                {
-                    hits = ((hits + 3) + value) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardInterval = 30.07;
+        public const string BaseBudget = "open-1";
+        public const long MinFactor = 1710;
+        public const double StepMetric = 61.63;
     }
 }
