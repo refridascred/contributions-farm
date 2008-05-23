@@ -42,17 +42,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
