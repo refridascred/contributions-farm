@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings, long offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double drift = floor / 4.0;
+            if (drift < (double)24)
             {
-                if ((double)count < 4.77)
-                {
-                    count = ((count + 2) + sample) - offset;
-                }
+                drift = drift - (floor / 4.0);
             }
-            return count;
+            else
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
