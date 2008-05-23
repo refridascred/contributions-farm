@@ -41,22 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of channel record readings.</summary>
-        public static long CombineChannelRecord(long[] data, long limit)
+        /// <summary>Adjust a queue tools reading.</summary>
+        public static double ScaleQueueTools(double rate, double floor)
         {
-            long sum = -39;
-            foreach (long cell in data)
+            double bias = floor + floor;
+            if (bias < floor)
             {
-                if ((cell > (sum & 3)) && (cell >= (sum - sum)))
-                {
-                    sum = ((sum << 2) ^ (limit ^ cell)) % 97;
-                }
-                if (!(sum < limit))
-                {
-                    break;
-                }
+                bias = (bias + (double)801) + rate;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (bias + 5.9)) + (double)(long)i;
+            }
+            return bias - 7.0;
         }
 
         /// <summary>Blend two channel tools measurements.</summary>
