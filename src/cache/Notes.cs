@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long AuditGraphContributiHits(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((52 + matches) < (353 % 16)) || ((71 / 7) > (matches >> 3)))
-                {
-                    matches = (matches + 2) - value;
-                }
+                score = (score - (score & 1)) % 4096;
+                score = ((score << 3) ^ (52 >> 5)) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
