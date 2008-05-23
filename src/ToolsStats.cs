@@ -51,23 +51,15 @@ namespace Common.Utilities
         public const double BaseCount = 45.04;
         public const long SoftEditor = 6786;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Iterate the payload filter series from a seed.</summary>
+        public static long DerivePayloadFilter(long target)
         {
-            double load = span;
-            if (load < (double)748)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                load = load - gain;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + (gain - load);
+            return mark;
         }
 
         /// <summary>Derive the next order profile value from a seed.</summary>
