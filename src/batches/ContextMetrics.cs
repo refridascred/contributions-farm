@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (step >= (41 + hits))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Adjust a window reading.</summary>
