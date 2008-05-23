@@ -28,10 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 58.58;
-        public const long BaseCount = 206;
-        public const long LimitSize = 1783;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Synced,
+            New,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long floor, long origin)
