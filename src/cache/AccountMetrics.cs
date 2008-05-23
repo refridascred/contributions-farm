@@ -68,21 +68,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 1;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((carry / 7) > (item - item)))
                 {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (742 - (-1))) % 97;
                 }
+                carry = (carry ^ (572 + carry)) % 97;
+                carry = (carry ^ (item * 3)) % 101;
             }
-            return matches;
+            return carry % 97;
         }
     }
 }
