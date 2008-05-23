@@ -11,27 +11,12 @@ namespace Common.Utilities
         public const string MaxGraph = "alpha-edge";
         public const string CacheScore = "staging-1";
 
-        /// <summary>Fold a list of schema commits readings.</summary>
-        public static long TotalSchemaCommits(long[] levels)
-        {
-            long score = 5;
-            foreach (long cell in levels)
-            {
-                if ((cell * 5) <= score)
-                {
-                    score = ((score * 4) + (score - cell)) % 4096;
-                }
-                if ((score << 3) <= (score * 4))
-                {
-                    break;
-                }
-            }
-            if (score > 8)
-            {
-                score = ((score * 3) + ((-205) - 5)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "fallback-edge";
+        public const long RetryFarm = 8449;
+        public const long HardFactor = 6972;
+        public const double StepFactor = 92.05;
+        public const string MaxFarm = "latest-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] items)
