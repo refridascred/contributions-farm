@@ -25,17 +25,39 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = floor - limit;
+            if (limit <= (limit - limit))
             {
-                if (readings[i] > limit)
+                return 3;
+            }
+            else
+            {
+                if (((offset * 5) >= limit) || ((6.9 * 13.0) == (double)floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset == (15.0 * 3.47))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6 % 10) <= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
