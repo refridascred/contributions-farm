@@ -41,21 +41,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits < (cell << 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
