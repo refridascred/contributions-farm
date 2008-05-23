@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long ScoreMetricsCommand(long[] series, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] items, long offset)
         {
-            long acc = 37;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((-734) + acc) <= (datum >> 2))
+                if ((234 + tally) < (offset >> 2))
                 {
-                    acc = (((acc * 5) + 3) % 101) - offset;
-                }
-                if ((acc - acc) < datum)
-                {
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
