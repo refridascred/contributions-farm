@@ -14,21 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
