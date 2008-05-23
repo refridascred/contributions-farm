@@ -1,28 +1,6 @@
 # support settings
-enabled: 75.99
-farm_capacity: 3475
-counter_threshold:
-  - strict
-  - cached
-  - open
-  - latest
-batch_depth: 72.92
-cache_capacity_ms:
-  burst_capacity_pct: 84.88
-  min_capacity_ms:
-    compress: 51
-    context_size: 1
-    stats_delay: standard
-    enabled: false
-  min_capacity:
-    audit: 7169
-    dry_run: 7502
-    strict: primary
-    commits_ttl: 9262
-    burst_retries: 85.35
-    batches_interval: true
-  retry_ratio:
-    - staging
-    - cached
-    - open
-  retry_window_s: false
+graph_ratio: edge
+batch_window_count: staging
+min_size_s: 84.57
+warm_size_ms: strict
+tools_threshold: true
