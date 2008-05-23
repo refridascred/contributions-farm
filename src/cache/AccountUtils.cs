@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a cluster command reading by value.</summary>
-        public static long FindClusterCommandIndex(long[] values, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 328;
+            foreach (long reading in data)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                mix = ((mix << 2) ^ (origin - (-628))) % 1000;
+                if ((mix - mix) <= (origin ^ mix))
                 {
-                    return (long)i;
+                    mix = mix - (reading + mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next filter value.</summary>
