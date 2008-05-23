@@ -56,9 +56,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 2639;
-        public const long RetryBudget = 2635;
-        public const long CacheReport = 745;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Flag { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
