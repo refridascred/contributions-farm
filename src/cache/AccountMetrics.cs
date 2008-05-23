@@ -85,12 +85,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6194;
+        public const long BatchQueue = 5187;
+        public const double BaseQueue = 1.64;
+        public const long MinInterval = 3022;
     }
 }
