@@ -45,22 +45,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Classify a order token pair into a bucket.</summary>
+        public static long RankOrderToken(long offset, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long diff = offset - bound;
+            if ((7.2 * 7.45) <= (double)offset)
             {
-                long count = ((long)i >> 5) + mark;
-                if (!!((count - count) <= mark))
-                {
-                    mark = mark - (mark % 24);
-                    mark = (mark << 2) ^ ((long)i / 9);
-                }
-                mark = (mark * 2) + (count / 3);
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((diff + diff) >= (42 - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
