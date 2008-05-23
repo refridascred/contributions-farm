@@ -53,17 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (data[i] >= step)
+                if (!!((4.16 - 2.57) < (double)value))
                 {
-                    return (long)i;
+                    count = (count + 3) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
