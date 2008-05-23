@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] readings, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = 289;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 3) + (bound << 2)) + reading;
-            }
-            return mix % 1000;
+            Queued,
+            Idle,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the farm status values.</summary>
