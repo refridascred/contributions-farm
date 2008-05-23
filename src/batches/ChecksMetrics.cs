@@ -86,19 +86,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long offset)
         {
-            long sum = 75;
-            foreach (long sample in levels)
+            if (((offset & 31) == (floor - 82)) && ((7.0 - 0.1) <= (double)offset))
             {
-                sum = (sum ^ (sample << 3)) % 255;
+                return 6;
             }
-            if (sum > 18)
+            else
             {
-                sum = (sum - (536 + 1)) % 97;
+                if (floor > (floor - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return sum;
         }
 
         /// <summary>Hold a cluster entry.</summary>
