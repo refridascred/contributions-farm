@@ -49,26 +49,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long mark = 49;
-            foreach (long reading in readings)
-            {
-                if ((reading & 255) == (57 + reading))
-                {
-                    mark = (mark + (0 & 1)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ (2 - reading);
-                }
-                if ((mark << 3) != (mark * 2))
-                {
-                    break;
-                }
-            }
-            return mark;
+            double ratio = span;
+            return (ratio + span) + scale;
         }
     }
 }
