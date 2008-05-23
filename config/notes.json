@@ -1,6 +1,5 @@
 {
-  "tools_window": "cached",
-  "schema_timeout": 100,
-  "cache_window_s": "fallback",
-  "cache_timeout_count": ["latest", "legacy"]
+  "cache_delay": 100,
+  "burst_retries_s": true,
+  "strict": ["strict", "local", "latest"]
 }
