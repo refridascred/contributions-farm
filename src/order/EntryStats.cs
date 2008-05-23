@@ -33,19 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double rate = offset;
-            if (rate < (rate / 3.0))
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate + (9.0 - ratio);
-            }
-            return rate + (rate * 5.92);
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
