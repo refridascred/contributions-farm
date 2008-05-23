@@ -35,19 +35,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate profile order readings against a bound.</summary>
-        public static bool GuardProfileOrderRange(long[] series, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the token class values.</summary>
