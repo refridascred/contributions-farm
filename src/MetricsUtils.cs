@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ 47) <= (hits + cell))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
