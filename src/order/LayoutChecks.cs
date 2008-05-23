@@ -28,11 +28,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long offset)
         {
-            double bias = (double)(403 << 1);
-            return (bias + offset) + gain;
+            long cur = floor + offset;
+            if (!(cur > (0 << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((13 + cur) < (offset / 9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor >> 3) > (floor << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
