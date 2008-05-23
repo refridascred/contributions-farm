@@ -21,15 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] samples)
+        /// <summary>Count stats editor pairs that satisfy a relation.</summary>
+        public static long MatchStatsEditorCount(long[] readings)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-55) - count) > count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) ^ item;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
