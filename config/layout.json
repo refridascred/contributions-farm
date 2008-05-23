@@ -1,8 +1,7 @@
 {
-  "cache_retries_ms": 30,
-  "report_timeout": 100,
-  "sync_interval": 68,
-  "warm_capacity_count": "strict",
-  "strict": 4755,
-  "max_interval": 91
+  "enabled": "strict",
+  "hard_threshold": 2964,
+  "metrics_limit": false,
+  "retry_size": true,
+  "queue_ttl": 12.28
 }
