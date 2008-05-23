@@ -78,18 +78,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed + datum) > matches)
-                {
-                    matches = matches + 3;
-                }
+                score = (score + (floor / 2)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
