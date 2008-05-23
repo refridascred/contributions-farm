@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] series, long limit)
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long CompareReportChecksCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + limit) != (sample + hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
