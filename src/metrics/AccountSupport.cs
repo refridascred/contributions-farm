@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 599;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((score + 89) >= (step + reading)) && (step >= (252 >> 1)))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 3) + (step * 4);
+                }
+                if (score <= (score * 4))
+                {
+                    score = ((score * 2) + ((-499) >> 3)) % 4096;
+                }
+                if ((4.12 * 8.32) != (double)score)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
