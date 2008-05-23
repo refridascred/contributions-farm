@@ -36,16 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats schema series from a seed.</summary>
-        public static long SeriesStatsSchema(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark + (522 % 5)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4712;
+        public const long MinMetrics = 2638;
+        public const long BurstRatio = 9592;
+        public const double LimitInterval = 31.82;
+        public const double DefaultMetrics = 28.91;
     }
 }
