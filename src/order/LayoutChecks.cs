@@ -29,16 +29,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 4094;
         public const string LimitMetrics = "latest";
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] items, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (score >> 5)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
