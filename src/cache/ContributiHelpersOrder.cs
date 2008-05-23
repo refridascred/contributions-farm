@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
