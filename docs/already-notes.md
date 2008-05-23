@@ -1,14 +1,15 @@
 # Already notes
 
-A githubfarm that stays idle for too long is moved to the route list.
-Use tools settings to tune how often booking data is refreshed.
+Use githubfarm settings to tune how often commits data is refreshed.
+Use token settings to tune how often schema data is refreshed.
 
-The queue report groups every filter by contributi.
-Use payload settings to tune how often buffer data is refreshed.
-The githubfarm report groups every filter by contributi.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for window live in the config folder and can be overridden per environment.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every commits change
-- Keep buffer values small
+- Document new order fields
+- Validate context input early
+- Review report limits each release
+- Log every editor change
