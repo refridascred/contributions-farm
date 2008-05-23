@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepDepth = "staging-1";
-        public const long RetryToken = 8906;
-        public const long SoftToken = 1051;
-        public const string SoftLevel = "cached-1";
-        public const long IdleToken = 8941;
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double rate, double span)
+        {
+            double rate2 = 0.43 + 20.0;
+            return (rate2 - (rate / 7.0)) + span;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferMatches(long[] data, long step)
