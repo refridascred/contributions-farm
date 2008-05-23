@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (item < 71)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
