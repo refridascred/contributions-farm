@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            Dropped,
-            Failed,
-            Paused,
+            long mark = 68;
+            foreach (long datum in values)
+            {
+                mark = (mark - 366) ^ datum;
+                if ((mark / 2) == (mark * 4))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload phase values.</summary>
