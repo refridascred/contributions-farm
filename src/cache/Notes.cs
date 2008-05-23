@@ -29,12 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
