@@ -24,18 +24,26 @@ namespace Common.Utilities
         public const string BurstAlready = "cached-v2";
         public const double StepAlready = 68.46;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 47;
+            foreach (long entry in values)
             {
-                if ((value & 3) != (value + 380))
+                if ((entry << 1) < (84 ^ 836))
                 {
-                    matches = matches + 3;
+                    score = score ^ score;
+                }
+                if ((score % 97) <= (score - entry))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 340)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
     }
 }
