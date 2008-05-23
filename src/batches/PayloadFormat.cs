@@ -16,13 +16,11 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Queued,
-            Draft,
-            Ready,
-            Dropped,
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
