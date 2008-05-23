@@ -1,5 +1,6 @@
 {
-  "idle_retries": 87.31,
-  "idle_window_pct": "stable",
-  "cache_capacity_s": "standard"
+  "base_threshold_ms": true,
+  "hard_limit_ms": "standard",
+  "base_capacity_s": 95.52,
+  "cache_ttl_pct": "stable"
 }
