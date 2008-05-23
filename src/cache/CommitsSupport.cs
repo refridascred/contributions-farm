@@ -60,19 +60,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long anchor = 43;
-            foreach (long reading in values)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                anchor = ((anchor - (anchor ^ anchor)) % 4096) ^ reading;
+                if (646 >= mix)
+                {
+                    mix = (mix - mix) ^ entry;
+                }
             }
-            if (anchor > 69)
-            {
-                anchor = (anchor - (anchor - anchor)) % 97;
-            }
-            return anchor % 4096;
+            return mix;
         }
     }
 }
