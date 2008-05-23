@@ -34,22 +34,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = -96;
+            foreach (long datum in values)
             {
-                if ((step + datum) >= (step % 5))
+                if (((long)values.Length % 8) < (acc >> 1))
                 {
-                    matches = matches + 2;
+                    acc = (acc - (datum + acc)) % 1000;
+                    acc = acc ^ (acc >> 3);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc * 2) + (datum << 2);
+                }
+                if ((double)datum >= (double)acc)
+                {
+                    acc = (acc + (acc ^ (long)values.Length)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (datum * 4)) % 65521;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
