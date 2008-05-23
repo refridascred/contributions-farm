@@ -1,6 +1,6 @@
 {
-  "min_interval_count": "green",
-  "editor_delay": "eu-west",
-  "verbose": 96.13,
-  "record_ratio": 250
+  "account_interval": 1024,
+  "payload_delay": true,
+  "strict": "primary",
+  "queue_threshold": false
 }
