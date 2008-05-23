@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double BaseSchema = 45.99;
         public const long MinTimeout = 47;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of schema entry readings.</summary>
+        public static long CompareSchemaEntryCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
