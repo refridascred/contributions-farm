@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings, long limit)
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)count == (7.0 * 9.3)) || ((count + count) > (cell + 621)))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
