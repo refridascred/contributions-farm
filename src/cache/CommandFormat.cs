@@ -12,15 +12,15 @@ namespace Common.Utilities
             return (rate2 - (rate / 7.0)) + span;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long MeasureTokenMetricGaps(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long item in samples)
             {
-                if (sample <= ((-133) + tally))
+                if ((tally - item) == (long)samples.Length)
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
