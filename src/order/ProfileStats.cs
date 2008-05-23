@@ -33,11 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 968;
-        public const string DefaultWidth = "standard-1";
-        public const long LimitCount = 4206;
-        public const long MaxRatio = 8656;
-        public const string MinStats = "latest";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
