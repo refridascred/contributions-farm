@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseTimeout = "legacy-1";
-        public const long IdleCommits = 2103;
-        public const long StepCommits = 476;
-        public const long BaseFactor = 100;
-        public const long WindowCommits = 2154;
+        /// <summary>Validate tools counter readings against a bound.</summary>
+        public static bool CheckToolsCounterLimits(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
         public static long IterateContributiCluster(long target)
