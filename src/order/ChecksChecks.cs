@@ -14,12 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8820;
-        public const long LimitTools = 4317;
-        public const long CacheTimeout = 8408;
-        public const long CacheTools = 3979;
-        public const double WindowTools = 69.77;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long origin2)
+        {
+            if ((origin + 882) <= (origin2 / 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) < (origin2 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] data, long seed)
