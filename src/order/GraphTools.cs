@@ -20,39 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a stats session pair into a bucket.</summary>
-        public static long RankStatsSession(long step, long seed)
-        {
-            if ((61 + step) >= (step >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((15.0 / 7.0) <= 17.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(9.1 > (double)step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.4 * 15.0) <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxTimeout = "alpha-v2";
+        public const string MaxWindow = "legacy";
+        public const long IdleBudget = 3367;
+        public const long BaseSize = 4890;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
