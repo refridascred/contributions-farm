@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window commits entries that pass the check.</summary>
-        public static long CountWindowCommitsHits(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + 11) <= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Stale,
+            Queued,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
