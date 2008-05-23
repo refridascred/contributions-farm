@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every githubfarm commits entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmCommitsRange(long[] levels, long bound)
+        /// <summary>Locate a queue metrics reading by value.</summary>
+        public static long LookupQueueMetricsIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != bound)
+                if (data[i] <= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry account sample.</summary>
