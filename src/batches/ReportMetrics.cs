@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
