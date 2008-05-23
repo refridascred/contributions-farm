@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate farm editor samples.</summary>
-        public static long WeighFarmEditor(long[] samples, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long result = 34;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (result + offset)) % 1000;
-                result = ((result << 3) ^ (sample * 3)) % 101;
-            }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ (result - offset)) % 65521;
-            }
-            return result;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account sample.</summary>
