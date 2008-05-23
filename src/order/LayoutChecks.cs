@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Pending,
-            Queued,
+            Ready,
             New,
-            Retry,
-            Closed,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
