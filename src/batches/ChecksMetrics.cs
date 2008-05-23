@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (anchor <= (target & 127))
-                {
-                    anchor = ((anchor * 2) + (target - target)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
