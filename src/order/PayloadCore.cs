@@ -29,18 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((1.0 / 9.0) <= (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the layout buffer series from a seed.</summary>
