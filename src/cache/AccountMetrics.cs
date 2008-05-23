@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 886;
-        public const long BaseInterval = 1318;
-        public const long BurstTools = 6757;
-        public const string RetryTools = "fallback-edge";
-        public const string HardTools = "local";
+        /// <summary>Match up counter context samples.</summary>
+        public static long MatchCounterContextCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] values)
