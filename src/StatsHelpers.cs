@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const double HardContext = 95.06;
         public const string BaseContext = "primary";
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((seen - seen) >= (seen + datum)) || (((long)values.Length % 2) <= seen)) && ((double)seen <= (4.1 + 2.0)))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
