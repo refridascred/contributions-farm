@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long target)
         {
-            long anchor = 897;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((anchor >> 2) < anchor)
+                if (item <= target)
                 {
-                    anchor = anchor ^ (sample - target);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < (-8))
-            {
-                anchor = anchor - (anchor * 4);
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
