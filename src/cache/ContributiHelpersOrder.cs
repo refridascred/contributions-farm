@@ -22,22 +22,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long bound2)
         {
-            long acc = 2;
-            foreach (long datum in values)
+            if ((bound + bound) < (bound << 2))
             {
-                if ((double)datum > (8.3 + 9.6))
+                return 8;
+            }
+            else
+            {
+                if (!(bound > (bound >> 2)))
                 {
-                    acc = (((acc << 2) ^ (datum + acc)) % 97) + step;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound2 % 8) == (bound2 + bound)) || ((bound >> 3) > (bound + bound2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound2 <= (98 + bound2)) || ((bound2 ^ bound) != (bound * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc > 76)
-            {
-                acc = ((acc * 3) + (520 >> 1)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
