@@ -63,13 +63,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            if (18.0 <= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (5.5 + 6.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
