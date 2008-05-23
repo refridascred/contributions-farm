@@ -36,16 +36,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the layout buffer series from a seed.</summary>
-        public static long SeriesLayoutBuffer(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = mark + (736 + floor);
-                mark = ((mark * 4) + (long)i) % 97;
+                if (!!((seen * 3) >= ((long)levels.Length - seen)))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
