@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultFactor = "local-v2";
-        public const long BaseInterval = 674;
-        public const long LimitScore = 6620;
-        public const string BaseLayout = "latest-1";
-        public const double IdleBudget = 56.38;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings, long step)
