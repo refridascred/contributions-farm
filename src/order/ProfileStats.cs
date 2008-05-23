@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile schema readings against a bound.</summary>
-        public static bool VerifyProfileSchemaBounds(long[] items, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double rate = ratio - 13.0;
+            if (rate < ratio)
             {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate - (double)936) - bias;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - ratio) - (double)(long)i;
+            }
+            return rate - (double)772;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
