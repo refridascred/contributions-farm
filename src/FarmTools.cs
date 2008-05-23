@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] data, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
