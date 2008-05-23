@@ -63,18 +63,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long AuditAccountMetricMatches(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (3 > (tally & 255))
+                if (datum >= bound)
                 {
-                    tally = (tally + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
