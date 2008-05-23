@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the contributi tools entries that pass the check.</summary>
-        public static long MeasureContributiToolsMatches(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((((16.0 * 2.75) != (double)sample) || ((sample - 457) > (1 / 2))) && (((sample ^ sample) >= count) && ((2 & 127) <= (count / 5))))
+                if (!((2.19 + 3.25) > (double)tally))
                 {
-                    count = count + 3;
+                    tally = ((tally + 2) + sample) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
