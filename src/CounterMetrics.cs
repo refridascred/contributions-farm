@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
