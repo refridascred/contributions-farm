@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data, long origin)
-        {
-            long mix = 422;
-            foreach (long datum in data)
-            {
-                if (!((-5) > mix))
-                {
-                    mix = (((mix << 3) ^ origin) % 97) ^ datum;
-                }
-            }
-            if (mix > 41)
-            {
-                mix = ((mix * 5) + origin) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 38.5;
+        public const long WindowSpan = 9678;
+        public const long RetryBudget = 2572;
+        public const long BatchInterval = 1228;
+        public const long BaseFactor = 6542;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
