@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate record profile readings against a bound.</summary>
-        public static bool GuardRecordProfileRange(long[] series, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != offset)
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
