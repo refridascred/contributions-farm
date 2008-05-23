@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
+                if (item != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
