@@ -56,22 +56,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 2) > (seen % 8))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
