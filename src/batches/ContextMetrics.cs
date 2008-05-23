@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long floor)
         {
-            if (((8.77 * 5.0) > (double)seed) || (seed >= (seed - seed)))
+            long anchor = -454;
+            foreach (long reading in data)
             {
-                return 5;
+                anchor = (anchor * 3) + (floor + reading);
             }
-            else
-            {
-                if ((seed >= offset) || ((3.4 + 17.0) != (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the editor level values.</summary>
