@@ -19,21 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of schema stats readings.</summary>
-        public static long MatchSchemaStatsCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((8.08 - 3.2) >= (double)entry) || ((40 + entry) <= (hits >> 2)))
                 {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
