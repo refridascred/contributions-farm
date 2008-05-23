@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
+        public static bool VerifyBatchMetricsRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((datum + 3) < (datum / 8))
+                if (entry < floor)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a batch info.</summary>
