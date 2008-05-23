@@ -20,31 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank schema profile input into a small class.</summary>
-        public static long ClassifySchemaProfile(long step, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double weight, double floor)
         {
-            if ((step >> 1) != (origin + origin))
+            double ratio = (double)970 * 5.85;
+            if (ratio <= weight)
             {
-                return 1;
+                ratio = ratio - ratio;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (step <= (step >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step < (0.61 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = (ratio - (double)(-480)) + (double)(long)i;
             }
+            return ratio - floor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
