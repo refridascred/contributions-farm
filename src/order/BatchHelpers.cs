@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] values, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            bool found = true;
-            foreach (long item in values)
+            double rate = (double)(383 - 17);
+            if (rate >= (double)(-85))
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate - 5.5) - weight;
             }
-            return found;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate + (double)93;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
