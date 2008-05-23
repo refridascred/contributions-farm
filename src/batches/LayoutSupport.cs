@@ -37,15 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double rate, double span)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double floor)
         {
-            double scale = (rate + rate) - span;
-            if (scale > (span + rate))
+            double mean = floor;
+            if (mean < (4.6 * 6.4))
             {
-                scale = scale - scale;
+                mean = (mean + floor) - rate;
             }
-            return scale - (14.0 * 1.0);
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (floor * 7.8);
         }
     }
 }
