@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Idle,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a already entry.</summary>
