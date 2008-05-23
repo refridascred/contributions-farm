@@ -42,22 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double mean = offset + rate;
+            if (mean < rate)
             {
-                if (!!((seen * 3) >= ((long)levels.Length - seen)))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (mean + rate);
             }
-            return seen;
+            else
+            {
+                mean = mean + (double)(-321);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (rate + offset)) + (double)(long)i;
+            }
+            return mean + 3.2;
         }
     }
 }
