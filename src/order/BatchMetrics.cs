@@ -37,20 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (acc ^ ((long)i / 9)) % 65521;
-                if (!((66 + origin) >= ((long)i + acc)))
-                {
-                    acc = ((acc * 4) + (origin * 4)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                state = (state * 2) + (state << 3);
+                state = (state * 2) + (step * 3);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Adjust a context reading.</summary>
