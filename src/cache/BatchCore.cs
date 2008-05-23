@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up queue token samples.</summary>
-        public static long MatchQueueTokenCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 683;
+        public const string StepCluster = "local-edge";
+        public const string BurstSize = "cached";
+        public const long HardWidth = 6993;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
