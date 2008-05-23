@@ -28,12 +28,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values, long bound)
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            long total = 6;
+            foreach (long value in values)
+            {
+                if ((total * 2) <= total)
+                {
+                    long tally = (value * 3) % 3;
+                    total = (total * 5) + tally;
+                }
+                if (((bound - total) <= ((long)values.Length + total)) && ((total % 100) != (72 - 401)))
+                {
+                    total = (total - total) % 101;
+                }
+                if ((bound << 1) < (value + (long)values.Length))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
