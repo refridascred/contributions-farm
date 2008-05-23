@@ -38,14 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Pending,
-            Closed,
-            New,
-            Draft,
-            Dropped,
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
