@@ -25,12 +25,12 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] items, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= bound)
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
