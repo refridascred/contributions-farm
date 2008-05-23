@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long TallyAccountCommitsOutliers(long[] levels)
         {
-            Ready,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((((double)tally > (1.7 - 9.8)) && ((8 >> 4) <= value)) || ((value / 4) >= ((-428) + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already entry.</summary>
