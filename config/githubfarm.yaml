@@ -1,4 +1,15 @@
 # githubfarm settings
-idle_depth: eu-west
-compress: 91.33
-batch_depth: legacy
+poll_limit_count:
+  retry_ttl_pct: 66
+  flush_ratio_s: latest
+  cache_delay: 65
+  verbose: false
+  strict: true
+sync_depth: 60
+retry_depth:
+  verbose: 30
+  cache_depth_pct: false
+  batch_delay_s: 500
+graph_window: 45
+tools_timeout: blue
+layout_depth: 60
