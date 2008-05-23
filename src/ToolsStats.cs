@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryCount = 3148;
-        public const long StepToken = 6389;
-        public const long IdleToken = 1687;
-        public const string WindowBudget = "staging";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxCount = 2074;
+        public const long BurstChecks = 4068;
+        public const long CacheTimeout = 2109;
+        public const long CacheChecks = 6103;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double span)
