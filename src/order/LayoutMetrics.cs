@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const string HardEntry = "alpha-edge";
         public const long BurstEntry = 4291;
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double ratio = span / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + (ratio + span)) + (double)(long)i) - rate;
-            }
-            return ratio - (2.3 / 2.0);
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
