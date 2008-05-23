@@ -54,15 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double weight, double bias)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double gain = 19.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (weight - weight);
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many batches route samples are out of range.</summary>
