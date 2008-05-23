@@ -47,11 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next metrics cache value.</summary>
-        public static double BlendMetricsCache(double weight, double offset)
-        {
-            double drift = weight / 6.0;
-            return (drift + weight) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepSize = 37.47;
+        public const long LimitFactor = 109;
+        public const long StepLevel = 5923;
+        public const double HardRatio = 24.74;
+        public const long MaxMetric = 1574;
     }
 }
