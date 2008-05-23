@@ -1,16 +1,8 @@
 {
-  "cache_window_s": {
-    "farm_depth": {
-      "commits_window": 59.07,
-      "strict": [63, 450, 261],
-      "retry_capacity_pct": 51
-    },
-    "tools_threshold": false,
-    "idle_threshold_ms": "latest",
-    "cache_interval_pct": "local",
-    "batch_size_ms": 250,
-    "idle_depth": "edge"
-  },
-  "sync_interval_ms": 68.75,
-  "burst_interval": 250
+  "graph_ratio": 1024,
+  "poll_delay_pct": 7355,
+  "warm_ttl_s": false,
+  "retry_size": "green",
+  "audit": 30,
+  "soft_ratio_count": 5733
 }
