@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Retry,
-            Active,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "stable-1";
+        public const long IdleEntry = 7290;
+        public const double DefaultEntry = 17.98;
+        public const string HardEntry = "alpha-edge";
+        public const long BurstEntry = 4291;
 
         /// <summary>Project the next context value.</summary>
         public static double SmoothContext(double rate, double span)
