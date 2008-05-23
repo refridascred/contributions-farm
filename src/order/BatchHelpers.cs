@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the layout session series from a seed.</summary>
-        public static long SeriesLayoutSession(long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score + (step * 4)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of batches queue entries.</summary>
