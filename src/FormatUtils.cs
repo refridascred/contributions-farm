@@ -33,15 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm report value from a seed.</summary>
-        public static long StepFarmReport(long bound)
+        /// <summary>Iterate the channel entry series from a seed.</summary>
+        public static long DeriveChannelEntry(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
