@@ -1,18 +1,6 @@
 {
-  "format_capacity": 2476,
-  "readonly": {
-    "window_depth": "standard",
-    "audit": "primary",
-    "hard_threshold": 12,
-    "min_capacity": 250,
-    "enabled": {
-      "hard_timeout_pct": true,
-      "enabled": 30,
-      "command_ttl": 70,
-      "tools_capacity": "legacy"
-    }
-  },
-  "sync_ttl_count": "latest",
-  "buffer_delay": "standard",
-  "soft_retries_count": [251, 81, 446, 1]
+  "max_limit_s": "staging",
+  "poll_interval_count": "edge",
+  "audit": 11,
+  "batch_timeout_count": "stable"
 }
