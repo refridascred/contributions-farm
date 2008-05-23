@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultFactor = "local-v2";
+        public const long BaseInterval = 674;
+        public const long LimitScore = 6620;
+        public const string BaseLayout = "latest-1";
+        public const double IdleBudget = 56.38;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings, long step)
