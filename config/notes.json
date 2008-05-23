@@ -1,5 +1,14 @@
 {
-  "audit": 32.6,
-  "verbose": 29,
-  "hard_threshold_pct": 250
+  "compress": 87.04,
+  "hard_ratio": 4538,
+  "metric_interval": [97, 472, 351],
+  "audit": 66.71,
+  "dry_run": {
+    "editor_depth": 29,
+    "verbose": "staging",
+    "flush_capacity_pct": "standard",
+    "idle_window_s": 500,
+    "retry_interval_ms": 63
+  },
+  "warm_ttl_count": 30
 }
