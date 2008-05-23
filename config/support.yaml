@@ -1,6 +1,7 @@
 # support settings
-graph_ratio: edge
-batch_window_count: staging
-min_size_s: 84.57
-warm_size_ms: strict
-tools_threshold: true
+enabled:
+  - stable
+  - eu-west
+  - fallback
+batches_ratio: 92
+buffer_retries: eu-west
