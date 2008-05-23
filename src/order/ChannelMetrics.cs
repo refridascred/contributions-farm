@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long target)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Locked,
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit schema checks readings against a rule.</summary>
