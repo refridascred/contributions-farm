@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long DigestOrderCluster(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long result = -1;
+            foreach (long item in series)
             {
-                sum = (sum ^ ((long)i >> 2)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum ^ 13) % 97) - (long)i2;
-                    sum = (sum + (limit & 31)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                result = result ^ (item >> 5);
             }
-            return sum;
+            if (result < 230)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
