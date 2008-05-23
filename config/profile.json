@@ -1,6 +1,10 @@
 {
-  "dry_run": 500,
-  "enabled": 75.56,
-  "persist": "stable",
-  "strict": "local"
+  "token_timeout": [105, 331, 353, 136],
+  "hard_limit_count": "open",
+  "hard_timeout": {
+    "report_ratio": 23.8,
+    "queue_retries": true,
+    "readonly": true,
+    "hard_threshold_s": false
+  }
 }
