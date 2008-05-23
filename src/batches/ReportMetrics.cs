@@ -14,17 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first batches already entry that matches the target.</summary>
-        public static long LookupBatchesAlreadyIndex(long[] readings, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] > target)
+                if (floor >= (45 + floor))
                 {
-                    return (long)i;
+                    mark = ((mark * 5) + (floor >> 4)) % 65521;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
