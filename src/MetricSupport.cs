@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] samples, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)(long)i < (6.0 - 4.0))
+                if (datum > bound)
                 {
-                    mix = (mix ^ (bound + bound)) % 1000;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Roll a format counter forward.</summary>
