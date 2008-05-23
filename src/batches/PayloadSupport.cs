@@ -27,13 +27,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
