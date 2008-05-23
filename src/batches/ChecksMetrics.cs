@@ -38,13 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Stale,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
