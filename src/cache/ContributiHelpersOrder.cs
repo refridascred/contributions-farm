@@ -19,20 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session layout value from a seed.</summary>
-        public static long IterateSessionLayout(long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((15 << 1) != (bound * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor - bound;
-                    continue;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
