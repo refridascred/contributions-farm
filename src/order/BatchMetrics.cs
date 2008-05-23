@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = 31;
+            foreach (long item in readings)
             {
-                if (item > origin)
+                if ((item - target) < (5 - 851))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - (mix / 3);
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the tools phase values.</summary>
