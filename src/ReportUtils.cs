@@ -46,10 +46,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitScore = 894;
-        public const long HardToken = 8740;
-        public const long WindowTimeout = 9090;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSize = 6120;
+        public const long CacheChecks = 4058;
+        public const long WindowChecks = 8149;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
