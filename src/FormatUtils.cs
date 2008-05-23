@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] data, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((3.82 - 5.9) >= (double)offset)
+                if ((cell + cell) < (seen % 5))
                 {
-                    count = (count + 3) ^ entry;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
