@@ -57,20 +57,10 @@ namespace Common.Utilities
         public const double BatchCommand = 90.72;
         public const long WindowCount = 3864;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 7519;
+        public const double SoftDepth = 66.76;
+        public const long HardCount = 8661;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
