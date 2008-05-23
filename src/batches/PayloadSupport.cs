@@ -53,14 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Locked,
-            Synced,
-            Ready,
-            Pending,
-            Paused,
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
