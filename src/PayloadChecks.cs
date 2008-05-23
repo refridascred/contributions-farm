@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 63) == (983 ^ 398))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-1";
+        public const long IdleCommits = 2103;
+        public const long StepCommits = 476;
+        public const long BaseFactor = 100;
+        public const long WindowCommits = 2154;
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
         public static long IterateContributiCluster(long target)
