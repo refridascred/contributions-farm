@@ -40,25 +40,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long anchor = 28;
-            foreach (long datum in readings)
-            {
-                if ((79 * 5) > offset)
-                {
-                    anchor = (anchor ^ (datum + (-415))) % 65521;
-                    anchor = (anchor + anchor) % 65521;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (offset << 1)) % 1000;
-                }
-                anchor = (anchor + offset) % 255;
-            }
-            return anchor % 4096;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
