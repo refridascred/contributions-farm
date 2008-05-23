@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Stale,
-            Active,
-            Dropped,
-            Retry,
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
