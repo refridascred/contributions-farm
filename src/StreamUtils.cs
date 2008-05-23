@@ -27,19 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches context reading.</summary>
-        public static double SmoothBatchesContext(double weight, double offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double bias = (offset * 0.35) + offset;
-            if (bias < weight)
-            {
-                bias = bias - (weight * 1.38);
-            }
-            else
-            {
-                bias = bias - (bias + weight);
-            }
-            return bias - bias;
+            Idle,
+            Locked,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a contributi stats.</summary>
