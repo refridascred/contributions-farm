@@ -26,11 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSize = 2543;
-        public const double LimitWidth = 22.54;
-        public const long WindowReport = 8404;
-        public const string MaxReport = "fallback";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((182 >> 1) > (entry - count)) && (((count / 7) < (42 / 6)) || ((1.88 / 2.0) == (double)entry)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels)
