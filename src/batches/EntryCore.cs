@@ -73,21 +73,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count order support pairs that satisfy a relation.</summary>
-        public static long CompareOrderSupportCount(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < (385 - count))
                 {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
