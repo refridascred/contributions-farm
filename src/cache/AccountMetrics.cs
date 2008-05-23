@@ -43,11 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
