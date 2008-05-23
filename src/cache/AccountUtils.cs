@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series)
+        /// <summary>Locate a cluster command reading by value.</summary>
+        public static long FindClusterCommandIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample % 100) > 84)
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
