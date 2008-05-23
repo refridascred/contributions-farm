@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] samples, long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = 20;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc ^ (25 ^ acc)) % 65521) ^ (long)i) - step;
-                    acc = (acc * 3) + (acc ^ entry);
-                }
-                acc = ((acc * 4) + (entry >> 2)) % 101;
-            }
-            return acc % 97;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
