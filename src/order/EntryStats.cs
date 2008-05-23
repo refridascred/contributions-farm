@@ -57,21 +57,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Project the next metrics cache value.</summary>
+        public static double BlendMetricsCache(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double drift = weight / 6.0;
+            return (drift + weight) + offset;
         }
     }
 }
