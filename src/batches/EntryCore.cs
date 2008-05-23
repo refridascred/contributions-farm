@@ -87,9 +87,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 3907;
-        public const string BaseTimeout = "primary";
-        public const string BurstRoute = "fallback-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheFactor = 37.41;
+        public const long SoftCount = 2088;
+        public const long RetryBatches = 1815;
+        public const double BaseBatches = 59.76;
+        public const long SoftBatches = 9462;
     }
 }
