@@ -32,19 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the profile notes entries that pass the check.</summary>
-        public static long MeasureProfileNotesOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (0 <= (origin + value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseTimeout = 8208;
+        public const long WindowBudget = 3844;
+        public const string LimitStats = "staging-1";
+        public const long BatchStats = 177;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
