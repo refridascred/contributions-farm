@@ -1,6 +1,6 @@
 {
-  "warm_timeout_count": "latest",
-  "verbose": [2, 358, 135, 100],
-  "max_delay_count": 50.18,
-  "stats_window": 61
+  "dry_run": 76.28,
+  "burst_interval_count": "green",
+  "already_interval": true,
+  "poll_window": [413, 243, 12, 354]
 }
