@@ -19,15 +19,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((offset + 0) > tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
