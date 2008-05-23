@@ -25,18 +25,15 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long CountMetricsAlreadyOutliers(long[] readings)
+        /// <summary>Derive the next metric record value from a seed.</summary>
+        public static long DeriveMetricRecord(long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((-743) - count) == (reading - 1))
-                {
-                    count = count + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
