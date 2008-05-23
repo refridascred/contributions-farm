@@ -52,22 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = 279;
+            foreach (long datum in samples)
             {
-                if ((double)value == (18.0 / 7.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix * 5) + (mix - datum)) % 101) + offset;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
