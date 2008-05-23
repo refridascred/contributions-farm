@@ -50,16 +50,17 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (origin >> 2)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
