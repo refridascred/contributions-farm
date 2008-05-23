@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (value <= offset)
+                if (value < target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Match up commits samples.</summary>
