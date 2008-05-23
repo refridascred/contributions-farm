@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((reading ^ 37) == (reading - count))
+                if (sample >= (seen + step))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
