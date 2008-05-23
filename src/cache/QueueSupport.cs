@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] items, long step)
         {
-            Pending,
-            Queued,
-            Closed,
-            Active,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
