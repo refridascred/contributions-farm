@@ -42,13 +42,13 @@ namespace Common.Utilities
         public const long MinSize = 4922;
         public const double BatchGraph = 87.23;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the schema filter entries that pass the check.</summary>
