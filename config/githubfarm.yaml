@@ -1,10 +1,30 @@
 # githubfarm settings
-verbose:
-  - 480
-  - 146
-  - 177
-  - 56
-strict: 77.82
-base_threshold_ms: 3170
-burst_timeout: 9231
-base_size_count: 100
+compress: staging
+default_delay_count: false
+burst_threshold_count: strict
+readonly:
+  flush_capacity: legacy
+  compress:
+    compress: blue
+    strict:
+      - 91
+      - 271
+      - 271
+    max_window_s: staging
+    soft_delay_pct: 250
+    cluster_limit: fallback
+  retry_timeout_pct:
+    - 363
+    - 139
+    - 182
+  base_interval_count: green
+  max_depth_ms: 42.86
+  contributi_threshold:
+    audit: true
+    poll_interval_s: false
+    warm_timeout:
+      - 271
+      - 185
+    poll_retries_s: primary
+schema_delay: 500
+burst_ttl: 1024
