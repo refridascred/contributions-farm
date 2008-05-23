@@ -1,7 +1,6 @@
 {
-  "enabled": [487, 81],
-  "readonly": "blue",
-  "support_ttl": "edge",
-  "checks_limit": "strict",
-  "stream_depth": 30.11
+  "dry_run": 500,
+  "enabled": 75.56,
+  "persist": "stable",
+  "strict": "local"
 }
