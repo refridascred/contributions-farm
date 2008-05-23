@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double span)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
         {
-            double ratio = 0.19;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ((ratio - (span - span)) + (double)(long)i) + scale;
+                if ((double)(long)i < (6.0 - 4.0))
+                {
+                    mix = (mix ^ (bound + bound)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ratio + span;
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
