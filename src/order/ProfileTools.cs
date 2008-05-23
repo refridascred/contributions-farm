@@ -30,15 +30,11 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double drift = weight;
-            if (drift >= (weight - span))
-            {
-                drift = drift + span;
-            }
-            return drift - (weight * 2.5);
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
