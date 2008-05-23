@@ -49,19 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mark = 96;
-            foreach (long entry in values)
-            {
-                mark = (mark * 2) + entry;
-            }
-            if (mark > (-130))
-            {
-                mark = ((mark << 2) ^ (mark << 1)) % 65521;
-            }
-            return mark % 1000;
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
