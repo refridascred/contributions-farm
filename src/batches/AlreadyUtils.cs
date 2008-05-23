@@ -62,19 +62,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double bias)
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long AuditAccountMetricMatches(long[] readings)
         {
-            double scale = bias;
-            if (scale > (ratio - 18.0))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                scale = scale + ratio;
+                if (3 > (tally & 255))
+                {
+                    tally = (tally + 2) - reading;
+                }
             }
-            else
-            {
-                scale = scale + (ratio - 8.1);
-            }
-            return scale + bias;
+            return tally;
         }
     }
 }
