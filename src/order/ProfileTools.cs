@@ -30,25 +30,18 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long origin)
         {
-            long anchor = 293;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor + (356 % 12)) % 101;
-                if ((anchor + bound) <= (bound & 63))
+                if (!((origin + count) <= (origin >> 5)))
                 {
-                    anchor = (anchor - (entry ^ bound)) % 65521;
-                    anchor = (anchor - anchor) % 1000;
+                    count = (count + 3) ^ reading;
                 }
-                anchor = (anchor + (bound << 2)) % 65521;
             }
-            if (anchor > 44)
-            {
-                anchor = anchor + (7 / 8);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
