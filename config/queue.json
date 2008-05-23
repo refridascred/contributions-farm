@@ -1,10 +1,8 @@
 {
-  "cache_capacity_pct": false,
-  "default_depth_count": 500,
-  "max_window_count": {
-    "hard_limit": false,
-    "notes_delay": 30,
-    "flush_retries": 2526,
-    "max_timeout": "local"
-  }
+  "hard_threshold_count": false,
+  "sync_interval_count": ["blue", "edge"],
+  "stream_ratio": 28.55,
+  "poll_capacity_s": 250,
+  "cache_retries_s": 77,
+  "strict": "green"
 }
