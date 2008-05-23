@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long limit)
         {
-            double rate = span;
-            if (rate > (scale - scale))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - rate;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (span + scale)) + (double)(long)i;
-            }
-            return rate + (rate + rate);
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
