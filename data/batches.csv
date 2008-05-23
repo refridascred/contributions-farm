@@ -1,6 +1,9 @@
-id,level,ratio,rank
-1,690,848,421
-2,51,176,54
-3,869,green,local
-4,353,green,663
-5,174,blue,21.01
+id,score,count
+1,21.19,61.85
+2,40,strict
+3,green,blue
+4,126,edge
+5,95,72
+6,158,413
+7,stable,395
+8,439,769
