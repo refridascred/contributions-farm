@@ -16,17 +16,22 @@ namespace Common.Utilities
         public const long CacheDepth = 5747;
         public const long MinFilter = 8079;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -598;
+            foreach (long entry in values)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                if ((7.0 - 4.5) <= (double)entry)
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (entry + 4);
                 }
             }
-            return -1;
+            if (mark > 783)
+            {
+                mark = (mark * 5) + (origin % 2);
+            }
+            return mark;
         }
 
         /// <summary>Locate a record payload reading by value.</summary>
