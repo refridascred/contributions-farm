@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Closed,
-            Synced,
-            Done,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 5611;
+        public const long SoftGraph = 3938;
+        public const long LimitRatio = 3110;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiGaps(long[] levels)
