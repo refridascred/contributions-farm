@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long RetryQueue = 7353;
         public const long SoftFactor = 9308;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Pending,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of profile counter entries.</summary>
