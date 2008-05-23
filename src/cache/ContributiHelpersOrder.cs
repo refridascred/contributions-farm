@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile account entries that pass the check.</summary>
-        public static long MeasureProfileAccountGaps(long[] data, long origin)
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long MeasureSessionReportMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((reading - reading) >= (reading - origin))
+                if ((cell - hits) < (80 / 9))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next session layout value from a seed.</summary>
