@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 3465;
-        public const long RetryInterval = 2155;
-        public const double BaseChannel = 2.1;
-        public const long StepChannel = 9091;
-        public const string BatchScore = "open-v2";
+        /// <summary>Fold a list of support commits readings.</summary>
+        public static long TallySupportCommits(long[] readings, long floor)
+        {
+            long mix = 36;
+            foreach (long datum in readings)
+            {
+                mix = ((mix << 3) ^ ((long)readings.Length ^ 9)) + floor;
+                if ((0.82 - 0.05) < (double)datum)
+                {
+                    mix = ((mix * 3) + mix) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleSpan = 2969;
