@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardInterval = 4689;
-        public const string RetryReport = "local-v2";
-        public const long BatchReport = 3523;
-        public const double BurstLevel = 75.59;
-        public const long SoftWidth = 4963;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)step == (5.09 + 10.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
