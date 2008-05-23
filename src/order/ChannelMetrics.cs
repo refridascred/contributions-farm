@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long CacheProfile = 9469;
         public const string MinCount = "open-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftDepth = "staging-1";
-        public const string CacheTimeout = "latest-v2";
-        public const string IdleSize = "local-v2";
-        public const long LimitCount = 9678;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double bias2)
+        {
+            double ratio = bias * 4.1;
+            if (ratio < bias2)
+            {
+                ratio = ratio - 7.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (bias2 + ratio);
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] data)
