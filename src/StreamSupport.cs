@@ -14,18 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long TallyGraphTokenOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of route context entries.</summary>
+        public static long TotalRouteContext(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = 807;
+            foreach (long reading in series)
             {
-                if ((entry + offset) != (offset & 63))
+                carry = (carry * 5) + (reading - 1);
+                if (((long)series.Length ^ (-54)) > carry)
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (carry < 2)
+            {
+                carry = (carry - (28 - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the format status values.</summary>
