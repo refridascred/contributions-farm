@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const string LimitEditor = "open";
         public const long MaxEditor = 9366;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((entry + entry) > ((long)readings.Length - offset))
+                if (value > step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
