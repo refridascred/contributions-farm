@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((floor + 73) <= 691)
+                if (matches > (matches ^ origin))
                 {
-                    count = (count + 3) ^ reading;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a support info.</summary>
