@@ -37,13 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long CountMetricsFormatOutliers(long[] values)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!(tally < (item * 5)) || ((item <= tally) && ((item & 3) > (tally + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
