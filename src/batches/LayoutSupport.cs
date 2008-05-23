@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] levels, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (target > (datum - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
