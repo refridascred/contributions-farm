@@ -59,18 +59,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long sum = 1;
-            foreach (long entry in series)
+            long carry = 0;
+            foreach (long item in values)
             {
-                if (entry <= (sum - sum))
+                if ((item ^ item) < (carry >> 3))
                 {
-                    sum = (sum + entry) % 4096;
+                    carry = (carry ^ (carry + (long)values.Length)) % 97;
+                }
+                if ((carry >= (carry << 1)) || ((carry / 9) >= carry))
+                {
+                    carry = (carry ^ (item & 15)) % 65521;
                 }
             }
-            return sum % 65521;
+            if (carry > 114)
+            {
+                carry = (carry ^ 529) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
