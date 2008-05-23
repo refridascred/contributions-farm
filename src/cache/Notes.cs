@@ -45,19 +45,20 @@ namespace Common.Utilities
         public const long BatchStats = 1718;
         public const string SoftCount = "primary-1";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] levels, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= limit)
+                if (((3.0 * 15.0) == (double)result) && ((bound >> 5) < (bound << 2)))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                result = ((result << 2) ^ (result % 16)) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Match up tools samples.</summary>
