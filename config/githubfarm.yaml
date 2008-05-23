@@ -1,6 +1,18 @@
 # githubfarm settings
-flush_depth: 34.86
-filter_threshold: 30
-compress: 100
-max_size_count: eu-west
-sync_delay_count: true
+base_limit:
+  - primary
+  - blue
+  - primary
+account_ratio: 327
+warm_ttl_pct:
+  - blue
+  - edge
+  - green
+  - primary
+strict: strict
+graph_window:
+  poll_capacity_ms: cached
+  hard_window: 6.64
+  audit: 44.56
+  persist: 1024
+retry_window_ms: eu-west
