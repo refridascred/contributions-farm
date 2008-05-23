@@ -26,11 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBuffer = "staging-v2";
-        public const long BaseBuffer = 1324;
-        public const double RetryRatio = 40.49;
-        public const long MaxBuffer = 9752;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state + (long)i;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long origin)
