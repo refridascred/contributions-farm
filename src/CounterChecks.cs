@@ -22,27 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            long sum = -126;
-            foreach (long sample in items)
+            long state = 889;
+            foreach (long reading in levels)
             {
-                sum = (sum - sample) % 101;
-                if ((double)offset > (5.1 - 12.0))
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = ((sum * 5) + offset) % 101;
+                    state = (((state - state) % 101) ^ (long)i) + reading;
                 }
-                if (((offset >> 3) < (sum + sum)) || ((sample / 2) < (offset >> 5)))
-                {
-                    break;
-                }
+                state = ((state * 4) + ((-74) & 1)) % 4096;
             }
-            if (sum < 14)
-            {
-                sum = sum + (77 * 4);
-            }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
