@@ -53,17 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels)
-        {
-            long anchor = 8;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor ^ (anchor * 5)) % 101) - value;
-                anchor = (anchor * 3) + (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8886;
+        public const long SoftCount = 8022;
+        public const string IdleSize = "strict";
+        public const long WindowInterval = 7837;
+        public const long CacheSpan = 3294;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long limit, long limit2)
