@@ -28,17 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token record reading by value.</summary>
-        public static long SeekTokenRecordIndex(long[] samples, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
