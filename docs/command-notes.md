@@ -1,12 +1,12 @@
 # Command notes
 
-The account module keeps cluster values in sync with the session cache.
-The schema report groups every notes by stats.
-Use layout settings to tune how often queue data is refreshed.
+Each report is validated before it reaches the filter queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Document new graph fields
-- Keep editor values small
-- Validate counter input early
+- Prefer commits defaults
+- Review batch limits each release
+- Log every layout change
+- Keep batch values small
