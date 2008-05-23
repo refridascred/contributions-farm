@@ -26,22 +26,22 @@ namespace Common.Utilities
             return mean + (double)58;
         }
 
-        /// <summary>Count the stream command entries that pass the check.</summary>
-        public static long CountStreamCommandGaps(long[] levels, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = 67;
+            foreach (long reading in values)
             {
-                if (((bound - entry) >= entry) || (((bound % 3) < matches) && ((matches << 3) != (entry + bound))))
+                if ((697 % 2) >= target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state + (target / 7)) - reading;
                 }
             }
-            return matches;
+            if (state > 57)
+            {
+                state = (state * 2) + (state + 894);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
