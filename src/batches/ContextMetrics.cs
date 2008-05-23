@@ -15,13 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            double scale2 = floor;
+            if (scale2 < (double)10)
+            {
+                scale2 = (scale2 + (scale2 / 9.0)) + scale;
+            }
+            else
+            {
+                scale2 = scale2 + (double)397;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Hold a route snapshot.</summary>
