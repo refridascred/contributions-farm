@@ -42,13 +42,19 @@ namespace Common.Utilities
         public const long SoftSize = 3046;
         public const double DefaultDepth = 25.62;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Adjust a buffer graph reading.</summary>
+        public static double SmoothBufferGraph(double scale, double offset)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            double drift = offset - (double)1;
+            if (drift >= (drift + scale))
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
