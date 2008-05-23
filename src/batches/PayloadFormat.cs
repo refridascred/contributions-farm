@@ -25,22 +25,12 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "cached-v2";
+        public const string LimitDepth = "standard-edge";
+        public const long SoftLevel = 2931;
+        public const string LimitCount = "latest";
+        public const long StepCount = 1560;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchInterval = "stable-edge";
