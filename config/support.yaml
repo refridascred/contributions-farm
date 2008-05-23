@@ -1,10 +1,18 @@
 # support settings
-min_interval:
-  - 8
-  - 409
-  - 468
-metric_timeout: true
-order_limit: fallback
-support_ttl: 64
-cache_limit: 100
-account_limit: 7419
+max_delay: 7519
+commits_ttl:
+  session_ttl: 63.77
+  context_capacity:
+    - 194
+    - 340
+    - 175
+    - 364
+  retry_delay_count:
+    - 367
+    - 142
+    - 466
+  verbose: staging
+min_size_ms: 3640
+compress: latest
+readonly: 14
+batch_capacity_pct: open
