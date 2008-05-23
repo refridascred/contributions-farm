@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] series, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((7.5 - 16.0) <= (double)bound) || ((double)datum <= (double)bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the order notes entries that pass the check.</summary>
