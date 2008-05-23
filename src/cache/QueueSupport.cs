@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Fold a list of metrics context readings.</summary>
+        public static long DigestMetricsContext(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long acc = 112;
+            foreach (long reading in levels)
             {
-                sum = sum - (offset - (long)i);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (reading < (reading & 31))
+                {
+                    acc = ((acc << 3) ^ (reading - reading)) % 4096;
+                    break;
+                }
+                if ((acc * 5) >= (reading % 97))
+                {
+                    acc = (acc ^ (5 ^ reading)) % 4096;
+                }
+                if (((reading - acc) == (reading - reading)) || (acc > reading))
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a schema info.</summary>
