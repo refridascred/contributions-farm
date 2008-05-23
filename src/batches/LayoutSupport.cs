@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Queued,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "standard-1";
+        public const long BaseWidth = 9468;
+        public const double DefaultBudget = 42.64;
+        public const long LimitGraph = 5908;
+        public const long RetryFactor = 4616;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double offset)
