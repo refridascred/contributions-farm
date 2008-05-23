@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many commits metric samples are out of range.</summary>
-        public static long MeasureCommitsMetricMatches(long[] values, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!(limit > 39))
+                if (entry <= (tally ^ entry))
                 {
-                    count = (count + 1) - datum;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
