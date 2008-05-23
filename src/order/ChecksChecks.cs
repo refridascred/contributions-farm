@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items, long step)
         {
-            Paused,
-            Failed,
-            Idle,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((step & 31) < 79)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
