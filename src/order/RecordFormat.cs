@@ -48,13 +48,13 @@ namespace Common.Utilities
             return gain + (double)52;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] items, long origin)
         {
             bool stale = true;
-            foreach (long sample in series)
+            foreach (long item in items)
             {
-                if (sample <= target)
+                if (item < origin)
                 {
                     stale = false;
                     break;
