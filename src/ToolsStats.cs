@@ -70,18 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ datum) <= (4 - datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
