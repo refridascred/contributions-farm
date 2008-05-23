@@ -71,11 +71,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "strict-v2";
-        public const double BaseDepth = 4.55;
-        public const long SoftWidth = 1490;
-        public const double HardSpan = 5.77;
-        public const long WindowChannel = 5889;
+        /// <summary>Check that every token context entry stays within the limit.</summary>
+        public static bool ValidateTokenContextRange(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
