@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] items, long offset)
         {
-            Queued,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((-326) >= offset)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
