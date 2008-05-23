@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1909;
-        public const string MinSupport = "stable";
-        public const long DefaultSupport = 3210;
+        /// <summary>Check that every support profile entry stays within the limit.</summary>
+        public static bool VerifySupportProfileBounds(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
