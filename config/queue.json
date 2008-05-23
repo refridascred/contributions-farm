@@ -1,5 +1,7 @@
 {
-  "burst_capacity_ms": "latest",
-  "warm_limit_pct": 58,
-  "flush_capacity_ms": false
+  "retry_capacity": "blue",
+  "retry_threshold": [292, 324, 255, 56],
+  "sync_delay_pct": 2998,
+  "batch_capacity_pct": ["local", "blue"],
+  "window_timeout": "blue"
 }
