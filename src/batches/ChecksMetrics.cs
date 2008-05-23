@@ -20,12 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Draft,
-            Closed,
-            Active,
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
