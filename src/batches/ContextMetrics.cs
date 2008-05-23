@@ -16,14 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Idle,
-            Ready,
-            Paused,
-            Closed,
-            Synced,
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
