@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long RankBufferChecks(long seed, long floor)
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long ScoreMetricsCommand(long[] series, long offset)
         {
-            long cur = seed - floor;
-            if ((floor <= (7 - cur)) && ((cur & 255) <= (seed ^ floor)))
+            long acc = 37;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur > (double)15)
+                if (((-734) + acc) <= (datum >> 2))
                 {
-                    return 0;
+                    acc = (((acc * 5) + 3) % 101) - offset;
                 }
-                else
+                if ((acc - acc) < datum)
                 {
-                    return 3;
+                    break;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
