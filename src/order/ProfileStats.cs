@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long SoftGraph = 3938;
         public const long LimitRatio = 3110;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] levels)
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool VerifySupportCacheLimits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((double)matches <= (6.7 / 5.0))
+                if (value <= floor)
                 {
-                    matches = (matches + 1) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
