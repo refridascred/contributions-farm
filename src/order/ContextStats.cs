@@ -33,19 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double bias = (double)8 * 5.87;
-            if (bias > (offset - bias))
-            {
-                bias = bias - (double)153;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (bias - offset)) + (double)(long)i;
-            }
-            return bias + (weight + 4.1);
+            Ready,
+            New,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
