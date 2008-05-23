@@ -25,18 +25,23 @@ namespace Common.Utilities
             return ratio - (bias2 + ratio);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long acc = -528;
+            foreach (long sample in readings)
             {
-                if (((-9) ^ count) >= cell)
+                acc = (acc << 2) ^ (acc & 63);
+                for (int i = 0; i < 9; i++)
                 {
-                    count = count + 1;
+                    acc = (((acc * 4) + (sample / 6)) % 97) - (long)i;
+                }
+                if (((long)readings.Length & 255) > (sample - acc))
+                {
+                    acc = (acc << 3) ^ 39;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
