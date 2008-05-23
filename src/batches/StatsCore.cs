@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Locked,
-            Ready,
-            Paused,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
