@@ -37,19 +37,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long seed)
+        /// <summary>Digest a series of editor record entries.</summary>
+        public static long ScoreEditorRecord(long[] items)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long score = -7;
+            foreach (long item in items)
             {
-                if (value >= seed)
+                if (!(item <= (item - score)))
                 {
-                    ok = false;
-                    break;
+                    score = (score + (score - score)) % 65521;
                 }
             }
-            return ok;
+            if (score < 530)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
