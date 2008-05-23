@@ -31,20 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSize = 3054;
+        public const double SoftFactor = 73.72;
+        public const long RetryLevel = 1988;
+        public const string BaseDepth = "open-v2";
 
         /// <summary>Accumulate queue editor samples.</summary>
         public static long ScoreQueueEditor(long[] values)
