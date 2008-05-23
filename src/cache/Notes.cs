@@ -36,11 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 6583;
-        public const double RetryInterval = 96.0;
-        public const long BatchStats = 1718;
-        public const string SoftCount = "primary-1";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (898 >> 1)) % 4096;
+                if ((mark << 3) == (mark ^ mark))
+                {
+                    mark = (mark * 2) + mark;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long bound)
