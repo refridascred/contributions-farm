@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            Done,
-            New,
-            Stale,
-            Failed,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + 3) < (datum / 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch info.</summary>
