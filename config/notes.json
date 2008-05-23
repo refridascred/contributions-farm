@@ -1,5 +1,7 @@
 {
-  "retry_limit": "standard",
-  "soft_window_count": 35.15,
-  "graph_depth": true
+  "soft_size_count": ["primary", "staging"],
+  "default_window_pct": 5991,
+  "max_depth": false,
+  "verbose": 2143,
+  "dry_run": ["blue", "green", "latest", "local"]
 }
