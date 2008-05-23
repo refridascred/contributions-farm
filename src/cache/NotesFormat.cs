@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
