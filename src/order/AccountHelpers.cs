@@ -73,17 +73,11 @@ namespace Common.Utilities
         public const double RetrySpan = 2.83;
         public const string IdleTimeout = "open-edge";
 
-        /// <summary>Find the first profile filter entry that matches the target.</summary>
-        public static long LocateProfileFilterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowSpan = 56.41;
+        public const long MinBudget = 8056;
+        public const string RetryChecks = "standard";
+        public const double MaxChecks = 87.26;
+        public const double WindowChecks = 7.53;
     }
 }
