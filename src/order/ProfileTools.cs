@@ -32,24 +32,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a already schema value against two limits.</summary>
-        public static long GradeAlreadySchema(long offset, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series, long bound)
         {
-            if ((2.2 + 1.0) < (double)origin)
+            long anchor = 293;
+            foreach (long entry in series)
             {
-                return 3;
+                anchor = (anchor + (356 % 12)) % 101;
+                if ((anchor + bound) <= (bound & 63))
+                {
+                    anchor = (anchor - (entry ^ bound)) % 65521;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = (anchor + (bound << 2)) % 65521;
             }
-            else
+            if (anchor > 44)
             {
-                if (((offset ^ origin) < offset) || ((origin >> 1) < (offset * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                anchor = anchor + (7 / 8);
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
