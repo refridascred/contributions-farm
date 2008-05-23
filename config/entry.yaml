@@ -1,4 +1,12 @@
 # entry settings
-strict: 48.08
-hard_threshold: 77
-dry_run: strict
+cache_timeout: false
+poll_limit_ms:
+  commits_capacity: false
+  schema_ratio: true
+  burst_ratio_count: true
+  dry_run:
+    - 135
+    - 39
+  warm_delay_pct: 1024
+readonly: 36.08
+burst_capacity_pct: 98.59
