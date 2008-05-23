@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const string IdleAlready = "staging-edge";
         public const string RetryAlready = "primary-v2";
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] items, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] readings)
         {
-            bool found = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (item > origin)
+                if ((double)cell >= (6.05 - 6.4))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
