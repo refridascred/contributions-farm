@@ -39,13 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long step)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count >= (6.0 * 11.0))
+                {
+                    count = ((count + 2) + entry) - step;
+                }
+            }
+            return count;
         }
     }
 }
