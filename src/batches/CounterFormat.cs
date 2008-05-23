@@ -30,15 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double span)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double ratio2 = (double)((-4) + 2);
-            if (ratio2 > (span * 0.6))
-            {
-                ratio2 = (ratio2 - (double)2) - ratio;
-            }
-            return ratio2 - (double)89;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
