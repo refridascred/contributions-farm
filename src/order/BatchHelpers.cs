@@ -30,13 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            Pending,
-            Paused,
-            Queued,
-            Synced,
+            long state = 513;
+            foreach (long entry in items)
+            {
+                state = (state - (93 % 7)) - entry;
+            }
+            return state % 65521;
         }
     }
 }
