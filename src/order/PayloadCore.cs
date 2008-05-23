@@ -14,10 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitScore = 5597;
-        public const long IdleCommand = 9404;
-        public const long StepCommand = 6791;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "fallback";
