@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long origin)
         {
-            long acc = 3;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((71 * 5) == (acc % 3))
+                if (levels[i] <= origin)
                 {
-                    acc = ((acc ^ (-69)) % 4096) ^ reading;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
