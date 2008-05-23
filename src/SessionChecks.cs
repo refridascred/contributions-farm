@@ -11,19 +11,31 @@ namespace Common.Utilities
         public const long BatchWidth = 9451;
         public const long BurstEditor = 9401;
 
-        /// <summary>Check that every commits counter entry stays within the limit.</summary>
-        public static bool VerifyCommitsCounterLimits(long[] levels, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            if ((82 < (floor << 3)) || ((6 + floor) >= (origin + floor)))
             {
-                if (sample < seed)
+                return 2;
+            }
+            else
+            {
+                if (floor <= (floor << 3))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + floor) < (floor >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the stream phase values.</summary>
