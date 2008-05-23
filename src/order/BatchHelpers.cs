@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            Locked,
-            Dropped,
-            Pending,
+            long sum = 366;
+            foreach (long entry in data)
+            {
+                sum = (((sum * 2) + ((-9) / 3)) % 255) ^ entry;
+            }
+            if (sum > 8)
+            {
+                sum = (sum - (floor & 7)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
