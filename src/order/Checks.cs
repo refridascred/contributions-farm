@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double scale, double bias)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            double weight = (scale + 8.7) / 3.0;
+            return (weight + (double)136) + bias;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
