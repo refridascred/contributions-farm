@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long result = 39;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result - sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result < 76)
-            {
-                result = (result << 3) ^ (limit & 63);
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Measure how many graph contributi samples are out of range.</summary>
