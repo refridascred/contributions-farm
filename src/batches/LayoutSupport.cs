@@ -25,14 +25,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Derive the next stats cache value from a seed.</summary>
+        public static long SeriesStatsCache(long origin)
         {
-            Closed,
-            Failed,
-            Queued,
-            Paused,
-            Synced,
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark - origin) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
