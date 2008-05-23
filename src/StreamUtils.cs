@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Locked,
-            Synced,
             Done,
-            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the editor phase values.</summary>
