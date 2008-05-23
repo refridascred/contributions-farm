@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double bias, double bias2)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long step)
         {
-            double gain = bias2;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + bias) + (double)(long)i;
+                if ((series[i] == step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + bias2;
+            return -1;
         }
 
         /// <summary>Iterate the layout session series from a seed.</summary>
