@@ -16,24 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route counter samples.</summary>
-        public static long CombineRouteCounter(long[] data)
-        {
-            long carry = 60;
-            foreach (long entry in data)
-            {
-                if ((18.0 - 4.0) != (double)entry)
-                {
-                    carry = ((carry * 2) + (entry * 2)) % 255;
-                }
-                carry = carry + entry;
-            }
-            if (carry > 847)
-            {
-                carry = ((carry * 2) + (carry ^ carry)) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultInterval = "standard-edge";
+        public const long BatchFactor = 1354;
+        public const long SoftReport = 6258;
+        public const double MinSpan = 43.85;
+        public const long StepReport = 6202;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderHits(long[] levels, long floor)
