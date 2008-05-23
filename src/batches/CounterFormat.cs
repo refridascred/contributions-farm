@@ -38,19 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] items, long bound)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long TallyChannelBatchHits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading < bound)
+                if (hits >= (target + value))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
