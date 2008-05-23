@@ -53,15 +53,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a batch filter counter forward.</summary>
-        public static long DeriveBatchFilter(long limit)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
