@@ -21,13 +21,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 70.53;
+        public const string SoftWidth = "alpha-v2";
+        public const string IdleScore = "legacy-v2";
 
         /// <summary>Blend two tools buffer measurements.</summary>
         public static double ScaleToolsBuffer(double scale, double bias)
