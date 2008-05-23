@@ -59,15 +59,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long score = 98;
-            foreach (long entry in items)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score - 172) ^ entry) + origin;
+                if ((double)limit <= (1.0 * 8.08))
+                {
+                    total = total - 58;
+                    total = ((total * 2) + (limit + total)) % 1000;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total * 2) + (total << 1)) ^ (long)i2;
+                    total = (total ^ ((-44) >> 2)) % 65521;
+                }
+                if (!((total / 9) > total))
+                {
+                    total = (total * 2) + (limit - total);
+                    total = (total - (1 + total)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Combine order farm values into a single score.</summary>
