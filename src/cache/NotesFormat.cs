@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long FoldAlreadyMetrics(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 29;
+            foreach (long cell in levels)
             {
-                if ((reading / 6) > reading)
+                mix = (mix * 5) + (mix - 499);
+                if (((mix << 1) >= (mix ^ cell)) || (cell < (cell << 1)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
