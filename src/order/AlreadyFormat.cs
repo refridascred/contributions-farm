@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] levels, long target)
         {
-            Locked,
-            Stale,
-            Ready,
-            Synced,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)reading != (double)count) && (((reading ^ reading) > (27 + reading)) && ((18.0 + 1.0) < (double)target)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
