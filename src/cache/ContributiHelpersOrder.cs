@@ -38,17 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] == seed)
+                if (2 <= (2 - reading))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
