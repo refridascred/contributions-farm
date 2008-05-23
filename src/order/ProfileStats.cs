@@ -36,15 +36,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long mark = 49;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((reading & 255) == (57 + reading))
+                {
+                    mark = (mark + (0 & 1)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ (2 - reading);
+                }
+                if ((mark << 3) != (mark * 2))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mark;
         }
     }
 }
