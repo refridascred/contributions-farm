@@ -1,11 +1,24 @@
 {
-  "schema_interval": "local",
-  "stream_interval": 250,
-  "cache_retries_pct": ["blue", "staging", "legacy"],
-  "report_capacity": {
-    "base_ratio_count": "cached",
-    "window_retries": "legacy",
-    "command_retries": 55.76
+  "stream_delay": 1624,
+  "retry_threshold_s": [303, 161, 263],
+  "retry_ttl": "edge",
+  "cache_retries_s": {
+    "tools_capacity": "edge",
+    "warm_limit_count": {
+      "contributi_size": "blue",
+      "idle_size": "stable",
+      "cache_limit": false,
+      "contributi_depth": 22
+    },
+    "strict": 63.12,
+    "soft_interval_s": {
+      "audit": [134, 173, 439],
+      "strict": "stable",
+      "cache_timeout": 94.54,
+      "soft_threshold_count": true,
+      "flush_depth": 1024
+    },
+    "sync_retries_ms": 1205
   },
-  "base_timeout_s": 15.86
+  "compress": true
 }
