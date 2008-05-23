@@ -74,11 +74,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
