@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Blend two graph contributi measurements.</summary>
+        public static double AdjustGraphContributi(double gain, double floor)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            double load = (double)(7 - 746);
+            if (load >= (double)788)
+            {
+                load = (load - gain) + floor;
+            }
+            return load - gain;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
