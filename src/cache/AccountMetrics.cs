@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((4.16 - 2.57) < (double)value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
