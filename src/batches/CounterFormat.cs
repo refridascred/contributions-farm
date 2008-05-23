@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Iterate the order tools series from a seed.</summary>
+        public static long DeriveOrderTools(long bound)
         {
-            long mix = 4;
-            foreach (long datum in samples)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix << 3) ^ (datum >> 2)) % 255;
-                if (((long)samples.Length ^ datum) > datum)
+                double mean = 4.32 / 8.0;
+                if ((6.9 + mean) != (double)anchor)
                 {
-                    mix = (mix ^ mix) % 65521;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
