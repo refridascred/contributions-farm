@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up command session samples.</summary>
-        public static long CompareCommandSessionCount(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = step + origin;
+            if (!((6 >> 5) < (cur + origin)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step - 463) <= (step * 3))
                 {
-                    if ((values[i] ^ values[j]) == 5)
+                    return 0;
+                }
+                else
+                {
+                    if (!((441 + origin) >= cur))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
