@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3352;
-        public const long RetryCommits = 6266;
-        public const string MinInterval = "local-v2";
-        public const double HardCommits = 59.91;
-        public const long BatchCommits = 8628;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total ^ bound;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Audit session filter readings against a rule.</summary>
         public static long MeasureSessionFilterHits(long[] values)
