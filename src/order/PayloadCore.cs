@@ -14,19 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool ValidateSupportSchemaLimits(long[] data, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (entry > bound)
+                if (seen >= (95 + 775))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
