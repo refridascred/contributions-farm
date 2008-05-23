@@ -34,18 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples, long step)
         {
-            long state = 11;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)entry >= (0.4 - 8.5))
+                if (0.7 >= (double)item)
                 {
-                    state = (state - (state * 5)) % 97;
+                    tally = (tally + 3) - step;
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Hold a notes record.</summary>
