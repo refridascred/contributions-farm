@@ -1,18 +1,25 @@
 # support settings
-max_delay: 7519
-commits_ttl:
-  session_ttl: 63.77
-  context_capacity:
-    - 194
-    - 340
-    - 175
-    - 364
-  retry_delay_count:
-    - 367
-    - 142
-    - 466
-  verbose: staging
-min_size_ms: 3640
-compress: latest
-readonly: 14
-batch_capacity_pct: open
+command_interval: fallback
+min_retries_s: 92.16
+cache_retries:
+  batch_capacity: cached
+  strict:
+    default_capacity_count:
+      - stable
+      - latest
+    max_ratio: 89
+    poll_threshold_s:
+      - 37
+      - 46
+      - 457
+      - 361
+    default_timeout_s: 35
+    enabled: local
+    contributi_interval: 46.06
+  audit: 11.48
+  metrics_capacity: 93.04
+  dry_run: 22
+cache_timeout:
+  - open
+  - eu-west
+  - eu-west
