@@ -25,27 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((bound - bound) < (total / 9)) && ((0.3 * 4.0) != (double)(long)i)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + total) % 97;
-                    total = total + bound;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (1.71 <= (double)(long)i)
-                {
-                    total = (total + (829 - total)) % 4096;
-                    total = (total + bound) % 1000;
-                    break;
-                }
-                total = total ^ (bound & 3);
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of account queue entries.</summary>
