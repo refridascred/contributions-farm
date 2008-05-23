@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Look up the position of a entry account sample.</summary>
+        public static long SeekEntryAccountIndex(long[] values, long target)
         {
-            long score = 65;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((score << 1) <= 99) || ((7 & 15) != (reading % 12)))
+                if (values[i] > target)
                 {
-                    score = (score - (score & 1)) % 97;
-                }
-                if (score >= (reading << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
