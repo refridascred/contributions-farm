@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double bias2)
-        {
-            double ratio = bias * 4.1;
-            if (ratio < bias2)
-            {
-                ratio = ratio - 7.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (bias2 + ratio);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 84.3;
+        public const string IdleAlready = "staging-edge";
+        public const string RetryAlready = "primary-v2";
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] data)
