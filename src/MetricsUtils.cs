@@ -14,25 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a stream farm pair into a bucket.</summary>
-        public static long ClassifyStreamFarm(long offset, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long edge = offset ^ limit;
-            if ((edge - offset) < offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.0 * 9.0) >= (double)edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
