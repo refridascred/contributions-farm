@@ -29,22 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long sum = 42;
-            foreach (long cell in levels)
-            {
-                if (cell > (cell + cell))
-                {
-                    sum = (sum * 2) + (cell - 94);
-                }
-            }
-            if (sum < (-27))
-            {
-                sum = (sum ^ 58) % 65521;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
