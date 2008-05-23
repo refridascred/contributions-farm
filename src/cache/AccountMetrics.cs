@@ -66,10 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 845;
-        public const long DefaultSession = 3853;
-        public const long IdleSession = 1654;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowSpan = 6451;
+        public const long WindowSize = 2331;
+        public const long CacheFactor = 9197;
+        public const string IdleBudget = "cached-edge";
+        public const long RetryRatio = 4264;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] readings, long seed)
