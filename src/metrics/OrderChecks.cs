@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
