@@ -42,29 +42,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long seed, long bound)
         {
-            long prev = target + bound;
-            if ((double)879 >= (double)bound)
+            if ((double)bound != (double)seed)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (target >= (prev * 2))
+                if ((seed & 15) <= seed)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if (target <= (prev + bound))
+                    if ((double)bound >= 9.1)
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        if ((97 * 4) <= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
