@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (items[i] > step)
+                if (sample < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a contributi info.</summary>
