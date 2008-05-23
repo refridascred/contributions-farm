@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every token metrics entry stays within the limit.</summary>
-        public static bool GuardTokenMetricsLimits(long[] samples, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Done,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
