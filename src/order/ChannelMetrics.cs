@@ -25,23 +25,14 @@ namespace Common.Utilities
             return ratio - (bias2 + ratio);
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = -528;
-            foreach (long sample in readings)
-            {
-                acc = (acc << 2) ^ (acc & 63);
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (((acc * 4) + (sample / 6)) % 97) - (long)i;
-                }
-                if (((long)readings.Length & 255) > (sample - acc))
-                {
-                    acc = (acc << 3) ^ 39;
-                }
-            }
-            return acc;
+            Queued,
+            Synced,
+            Pending,
+            Active,
+            Stale,
         }
     }
 }
