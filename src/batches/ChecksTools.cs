@@ -46,19 +46,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long acc = -739;
+            foreach (long item in readings)
             {
-                if (datum != step)
+                if (item > (acc ^ acc))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc * 2) + item;
                 }
+                acc = ((acc << 2) ^ acc) % 65521;
             }
-            return ready;
+            return acc;
         }
     }
 }
