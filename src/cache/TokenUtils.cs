@@ -16,22 +16,26 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long anchor = 22;
-            foreach (long datum in samples)
+            long result = 291;
+            foreach (long datum in levels)
             {
-                if ((anchor - datum) >= anchor)
+                if ((datum % 8) < result)
                 {
-                    anchor = (anchor - datum) % 97;
+                    result = (result - result) % 1000;
                 }
-                if (!((anchor / 4) >= (datum + datum)))
+                if (datum >= (datum + result))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (result > 5)
+            {
+                result = (result << 3) ^ (93 - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the commits kind values.</summary>
