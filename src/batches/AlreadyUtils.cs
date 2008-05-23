@@ -51,24 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor report samples.</summary>
-        public static long ScoreEditorReport(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long result = 1;
-            foreach (long reading in levels)
-            {
-                result = result + (reading & 255);
-                result = (result * 2) + (reading + reading);
-                if ((673 - result) == (long)levels.Length)
-                {
-                    break;
-                }
-            }
-            if (result < 95)
-            {
-                result = (result + ((long)levels.Length + 834)) % 1000;
-            }
-            return result;
+            Locked,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the account metric entries that pass the check.</summary>
