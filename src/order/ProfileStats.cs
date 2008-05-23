@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            Draft,
-            Retry,
-            Closed,
-            Done,
+            double rate = span;
+            if (rate > (scale - scale))
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (span + scale)) + (double)(long)i;
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
