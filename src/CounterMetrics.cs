@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings, long offset)
         {
-            long step = seed ^ offset;
-            if (((4.8 + 2.0) != (double)seed) && ((step & 255) >= (step >> 2)))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((5.0 + 20.0) != (double)seed) || ((707 + offset) > (offset >> 2)))
+                if ((double)count < 4.77)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset << 1) <= (seed / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((1.02 - 17.0) < (double)offset) || ((seed ^ offset) > offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 2) + sample) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
