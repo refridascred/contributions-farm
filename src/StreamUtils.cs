@@ -75,17 +75,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long offset)
+        /// <summary>Digest a series of stream record entries.</summary>
+        public static long FoldStreamRecord(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 5;
+            foreach (long sample in levels)
             {
-                if (values[i] < offset)
+                if ((sample & 15) < (seed * 3))
                 {
-                    return (long)i;
+                    score = score ^ sample;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
