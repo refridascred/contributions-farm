@@ -40,19 +40,11 @@ namespace Common.Utilities
             return (weight + (double)136) + bias;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound + entry) > (bound & 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 10.27;
+        public const string DefaultDepth = "cached-v2";
+        public const string LimitEditor = "open";
+        public const long MaxEditor = 9366;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyGaps(long[] readings, long offset)
