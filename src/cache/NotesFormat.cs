@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up batches notes samples.</summary>
-        public static long CompareBatchesNotesCount(long[] data)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 20)
+                    if ((series[i] - series[j]) != 3)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
