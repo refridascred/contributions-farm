@@ -33,19 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool VerifyMetricsCounterRange(long[] samples, long seed)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double ratio = bias2;
+            if (ratio > (bias2 / 7.0))
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - ratio) - bias;
             }
-            return ready;
+            return ratio - (bias2 * 7.8);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
