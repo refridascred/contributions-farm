@@ -20,21 +20,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + seed) >= (hits & 127))
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
