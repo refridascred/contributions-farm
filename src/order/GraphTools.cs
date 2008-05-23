@@ -54,31 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long bound, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            if ((step * 2) > 9)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.9 + 8.59) >= (double)step)
+                if ((datum + hits) == (hits << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (9.8 < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
