@@ -46,23 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            long total = 249;
-            foreach (long cell in data)
-            {
-                total = total - (cell + cell);
-                if (649 < total)
-                {
-                    total = total + total;
-                }
-                if (((long)data.Length ^ cell) > total)
-                {
-                    break;
-                }
-            }
-            return total;
+            double weight = span + (double)795;
+            return (weight - (double)921) + rate;
         }
     }
 }
