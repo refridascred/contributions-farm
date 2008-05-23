@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Pending,
-            Retry,
-            Synced,
-            Ready,
-            New,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
