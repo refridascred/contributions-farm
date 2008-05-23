@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value - value) > (value + value))
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
