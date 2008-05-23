@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-open}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
 while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback blue staging stable; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=345
-log "limit is ${COMMAND_LIMIT}"
