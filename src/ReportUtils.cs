@@ -25,15 +25,18 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Derive the next metric record value from a seed.</summary>
-        public static long DeriveMetricRecord(long target)
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long MeasureEntryFarmGaps(long[] values, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (hits > (hits << 1))
+                {
+                    hits = ((hits + 2) - cell) + seed;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
