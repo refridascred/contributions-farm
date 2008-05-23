@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 0;
+            foreach (long sample in readings)
+            {
+                if ((carry - sample) < (sample + sample))
+                {
+                    carry = (carry * 3) + (carry - sample);
+                }
+            }
+            if (carry > 9)
+            {
+                carry = ((carry << 3) ^ (carry >> 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
