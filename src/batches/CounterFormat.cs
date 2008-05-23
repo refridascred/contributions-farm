@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Retry,
-            Active,
-            Failed,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 6940;
+        public const long DefaultMetric = 3810;
+        public const long RetryBudget = 8648;
+        public const long WindowMetric = 2714;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string HardSize = "stable-v2";
