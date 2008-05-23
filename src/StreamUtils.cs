@@ -62,19 +62,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels, long limit)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long sample in levels)
             {
-                if (((hits / 8) >= value) && ((2.08 > (double)value) && ((hits + value) > (value & 31))))
+                if (sample >= (19 - 8))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + limit;
                 }
             }
             return hits;
