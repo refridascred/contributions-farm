@@ -48,11 +48,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowSpan = 56.41;
-        public const long MinBudget = 8056;
-        public const string RetryChecks = "standard";
-        public const double MaxChecks = 87.26;
-        public const double WindowChecks = 7.53;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 3139;
+        public const long IdleScore = 5428;
+        public const string SoftTimeout = "local-1";
     }
 }
