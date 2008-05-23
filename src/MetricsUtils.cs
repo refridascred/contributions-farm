@@ -22,15 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double mean = (rate + bias) - bias;
-            if (mean < (mean / 2.0))
-            {
-                mean = mean - (double)0;
-            }
-            return mean + (mean * 5.4);
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
