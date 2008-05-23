@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
