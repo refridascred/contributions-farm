@@ -1,5 +1,23 @@
 # entry settings
-metrics_window: 87
-readonly: 3153
-audit: legacy
-default_ratio: 3970
+batch_limit:
+  batches_window:
+    - 85
+    - 243
+    - 16
+  default_timeout: false
+  filter_retries:
+    warm_retries: 2.53
+    contributi_ratio:
+      - latest
+      - cached
+      - primary
+      - open
+    default_threshold_s: 4788
+    burst_size_pct: open
+  soft_limit_ms: local
+  graph_delay: staging
+githubfarm_delay: 3210
+poll_depth_s:
+  - 220
+  - 153
+  - 409
