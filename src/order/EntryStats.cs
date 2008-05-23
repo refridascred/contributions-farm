@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool VerifyMetricsPayloadLimits(long[] data, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != bound)
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate profile token readings against a bound.</summary>
