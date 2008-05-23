@@ -55,19 +55,14 @@ namespace Common.Utilities
         public const string IdleChannel = "legacy-1";
         public const double SoftChannel = 10.9;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Retry,
+            Queued,
+            Pending,
+            Active,
         }
     }
 }
