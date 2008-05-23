@@ -1,11 +1,6 @@
-id,active,score
-1,21.18,442
-2,68,96.6
-3,598,latest
-4,29.59,edge
-5,stable,edge
-6,42.22,426
-7,317,1.85
-8,896,open
-9,legacy,294
-10,464,cached
+id,count,state,token
+1,65.96,405,eu-west
+2,stable,90.36,86.48
+3,fallback,local,81.28
+4,primary,standard,272
+5,edge,staging,114
