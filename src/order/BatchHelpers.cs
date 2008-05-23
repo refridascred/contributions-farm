@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long step)
+        /// <summary>Combine cluster batches values into a single score.</summary>
+        public static long FoldClusterBatches(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 769;
+            foreach (long sample in data)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                total = total + 3;
+                if ((3 % 60) <= (sample + total))
                 {
-                    return (long)i;
+                    total = total ^ limit;
+                }
+                else
+                {
+                    total = total ^ (sample - total);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the layout session series from a seed.</summary>
