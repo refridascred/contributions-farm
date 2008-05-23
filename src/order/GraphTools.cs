@@ -78,12 +78,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((96 - 909) > hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
