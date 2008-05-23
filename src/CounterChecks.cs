@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first token order entry that matches the target.</summary>
-        public static long LookupTokenOrderIndex(long[] readings, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
