@@ -45,12 +45,10 @@ namespace Common.Utilities
         public const long HardWidth = 7155;
         public const string BurstTimeout = "alpha-v2";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepWidth = 2258;
+        public const long StepLevel = 8903;
+        public const string BurstScore = "stable-edge";
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool VerifyMetricsClusterLimits(long[] samples, long target)
