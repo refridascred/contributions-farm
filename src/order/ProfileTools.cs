@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const double MaxLayout = 14.41;
         public const long BurstSize = 3686;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long sum = 77;
+            foreach (long value in series)
             {
-                if (!((origin + count) <= (origin >> 5)))
+                if ((value + sum) >= sum)
                 {
-                    count = (count + 3) ^ reading;
+                    sum = (sum + (sum / 9)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (value + sum)) % 101;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Hold a graph stats.</summary>
