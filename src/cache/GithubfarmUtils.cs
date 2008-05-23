@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long bound)
+        /// <summary>Scale a metrics cluster figure with a bias.</summary>
+        public static double ProjectMetricsCluster(double gain, double floor)
         {
-            long mix = 327;
-            foreach (long datum in items)
+            double rate = (double)258 / 9.0;
+            if (rate > floor)
             {
-                mix = ((mix ^ (mix & 7)) + datum) + bound;
+                rate = rate - gain;
             }
-            return mix;
+            return rate + 0.7;
         }
 
         /// <summary>Iterate the cache batches series from a seed.</summary>
