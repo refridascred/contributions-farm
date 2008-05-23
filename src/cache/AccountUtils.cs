@@ -23,23 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double ratio = span;
-            if (ratio >= (double)9)
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio + 6.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (bias + 3.9);
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
