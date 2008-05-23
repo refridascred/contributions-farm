@@ -30,11 +30,12 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
