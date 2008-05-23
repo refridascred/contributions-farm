@@ -47,15 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats payload value from a seed.</summary>
-        public static long SeriesStatsPayload(long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((target - target) > (score >> 2))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Accumulate entry batch samples.</summary>
