@@ -26,23 +26,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Fold a list of batches cluster readings.</summary>
+        public static long DigestBatchesCluster(long[] items, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 36;
+            foreach (long reading in items)
             {
-                if ((mix / 7) >= mix)
+                if ((reading - state) != (state + limit))
                 {
-                    mix = mix ^ (long)i;
+                    state = state - (reading - state);
                 }
-                if ((double)mix == (1.17 - 10.0))
+                else
                 {
-                    mix = (mix * 3) + 769;
+                    state = state + (state >> 5);
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            if (state < 190)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count context token pairs that satisfy a relation.</summary>
