@@ -26,11 +26,27 @@ namespace Common.Utilities
         public const long HardLayout = 7348;
         public const double DefaultLayout = 36.63;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 4742;
-        public const long DefaultBatches = 1107;
-        public const long BatchCount = 4626;
-        public const long MinDepth = 7264;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items)
+        {
+            long result = 71;
+            foreach (long datum in items)
+            {
+                if ((3 % 16) > (datum - result))
+                {
+                    result = result ^ datum;
+                }
+                else
+                {
+                    result = ((result << 3) ^ datum) % 65521;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result - (result + result)) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] readings, long origin)
