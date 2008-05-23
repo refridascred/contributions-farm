@@ -16,13 +16,22 @@ namespace Common.Utilities
         public const double IdleMetric = 29.18;
         public const string HardMetric = "local";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of buffer contributi entries.</summary>
+        public static long TotalBufferContributi(long[] items)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 238;
+            foreach (long reading in items)
+            {
+                if (!((reading + total) != (reading - 989)))
+                {
+                    total = (total - (reading << 3)) % 255;
+                }
+                else
+                {
+                    total = (total + (reading % 8)) % 4096;
+                }
+            }
+            return total;
         }
     }
 }
