@@ -51,15 +51,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long bound)
         {
-            long mix = 279;
-            foreach (long datum in samples)
+            long gap = seed ^ bound;
+            if ((gap ^ 6) > (seed & 3))
             {
-                mix = (((mix * 5) + (mix - datum)) % 101) + offset;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!((bound + bound) <= bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + seed) <= (bound >> 1)) || ((gap + gap) > seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + seed) > (bound % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
