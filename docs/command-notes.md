@@ -1,12 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the metric list.
-Run the checks check before changing any format limits.
-The buffer report groups every command by entry.
+The metric report groups every payload by token.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every filter change
-- Review support limits each release
-- Validate commits input early
+- Log every graph change
+- Document new cache fields
+- Validate layout input early
+- Review cache limits each release
