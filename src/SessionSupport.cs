@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long floor)
         {
-            double rate = (double)(78 - 62);
-            if (rate <= (gain + gain))
+            long step = target - floor;
+            if (((target - (-873)) >= (floor + floor)) && ((double)step <= 1.41))
             {
-                rate = rate - floor;
+                return 2;
             }
             else
             {
-                rate = rate + (gain / 2.0);
+                if ((step >> 4) > (step + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return rate + (double)2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
