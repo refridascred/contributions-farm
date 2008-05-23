@@ -20,19 +20,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next checks filter value from a seed.</summary>
-        public static long SeriesChecksFilter(long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long span = floor - offset;
+            if (!((offset / 9) > (floor >> 2)))
             {
-                if (!((target / 9) != (3 & 7)))
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((floor - offset) < span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
