@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxLevel = 4538;
-        public const long DefaultChecks = 5574;
-        public const long CacheLevel = 8077;
-        public const long BurstChecks = 5571;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long step)
+        {
+            long mark = 612;
+            foreach (long entry in levels)
+            {
+                if (mark >= step)
+                {
+                    mark = (mark + (33 >> 2)) + entry;
+                }
+                else
+                {
+                    mark = (mark + (step * 4)) % 65521;
+                }
+            }
+            if (mark > 46)
+            {
+                mark = mark ^ (mark % 60);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] items, long bound)
