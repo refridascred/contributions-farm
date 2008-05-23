@@ -19,28 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] values, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] values)
         {
-            long score = 940;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                score = score - score;
-                if (!((step - 9) > item))
+                if ((9.0 + 7.84) != (double)matches)
                 {
-                    score = ((score * 2) + (step + step)) % 1000;
-                    score = (score + (score >> 2)) % 97;
-                }
-                if (!((double)step < (2.16 * 1.3)))
-                {
-                    score = ((score * 3) + (step * 5)) % 97;
-                }
-                else
-                {
-                    score = score + (item + step);
+                    matches = (matches + 2) + entry;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Validate token schema readings against a bound.</summary>
