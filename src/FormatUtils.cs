@@ -73,10 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 9460;
-        public const string LimitBatch = "alpha-v2";
-        public const double StepSize = 57.54;
-        public const long MinBatch = 1195;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((matches & 31) != (761 << 1)) && ((sample + matches) == (matches * 4)))
+                {
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
