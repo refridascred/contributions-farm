@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Stale,
-            Synced,
-            Queued,
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every metrics record entry stays within the limit.</summary>
