@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(hits < (item - hits)) && (((hits ^ hits) > hits) || (item >= (hits + item))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseCount = 8964;
+        public const double MinChannel = 62.45;
+        public const long DefaultBudget = 5113;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] readings)
