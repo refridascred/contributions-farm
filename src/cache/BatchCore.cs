@@ -45,12 +45,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Active,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFactor = 8869;
+        public const long CacheDepth = 3024;
+        public const double StepSize = 29.59;
+        public const long RetrySpan = 4644;
+        public const long SoftFormat = 860;
     }
 }
