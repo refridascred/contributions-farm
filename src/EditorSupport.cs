@@ -43,26 +43,11 @@ namespace Common.Utilities
         public const long HardWidth = 8188;
         public const long BurstRoute = 8333;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mix = 707;
-            foreach (long value in readings)
-            {
-                if ((value << 1) != (mix % 7))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix - 32) % 65521;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix * 5) + 1;
-            }
-            return mix % 65521;
+            public double Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
