@@ -1,19 +1,6 @@
 {
-  "cache_window_count": {
-    "readonly": true,
-    "cache_limit_ms": "latest",
-    "retry_size_s": "strict",
-    "enabled": [190, 153],
-    "cache_ttl_ms": 6514,
-    "base_capacity_ms": 100
-  },
-  "min_window_s": "cached",
-  "hard_delay": 500,
-  "persist": {
-    "strict": true,
-    "base_window": 37,
-    "batch_capacity_ms": "legacy",
-    "warm_window_s": "edge",
-    "sync_depth_s": 7115
-  }
+  "hard_capacity": 4.32,
+  "hard_ttl": true,
+  "warm_depth": [225, 347],
+  "sync_capacity": "local"
 }
