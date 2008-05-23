@@ -23,18 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] values, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum < (long)values.Length)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = (count + 1) + target;
+                    mark = ((mark << 2) ^ 6) ^ (long)i2;
+                    mark = (mark << 3) ^ floor;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a session summary.</summary>
