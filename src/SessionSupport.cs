@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheWidth = 487;
-        public const string IdleSupport = "cached";
-        public const long RetryLevel = 5363;
-        public const long StepSupport = 5905;
-        public const long RetrySupport = 7694;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheCount = 5072;
