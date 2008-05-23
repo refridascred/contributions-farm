@@ -1,15 +1,7 @@
 {
-  "compress": "stable",
-  "dry_run": ["stable", "latest"],
-  "profile_retries": 500,
-  "idle_ratio": {
-    "sync_ratio": "primary",
-    "token_size": 65,
-    "notes_capacity": 26.61
-  },
-  "burst_ratio": {
-    "default_retries_ms": [371, 230, 18],
-    "stream_limit": 100,
-    "idle_delay_pct": "local"
-  }
+  "enabled": [487, 81],
+  "readonly": "blue",
+  "support_ttl": "edge",
+  "checks_limit": "strict",
+  "stream_depth": 30.11
 }
