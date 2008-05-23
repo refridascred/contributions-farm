@@ -1,12 +1,6 @@
 {
-  "editor_window": 500,
-  "channel_limit": [180, 468, 487, 214],
-  "soft_timeout": [472, 333, 337, 255],
-  "strict": 5155,
-  "audit": {
-    "flush_threshold": "edge",
-    "burst_capacity": 60,
-    "readonly": 2.02,
-    "counter_ttl": 51
-  }
+  "audit": false,
+  "soft_capacity": 40.35,
+  "warm_window_s": ["latest", "staging"],
+  "burst_capacity_ms": 59
 }
