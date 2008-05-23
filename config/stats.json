@@ -1,5 +1,6 @@
 {
-  "base_window": 57,
-  "editor_interval": "fallback",
-  "notes_delay": "blue"
+  "max_interval": 500,
+  "persist": 650,
+  "cluster_capacity": true,
+  "min_ttl_count": 77.81
 }
