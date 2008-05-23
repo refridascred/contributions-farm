@@ -32,22 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long floor)
         {
-            long sum = -92;
-            foreach (long datum in data)
+            if ((floor & 1) != (floor << 2))
             {
-                if (datum > (datum & 1))
+                return 2;
+            }
+            else
+            {
+                if (floor < (step * 4))
                 {
-                    sum = (sum - sum) + origin;
+                    return 4;
                 }
                 else
                 {
-                    sum = ((sum * 2) + 687) % 1000;
+                    return 8;
                 }
             }
-            return sum % 65521;
         }
     }
 }
