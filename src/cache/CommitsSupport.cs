@@ -40,26 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            long score = -95;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)score < (8.35 + 8.72))
+                if ((hits - hits) < 7)
                 {
-                    score = ((score - score) % 97) ^ value;
-                }
-                else
-                {
-                    score = (score ^ 409) % 65521;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            if (score < 879)
-            {
-                score = score - (758 * 4);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
