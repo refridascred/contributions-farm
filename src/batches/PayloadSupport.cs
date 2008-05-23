@@ -12,36 +12,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long bound, long target)
         {
-            if ((target - target) > bound)
+            long step = bound ^ target;
+            if ((7.1 / 2.0) == (double)step)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((2.83 - 20.0) <= (double)target) || ((double)bound > (1.2 / 4.0)))
+                if ((2.48 / 8.0) >= (double)step)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (target <= (bound + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7 & 7) >= (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
