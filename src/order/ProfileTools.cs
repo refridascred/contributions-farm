@@ -50,10 +50,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "strict-edge";
-        public const long WindowLevel = 7824;
-        public const long MinOrder = 3779;
-        public const double BurstTimeout = 22.56;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels)
+        {
+            long anchor = 6;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor - anchor) % 255;
+                if ((anchor + datum) <= anchor)
+                {
+                    anchor = ((anchor << 2) ^ (44 + datum)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (datum + datum)) % 101;
+                }
+            }
+            return anchor;
+        }
     }
 }
