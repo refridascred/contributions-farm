@@ -34,19 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            double ratio = floor;
+            if (ratio < ratio)
             {
-                if ((double)step > (8.86 * 1.1))
-                {
-                    acc = (acc + (long)i) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                ratio = (ratio + floor) - bias;
             }
-            return acc;
+            return ratio - floor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
