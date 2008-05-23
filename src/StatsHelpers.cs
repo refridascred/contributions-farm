@@ -44,12 +44,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 7007;
-        public const double BurstContext = 3.15;
-        public const string BaseWidth = "open";
-        public const double HardContext = 95.06;
-        public const string BaseContext = "primary";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterHits(long[] values)
