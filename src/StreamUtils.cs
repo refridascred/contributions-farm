@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] levels, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((757 ^ reading) < (8 % 16)) || ((reading < (step - step)) || ((step - step) > tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
