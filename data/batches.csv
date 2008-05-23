@@ -1,11 +1,6 @@
-id,score,count,owner
-1,4.14,97.85,cached
-2,143,80.99,78.47
-3,fallback,green,506
-4,standard,94.28,574
-5,87.55,stable,edge
-6,52.07,65.21,69.03
-7,79.36,75.1,primary
-8,54.49,501,edge
-9,standard,666,495
-10,open,76.54,24.49
+id,token,rank,level
+1,36.36,691,green
+2,603,244,open
+3,strict,strict,148
+4,81.77,59.35,962
+5,337,primary,623
