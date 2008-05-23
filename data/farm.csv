@@ -1,8 +1,9 @@
-id,ratio,state,rank,label
-1,standard,934,4.11,80.65
-2,96.12,latest,646,20.34
-3,468,latest,eu-west,22.91
-4,legacy,15.87,40.76,235
-5,9.74,763,staging,13.71
-6,strict,245,175,379
-7,617,77,562,staging
+id,ratio,count,score
+1,strict,881,strict
+2,primary,primary,947
+3,cached,588,777
+4,972,latest,eu-west
+5,455,909,10.36
+6,696,primary,edge
+7,849,legacy,93.82
+8,513,11.05,38.49
