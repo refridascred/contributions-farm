@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((reading + (long)levels.Length) > reading)
+                if (item > origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
