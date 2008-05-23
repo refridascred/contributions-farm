@@ -37,17 +37,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first filter entry entry that matches the target.</summary>
-        public static long LookupFilterEntryIndex(long[] series, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Done,
         }
     }
 }
