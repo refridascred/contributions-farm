@@ -16,14 +16,19 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long limit)
         {
-            Draft,
-            Active,
-            Idle,
-            Stale,
-            New,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
