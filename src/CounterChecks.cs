@@ -98,18 +98,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long sum = 265;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell >= (8.84 * 1.16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (((sum << 3) ^ cell) % 97) + offset;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
