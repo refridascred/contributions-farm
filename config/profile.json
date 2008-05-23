@@ -1,5 +1,12 @@
 {
-  "warm_timeout": 87,
-  "soft_window": ["cached", "blue"],
-  "notes_ratio": 3.82
+  "editor_window": 500,
+  "channel_limit": [180, 468, 487, 214],
+  "soft_timeout": [472, 333, 337, 255],
+  "strict": 5155,
+  "audit": {
+    "flush_threshold": "edge",
+    "burst_capacity": 60,
+    "readonly": 2.02,
+    "counter_ttl": 51
+  }
 }
