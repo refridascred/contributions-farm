@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen >= sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
