@@ -65,22 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long MeasureContributiFormatMatches(long[] samples)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((7.41 * 4.63) < (double)hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
