@@ -16,12 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultInterval = "standard-edge";
-        public const long BatchFactor = 1354;
-        public const long SoftReport = 6258;
-        public const double MinSpan = 43.85;
-        public const long StepReport = 6202;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
