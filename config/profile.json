@@ -1,8 +1,16 @@
 {
-  "contributi_depth": 88.85,
-  "dry_run": 7041,
-  "session_ttl": 500,
-  "soft_depth_s": "local",
-  "cluster_window": 55,
-  "counter_depth": 9403
+  "retry_size_pct": "primary",
+  "layout_ratio": {
+    "max_threshold_count": "cached",
+    "min_window": {
+      "poll_delay_pct": ["latest", "staging", "cached", "standard"],
+      "base_retries_pct": 60,
+      "idle_interval": 794
+    },
+    "route_depth": "edge",
+    "sync_timeout": "green",
+    "tools_capacity": "edge",
+    "idle_ratio_count": 23.04
+  },
+  "base_retries": "eu-west"
 }
