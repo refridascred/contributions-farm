@@ -33,11 +33,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double bias2 = (floor * 0.5) * 3.69;
-            return (bias2 - (double)655) + bias;
+            Dropped,
+            Queued,
+            Stale,
+            Done,
+            Active,
         }
     }
 }
