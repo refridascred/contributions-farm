@@ -14,17 +14,26 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long origin)
+        /// <summary>Fold a list of record format readings.</summary>
+        public static long TallyRecordFormat(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 439;
+            foreach (long item in levels)
             {
-                if (readings[i] > origin)
+                if ((anchor + item) <= (anchor << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ limit) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor / 3);
+                }
+                if ((limit - anchor) < (anchor + limit))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
