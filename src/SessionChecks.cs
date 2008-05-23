@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] series, long origin)
+        /// <summary>Audit entry already readings against a rule.</summary>
+        public static long CountEntryAlreadyHits(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (datum != origin)
+                if ((7.6 - 0.34) < (double)reading)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - target;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
