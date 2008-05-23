@@ -65,21 +65,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Adjust a checks schema reading.</summary>
+        public static double BlendChecksSchema(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = rate;
+            if (mean >= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (rate * 9.0);
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)54) - (double)(long)i;
+            }
+            return mean + rate;
         }
     }
 }
