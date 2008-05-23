@@ -46,17 +46,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] == target)
+                if (total >= (462 & 15))
                 {
-                    return (long)i;
+                    total = (total - (long)i) % 4096;
                 }
+                total = ((total * 2) + step) % 255;
+                total = ((total * 5) + 0) % 97;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
