@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string HardEntry = "alpha-edge";
         public const long BurstEntry = 4291;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
