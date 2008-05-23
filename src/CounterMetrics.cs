@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) >= entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
