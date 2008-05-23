@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up token route samples.</summary>
-        public static long CompareTokenRouteCount(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -42;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((9.0 * 6.9) == (double)carry) && ((double)carry > (6.49 - 16.0)))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (sample + 842);
+                }
+                else
+                {
+                    carry = carry + (carry + seed);
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Hold a token stats.</summary>
