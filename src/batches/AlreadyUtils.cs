@@ -52,17 +52,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                if (levels[i] < offset)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor - (long)i) + floor;
+                    anchor = (anchor + (anchor & 255)) % 101;
+                }
+                if ((6.0 + 7.0) == (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (reading & 255)) % 255;
                 }
             }
-            return -1;
+            if (anchor < 67)
+            {
+                anchor = (anchor - (352 + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
