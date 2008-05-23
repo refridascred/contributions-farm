@@ -42,32 +42,15 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            long cur = bound - floor;
-            if ((double)cur >= (2.6 / 3.0))
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((floor / 6) <= (bound << 3)) && ((cur >> 3) <= (floor - cur)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound << 1) <= (1 - cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
