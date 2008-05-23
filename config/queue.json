@@ -1,6 +1,5 @@
 {
-  "sync_window": ["staging", "latest"],
-  "dry_run": true,
-  "contributi_delay": "staging",
-  "compress": "strict"
+  "idle_retries": 87.31,
+  "idle_window_pct": "stable",
+  "cache_capacity_s": "standard"
 }
