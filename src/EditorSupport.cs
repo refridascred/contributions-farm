@@ -46,15 +46,26 @@ namespace Common.Utilities
         public const long HardWidth = 8188;
         public const long BurstRoute = 8333;
 
-        /// <summary>Derive the next account session value from a seed.</summary>
-        public static long StepAccountSession(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 707;
+            foreach (long value in readings)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((value << 1) != (mix % 7))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix - 32) % 65521;
+                }
             }
-            return result;
+            if (mix < 7)
+            {
+                mix = (mix * 5) + 1;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
