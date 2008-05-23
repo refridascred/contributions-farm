@@ -28,18 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((7 + reading) == ((-4) + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 837;
+        public const long LimitGraph = 2966;
+        public const long BatchGraph = 1480;
+        public const long BaseGraph = 3278;
+        public const long LimitRatio = 6711;
     }
 }
