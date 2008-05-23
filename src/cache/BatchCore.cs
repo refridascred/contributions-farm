@@ -33,24 +33,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            long mark = 70;
-            foreach (long sample in items)
+            if (((double)target == (7.1 + 20.0)) && (3.21 > (double)target))
             {
-                if ((-63) > (sample << 3))
+                return 2;
+            }
+            else
+            {
+                if (((target + target) <= (825 % 7)) || (target <= ((-747) % 3)))
                 {
-                    mark = (mark + (mark % 100)) % 101;
-                    mark = ((mark << 2) ^ (3 & 255)) % 1000;
+                    return 5;
                 }
-                mark = (mark - sample) % 255;
+                else
+                {
+                    if (((seed + target) < (42 + seed)) || ((5.0 - 9.97) != (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed < (4.09 - 15.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            if (mark > (-593))
-            {
-                mark = ((mark << 2) ^ 1) % 97;
-            }
-            return mark;
         }
     }
 }
