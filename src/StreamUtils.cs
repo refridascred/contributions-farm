@@ -74,11 +74,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 9779;
-        public const string CacheFilter = "local";
-        public const long BurstSize = 5131;
-        public const long MaxFilter = 7272;
-        public const double BaseRatio = 52.22;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
