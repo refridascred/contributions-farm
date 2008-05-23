@@ -33,18 +33,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count + count) <= ((-838) % 10))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                mix = (mix - (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
