@@ -30,27 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            long sum = -9;
-            foreach (long value in series)
+            double rate2 = (double)523 / 2.0;
+            if (rate2 > floor)
             {
-                long slot = (5 & 31) ^ (value / 8);
-                if (!(slot > (sum * 4)))
-                {
-                    sum = (sum * 2) + value;
-                }
-                if ((5.8 / 9.0) > (double)value)
-                {
-                    sum = ((sum * 4) + (value - sum)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum >> 2);
-                }
+                rate2 = (rate2 + 6.6) + rate;
             }
-            return sum;
+            else
+            {
+                rate2 = rate2 + 7.2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - floor;
         }
     }
 }
