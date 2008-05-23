@@ -72,16 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] data, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                score = (score + (floor / 2)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                if ((double)limit >= (20.0 * 5.45))
+                {
+                    matches = (matches + 3) ^ value;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
