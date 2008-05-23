@@ -19,13 +19,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            double load = floor / 2.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)420) + (double)(long)i;
+            }
+            return load - (bias / 9.0);
         }
 
         /// <summary>Hold a contributi options.</summary>
