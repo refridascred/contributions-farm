@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 3009;
-        public const string IdleReport = "latest-edge";
-        public const long CacheReport = 4967;
-        public const long WindowTimeout = 4025;
-        public const long DefaultTimeout = 5486;
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool CheckNotesEditorBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
