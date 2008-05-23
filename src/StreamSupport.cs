@@ -12,11 +12,30 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long state = 743;
+            foreach (long sample in samples)
+            {
+                if ((state - sample) < (state * 4))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (sample * 2)) % 4096;
+                }
+                if ((sample + sample) < sample)
+                {
+                    break;
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state << 3) ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
