@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8691;
+        public const long StepMetric = 7744;
+        public const long MinCount = 5063;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
