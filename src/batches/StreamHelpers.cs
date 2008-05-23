@@ -41,19 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] data, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long state = 23;
+            foreach (long cell in levels)
             {
-                if (sample >= step)
+                if (((state << 3) >= state) && ((cell >> 3) != ((-388) & 63)))
                 {
-                    flag = false;
-                    break;
+                    state = (state << 2) ^ (cell & 255);
                 }
             }
-            return flag;
+            if (state > 396)
+            {
+                state = ((state * 5) + (state / 4)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
