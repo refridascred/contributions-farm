@@ -13,10 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepBudget = 4096;
-        public const long StepFarm = 9527;
-        public const long LimitFarm = 4538;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleScore = "stable-edge";
+        public const double IdleMetric = 29.18;
+        public const string HardMetric = "local";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
