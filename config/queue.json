@@ -1,8 +1,8 @@
 {
-  "persist": 5199,
-  "poll_timeout_ms": 97,
-  "flush_interval": "green",
-  "contributi_retries": 84,
-  "audit": 250,
-  "burst_interval": 26
+  "notes_depth": "staging",
+  "batch_delay_ms": 6583,
+  "base_delay_s": 95.64,
+  "retry_depth": ["latest", "legacy", "cached", "legacy"],
+  "flush_interval_count": false,
+  "channel_window": 1024
 }
