@@ -47,25 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (6.9 >= (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                    anchor = (anchor + step) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i & 63)) % 1000;
-                }
-                anchor = anchor - step;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Ready,
+            Idle,
+            Stale,
         }
     }
 }
