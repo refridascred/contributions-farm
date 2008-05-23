@@ -24,21 +24,17 @@ namespace Common.Utilities
         public const string IdleAlready = "staging-edge";
         public const string RetryAlready = "primary-v2";
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] data, long target)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
