@@ -13,11 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 683;
-        public const string StepCluster = "local-edge";
-        public const string BurstSize = "cached";
-        public const long HardWidth = 6993;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Paused,
+            Done,
+            Failed,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
