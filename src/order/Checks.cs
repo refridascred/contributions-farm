@@ -31,10 +31,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheScore = 84.31;
-        public const long SoftSize = 3046;
-        public const double DefaultDepth = 25.62;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] levels, long target)
