@@ -37,35 +37,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long origin, long seed)
         {
-            if ((step & 255) < (1 & 63))
+            if (((seed + 296) > (seed % 7)) && ((0.9 * 7.0) == (double)origin))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (floor <= (floor + step))
+                if (754 <= (origin % 2))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor * 4) >= step)
+                    if ((origin >> 5) <= origin)
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        if ((step + step) == (987 << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 5;
                     }
                 }
             }
