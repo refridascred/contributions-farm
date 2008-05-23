@@ -38,9 +38,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftScore = 5355;
-        public const double CacheEditor = 22.3;
-        public const double MinRatio = 14.27;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
