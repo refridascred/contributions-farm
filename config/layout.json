@@ -1,6 +1,5 @@
 {
-  "cache_delay_s": 2581,
-  "metric_depth": false,
-  "max_depth_s": "blue",
-  "soft_capacity_ms": "strict"
+  "order_limit": true,
+  "soft_depth_s": 89,
+  "compress": false
 }
