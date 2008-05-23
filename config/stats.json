@@ -1,6 +1,18 @@
 {
-  "compress": 1473,
-  "already_delay": "latest",
-  "min_delay": 27.69,
-  "batch_capacity_ms": 3.92
+  "batch_capacity": ["green", "eu-west", "blue", "stable"],
+  "readonly": 1,
+  "soft_depth_ms": {
+    "default_threshold_pct": 58.51,
+    "compress": {
+      "format_retries": [373, 216],
+      "retry_capacity_s": "cached",
+      "verbose": "edge",
+      "persist": "stable",
+      "burst_ttl": 0.42,
+      "default_capacity_pct": "stable"
+    },
+    "batch_threshold_count": [355, 382, 358, 191],
+    "min_timeout_pct": "blue",
+    "support_interval": ["legacy", "edge"]
+  }
 }
