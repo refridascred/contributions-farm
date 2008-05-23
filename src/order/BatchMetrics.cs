@@ -65,15 +65,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
