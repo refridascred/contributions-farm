@@ -15,18 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowRatio = 1358;
+        public const long BatchContributi = 5712;
+        public const long RetryCount = 1856;
+        public const double HardInterval = 15.13;
+        public const long MinBudget = 9534;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long floor, long offset)
