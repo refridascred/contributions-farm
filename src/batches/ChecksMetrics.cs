@@ -20,31 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if ((bound >> 2) > (bound & 255))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound - step) > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((18.0 / 9.0) != (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
