@@ -65,13 +65,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            Pending,
+            New,
+            Done,
+            Failed,
         }
     }
 }
