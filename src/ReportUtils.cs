@@ -48,22 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context metrics readings.</summary>
-        public static long TallyContextMetrics(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings)
         {
-            long acc = 8;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((acc + acc) > (acc & 255))
+                if ((matches >> 4) > (sample - 1))
                 {
-                    acc = acc ^ acc;
-                }
-                else
-                {
-                    acc = (acc + (sample - sample)) % 255;
+                    matches = matches + 2;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
