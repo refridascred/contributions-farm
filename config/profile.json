@@ -1,5 +1,6 @@
 {
-  "retry_ttl_s": ["cached", "primary", "cached", "fallback"],
-  "batch_capacity_ms": "strict",
-  "verbose": [477, 74, 283]
+  "already_size": true,
+  "default_timeout_pct": 77,
+  "verbose": 250,
+  "burst_capacity": 17.07
 }
