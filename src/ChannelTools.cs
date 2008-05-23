@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long TotalProfileCounter(long[] readings, long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long acc = 8;
+            foreach (long cell in readings)
+            {
+                if ((187 >> 2) <= origin)
+                {
+                    acc = ((acc + origin) % 101) - cell;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc - (origin + acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the entry mode values.</summary>
