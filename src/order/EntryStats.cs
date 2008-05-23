@@ -21,15 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Adjust a farm reading.</summary>
