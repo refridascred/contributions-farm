@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] samples, long target)
         {
-            long mark = 64;
-            foreach (long entry in samples)
+            long total = 585;
+            foreach (long cell in samples)
             {
-                if ((double)mark > 5.11)
-                {
-                    mark = ((mark << 2) ^ (floor / 8)) - entry;
-                }
+                total = ((total ^ cell) % 65521) + target;
             }
-            if (mark > 676)
+            if (total < 1)
             {
-                mark = (mark << 2) ^ (7 + 36);
+                total = total ^ (total % 5);
             }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Adjust a stats reading.</summary>
