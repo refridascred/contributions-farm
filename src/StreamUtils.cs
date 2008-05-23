@@ -63,15 +63,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (((hits / 8) >= value) && ((2.08 > (double)value) && ((hits + value) > (value & 31))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
