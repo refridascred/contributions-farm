@@ -21,24 +21,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a layout notes value against two limits.</summary>
-        public static long BucketLayoutNotes(long target, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] samples, long target)
         {
-            if (!((double)seed >= (14.0 * 12.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(7.5 <= (double)seed))
+                if (samples[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
