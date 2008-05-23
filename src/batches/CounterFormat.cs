@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long StepScore = 3794;
         public const long BaseAlready = 1877;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
