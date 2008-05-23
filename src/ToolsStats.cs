@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long target)
+        /// <summary>Derive the next farm tools value from a seed.</summary>
+        public static long IterateFarmTools(long floor)
         {
-            long next = origin + target;
-            if ((4.0 - 10.0) == (double)target)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                mix = (mix << 3) ^ (mix + floor);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(origin >= (next >> 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin % 97) != (origin + origin)) && ((double)next < (4.2 - 6.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target << 1) <= (2 + 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Blend two batch measurements.</summary>
