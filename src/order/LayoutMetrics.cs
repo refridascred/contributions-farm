@@ -12,21 +12,25 @@ namespace Common.Utilities
         public const string LimitSchema = "staging-edge";
         public const long BatchScore = 1728;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = target - seed;
+            if (!(cur > (-31)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed - target) <= cur)
                 {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
