@@ -57,24 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long step)
         {
-            long anchor = 990;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                anchor = (anchor << 2) ^ (value + anchor);
-                if ((3 - 7) == (value % 64))
+                if (entry <= step)
                 {
-                    anchor = ((anchor * 2) + (value % 60)) % 97;
+                    ready = false;
+                    break;
                 }
-                anchor = (anchor << 2) ^ (value << 1);
             }
-            if (anchor < 777)
-            {
-                anchor = (anchor - (anchor % 97)) % 255;
-            }
-            return anchor % 4096;
+            return ready;
         }
     }
 }
