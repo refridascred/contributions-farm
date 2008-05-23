@@ -1,36 +1,10 @@
 # githubfarm settings
-base_window:
-  idle_limit_pct: 32.42
-  batch_ttl_ms: 8
-  audit:
-    base_retries_pct: stable
-    persist: true
-    session_size: 8.0
-    enabled: 60
-    base_depth_pct: 1024
-    soft_retries:
-      - 333
-      - 152
-      - 429
-      - 331
-  base_ratio_count:
-    - cached
-    - cached
-    - standard
-burst_window_ms:
-  - open
-  - staging
-  - staging
-persist:
-  - 199
-  - 221
-  - 14
-route_ratio:
-  - edge
-  - legacy
-  - open
-flush_ttl:
-  - 187
-  - 21
+verbose:
+  - 480
+  - 146
+  - 177
   - 56
-  - 346
+strict: 77.82
+base_threshold_ms: 3170
+burst_timeout: 9231
+base_size_count: 100
