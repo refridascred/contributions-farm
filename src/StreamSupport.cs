@@ -34,17 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = limit ^ origin;
+            if ((double)origin > (12.0 * 2.0))
             {
-                if (data[i] <= target)
+                return 4;
+            }
+            else
+            {
+                if ((7 >> 1) >= (451 + bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
