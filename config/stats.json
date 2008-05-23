@@ -1,19 +1,18 @@
 {
-  "dry_run": 63,
-  "queue_depth": ["fallback", "blue", "edge"],
-  "metric_ratio": false,
-  "min_timeout_count": {
-    "command_capacity": "standard",
-    "idle_limit": "staging",
-    "layout_ttl": {
-      "verbose": 60,
-      "idle_ttl_pct": 94,
-      "profile_ttl": false,
-      "commits_interval": "blue",
-      "audit": ["local", "latest", "legacy", "strict"]
-    },
-    "order_ratio": true
+  "format_capacity": 2476,
+  "readonly": {
+    "window_depth": "standard",
+    "audit": "primary",
+    "hard_threshold": 12,
+    "min_capacity": 250,
+    "enabled": {
+      "hard_timeout_pct": true,
+      "enabled": 30,
+      "command_ttl": 70,
+      "tools_capacity": "legacy"
+    }
   },
-  "layout_timeout": [391, 490],
-  "burst_depth": 250
+  "sync_ttl_count": "latest",
+  "buffer_delay": "standard",
+  "soft_retries_count": [251, 81, 446, 1]
 }
