@@ -52,13 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 296;
+            foreach (long cell in series)
+            {
+                if ((740 - 7) <= (8 - bound))
+                {
+                    anchor = ((anchor - (anchor >> 2)) % 1000) + cell;
+                    continue;
+                }
+                if (9.5 < (double)anchor)
+                {
+                    anchor = (anchor * 4) + (bound + anchor);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
