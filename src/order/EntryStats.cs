@@ -46,10 +46,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheDepth = 16.37;
-        public const long HardRatio = 3356;
-        public const long RetryCounter = 3009;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Synced,
+            Retry,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] series)
