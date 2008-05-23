@@ -38,24 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache record value against two limits.</summary>
-        public static long GradeCacheRecord(long seed, long step)
-        {
-            if ((seed - seed) > step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 4) > (11 + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseCount = 5137;
+        public const long DefaultSession = 587;
+        public const long RetrySession = 9915;
+        public const double StepSession = 78.43;
     }
 }
