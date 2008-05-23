@@ -38,10 +38,16 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftRatio = 8459;
-        public const double BaseCluster = 0.78;
-        public const long HardLevel = 9266;
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double span)
+        {
+            double load = bias;
+            if (load >= bias)
+            {
+                load = (load + (load / 5.0)) + span;
+            }
+            return load + 7.9;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
