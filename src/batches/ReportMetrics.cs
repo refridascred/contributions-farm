@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc << 3) ^ (seed % 5)) % 97;
-                if ((acc - (long)i) <= (acc * 5))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseTimeout = 4999;
+        public const string BaseFormat = "legacy";
+        public const double IdleFormat = 48.67;
+        public const long RetrySpan = 5430;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
