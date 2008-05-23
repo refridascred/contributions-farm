@@ -50,19 +50,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] values, long bound)
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long OverlapGraphTokenCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry * 4) >= (348 + entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
