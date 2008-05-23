@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] items, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if (!((double)offset >= (7.3 + 12.0)))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
