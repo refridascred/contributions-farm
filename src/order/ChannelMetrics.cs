@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long HardRatio = 3040;
         public const string DefaultLevel = "standard";
 
-        /// <summary>Audit schema checks readings against a rule.</summary>
-        public static long MeasureSchemaChecksMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!(5 <= (count * 5)))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftDepth = "staging-1";
+        public const string CacheTimeout = "latest-v2";
+        public const string IdleSize = "local-v2";
+        public const long LimitCount = 9678;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] data)
