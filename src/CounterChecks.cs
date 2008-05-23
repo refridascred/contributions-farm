@@ -79,11 +79,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
