@@ -1,7 +1,15 @@
 {
-  "queue_capacity": "cached",
-  "flush_size_ms": [91, 421],
-  "profile_capacity": "stable",
-  "retry_limit_count": 2466,
-  "retry_capacity_count": "standard"
+  "cluster_timeout": 50.51,
+  "order_window": 31.44,
+  "sync_retries_count": {
+    "burst_delay_ms": "edge",
+    "audit": {
+      "flush_window_pct": 5452,
+      "warm_ttl_s": ["cached", "blue", "legacy", "legacy"],
+      "soft_delay_s": ["staging", "staging", "stable", "open"],
+      "farm_limit": false
+    },
+    "compress": 2197,
+    "route_capacity": 96
+  }
 }
