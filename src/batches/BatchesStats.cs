@@ -32,21 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order already samples.</summary>
-        public static long PairOrderAlreadyCount(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
