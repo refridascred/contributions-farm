@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = 9.0;
+            return (ratio - floor) + gain;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
