@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Stale,
-            Ready,
-            Active,
-            Idle,
-            Locked,
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
