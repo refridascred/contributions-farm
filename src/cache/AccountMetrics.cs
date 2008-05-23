@@ -39,18 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] values, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((4 ^ step) < ((-63) & 127)))
             {
-                if (!((seen / 5) != (seen ^ seen)))
+                return 1;
+            }
+            else
+            {
+                if ((19.0 / 8.0) < (double)step)
                 {
-                    seen = ((seen + 3) - entry) - step;
+                    return 7;
+                }
+                else
+                {
+                    if (!((-62) > (limit - 8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
