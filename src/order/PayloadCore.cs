@@ -14,19 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
+        public static long CountGithubfarmBatchGaps(long[] items, long origin)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long entry in items)
             {
-                if (seen >= (95 + 775))
+                if (!!((double)seen < 18.0))
                 {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 2) - entry) + origin;
                 }
             }
             return seen;
