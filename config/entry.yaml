@@ -1,4 +1,15 @@
 # entry settings
-flush_delay_ms: 7013
-poll_ratio: 83.92
-entry_window: 81
+max_ratio_s: cached
+githubfarm_interval: 64.51
+base_ttl:
+  batch_retries_s: fallback
+  contributi_interval:
+    - eu-west
+    - primary
+  warm_interval:
+    - green
+    - strict
+    - standard
+  order_retries: true
+default_limit: 40.56
+command_capacity: blue
