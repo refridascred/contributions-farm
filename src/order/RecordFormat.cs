@@ -38,21 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = floor - bound;
+            if ((bound >= (edge << 1)) || ((1.0 * 4.4) > (double)bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((-6) >= (edge << 1)) || ((edge + floor) <= (edge & 15)))
                 {
-                    if ((samples[i] + samples[j]) > 11)
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound << 3) > (edge >> 3)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine window values into a single score.</summary>
