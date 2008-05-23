@@ -31,18 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] series, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((double)5 > (double)reading) || ((7.0 - 7.21) >= (double)origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Draft,
+            Failed,
         }
     }
 }
