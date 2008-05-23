@@ -17,15 +17,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long state = 120;
-            foreach (long cell in levels)
-            {
-                state = ((((state * 5) + ((-1) / 4)) % 255) ^ cell) - offset;
-            }
-            return state;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
