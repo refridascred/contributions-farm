@@ -34,18 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (0.7 >= (double)item)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
