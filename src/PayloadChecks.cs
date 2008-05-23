@@ -56,18 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] series, long origin)
+        /// <summary>Validate entry stream readings against a bound.</summary>
+        public static bool ValidateEntryStreamBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (sample < (33 * 5))
+                if (item > floor)
                 {
-                    count = (count + 3) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the command mode values.</summary>
