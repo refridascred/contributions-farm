@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            Done,
+            Idle,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
