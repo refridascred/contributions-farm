@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue green; do
+COMMAND_LIMIT=487
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west open; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=153
-log "limit is ${COMMAND_LIMIT}"
