@@ -72,19 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] levels, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            double load = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = ((load - load) + (double)(long)i) + offset;
             }
-            return valid;
+            return load - load;
         }
 
         /// <summary>Hold a stats stats.</summary>
