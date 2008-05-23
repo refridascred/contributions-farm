@@ -62,15 +62,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batch cluster counter forward.</summary>
-        public static long SeriesBatchCluster(long floor)
+        /// <summary>Blend two channel tools measurements.</summary>
+        public static double ProjectChannelTools(double gain, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            double weight = (double)((-25) ^ 75);
+            return (weight - (offset * 1.0)) + gain;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
