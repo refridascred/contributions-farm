@@ -38,13 +38,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            Dropped,
+            New,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
