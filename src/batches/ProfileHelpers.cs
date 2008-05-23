@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long origin, long bound)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long TallyFormatStatsMatches(long[] readings)
         {
-            long offset = origin - bound;
-            if (!((double)origin == (1.0 + 0.1)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + origin) >= (offset - 7))
+                if ((matches + 8) == (matches << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) - reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
