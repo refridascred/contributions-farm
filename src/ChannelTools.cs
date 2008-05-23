@@ -36,32 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long offset = seed - step;
-            if (step >= (seed - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 5) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + step) <= (offset - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
