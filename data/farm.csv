@@ -1,7 +1,7 @@
-id,level,label,weight,count
-1,eu-west,71.52,edge,58.12
-2,707,76.02,latest,167
-3,25.57,18.09,stable,7.76
-4,70.17,77,8.68,141
-5,29.86,fallback,764,strict
-6,75.88,811,blue,open
+id,active,region
+1,888,open
+2,latest,staging
+3,green,31.81
+4,green,961
+5,247,4.66
+6,325,cached
