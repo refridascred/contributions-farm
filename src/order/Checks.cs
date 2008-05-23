@@ -54,11 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) > ((long)readings.Length - offset))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
