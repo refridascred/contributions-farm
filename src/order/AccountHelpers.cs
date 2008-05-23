@@ -46,20 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                long lane = mark % 5;
-                if (!((4.8 * 5.51) > (double)lane))
-                {
-                    mark = ((mark * 5) + (mark - lane)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Draft,
+            New,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a editor header.</summary>
