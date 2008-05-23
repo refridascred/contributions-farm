@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data, long target)
+        /// <summary>Roll a githubfarm stats counter forward.</summary>
+        public static long DeriveGithubfarmStats(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)data.Length != (cell + cell))
+                if ((limit + state) <= (long)i)
                 {
-                    hits = (hits + 3) + target;
+                    state = (state << 3) ^ (limit % 100);
+                    state = (state << 3) ^ (64 + (long)i);
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
