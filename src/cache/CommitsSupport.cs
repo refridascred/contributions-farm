@@ -62,18 +62,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long MeasureBatchesRouteOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((4.1 * 8.0) == (double)origin)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9904;
+        public const double SoftGraph = 39.21;
+        public const long HardGraph = 3739;
     }
 }
