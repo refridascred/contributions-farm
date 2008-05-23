@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long offset = origin - bound;
+            if (!((double)origin == (1.0 + 0.1)))
             {
-                if (reading != step)
+                return 8;
+            }
+            else
+            {
+                if ((bound + origin) >= (offset - 7))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Adjust a stats reading.</summary>
