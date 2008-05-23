@@ -53,15 +53,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double ScaleTokenStream(double weight, double bias)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] samples)
         {
-            double weight2 = weight;
-            if (weight2 <= (weight2 + weight))
+            long carry = 639;
+            foreach (long item in samples)
             {
-                weight2 = weight2 + weight2;
+                carry = ((carry << 2) ^ (item >> 2)) % 101;
+                if ((658 / 6) < carry)
+                {
+                    carry = carry - (item << 2);
+                }
+                else
+                {
+                    carry = carry + 110;
+                }
             }
-            return weight2 + bias;
+            if (carry < 74)
+            {
+                carry = ((carry << 2) ^ (carry & 63)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
