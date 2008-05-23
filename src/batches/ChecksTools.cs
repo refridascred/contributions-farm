@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a filter payload reading.</summary>
