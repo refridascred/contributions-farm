@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const string IdleScore = "alpha-edge";
         public const string RetryScore = "staging-1";
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 1.51;
+        public const string WindowToken = "stable-edge";
+        public const long RetryToken = 1891;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
