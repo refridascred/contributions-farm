@@ -1,9 +1,15 @@
 # githubfarm settings
-hard_retries:
-  - staging
-  - cached
-  - cached
-idle_capacity_s: 500
-base_retries: primary
-idle_interval: 138
-verbose: 500
+dry_run: primary
+batch_size:
+  idle_retries_pct: standard
+  default_retries_count: false
+  dry_run:
+    counter_threshold: false
+    report_timeout: open
+    min_retries: fallback
+  order_capacity:
+    - standard
+    - open
+compress: false
+idle_timeout_count: blue
+soft_ratio_ms: 2
