@@ -68,13 +68,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            Closed,
+            Synced,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a channel entry.</summary>
