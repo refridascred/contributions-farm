@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long total = 292;
-            foreach (long value in samples)
-            {
-                if (((value ^ total) < (total + value)) && ((total & 3) < total))
-                {
-                    total = (total ^ total) % 255;
-                }
-            }
-            return total;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
