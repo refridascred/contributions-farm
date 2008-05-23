@@ -33,25 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long step)
         {
-            long state = 52;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                long seen = state * 3;
-                if ((seen + item) != (seen * 5))
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
-                    state = ((state << 3) ^ (state << 3)) % 1000;
-                    state = (state + (item % 64)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    seen = (seen << 3) ^ state;
-                }
-                state = state + (state >> 1);
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
