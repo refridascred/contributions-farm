@@ -26,19 +26,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] levels, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long prev = target - limit;
+            if (target >= (prev + limit))
             {
-                if (datum >= bound)
+                return 5;
+            }
+            else
+            {
+                if (((target / 7) > (44 ^ 705)) && ((79 % 60) > (738 ^ limit)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
