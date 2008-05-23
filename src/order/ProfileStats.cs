@@ -14,39 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a notes counter pair into a bucket.</summary>
-        public static long ClassifyNotesCounter(long floor, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long gap = floor ^ bound;
-            if ((double)floor > 4.7)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-320) & 255) == (floor >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap ^ gap) >= (floor % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap > (gap >> 2)) && (floor >= bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
