@@ -16,18 +16,21 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Fold a list of stream farm readings.</summary>
-        public static long WeighStreamFarm(long[] samples, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long anchor = 218;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.2 + 14.0) >= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor ^ (floor + floor)) % 65521;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
