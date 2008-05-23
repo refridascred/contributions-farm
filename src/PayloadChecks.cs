@@ -66,18 +66,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = 3;
+            foreach (long reading in items)
             {
-                if ((15.0 * 4.0) == (double)matches)
+                if (!((-8) >= (score * 5)))
                 {
-                    matches = ((matches + 1) ^ entry) + bound;
+                    score = ((score ^ (score + 88)) + reading) + bound;
                 }
             }
-            return matches;
+            return score % 97;
         }
     }
 }
