@@ -59,26 +59,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Derive the next cache cluster value from a seed.</summary>
+        public static long SeriesCacheCluster(long origin)
         {
-            long carry = 0;
-            foreach (long item in values)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item ^ item) < (carry >> 3))
+                sum = sum ^ origin;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    carry = (carry ^ (carry + (long)values.Length)) % 97;
+                    sum = ((sum + (origin << 2)) % 255) + (long)i2;
                 }
-                if ((carry >= (carry << 1)) || ((carry / 9) >= carry))
-                {
-                    carry = (carry ^ (item & 15)) % 65521;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (carry > 114)
-            {
-                carry = (carry ^ 529) % 97;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
