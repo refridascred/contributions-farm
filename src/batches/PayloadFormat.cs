@@ -32,17 +32,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] series, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (double)(-4))
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - bias2;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - (scale + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 6.0) + (double)(long)i;
+            }
+            return bias2 + (bias * 8.21);
         }
     }
 }
