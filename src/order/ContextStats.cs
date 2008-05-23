@@ -47,18 +47,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((target % 8) <= offset)
             {
-                if (cell >= 6)
+                return 3;
+            }
+            else
+            {
+                if (target >= 3)
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - 72) <= (target + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset <= 14.0) || (9.6 <= (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
