@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Synced,
-            Pending,
-            Closed,
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
