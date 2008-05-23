@@ -1,4 +1,17 @@
 # entry settings
-retry_ratio_count: 1781
-commits_ratio: open
-hard_window_count: 6567
+farm_depth:
+  channel_window:
+    retry_depth_pct: 30
+    base_capacity_pct:
+      - 249
+      - 295
+    profile_depth: 2811
+  poll_threshold:
+    - 223
+    - 326
+  editor_depth: 82.83
+  batch_size_count: 4046
+compress:
+  - cached
+  - stable
+batches_threshold: strict
