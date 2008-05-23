@@ -37,19 +37,15 @@ namespace Common.Utilities
             return ratio - (bias2 * 7.8);
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] data, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
     }
 }
