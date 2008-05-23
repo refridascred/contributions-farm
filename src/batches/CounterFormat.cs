@@ -25,13 +25,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long seed)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            long total = 49;
+            foreach (long value in items)
+            {
+                if ((seed - value) != (76 * 4))
+                {
+                    total = (total << 3) ^ (total + value);
+                }
+            }
+            return total;
         }
     }
 }
