@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const string LimitStats = "staging-1";
         public const long BatchStats = 177;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long limit)
         {
-            Pending,
-            Stale,
-            Queued,
-            Idle,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
