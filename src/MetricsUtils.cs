@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long TallyAccountCommitsOutliers(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = -320;
+            foreach (long item in levels)
             {
-                if ((((double)tally > (1.7 - 9.8)) && ((8 >> 4) <= value)) || ((value / 4) >= ((-428) + tally)))
+                if (floor >= item)
                 {
-                    tally = tally + 3;
+                    sum = (sum - (sum / 2)) % 4096;
                 }
             }
-            return tally;
+            if (sum > 53)
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a already entry.</summary>
