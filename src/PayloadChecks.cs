@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long RetryLevel = 1988;
         public const string BaseDepth = "open-v2";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] series, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
