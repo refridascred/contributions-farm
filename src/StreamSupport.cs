@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double rate = offset;
-            return rate + ratio;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
