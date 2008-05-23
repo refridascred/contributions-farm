@@ -1,18 +1,4 @@
 # githubfarm settings
-base_limit:
-  - primary
-  - blue
-  - primary
-account_ratio: 327
-warm_ttl_pct:
-  - blue
-  - edge
-  - green
-  - primary
-strict: strict
-graph_window:
-  poll_capacity_ms: cached
-  hard_window: 6.64
-  audit: 44.56
-  persist: 1024
-retry_window_ms: eu-west
+default_threshold: 73.95
+audit: 2883
+max_size: 8571
