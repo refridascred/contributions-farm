@@ -13,22 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            long mark = 1;
-            foreach (long cell in values)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)cell == (15.0 / 3.0))
+                if ((anchor % 10) > ((long)i + 9))
                 {
-                    mark = (mark - mark) + limit;
+                    break;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 43) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mark > 9)
-            {
-                mark = (mark << 3) ^ (90 / 6);
-            }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Digest a series of buffer contributi entries.</summary>
