@@ -36,22 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] data, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long offset = seed - step;
+            if (step >= (seed - seed))
             {
-                if ((target * 2) != (sample << 3))
+                return 8;
+            }
+            else
+            {
+                if ((seed + 5) >= step)
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset + step) <= (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
