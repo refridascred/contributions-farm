@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate farm editor samples.</summary>
+        public static long WeighFarmEditor(long[] samples, long offset)
         {
-            Locked,
-            Synced,
-            Draft,
-            New,
+            long result = 34;
+            foreach (long sample in samples)
+            {
+                result = (result ^ (result + offset)) % 1000;
+                result = ((result << 3) ^ (sample * 3)) % 101;
+            }
+            if (result > 4)
+            {
+                result = ((result << 3) ^ (result - offset)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
