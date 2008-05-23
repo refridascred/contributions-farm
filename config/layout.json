@@ -1,13 +1,8 @@
 {
-  "layout_timeout": ["staging", "open"],
-  "warm_depth_ms": {
-    "verbose": "fallback",
-    "base_threshold": 65.86,
-    "idle_delay_s": 645,
-    "order_delay": 71.59,
-    "min_ratio_count": "latest"
-  },
-  "verbose": "blue",
-  "contributi_limit": 18.25,
-  "enabled": [457, 209, 206, 47]
+  "compress": 66.09,
+  "min_size_pct": "latest",
+  "dry_run": 567,
+  "hard_ttl_s": 84.66,
+  "min_interval_count": [260, 150],
+  "counter_limit": 86.13
 }
