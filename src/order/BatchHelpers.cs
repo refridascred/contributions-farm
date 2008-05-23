@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate + (double)93;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (carry > offset)
+                if (levels[i] >= offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
