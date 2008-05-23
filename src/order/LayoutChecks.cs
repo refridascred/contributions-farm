@@ -22,12 +22,26 @@ namespace Common.Utilities
         public const double HardInterval = 15.13;
         public const long MinBudget = 9534;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 8772;
-        public const string MinCount = "primary-v2";
-        public const string CacheSize = "strict-1";
-        public const long SoftMetrics = 4094;
-        public const string LimitMetrics = "latest";
+        /// <summary>Grade a metric route value against two limits.</summary>
+        public static long RankMetricRoute(long floor, long step)
+        {
+            long edge = floor - step;
+            if ((floor + step) < edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step > (floor >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] items, long seed)
