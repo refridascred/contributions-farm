@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -22,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=300
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in staging green; do
+    log "checking ${item}"
+done
