@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((count - count) <= count) || ((4 >> 2) >= sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
