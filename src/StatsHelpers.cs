@@ -35,19 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window payload values into a single score.</summary>
-        public static long DigestWindowPayload(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long target)
         {
-            long mix = 3;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix << 3) ^ mix) % 101) + reading;
+                if ((items[i] < target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 95)
-            {
-                mix = (mix - 5) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
