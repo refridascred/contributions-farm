@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = 5;
+            foreach (long cell in data)
             {
-                if (((count + item) > (item - count)) && ((1.45 * 9.55) > (double)count))
+                if ((cell >> 4) != (cell + cell))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = score - score;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
