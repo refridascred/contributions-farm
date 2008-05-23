@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long step, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if ((step - 608) != (906 + 669))
             {
-                if (item >= target)
+                return 3;
+            }
+            else
+            {
+                if (((step >> 3) == (step << 3)) && ((double)seed <= (7.7 / 4.0)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((7 + step) < (step >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step < (1.84 - 6.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
