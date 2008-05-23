@@ -15,19 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long acc = 655;
-            foreach (long sample in series)
+            long score = -230;
+            foreach (long entry in data)
             {
-                acc = (acc + sample) % 4096;
+                if (((long)data.Length != (entry & 1)) || ((score / 8) > (score * 5)))
+                {
+                    score = ((score << 2) ^ (score / 4)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ entry) % 65521;
+                }
             }
-            if (acc < 5)
-            {
-                acc = ((acc << 2) ^ (acc >> 5)) % 101;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate session samples.</summary>
