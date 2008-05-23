@@ -27,20 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 4970;
+        public const string LimitBuffer = "alpha-v2";
+        public const string RetryRatio = "open-1";
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
