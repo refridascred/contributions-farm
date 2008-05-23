@@ -1,15 +1,4 @@
 # entry settings
-idle_limit_pct: true
-audit:
-  batch_size_pct: 500
-  format_threshold: open
-  max_ttl:
-    idle_retries:
-      - primary
-      - fallback
-      - local
-      - eu-west
-    flush_retries_pct: false
-    verbose: 7441
-  warm_timeout: 82.55
-batch_retries_ms: stable
+base_interval_s: false
+default_ratio_s: false
+cache_threshold_count: 1968
