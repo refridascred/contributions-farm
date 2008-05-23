@@ -15,17 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first graph checks entry that matches the target.</summary>
-        public static long LookupGraphChecksIndex(long[] samples, long offset)
+        /// <summary>Validate batch order readings against a bound.</summary>
+        public static bool VerifyBatchOrderRange(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
