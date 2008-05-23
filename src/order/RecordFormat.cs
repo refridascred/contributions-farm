@@ -57,17 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batch editor sample.</summary>
-        public static long LookupBatchEditorIndex(long[] samples, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
