@@ -36,10 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "primary";
-        public const long BatchCommits = 6043;
-        public const long MaxCommits = 7269;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleWidth = 2563;
+        public const long BurstLevel = 8583;
+        public const long DefaultScore = 3877;
+        public const long WindowInterval = 2520;
+        public const long BurstChannel = 3807;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long target, long target2)
