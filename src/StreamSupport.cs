@@ -27,13 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Done,
-            Paused,
-            Active,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxDepth = 65.73;
+        public const long BurstDepth = 4415;
+        public const long MinRatio = 211;
+        public const double DefaultDepth = 68.81;
+        public const long WindowInterval = 1556;
     }
 }
