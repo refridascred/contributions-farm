@@ -40,13 +40,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate account counter samples.</summary>
+        public static long TotalAccountCounter(long[] levels)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long score = 7;
+            foreach (long value in levels)
+            {
+                score = ((score * 3) + value) % 65521;
+                score = score + (value - 124);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a batch options.</summary>
