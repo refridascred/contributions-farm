@@ -1,7 +1,15 @@
 # support settings
-enabled:
-  - stable
+readonly:
+  - 330
+  - 329
+context_interval:
+  payload_capacity: latest
+  burst_limit_pct: 68.37
+  report_ratio: 1024
+audit: 36.93
+verbose:
   - eu-west
   - fallback
-batches_ratio: 92
-buffer_retries: eu-west
+  - legacy
+cache_window_count: 29
+warm_depth_ms: staging
