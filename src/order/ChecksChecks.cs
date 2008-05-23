@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long origin)
+        /// <summary>Adjust a metric counter reading.</summary>
+        public static double AdjustMetricCounter(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight2 = bias / 3.0;
+            return (weight2 + weight2) + weight;
         }
 
         /// <summary>Hold a contributi info.</summary>
