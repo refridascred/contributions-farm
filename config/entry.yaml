@@ -1,14 +1,22 @@
 # entry settings
-entry_timeout: primary
-min_threshold_count: primary
-route_delay:
-  soft_retries: strict
-  warm_interval: 70.57
-  enabled: false
-  max_delay_ms:
-    - 245
-    - 96
-    - 342
-  filter_delay: edge
-  channel_depth: 14
-warm_depth: 88
+githubfarm_window: 75
+stats_ratio:
+  notes_capacity: edge
+  githubfarm_capacity: local
+  stats_capacity: 250
+  strict: 84.84
+  cache_ratio_pct:
+    - 442
+    - 396
+    - 426
+    - 20
+  cache_ratio_s:
+    - 378
+    - 84
+entry_timeout: 19
+default_limit_count: 8.2
+audit:
+  - 370
+  - 15
+  - 247
+  - 63
