@@ -44,18 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long MeasureCommandFarmMatches(long[] readings)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits & 31) < (sample << 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
