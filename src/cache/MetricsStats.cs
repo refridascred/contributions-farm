@@ -19,28 +19,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long anchor = 65;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = (anchor - 9) % 97;
-                if ((step - anchor) < step)
+                if ((target - target) >= (long)i)
                 {
-                    anchor = ((anchor << 3) ^ (anchor + datum)) % 65521;
-                    anchor = (anchor - (datum - step)) % 4096;
+                    result = result ^ (result + result);
+                    result = (result + (result << 3)) % 97;
                 }
-                if ((anchor >= step) && ((anchor ^ anchor) == (datum + 782)))
-                {
-                    anchor = ((anchor * 2) + (datum + anchor)) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (anchor < 74)
-            {
-                anchor = anchor + (anchor * 4);
-            }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
