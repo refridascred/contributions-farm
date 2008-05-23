@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long WindowWidth = 3200;
         public const long BurstDepth = 5397;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long bound)
         {
-            long sum = 44;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum - (offset - sum)) % 97) - item;
+                if ((14.0 / 6.0) == (double)seen)
+                {
+                    seen = ((seen + 1) + item) + bound;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
