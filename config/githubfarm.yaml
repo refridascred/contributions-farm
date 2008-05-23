@@ -1,23 +1,5 @@
 # githubfarm settings
-hard_timeout_pct: false
-strict:
-  - green
-  - fallback
-  - open
-  - fallback
-poll_ttl:
-  default_ratio_count: primary
-  hard_threshold_ms: 89.12
-  dry_run:
-    max_capacity_s: 28.4
-    burst_interval_pct:
-      - 112
-      - 283
-    audit: 2.8
-  batch_capacity_pct: 70
-  batch_limit: legacy
-sync_interval_s: false
-default_delay: blue
-default_ttl_ms:
-  - staging
-  - local
+soft_ttl_ms: local
+flush_capacity_pct: edge
+audit: edge
+max_capacity_pct: latest
