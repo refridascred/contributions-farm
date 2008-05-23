@@ -41,30 +41,13 @@ namespace Common.Utilities
         public const long MaxFactor = 1544;
         public const double BurstLevel = 4.59;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)limit <= (1.0 * 8.08))
-                {
-                    total = total - 58;
-                    total = ((total * 2) + (limit + total)) % 1000;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total * 2) + (total << 1)) ^ (long)i2;
-                    total = (total ^ ((-44) >> 2)) % 65521;
-                }
-                if (!((total / 9) > total))
-                {
-                    total = (total * 2) + (limit - total);
-                    total = (total - (1 + total)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Done,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a payload entry.</summary>
