@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long origin)
         {
-            long mark = 8;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 2) ^ (value >> 5)) % 255;
-                if (((double)value >= 2.69) && (floor > ((long)data.Length - value)))
+                if (readings[i] > origin)
                 {
-                    mark = mark + (value ^ mark);
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
