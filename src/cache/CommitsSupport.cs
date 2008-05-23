@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Draft,
-            Queued,
-            Active,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the payload phase values.</summary>
