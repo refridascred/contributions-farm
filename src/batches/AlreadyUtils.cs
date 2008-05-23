@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] data, long seed)
+        /// <summary>Audit channel entry readings against a rule.</summary>
+        public static long MeasureChannelEntryOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum >= seed)
+                if (datum >= (4 + datum))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
