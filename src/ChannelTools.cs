@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate session record samples.</summary>
-        public static long ScoreSessionRecord(long[] readings, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long origin)
         {
-            long result = 156;
-            foreach (long datum in readings)
+            if ((double)origin >= (1.0 + 18.0))
             {
-                result = ((result * 3) + (bound ^ 783)) ^ datum;
+                return 5;
             }
-            if (result > (-480))
+            else
             {
-                result = (result << 3) ^ (bound << 1);
+                if ((origin / 3) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Describe the entry mode values.</summary>
