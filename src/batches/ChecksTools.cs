@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            double mean = weight * 1.0;
+            if (mean < (double)1)
+            {
+                mean = mean - (span + span);
+            }
+            else
+            {
+                mean = mean + (double)84;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 14.0) + (double)(long)i;
+            }
+            return mean - (weight + weight);
         }
 
         /// <summary>Adjust a filter payload reading.</summary>
