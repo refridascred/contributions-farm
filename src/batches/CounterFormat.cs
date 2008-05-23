@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long mix = 4;
+            foreach (long datum in samples)
+            {
+                mix = ((mix << 3) ^ (datum >> 2)) % 255;
+                if (((long)samples.Length ^ datum) > datum)
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Match up graph samples.</summary>
