@@ -1,14 +1,8 @@
 # githubfarm settings
-base_window_pct: blue
-base_delay: 48.42
-verbose: 10.85
-entry_depth:
-  - stable
-  - primary
-  - legacy
-  - staging
-sync_interval_s: 363
-burst_capacity_s:
-  enabled: stable
-  queue_timeout: eu-west
-  batch_delay: edge
+batch_threshold: edge
+flush_limit_ms: 92.37
+dry_run:
+  - 255
+  - 262
+  - 276
+hard_retries_pct: false
