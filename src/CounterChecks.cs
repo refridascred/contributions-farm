@@ -22,19 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool GuardFilterStatsBounds(long[] readings, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long sum = -126;
+            foreach (long sample in items)
             {
-                if (reading <= bound)
+                sum = (sum - sample) % 101;
+                if ((double)offset > (5.1 - 12.0))
                 {
-                    stale = false;
+                    sum = ((sum * 5) + offset) % 101;
+                }
+                if (((offset >> 3) < (sum + sum)) || ((sample / 2) < (offset >> 5)))
+                {
                     break;
                 }
             }
-            return stale;
+            if (sum < 14)
+            {
+                sum = sum + (77 * 4);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
