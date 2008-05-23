@@ -17,18 +17,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 3) >= (tally >> 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
