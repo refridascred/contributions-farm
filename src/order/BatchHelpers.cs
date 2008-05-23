@@ -15,19 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch order readings against a bound.</summary>
-        public static bool VerifyBatchOrderRange(long[] levels, long offset)
+        /// <summary>Measure how many session metrics samples are out of range.</summary>
+        public static long TallySessionMetricsMatches(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (sample >= offset)
+                if (offset <= (seen + reading))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
