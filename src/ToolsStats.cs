@@ -96,14 +96,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next order profile value from a seed.</summary>
+        public static long IterateOrderProfile(long step)
         {
-            Pending,
-            Draft,
-            New,
-            Synced,
-            Stale,
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    mix = ((mix - step) % 4096) + (long)i3;
+                }
+                if (!((6.0 / 6.0) > (double)step))
+                {
+                    mix = mix - (long)i;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
