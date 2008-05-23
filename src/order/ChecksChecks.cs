@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 60.89;
         public const double SoftBudget = 1.79;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples, long limit)
         {
-            long state = 17;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                state = ((state << 3) ^ entry) % 65521;
-                state = ((state * 4) + state) % 101;
+                if ((double)cell <= 15.0)
+                {
+                    hits = (hits + 2) + limit;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
