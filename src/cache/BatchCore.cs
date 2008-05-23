@@ -45,11 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFactor = 8869;
-        public const long CacheDepth = 3024;
-        public const double StepSize = 29.59;
-        public const long RetrySpan = 4644;
-        public const long SoftFormat = 860;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                long count = ((long)i >> 5) + mark;
+                if (!!((count - count) <= mark))
+                {
+                    mark = mark - (mark % 24);
+                    mark = (mark << 2) ^ ((long)i / 9);
+                }
+                mark = (mark * 2) + (count / 3);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
