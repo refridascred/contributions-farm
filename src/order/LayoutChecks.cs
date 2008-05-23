@@ -15,21 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count contributi payload pairs that satisfy a relation.</summary>
-        public static long PairContributiPayloadCount(long[] levels)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 13)
+                    if ((levels[i] ^ levels[j]) < 14)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a metric route value against two limits.</summary>
