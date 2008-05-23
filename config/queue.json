@@ -1,6 +1,13 @@
 {
-  "counter_retries": false,
-  "sync_window_count": 2730,
-  "readonly": 9881,
-  "retry_ttl": [284, 199]
+  "verbose": ["cached", "standard"],
+  "warm_threshold_pct": 35.97,
+  "window_size": "strict",
+  "hard_timeout_count": {
+    "default_retries_ms": "strict",
+    "audit": 34.87,
+    "warm_window": "fallback",
+    "burst_retries_pct": 76.09
+  },
+  "payload_ttl": 54,
+  "layout_window": "fallback"
 }
