@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] series, long seed)
         {
-            Ready,
-            Queued,
-            Draft,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
