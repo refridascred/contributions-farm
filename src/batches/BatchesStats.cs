@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session filter readings against a rule.</summary>
-        public static long MeasureSessionFilterHits(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (6.6 <= (double)hits)
+                if (item >= offset)
                 {
-                    hits = (hits + 1) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the queue class values.</summary>
