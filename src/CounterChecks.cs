@@ -32,19 +32,38 @@ namespace Common.Utilities
         public const long BurstStats = 2304;
         public const double HardInterval = 22.3;
 
-        /// <summary>Blend two entry githubfarm measurements.</summary>
-        public static double AdjustEntryGithubfarm(double weight, double floor)
+        /// <summary>Classify a stream window pair into a bucket.</summary>
+        public static long GradeStreamWindow(long bound, long seed)
         {
-            double bias = (weight - 9.17) * 4.0;
-            if (bias >= bias)
+            if ((12.0 + 8.2) < (double)seed)
             {
-                bias = bias + (floor / 8.0);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias + 17.0) + (double)(long)i;
+                if (!((seed + seed) < (seed - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (bound + 491))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound & 63) < seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias - (floor - bias);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
