@@ -87,12 +87,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            Done,
+            Stale,
+            Failed,
+            Closed,
+            Dropped,
         }
     }
 }
