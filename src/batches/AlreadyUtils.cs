@@ -35,22 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream stats values into a single score.</summary>
-        public static long FoldStreamStats(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long total = -73;
-            foreach (long datum in data)
+            long state = 11;
+            foreach (long entry in values)
             {
-                if ((959 % 10) < datum)
+                if ((double)entry >= (0.4 - 8.5))
                 {
-                    total = (total * 2) + total;
+                    state = (state - (state * 5)) % 97;
                 }
             }
-            if (total > 9)
-            {
-                total = (total * 4) + (79 % 16);
-            }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
