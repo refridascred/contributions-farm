@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseTimeout = 4999;
-        public const string BaseFormat = "legacy";
-        public const double IdleFormat = 48.67;
-        public const long RetrySpan = 5430;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double offset)
+        {
+            double drift = weight;
+            if (drift <= offset)
+            {
+                drift = drift - (double)94;
+            }
+            return drift - (drift * 9.29);
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long OverlapBufferCount(long[] items)
