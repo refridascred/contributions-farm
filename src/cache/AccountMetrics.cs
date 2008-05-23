@@ -55,22 +55,18 @@ namespace Common.Utilities
         public const long WindowRecord = 9628;
         public const long SoftRecord = 3481;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            long score = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((double)score >= (0.92 / 8.0)) || ((datum & 3) >= (datum - score)))
+                if ((matches + entry) <= (matches + matches))
                 {
-                    score = ((score * 5) + (seed ^ seed)) % 4096;
-                }
-                if ((score + 16) >= seed)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Rank order input into a small class.</summary>
