@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Stale,
-            Dropped,
-            Active,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxWidth = 1920;
+        public const long CacheProfile = 9469;
+        public const string MinCount = "open-1";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftDepth = "staging-1";
