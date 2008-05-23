@@ -74,31 +74,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values, long origin)
         {
-            if (((double)origin < (0.83 - 2.0)) && ((offset + 3) < origin))
+            long mix = 55;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset << 3) != (1 << 2)) || ((origin % 16) > (offset << 2)))
+                if ((origin + reading) < (reading >> 3))
                 {
-                    return 2;
+                    mix = (mix + (mix + mix)) % 65521;
                 }
-                else
-                {
-                    if (offset > (605 - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix << 2) ^ (mix + origin)) % 1000;
             }
+            return mix % 4096;
         }
     }
 }
