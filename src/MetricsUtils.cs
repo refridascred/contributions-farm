@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first editor stats entry that matches the target.</summary>
-        public static long FindEditorStatsIndex(long[] data, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the window mode values.</summary>
