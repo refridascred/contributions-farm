@@ -12,30 +12,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long target)
         {
-            long state = 743;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((state - sample) < (state * 4))
+                if (datum < target)
                 {
-                    state = state + state;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (sample * 2)) % 4096;
-                }
-                if ((sample + sample) < sample)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ state) % 4096;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
