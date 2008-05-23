@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long target)
         {
-            Done,
-            Idle,
-            Draft,
-            Active,
-            Closed,
+            if ((target & 255) != (origin - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target > origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 3) < (target + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((56 >= origin) || (target < (60 << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
