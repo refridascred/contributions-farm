@@ -1,6 +1,10 @@
-id,count,state,token
-1,65.96,405,eu-west
-2,stable,90.36,86.48
-3,fallback,local,81.28
-4,primary,standard,272
-5,edge,staging,114
+id,rank,owner,weight
+1,221,30.85,743
+2,287,fallback,9.55
+3,32.51,895,68.67
+4,36.46,51.15,921
+5,71.22,eu-west,644
+6,local,219,822
+7,805,52.39,68.79
+8,primary,1.81,44
+9,42.43,staging,47.51
