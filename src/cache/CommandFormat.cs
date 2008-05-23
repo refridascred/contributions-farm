@@ -26,39 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long step)
-        {
-            if ((double)limit > 2.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (13.0 - 1.61))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit <= (385 + limit)) || ((step + step) <= (5 + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((528 << 2) < (step % 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSize = 2543;
+        public const double LimitWidth = 22.54;
+        public const long WindowReport = 8404;
+        public const string MaxReport = "fallback";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] levels)
