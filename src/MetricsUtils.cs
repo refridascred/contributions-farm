@@ -28,12 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples, long offset)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long carry = 6;
+            foreach (long item in samples)
+            {
+                carry = (carry + (item % 97)) % 4096;
+                if ((14 & 255) < offset)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a queue entry.</summary>
