@@ -1,6 +1,5 @@
 {
-  "default_ttl_pct": 250,
-  "base_delay": "open",
-  "max_size": 23.49,
-  "sync_timeout_pct": [302, 270, 189]
+  "burst_capacity_ms": "latest",
+  "warm_limit_pct": 58,
+  "flush_capacity_ms": false
 }
