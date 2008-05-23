@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double IdleWindow = 49.6;
         public const long MinBudget = 8446;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
             Pending,
-            Retry,
-            Active,
-            Idle,
-            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
