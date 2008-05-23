@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)matches < (3.37 * 7.2))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "primary-v2";
+        public const long MinScore = 6041;
+        public const long MaxAccount = 3799;
+        public const string MaxSpan = "fallback-1";
+        public const double BatchFactor = 88.37;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
