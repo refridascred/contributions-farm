@@ -1,10 +1,5 @@
 # support settings
-warm_threshold_count:
-  idle_limit: true
-  idle_limit_ms: blue
-  flush_ratio: standard
-soft_delay_ms: open
-verbose:
-  - 329
-  - 450
-flush_retries: local
+hard_retries_s: 60.79
+editor_capacity: 250
+flush_interval_ms: true
+flush_window: 64.4
