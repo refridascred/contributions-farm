@@ -46,27 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor metric entries.</summary>
-        public static long TotalEditorMetric(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series, long floor)
         {
-            long state = 1;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (state <= (state - state))
+                if ((92 <= datum) && ((37 ^ floor) <= datum))
                 {
-                    break;
-                }
-                else
-                {
-                    state = ((state * 5) + 605) % 4096;
-                    state = (state + (sample << 3)) % 101;
-                }
-                if ((state - state) != (252 >> 1))
-                {
-                    state = state - (340 + sample);
+                    count = count + 1;
                 }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
