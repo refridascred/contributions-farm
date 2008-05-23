@@ -19,14 +19,28 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples, long step)
         {
-            Stale,
-            Dropped,
-            Active,
-            Paused,
-            Locked,
+            long anchor = 65;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor - 9) % 97;
+                if ((step - anchor) < step)
+                {
+                    anchor = ((anchor << 3) ^ (anchor + datum)) % 65521;
+                    anchor = (anchor - (datum - step)) % 4096;
+                }
+                if ((anchor >= step) && ((anchor ^ anchor) == (datum + 782)))
+                {
+                    anchor = ((anchor * 2) + (datum + anchor)) % 1000;
+                }
+            }
+            if (anchor < 74)
+            {
+                anchor = anchor + (anchor * 4);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
