@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate session filter samples.</summary>
-        public static long DigestSessionFilter(long[] items, long limit)
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long AuditLayoutChecksOutliers(long[] data, long offset)
         {
-            long mark = 169;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)limit > (20.0 - 9.65))
+                if ((double)(long)data.Length <= (double)42)
                 {
-                    mark = (((mark * 4) + (limit + 70)) % 1000) ^ entry;
-                    break;
-                }
-                if ((double)limit >= (5.53 / 2.0))
-                {
-                    mark = mark + (limit >> 3);
+                    matches = ((matches + 2) ^ sample) - offset;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Project the next cluster order value.</summary>
