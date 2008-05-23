@@ -43,11 +43,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double ratio, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long step)
         {
-            double bias = span + (5.4 + span);
-            return (bias + (bias * 0.61)) + ratio;
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
