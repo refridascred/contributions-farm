@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((17 + reading) == (3 >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
