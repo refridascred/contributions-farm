@@ -33,13 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate profile token readings against a bound.</summary>
+        public static bool ValidateProfileTokenRange(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
