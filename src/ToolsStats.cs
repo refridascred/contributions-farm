@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] levels, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches > (matches / 2)) || ((7.54 * 6.69) > (double)reading))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
