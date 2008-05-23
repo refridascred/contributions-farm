@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double span)
-        {
-            double drift = (double)(21 / 2);
-            if (drift < span)
-            {
-                drift = drift - rate;
-            }
-            return drift - (drift / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitBudget = 4940;
+        public const long WindowCount = 8637;
+        public const long BaseInterval = 3896;
+        public const long BatchCache = 9527;
+        public const string LimitWidth = "alpha-edge";
     }
 }
