@@ -16,13 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            Done,
+            Ready,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
