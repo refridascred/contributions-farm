@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit format contributi readings against a rule.</summary>
+        public static long CountFormatContributiOutliers(long[] levels, long bound)
         {
-            Pending,
-            Locked,
-            Failed,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count >= (bound + 344)) || ((-7) > bound))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
