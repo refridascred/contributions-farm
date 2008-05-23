@@ -45,31 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches commits value against two limits.</summary>
-        public static long ClassifyBatchesCommits(long seed, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            if (((12.0 / 7.0) >= (double)seed) || ((double)seed >= (3.0 - 5.1)))
+            double rate = scale;
+            if (rate < scale)
             {
-                return 8;
+                rate = (rate + (rate / 8.0)) - floor;
             }
             else
             {
-                if ((double)step >= (17.0 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 1) >= (seed % 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate + 3.11;
             }
+            return rate + (double)35;
         }
 
         /// <summary>Measure how many metrics tools samples are out of range.</summary>
