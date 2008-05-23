@@ -1,6 +1,8 @@
 {
-  "stream_threshold": false,
-  "token_ttl": ["green", "green", "green"],
-  "cache_retries": 250,
-  "poll_capacity": true
+  "stats_window": ["primary", "cached"],
+  "buffer_interval": 79,
+  "enabled": 1024,
+  "default_delay_count": 60,
+  "context_timeout": 500,
+  "audit": ["stable", "legacy"]
 }
