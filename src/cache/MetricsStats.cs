@@ -41,19 +41,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
