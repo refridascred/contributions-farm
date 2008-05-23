@@ -1,16 +1,8 @@
 {
-  "payload_retries": 500,
-  "compress": 32.93,
-  "base_window_count": {
-    "poll_timeout_s": "blue",
-    "burst_window_count": 1250,
-    "audit": 94.79,
-    "sync_size_ms": "primary"
-  },
-  "strict": 77.39,
-  "buffer_window": {
-    "default_depth": 1051,
-    "window_ttl": 500,
-    "idle_threshold_s": ["edge", "eu-west", "standard", "latest"]
-  }
+  "stream_ttl": false,
+  "checks_size": 51.61,
+  "base_capacity_count": "primary",
+  "hard_size": "open",
+  "metric_timeout": 100,
+  "command_threshold": false
 }
