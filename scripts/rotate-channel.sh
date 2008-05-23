@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=454
-log "limit is ${CHANNEL_LIMIT}"
+for item in cached fallback stable legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
