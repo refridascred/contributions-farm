@@ -36,12 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the stats schema series from a seed.</summary>
+        public static long SeriesStatsSchema(long floor)
         {
-            Retry,
-            Paused,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark + (522 % 5)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
