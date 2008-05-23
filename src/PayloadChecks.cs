@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long mark = -2;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((mark - 0) >= (cell + cell))
+                if (seen >= sample)
                 {
-                    mark = (mark - (cell - mark)) % 97;
-                }
-                if (1.53 < (double)mark)
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
