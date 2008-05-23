@@ -25,19 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel window entry stays within the limit.</summary>
-        public static bool VerifyChannelWindowBounds(long[] samples, long origin)
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long AuditRecordSupportHits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= origin)
+                if ((count ^ bound) == (count >> 2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - entry;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
