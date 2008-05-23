@@ -43,39 +43,15 @@ namespace Common.Utilities
         public const long WindowInterval = 2520;
         public const long BurstChannel = 3807;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long target2)
+        /// <summary>Roll a batch cluster counter forward.</summary>
+        public static long SeriesBatchCluster(long floor)
         {
-            long offset = target + target2;
-            if (!((target % 5) >= target))
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target + target2) > (910 % 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 5) >= (offset / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target != (0.5 * 5.84))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
