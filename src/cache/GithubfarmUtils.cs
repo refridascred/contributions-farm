@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const double MinSpan = 43.85;
         public const long StepReport = 6202;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen >> 2) > datum)
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a commits header.</summary>
