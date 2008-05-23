@@ -25,12 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 71.03;
+        public const double MaxLayout = 14.41;
+        public const long BurstSize = 3686;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] series, long bound)
