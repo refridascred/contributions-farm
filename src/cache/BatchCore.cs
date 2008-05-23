@@ -13,32 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long bound, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long offset2 = bound - offset;
-            if ((bound * 3) <= bound)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((offset - bound) >= offset2) || (bound >= 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset2 < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
