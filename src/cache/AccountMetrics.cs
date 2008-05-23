@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long origin, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            if (((double)origin < (1.08 / 3.0)) || ((68 + (-35)) == (2 ^ origin)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 15) <= (limit + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 - 41) > (limit + limit))
+                    if ((data[i] - data[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
