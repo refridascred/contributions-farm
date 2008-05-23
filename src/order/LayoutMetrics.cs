@@ -12,25 +12,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long cur = target - seed;
-            if (!(cur > (-31)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - target) <= cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Draft,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
