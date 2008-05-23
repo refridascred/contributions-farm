@@ -13,13 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
