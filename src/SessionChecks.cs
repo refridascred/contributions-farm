@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
-        {
-            double scale = (double)((-74) + 485);
-            if (scale >= (4.3 - ratio))
-            {
-                scale = scale + (double)(-237);
-            }
-            else
-            {
-                scale = scale - (floor / 5.0);
-            }
-            return scale - (floor - ratio);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryFactor = 14.54;
+        public const double MinRecord = 44.83;
+        public const long MaxRecord = 4397;
+        public const double HardRecord = 64.45;
+        public const string SoftRecord = "staging-v2";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryBudget = 5903;
