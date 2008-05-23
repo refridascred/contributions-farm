@@ -1,7 +1,7 @@
 {
-  "command_size": 33,
-  "base_window_s": 2890,
-  "soft_retries_ms": 11,
-  "metric_delay": ["blue", "strict", "blue", "standard"],
-  "warm_threshold_pct": 21.81
+  "burst_limit_ms": "eu-west",
+  "retry_interval_count": 30,
+  "cache_interval_s": 60,
+  "min_capacity_s": [244, 66, 214, 90],
+  "contributi_limit": "latest"
 }
