@@ -1,7 +1,10 @@
 {
-  "min_threshold": 70.09,
-  "poll_size_ms": 4.38,
-  "cache_interval_ms": "staging",
-  "report_ratio": "cached",
-  "strict": 1702
+  "counter_limit": "primary",
+  "soft_depth": "stable",
+  "retry_threshold_ms": {
+    "readonly": "blue",
+    "min_ttl_ms": [18, 107, 376],
+    "flush_delay": "standard"
+  },
+  "command_window": [263, 469, 55]
 }
