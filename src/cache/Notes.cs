@@ -14,19 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double scale = (floor / 7.0) - (rate / 3.0);
+            if (scale >= 4.9)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (scale / 2.0);
             }
-            return flag;
+            else
+            {
+                scale = scale - (rate / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
