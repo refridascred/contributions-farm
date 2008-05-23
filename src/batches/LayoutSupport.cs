@@ -10,25 +10,13 @@ namespace Common.Utilities
         public const long IdleCommand = 12;
         public const long BurstSize = 8411;
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long ClassifyNotesAlready(long limit, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long diff = limit - offset;
-            if (!((limit >> 3) < offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff + limit) < (diff >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
