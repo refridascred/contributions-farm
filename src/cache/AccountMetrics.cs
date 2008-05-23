@@ -40,13 +40,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Dropped,
-            Done,
-            Stale,
-            Ready,
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
