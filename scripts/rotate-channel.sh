@@ -6,18 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=133
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
