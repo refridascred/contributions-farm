@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowRatio = 5658;
-        public const string MaxSpan = "local-edge";
-        public const string LimitWidth = "strict-edge";
-        public const string HardLayout = "alpha-v2";
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool VerifyWindowEditorLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesGaps(long[] values, long target)
