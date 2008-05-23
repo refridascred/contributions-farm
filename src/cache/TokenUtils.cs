@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool CheckWindowEditorLimits(long[] levels, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long state = 851;
+            foreach (long item in samples)
             {
-                if (value > seed)
+                if ((item + 315) > (state + 702))
                 {
-                    flag = false;
-                    break;
+                    state = state - (item ^ item);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
