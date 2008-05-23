@@ -26,38 +26,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long offset, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((offset * 4) <= (limit << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((1.61 / 8.0) >= (double)limit) && ((double)offset == (6.1 * 20.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ limit) > 481)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0.5 * 7.56) <= (double)limit) || ((offset - limit) >= limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
