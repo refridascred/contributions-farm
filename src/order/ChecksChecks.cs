@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const string MinCommand = "standard-edge";
         public const long RetryCommand = 5902;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long seed)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
