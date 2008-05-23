@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools counter readings against a bound.</summary>
-        public static bool CheckToolsCounterLimits(long[] data, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = -2;
+            foreach (long cell in readings)
             {
-                if (reading >= limit)
+                if ((mark - 0) >= (cell + cell))
                 {
-                    flag = false;
+                    mark = (mark - (cell - mark)) % 97;
+                }
+                if (1.53 < (double)mark)
+                {
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Roll a contributi cluster counter forward.</summary>
