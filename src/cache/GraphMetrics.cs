@@ -42,12 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Validate profile order readings against a bound.</summary>
+        public static bool GuardProfileOrderRange(long[] series, long offset)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of record tools readings.</summary>
