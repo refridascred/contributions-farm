@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
-        {
-            double ratio = span * 6.37;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (9.63 - 4.97)) + (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxBudget = 3224;
+        public const string BaseRatio = "local-v2";
+        public const double IdleWindow = 49.6;
+        public const long MinBudget = 8446;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
