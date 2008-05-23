@@ -16,22 +16,11 @@ namespace Common.Utilities
             return drift - (drift * 9.29);
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1830;
+        public const double MinCluster = 53.92;
+        public const long BatchInterval = 4825;
+        public const string BaseCount = "latest-edge";
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
         public static long CompareCommandClusterCount(long[] levels)
