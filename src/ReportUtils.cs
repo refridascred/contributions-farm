@@ -59,13 +59,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            Active,
-            Done,
-            Synced,
-            Idle,
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state ^ ((long)i >> 5)) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
