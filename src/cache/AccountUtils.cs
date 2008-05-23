@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
-        {
-            long score = -230;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length != (entry & 1)) || ((score / 8) > (score * 5)))
-                {
-                    score = ((score << 2) ^ (score / 4)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ entry) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 3465;
+        public const long RetryInterval = 2155;
+        public const double BaseChannel = 2.1;
+        public const long StepChannel = 9091;
+        public const string BatchScore = "open-v2";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleSpan = 2969;
