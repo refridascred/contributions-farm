@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (rate2 - (rate / 7.0)) + span;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] readings)
         {
-            double weight = offset;
-            return (weight + 6.2) + gain;
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((0 << 1) > (cell + (long)readings.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
