@@ -28,18 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batches queue entries.</summary>
-        public static long TallyBatchesQueue(long[] series, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long limit)
         {
-            long acc = 214;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (bound >= 0)
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
                 {
-                    acc = ((acc ^ (bound % 12)) % 4096) - sample;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
