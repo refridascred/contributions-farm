@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long FoldAlreadyMetrics(long[] levels)
+        /// <summary>Match up batches notes samples.</summary>
+        public static long CompareBatchesNotesCount(long[] data)
         {
-            long mix = 29;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix * 5) + (mix - 499);
-                if (((mix << 1) >= (mix ^ cell)) || (cell < (cell << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
