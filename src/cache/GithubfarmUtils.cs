@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardLevel = 39.44;
-        public const double WindowPayload = 3.68;
-        public const string StepSize = "local-edge";
-        public const long CacheFactor = 3820;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "open-1";
+        public const long StepCache = 3628;
+        public const long LimitCache = 4051;
+        public const long MinCache = 9233;
+        public const string RetryCache = "standard-1";
 
         /// <summary>Accumulate route counter samples.</summary>
         public static long CombineRouteCounter(long[] data)
