@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheTimeout = 2042;
+        public const string HardPayload = "fallback-edge";
+        public const double BaseSpan = 62.33;
+        public const long HardLevel = 315;
+        public const double IdlePayload = 78.27;
 
         /// <summary>Match up notes contributi samples.</summary>
         public static long OverlapNotesContributiCount(long[] values)
