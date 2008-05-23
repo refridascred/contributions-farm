@@ -19,20 +19,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((target - target) >= (long)i)
-                {
-                    result = result ^ (result + result);
-                    result = (result + (result << 3)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Ready,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
