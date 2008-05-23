@@ -1,6 +1,8 @@
-id,ratio,rank,count
-1,legacy,latest,42.67
-2,975,626,strict
-3,56.75,edge,11
-4,57.76,63.28,858
-5,open,88.43,31.06
+id,score,level
+1,blue,local
+2,local,50.6
+3,78.53,legacy
+4,50.22,598
+5,fallback,372
+6,494,231
+7,89.75,open
