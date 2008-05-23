@@ -1,17 +1,6 @@
 {
-  "dry_run": false,
-  "stream_threshold": 1303,
-  "commits_interval": {
-    "contributi_ttl": 53.97,
-    "compress": "standard",
-    "persist": "cached",
-    "burst_interval": true,
-    "batch_window": "cached",
-    "profile_threshold": {
-      "idle_ratio_s": false,
-      "cache_capacity_ms": [186, 288, 402, 163],
-      "min_retries_count": "staging"
-    }
-  },
-  "default_threshold_count": 44
+  "retry_interval_s": 52,
+  "soft_capacity_count": true,
+  "max_capacity": "cached",
+  "sync_threshold": "cached"
 }
