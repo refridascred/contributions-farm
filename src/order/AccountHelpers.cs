@@ -41,13 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
