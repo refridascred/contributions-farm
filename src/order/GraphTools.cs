@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long TallyFarmProfileMatches(long[] samples)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + hits) == (entry - entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
