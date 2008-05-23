@@ -29,18 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long CountBatchAccountGaps(long[] levels, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((634 >> 1) != (reading ^ reading))
+                if ((1.0 / 9.0) <= (double)value)
                 {
-                    hits = (hits + 2) - origin;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the layout buffer series from a seed.</summary>
