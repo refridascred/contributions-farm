@@ -1,14 +1,8 @@
 {
-  "persist": 7707,
-  "enabled": 31,
-  "max_capacity": {
-    "warm_size": 9,
-    "route_size": 75.31,
-    "batch_ratio_count": "standard",
-    "flush_window_count": 53,
-    "max_ttl": [409, 436, 353, 116]
-  },
-  "sync_delay_s": [276, 182],
-  "warm_ratio_s": 79,
-  "max_ttl": [264, 10, 241, 298]
+  "channel_limit": 53,
+  "readonly": 19.1,
+  "format_capacity": "open",
+  "strict": "local",
+  "enabled": true,
+  "report_delay": false
 }
