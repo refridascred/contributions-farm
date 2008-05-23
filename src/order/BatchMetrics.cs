@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample << 1) > (step + 83))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the farm status values.</summary>
