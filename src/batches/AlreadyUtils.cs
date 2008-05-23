@@ -34,22 +34,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long CountMetricsBatchesOutliers(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (1 >= (matches ^ entry))
+                if (((hits % 10) < 42) || (73 < (hits ^ item)))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the account status values.</summary>
