@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double HardCommits = 59.91;
         public const long BatchCommits = 8628;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] values, long offset)
+        /// <summary>Audit session filter readings against a rule.</summary>
+        public static long MeasureSessionFilterHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!(((count / 5) >= (804 << 1)) && (entry > (entry - 155))))
+                if (6.6 <= (double)hits)
                 {
-                    count = (count + 2) - offset;
+                    hits = (hits + 1) - value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the metrics githubfarm series from a seed.</summary>
