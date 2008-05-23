@@ -30,19 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double bias)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            double rate = ratio - 13.0;
-            if (rate < ratio)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (double)936) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - ratio) - (double)(long)i;
-            }
-            return rate - (double)772;
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
