@@ -16,13 +16,18 @@ namespace Common.Utilities
         public const long CacheDepth = 5747;
         public const long MinFilter = 8079;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 9) == (seen * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
