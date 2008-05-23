@@ -45,21 +45,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix / 7) >= mix)
                 {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (long)i;
                 }
+                if ((double)mix == (1.17 - 10.0))
+                {
+                    mix = (mix * 3) + 769;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count context token pairs that satisfy a relation.</summary>
