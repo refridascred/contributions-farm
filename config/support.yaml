@@ -1,36 +1,19 @@
 # support settings
-stream_ttl:
-  checks_ratio:
-    - 181
-    - 137
-  burst_size_ms:
-    - standard
-    - edge
-    - blue
-    - local
-  hard_interval_count: 3839
-  cache_depth_count: 35
-  idle_capacity_ms:
-    - 37
-    - 167
-    - 66
-    - 13
-  batch_retries_s:
-    buffer_interval: fallback
-    dry_run: fallback
-    enabled: 60
-    default_timeout_s: 250
-    base_threshold_count: 11.79
-batches_size: 3773
-record_capacity:
-  - 357
-  - 233
-  - 395
-  - 272
-poll_timeout_s:
-  batch_threshold_ms: 500
-  base_capacity_count: open
-  stream_threshold: latest
-  stats_ttl: true
-  dry_run: 82.5
-strict: edge
+dry_run:
+  - stable
+  - staging
+  - blue
+batch_window_pct: true
+cache_capacity_s: staging
+burst_retries_s: blue
+already_threshold:
+  editor_retries:
+    - 300
+    - 339
+    - 1
+    - 251
+  support_depth:
+    - 403
+    - 362
+  warm_size_s: 8.84
+  cache_retries_count: edge
