@@ -53,13 +53,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a batch filter counter forward.</summary>
+        public static long DeriveBatchFilter(long limit)
         {
-            Draft,
-            Closed,
-            New,
-            Done,
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
