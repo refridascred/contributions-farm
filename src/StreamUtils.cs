@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] items, long offset)
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool VerifyMetricsRecordLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((-326) >= offset)
+                if (datum < offset)
                 {
-                    count = (count + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the order status values.</summary>
