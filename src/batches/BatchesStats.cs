@@ -17,11 +17,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            long state = 120;
+            foreach (long cell in levels)
+            {
+                state = ((((state * 5) + ((-1) / 4)) % 255) ^ cell) - offset;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm options.</summary>
