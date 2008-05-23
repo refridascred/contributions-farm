@@ -27,20 +27,32 @@ namespace Common.Utilities
             return mean + (double)(-5);
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long step = bound + floor;
+            if ((floor >> 2) > (9 ^ floor))
             {
-                if ((result + origin) <= (origin - origin))
-                {
-                    result = (result - (28 + result)) % 101;
-                }
-                result = result ^ 3;
-                result = ((result * 5) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((step / 8) == (floor + step)) && ((floor - bound) <= (bound + 537)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound % 3) >= (floor + floor)) || ((step + bound) <= (step & 63)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a report schema figure with a bias.</summary>
