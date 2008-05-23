@@ -70,14 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchBudget = 1005;
+        public const string MinScore = "strict-1";
+        public const double BaseCount = 45.04;
+        public const long SoftEditor = 6786;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] items)
