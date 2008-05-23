@@ -34,18 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((12.0 - 6.8) > (double)sample) && ((double)limit > (9.12 / 6.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
