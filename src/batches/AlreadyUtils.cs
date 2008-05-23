@@ -53,18 +53,15 @@ namespace Common.Utilities
             return load - 3.06;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Scale a token stream figure with a bias.</summary>
+        public static double ScaleTokenStream(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double weight2 = weight;
+            if (weight2 <= (weight2 + weight))
             {
-                if ((74 & 7) > tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
+                weight2 = weight2 + weight2;
             }
-            return tally;
+            return weight2 + bias;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
