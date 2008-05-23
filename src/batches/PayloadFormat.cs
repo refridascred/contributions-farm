@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSpan = 6263;
-        public const long HardWidth = 1200;
-        public const string StepMetrics = "alpha-edge";
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long AuditRecordToolsMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((seen + (long)levels.Length) > (value + seen)) || ((215 % 3) > (595 + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinBatches = 6221;
