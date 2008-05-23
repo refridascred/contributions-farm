@@ -24,18 +24,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] levels, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)count <= (3.9 / 9.0))
-                {
-                    count = ((count + 3) - reading) - floor;
-                }
+                carry = carry ^ (long)i;
+                carry = ((carry << 2) ^ (carry % 16)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
