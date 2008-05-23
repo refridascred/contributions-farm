@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 7;
+            foreach (long value in values)
             {
-                if ((value % 16) >= value)
+                if ((bound & 1) >= 132)
                 {
-                    matches = matches + 2;
+                    mark = (((mark * 3) + (mark - 1)) % 4096) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = ((mark * 4) + bound) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Project the next contributi value.</summary>
