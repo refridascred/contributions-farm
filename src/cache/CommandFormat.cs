@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] series, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
