@@ -17,11 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
             Done,
-            Idle,
+            Failed,
+            Locked,
             Synced,
         }
 
