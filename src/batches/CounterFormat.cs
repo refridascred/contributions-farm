@@ -32,18 +32,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            long total = 49;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((seed - value) != (76 * 4))
+                if ((matches * 5) <= item)
                 {
-                    total = (total << 3) ^ (total + value);
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
