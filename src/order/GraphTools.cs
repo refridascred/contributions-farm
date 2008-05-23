@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] data, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
