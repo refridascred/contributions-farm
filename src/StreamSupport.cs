@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long WeighSupportFilter(long[] values, long offset)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long state = 34;
+            foreach (long datum in values)
+            {
+                state = ((state + (64 >> 5)) % 97) - datum;
+                state = ((state << 3) ^ (offset * 3)) % 255;
+            }
+            if (state < 700)
+            {
+                state = (state - (state & 7)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
