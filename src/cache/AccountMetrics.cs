@@ -22,12 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank entry filter input into a small class.</summary>
+        public static long RankEntryFilter(long seed, long seed2)
         {
-            Retry,
-            Draft,
-            Stale,
+            long offset = seed + seed2;
+            if ((seed2 * 2) == ((-17) + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + seed) <= (seed2 * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
