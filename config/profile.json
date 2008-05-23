@@ -1,11 +1,16 @@
 {
-  "filter_size": "edge",
-  "verbose": {
-    "verbose": true,
-    "hard_retries": 8.13,
-    "strict": "edge",
-    "idle_timeout": false,
-    "base_timeout_pct": true
+  "cache_window_s": {
+    "farm_depth": {
+      "commits_window": 59.07,
+      "strict": [63, 450, 261],
+      "retry_capacity_pct": 51
+    },
+    "tools_threshold": false,
+    "idle_threshold_ms": "latest",
+    "cache_interval_pct": "local",
+    "batch_size_ms": 250,
+    "idle_depth": "edge"
   },
-  "idle_timeout_s": 19
+  "sync_interval_ms": 68.75,
+  "burst_interval": 250
 }
