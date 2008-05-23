@@ -24,9 +24,21 @@ namespace Common.Utilities
         public const double CacheFilter = 22.91;
         public const string IdleFilter = "strict-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowRatio = 7744;
-        public const string RetryDepth = "legacy-1";
-        public const double RetryBatches = 86.54;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
