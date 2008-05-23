@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the support notes entries that pass the check.</summary>
-        public static long TallySupportNotesMatches(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long target)
         {
-            long matches = 0;
+            bool found = true;
             foreach (long item in levels)
             {
-                if ((matches + matches) != (item << 3))
+                if (item >= target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
