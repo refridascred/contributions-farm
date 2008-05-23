@@ -71,17 +71,22 @@ namespace Common.Utilities
         public const long DefaultSession = 3853;
         public const long IdleSession = 1654;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                if (((double)score >= (0.92 / 8.0)) || ((datum & 3) >= (datum - score)))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (seed ^ seed)) % 4096;
+                }
+                if ((score + 16) >= seed)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
