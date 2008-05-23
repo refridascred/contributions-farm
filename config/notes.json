@@ -1,5 +1,7 @@
 {
-  "base_size": "latest",
-  "warm_capacity_count": 500,
-  "route_capacity": 50.62
+  "layout_capacity": false,
+  "verbose": 500,
+  "payload_retries": "primary",
+  "soft_threshold_count": ["cached", "standard"],
+  "cache_delay_s": 3253
 }
