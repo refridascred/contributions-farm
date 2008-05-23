@@ -57,12 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Queued,
-            Active,
-            Synced,
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
