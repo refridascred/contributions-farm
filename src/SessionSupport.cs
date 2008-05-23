@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 1336;
+        public const double LimitToken = 32.42;
+        public const long LimitLevel = 5791;
+        public const long RetryLevel = 8533;
+        public const long IdleDepth = 6804;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheCount = 5072;
