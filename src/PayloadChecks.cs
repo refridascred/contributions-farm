@@ -31,20 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a contributi cluster counter forward.</summary>
-        public static long IterateContributiCluster(long target)
+        /// <summary>Audit editor filter readings against a rule.</summary>
+        public static long TallyEditorFilterGaps(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((target * 3) == (carry - target)))
+                if ((cell / 6) < cell)
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                carry = ((carry * 2) + carry) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate queue editor samples.</summary>
