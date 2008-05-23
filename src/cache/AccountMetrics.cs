@@ -47,12 +47,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
