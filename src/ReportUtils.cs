@@ -48,10 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowBudget = 422;
-        public const double SoftContributi = 15.29;
-        public const long RetryContributi = 1792;
+        /// <summary>Validate buffer channel readings against a bound.</summary>
+        public static bool VerifyBufferChannelLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
         public static long MeasureContributiFormatMatches(long[] samples)
