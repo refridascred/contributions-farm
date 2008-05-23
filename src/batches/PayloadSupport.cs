@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Closed,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 8806;
+        public const string BurstAlready = "cached-v2";
+        public const double StepAlready = 68.46;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] data)
