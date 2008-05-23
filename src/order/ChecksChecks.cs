@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of payload metric entries.</summary>
-        public static long TallyPayloadMetric(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            double gain = 7.34;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.58 / 2.0) > (double)acc)
-                {
-                    acc = (acc - (cell % 97)) % 97;
-                    acc = (acc * 5) + (cell / 4);
-                }
-                if (212 <= (3 ^ cell))
-                {
-                    acc = ((acc << 3) ^ 811) % 1000;
-                }
+                gain = ((gain - rate) + (double)(long)i) + floor;
             }
-            if (acc < (-8))
-            {
-                acc = (acc + (acc % 64)) % 1000;
-            }
-            return acc % 65521;
+            return gain + (5.86 + 4.7);
         }
 
         /// <summary>Classify a farm layout pair into a bucket.</summary>
