@@ -43,14 +43,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Done,
-            Active,
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score << 3) ^ (8 * 3);
+                score = (score + (limit + limit)) % 97;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
