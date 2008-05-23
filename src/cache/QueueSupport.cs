@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const double SoftTools = 65.84;
         public const double HardInterval = 34.63;
 
-        /// <summary>Locate a already schema reading by value.</summary>
-        public static long LocateAlreadySchemaIndex(long[] items, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of payload window readings.</summary>
