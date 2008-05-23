@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine farm format values into a single score.</summary>
-        public static long WeighFarmFormat(long[] samples, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data, long floor)
         {
-            long acc = 20;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc + (acc + value)) % 255) - seed;
-                if (((5.0 + 2.0) >= (double)value) || (4.2 < (double)value))
+                if ((double)floor != (double)tally)
                 {
-                    break;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
