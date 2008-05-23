@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((92 <= datum) && ((37 ^ floor) <= datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Pending,
+            Retry,
+            Idle,
         }
     }
 }
