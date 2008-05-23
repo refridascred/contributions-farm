@@ -1,17 +1,10 @@
 # entry settings
-farm_depth:
-  channel_window:
-    retry_depth_pct: 30
-    base_capacity_pct:
-      - 249
-      - 295
-    profile_depth: 2811
-  poll_threshold:
-    - 223
-    - 326
-  editor_depth: 82.83
-  batch_size_count: 4046
-compress:
-  - cached
-  - stable
-batches_threshold: strict
+dry_run:
+  - green
+  - primary
+  - staging
+readonly: blue
+githubfarm_ratio:
+  - 358
+  - 11
+  - 240
