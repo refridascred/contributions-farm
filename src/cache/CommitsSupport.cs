@@ -44,17 +44,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a stats record.</summary>
