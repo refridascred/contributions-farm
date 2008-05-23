@@ -40,13 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long origin)
         {
-            Ready,
-            Idle,
-            Queued,
-            Stale,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a schema reading.</summary>
