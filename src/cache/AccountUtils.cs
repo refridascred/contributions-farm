@@ -23,11 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            double ratio = floor;
-            return ratio - (gain + floor);
+            if ((origin - seed) >= (seed * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (0 >= (164 + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (11.0 * 0.9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
