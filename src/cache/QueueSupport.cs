@@ -27,11 +27,17 @@ namespace Common.Utilities
         public const double BaseTimeout = 11.71;
         public const long DefaultNotes = 3291;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "fallback";
-        public const string StepCounter = "primary";
-        public const double IdleDepth = 40.26;
-        public const long MinCounter = 8513;
-        public const long RetryDepth = 2624;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
