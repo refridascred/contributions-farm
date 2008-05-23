@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long LocateChannelFormatIndex(long[] values, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Combine context buffer values into a single score.</summary>
