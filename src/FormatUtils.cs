@@ -64,19 +64,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchDepth = 4796;
+        public const string SoftToken = "standard-edge";
+        public const double DefaultToken = 98.69;
+        public const long BaseToken = 2044;
     }
 }
