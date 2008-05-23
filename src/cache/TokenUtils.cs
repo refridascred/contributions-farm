@@ -34,18 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long CountMetricsFormatOutliers(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!(tally < (item * 5)) || ((item <= tally) && ((item & 3) > (tally + tally))))
+                if ((step + datum) >= (step % 5))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
