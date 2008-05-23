@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = 20;
+            foreach (long entry in samples)
             {
-                if ((17 + reading) == (3 >> 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = hits + 3;
+                    acc = (((acc ^ (25 ^ acc)) % 65521) ^ (long)i) - step;
+                    acc = (acc * 3) + (acc ^ entry);
                 }
+                acc = ((acc * 4) + (entry >> 2)) % 101;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Hold a window info.</summary>
