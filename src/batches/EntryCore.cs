@@ -23,16 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster metrics series from a seed.</summary>
-        public static long IterateClusterMetrics(long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
