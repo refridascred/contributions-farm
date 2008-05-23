@@ -1,10 +1,7 @@
-id,active,weight,score
-1,stable,46.13,810
-2,382,500,green
-3,823,436,staging
-4,963,strict,63.27
-5,cached,primary,blue
-6,554,71.98,705
-7,851,778,strict
-8,11,25.98,52.03
-9,blue,strict,656
+id,state,label,level
+1,987,16.99,55.0
+2,143,603,staging
+3,legacy,465,latest
+4,796,147,standard
+5,61.39,28.51,3.6
+6,373,895,955
