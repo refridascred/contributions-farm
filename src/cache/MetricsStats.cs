@@ -29,13 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 4763;
+        public const long SoftNotes = 1207;
+        public const double CacheNotes = 10.18;
+        public const string MaxSize = "strict-1";
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] items, long floor)
