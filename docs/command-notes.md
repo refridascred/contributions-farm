@@ -1,10 +1,14 @@
 # Command notes
 
-Keep metric and context names short and lowercase.
-Use report settings to tune how often editor data is refreshed.
+Keep layout and payload names short and lowercase.
+Run the cache check before changing any buffer limits.
+
+The metrics module keeps route values in sync with the checks cache.
+Run the session check before changing any payload limits.
 
 ## Guidelines
 
-- Prefer buffer defaults
 - Validate support input early
-- Keep channel values small
+- Log every already change
+- Prefer already defaults
+- Keep batch values small
