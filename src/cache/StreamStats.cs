@@ -36,10 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 4970;
-        public const string LimitBuffer = "alpha-v2";
-        public const string RetryRatio = "open-1";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
