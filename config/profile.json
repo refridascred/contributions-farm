@@ -1,8 +1,12 @@
 {
-  "channel_limit": 53,
-  "readonly": 19.1,
-  "format_capacity": "open",
-  "strict": "local",
-  "enabled": true,
-  "report_delay": false
+  "default_retries_count": "standard",
+  "batch_depth_pct": 61,
+  "burst_capacity": 500,
+  "flush_delay_count": {
+    "account_interval": 250,
+    "persist": true,
+    "strict": "edge",
+    "batch_depth": 1024,
+    "min_timeout_s": 2536
+  }
 }
