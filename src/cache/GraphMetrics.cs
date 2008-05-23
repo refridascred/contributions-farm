@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 7084;
-        public const long HardBatch = 4726;
-        public const long DefaultInterval = 5634;
-        public const long MinBatch = 1417;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Paused,
+            Idle,
+            Active,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyHits(long[] values)
