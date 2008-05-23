@@ -33,26 +33,11 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i << 2) >= ((-40) + mark))
-                {
-                    mark = ((mark * 2) + (761 + target)) % 1000;
-                }
-                else
-                {
-                    mark = mark + (205 + 947);
-                }
-                mark = mark ^ target;
-                mark = (mark + (target - target)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 6583;
+        public const double RetryInterval = 96.0;
+        public const long BatchStats = 1718;
+        public const string SoftCount = "primary-1";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionBounds(long[] levels, long limit)
