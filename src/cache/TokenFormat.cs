@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchScore = 6427;
+        public const double HardQueue = 73.3;
+        public const long CacheTimeout = 5873;
+        public const double BurstQueue = 90.63;
+        public const string MaxQueue = "staging";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesHits(long[] samples)
