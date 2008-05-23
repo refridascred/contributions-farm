@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Measure how many schema editor samples are out of range.</summary>
+        public static long CountSchemaEditorOutliers(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)count < 8.56) && !(item < count))
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
