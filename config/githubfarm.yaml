@@ -1,7 +1,6 @@
 # githubfarm settings
-window_threshold: 250
-default_ratio: legacy
-sync_ratio_s: local
-sync_depth_ms: 61.91
-max_threshold_s: 8
-compress: 5.96
+flush_depth: 34.86
+filter_threshold: 30
+compress: 100
+max_size_count: eu-west
+sync_delay_count: true
