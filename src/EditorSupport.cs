@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] values, long step)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (double)21)
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two tools buffer measurements.</summary>
