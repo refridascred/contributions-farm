@@ -15,15 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Synced,
-            Ready,
-            Done,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardSize = "stable-v2";
+        public const string RetryEditor = "fallback";
+        public const long DefaultEditor = 4793;
+        public const double BurstEditor = 41.41;
+        public const long HardEditor = 7669;
 
         /// <summary>Combine context buffer values into a single score.</summary>
         public static long CombineContextBuffer(long[] values, long origin)
