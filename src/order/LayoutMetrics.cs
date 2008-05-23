@@ -13,14 +13,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Synced,
-            Draft,
-            Closed,
             Pending,
-            Failed,
+            Retry,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
