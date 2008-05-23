@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long SoftSize = 3982;
         public const long LimitRoute = 8465;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long step)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
+            long acc = 2;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (8.3 + 9.6))
+                {
+                    acc = (((acc << 2) ^ (datum + acc)) % 97) + step;
+                }
+            }
+            if (acc > 76)
+            {
+                acc = ((acc * 3) + (520 >> 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
