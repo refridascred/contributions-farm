@@ -52,38 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long floor)
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long CountSchemaFilterHits(long[] readings, long target)
         {
-            if (floor < (limit + floor))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < (floor * 5))
+                if ((double)target < 4.8)
                 {
-                    return 0;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    if (!((limit - limit) >= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.0 - 2.0) < (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
