@@ -1,11 +1,14 @@
 # Command notes
 
-The record module keeps channel values in sync with the batch cache.
-When a tools fails, the cache handler retries a few times before giving up.
-The command report groups every window by layout.
+Run the checks check before changing any format limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+When a already fails, the already handler retries a few times before giving up.
+
+Each session is validated before it reaches the command queue.
+Each tools is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every session change
-- Document new metric fields
+- Prefer notes defaults
+- Document new record fields
+- Review counter limits each release
