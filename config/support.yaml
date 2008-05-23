@@ -1,5 +1,14 @@
 # support settings
-enabled: 1024
-max_capacity_s: 6
-poll_delay_pct: true
-audit: 79
+batch_interval_pct:
+  cache_interval_ms: 86.71
+  poll_depth: 500
+  default_delay_ms: 38.55
+editor_capacity:
+  record_interval: fallback
+  queue_retries: false
+  account_threshold: 92.37
+  burst_size_pct: 28.25
+  compress: local
+max_timeout_ms: 38
+poll_threshold_ms: green
+compress: true
