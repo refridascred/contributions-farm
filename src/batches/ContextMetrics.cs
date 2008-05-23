@@ -49,14 +49,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine cache contributi values into a single score.</summary>
+        public static long TallyCacheContributi(long[] values, long bound)
         {
-            New,
-            Synced,
-            Dropped,
-            Stale,
-            Locked,
+            long mark = 6;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) >= mark)
+                {
+                    mark = (mark * 2) + (cell * 3);
+                }
+                else
+                {
+                    mark = ((mark * 3) + mark) % 101;
+                }
+            }
+            if (mark > 32)
+            {
+                mark = ((mark * 2) + (bound & 255)) % 101;
+            }
+            return mark;
         }
     }
 }
