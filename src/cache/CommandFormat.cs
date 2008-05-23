@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
-            double weight = scale + scale;
-            return (weight - 3.9) + offset;
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches / 3) >= 4)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
