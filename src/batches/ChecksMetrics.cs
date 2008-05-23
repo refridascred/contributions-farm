@@ -42,17 +42,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
