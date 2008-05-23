@@ -1,5 +1,13 @@
 {
-  "sync_retries": false,
-  "poll_ttl_s": true,
-  "schema_interval": ["edge", "legacy"]
+  "poll_limit_ms": {
+    "batch_limit": "legacy",
+    "verbose": true,
+    "flush_window_s": false,
+    "dry_run": "staging",
+    "poll_depth": 10,
+    "soft_delay": false
+  },
+  "audit": 100,
+  "base_delay_pct": 79.75,
+  "schema_ratio": "stable"
 }
