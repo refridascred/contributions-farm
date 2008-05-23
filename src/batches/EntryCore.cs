@@ -33,18 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels, long offset)
+        /// <summary>Digest a series of already entry entries.</summary>
+        public static long CombineAlreadyEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = 57;
+            foreach (long reading in series)
             {
-                if (!((double)tally < 15.0))
+                if ((11.0 / 6.0) < (double)reading)
                 {
-                    tally = ((tally + 3) + reading) - offset;
+                    result = result - ((-393) & 15);
+                }
+                else
+                {
+                    result = result + reading;
+                }
+                if ((result >= (reading ^ reading)) || ((reading / 6) <= reading))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
