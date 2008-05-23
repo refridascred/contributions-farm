@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a command info.</summary>
