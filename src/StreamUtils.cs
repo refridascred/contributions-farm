@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const double SoftFilter = 36.78;
         public const long WindowFilter = 9067;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] data, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                anchor = anchor ^ (anchor % 64);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (datum < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a profile options.</summary>
