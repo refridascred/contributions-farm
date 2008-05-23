@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green standard; do
+for item in cached primary strict edge; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=475
+COMMAND_LIMIT=406
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
