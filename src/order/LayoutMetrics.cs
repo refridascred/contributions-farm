@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((hits + hits) < (-711))
+                if (sample < bound)
                 {
-                    hits = (hits + 1) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
