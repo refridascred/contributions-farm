@@ -19,20 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (value > limit)
                 {
-                    mark = ((mark << 2) ^ 6) ^ (long)i2;
-                    mark = (mark << 3) ^ floor;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
