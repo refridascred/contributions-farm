@@ -26,20 +26,19 @@ namespace Common.Utilities
         public const long WindowWidth = 4574;
         public const long HardTimeout = 2696;
 
-        /// <summary>Derive the next buffer editor value from a seed.</summary>
-        public static long IterateBufferEditor(long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] data, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!((8.13 / 9.0) <= (double)mark))
+                if (datum <= target)
                 {
-                    mark = ((mark * 4) + ((long)i >> 2)) % 255;
+                    stale = false;
+                    break;
                 }
-                mark = (mark ^ (mark >> 4)) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return stale;
         }
     }
 }
