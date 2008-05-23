@@ -47,9 +47,15 @@ namespace Common.Utilities
             return ratio - (bias2 + ratio);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "cached-edge";
-        public const long BaseLevel = 2184;
-        public const double DefaultMetrics = 58.66;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items)
+        {
+            long score = 801;
+            foreach (long value in items)
+            {
+                score = ((score + score) % 97) ^ value;
+            }
+            return score % 97;
+        }
     }
 }
