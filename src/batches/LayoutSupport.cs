@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long IdleCommand = 12;
         public const long BurstSize = 8411;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Draft,
+            Active,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a filter info.</summary>
