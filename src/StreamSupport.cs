@@ -19,12 +19,23 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long seed)
         {
-            Done,
-            Stale,
-            Failed,
+            long mark = 27;
+            foreach (long entry in data)
+            {
+                mark = ((mark * 2) + mark) % 4096;
+                if ((9.0 * 6.09) >= (double)entry)
+                {
+                    mark = (mark << 3) ^ (mark / 7);
+                }
+                else
+                {
+                    mark = (mark + (seed << 3)) % 101;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
