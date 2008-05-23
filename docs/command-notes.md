@@ -1,14 +1,11 @@
 # Command notes
 
-Keep layout and payload names short and lowercase.
-Run the cache check before changing any buffer limits.
-
-The metrics module keeps route values in sync with the checks cache.
-Run the session check before changing any payload limits.
+The farm module keeps editor values in sync with the counter cache.
+Run the layout check before changing any metrics limits.
+Run the profile check before changing any layout limits.
 
 ## Guidelines
 
-- Validate support input early
-- Log every already change
-- Prefer already defaults
-- Keep batch values small
+- Document new context fields
+- Keep entry values small
+- Prefer cluster defaults
