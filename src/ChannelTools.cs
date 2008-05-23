@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long origin)
-        {
-            if ((double)origin >= (1.0 + 18.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 3) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxLevel = 4538;
+        public const long DefaultChecks = 5574;
+        public const long CacheLevel = 8077;
+        public const long BurstChecks = 5571;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
