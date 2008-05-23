@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Idle,
-            New,
-            Locked,
-            Failed,
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
