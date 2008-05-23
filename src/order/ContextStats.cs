@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = 416;
-            foreach (long sample in samples)
-            {
-                if (((3 >> 1) == (carry << 3)) || ((carry << 2) != (sample + 1)))
-                {
-                    carry = ((carry << 2) ^ carry) % 255;
-                }
-            }
-            return carry;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
