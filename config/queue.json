@@ -1,13 +1,5 @@
 {
-  "queue_timeout": true,
-  "soft_window_ms": false,
-  "max_ratio": 2615,
-  "enabled": {
-    "audit": false,
-    "session_interval": 79.36,
-    "persist": 87.11,
-    "hard_depth_ms": "staging"
-  },
-  "idle_limit": "eu-west",
-  "persist": "blue"
+  "persist": "legacy",
+  "window_delay": false,
+  "audit": "blue"
 }
