@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks batch entry that matches the target.</summary>
-        public static long LocateChecksBatchIndex(long[] readings, long offset)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long MeasureOrderNotesOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] < offset)
+                if ((double)entry < (7.9 / 5.0))
                 {
-                    return (long)i;
+                    count = (count + 1) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate token samples.</summary>
