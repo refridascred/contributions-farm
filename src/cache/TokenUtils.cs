@@ -19,15 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Compare every pair of schema stats readings.</summary>
+        public static long MatchSchemaStatsCount(long[] items)
         {
-            double bias = (double)398 / 9.0;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - (double)994) + (double)(long)i) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - gain;
+            return matches;
         }
     }
 }
