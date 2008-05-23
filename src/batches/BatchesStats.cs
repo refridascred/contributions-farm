@@ -32,14 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            Locked,
-            Active,
-            Retry,
-            Done,
-            Pending,
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                long lane = 654;
+                mark = (mark ^ lane) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
