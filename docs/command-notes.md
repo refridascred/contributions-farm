@@ -1,15 +1,11 @@
 # Command notes
 
-The editor module keeps entry values in sync with the format cache.
-Run the commits check before changing any stream limits.
-Each batches is validated before it reaches the format queue.
-
-When a tools fails, the stats handler retries a few times before giving up.
-Run the report check before changing any channel limits.
-Keep graph and githubfarm names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps payload values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer route defaults
-- Document new counter fields
-- Log every queue change
+- Prefer report defaults
+- Document new channel fields
+- Review metrics limits each release
+- Keep batches values small
