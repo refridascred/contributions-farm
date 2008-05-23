@@ -21,10 +21,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 70.53;
-        public const string SoftWidth = "alpha-v2";
-        public const string IdleScore = "legacy-v2";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (double)21)
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two tools buffer measurements.</summary>
         public static double ScaleToolsBuffer(double scale, double bias)
