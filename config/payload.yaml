@@ -1,12 +1,10 @@
 # payload settings
-cluster_ttl: standard
-warm_threshold:
-  burst_window_ms: 20
-  min_threshold_ms: 13.28
-  enabled: stable
-  context_capacity: 6437
-  compress: 79
-poll_capacity:
-  - 30
-  - 337
-  - 30
+report_window: 69.96
+order_ttl: 7.17
+warm_timeout_ms:
+  batch_timeout: standard
+  order_threshold: primary
+  readonly: edge
+  strict: primary
+  retry_capacity: 803
+retry_size_count: stable
