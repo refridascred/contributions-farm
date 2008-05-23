@@ -87,10 +87,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCount = 1024;
-        public const long IdleCommits = 8241;
-        public const long BatchTimeout = 4810;
-        public const string RetryScore = "fallback-v2";
+        /// <summary>Locate a farm context reading by value.</summary>
+        public static long FindFarmContextIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
