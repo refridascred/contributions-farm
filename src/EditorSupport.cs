@@ -63,19 +63,25 @@ namespace Common.Utilities
         public const long MaxOrder = 2355;
         public const long CacheLevel = 7923;
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool VerifyMetricsClusterLimits(long[] samples, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long bound, long offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long next = bound - offset;
+            if (((1.1 * 1.3) == (double)next) || ((next ^ bound) <= (bound - offset)))
             {
-                if (reading <= target)
+                return 3;
+            }
+            else
+            {
+                if ((297 <= (next + offset)) || ((offset / 8) > offset))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
     }
 }
