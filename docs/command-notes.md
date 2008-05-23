@@ -1,11 +1,12 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the tools list.
-Keep graph and layout names short and lowercase.
+Use command settings to tune how often cache data is refreshed.
+The buffer report groups every cluster by contributi.
+Keep record and batches names short and lowercase.
 
 ## Guidelines
 
-- Validate tools input early
-- Document new format fields
-- Keep payload values small
-- Prefer support defaults
+- Validate session input early
+- Log every commits change
+- Keep context values small
+- Prefer context defaults
