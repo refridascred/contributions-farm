@@ -1,7 +1,5 @@
 {
-  "readonly": "edge",
-  "audit": false,
-  "base_limit_s": 37.66,
-  "flush_retries_count": "eu-west",
-  "retry_threshold": 344
+  "idle_threshold_pct": "primary",
+  "default_ratio_s": "cached",
+  "audit": "standard"
 }
