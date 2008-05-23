@@ -1,5 +1,6 @@
 {
-  "default_depth": 60,
-  "base_ttl": 1024,
-  "burst_limit_s": 39.36
+  "counter_capacity": "stable",
+  "soft_capacity_ms": 36.73,
+  "audit": 91,
+  "flush_limit": 500
 }
