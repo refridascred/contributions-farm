@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long total = 671;
+            foreach (long value in series)
             {
-                if ((step + step) > item)
+                if ((value + value) < (total * 2))
                 {
-                    matches = matches + 1;
+                    total = total ^ (total + total);
+                }
+                else
+                {
+                    total = total ^ 3;
+                }
+                if ((value - value) < (value + value))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a metric summary.</summary>
