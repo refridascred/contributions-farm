@@ -41,15 +41,19 @@ namespace Common.Utilities
             return scale - 5.62;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            double gain = (double)((-290) + 5);
+            if (gain >= (rate * 8.7))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                gain = (gain + gain) - floor;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
