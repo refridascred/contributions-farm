@@ -17,23 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            double scale2 = offset;
-            if (scale2 >= (scale2 - offset))
+            double ratio = gain;
+            if (ratio < (double)700)
             {
-                scale2 = (scale2 + 9.0) - scale;
+                ratio = ratio + gain;
             }
-            else
-            {
-                scale2 = scale2 - (2.9 - offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = scale2 + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return ratio - (15.0 - span);
         }
 
         /// <summary>Adjust a report reading.</summary>
