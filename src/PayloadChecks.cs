@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Measure how many profile stats samples are out of range.</summary>
+        public static long AuditProfileStatsOutliers(long[] items, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((double)matches < (1.52 - 0.23))
+                {
+                    matches = ((matches + 3) + reading) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
