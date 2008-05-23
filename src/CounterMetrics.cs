@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MaxCount = 7249;
         public const string SoftWindow = "open-v2";
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 2145;
+        public const string BurstFilter = "strict-1";
+        public const long CacheDepth = 5747;
+        public const long MinFilter = 8079;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long bound)
