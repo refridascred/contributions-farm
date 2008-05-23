@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double bias = (double)8 * 5.87;
+            if (bias > (offset - bias))
             {
-                if ((reading ^ reading) >= (reading & 255))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - (double)153;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias - offset)) + (double)(long)i;
+            }
+            return bias + (weight + 4.1);
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
