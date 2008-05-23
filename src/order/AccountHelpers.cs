@@ -60,21 +60,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark - (step & 31);
-                if (step >= ((long)i + step))
-                {
-                    break;
-                }
-                mark = (mark * 5) + (step + mark);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
