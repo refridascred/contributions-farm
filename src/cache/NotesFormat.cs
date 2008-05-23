@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series, long origin)
         {
-            double rate = (double)(650 * 4);
-            return ((rate + rate) + bias) + offset;
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((double)5 > (double)reading) || ((7.0 - 7.21) >= (double)origin))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
