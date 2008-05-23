@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public double Size { get; set; }
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
