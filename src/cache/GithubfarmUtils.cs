@@ -11,16 +11,23 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long CacheFactor = 3820;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Accumulate route counter samples.</summary>
+        public static long CombineRouteCounter(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long carry = 60;
+            foreach (long entry in data)
             {
-                sum = sum - sum;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((18.0 - 4.0) != (double)entry)
+                {
+                    carry = ((carry * 2) + (entry * 2)) % 255;
+                }
+                carry = carry + entry;
             }
-            return sum;
+            if (carry > 847)
+            {
+                carry = ((carry * 2) + (carry ^ carry)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
