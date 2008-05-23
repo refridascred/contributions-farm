@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] readings, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long state = 291;
-            foreach (long value in readings)
-            {
-                state = ((state + (0 << 1)) - value) - target;
-            }
-            if (state < 719)
-            {
-                state = ((state * 2) + (43 % 12)) % 4096;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a metrics notes reading.</summary>
