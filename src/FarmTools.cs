@@ -20,17 +20,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (series[i] > bound)
+                if ((double)count <= (3.9 / 9.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) - reading) - floor;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
