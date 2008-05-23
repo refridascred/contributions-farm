@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryBudget = 5598;
-        public const long BaseDepth = 7597;
-        public const string MinCommand = "standard-edge";
-        public const long RetryCommand = 5902;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8820;
+        public const long LimitTools = 4317;
+        public const long CacheTimeout = 8408;
+        public const long CacheTools = 3979;
+        public const double WindowTools = 69.77;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] data, long seed)
