@@ -50,13 +50,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a notes commits value against two limits.</summary>
+        public static long GradeNotesCommits(long origin, long floor)
         {
-            Active,
-            Locked,
-            Closed,
-            Idle,
+            long delta = origin + floor;
+            if ((4.0 - 4.6) != (double)delta)
+            {
+                return 5;
+            }
+            else
+            {
+                if (5.0 <= (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a account stats.</summary>
