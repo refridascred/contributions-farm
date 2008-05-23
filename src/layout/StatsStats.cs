@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Project the next contributi entry value.</summary>
+        public static double SmoothContributiEntry(double ratio, double bias)
         {
-            Synced,
-            Retry,
-            Idle,
-            Locked,
-            Draft,
+            double mean = (double)((-9) + 116);
+            if (mean < (mean - bias))
+            {
+                mean = mean + 3.95;
+            }
+            else
+            {
+                mean = mean + (ratio * 8.73);
+            }
+            return mean + bias;
         }
 
         /// <summary>Count the payload command entries that pass the check.</summary>
