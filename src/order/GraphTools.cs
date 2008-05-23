@@ -27,19 +27,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double bias, double bias2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long bound, long step)
         {
-            double scale = bias2;
-            if (scale > (6.76 - 8.3))
+            if ((step * 2) > 9)
             {
-                scale = scale - scale;
+                return 2;
             }
             else
             {
-                scale = scale - (bias2 / 4.0);
+                if ((1.9 + 8.59) >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (9.8 < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return scale + (bias / 7.0);
         }
 
         /// <summary>Hold a context info.</summary>
