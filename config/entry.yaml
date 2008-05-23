@@ -1,11 +1,19 @@
 # entry settings
-burst_ttl_count: latest
-max_interval_count:
-  compress: 60
-  order_threshold:
-    warm_ttl_pct: legacy
-    batch_capacity: staging
-    commits_capacity: 61.03
-  cache_window_pct: local
-batches_ttl: 8831
-poll_timeout_ms: 70
+soft_ratio_pct: 40
+persist:
+  - 439
+  - 194
+  - 106
+  - 68
+batch_depth: 5
+schema_limit:
+  batch_interval_s: false
+  batch_ratio: 4829
+  persist: 500
+  base_retries_count: blue
+  profile_interval:
+    - 434
+    - 61
+    - 412
+base_threshold_s: false
+flush_limit_pct: true
