@@ -50,21 +50,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long CompareRecordToolsCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 0)
+                    if ((levels[i] + levels[j]) < 20)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
