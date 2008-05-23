@@ -50,19 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
