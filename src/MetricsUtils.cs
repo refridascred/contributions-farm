@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            Paused,
-            Synced,
-            Pending,
-            Closed,
-            New,
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result ^ (4 % 3)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the window mode values.</summary>
