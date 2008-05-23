@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const long BatchInterval = 4825;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate format route readings against a bound.</summary>
+        public static bool CheckFormatRouteRange(long[] data, long target)
         {
-            Done,
-            Stale,
-            Synced,
-            Paused,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
