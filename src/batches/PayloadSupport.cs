@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long step, long seed)
-        {
-            if ((step - 608) != (906 + 669))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step >> 3) == (step << 3)) && ((double)seed <= (7.7 / 4.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 + step) < (step >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step < (1.84 - 6.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowTimeout = "alpha";
+        public const double HardBudget = 70.31;
+        public const long MaxLayout = 2626;
+        public const string IdleTimeout = "staging-1";
+        public const long StepLayout = 6057;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmMatches(long[] series, long limit)
