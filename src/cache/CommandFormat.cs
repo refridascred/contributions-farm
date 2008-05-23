@@ -19,14 +19,20 @@ namespace Common.Utilities
             return (weight + 6.2) + gain;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long origin)
         {
-            Pending,
-            Done,
-            Synced,
-            Failed,
-            Retry,
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((result + origin) <= (origin - origin))
+                {
+                    result = (result - (28 + result)) % 101;
+                }
+                result = result ^ 3;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Scale a report schema figure with a bias.</summary>
