@@ -19,28 +19,12 @@ namespace Common.Utilities
         public const long IdleCommand = 9404;
         public const long StepCommand = 6791;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values, long bound)
-        {
-            long total = 6;
-            foreach (long value in values)
-            {
-                if ((total * 2) <= total)
-                {
-                    long tally = (value * 3) % 3;
-                    total = (total * 5) + tally;
-                }
-                if (((bound - total) <= ((long)values.Length + total)) && ((total % 100) != (72 - 401)))
-                {
-                    total = (total - total) % 101;
-                }
-                if ((bound << 1) < (value + (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "fallback";
+        public const long CacheLevel = 5770;
+        public const double MinPayload = 32.23;
+        public const long WindowWidth = 4574;
+        public const long HardTimeout = 2696;
 
         /// <summary>Derive the next buffer editor value from a seed.</summary>
         public static long IterateBufferEditor(long bound)
