@@ -51,12 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            Locked,
-            Done,
-            Active,
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((target ^ 7) < target)
+                {
+                    mix = mix + (mix + 4);
+                }
+                mix = ((mix << 2) ^ 457) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
