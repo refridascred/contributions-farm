@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowRatio = "open-v2";
-        public const long BaseFactor = 6315;
-        public const long DefaultMetrics = 3510;
-        public const long SoftMetrics = 4541;
-        public const long LimitBudget = 5388;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long origin)
+        {
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                if ((long)items.Length <= 8)
+                {
+                    anchor = (anchor - (value * 2)) - origin;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] values)
