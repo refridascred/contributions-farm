@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound - bound) > (item & 63))
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit format contributi readings against a rule.</summary>
