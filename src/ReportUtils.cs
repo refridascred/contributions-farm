@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] levels, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (sample > origin)
+                if (datum < (long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + target;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every channel window entry stays within the limit.</summary>
