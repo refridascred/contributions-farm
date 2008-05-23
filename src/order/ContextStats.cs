@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the metric already entries that pass the check.</summary>
-        public static long AuditMetricAlreadyGaps(long[] samples, long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((667 << 3) < (cell + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit format contributi readings against a rule.</summary>
