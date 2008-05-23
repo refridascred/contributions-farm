@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double floor)
+        /// <summary>Scale a session report figure with a bias.</summary>
+        public static double ProjectSessionReport(double rate, double span)
         {
-            double gain = (ratio - 14.0) / 6.0;
-            if (gain >= ratio)
+            double drift = rate;
+            if (drift < drift)
             {
-                gain = (gain - (ratio / 8.0)) - floor;
+                drift = (drift + (double)(-466)) + span;
             }
-            return gain - (double)4;
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift + (rate - drift);
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
