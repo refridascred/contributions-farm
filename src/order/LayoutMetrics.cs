@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
