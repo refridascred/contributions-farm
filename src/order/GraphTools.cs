@@ -35,14 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long offset)
         {
-            Active,
-            Closed,
-            Idle,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (offset > (matches << 3))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
