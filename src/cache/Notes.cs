@@ -49,20 +49,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Classify a entry account pair into a bucket.</summary>
+        public static long BucketEntryAccount(long seed, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            if (!(limit <= (4 << 1)))
             {
-                if (((3.0 * 15.0) == (double)result) && ((bound >> 5) < (bound << 2)))
-                {
-                    continue;
-                }
-                result = ((result << 2) ^ (result % 16)) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((limit % 7) < (seed - 96))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up tools samples.</summary>
