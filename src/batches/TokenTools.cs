@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Derive the next commits entry value from a seed.</summary>
+        public static long IterateCommitsEntry(long offset)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
