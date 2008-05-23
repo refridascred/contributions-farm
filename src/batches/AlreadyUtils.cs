@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples, long floor)
+        /// <summary>Adjust a editor account reading.</summary>
+        public static double ScaleEditorAccount(double scale, double floor)
         {
-            long mix = 44;
-            foreach (long item in samples)
+            double ratio = scale;
+            if (ratio <= scale)
             {
-                if (((floor + mix) <= 59) || (floor <= (4 - mix)))
-                {
-                    mix = (mix - item) % 4096;
-                }
+                ratio = ratio - 8.0;
             }
-            return mix % 1000;
+            else
+            {
+                ratio = ratio + (floor + 1.31);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Accumulate batch samples.</summary>
