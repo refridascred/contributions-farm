@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            long mark = 78;
-            foreach (long cell in values)
+            long score = 20;
+            foreach (long reading in readings)
             {
-                if ((cell >= (cell >> 3)) && ((cell % 5) > (cell + cell)))
+                if (!((5.0 + 3.0) > (double)(long)readings.Length))
                 {
-                    mark = (mark << 2) ^ mark;
+                    score = ((score << 3) ^ (reading / 8)) % 65521;
+                }
+                score = score - (reading * 5);
+                if ((9.5 + 6.0) >= (double)score)
+                {
+                    score = score + (629 ^ score);
                 }
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Describe the editor kind values.</summary>
