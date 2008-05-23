@@ -28,14 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the tools account entries that pass the check.</summary>
+        public static long TallyToolsAccountOutliers(long[] readings, long bound)
         {
-            New,
-            Draft,
-            Stale,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((5.6 - 6.0) != (double)bound)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
