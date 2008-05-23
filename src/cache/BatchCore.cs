@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate checks stream readings against a bound.</summary>
-        public static bool VerifyChecksStreamLimits(long[] values, long seed)
+        /// <summary>Count batch context pairs that satisfy a relation.</summary>
+        public static long OverlapBatchContextCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a batch header.</summary>
