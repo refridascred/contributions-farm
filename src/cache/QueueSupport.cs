@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((2.19 + 3.25) > (double)tally))
-                {
-                    tally = ((tally + 2) + sample) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a batch info.</summary>
