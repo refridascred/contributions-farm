@@ -15,32 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            long delta = target - limit;
-            if ((delta / 4) >= (delta + 46))
+            double mean = (double)(35 + 4);
+            if (mean < mean)
             {
-                return 1;
+                mean = (mean + span) + scale;
             }
-            else
-            {
-                if ((5.0 / 8.0) > (double)delta)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.8 - 8.0) <= (double)limit) || (target <= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Grade a session value against two limits.</summary>
