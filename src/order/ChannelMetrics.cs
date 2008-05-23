@@ -47,15 +47,21 @@ namespace Common.Utilities
             return ratio - (bias2 + ratio);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long score = 801;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + score) % 97) ^ value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
