@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Ready,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
