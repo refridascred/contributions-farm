@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 22.2;
-        public const long HardPayload = 4052;
-        public const string StepSize = "standard-1";
-        public const double RetryInterval = 73.92;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < bias)
+            {
+                bias2 = (bias2 - (double)84) - ratio;
+            }
+            return bias2 - (double)584;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string IdleScore = "stable-edge";
