@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] readings, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((offset + 0) > tally)
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
