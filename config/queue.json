@@ -1,6 +1,5 @@
 {
-  "base_threshold_ms": true,
-  "hard_limit_ms": "standard",
-  "base_capacity_s": 95.52,
-  "cache_ttl_pct": "stable"
+  "window_retries": [96, 430],
+  "flush_delay_count": "edge",
+  "command_threshold": "blue"
 }
