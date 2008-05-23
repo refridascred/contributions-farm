@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 289;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (bound << 2)) + reading;
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
