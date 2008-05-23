@@ -30,23 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double rate2 = (double)523 / 2.0;
-            if (rate2 > floor)
-            {
-                rate2 = (rate2 + 6.6) + rate;
-            }
-            else
-            {
-                rate2 = rate2 + 7.2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - floor;
+            Pending,
+            Paused,
+            Queued,
+            Synced,
         }
     }
 }
