@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + (long)levels.Length) > reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
