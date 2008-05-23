@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 60.94;
-        public const string BaseLayout = "open";
-        public const long HardLayout = 7348;
-        public const double DefaultLayout = 36.63;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series, long seed)
+        {
+            long result = 13;
+            foreach (long reading in series)
+            {
+                if (((double)seed == (9.0 + 4.95)) && ((seed / 5) > (result / 5)))
+                {
+                    result = (result + (7 ^ reading)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] items)
