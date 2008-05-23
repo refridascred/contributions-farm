@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 10) >= cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a account summary.</summary>
