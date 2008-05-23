@@ -63,13 +63,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            Queued,
-            Synced,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((((2.44 * 1.63) == (double)count) && ((7.0 + 4.6) == (double)count)) || (((item + item) < item) || ((item + count) >= (item % 8))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
