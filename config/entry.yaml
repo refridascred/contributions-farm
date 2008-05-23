@@ -1,15 +1,10 @@
 # entry settings
-strict: 13
-batch_window:
-  - fallback
-  - open
-  - eu-west
-  - edge
-min_limit_ms: 79.11
-compress:
-  notes_ttl:
-    hard_ttl_s: blue
-    burst_threshold_pct: 55
-    readonly: 11
-  batch_ttl: standard
-  flush_ttl_s: 45
+burst_capacity_ms: 4930
+sync_size_ms: 60
+retry_window: 36
+warm_delay: green
+min_timeout_pct: 58
+hard_threshold_s:
+  soft_size_pct: 4151
+  default_ratio: fallback
+  burst_retries_s: 27
