@@ -29,22 +29,18 @@ namespace Common.Utilities
             return bias2 + 2.0;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] series, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (sample > (hits % 10))
+                if (matches > (matches << 2))
                 {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 2) ^ entry) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
