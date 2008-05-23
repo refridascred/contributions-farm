@@ -45,23 +45,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (double)(-4))
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 - (scale + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 6.0) + (double)(long)i;
-            }
-            return bias2 + (bias * 8.21);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchInterval = "stable-edge";
+        public const double BatchSupport = 7.21;
+        public const long BaseSupport = 7787;
     }
 }
