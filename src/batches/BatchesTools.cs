@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinFactor = 9419;
-        public const double RetryBuffer = 17.59;
-        public const long MaxBuffer = 3532;
-        public const string SoftRatio = "legacy";
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Queued,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] values, long offset)
