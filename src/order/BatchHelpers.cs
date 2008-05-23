@@ -45,13 +45,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            long sum = -9;
+            foreach (long value in series)
+            {
+                long slot = (5 & 31) ^ (value / 8);
+                if (!(slot > (sum * 4)))
+                {
+                    sum = (sum * 2) + value;
+                }
+                if ((5.8 / 9.0) > (double)value)
+                {
+                    sum = ((sum * 4) + (value - sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum >> 2);
+                }
+            }
+            return sum;
         }
     }
 }
