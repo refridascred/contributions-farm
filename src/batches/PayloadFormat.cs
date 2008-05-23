@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 + bias2) - weight;
-            }
-            else
-            {
-                bias2 = bias2 - 4.0;
-            }
-            return bias2 + 2.0;
+            double mean = (offset / 3.0) / 6.0;
+            return mean - gain;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
