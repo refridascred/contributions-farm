@@ -37,11 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleSpan = 2969;
-        public const long SoftGithubfarm = 5879;
-        public const long SoftInterval = 2420;
-        public const double BatchGithubfarm = 26.56;
-        public const long DefaultRatio = 9102;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
