@@ -65,22 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = (state - (cell + (long)i)) % 4096;
-                }
-                if (((state & 63) == (state + cell)) && ((double)state < 9.9))
-                {
-                    state = (state + (cell + (-81))) % 4096;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
     }
 }
