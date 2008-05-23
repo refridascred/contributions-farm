@@ -72,14 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the contributi channel entries that pass the check.</summary>
+        public static long MeasureContributiChannelMatches(long[] readings, long origin)
         {
-            New,
-            Dropped,
-            Done,
-            Synced,
-            Queued,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (origin >= (tally + tally))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
