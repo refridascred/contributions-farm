@@ -26,18 +26,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 2213;
+        public const long BaseStats = 2418;
+        public const long BurstStats = 2304;
+        public const double HardInterval = 22.3;
 
         /// <summary>Blend two entry githubfarm measurements.</summary>
         public static double AdjustEntryGithubfarm(double weight, double floor)
