@@ -1,8 +1,11 @@
 {
-  "verbose": "eu-west",
-  "hard_limit_count": "strict",
-  "graph_ratio": "edge",
-  "burst_limit_ms": 49.84,
-  "max_depth": 250,
-  "compress": 500
+  "githubfarm_timeout": {
+    "sync_window_ms": true,
+    "metric_ratio": 4994,
+    "default_ttl": "latest",
+    "retry_delay": "staging"
+  },
+  "readonly": false,
+  "batch_ratio_count": 94.9,
+  "sync_threshold": "primary"
 }
