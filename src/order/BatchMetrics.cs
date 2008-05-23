@@ -55,17 +55,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= floor)
+                if (matches >= (495 & 1))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
