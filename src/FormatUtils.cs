@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 34.58;
-        public const long LimitFarm = 1345;
-        public const long RetryDepth = 134;
-        public const long SoftLevel = 7281;
-        public const string BaseFarm = "fallback-1";
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long CountCounterOrderHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + hits) <= (value % 97))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "latest-1";
