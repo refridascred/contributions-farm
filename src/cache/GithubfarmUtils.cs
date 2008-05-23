@@ -24,15 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metrics cluster figure with a bias.</summary>
-        public static double ProjectMetricsCluster(double gain, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] levels, long offset)
         {
-            double rate = (double)258 / 9.0;
-            if (rate > floor)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                rate = rate - gain;
+                if (((offset + item) < (49 & 15)) && ((item <= (matches / 5)) && (((-825) - offset) >= offset)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate + 0.7;
+            return matches;
         }
 
         /// <summary>Iterate the cache batches series from a seed.</summary>
