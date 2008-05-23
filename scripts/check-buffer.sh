@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest legacy; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in primary local strict legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
