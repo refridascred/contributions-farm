@@ -20,18 +20,18 @@ namespace Common.Utilities
             return drift + (rate - drift);
         }
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long CountRecordNotesHits(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((hits * 5) > (item + hits))
+                if ((cell - limit) <= (seen >> 2))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
