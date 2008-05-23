@@ -1,10 +1,4 @@
 # entry settings
-sync_depth_count: true
-cache_window:
-  - green
-  - open
-  - open
-  - standard
-default_threshold_s: false
-verbose: 30
-batches_capacity: green
+metrics_retries: latest
+default_ratio_s: green
+layout_ratio: latest
