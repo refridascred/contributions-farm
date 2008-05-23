@@ -22,19 +22,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long offset)
+        /// <summary>Accumulate profile context samples.</summary>
+        public static long TallyProfileContext(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 2;
+            foreach (long item in readings)
             {
-                if (reading < offset)
+                mark = (mark << 3) ^ (mark - mark);
+                mark = ((mark << 3) ^ (floor - floor)) % 4096;
+                if ((mark * 5) <= (item >> 2))
                 {
-                    valid = false;
-                    break;
+                    mark = mark ^ (416 % 2);
+                }
+                else
+                {
+                    mark = (mark * 2) + mark;
                 }
             }
-            return valid;
+            if (mark < 9)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format stream readings.</summary>
