@@ -35,13 +35,9 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Ready,
-            New,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftScore = 5355;
+        public const double CacheEditor = 22.3;
+        public const double MinRatio = 14.27;
     }
 }
