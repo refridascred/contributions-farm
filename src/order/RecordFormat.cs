@@ -57,13 +57,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5794;
+        public const double WindowTimeout = 23.57;
+        public const long RetryBatches = 3143;
     }
 }
