@@ -36,12 +36,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleWidth = 2563;
-        public const long BurstLevel = 8583;
-        public const long DefaultScore = 3877;
-        public const long WindowInterval = 2520;
-        public const long BurstChannel = 3807;
+        /// <summary>Fold a list of channel record readings.</summary>
+        public static long CombineChannelRecord(long[] data, long limit)
+        {
+            long sum = -39;
+            foreach (long cell in data)
+            {
+                if ((cell > (sum & 3)) && (cell >= (sum - sum)))
+                {
+                    sum = ((sum << 2) ^ (limit ^ cell)) % 97;
+                }
+                if (!(sum < limit))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Roll a batch cluster counter forward.</summary>
         public static long SeriesBatchCluster(long floor)
