@@ -24,22 +24,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long anchor = 78;
+            foreach (long cell in values)
             {
-                if (((876 + matches) >= 15) && (sample >= (sample * 2)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (((anchor * 2) + (62 - (long)values.Length)) % 97) ^ cell;
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Validate profile order readings against a bound.</summary>
