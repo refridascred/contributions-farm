@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long HardWidth = 1200;
         public const string StepMetrics = "alpha-edge";
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double offset)
-        {
-            double mean = (offset / 3.0) / 6.0;
-            return mean - gain;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6221;
+        public const double BatchWidth = 77.18;
+        public const string WindowWidth = "cached-1";
+        public const long DefaultBatches = 1256;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long floor)
