@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long MeasureOrderNotesOutliers(long[] readings, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < (7.9 / 5.0))
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the commits state values.</summary>
