@@ -14,23 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route context entries.</summary>
-        public static long TotalRouteContext(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long offset)
         {
-            long carry = 807;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                carry = (carry * 5) + (reading - 1);
-                if (((long)series.Length ^ (-54)) > carry)
+                if (datum <= offset)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry - (28 - carry)) % 1000;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the format status values.</summary>
