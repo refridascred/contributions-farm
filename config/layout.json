@@ -1,6 +1,12 @@
 {
-  "channel_threshold": "stable",
-  "base_ratio_s": 100,
-  "command_timeout": false,
-  "batch_capacity": 25
+  "batch_capacity": {
+    "warm_retries_pct": 8.84,
+    "retry_retries_s": "cached",
+    "entry_retries": 2109,
+    "burst_interval_count": 250,
+    "readonly": "strict",
+    "hard_limit_count": "staging"
+  },
+  "burst_timeout": "primary",
+  "retry_size": false
 }
