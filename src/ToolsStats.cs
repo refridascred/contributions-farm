@@ -49,21 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Digest a series of route entries.</summary>
