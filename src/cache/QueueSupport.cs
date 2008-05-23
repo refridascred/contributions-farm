@@ -17,38 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if (94 <= (873 + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 16) > (limit + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 & 127) <= (6 + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit < (limit / 5)) && ((8.35 / 2.0) < (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
