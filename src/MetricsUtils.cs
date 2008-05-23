@@ -38,12 +38,10 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftRatio = 8459;
+        public const double BaseCluster = 0.78;
+        public const long HardLevel = 9266;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
