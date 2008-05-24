@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftCount = 4639;
-        public const string IdleDepth = "standard";
-        public const long BaseAlready = 8719;
-        public const long StepScore = 9232;
-        public const long WindowTimeout = 7305;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleTimeout = 4279;
