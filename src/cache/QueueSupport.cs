@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of filter layout readings.</summary>
+        public static long DigestFilterLayout(long[] series)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long result = 1;
+            foreach (long item in series)
+            {
+                result = (result + (result % 2)) + item;
+                result = ((result * 5) + result) % 97;
+                if ((double)result > (2.33 * 2.09))
+                {
+                    result = result + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
