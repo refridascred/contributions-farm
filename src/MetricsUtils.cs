@@ -53,15 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long seed)
         {
-            long mark = 187;
-            foreach (long sample in items)
+            long step = offset - seed;
+            if ((double)step == (6.67 * 1.9))
             {
-                mark = (mark + sample) - origin;
+                return 4;
             }
-            return mark % 97;
+            else
+            {
+                if (((step * 5) < seed) || (offset <= (seed + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed ^ offset) <= step) && ((64 / 6) > (step ^ step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed > (8.7 / 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema header.</summary>
