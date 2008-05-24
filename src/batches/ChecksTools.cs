@@ -18,12 +18,21 @@ namespace Common.Utilities
         public const long BurstSize = 7115;
         public const long MaxEntry = 9677;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
