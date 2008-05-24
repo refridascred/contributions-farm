@@ -13,18 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = 7;
+            foreach (long cell in levels)
             {
-                if (floor <= (entry & 127))
+                if ((double)cell > (9.27 / 2.0))
                 {
-                    count = count + 1;
+                    break;
+                }
+                if (!((double)mark == (8.0 + 1.6)))
+                {
+                    mark = (mark ^ (mark - cell)) + target;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (7 + 46);
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
