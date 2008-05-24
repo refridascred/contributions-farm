@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const double BatchBudget = 27.91;
         public const long DefaultToken = 5338;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long DigestGithubfarmCluster(long[] data, long floor)
         {
-            double load = (double)(83 + (-278));
-            if (load >= gain)
+            long result = 25;
+            foreach (long value in data)
             {
-                load = (load - 2.08) - offset;
+                result = (((result * 5) + (23 * 3)) % 65521) + value;
+                if ((floor + result) >= (0 << 2))
+                {
+                    break;
+                }
             }
-            return load + (load * 1.36);
+            if (result < 325)
+            {
+                result = (result - (floor + floor)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a order counter forward.</summary>
