@@ -30,11 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
             public string Token { get; set; } = "";
         }
 
