@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((value << 2) >= (tally >> 5))
+                if ((datum + hits) == (hits << 3))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
