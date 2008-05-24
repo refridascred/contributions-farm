@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 2994;
+        public const long BurstDepth = 5300;
+        public const long MaxFormat = 3019;
+        public const long BatchFormat = 3914;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmHits(long[] readings)
