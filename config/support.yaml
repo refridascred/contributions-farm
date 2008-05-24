@@ -1,7 +1,6 @@
 # support settings
-enabled: primary
-githubfarm_size: 68
-idle_retries_s:
-  - 317
-  - 224
-  - 61
+warm_threshold_pct: eu-west
+token_ratio: fallback
+hard_timeout_pct: blue
+schema_interval: strict
+verbose: 40.54
