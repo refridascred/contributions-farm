@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "alpha-v2";
-        public const string MinSize = "standard-1";
-        public const long WindowBatch = 7373;
-        public const long RetryBatch = 5686;
-        public const long IdleBudget = 2894;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesRange(long[] readings, long bound)
