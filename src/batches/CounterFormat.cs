@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double span)
-        {
-            double mean = scale;
-            return mean + (span + mean);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheSize = 27.73;
+        public const long LimitCount = 6033;
+        public const double BatchLevel = 88.29;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordGaps(long[] series, long bound)
