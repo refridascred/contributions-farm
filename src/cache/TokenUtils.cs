@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
