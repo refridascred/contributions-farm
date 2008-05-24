@@ -69,18 +69,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((946 / 3) <= cell)
+                if ((((5 * 4) >= (sample + sample)) || ((8 & 15) < (tally - tally))) || ((14.0 + 8.0) == (double)tally))
                 {
-                    matches = (matches + 3) + origin;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
