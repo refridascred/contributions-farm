@@ -13,15 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the booking level values.</summary>
-        public enum BookingLevel
-        {
-            Idle,
-            Active,
-            Synced,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardTimeout = "fallback-v2";
+        public const long DefaultInterval = 8191;
+        public const long BaseFormat = 1147;
 
         /// <summary>Compare every pair of session cluster readings.</summary>
         public static long MatchSessionClusterCount(long[] readings)
