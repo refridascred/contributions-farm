@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const double MaxMetrics = 38.66;
         public const long HardSpan = 8217;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)9 / 4.0;
+            if (drift > (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (double)52) + offset;
             }
-            return count;
+            else
+            {
+                drift = drift + (3.85 * 2.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 16.0) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
