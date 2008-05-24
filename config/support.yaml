@@ -1,8 +1,5 @@
 # support settings
-poll_ttl_pct: 43
-default_timeout_ms: 500
-cache_capacity_pct:
-  - 405
-  - 294
-poll_depth: 4856
-sync_depth: standard
+enabled: 48
+tools_retries: staging
+cache_timeout_ms: 100
+hard_interval_s: 81.94
