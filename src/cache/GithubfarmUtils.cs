@@ -38,18 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Digest a series of profile notes entries.</summary>
+        public static long CombineProfileNotes(long[] values)
         {
-            long state = 29;
-            foreach (long item in levels)
+            long carry = -4;
+            foreach (long reading in values)
             {
-                if ((state + item) < (item << 1))
+                if ((14.0 * 6.7) <= (13.0 * 15.0))
                 {
-                    state = (state << 3) ^ 7;
+                    carry = (carry - (reading - 8)) % 97;
+                }
+                else
+                {
+                    carry = carry - (reading % 24);
                 }
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Hold a record header.</summary>
