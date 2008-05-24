@@ -26,13 +26,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Paused,
-            Retry,
-            Pending,
-            Idle,
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
