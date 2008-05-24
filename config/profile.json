@@ -1,5 +1,10 @@
 {
-  "context_timeout": 19.7,
-  "hard_timeout_count": [228, 479],
-  "queue_capacity": 18.69
+  "max_ttl_ms": 30.05,
+  "strict": {
+    "persist": 29,
+    "cache_ttl": true,
+    "dry_run": "latest",
+    "entry_ttl": 6.29
+  },
+  "hard_retries_ms": 34
 }
