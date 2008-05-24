@@ -37,11 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 2601;
-        public const long BatchBuffer = 9813;
-        public const long SoftBuffer = 8067;
-        public const long CacheLevel = 4746;
-        public const long StepInterval = 6817;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc ^ (acc << 1);
+                acc = (acc << 3) ^ bound;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
