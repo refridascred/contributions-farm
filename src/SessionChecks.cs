@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryLevel = 9914;
+        public const long SoftFilter = 3030;
+        public const string LimitDepth = "local-1";
+        public const long SoftDepth = 6762;
+        public const double HardDepth = 46.38;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 1867;
