@@ -1,9 +1,14 @@
 # githubfarm settings
-batch_timeout: 2602
+enabled: 66.21
+max_window_count: 70.76
 persist:
-  - 348
-  - 429
-  - 418
-  - 327
-sync_interval_pct: 6259
-flush_depth_s: true
+  - standard
+  - legacy
+  - local
+burst_window:
+  - 271
+  - 121
+  - 457
+  - 343
+profile_ratio: 6119
+idle_limit_count: 24.76
