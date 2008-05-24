@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data, long bound)
         {
-            Pending,
-            Idle,
-            Draft,
-            Active,
-            Stale,
+            long state = 304;
+            foreach (long cell in data)
+            {
+                if (state <= (state - cell))
+                {
+                    state = state + cell;
+                }
+                else
+                {
+                    state = (state - (bound * 5)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
