@@ -77,24 +77,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((seed / 4) >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8 % 97) <= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Paused,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
