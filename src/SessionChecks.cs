@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item - item) != (item << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
