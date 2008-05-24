@@ -43,19 +43,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] series, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix - (floor >> 5);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
     }
 }
