@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] items, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (cell > step)
+                if ((14.0 * 18.0) > (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
