@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of counter record readings.</summary>
-        public static long CombineCounterRecord(long[] levels, long bound)
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double AdjustBufferMetric(double weight, double span)
         {
-            long mix = 777;
-            foreach (long sample in levels)
+            double bias = (weight - 14.0) + (double)75;
+            if (bias < (1.0 * 14.0))
             {
-                if ((1 << 3) <= (mix & 63))
-                {
-                    mix = (((mix + (mix >> 1)) % 255) - sample) + bound;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
+                bias = bias - (weight * 5.69);
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + weight) - (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
