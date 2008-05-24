@@ -26,21 +26,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
