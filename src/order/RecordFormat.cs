@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Dropped,
-            Idle,
-            Paused,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 6095;
+        public const long HardGithubfarm = 3194;
+        public const long CacheGithubfarm = 5448;
+        public const long BatchWidth = 431;
+        public const double SoftGithubfarm = 10.28;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
