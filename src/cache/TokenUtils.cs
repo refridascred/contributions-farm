@@ -27,17 +27,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long prev = seed + offset;
+            if ((prev * 3) >= (offset - 449))
             {
-                total = (total ^ (total << 3)) % 101;
-                total = (total ^ (total - total)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)prev < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-3) & 1) > (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed < (offset ^ seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
