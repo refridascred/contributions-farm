@@ -24,15 +24,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mix = 27;
-            foreach (long item in items)
-            {
-                mix = ((mix ^ (bound ^ bound)) % 101) ^ item;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
