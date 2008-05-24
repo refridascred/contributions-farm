@@ -33,24 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if ((bound << 2) >= (838 / 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.5 / 6.0) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
