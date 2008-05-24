@@ -25,9 +25,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3020;
-        public const double StepFactor = 20.21;
-        public const string StepGithubfarm = "stable-edge";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Closed,
+            Paused,
+            Dropped,
+        }
     }
 }
