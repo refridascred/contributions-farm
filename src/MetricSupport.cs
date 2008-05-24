@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
