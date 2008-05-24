@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of format session readings.</summary>
-        public static long DigestFormatSession(long[] readings, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long sum = 60;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((24 > (item + item)) || ((426 >> 3) < (sum << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + item) % 255;
-                }
-                if ((sum >> 3) > step)
-                {
-                    break;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
