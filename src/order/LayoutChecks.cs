@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits < (hits >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a metric route value against two limits.</summary>
