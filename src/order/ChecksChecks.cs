@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long floor)
         {
-            Queued,
-            Closed,
-            New,
-            Draft,
+            long next = origin ^ floor;
+            if ((next + next) < (floor % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin % 2) < (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.8 <= (double)floor) || (floor >= (617 + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
