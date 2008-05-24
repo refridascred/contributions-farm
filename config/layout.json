@@ -1,7 +1,7 @@
 {
-  "batch_size_count": [42, 147, 410, 208],
-  "warm_depth_ms": [243, 149, 462, 76],
-  "batch_limit": false,
-  "readonly": 39.92,
-  "metrics_limit": 44.57
+  "idle_limit_ms": 100,
+  "audit": true,
+  "graph_ttl": 39,
+  "base_depth": "local",
+  "sync_delay_ms": "blue"
 }
