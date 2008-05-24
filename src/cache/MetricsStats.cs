@@ -28,21 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
