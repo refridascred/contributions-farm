@@ -1,8 +1,8 @@
 {
-  "flush_window_count": ["blue", "staging", "staging", "cached"],
-  "cache_ratio_count": "legacy",
-  "batch_delay_s": "stable",
-  "retry_size": 10,
-  "payload_ratio": "staging",
-  "compress": 32
+  "max_capacity_ms": "blue",
+  "burst_threshold_s": "open",
+  "hard_limit": 2.86,
+  "hard_retries_count": 4511,
+  "max_size_ms": "cached",
+  "token_timeout": "standard"
 }
