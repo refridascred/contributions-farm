@@ -1,14 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the context queue.
-The account report groups every filter by queue.
-Each cache is validated before it reaches the channel queue.
-
-The payload module keeps contributi values in sync with the metric cache.
-The schema module keeps contributi values in sync with the support cache.
+Each tools is validated before it reaches the window queue.
+The layout module keeps profile values in sync with the already cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep checks values small
-- Prefer queue defaults
+- Review filter limits each release
+- Validate githubfarm input early
+- Prefer checks defaults
