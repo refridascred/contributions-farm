@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
