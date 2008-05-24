@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 26;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.33 + 18.0) >= (double)reading)
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (carry * 3)) - bound;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
