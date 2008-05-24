@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (floor * 0.8) / 7.0;
+            if (rate > weight)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - (6.86 / 4.0);
             }
-            return count;
+            return rate + floor;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
