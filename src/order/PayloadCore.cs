@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema token readings against a rule.</summary>
-        public static long TallySchemaTokenGaps(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double rate = 9.68;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2.7 * 2.0) <= (double)tally)
-                {
-                    tally = (tally + 1) + reading;
-                }
+                rate = (((rate + rate) + (double)(long)i) - scale) - offset;
             }
-            return tally;
+            return rate + (double)389;
         }
 
         /// <summary>Match up context profile samples.</summary>
