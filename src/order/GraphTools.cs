@@ -19,19 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long floor)
+        /// <summary>Adjust a filter payload reading.</summary>
+        public static double ScaleFilterPayload(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double rate = weight;
+            if (rate < (rate / 4.0))
             {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + (14.0 * 2.4)) + bias;
             }
-            return valid;
+            else
+            {
+                rate = rate + (double)45;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
