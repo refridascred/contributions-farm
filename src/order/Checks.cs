@@ -23,10 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "strict-edge";
-        public const long SoftRoute = 9884;
-        public const double HardSpan = 71.87;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordGaps(long[] items)
