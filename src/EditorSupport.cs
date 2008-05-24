@@ -48,11 +48,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 263;
-        public const long BatchSupport = 1399;
-        public const long StepSupport = 6202;
-        public const long IdleDepth = 7106;
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool GuardSupportPayloadBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank commits context input into a small class.</summary>
         public static long ClassifyCommitsContext(long floor, long origin)
