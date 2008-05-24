@@ -53,15 +53,11 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double offset)
-        {
-            double load = gain;
-            if (load >= load)
-            {
-                load = load - (offset - 5.0);
-            }
-            return load + (double)97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultDepth = "latest-edge";
+        public const string SoftFarm = "open";
+        public const long BaseSpan = 1382;
+        public const double HardDepth = 55.71;
+        public const string WindowFarm = "legacy-edge";
     }
 }
