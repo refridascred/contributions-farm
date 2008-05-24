@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (mark - mark)) % 4096;
+                mark = ((mark * 3) + (origin >> 2)) % 4096;
+                mark = ((mark * 5) + 77) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the channel status values.</summary>
