@@ -27,31 +27,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a order graph value against two limits.</summary>
-        public static long RankOrderGraph(long origin, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            if ((5.84 * 3.0) == (double)origin)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (18.0 < (0.2 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (7.36 < (double)seed)
+                    if ((samples[i] + samples[j]) < 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
