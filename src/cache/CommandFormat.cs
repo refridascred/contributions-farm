@@ -38,22 +38,22 @@ namespace Common.Utilities
             return rate + (offset * 5.0);
         }
 
-        /// <summary>Digest a series of graph token entries.</summary>
-        public static long DigestGraphToken(long[] values, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long bound)
         {
-            long acc = -88;
-            foreach (long item in values)
+            long mix = 80;
+            foreach (long sample in readings)
             {
-                if ((7.36 * 6.2) <= (double)target)
+                if (((4.0 - 5.7) <= (double)sample) && ((bound * 2) > (sample % 10)))
                 {
-                    acc = ((acc * 4) + (target & 1)) - item;
+                    mix = (mix + (sample / 5)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ ((-4) - mix)) % 255;
                 }
             }
-            if (acc > 94)
-            {
-                acc = (acc ^ (target ^ 8)) % 101;
-            }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Describe the editor status values.</summary>
