@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            long carry = -42;
-            foreach (long sample in values)
+            if (92 < seed)
             {
-                if (((9.0 * 6.9) == (double)carry) && ((double)carry > (6.49 - 16.0)))
+                return 4;
+            }
+            else
+            {
+                if ((2.3 + 9.3) < (double)step)
                 {
-                    carry = carry - (sample + 842);
+                    return 8;
                 }
                 else
                 {
-                    carry = carry + (carry + seed);
+                    if (((step / 6) > seed) || ((double)seed != (8.0 * 5.59)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
