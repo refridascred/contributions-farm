@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Check that every support profile entry stays within the limit.</summary>
