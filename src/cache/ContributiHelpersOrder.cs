@@ -26,23 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long CombineStatsNotes(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] data)
         {
-            long total = 9;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((total - total) < (total - item))
+                if ((tally >> 5) >= (tally & 63))
                 {
-                    total = (total - (item >> 2)) % 255;
+                    tally = (tally + 3) + item;
                 }
-                total = (total << 3) ^ (total / 4);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 94)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            return tally;
         }
     }
 }
