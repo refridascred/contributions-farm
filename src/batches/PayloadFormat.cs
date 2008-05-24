@@ -31,20 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next account githubfarm value.</summary>
-        public static double SmoothAccountGithubfarm(double bias, double bias2)
-        {
-            double ratio = bias / 4.0;
-            if (ratio < (6.27 * 5.0))
-            {
-                ratio = ratio + (double)23;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - bias2) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstScore = 98.96;
+        public const string SoftReport = "legacy";
+        public const long StepReport = 5921;
+        public const long RetryReport = 5480;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
