@@ -33,15 +33,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] items, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
