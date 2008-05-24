@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!!((origin + 93) != (mix / 9)))
+                {
+                    mix = mix + origin;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
