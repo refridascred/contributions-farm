@@ -27,11 +27,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            Draft,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the cache mode values.</summary>
