@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metrics notes reading.</summary>
-        public static double BlendMetricsNotes(double scale, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] values, long bound)
         {
-            double load = (double)(8 ^ (-39));
-            if (load >= scale)
+            bool flag = true;
+            foreach (long item in values)
             {
-                load = load - floor;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (load - floor);
+            return flag;
         }
 
         /// <summary>Project the next account githubfarm value.</summary>
