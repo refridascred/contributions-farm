@@ -44,15 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Check that every checks command entry stays within the limit.</summary>
+        public static bool GuardChecksCommandLimits(long[] readings, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
