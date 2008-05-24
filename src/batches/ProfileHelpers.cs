@@ -68,18 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout editor entries that pass the check.</summary>
-        public static long AuditLayoutEditorMatches(long[] levels, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = -27;
+            foreach (long item in samples)
             {
-                if ((0.22 / 9.0) == (double)seed)
+                for (int i = 0; i < 3; i++)
                 {
-                    count = (count + 3) ^ item;
+                    score = ((score - (score ^ item)) % 4096) ^ (long)i;
                 }
+                score = ((score * 2) + score) % 4096;
             }
-            return count;
+            return score;
         }
     }
 }
