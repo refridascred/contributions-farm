@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long floor)
         {
-            long acc = 7;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc - (6 & 7);
-                if (value > (value * 4))
+                if (series[i] >= floor)
                 {
-                    acc = (acc * 2) + value;
+                    return (long)i;
                 }
             }
-            if (acc < 63)
-            {
-                acc = (acc - (acc << 2)) % 97;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
