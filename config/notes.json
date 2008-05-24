@@ -1,5 +1,8 @@
 {
-  "default_interval_s": 45.24,
-  "base_timeout": "standard",
-  "format_depth": 30
+  "warm_interval_ms": 69,
+  "stats_retries": "cached",
+  "batches_timeout": "standard",
+  "cache_limit": ["green", "open", "legacy"],
+  "base_window": [243, 181],
+  "audit": false
 }
