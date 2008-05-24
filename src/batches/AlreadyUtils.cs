@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit channel entry readings against a rule.</summary>
-        public static long MeasureChannelEntryOutliers(long[] series)
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool VerifyReportContextLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (datum >= (4 + datum))
+                if (value >= limit)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate commits samples.</summary>
