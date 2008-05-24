@@ -1,4 +1,15 @@
 # support settings
-poll_ttl_ms: 6.03
-dry_run: 57.27
-flush_ttl_ms: true
+enabled: 500
+dry_run:
+  enabled: false
+  warm_timeout: true
+  poll_size_pct: open
+  max_ttl:
+    - 63
+    - 272
+    - 454
+    - 320
+  layout_size: 76.61
+account_limit: eu-west
+idle_threshold_s: 25
+poll_threshold_ms: staging
