@@ -50,13 +50,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long ScoreLayoutTools(long[] series)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long score = 70;
+            foreach (long item in series)
+            {
+                if ((((-33) - item) >= (score + score)) && (item >= (score + 87)))
+                {
+                    score = (score + (item + score)) % 97;
+                }
+                score = (score ^ (1 + score)) % 101;
+                if ((10.0 / 3.0) > (double)item)
+                {
+                    score = ((score << 3) ^ (score * 3)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
