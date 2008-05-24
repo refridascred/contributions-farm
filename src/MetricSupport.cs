@@ -26,19 +26,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] items, long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
