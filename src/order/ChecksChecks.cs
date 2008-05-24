@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long MeasureSessionToolsHits(long[] values)
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long CountCommitsFilterOutliers(long[] values, long origin)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long item in values)
             {
-                if (27 < (item / 6))
+                if ((item / 5) < origin)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
