@@ -14,11 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 3187;
-        public const string HardSession = "fallback-v2";
-        public const long StepInterval = 4204;
-        public const long IdleSession = 897;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryLevel = 4411;
+        public const double StepScore = 80.96;
+        public const long DefaultBatch = 4919;
+        public const long BatchLevel = 6164;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
