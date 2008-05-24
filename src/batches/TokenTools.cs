@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool CheckToolsLayoutRange(long[] items, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double rate = (double)123;
+            if (rate > rate)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - 4.0) - offset;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)162) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
