@@ -55,13 +55,12 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Paused,
-            Synced,
-            Locked,
-            Done,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
