@@ -49,19 +49,14 @@ namespace Common.Utilities
         public const string MaxInterval = "fallback";
         public const string MaxWidth = "primary";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mark = 15;
-            foreach (long reading in samples)
-            {
-                mark = ((mark * 3) + (mark ^ reading)) % 1000;
-            }
-            if (mark > 947)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 97;
+            Closed,
+            Stale,
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
