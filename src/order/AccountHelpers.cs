@@ -32,17 +32,14 @@ namespace Common.Utilities
         public const double HardBudget = 90.71;
         public const long StepScore = 2854;
 
-        /// <summary>Locate a queue channel reading by value.</summary>
-        public static long FindQueueChannelIndex(long[] series, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
