@@ -58,15 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] data)
-        {
-            long result = 346;
-            foreach (long datum in data)
-            {
-                result = (((result * 3) + (976 & 7)) % 97) - datum;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 296;
+        public const double BurstRatio = 16.1;
+        public const string LimitSupport = "strict-edge";
+        public const long DefaultSupport = 2247;
+        public const string DefaultSize = "cached-edge";
     }
 }
