@@ -31,15 +31,11 @@ namespace Common.Utilities
         public const double MinNotes = 17.43;
         public const string LimitBudget = "cached-v2";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Idle,
-            Draft,
-            Failed,
-            New,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 197;
+        public const long StepCount = 5853;
+        public const string DefaultLayout = "latest-1";
+        public const double MaxSize = 42.27;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] readings)
