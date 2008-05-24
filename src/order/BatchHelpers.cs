@@ -28,22 +28,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache context samples.</summary>
-        public static long CombineCacheContext(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long seed)
         {
-            long state = 64;
-            foreach (long item in data)
+            long next = target + seed;
+            if ((double)target == (2.7 + 5.0))
             {
-                if (!((double)state >= (20.0 + 9.15)))
+                return 5;
+            }
+            else
+            {
+                if ((target ^ 5) >= (next % 97))
                 {
-                    state = ((state * 4) + state) - item;
+                    return 6;
+                }
+                else
+                {
+                    if ((next >> 1) > next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (next <= (target - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state > 277)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 4096;
         }
     }
 }
