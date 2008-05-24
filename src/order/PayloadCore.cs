@@ -34,22 +34,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                double gain = (5.0 - 2.5) + (5.02 * 4.0);
-                if ((3.0 <= gain) || ((long)i >= (sum + offset)))
-                {
-                    long next = sum;
-                    sum = (sum ^ (next >> 5)) % 255;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
