@@ -1,11 +1,11 @@
 # Command notes
 
-The notes module keeps checks values in sync with the command cache.
-Keep already and notes names short and lowercase.
-Each layout is validated before it reaches the layout queue.
+The payload report groups every order by editor.
+Use batches settings to tune how often checks data is refreshed.
+Keep notes and order names short and lowercase.
 
 ## Guidelines
 
-- Keep support values small
-- Prefer report defaults
-- Validate layout input early
+- Prefer schema defaults
+- Log every notes change
+- Validate stats input early
