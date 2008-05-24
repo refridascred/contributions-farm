@@ -58,11 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 296;
-        public const double BurstRatio = 16.1;
-        public const string LimitSupport = "strict-edge";
-        public const long DefaultSupport = 2247;
-        public const string DefaultSize = "cached-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheRatio = 74.32;
+        public const long IdleLevel = 44;
+        public const string DefaultCount = "local-v2";
+        public const long CacheLevel = 300;
+        public const long SoftSchema = 4724;
     }
 }
