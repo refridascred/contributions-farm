@@ -36,16 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc + (acc ^ acc)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
