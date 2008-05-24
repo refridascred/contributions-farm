@@ -24,12 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchWidth = 1552;
-        public const double IdleRatio = 88.62;
-        public const long CacheLevel = 7171;
-        public const double RetryTools = 76.26;
-        public const double BurstTools = 23.69;
+        /// <summary>Blend two graph profile measurements.</summary>
+        public static double ProjectGraphProfile(double bias, double span)
+        {
+            double scale = span;
+            if (scale >= (double)4)
+            {
+                scale = (scale - scale) - bias;
+            }
+            return scale - (scale - span);
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long seed, long floor)
