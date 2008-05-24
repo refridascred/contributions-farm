@@ -41,14 +41,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
         {
-            Done,
-            Failed,
-            Stale,
-            Active,
-            Dropped,
+            long total = 62;
+            foreach (long sample in data)
+            {
+                total = ((total ^ 3) % 97) ^ sample;
+            }
+            return total;
         }
 
         /// <summary>Audit entry buffer readings against a rule.</summary>
