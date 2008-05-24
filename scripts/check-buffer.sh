@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=49
+BUFFER_LIMIT=109
 log "limit is ${BUFFER_LIMIT}"
 
-for item in stable staging eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
