@@ -21,24 +21,11 @@ namespace Common.Utilities
         public const string LimitInterval = "fallback";
         public const string BaseCount = "cached";
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (total > (floor % 8))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total + (total % 12)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "staging";
+        public const long WindowSpan = 6653;
+        public const long BatchBudget = 1032;
+        public const long WindowReport = 5999;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
