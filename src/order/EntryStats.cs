@@ -13,19 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 23;
+            foreach (long entry in samples)
             {
-                if (entry > step)
+                if (!((entry << 3) > mix))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (mix % 100);
+                }
+                else
+                {
+                    mix = (mix - (entry >> 3)) % 101;
                 }
             }
-            return stale;
+            return mix % 1000;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
