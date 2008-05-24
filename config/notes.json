@@ -1,12 +1,5 @@
 {
-  "hard_delay_count": true,
-  "notes_window": "eu-west",
-  "dry_run": 40.64,
-  "cluster_threshold": 28,
-  "sync_delay": 6530,
-  "retry_timeout_s": {
-    "base_ttl": 85.47,
-    "hard_interval": "edge",
-    "warm_capacity_s": "fallback"
-  }
+  "channel_threshold": false,
+  "window_capacity": "stable",
+  "retry_ratio_count": 64
 }
