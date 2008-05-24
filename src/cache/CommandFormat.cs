@@ -15,19 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double scale, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels, long limit)
         {
-            double mean = (double)(5 - 52);
-            if (mean <= (scale + scale))
+            long acc = 341;
+            foreach (long datum in levels)
             {
-                mean = mean + bias;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = acc ^ ((long)i - limit);
+                }
+                acc = acc ^ datum;
             }
-            else
-            {
-                mean = mean - (scale - scale);
-            }
-            return mean + (double)(-5);
+            return acc;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
