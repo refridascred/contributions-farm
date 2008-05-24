@@ -40,19 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] readings, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Dropped,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a metrics options.</summary>
