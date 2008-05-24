@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            long total = 74;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((8.9 + 7.4) == (double)total) && ((total / 3) <= (reading & 31)))
+                if (levels[i] <= seed)
                 {
-                    total = ((total * 3) + total) - target;
+                    return (long)i;
                 }
             }
-            if (total > 715)
-            {
-                total = (total * 2) + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate buffer token samples.</summary>
