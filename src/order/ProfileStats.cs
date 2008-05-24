@@ -23,13 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a metric metrics reading.</summary>
+        public static double AdjustMetricMetrics(double ratio, double span)
         {
-            Closed,
-            Pending,
-            Failed,
-            Paused,
+            double bias = ratio;
+            if (bias > (bias * 5.3))
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
