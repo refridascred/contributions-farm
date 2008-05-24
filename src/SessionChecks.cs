@@ -38,18 +38,19 @@ namespace Common.Utilities
             return bias + (double)3;
         }
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long TallyTokenRecordOutliers(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((hits >> 5) != (hits - 993))
+                if (datum > origin)
                 {
-                    hits = (hits + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a cluster record.</summary>
