@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long target)
         {
-            long state = 88;
-            foreach (long reading in series)
+            long acc = 8;
+            foreach (long item in readings)
             {
-                if (((state + reading) < (reading ^ state)) && ((double)reading >= 0.42))
+                if ((double)item < (4.1 / 3.0))
                 {
-                    state = (state ^ (state - 0)) % 255;
-                }
-                if (((0.7 * 6.6) >= (double)state) || ((reading & 15) >= (reading + 77)))
-                {
-                    state = ((state * 3) + (1 % 8)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (4 >> 4)) % 4096;
+                    acc = ((acc - (acc << 2)) % 255) - target;
                 }
             }
-            if (state > 38)
-            {
-                state = state - state;
-            }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
