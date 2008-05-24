@@ -66,26 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long carry = 6;
-            foreach (long datum in levels)
-            {
-                if (((6 >> 4) <= (datum >> 4)) && ((7.8 + 5.37) == (double)carry))
-                {
-                    carry = ((carry << 3) ^ (datum - carry)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (53 + datum)) % 1000;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 4096;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
