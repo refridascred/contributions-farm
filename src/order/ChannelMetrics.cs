@@ -31,38 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long floor)
         {
-            if (limit < (limit ^ 926))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 / 9) != (limit / 6))
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (-39))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit < (8.03 + 1.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
