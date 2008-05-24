@@ -1,18 +1,17 @@
 # githubfarm settings
-counter_delay: 5808
-soft_limit_count: strict
-verbose: 72.93
-filter_ttl:
-  enabled: primary
-  audit: open
-  metric_ttl: 5894
-  persist: 2955
-  order_limit: local
-  poll_ratio_pct:
-    compress: eu-west
-    poll_retries:
-      - primary
-      - strict
-      - green
-    idle_retries_s: eu-west
-readonly: 13.38
+command_limit: 60
+stats_window: primary
+retry_interval_count:
+  persist: true
+  session_timeout: 30
+  editor_ratio: 2
+  max_retries: true
+default_interval:
+  flush_retries_pct: false
+  payload_interval: true
+  dry_run:
+    default_size: true
+    poll_interval_pct: standard
+    cache_size: green
+  cache_ratio: 250
+  verbose: 1024
