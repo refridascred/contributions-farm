@@ -13,17 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first stats counter entry that matches the target.</summary>
-        public static long FindStatsCounterIndex(long[] items, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -5;
+            foreach (long item in levels)
             {
-                if (items[i] <= seed)
+                if ((carry + carry) != (carry % 100))
                 {
-                    return (long)i;
+                    carry = ((carry + 226) % 65521) + item;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
