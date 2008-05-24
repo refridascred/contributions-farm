@@ -12,16 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = anchor ^ (bound << 2);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((double)(long)i <= (4.3 - 17.0))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
