@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            Queued,
-            Locked,
-            Paused,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(((long)levels.Length % 10) < (62 & 7)) && ((3.7 * 5.0) >= (double)value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches status values.</summary>
