@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] data, long seed)
         {
-            Synced,
-            Active,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (5.7 / 6.0))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a report options.</summary>
