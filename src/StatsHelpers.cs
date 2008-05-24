@@ -59,22 +59,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many account checks samples are out of range.</summary>
-        public static long AuditAccountChecksGaps(long[] samples)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long TallyMetricsBatchesMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sample ^ 1) >= sample)
+                if ((seen + bound) == (bound * 4))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
