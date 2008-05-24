@@ -50,12 +50,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstRatio = 4713;
-        public const long StepCluster = 6557;
-        public const string LimitLevel = "open-1";
-        public const long DefaultCount = 708;
-        public const long LimitSize = 7217;
+        /// <summary>Accumulate metrics checks samples.</summary>
+        public static long ScoreMetricsChecks(long[] readings)
+        {
+            long mark = 328;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = (mark + mark) ^ (long)i;
+                    mark = (mark * 2) + (mark ^ item);
+                }
+                if (mark <= (item / 5))
+                {
+                    mark = (mark * 2) + (mark - item);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 3983;
