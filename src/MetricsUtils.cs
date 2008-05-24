@@ -76,12 +76,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double rate, double offset)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double load = (double)211 + rate;
+            return (load + (18.0 * 5.59)) + offset;
         }
     }
 }
