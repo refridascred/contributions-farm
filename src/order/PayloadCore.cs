@@ -27,16 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double bias2)
-        {
-            double ratio = bias2;
-            if (ratio > (bias2 / 7.0))
-            {
-                ratio = (ratio - ratio) - bias;
-            }
-            return ratio - (bias2 * 7.8);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 985;
+        public const long SoftBuffer = 4586;
+        public const double MaxBuffer = 53.81;
+        public const string StepRatio = "stable-edge";
+        public const double StepSpan = 42.31;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphGaps(long[] levels)
