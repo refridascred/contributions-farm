@@ -49,18 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Scale a window filter figure with a bias.</summary>
+        public static double BlendWindowFilter(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double load = gain / 3.0;
+            if (load > load)
             {
-                if (!((0.83 / 5.0) >= (double)entry))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (double)88) - bias;
             }
-            return matches;
+            return load - gain;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
