@@ -66,12 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a tools metric value against two limits.</summary>
