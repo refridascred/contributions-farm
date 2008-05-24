@@ -24,15 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double rate = (offset + 9.0) * 8.44;
-            if (rate >= (gain / 9.0))
-            {
-                rate = rate - (double)99;
-            }
-            return rate - (rate * 9.0);
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
