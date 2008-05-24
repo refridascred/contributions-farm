@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long step)
+        /// <summary>Count support batches pairs that satisfy a relation.</summary>
+        public static long MatchSupportBatchesCount(long[] levels)
         {
-            long span = origin - step;
-            if ((748 - origin) != (step / 7))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (origin << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((15 ^ span) > (step - step))
+                    if ((levels[i] - levels[j]) < 5)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
