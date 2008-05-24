@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long offset)
         {
-            Retry,
-            Failed,
-            Paused,
-            Dropped,
-            Active,
+            if (((-836) - limit) <= (offset << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)0 != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit <= (offset / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support reading by value.</summary>
