@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long TallyTokenRecordOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((double)tally > 2.8) || ((tally - sample) != (1 + 8)))
+                if ((hits >> 5) != (hits - 993))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
