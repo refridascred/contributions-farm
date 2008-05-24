@@ -23,10 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 156;
-        public const string BurstCluster = "cached";
-        public const long HardCluster = 5457;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheCount = 4266;
+        public const double CacheBudget = 79.02;
+        public const double DefaultTimeout = 68.25;
+        public const string IdleSpan = "alpha-edge";
 
         /// <summary>Look up the position of a channel filter sample.</summary>
         public static long FindChannelFilterIndex(long[] data, long limit)
