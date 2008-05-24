@@ -81,13 +81,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items)
         {
-            Closed,
-            Stale,
-            Queued,
-            Locked,
+            long carry = 20;
+            foreach (long sample in items)
+            {
+                carry = (carry * 3) + (sample + sample);
+            }
+            if (carry > 663)
+            {
+                carry = (carry - (43 * 2)) % 4096;
+            }
+            return carry;
         }
     }
 }
