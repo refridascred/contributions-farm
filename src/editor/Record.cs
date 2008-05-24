@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long state = -438;
-            foreach (long sample in readings)
-            {
-                state = ((state << 3) ^ (long)readings.Length) % 4096;
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state ^ sample) % 97;
-                    state = ((state << 2) ^ ((long)i - state)) % 97;
-                }
-                if (2.5 > (double)state)
-                {
-                    state = (state + (state << 2)) % 1000;
-                }
-            }
-            return state % 97;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two profile measurements.</summary>
