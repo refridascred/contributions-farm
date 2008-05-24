@@ -1,4 +1,8 @@
 # support settings
-checks_ttl: green
-idle_timeout_s: legacy
-flush_window: true
+poll_ttl_pct: 43
+default_timeout_ms: 500
+cache_capacity_pct:
+  - 405
+  - 294
+poll_depth: 4856
+sync_depth: standard
