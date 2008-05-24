@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge fallback stable; do
+mode="${1:-green}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west local; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
