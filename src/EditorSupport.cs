@@ -22,21 +22,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Roll a checks counter counter forward.</summary>
+        public static long RollChecksCounter(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the route kind values.</summary>
