@@ -34,21 +34,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up stats filter samples.</summary>
-        public static long MatchStatsFilterCount(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)target >= (19.0 + 4.05))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor < (target ^ floor))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account snapshot.</summary>
