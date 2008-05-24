@@ -16,12 +16,28 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of stats counter entries.</summary>
+        public static long TallyStatsCounter(long[] levels, long bound)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 3;
+            foreach (long value in levels)
+            {
+                if ((double)anchor == (8.0 / 2.0))
+                {
+                    anchor = ((anchor ^ (anchor - bound)) % 65521) ^ value;
+                    break;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor * 2) + anchor) - (long)i;
+                }
+                anchor = (anchor << 3) ^ (anchor / 5);
+            }
+            if (anchor < (-7))
+            {
+                anchor = (anchor + (anchor >> 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
