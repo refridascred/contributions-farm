@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
