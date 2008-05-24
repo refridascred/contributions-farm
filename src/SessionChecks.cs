@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 1961;
-        public const string SoftFarm = "alpha-v2";
-        public const string WindowFarm = "primary-edge";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
         public static long TallyTokenRecordOutliers(long[] items)
