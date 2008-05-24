@@ -31,13 +31,11 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            New,
-            Pending,
-            Stale,
-            Failed,
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
