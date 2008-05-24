@@ -55,26 +55,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long ScoreGithubfarmCommand(long[] series, long bound)
+        /// <summary>Audit contributi batches readings against a rule.</summary>
+        public static long CountContributiBatchesHits(long[] items, long origin)
         {
-            long acc = 28;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((entry * 3) > bound)
+                if (4.4 <= (double)matches)
                 {
-                    acc = acc + bound;
+                    matches = ((matches + 1) - item) + origin;
                 }
                 else
                 {
-                    acc = (acc - (entry * 3)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (acc < 81)
-            {
-                acc = acc ^ (acc % 100);
-            }
-            return acc;
+            return matches;
         }
     }
 }
