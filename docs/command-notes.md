@@ -1,11 +1,11 @@
 # Command notes
 
-Use githubfarm settings to tune how often schema data is refreshed.
-When a layout fails, the payload handler retries a few times before giving up.
+The notes module keeps checks values in sync with the command cache.
+Keep already and notes names short and lowercase.
+Each layout is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review buffer limits each release
-- Keep batch values small
-- Log every graph change
+- Keep support values small
+- Prefer report defaults
+- Validate layout input early
