@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream format samples are out of range.</summary>
-        public static long AuditStreamFormatHits(long[] samples, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long entry in levels)
             {
-                if ((2.7 / 5.0) > (double)cell)
+                if (((-1) / 9) < (entry - entry))
                 {
-                    hits = (hits + 1) + bound;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
