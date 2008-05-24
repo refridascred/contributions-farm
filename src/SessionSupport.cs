@@ -63,22 +63,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long MeasureContextSessionOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (seen >= (cell << 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultScore = "cached-1";
+        public const long MinRatio = 3795;
+        public const double MaxInterval = 61.88;
+        public const long StepCount = 7918;
     }
 }
