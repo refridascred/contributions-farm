@@ -39,19 +39,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support profile entry stays within the limit.</summary>
-        public static bool VerifySupportProfileBounds(long[] samples, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            if ((double)step >= 1.66)
             {
-                if (sample < origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (5.4 - 9.81))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
