@@ -1,27 +1,26 @@
 # entry settings
-dry_run: 1024
-soft_depth:
-  batch_limit:
-    cache_ttl: 86
-    dry_run: 83.04
-    min_depth_s: 61.17
-  base_limit_count:
-    metric_ratio:
-      - 316
-      - 11
-    hard_interval:
+min_depth: blue
+burst_delay:
+  audit: 100
+  idle_delay: 1024
+  soft_size_ms: true
+  poll_retries_ms: 93.72
+  base_limit:
+    retry_ttl_ms: green
+    profile_ratio: local
+    flush_timeout_pct: 7
+    entry_limit: 2681
+    min_window_s: 8496
+    warm_threshold:
       - green
-      - latest
-      - latest
-    batch_ratio_ms: false
-    route_depth: 7146
-    verbose: 70.66
-  strict: legacy
-  dry_run:
-    - 247
-    - 374
-    - 95
-    - 341
-  verbose: 75
-  burst_capacity_ms: false
-sync_delay_ms: cached
+      - legacy
+      - blue
+      - local
+strict: true
+verbose: 38.75
+hard_depth:
+  - 335
+  - 473
+  - 127
+  - 283
+warm_capacity_s: 77.46
