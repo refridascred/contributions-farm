@@ -67,12 +67,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] samples, long origin)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
