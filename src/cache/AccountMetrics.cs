@@ -68,18 +68,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((1.0 * 5.0) < (double)cell))
+                if ((sample & 1) <= (sample * 4))
                 {
-                    count = (count + 1) + origin;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
