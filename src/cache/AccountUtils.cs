@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const double BatchBudget = 27.91;
         public const long DefaultToken = 5338;
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long DigestGithubfarmCluster(long[] data, long floor)
+        /// <summary>Roll a notes channel counter forward.</summary>
+        public static long SeriesNotesChannel(long bound)
         {
-            long result = 25;
-            foreach (long value in data)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                result = (((result * 5) + (23 * 3)) % 65521) + value;
-                if ((floor + result) >= (0 << 2))
+                if ((long)i >= 3)
                 {
-                    break;
+                    state = ((state << 3) ^ (state & 3)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (result < 325)
-            {
-                result = (result - (floor + floor)) % 97;
-            }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
