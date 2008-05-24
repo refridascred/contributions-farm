@@ -46,13 +46,20 @@ namespace Common.Utilities
         public const long IdleInterval = 9570;
         public const long RetrySpan = 3101;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long TallyAlreadyEditor(long[] data)
         {
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long anchor = 8;
+            foreach (long sample in data)
+            {
+                anchor = ((anchor * 2) + (sample << 1)) % 255;
+                anchor = (anchor ^ (15 >> 5)) % 97;
+                if ((sample ^ (long)data.Length) == (sample ^ 3))
+                {
+                    anchor = anchor - 7;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
