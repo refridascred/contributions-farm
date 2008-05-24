@@ -63,10 +63,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultScore = "cached-1";
-        public const long MinRatio = 3795;
-        public const double MaxInterval = 61.88;
-        public const long StepCount = 7918;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 35.79;
+        public const long DefaultTimeout = 1956;
+        public const string BaseScore = "cached-v2";
     }
 }
