@@ -20,38 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (floor >= (target + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-98) < (floor << 3)) || (floor < (18 ^ target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor < (6.1 - 9.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target & 7) >= (target - target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a cluster header.</summary>
