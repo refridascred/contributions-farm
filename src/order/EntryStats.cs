@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double StepFactor = 9.04;
         public const long DefaultScore = 6389;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Adjust a graph filter reading.</summary>
