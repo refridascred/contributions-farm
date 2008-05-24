@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const long CacheCounter = 9906;
         public const double BatchCounter = 20.32;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((reading >> 4) >= hits)
+                if ((entry * 2) > origin)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
