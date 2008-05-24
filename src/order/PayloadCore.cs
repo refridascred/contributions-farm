@@ -27,21 +27,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the batches status values.</summary>
