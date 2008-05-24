@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached stable local; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west strict edge fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-stable}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=314
-log "limit is ${BUFFER_LIMIT}"
