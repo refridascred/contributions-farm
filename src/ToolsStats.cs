@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxCount = 2074;
-        public const long BurstChecks = 4068;
-        public const long CacheTimeout = 2109;
-        public const long CacheChecks = 6103;
+        /// <summary>Compare every pair of window queue readings.</summary>
+        public static long CompareWindowQueueCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double span)
