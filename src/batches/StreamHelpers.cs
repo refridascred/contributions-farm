@@ -42,39 +42,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long origin2)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            long cur = origin - origin2;
-            if ((origin2 >= (origin2 + origin2)) && ((3.61 / 2.0) < (double)origin2))
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                result = result - result;
+                result = result ^ (374 % 7);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((origin & 255) < (origin2 * 4)) || ((892 << 2) != (origin2 & 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin2 > (origin - origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (cur > (origin2 >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
