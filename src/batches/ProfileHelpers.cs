@@ -36,20 +36,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 66.88;
+        public const long BurstDepth = 4979;
+        public const string BatchLevel = "fallback";
+        public const string MaxSpan = "alpha-1";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 8223;
