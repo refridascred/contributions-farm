@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] data, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
