@@ -36,18 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)reading <= (0.14 + 5.8))
+                if (((matches & 7) == (step & 255)) && ((64 >> 5) > (matches + entry)))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
