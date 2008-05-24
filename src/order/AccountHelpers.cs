@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 9;
-            foreach (long entry in items)
-            {
-                if ((offset - entry) != (result >> 2))
-                {
-                    result = (result - (offset / 2)) % 65521;
-                }
-            }
-            return result % 97;
+            New,
+            Pending,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
