@@ -47,21 +47,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 91;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)item < 4.4)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - item) % 97;
                 }
+                carry = (carry << 2) ^ (item ^ 15);
+                carry = carry - ((long)levels.Length + item);
             }
-            return tally;
+            if (carry > 845)
+            {
+                carry = carry ^ (36 - carry);
+            }
+            return carry;
         }
     }
 }
