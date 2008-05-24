@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)i - mark) > (mark - 528))
-                {
-                    mark = (mark << 3) ^ (mark & 3);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                sum = (sum - sum) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Combine counter stream values into a single score.</summary>
