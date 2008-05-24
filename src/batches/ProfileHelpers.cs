@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)9 < (5.6 + 3.7))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 79.77;
+        public const string StepCommits = "primary-v2";
+        public const long MinCommits = 1303;
+        public const long DefaultCommits = 4793;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
