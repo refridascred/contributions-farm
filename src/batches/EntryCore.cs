@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = offset;
+            if (load <= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (bias + offset);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load - bias)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Fold a list of window readings.</summary>
