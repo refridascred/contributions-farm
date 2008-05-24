@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const string RetrySize = "fallback-1";
         public const long RetryCount = 907;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long floor)
         {
-            double ratio = floor;
-            if (ratio < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + floor) - bias;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - floor;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
