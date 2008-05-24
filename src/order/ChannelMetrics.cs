@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long score = -73;
+            foreach (long item in levels)
             {
-                carry = ((carry * 4) + (carry & 255)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
+                score = score ^ (item + item);
+                if ((double)75 > (double)item)
+                {
+                    score = ((score << 3) ^ (item - item)) % 101;
+                }
+                else
+                {
+                    score = (score - (score + 1)) % 65521;
+                }
             }
-            return carry;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
