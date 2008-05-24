@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark - (mark - mark)) % 4096;
-                mark = ((mark * 3) + (origin >> 2)) % 4096;
-                mark = ((mark * 5) + 77) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
