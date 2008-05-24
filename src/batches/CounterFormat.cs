@@ -41,19 +41,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool GuardReportFormatRange(long[] series, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if (origin >= (47 - origin))
             {
-                if (item > origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (9.84 - 5.85))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((1.52 / 6.0) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
