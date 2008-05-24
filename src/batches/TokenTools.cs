@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 2) + (step - 79)) % 97;
-                if ((double)mix != (double)560)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    long seen = ((long)i - step) + (6 & 255);
-                    mix = (mix + seen) % 1000;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
