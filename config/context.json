@@ -1,18 +1,6 @@
 {
-  "cache_window": {
-    "batch_interval_count": "stable",
-    "max_capacity_count": {
-      "commits_depth": 46,
-      "dry_run": [52, 457, 169],
-      "warm_capacity": "green"
-    },
-    "flush_depth_count": "stable",
-    "warm_delay_s": false,
-    "hard_depth_s": 12,
-    "idle_threshold_count": true
-  },
-  "max_limit": 80,
-  "warm_timeout_count": 50.48,
-  "compress": true,
-  "strict": "local"
+  "sync_ttl_s": 2.39,
+  "max_size_s": [380, 483, 293],
+  "persist": 32.46,
+  "dry_run": "fallback"
 }
