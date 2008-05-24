@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const long HardTimeout = 6654;
         public const double BurstDepth = 57.6;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items)
         {
-            double load = scale;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                load = (load - load) + (double)(long)i;
+                if (!((value % 2) == (value + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - (span * 8.0);
+            return tally;
         }
     }
 }
