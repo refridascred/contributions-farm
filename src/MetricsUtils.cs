@@ -61,19 +61,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long ScoreCounterQueue(long[] series, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            long total = 163;
-            foreach (long sample in series)
+            if (!((target + target) == (target + floor)))
             {
-                total = (total + (sample << 3)) % 255;
-                if (((double)sample <= (3.4 / 6.0)) || (6.6 >= (double)limit))
+                return 6;
+            }
+            else
+            {
+                if (floor >= (target - floor))
                 {
-                    total = (total - total) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((999 - floor) <= (floor + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
