@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
-            Retry,
-            Ready,
-            Idle,
             New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
