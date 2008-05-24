@@ -23,11 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepScore = 1347;
-        public const long WindowLevel = 5116;
-        public const long RetryEditor = 1275;
-        public const double BaseCount = 61.61;
-        public const string WindowEditor = "stable-v2";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Queued,
+            Stale,
+            Draft,
+        }
     }
 }
