@@ -13,17 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first order tools entry that matches the target.</summary>
-        public static long SeekOrderToolsIndex(long[] items, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 54;
+            foreach (long reading in levels)
             {
-                if (items[i] < step)
+                if ((reading + anchor) <= (anchor << 1))
                 {
-                    return (long)i;
+                    anchor = (anchor - (reading % 97)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (reading << 2)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
