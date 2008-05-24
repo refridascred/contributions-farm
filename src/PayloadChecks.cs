@@ -59,13 +59,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Stale,
-            Pending,
-            Retry,
-            Dropped,
+            Draft,
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
