@@ -53,21 +53,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Digest a series of checks queue entries.</summary>
+        public static long TotalChecksQueue(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 707;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 2) ^ (datum + result)) % 255;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
