@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 559;
+            foreach (long cell in series)
             {
-                mix = (mix - (mix << 1)) % 97;
-                mix = (mix + (mix + mix)) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (74 < (cell & 3))
+                {
+                    state = ((state * 2) + (state + (long)series.Length)) % 101;
+                    state = (state - cell) % 65521;
+                    continue;
+                }
+                if ((cell << 2) < (state % 97))
+                {
+                    state = (state + (96 >> 1)) % 255;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
