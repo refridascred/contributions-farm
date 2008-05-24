@@ -50,10 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 1490;
-        public const double IdleSize = 14.02;
-        public const long WindowTimeout = 2786;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
