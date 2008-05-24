@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally * 3) < (tally * 2)) && (datum < (datum + tally)))
+                if (samples[i] >= offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
