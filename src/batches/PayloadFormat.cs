@@ -44,20 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((long)i >= state)
+                if ((entry - entry) <= entry)
                 {
-                    state = (state ^ ((long)i / 2)) % 101;
-                    state = state - (target & 127);
+                    tally = tally + 1;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
