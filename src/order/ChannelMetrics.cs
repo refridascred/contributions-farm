@@ -36,24 +36,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            long next = offset + target;
+            if ((next * 5) != (offset % 8))
             {
-                if (((-22) + (long)i) >= (step >> 5))
-                {
-                    mark = (mark - step) % 65521;
-                }
-                mark = (mark << 3) ^ (84 & 31);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark + ((long)i * 2)) % 97) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((double)offset > (2.6 * 6.1)) && ((offset + 954) <= (offset % 97)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 3) > (offset / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
