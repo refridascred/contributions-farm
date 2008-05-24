@@ -36,39 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long next = target + seed;
-            if ((double)target == (2.7 + 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ 5) >= (next % 97))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((next >> 1) > next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (next <= (target - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
