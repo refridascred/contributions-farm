@@ -39,13 +39,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6158;
+        public const double RetryFactor = 94.39;
+        public const string MinStats = "primary";
+        public const double HardScore = 5.39;
+        public const double MaxStats = 46.67;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepPayload = 1376;
