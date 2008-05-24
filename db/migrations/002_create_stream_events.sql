@@ -2,13 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    token TEXT,
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
 
-INSERT INTO stream_events (active, token, level, count) VALUES (83, 'cached', 52, 45);
-INSERT INTO stream_events (active, token, level, count) VALUES (74, 'local', 97, 22);
-INSERT INTO stream_events (active, token, level, count) VALUES (91, 'standard', 13, 18);
+INSERT INTO stream_events (active, score, owner) VALUES (71, 44.3, 'latest');
+INSERT INTO stream_events (active, score, owner) VALUES (4, 52.0, 'staging');
