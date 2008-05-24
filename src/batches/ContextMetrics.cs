@@ -43,18 +43,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 94;
+            foreach (long entry in values)
             {
-                if ((datum >> 3) < (origin >> 4))
+                sum = (sum << 2) ^ (99 * 3);
+                if (17.0 <= (double)sum)
                 {
-                    matches = matches + 1;
+                    sum = (sum * 2) + sum;
+                }
+                else
+                {
+                    sum = (sum ^ entry) % 97;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
