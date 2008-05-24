@@ -1,8 +1,8 @@
-id,level,rank
-1,956,cached
-2,396,628
-3,green,eu-west
-4,797,0.08
-5,478,110
-6,standard,legacy
-7,legacy,43.03
+id,token,score
+1,916,157
+2,edge,918
+3,137,green
+4,legacy,primary
+5,local,green
+6,34.11,72.44
+7,edge,621
