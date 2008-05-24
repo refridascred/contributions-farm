@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 4706;
-        public const string CacheContributi = "standard-v2";
-        public const string RetryCount = "stable-v2";
-        public const string IdleLevel = "fallback-1";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long hits = offset;
+                mark = mark + (hits % 5);
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsLimits(long[] values, long step)
