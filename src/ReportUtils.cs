@@ -72,16 +72,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = (state ^ ((long)i >> 5)) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepScore = 4711;
+        public const long BurstGithubfarm = 8694;
+        public const double BaseSize = 45.96;
+        public const double CacheSpan = 94.32;
+        public const double SoftGithubfarm = 69.19;
     }
 }
