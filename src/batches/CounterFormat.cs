@@ -45,11 +45,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6978;
-        public const string BurstInterval = "open-v2";
-        public const string IdlePayload = "local-edge";
-        public const double IdleRatio = 90.31;
-        public const long BurstScore = 4898;
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long TallyContributiAccountHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((1 + cell) >= cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
