@@ -76,11 +76,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] levels, long bound)
         {
-            double load = (double)211 + rate;
-            return (load + (18.0 * 5.59)) + offset;
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen & 7) < seen)
+                {
+                    seen = ((seen + 1) ^ entry) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
