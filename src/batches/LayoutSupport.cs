@@ -61,31 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload context input into a small class.</summary>
-        public static long SortPayloadContext(long offset, long offset2)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            if ((offset + offset) == (5 >> 5))
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                mark = (mark - ((long)i >> 3)) % 101;
+                mark = mark ^ (mark * 4);
+                mark = ((mark * 2) + (mark * 3)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset % 12) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((976 - offset2) != (offset + 8)) && ((double)offset2 <= (7.7 * 4.6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
