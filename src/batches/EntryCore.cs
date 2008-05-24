@@ -49,38 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long target)
+        /// <summary>Accumulate counter editor samples.</summary>
+        public static long ScoreCounterEditor(long[] levels, long origin)
         {
-            if ((28 > (target - limit)) || ((limit >> 5) < target))
+            long acc = 3;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.0 + 18.0) == (double)target) && (limit >= (target << 3)))
+                if ((origin - origin) <= (-6))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ limit) < (target / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + limit) == (target - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc ^ (origin ^ reading)) % 4096;
                 }
             }
+            return acc % 1000;
         }
     }
 }
