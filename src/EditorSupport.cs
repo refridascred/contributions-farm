@@ -54,21 +54,25 @@ namespace Common.Utilities
         public const long StepSupport = 6202;
         public const long IdleDepth = 7106;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Rank commits context input into a small class.</summary>
+        public static long ClassifyCommitsContext(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = floor + origin;
+            if (0.67 >= (double)origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((floor - delta) == (origin / 7)) && (345 <= origin))
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
