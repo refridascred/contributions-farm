@@ -52,22 +52,17 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Audit profile metric readings against a rule.</summary>
-        public static long TallyProfileMetricOutliers(long[] samples, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (43 + origin))
+                if (samples[i] <= bound)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
