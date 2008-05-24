@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Dropped,
-            Pending,
-            New,
-            Paused,
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
