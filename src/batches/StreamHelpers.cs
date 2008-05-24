@@ -80,39 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long GradeBufferContributi(long bound, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings, long seed)
         {
-            long slot = bound ^ seed;
-            if ((seed - bound) == (bound + seed))
+            long score = 9;
+            foreach (long datum in readings)
             {
-                return 6;
+                score = ((((score * 4) + (0 * 2)) % 97) + datum) - seed;
             }
-            else
-            {
-                if (((double)bound > (0.67 * 9.1)) || ((double)bound <= (9.85 / 6.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot > (bound % 5)) || ((390 + bound) > (bound >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((slot / 7) >= 75))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
