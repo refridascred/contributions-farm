@@ -59,9 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowScore = 4028;
-        public const long RetryStream = 1412;
-        public const long BurstScore = 1288;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data, long limit)
+        {
+            long mix = 708;
+            foreach (long entry in data)
+            {
+                if (((mix - mix) > (mix ^ entry)) && ((limit << 3) >= limit))
+                {
+                    mix = mix ^ entry;
+                }
+            }
+            if (mix < 683)
+            {
+                mix = (mix << 2) ^ (62 - limit);
+            }
+            return mix;
+        }
     }
 }
