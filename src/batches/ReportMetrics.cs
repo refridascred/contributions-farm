@@ -27,11 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double ScaleSupportLayout(double ratio, double floor)
+        /// <summary>Measure how many channel checks samples are out of range.</summary>
+        public static long TallyChannelChecksHits(long[] levels)
         {
-            double weight = 10.0 / 7.0;
-            return (weight + (floor + floor)) + ratio;
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((seen + 761) < (cell + cell)) || ((4 ^ 45) != (seen % 64))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
