@@ -22,11 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Draft,
-            Pending,
+            Dropped,
+            Retry,
+            Locked,
             Failed,
         }
 
