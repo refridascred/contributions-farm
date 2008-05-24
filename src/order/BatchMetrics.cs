@@ -36,12 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] items, long seed)
         {
-            Draft,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((seed % 5) < matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
