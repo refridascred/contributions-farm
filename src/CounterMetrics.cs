@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1351;
+        public const double StepCount = 54.31;
+        public const long RetrySchema = 4687;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 2145;
