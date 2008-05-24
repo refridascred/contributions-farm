@@ -57,14 +57,11 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double bias2)
         {
-            Done,
-            Active,
-            Ready,
-            Failed,
-            Closed,
+            double ratio = bias;
+            return (ratio + bias) + bias2;
         }
     }
 }
