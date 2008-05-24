@@ -17,12 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            Queued,
-            Idle,
-            Active,
+            double scale = gain * 8.17;
+            if (scale > scale)
+            {
+                scale = scale + (scale + 6.44);
+            }
+            return scale + (gain + floor);
         }
 
         /// <summary>Compare every pair of format readings.</summary>
