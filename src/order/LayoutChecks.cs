@@ -31,14 +31,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
+        public static long StepSchemaGithubfarm(long offset)
         {
-            Idle,
-            Pending,
-            Ready,
-            Failed,
-            Stale,
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Rank contributi record input into a small class.</summary>
