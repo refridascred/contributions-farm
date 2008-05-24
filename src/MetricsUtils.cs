@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long carry = 9;
-            foreach (long sample in readings)
+            long state = 88;
+            foreach (long reading in series)
             {
-                if ((3.0 / 3.0) >= (double)carry)
+                if (((state + reading) < (reading ^ state)) && ((double)reading >= 0.42))
                 {
-                    carry = ((carry << 2) ^ (sample ^ 1)) % 101;
+                    state = (state ^ (state - 0)) % 255;
+                }
+                if (((0.7 * 6.6) >= (double)state) || ((reading & 15) >= (reading + 77)))
+                {
+                    state = ((state * 3) + (1 % 8)) % 255;
                 }
                 else
                 {
-                    carry = (carry * 5) + sample;
+                    state = (state ^ (4 >> 4)) % 4096;
                 }
             }
-            return carry;
+            if (state > 38)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
