@@ -27,22 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel checks samples are out of range.</summary>
-        public static long TallyChannelChecksHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((seen + 761) < (cell + cell)) || ((4 ^ 45) != (seen % 64))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 3414;
+        public const long HardSpan = 2009;
+        public const double StepStream = 98.5;
     }
 }
