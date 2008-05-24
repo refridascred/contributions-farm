@@ -1,13 +1,6 @@
 # entry settings
-retry_capacity_ms:
-  - 54
-  - 452
-schema_size: 250
-batch_window_s:
-  - strict
-  - primary
-  - blue
-  - strict
-hard_timeout:
-  - 325
-  - 125
+stats_delay: false
+burst_delay: 12.38
+poll_delay_s: 9357
+sync_capacity: 60
+max_depth_s: 32.67
