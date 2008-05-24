@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            double gain2 = (double)773 / 4.0;
+            if (gain2 >= gain)
+            {
+                gain2 = (gain2 + 1.0) - offset;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
