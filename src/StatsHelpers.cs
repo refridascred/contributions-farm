@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long AuditTokenSupportMatches(long[] items, long offset)
         {
-            Closed,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((tally << 2) < (offset & 63)))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
