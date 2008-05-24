@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long next = step + offset;
-            if (offset >= (0 / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) == (next / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 3) < next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((next & 1) < (58 & 127)) || ((double)step < (double)301))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the layout status values.</summary>
