@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a batches order figure with a bias.</summary>
-        public static double SmoothBatchesOrder(double bias, double offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items, long step)
         {
-            double gain = (3.05 / 2.0) / 6.0;
-            return ((gain - (gain * 4.4)) + bias) + offset;
+            long acc = 3;
+            foreach (long cell in items)
+            {
+                acc = (((acc << 3) ^ step) % 101) ^ cell;
+            }
+            if (acc < 77)
+            {
+                acc = acc - (acc + 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
