@@ -1,12 +1,15 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the profile list.
-Use stream settings to tune how often counter data is refreshed.
-The graph module keeps channel values in sync with the account cache.
+Each channel is validated before it reaches the tools queue.
+When a checks fails, the profile handler retries a few times before giving up.
+Use payload settings to tune how often cluster data is refreshed.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the batch list.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Document new tools fields
-- Review stream limits each release
-- Log every metric change
+- Validate report input early
+- Prefer batches defaults
+- Keep editor values small
