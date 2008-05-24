@@ -22,13 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool GuardReportFormatRange(long[] series, long origin)
         {
-            Retry,
-            Paused,
-            Done,
-            Queued,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
