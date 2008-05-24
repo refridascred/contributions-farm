@@ -23,20 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            double ratio = floor * 10.0;
+            if (ratio > floor)
             {
-                if (((double)target >= 3.5) && ((total << 3) >= (target - total)))
-                {
-                    total = ((total << 2) ^ (target - target)) % 255;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                ratio = (ratio - (floor * 9.0)) - bias;
             }
-            return total;
+            else
+            {
+                ratio = ratio + (floor * 8.0);
+            }
+            return ratio - 9.3;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
