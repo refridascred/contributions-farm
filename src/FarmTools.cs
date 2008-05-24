@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2151;
-        public const long WindowCount = 3150;
-        public const string HardGithubfarm = "standard-v2";
-        public const string MaxGithubfarm = "staging-edge";
-        public const double BaseScore = 46.24;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6933;
+        public const long StepCache = 9415;
+        public const long CacheRatio = 7691;
+        public const long WindowLevel = 5538;
+        public const long BaseCache = 5467;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
