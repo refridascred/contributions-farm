@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            long total = 2;
-            foreach (long reading in levels)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((total - 887) != (total & 7)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    total = (total * 5) + (reading >> 5);
+                    state = (state ^ ((long)i2 + step)) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (total < 92)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
