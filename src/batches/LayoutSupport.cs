@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next batch format value from a seed.</summary>
-        public static long IterateBatchFormat(long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score << 2) ^ (offset >> 1)) % 65521;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
