@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] data, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((entry ^ entry) < (entry + tally)) || ((origin < 46) || ((double)64 == (double)origin)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
