@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6933;
-        public const long StepCache = 9415;
-        public const long CacheRatio = 7691;
-        public const long WindowLevel = 5538;
-        public const long BaseCache = 5467;
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long AuditChecksContextMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading + hits) <= (679 - target)) && (reading <= (reading - 41)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
