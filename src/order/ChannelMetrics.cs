@@ -31,24 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long bound)
         {
-            long mark = -19;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell ^ mark) < (cell >> 5)) && ((mark & 7) > (mark >> 5)))
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = (mark - ((long)i / 8)) % 101;
-                    mark = ((mark << 3) ^ mark) % 65521;
-                }
-                mark = mark - 506;
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
