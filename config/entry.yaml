@@ -1,10 +1,5 @@
 # entry settings
-context_capacity: stable
-readonly: 6023
-record_window: false
-dry_run: true
-audit:
-  - 124
-  - 358
-  - 479
-channel_ttl: 53.38
+contributi_ttl: 60
+flush_delay_count: cached
+poll_size: false
+token_capacity: local
