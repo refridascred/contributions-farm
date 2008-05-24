@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Ready,
-            Pending,
-            Locked,
+            public double Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
