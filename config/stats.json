@@ -1,6 +1,7 @@
 {
-  "compress": true,
-  "idle_interval_count": 38.9,
-  "max_interval": "cached",
-  "checks_window": true
+  "queue_ttl": [491, 269],
+  "warm_capacity": true,
+  "hard_size_ms": true,
+  "enabled": 5710,
+  "burst_capacity_pct": ["primary", "fallback"]
 }
