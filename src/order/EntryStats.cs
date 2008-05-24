@@ -13,22 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            long state = 304;
-            foreach (long cell in data)
+            long mark = 126;
+            foreach (long datum in samples)
             {
-                if (state <= (state - cell))
+                mark = ((mark << 2) ^ (mark % 64)) % 101;
+                if (!(4 < (mark & 7)))
                 {
-                    state = state + cell;
+                    mark = mark - (datum ^ mark);
                 }
                 else
                 {
-                    state = (state - (bound * 5)) % 97;
+                    mark = mark ^ (mark >> 3);
                 }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
