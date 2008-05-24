@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] series, long step)
         {
-            long acc = -21;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = (acc ^ acc) % 101;
-                if (((2.0 - 3.0) <= 20.0) || ((6 / 9) <= (acc + reading)))
+                if (step < (seen ^ seen))
                 {
-                    acc = (acc << 3) ^ (reading >> 4);
+                    seen = (seen + 1) + cell;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
