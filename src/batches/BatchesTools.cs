@@ -30,12 +30,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
+            Failed,
+            Ready,
             Paused,
-            Queued,
-            New,
+            Closed,
         }
     }
 }
