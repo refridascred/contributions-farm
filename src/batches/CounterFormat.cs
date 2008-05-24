@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long SoftAccount = 71;
         public const long MinAccount = 8796;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series, long bound)
         {
-            long mark = 65;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sample + sample) <= (mark + sample))
+                if (((seen + bound) <= (seen ^ seen)) || ((bound - reading) < seen))
                 {
-                    mark = (mark - (sample + sample)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
