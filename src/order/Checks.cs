@@ -45,15 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats contributi value.</summary>
-        public static double SmoothStatsContributi(double scale, double span)
+        /// <summary>Digest a series of batches payload entries.</summary>
+        public static long ScoreBatchesPayload(long[] values, long origin)
         {
-            double load = span / 7.0;
-            if (load >= 8.35)
+            long mix = 7;
+            foreach (long entry in values)
             {
-                load = (load - (span * 8.0)) + scale;
+                mix = ((mix - (235 / 7)) - entry) + origin;
             }
-            return load - (load * 5.25);
+            return mix % 65521;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
