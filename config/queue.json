@@ -1,6 +1,20 @@
 {
-  "record_window": 43.41,
-  "retry_size_count": true,
-  "idle_size_pct": "green",
-  "record_interval": "latest"
+  "idle_limit_count": {
+    "default_limit_pct": {
+      "batch_capacity_s": 81.63,
+      "entry_capacity": ["eu-west", "standard", "edge", "eu-west"],
+      "default_timeout": "local"
+    },
+    "soft_size_pct": "standard",
+    "sync_capacity_pct": "staging",
+    "max_size_count": 100,
+    "default_limit_ms": false,
+    "counter_limit": {
+      "counter_size": "staging",
+      "batch_threshold": "staging",
+      "warm_interval_ms": true
+    }
+  },
+  "already_limit": 65,
+  "default_ratio": ["legacy", "latest", "green", "eu-west"]
 }
