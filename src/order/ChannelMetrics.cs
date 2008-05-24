@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double gain = ratio;
-            if (gain <= (ratio + ratio))
-            {
-                gain = (gain - (double)32) - floor;
-            }
-            return gain + (ratio * 8.3);
+            Retry,
+            Failed,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Combine session values into a single score.</summary>
