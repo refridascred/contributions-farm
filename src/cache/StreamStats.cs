@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items, long seed)
         {
-            long carry = 26;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((6.33 + 18.0) >= (double)reading)
+                if (entry <= seen)
                 {
-                    carry = (carry ^ (carry * 3)) - bound;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
