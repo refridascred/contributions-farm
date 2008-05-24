@@ -26,22 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            double rate = (span - weight) * 3.0;
+            if (rate > (9.31 + rate))
             {
-                acc = (acc << 2) ^ (acc * 5);
-                long seen = (target + acc) + (target / 9);
-                if (!((acc - seen) >= (target * 4)))
-                {
-                    seen = (seen * 2) + target;
-                    seen = ((seen * 3) + (947 ^ target)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                rate = rate + (double)240;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate * 15.0)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
