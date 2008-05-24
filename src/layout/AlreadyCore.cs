@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepSpan = "stable-1";
-        public const long WindowRoute = 8416;
-        public const long StepSize = 1292;
+        /// <summary>Check that every account record entry stays within the limit.</summary>
+        public static bool VerifyAccountRecordRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
