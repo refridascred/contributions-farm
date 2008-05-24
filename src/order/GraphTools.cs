@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long TallyFarmProfileMatches(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((entry + hits) == (entry - entry))
+                if ((count << 3) >= (datum - datum))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
