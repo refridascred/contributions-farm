@@ -84,26 +84,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long mix = 574;
-            foreach (long cell in values)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((44 / 5) == (cell - mix))
+                if ((((-7) % 2) >= ((long)i >> 4)) && ((6.21 + 6.0) != (double)limit))
                 {
-                    mix = (mix - (cell & 31)) % 4096;
+                    state = (state << 3) ^ (state & 1);
                 }
-                if ((cell << 3) >= (-4))
-                {
-                    mix = (mix + mix) % 4096;
-                }
+                state = (state * 5) + (limit - limit);
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mix < 232)
-            {
-                mix = (mix - (mix + 21)) % 1000;
-            }
-            return mix;
+            return state;
         }
     }
 }
