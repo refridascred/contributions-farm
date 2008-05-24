@@ -1,6 +1,8 @@
-id,weight,token
-1,63.46,85.47
-2,194,legacy
-3,staging,868
-4,legacy,36.67
-5,open,green
+id,count,level
+1,538,81.48
+2,209,stable
+3,primary,487
+4,691,78.26
+5,blue,921
+6,51.96,green
+7,68.37,48.58
