@@ -19,22 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long lane = bound + offset;
+            if (offset >= (lane * 3))
             {
-                if (((-1) / 9) < (entry - entry))
+                return 0;
+            }
+            else
+            {
+                if (489 >= (offset & 255))
                 {
-                    hits = (hits + 3) + origin;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (offset > (offset * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
