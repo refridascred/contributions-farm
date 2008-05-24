@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 8435;
-        public const double CacheContext = 87.35;
-        public const long BaseLevel = 8084;
-        public const long WindowRatio = 3772;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Idle,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long step)
