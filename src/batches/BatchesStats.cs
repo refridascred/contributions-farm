@@ -46,39 +46,14 @@ namespace Common.Utilities
         public const long IdleInterval = 9570;
         public const long RetrySpan = 3101;
 
-        /// <summary>Rank metrics queue input into a small class.</summary>
-        public static long SortMetricsQueue(long target, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long slot = target + bound;
-            if (bound >= (bound + slot))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target & 31) != (slot / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((37 / 6) < (target ^ target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target < (target % 100))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
