@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy cached; do
+for item in green blue legacy; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=76
+COMMAND_LIMIT=367
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
