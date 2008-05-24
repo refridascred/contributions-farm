@@ -34,17 +34,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a context already reading by value.</summary>
-        public static long FindContextAlreadyIndex(long[] data, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
