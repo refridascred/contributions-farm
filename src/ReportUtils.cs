@@ -20,19 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] levels, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long total = 286;
+            foreach (long sample in levels)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total ^ (origin & 15)) - sample;
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
