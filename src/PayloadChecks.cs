@@ -47,18 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Find the first payload session entry that matches the target.</summary>
+        public static long LocatePayloadSessionIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ count) > (count & 15))
+                if (readings[i] <= bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
