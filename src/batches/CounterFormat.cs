@@ -19,14 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            Done,
-            Ready,
-            Retry,
-            Active,
-            Synced,
+            long score = 54;
+            foreach (long value in levels)
+            {
+                if (!((value >> 3) <= (value + score)))
+                {
+                    score = (score ^ (45 / 9)) % 4096;
+                }
+                if (538 > (score / 5))
+                {
+                    break;
+                }
+            }
+            if (score < 48)
+            {
+                score = (score - (score ^ 523)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate report format readings against a bound.</summary>
