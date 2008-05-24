@@ -18,17 +18,23 @@ namespace Common.Utilities
         public const long BurstSize = 7115;
         public const long MaxEntry = 9677;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 53;
+            foreach (long value in series)
             {
-                if (samples[i] <= seed)
+                anchor = (anchor - (value & 127)) + seed;
+                if ((double)0 == (double)anchor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 760)
+            {
+                anchor = (anchor * 5) + ((long)series.Length % 100);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a command context figure with a bias.</summary>
