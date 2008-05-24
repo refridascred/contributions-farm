@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] items, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long mark = 10;
+            foreach (long entry in series)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark * 3) + (mark - 243)) % 255) ^ entry;
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Hold a format header.</summary>
