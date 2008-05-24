@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
