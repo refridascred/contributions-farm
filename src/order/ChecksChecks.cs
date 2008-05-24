@@ -19,18 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long carry = -5;
-            foreach (long item in levels)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if ((carry + carry) != (carry % 100))
+                double rate = (1.4 / 8.0) * 3.18;
+                if ((double)score >= rate)
                 {
-                    carry = ((carry + 226) % 65521) + item;
+                    score = score - score;
+                }
+                else
+                {
+                    rate = rate - 8.8;
+                    score = ((score << 2) ^ (datum % 8)) % 1000;
+                }
+                if (score > ((-542) ^ score))
+                {
+                    score = score + (datum & 7);
                 }
             }
-            return carry % 65521;
+            if (score < (-9))
+            {
+                score = score - (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
