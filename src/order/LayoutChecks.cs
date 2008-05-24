@@ -70,18 +70,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long next = seed + target;
+            if (((double)next <= (2.2 / 6.0)) || ((24 - target) > (next & 15)))
             {
-                if ((double)matches >= (6.5 - 6.2))
+                return 6;
+            }
+            else
+            {
+                if ((seed + target) > (target / 6))
                 {
-                    matches = (matches + 2) + item;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
