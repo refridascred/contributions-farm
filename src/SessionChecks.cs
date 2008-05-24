@@ -38,19 +38,19 @@ namespace Common.Utilities
             return bias + (double)3;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + rate;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (rate + floor)) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Hold a cluster record.</summary>
