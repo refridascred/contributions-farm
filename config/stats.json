@@ -1,6 +1,11 @@
 {
-  "max_depth_count": "latest",
-  "stream_limit": 98,
-  "cache_delay_s": false,
-  "enabled": "stable"
+  "verbose": 2902,
+  "persist": false,
+  "batches_size": "fallback",
+  "graph_ratio": 84.76,
+  "sync_window_count": {
+    "context_ratio": false,
+    "payload_delay": true,
+    "cluster_ttl": 9052
+  }
 }
