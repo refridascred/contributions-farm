@@ -52,19 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long floor)
-        {
-            long acc = 0;
-            foreach (long item in series)
-            {
-                if (item > (acc + floor))
-                {
-                    acc = acc - (acc + floor);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitInterval = 61.33;
+        public const long BaseTimeout = 2764;
+        public const double DefaultCount = 35.66;
+        public const long SoftRatio = 4674;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
