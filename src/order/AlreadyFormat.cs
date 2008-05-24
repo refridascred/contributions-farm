@@ -49,20 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinInterval = 423;
+        public const double CacheBudget = 93.69;
+        public const long HardTimeout = 6654;
+        public const double BurstDepth = 57.6;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double scale, double span)
