@@ -18,25 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long origin)
+        /// <summary>Digest a series of report tools entries.</summary>
+        public static long TotalReportTools(long[] series)
         {
-            long slot = target ^ origin;
-            if (slot <= (-649))
+            long result = 38;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (slot - target))
+                if ((0.2 > (double)result) && (84 >= result))
                 {
-                    return 6;
+                    result = ((result * 2) + result) % 1000;
+                    result = (result ^ (datum >> 1)) % 97;
                 }
-                else
+                if ((7.0 * 19.0) <= (double)result)
                 {
-                    return 7;
+                    break;
                 }
+                result = result + (result % 2);
             }
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
