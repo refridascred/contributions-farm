@@ -34,39 +34,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] series, long offset)
         {
-            long offset = floor - limit;
-            if (limit <= (limit - limit))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset * 5) >= limit) || ((6.9 * 13.0) == (double)floor))
+                if (entry != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset == (15.0 * 3.47))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6 % 10) <= offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate cache order samples.</summary>
