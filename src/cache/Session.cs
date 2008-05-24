@@ -25,11 +25,20 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheWidth = 3928;
-        public const long CacheCount = 8358;
-        public const long WindowOrder = 9760;
-        public const long MinScore = 2081;
+        /// <summary>Combine counter stream values into a single score.</summary>
+        public static long DigestCounterStream(long[] levels)
+        {
+            long carry = -1;
+            foreach (long value in levels)
+            {
+                carry = ((carry ^ (874 / 4)) % 255) + value;
+            }
+            if (carry > 5)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
