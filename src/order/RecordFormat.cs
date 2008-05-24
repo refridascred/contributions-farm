@@ -50,32 +50,21 @@ namespace Common.Utilities
         public const long HardStream = 6429;
         public const double BaseStream = 78.33;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long edge = floor - bound;
-            if ((bound >= (edge << 1)) || ((1.0 * 4.4) > (double)bound))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-6) >= (edge << 1)) || ((edge + floor) <= (edge & 15)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound << 3) > (edge >> 3)))
+                    if ((series[i] - series[j]) != 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
