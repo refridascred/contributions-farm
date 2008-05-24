@@ -60,18 +60,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] values, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((seed - (long)values.Length) < entry)
+                if ((946 / 3) <= cell)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
