@@ -56,23 +56,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next order profile value from a seed.</summary>
-        public static long IterateOrderProfile(long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    mix = ((mix - step) % 4096) + (long)i3;
-                }
-                if (!((6.0 / 6.0) > (double)step))
-                {
-                    mix = mix - (long)i;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
