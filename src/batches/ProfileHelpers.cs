@@ -74,18 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] data, long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)limit >= (20.0 * 5.45))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
