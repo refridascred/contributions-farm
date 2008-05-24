@@ -60,16 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples, long bound)
-        {
-            long total = 52;
-            foreach (long item in samples)
-            {
-                total = ((total + total) ^ item) + bound;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5881;
+        public const long IdleContributi = 8980;
+        public const string MaxContributi = "alpha-1";
+        public const long HardWidth = 3146;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
