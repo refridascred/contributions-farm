@@ -53,14 +53,18 @@ namespace Common.Utilities
         public const double HardBudget = 90.71;
         public const long StepScore = 2854;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series)
         {
-            Failed,
-            Idle,
-            New,
-            Done,
-            Queued,
+            long sum = 67;
+            foreach (long cell in series)
+            {
+                if ((sum <= (sum << 3)) && ((double)sum >= (double)cell))
+                {
+                    sum = ((sum * 3) + (cell + cell)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
