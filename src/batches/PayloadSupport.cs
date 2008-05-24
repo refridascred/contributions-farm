@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - span) + (double)(long)i) + bias;
             }
-            return -1;
+            return weight + span;
         }
 
         /// <summary>Accumulate buffer token samples.</summary>
