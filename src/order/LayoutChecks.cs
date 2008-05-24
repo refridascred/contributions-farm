@@ -70,39 +70,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a tools metric value against two limits.</summary>
-        public static long GradeToolsMetric(long target, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            long bound = target - limit;
-            if (((bound & 63) <= (limit + target)) || ((double)limit > (4.67 - 2.44)))
+            double weight2 = weight;
+            if (weight2 >= weight)
             {
-                return 7;
+                weight2 = weight2 - span;
             }
             else
             {
-                if (((limit % 2) > (limit / 2)) && (limit >= (limit + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-785) < (bound % 7)) && ((target / 4) < (bound + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((13 / 2) > limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight2 = weight2 + (span / 9.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - 9.1) - (double)(long)i;
+            }
+            return weight2 - (7.0 * 0.4);
         }
 
         /// <summary>Project the next buffer value.</summary>
