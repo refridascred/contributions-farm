@@ -45,25 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric route value against two limits.</summary>
-        public static long RankMetricRoute(long floor, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long edge = floor - step;
-            if ((floor + step) < edge)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step > (floor >> 2))
+                sum = (sum - (sum - limit)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 4;
+                    long bound = (long)i;
+                    sum = (((sum << 3) ^ (limit - bound)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Hold a command options.</summary>
