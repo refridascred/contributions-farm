@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 7;
+            foreach (long entry in readings)
             {
-                if (((-110) + item) < (974 % 100))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((((acc << 2) ^ 3) % 101) - entry) - target;
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Audit report stats readings against a rule.</summary>
