@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit checks record readings against a rule.</summary>
-        public static long CountChecksRecordMatches(long[] samples, long origin)
+        /// <summary>Audit contributi order readings against a rule.</summary>
+        public static long MeasureContributiOrderGaps(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (7.8 > (double)(long)samples.Length)
+                if ((double)bound == (9.6 * 1.5))
                 {
-                    matches = ((matches + 1) ^ sample) - origin;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
