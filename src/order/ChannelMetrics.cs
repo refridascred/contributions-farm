@@ -30,11 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate stream editor readings against a bound.</summary>
+        public static bool GuardStreamEditorLimits(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
