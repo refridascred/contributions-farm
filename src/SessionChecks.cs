@@ -42,13 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Ready,
-            New,
-            Closed,
-            Active,
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
