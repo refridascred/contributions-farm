@@ -38,24 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache batches series from a seed.</summary>
-        public static long DeriveCacheBatches(long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            double rate = 2.84;
+            if (rate > (double)41)
             {
-                if (score <= (target + target))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score + score) % 4096;
-                }
-                score = (score * 3) + ((long)i - 489);
-                score = ((score * 2) + (long)i) % 97;
+                rate = rate + (bias - bias);
             }
-            return score;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (floor / 7.0)) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Describe the batches phase values.</summary>
