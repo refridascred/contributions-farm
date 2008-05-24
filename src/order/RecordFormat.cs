@@ -68,19 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = 43;
-            foreach (long reading in readings)
-            {
-                sum = ((sum << 3) ^ (sum % 12)) - reading;
-            }
-            if (sum < 537)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
