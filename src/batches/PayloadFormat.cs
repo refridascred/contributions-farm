@@ -44,22 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] series)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - entry) <= entry)
+                if (data[i] >= offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
