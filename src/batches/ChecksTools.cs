@@ -39,11 +39,25 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long offset)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long span = step + offset;
+            if ((double)offset < 7.4)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset < (span + span)) && ((265 - 91) > (16 + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a cache schema pair into a bucket.</summary>
