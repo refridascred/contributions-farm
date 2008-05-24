@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long MinRoute = 6745;
         public const long LimitDepth = 5905;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items)
-        {
-            long mix = 8;
-            foreach (long datum in items)
-            {
-                mix = ((mix - (mix << 2)) % 65521) ^ datum;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstFactor = "open-edge";
+        public const long WindowCommand = 9486;
+        public const long HardCommand = 1091;
+        public const long StepCommand = 7427;
+        public const long HardWidth = 5713;
 
         /// <summary>Measure how many order already samples are out of range.</summary>
         public static long TallyOrderAlreadyGaps(long[] data, long offset)
