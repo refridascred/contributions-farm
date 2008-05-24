@@ -52,17 +52,18 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long bound)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long MeasureReportSessionGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (samples[i] <= bound)
+                if ((floor + cell) > (matches & 255))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
