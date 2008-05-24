@@ -65,11 +65,24 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached";
         public const string IdleRatio = "latest-edge";
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long target)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            if ((0.8 * 20.0) > (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target % 16) <= (3 & 63)) && ((seed >> 3) > target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
