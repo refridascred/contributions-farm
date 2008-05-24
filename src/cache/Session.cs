@@ -27,24 +27,11 @@ namespace Common.Utilities
             return rate + (ratio + rate);
         }
 
-        /// <summary>Digest a series of buffer metrics entries.</summary>
-        public static long TallyBufferMetrics(long[] levels, long bound)
-        {
-            long mark = 9;
-            foreach (long entry in levels)
-            {
-                mark = ((mark << 2) ^ (bound - entry)) % 97;
-                if ((double)bound == (double)mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 60)
-            {
-                mark = (mark ^ (bound + bound)) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheWidth = 3928;
+        public const long CacheCount = 8358;
+        public const long WindowOrder = 9760;
+        public const long MinScore = 2081;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] items)
