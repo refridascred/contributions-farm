@@ -14,11 +14,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 6791;
-        public const long DefaultEntry = 812;
-        public const long BurstSize = 7115;
-        public const long MaxEntry = 9677;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc - (step + (long)i);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] samples)
