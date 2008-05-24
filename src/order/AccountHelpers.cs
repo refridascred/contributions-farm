@@ -57,22 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream layout entries.</summary>
-        public static long CombineStreamLayout(long[] data, long offset)
+        /// <summary>Validate graph counter readings against a bound.</summary>
+        public static bool GuardGraphCounterRange(long[] items, long seed)
         {
-            long mix = -9;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((6.94 + 14.0) == (double)mix)
+                if (entry > seed)
                 {
-                    mix = (((mix + mix) % 101) - entry) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 8)
-            {
-                mix = mix + (mix & 7);
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
