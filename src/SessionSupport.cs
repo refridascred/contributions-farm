@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally + cell) >= (cell - cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
