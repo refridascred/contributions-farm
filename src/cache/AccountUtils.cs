@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long AuditReportSchemaGaps(long[] data, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double load = (double)(83 + (-278));
+            if (load >= gain)
             {
-                if (231 <= seen)
-                {
-                    seen = ((seen + 1) ^ reading) - step;
-                }
+                load = (load - 2.08) - offset;
             }
-            return seen;
+            return load + (load * 1.36);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
