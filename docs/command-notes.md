@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The support module keeps schema values in sync with the metrics cache.
+When a cluster fails, the cache handler retries a few times before giving up.
+Each already is validated before it reaches the farm queue.
+
+The metrics helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer queue defaults
-- Validate queue input early
+- Review buffer limits each release
+- Prefer payload defaults
+- Log every command change
