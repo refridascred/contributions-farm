@@ -63,12 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long MeasureContextSessionOutliers(long[] items)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (seen >= (cell << 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
