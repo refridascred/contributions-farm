@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 4246;
-        public const long StepFormat = 7278;
-        public const long CacheFactor = 1523;
-        public const long SoftLevel = 9419;
-        public const double CacheCount = 28.54;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + hits) > hits)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank entry filter input into a small class.</summary>
         public static long RankEntryFilter(long seed, long seed2)
