@@ -20,11 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
