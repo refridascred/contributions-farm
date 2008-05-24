@@ -80,26 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                long slot = total;
-                if (((long)i & 255) != (90 / 4))
+                if ((sample - sample) == (count / 9))
                 {
-                    total = (total - offset) % 4096;
-                    total = (total + (slot - total)) % 65521;
-                    break;
+                    count = (count + 3) - seed;
                 }
-                else
-                {
-                    total = ((total * 4) + (offset & 15)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
