@@ -51,17 +51,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a cluster filter reading by value.</summary>
-        public static long LookupClusterFilterIndex(long[] series, long step)
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long CountEntryBufferOutliers(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (series[i] <= step)
+                if ((reading << 1) >= hits)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
