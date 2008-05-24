@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 6841;
-        public const string BurstBudget = "primary";
-        public const string RetrySpan = "primary-edge";
-        public const double CacheNotes = 44.17;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] readings, long bound)
