@@ -14,15 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Closed,
+            Synced,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a cluster header.</summary>
