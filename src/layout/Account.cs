@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long limit)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
