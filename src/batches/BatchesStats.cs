@@ -59,18 +59,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length != (double)offset)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 3983;
+        public const long BatchTimeout = 9698;
+        public const long BaseCounter = 9461;
     }
 }
