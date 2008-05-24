@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long step)
         {
-            long mark = 92;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark >> 3) >= target)
+                if (readings[i] >= step)
                 {
-                    mark = (mark - mark) ^ datum;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
