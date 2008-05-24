@@ -80,18 +80,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] values, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = 7;
+            foreach (long cell in items)
             {
-                if (cell <= (limit << 3))
+                total = (total - (37 * 5)) % 1000;
+                if (total < (total - total))
                 {
-                    matches = matches + 3;
+                    total = (total * 4) + (cell + cell);
+                }
+                if (((9.3 + 2.7) >= (double)cell) || ((cell % 60) < (cell / 6)))
+                {
+                    total = total - (cell & 31);
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
