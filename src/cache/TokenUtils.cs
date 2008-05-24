@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 697;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum + value) - limit;
             }
-            return count;
+            if (sum < 9)
+            {
+                sum = ((sum << 3) ^ (3 - sum)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
