@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double span)
-        {
-            double ratio = gain;
-            if (ratio < (double)700)
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - (15.0 - span);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 22.72;
+        public const long DefaultSpan = 8516;
+        public const long IdleRoute = 6424;
+        public const long DefaultRoute = 8213;
+        public const long RetryLevel = 8526;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] levels)
