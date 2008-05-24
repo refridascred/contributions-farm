@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((471 % 24) <= (hits % 12))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 2027;
+        public const double IdleToken = 51.56;
+        public const double MaxInterval = 87.75;
+        public const long WindowToken = 1112;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] levels, long limit)
