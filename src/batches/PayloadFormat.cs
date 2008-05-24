@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
