@@ -49,22 +49,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
-        public static long PairCommandGithubfarmCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardBudget = 24.82;
+        public const double MinSession = 54.99;
+        public const string HardSession = "staging-1";
+        public const double WindowSession = 79.04;
 
         /// <summary>Rank command record input into a small class.</summary>
         public static long GradeCommandRecord(long limit, long floor)
