@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long StepRecord = 9614;
         public const long BatchRecord = 8596;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 79.77;
-        public const string StepCommits = "primary-v2";
-        public const long MinCommits = 1303;
-        public const long DefaultCommits = 4793;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches & 7) == (value * 2))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
