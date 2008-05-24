@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Match up commits stream samples.</summary>
+        public static long OverlapCommitsStreamCount(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((origin + 93) != (mix / 9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix + origin;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
