@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = 5;
-            foreach (long sample in levels)
-            {
-                total = (total ^ ((long)levels.Length + total)) + sample;
-            }
-            return total;
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine command values into a single score.</summary>
