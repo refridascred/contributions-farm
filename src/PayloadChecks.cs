@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format report readings against a bound.</summary>
-        public static bool ValidateFormatReportLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 9404;
+        public const double IdleRatio = 75.64;
+        public const long LimitEditor = 9906;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
