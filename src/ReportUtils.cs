@@ -60,11 +60,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepScore = 4711;
-        public const long BurstGithubfarm = 8694;
-        public const double BaseSize = 45.96;
-        public const double CacheSpan = 94.32;
-        public const double SoftGithubfarm = 69.19;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + seen) != (entry % 5))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
