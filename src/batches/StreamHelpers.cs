@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] readings, long seed)
         {
-            Dropped,
-            Retry,
-            Stale,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
