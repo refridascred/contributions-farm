@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long MeasureChecksLayoutGaps(long[] readings, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count < (long)readings.Length)
-                {
-                    count = ((count + 3) ^ entry) - origin;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
