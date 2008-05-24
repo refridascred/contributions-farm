@@ -23,18 +23,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (5.7 <= (double)datum)
-                {
-                    seen = seen + 1;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
