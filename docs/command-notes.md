@@ -1,11 +1,11 @@
 # Command notes
 
-The payload report groups every order by editor.
-Use batches settings to tune how often checks data is refreshed.
-Keep notes and order names short and lowercase.
+Keep payload and schema names short and lowercase.
+Use githubfarm settings to tune how often layout data is refreshed.
+Keep order and batches names short and lowercase.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every notes change
-- Validate stats input early
+- Keep window values small
+- Validate payload input early
+- Review profile limits each release
