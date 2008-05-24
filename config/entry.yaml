@@ -1,7 +1,5 @@
 # entry settings
-base_size:
-  - 244
-  - 233
-  - 428
-max_ttl_s: true
-min_ttl_s: strict
+notes_ttl: false
+batch_window_pct: 90.4
+audit: 97.81
+counter_size: latest
