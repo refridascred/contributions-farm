@@ -27,14 +27,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long origin)
         {
-            Dropped,
-            Locked,
-            Ready,
-            New,
-            Paused,
+            if ((bound << 2) >= (838 / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.5 / 6.0) >= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
