@@ -1,7 +1,8 @@
-id,level
-1,572
-2,standard
-3,legacy
-4,latest
-5,cached
-6,47.75
+id,token,count,active,level
+1,66.51,edge,green,975
+2,743,910,legacy,1.25
+3,589,standard,895,4
+4,85.56,972,591,open
+5,30.56,30.49,56.9,562
+6,48.69,35.49,919,21
+7,77.24,latest,29.8,56.64
