@@ -43,21 +43,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 98;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc + bound) % 65521) ^ value;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
