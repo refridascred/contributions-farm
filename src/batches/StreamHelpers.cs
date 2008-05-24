@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Ready,
-            Idle,
-            Done,
-            Closed,
-            Draft,
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
