@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long LimitEntry = 4989;
         public const long BatchEntry = 9537;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long carry = 595;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((carry + entry) < carry) || ((carry & 1) > (bound - bound)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (long)values.Length) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (8 + bound)) % 97;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
