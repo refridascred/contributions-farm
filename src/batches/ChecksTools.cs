@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= (seen + step))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4475;
+        public const string MinBudget = "primary-v2";
+        public const long MinInterval = 8984;
 
         /// <summary>Adjust a filter payload reading.</summary>
         public static double ProjectFilterPayload(double rate, double span)
