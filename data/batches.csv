@@ -1,9 +1,8 @@
-id,label,rank
-1,7.39,open
-2,legacy,edge
-3,41,local
-4,latest,576
-5,371,67.34
-6,22.82,staging
-7,local,79
-8,84.02,705
+id,level,count,ratio,weight
+1,98.82,151,296,30.88
+2,latest,772,39.51,527
+3,green,green,289,625
+4,local,97.54,981,87.96
+5,536,450,420,eu-west
+6,607,375,green,68.21
+7,43.64,local,blue,20.07
