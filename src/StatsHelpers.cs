@@ -23,17 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (data[i] >= seed)
+                if ((((14.0 - 4.33) != (double)offset) || ((datum + 571) > (offset * 2))) && ((hits >> 1) >= 2))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
