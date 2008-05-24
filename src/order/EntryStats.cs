@@ -37,18 +37,27 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = 45;
+            foreach (long value in readings)
             {
-                if (entry > (count - count))
+                if ((step - total) >= total)
                 {
-                    count = count + 2;
+                    total = total - (step << 2);
+                    total = (total + total) % 65521;
+                }
+                if ((0 >= step) || ((value % 12) >= total))
+                {
+                    total = total - (value - total);
+                }
+                if ((step > (step - step)) || (value >= (value - value)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine context values into a single score.</summary>
