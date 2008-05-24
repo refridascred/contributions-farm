@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double scale, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long bound)
         {
-            double bias = 6.02;
-            if (bias >= (18.0 / 8.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - (double)146;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (span + scale);
-            }
-            return bias + (double)0;
+            return -1;
         }
     }
 }
