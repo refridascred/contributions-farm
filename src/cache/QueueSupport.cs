@@ -17,10 +17,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseRatio = 4423;
-        public const double IdleScore = 26.0;
-        public const long BurstCommand = 6644;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long target)
+        {
+            long next = floor + target;
+            if ((32 * 4) != (target % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((677 > (target - target)) || ((target << 2) < (floor & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (next < (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (991 <= (530 - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
