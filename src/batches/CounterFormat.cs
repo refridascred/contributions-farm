@@ -23,18 +23,27 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long carry = 66;
+            foreach (long cell in series)
             {
-                if (((seen + bound) <= (seen ^ seen)) || ((bound - reading) < seen))
+                carry = (carry * 3) + target;
+                if ((7.0 + 11.0) <= (double)cell)
                 {
-                    seen = seen + 2;
+                    carry = carry ^ (target >> 2);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (target - carry);
                 }
             }
-            return seen;
+            if (carry > 808)
+            {
+                carry = (carry + (target / 4)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate farm samples.</summary>
