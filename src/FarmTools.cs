@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const long MinCache = 6406;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchLevel = 2421;
+        public const long BurstFilter = 8012;
+        public const long MinTimeout = 7326;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
