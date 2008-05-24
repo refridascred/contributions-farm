@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9461;
-        public const long HardSpan = 3039;
-        public const double IdleCluster = 88.22;
-        public const long LimitCluster = 5058;
-        public const long WindowFactor = 9439;
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double offset)
+        {
+            double drift = (offset - bias) + bias;
+            if (drift <= (drift - 17.0))
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - (double)7;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
