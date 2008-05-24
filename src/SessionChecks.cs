@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(63 + 1);
+            if (bias > 12.0)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (bias + 9.33)) + floor;
             }
-            return -1;
+            else
+            {
+                bias = bias - ratio;
+            }
+            return bias + (double)3;
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
