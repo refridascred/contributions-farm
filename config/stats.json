@@ -1,10 +1,6 @@
 {
-  "flush_size": "fallback",
-  "enabled": false,
-  "idle_interval_pct": {
-    "retry_threshold_s": "eu-west",
-    "already_limit": "strict",
-    "base_ttl": [473, 21],
-    "channel_window": 25
-  }
+  "soft_threshold_count": 1024,
+  "flush_interval_count": false,
+  "batches_depth": [216, 304],
+  "batch_ratio": 98.47
 }
