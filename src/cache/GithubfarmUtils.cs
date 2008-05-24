@@ -24,19 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] levels, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long result = 84;
+            foreach (long reading in items)
             {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result + (9 + (long)items.Length)) + reading;
             }
-            return ok;
+            if (result > 166)
+            {
+                result = (result << 3) ^ (step / 3);
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next commits value.</summary>
