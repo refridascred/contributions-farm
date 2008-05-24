@@ -14,39 +14,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long offset, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long offset2 = offset - seed;
-            if (((offset2 & 3) < seed) && (offset2 < offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - offset) < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((62 - seed) < (offset * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
