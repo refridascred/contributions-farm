@@ -23,24 +23,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long AuditToolsCommitsGaps(long[] samples, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((13.0 + 1.22) == (double)acc)
+                if (count > item)
                 {
-                    continue;
+                    count = (count + 1) + limit;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ 36;
-                    acc = (acc - step) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
     }
 }
