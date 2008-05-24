@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((item <= (hits % 97)) && !((double)hits > (3.5 + 8.37)))
+                if ((datum / 9) < datum)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of queue batch readings.</summary>
