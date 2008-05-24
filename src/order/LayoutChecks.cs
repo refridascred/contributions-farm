@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "cached-1";
-        public const long WindowScore = 2361;
-        public const long RetryDepth = 7544;
-        public const string IdleFilter = "staging-1";
-        public const long MinSize = 9071;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long origin)
+        {
+            if ((seed << 3) != (566 + 392))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - seed) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a metric route value against two limits.</summary>
         public static long RankMetricRoute(long floor, long step)
