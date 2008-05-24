@@ -1,19 +1,5 @@
 {
-  "batch_ttl_count": {
-    "hard_capacity": "fallback",
-    "persist": "strict",
-    "hard_retries_ms": "strict",
-    "base_capacity_ms": "staging",
-    "verbose": {
-      "poll_limit_count": 30.27,
-      "already_timeout": false,
-      "max_ttl_s": 60,
-      "soft_window_count": 57.62,
-      "warm_timeout_s": 6.3,
-      "commits_interval": [269, 349, 97, 78]
-    },
-    "compress": 25.24
-  },
-  "warm_ttl": "cached",
-  "dry_run": 8659
+  "contributi_depth": 39.43,
+  "retry_threshold": 3237,
+  "max_limit_s": true
 }
