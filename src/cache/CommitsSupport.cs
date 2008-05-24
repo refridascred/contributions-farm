@@ -59,11 +59,22 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit profile metric readings against a rule.</summary>
+        public static long TallyProfileMetricOutliers(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches < (43 + origin))
+                {
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
