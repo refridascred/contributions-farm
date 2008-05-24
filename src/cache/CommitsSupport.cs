@@ -65,11 +65,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
