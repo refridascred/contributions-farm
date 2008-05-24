@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BurstBudget = 6814;
         public const long BurstScore = 9689;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            double rate = (6.3 * 4.9) - span;
-            if (rate <= (double)152)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (double)847;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
