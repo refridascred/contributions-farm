@@ -52,12 +52,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long GradeSupportRecord(long limit, long step)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long next = limit - step;
+            if (((next % 12) > 9) || ((limit >> 2) < next))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > 3.5)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((next << 3) == (step << 3)) || (next > step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate queue window readings against a bound.</summary>
