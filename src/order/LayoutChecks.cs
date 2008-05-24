@@ -70,23 +70,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Validate window buffer readings against a bound.</summary>
+        public static bool ValidateWindowBufferRange(long[] items, long seed)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            bool ok = true;
+            foreach (long item in items)
             {
-                weight2 = weight2 - span;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (span / 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - 9.1) - (double)(long)i;
-            }
-            return weight2 - (7.0 * 0.4);
+            return ok;
         }
 
         /// <summary>Project the next buffer value.</summary>
