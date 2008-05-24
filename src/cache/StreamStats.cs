@@ -38,11 +38,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "cached-1";
-        public const double BasePayload = 31.37;
-        public const long HardCount = 5613;
-        public const long IdlePayload = 5123;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] samples, long target)
