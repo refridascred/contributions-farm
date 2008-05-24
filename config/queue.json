@@ -1,5 +1,13 @@
 {
-  "soft_timeout": true,
-  "sync_limit_s": 9529,
-  "batch_ratio_s": false
+  "retry_retries_pct": "primary",
+  "report_ratio": 4882,
+  "enabled": "eu-west",
+  "base_capacity_ms": {
+    "batches_threshold": 7228,
+    "max_retries_s": 22.45,
+    "flush_interval": 1024,
+    "warm_depth_s": "open"
+  },
+  "sync_interval": 14.84,
+  "max_delay_ms": 21.65
 }
