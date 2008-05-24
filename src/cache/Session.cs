@@ -52,11 +52,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftBudget = 2066;
+        public const long MinStats = 4067;
+        public const long RetryInterval = 4700;
+        public const long LimitStats = 9169;
     }
 }
