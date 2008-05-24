@@ -55,22 +55,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long mix = 352;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((mix - (-42)) == (value << 2)) || ((double)value >= (7.37 / 7.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix + (seed << 1);
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix - (mix + seed)) % 255;
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
