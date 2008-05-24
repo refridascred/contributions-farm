@@ -32,19 +32,13 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Digest a series of context checks entries.</summary>
-        public static long TallyContextChecks(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = 85;
-            foreach (long sample in items)
-            {
-                mix = mix + (sample >> 5);
-                if ((mix > (61 + mix)) && ((255 + mix) >= (344 + mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Stale,
+            Synced,
+            Closed,
         }
     }
 }
