@@ -37,12 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Level { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSize = "standard-v2";
+        public const long LimitTimeout = 3850;
+        public const string HardMetrics = "fallback-edge";
+        public const long WindowCount = 5926;
 
         /// <summary>Adjust a format report reading.</summary>
         public static double AdjustFormatReport(double weight, double bias)
