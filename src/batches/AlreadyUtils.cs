@@ -56,11 +56,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long origin)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
