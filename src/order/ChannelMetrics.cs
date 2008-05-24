@@ -36,32 +36,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Count format schema pairs that satisfy a relation.</summary>
+        public static long MatchFormatSchemaCount(long[] values)
         {
-            long next = offset + target;
-            if ((next * 5) != (offset % 8))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset > (2.6 * 6.1)) && ((offset + 954) <= (offset % 97)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 3) > (offset / 7))
+                    if ((values[i] ^ values[j]) < 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
