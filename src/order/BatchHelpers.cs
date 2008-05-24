@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two route measurements.</summary>
