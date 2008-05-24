@@ -29,34 +29,12 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = 7;
-            foreach (long cell in samples)
-            {
-                if (!((limit / 7) == (cell & 255)))
-                {
-                    acc = (acc << 3) ^ (cell >> 4);
-                }
-                if ((double)acc >= (6.1 + 7.5))
-                {
-                    acc = ((acc << 2) ^ (limit / 5)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ 3) % 4096;
-                }
-                if ((9.0 - 4.6) <= (double)limit)
-                {
-                    break;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc + 878) % 97;
-            }
-            return acc;
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
