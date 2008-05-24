@@ -44,17 +44,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command editor entry that matches the target.</summary>
-        public static long LookupCommandEditorIndex(long[] series, long seed)
+        /// <summary>Rank profile graph input into a small class.</summary>
+        public static long GradeProfileGraph(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (7.6 <= (double)offset)
             {
-                if (series[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset & 3) < target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset == (0.78 - 1.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) == (target % 10))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
