@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many checks entry samples are out of range.</summary>
-        public static long AuditChecksEntryGaps(long[] readings)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!(((item + matches) > (item >> 2)) && ((matches << 1) >= item)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine format values into a single score.</summary>
