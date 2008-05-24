@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            New,
-            Pending,
-            Ready,
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine editor githubfarm values into a single score.</summary>
