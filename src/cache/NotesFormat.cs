@@ -20,19 +20,17 @@ namespace Common.Utilities
             return weight2 + (double)8;
         }
 
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long DeriveBatchesOrder(long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] items, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (items[i] >= origin)
                 {
-                    carry = ((carry - (target & 31)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
