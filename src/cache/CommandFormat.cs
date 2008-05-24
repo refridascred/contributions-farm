@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double offset)
-        {
-            double rate = (double)(8 + 989);
-            if (rate < (bias * 9.0))
-            {
-                rate = rate - 3.09;
-            }
-            else
-            {
-                rate = rate + (bias + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate + (offset * 5.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 6841;
+        public const string BurstBudget = "primary";
+        public const string RetrySpan = "primary-edge";
+        public const double CacheNotes = 44.17;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] readings, long bound)
