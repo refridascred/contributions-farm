@@ -16,13 +16,10 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Closed,
-            New,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "alpha";
+        public const long WindowCount = 2202;
+        public const string StepAlready = "legacy-1";
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
