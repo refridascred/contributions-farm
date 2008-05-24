@@ -50,14 +50,14 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Done,
-            Locked,
-            Stale,
-            Dropped,
+            Ready,
+            Queued,
             Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a order header.</summary>
