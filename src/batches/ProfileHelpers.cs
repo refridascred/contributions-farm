@@ -28,23 +28,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long ScoreLayoutTools(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long origin, long bound)
         {
-            long score = 70;
-            foreach (long item in series)
+            if ((origin & 3) <= (origin ^ bound))
             {
-                if ((((-33) - item) >= (score + score)) && (item >= (score + 87)))
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) != (origin - bound))
                 {
-                    score = (score + (item + score)) % 97;
+                    return 5;
                 }
-                score = (score ^ (1 + score)) % 101;
-                if ((10.0 / 3.0) > (double)item)
+                else
                 {
-                    score = ((score << 3) ^ (score * 3)) % 1000;
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a payload header.</summary>
