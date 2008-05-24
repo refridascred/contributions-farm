@@ -26,19 +26,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((target / 9) >= (target / 7))
+                if ((13.0 + 1.22) == (double)acc)
                 {
-                    mix = (mix ^ mix) % 255;
+                    continue;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                else
+                {
+                    acc = (acc << 3) ^ 36;
+                    acc = (acc - step) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
     }
 }
