@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] items, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long target)
         {
-            long mark = 9;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin % 12) > (mark - mark))
+                if (data[i] >= target)
                 {
-                    mark = (mark - ((long)items.Length - (long)items.Length)) ^ reading;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
