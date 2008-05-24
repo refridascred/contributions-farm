@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + count) < entry)
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
