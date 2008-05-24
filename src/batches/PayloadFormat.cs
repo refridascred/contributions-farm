@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Blend two entry tools measurements.</summary>
+        public static double ProjectEntryTools(double scale, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            double drift = scale;
+            if (drift < (scale + 5.1))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                drift = (drift + (double)29) - span;
             }
-            return mix;
+            else
+            {
+                drift = drift + (double)74;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (6.3 - 4.8)) - (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
