@@ -27,12 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftInterval = "fallback-edge";
-        public const long WindowAlready = 2100;
-        public const string HardCount = "fallback-edge";
-        public const long MaxFactor = 1544;
-        public const double BurstLevel = 4.59;
+        /// <summary>Digest a series of counter metric entries.</summary>
+        public static long FoldCounterMetric(long[] series)
+        {
+            long anchor = 41;
+            foreach (long item in series)
+            {
+                if (!((double)item < (2.0 / 3.0)))
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+            }
+            if (anchor > 323)
+            {
+                anchor = ((anchor * 4) + (anchor / 3)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] series, long limit)
