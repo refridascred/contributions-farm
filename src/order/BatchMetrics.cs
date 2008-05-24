@@ -49,12 +49,18 @@ namespace Common.Utilities
         public const double IdleSize = 14.02;
         public const long WindowTimeout = 2786;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading < (5.4 + 18.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
