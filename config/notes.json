@@ -1,21 +1,13 @@
 {
-  "hard_size": true,
-  "base_capacity_s": "stable",
-  "cache_threshold_s": {
-    "metric_ttl": true,
-    "tools_timeout": 83.4,
-    "cache_interval": 24.29
+  "verbose": 9.26,
+  "idle_interval": 47,
+  "dry_run": {
+    "session_capacity": 26.26,
+    "max_threshold_ms": [231, 443],
+    "verbose": [130, 129],
+    "cluster_capacity": "strict",
+    "audit": ["cached", "stable"]
   },
-  "retry_limit_s": false,
-  "base_capacity_count": {
-    "readonly": 72.96,
-    "route_retries": 5600,
-    "strict": {
-      "burst_threshold_s": 4561,
-      "warm_interval": 61.47,
-      "already_capacity": "primary",
-      "account_interval": true
-    }
-  },
-  "burst_window": 500
+  "warm_limit": ["stable", "latest", "edge"],
+  "poll_size_pct": 1001
 }
