@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long MaxFormat = 3019;
         public const long BatchFormat = 3914;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] values)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum <= (datum + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
