@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long step, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            if (!((549 / 8) > bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((12.0 + 5.01) <= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > 9.65)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step % 100) <= (bound + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
