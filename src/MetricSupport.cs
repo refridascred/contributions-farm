@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
