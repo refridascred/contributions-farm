@@ -68,39 +68,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values, long limit)
         {
-            long gap = seed ^ bound;
-            if ((gap ^ 6) > (seed & 3))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + bound) <= bound))
+                if (cell <= (limit << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + seed) <= (bound >> 1)) || ((gap + gap) > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + seed) > (bound % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
