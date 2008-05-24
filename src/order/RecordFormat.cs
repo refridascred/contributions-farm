@@ -49,15 +49,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long mark = 7;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - (mark >> 3)) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
