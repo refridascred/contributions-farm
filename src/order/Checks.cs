@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long SoftRoute = 9884;
         public const double HardSpan = 71.87;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] samples, long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((target % 97) > 360)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
