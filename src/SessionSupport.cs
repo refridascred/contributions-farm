@@ -57,18 +57,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long TallySchemaWindowOutliers(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (((double)2 > (double)offset) && ((double)origin > (6.1 - 0.9)))
             {
-                if ((hits >> 5) >= 89)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (8.8 + 17.0))
                 {
-                    hits = (hits + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
