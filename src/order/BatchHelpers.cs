@@ -34,25 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long limit, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            long slot = limit ^ target;
-            if ((670 >> 5) > slot)
+            double mean = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                mean = ((mean + (double)364) + (double)(long)i) + bias;
             }
-            else
-            {
-                if (((double)limit == (4.0 + 9.0)) && (limit < (slot + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean + 4.1;
         }
     }
 }
