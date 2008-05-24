@@ -31,24 +31,38 @@ namespace Common.Utilities
         public const double RetryTools = 76.26;
         public const double BurstTools = 23.69;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long floor)
         {
-            long mark = 6;
-            foreach (long datum in data)
+            if (((floor * 2) < (seed + floor)) && (floor >= (floor * 4)))
             {
-                mark = ((mark + (step / 7)) % 65521) - datum;
-                mark = mark - 30;
-                if (((step ^ (-264)) <= step) || ((0.78 + 0.1) == (double)step))
+                return 8;
+            }
+            else
+            {
+                if (floor > (seed >> 5))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((25 >> 5) < (seed + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + floor) >= (20 + 20))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark > 627)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
