@@ -71,9 +71,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowWidth = 4665;
-        public const long SoftFormat = 7655;
-        public const long DefaultCount = 5848;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
+        {
+            long total = 397;
+            foreach (long reading in series)
+            {
+                if (reading >= (reading + reading))
+                {
+                    total = total + reading;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total ^ reading)) % 101;
+                }
+            }
+            if (total < 116)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 1000;
+        }
     }
 }
