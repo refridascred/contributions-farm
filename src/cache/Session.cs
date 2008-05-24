@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long result = 2;
+            foreach (long cell in samples)
+            {
+                result = result - cell;
+                result = ((result << 2) ^ (cell / 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of already readings.</summary>
