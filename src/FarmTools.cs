@@ -31,19 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((661 % 12) < (carry << 1)) && ((87 / 7) >= offset))
-                {
-                    carry = ((carry * 5) + (carry + carry)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7604;
+        public const double StepInterval = 55.0;
+        public const double RetryRoute = 76.81;
+        public const long BaseCount = 1461;
     }
 }
