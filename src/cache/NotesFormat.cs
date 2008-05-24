@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxInterval = 1195;
         public const long SoftProfile = 8658;
 
-        /// <summary>Audit schema metrics readings against a rule.</summary>
-        public static long CountSchemaMetricsMatches(long[] series, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long acc = -21;
+            foreach (long reading in data)
             {
-                if ((item & 255) > (count + floor))
+                acc = (acc ^ acc) % 101;
+                if (((2.0 - 3.0) <= 20.0) || ((6 / 9) <= (acc + reading)))
                 {
-                    count = count + 2;
+                    acc = (acc << 3) ^ (reading >> 4);
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
