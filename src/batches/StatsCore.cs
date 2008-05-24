@@ -56,13 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
