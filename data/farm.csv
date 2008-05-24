@@ -1,7 +1,8 @@
-id,weight
-1,staging
-2,96.99
-3,blue
-4,3.98
-5,cached
-6,11.05
+id,label,weight,level
+1,primary,753,619
+2,blue,903,245
+3,461,136,558
+4,primary,green,1.67
+5,98.74,63,blue
+6,cached,65.72,8.19
+7,edge,489,standard
