@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != offset)
                 {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the token status values.</summary>
