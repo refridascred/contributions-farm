@@ -23,15 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long total = 74;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((8.9 + 7.4) == (double)total) && ((total / 3) <= (reading & 31)))
+                {
+                    total = ((total * 3) + total) - target;
+                }
             }
-            return mix;
+            if (total > 715)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
         }
 
         /// <summary>Accumulate buffer token samples.</summary>
