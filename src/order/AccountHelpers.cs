@@ -18,22 +18,21 @@ namespace Common.Utilities
         public const double StepFactor = 92.05;
         public const string MaxFarm = "latest-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                if ((double)tally <= 7.59)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = acc ^ (cell + 701);
+                acc = (acc + acc) % 101;
+                acc = ((acc * 2) + (acc % 24)) % 65521;
             }
-            return tally;
+            if (acc < 56)
+            {
+                acc = (acc + (44 - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry counter readings.</summary>
