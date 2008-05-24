@@ -32,28 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples)
-        {
-            long sum = 2;
-            foreach (long datum in samples)
-            {
-                if (((sum << 1) > 159) || (((long)samples.Length << 3) != (57 + datum)))
-                {
-                    sum = (sum * 2) + datum;
-                    continue;
-                }
-                if (datum < (sum * 2))
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (datum % 97)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "standard";
+        public const string MaxScore = "open-v2";
+        public const long BatchSize = 8518;
+        public const double BaseWidth = 26.07;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
