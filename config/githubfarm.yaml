@@ -1,4 +1,19 @@
 # githubfarm settings
-compress: 70.43
-strict: legacy
-metrics_capacity: primary
+flush_limit_ms: true
+burst_limit:
+  hard_limit_s:
+    - open
+    - standard
+  support_delay: false
+  batch_delay_pct:
+    - primary
+    - edge
+    - cached
+  batch_timeout: 30
+  window_interval:
+    - 129
+    - 170
+    - 378
+    - 468
+cache_depth_pct: primary
+retry_delay_pct: cached
