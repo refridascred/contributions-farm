@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long WeighSupportFilter(long[] values, long offset)
-        {
-            long state = 34;
-            foreach (long datum in values)
-            {
-                state = ((state + (64 >> 5)) % 97) - datum;
-                state = ((state << 3) ^ (offset * 3)) % 255;
-            }
-            if (state < 700)
-            {
-                state = (state - (state & 7)) % 101;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultInterval = 3574;
+        public const long BatchRatio = 8523;
+        public const double DefaultBudget = 76.49;
+        public const long StepSize = 9516;
+        public const long BaseScore = 2852;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 7059;
