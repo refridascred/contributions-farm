@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double load = offset;
-            if (load <= load)
-            {
-                load = load - (bias + offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load - bias)) + (double)(long)i;
-            }
-            return load + load;
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
