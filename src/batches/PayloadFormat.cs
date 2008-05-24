@@ -20,31 +20,21 @@ namespace Common.Utilities
         public const long BaseFactor = 5862;
         public const double RetryGraph = 86.43;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long target)
+        /// <summary>Compare every pair of command context readings.</summary>
+        public static long PairCommandContextCount(long[] readings)
         {
-            if ((target % 12) > bound)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound + target) < target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 4) <= (41 - bound))
+                    if ((readings[i] - readings[j]) == 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
