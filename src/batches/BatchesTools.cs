@@ -30,17 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first farm profile entry that matches the target.</summary>
-        public static long LookupFarmProfileIndex(long[] series, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            New,
         }
     }
 }
