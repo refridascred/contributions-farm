@@ -37,11 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardFactor = "strict-edge";
-        public const long IdleInterval = 3935;
-        public const string BurstRatio = "fallback";
-        public const long HardChecks = 4973;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark ^ (seed + (long)i);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long limit, long offset)
