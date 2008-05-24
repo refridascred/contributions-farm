@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long SeekRecordToolsIndex(long[] series, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(747 + 7);
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + floor) + (double)(long)i) - rate;
             }
-            return -1;
+            return weight + (double)6;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
