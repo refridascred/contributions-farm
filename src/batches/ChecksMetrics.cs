@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine record queue values into a single score.</summary>
+        public static long CombineRecordQueue(long[] readings)
         {
-            Active,
-            Queued,
-            Ready,
-            Failed,
+            long mix = 534;
+            foreach (long item in readings)
+            {
+                mix = (mix ^ mix) % 4096;
+                mix = (mix ^ (mix - item)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
