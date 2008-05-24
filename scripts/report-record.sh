@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest; do
+RECORD_LIMIT=383
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in blue stable; do
     log "checking ${item}"
 done
-
-mode="${1:-green}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
