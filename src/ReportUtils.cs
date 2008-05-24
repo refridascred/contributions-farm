@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const double DefaultCount = 35.66;
         public const long SoftRatio = 4674;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)count <= 9.52))
+                {
+                    count = ((count + 2) ^ item) + step;
+                }
+            }
+            return count;
         }
     }
 }
