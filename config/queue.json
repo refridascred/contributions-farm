@@ -1,10 +1,11 @@
 {
-  "audit": 80,
-  "batch_window_s": 1442,
-  "burst_ttl_ms": {
-    "account_retries": 62.5,
-    "audit": [48, 213],
-    "cluster_threshold": 5183
-  },
-  "readonly": "eu-west"
+  "max_interval_count": 6242,
+  "flush_timeout_count": true,
+  "warm_window": 1024,
+  "cache_threshold": {
+    "order_delay": 26,
+    "warm_depth_ms": 2531,
+    "retry_window_s": 9,
+    "base_threshold_s": "latest"
+  }
 }
