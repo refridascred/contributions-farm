@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            long state = 851;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((item + 315) > (state + 702))
+                if ((sample >> 3) >= (matches & 255))
                 {
-                    state = state - (item ^ item);
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
