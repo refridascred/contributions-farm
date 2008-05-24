@@ -66,16 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema graph values into a single score.</summary>
-        public static long TallySchemaGraph(long[] levels)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long anchor = 736;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor * 5) + (sample << 1)) % 4096;
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a tools metric value against two limits.</summary>
