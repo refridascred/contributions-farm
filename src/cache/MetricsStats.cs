@@ -50,14 +50,12 @@ namespace Common.Utilities
         public const string SoftBatches = "primary-1";
         public const long SoftCount = 5388;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Retry,
-            Failed,
-            New,
-            Locked,
-            Ready,
+            Dropped,
+            Paused,
+            Pending,
         }
     }
 }
