@@ -22,22 +22,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches & 1) > (seed - reading)) || !((long)series.Length <= seed))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 66.69;
+        public const string RetryCluster = "latest-edge";
+        public const double MaxScore = 49.18;
+        public const double StepCluster = 67.93;
     }
 }
