@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the notes state values.</summary>
