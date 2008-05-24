@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long LimitSession = 5962;
         public const long HardDepth = 8860;
 
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long AuditBatchesTokenMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) > (sample % 100))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinInterval = 2974;
+        public const long DefaultBudget = 5179;
+        public const double MinDepth = 61.26;
+        public const long RetryFactor = 6114;
+        public const string MaxContext = "standard-v2";
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
