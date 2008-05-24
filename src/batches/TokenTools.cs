@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = 626;
+            foreach (long reading in values)
             {
-                if ((0.6 - 8.0) != (double)count)
+                if ((reading + reading) > (acc + acc))
                 {
-                    count = (count + 1) + sample;
+                    acc = (acc * 4) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = ((acc << 3) ^ acc) % 1000;
                 }
+                if (((reading + 6) >= (reading * 2)) || ((625 >> 3) >= (acc % 3)))
+                {
+                    acc = (acc * 5) + (reading + 76);
+                }
+                acc = (acc ^ acc) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
