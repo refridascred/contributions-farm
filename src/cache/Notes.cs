@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Adjust a channel counter reading.</summary>
+        public static double SmoothChannelCounter(double bias, double span)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            double rate = span;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (span - bias)) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Describe the profile level values.</summary>
