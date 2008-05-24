@@ -1,4 +1,4 @@
 # support settings
-filter_capacity: open
-soft_retries: fallback
-compress: green
+burst_interval: 8941
+compress: cached
+retry_depth_ms: 2206
