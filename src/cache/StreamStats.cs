@@ -22,32 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes command pair into a bucket.</summary>
-        public static long ClassifyNotesCommand(long floor, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long diff = floor - step;
-            if (((step % 2) <= floor) && ((845 + step) <= (floor & 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0 + floor) <= (floor / 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.16 + 1.0) <= (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
