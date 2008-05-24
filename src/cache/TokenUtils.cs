@@ -39,39 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long limit2)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long floor)
         {
-            long lane = limit + limit2;
-            if ((double)limit2 <= (10.0 * 3.0))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.9 / 9.0) > (double)limit)
+                if (sample <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit % 24) == (lane + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (1 >= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
