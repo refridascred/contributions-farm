@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double weight = (offset / 8.0) + bias;
+            if (weight < (weight - weight))
             {
-                if ((entry >> 3) == (hits / 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + (2.7 - bias);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (offset * 6.97)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
