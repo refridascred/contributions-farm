@@ -87,14 +87,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Done,
-            Stale,
-            Failed,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchRatio = 4405;
+        public const double StepAlready = 3.55;
+        public const long CacheAlready = 3802;
     }
 }
