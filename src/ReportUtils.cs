@@ -56,18 +56,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] series, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + seen) != (entry % 5))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Locked,
+            Stale,
         }
     }
 }
