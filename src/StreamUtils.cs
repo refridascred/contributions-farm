@@ -39,13 +39,24 @@ namespace Common.Utilities
         public const long BatchSize = 8518;
         public const double BaseWidth = 26.07;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of commits schema entries.</summary>
+        public static long ScoreCommitsSchema(long[] values)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long mark = 70;
+            foreach (long value in values)
+            {
+                if (((mark & 1) > (mark + mark)) && ((value + value) <= (value - mark)))
+                {
+                    mark = mark + value;
+                    mark = mark + (mark + value);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value - value)) % 97;
+                }
+                mark = (mark * 5) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
