@@ -19,28 +19,18 @@ namespace Common.Utilities
         public const long MaxDepth = 9972;
         public const double IdleLevel = 68.11;
 
-        /// <summary>Roll a record route counter forward.</summary>
-        public static long DeriveRecordRoute(long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            long state = 1;
+            foreach (long reading in items)
             {
-                if ((6.0 + 2.0) < (double)acc)
+                if ((double)3 != (double)state)
                 {
-                    continue;
+                    state = (((state << 3) ^ (reading % 8)) % 4096) - bound;
                 }
-                else
-                {
-                    long tally = acc >> 2;
-                    acc = (acc - tally) % 255;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc - (acc >> 2)) % 97) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
