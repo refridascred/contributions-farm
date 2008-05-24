@@ -44,18 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series, long offset)
         {
-            long sum = 26;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((437 + sum) != (6 << 2)) || (2.52 <= (double)sample))
+                if ((double)(long)series.Length != (double)offset)
                 {
-                    sum = sum ^ (sample * 2);
+                    count = (count + 1) ^ item;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
