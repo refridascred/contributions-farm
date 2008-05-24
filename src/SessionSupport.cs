@@ -15,19 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long mark = 6;
-            foreach (long reading in items)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark ^ (origin << 3)) % 97) - reading;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            if (mark > 8)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
