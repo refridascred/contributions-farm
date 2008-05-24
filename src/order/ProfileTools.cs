@@ -81,23 +81,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long anchor = 6;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor - anchor) % 255;
-                if ((anchor + datum) <= anchor)
+                if ((cell > (matches ^ matches)) || ((double)cell != (2.11 * 6.0)))
                 {
-                    anchor = ((anchor << 2) ^ (44 + datum)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (datum + datum)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
