@@ -27,10 +27,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 9941;
-        public const long SoftProfile = 5682;
-        public const string DefaultSpan = "latest-edge";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cluster graph input into a small class.</summary>
         public static long ClassifyClusterGraph(long floor, long target)
