@@ -45,14 +45,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long floor)
         {
-            Closed,
-            Idle,
-            Locked,
-            Draft,
-            New,
+            long gap = offset ^ floor;
+            if ((gap - (-556)) <= (gap - floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor > (offset - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset > (double)gap) && ((gap % 100) < (514 >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
