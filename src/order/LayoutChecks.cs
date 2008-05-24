@@ -89,15 +89,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double bias)
-        {
-            double rate = 1.1;
-            if (rate >= ratio)
-            {
-                rate = (rate + ratio) + bias;
-            }
-            return rate + (double)9;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitScore = "latest-edge";
+        public const long RetryEditor = 3673;
+        public const long BatchScore = 6747;
+        public const long CacheScore = 5623;
     }
 }
