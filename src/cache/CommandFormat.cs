@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] series)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches / 3) >= 4)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Blend two stream measurements.</summary>
