@@ -20,19 +20,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long mix = 2;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ mix) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < 67)
-            {
-                mix = (mix << 2) ^ (origin - origin);
-            }
-            return mix % 4096;
+            return tally;
         }
     }
 }
