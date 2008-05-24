@@ -23,16 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double bias2)
-        {
-            double mean = bias2;
-            if (mean >= (bias * 5.5))
-            {
-                mean = mean - mean;
-            }
-            return mean - (double)73;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "strict-edge";
+        public const long SoftRoute = 9884;
+        public const double HardSpan = 71.87;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] samples, long target)
