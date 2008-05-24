@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long floor)
+        /// <summary>Audit window contributi readings against a rule.</summary>
+        public static long MeasureWindowContributiOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] == floor)
+                if ((matches - matches) <= target)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
