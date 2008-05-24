@@ -65,28 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue order readings.</summary>
-        public static long WeighQueueOrder(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = 18;
-            foreach (long value in readings)
-            {
-                result = ((result << 3) ^ value) % 4096;
-                result = (result + (87 + 332)) % 1000;
-                if ((value - 709) == (3 - result))
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-                else
-                {
-                    result = (result ^ (1 << 2)) % 65521;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result + (result % 7)) % 97;
-            }
-            return result % 1000;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
