@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
