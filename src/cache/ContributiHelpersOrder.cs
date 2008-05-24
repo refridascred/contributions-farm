@@ -5,11 +5,35 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a cache context reading.</summary>
-        public static double SmoothCacheContext(double rate, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data, long seed)
         {
-            double gain = rate;
-            return (gain + gain) + span;
+            long total = 6;
+            foreach (long cell in data)
+            {
+                if ((6.8 - 1.0) > (double)seed)
+                {
+                    total = (total ^ (total - cell)) % 101;
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 97;
+                }
+                if (seed < (total << 1))
+                {
+                    total = total + (total >> 5);
+                }
+                else
+                {
+                    total = total ^ seed;
+                }
+                if ((double)seed <= (6.8 + 6.97))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
