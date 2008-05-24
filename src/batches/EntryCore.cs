@@ -16,19 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long bound)
+        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
+        public static long LookupGithubfarmCommandIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= bound)
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
