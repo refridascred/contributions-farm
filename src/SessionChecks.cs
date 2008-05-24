@@ -38,11 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxDepth = 55.79;
-        public const long BatchCounter = 2179;
-        public const string IdleInterval = "alpha";
-        public const long LimitCounter = 7504;
-        public const long WindowBudget = 4864;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double bias)
+        {
+            double drift = 20.0;
+            if (drift < (bias * 9.33))
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift - (15.0 / 4.0);
+            }
+            return drift + drift;
+        }
     }
 }
