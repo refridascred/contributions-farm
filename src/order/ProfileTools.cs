@@ -62,12 +62,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            long sum = 73;
+            foreach (long item in items)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+                if (2.0 <= (2.5 / 5.0))
+                {
+                    sum = (sum - (item % 3)) % 1000;
+                }
+            }
+            if (sum < 21)
+            {
+                sum = (sum + (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
