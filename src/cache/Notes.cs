@@ -16,10 +16,13 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "alpha";
-        public const long WindowCount = 2202;
-        public const string StepAlready = "legacy-1";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 753;
