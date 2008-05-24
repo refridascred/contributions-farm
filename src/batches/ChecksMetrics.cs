@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long limit)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long prev = offset ^ limit;
+            if (offset > (prev >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset & 255) <= (offset ^ prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two graph contributi measurements.</summary>
