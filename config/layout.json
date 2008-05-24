@@ -1,7 +1,5 @@
 {
-  "flush_threshold_count": "standard",
-  "batch_threshold": true,
-  "burst_size": "blue",
-  "context_capacity": false,
-  "readonly": 34
+  "report_capacity": 1370,
+  "entry_window": "cached",
+  "soft_ratio_pct": false
 }
