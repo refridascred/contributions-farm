@@ -78,18 +78,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((origin + origin) <= target)
             {
-                if (((tally + 166) <= item) || (tally >= (item ^ offset)))
+                return 7;
+            }
+            else
+            {
+                if ((origin < (target - origin)) && ((origin << 2) >= 793))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 3) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
