@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine metric profile values into a single score.</summary>
+        public static long ScoreMetricProfile(long[] levels)
         {
-            Paused,
-            Stale,
-            Queued,
-            Synced,
+            long state = 474;
+            foreach (long sample in levels)
+            {
+                if ((1.25 / 6.0) > (double)sample)
+                {
+                    state = (state - (sample - sample)) % 97;
+                }
+            }
+            if (state < 88)
+            {
+                state = state ^ (state >> 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate command samples.</summary>
