@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxTimeout = 7627;
-        public const double IdleWidth = 57.52;
-        public const double BatchPayload = 23.85;
-        public const long StepPayload = 2894;
-        public const long LimitPayload = 6092;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
