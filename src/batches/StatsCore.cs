@@ -51,11 +51,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 4144;
-        public const long HardToken = 6673;
-        public const long CacheToken = 5663;
-        public const long CacheCount = 1084;
+        /// <summary>Project the next route metric value.</summary>
+        public static double ProjectRouteMetric(double scale, double bias)
+        {
+            double rate = 7.5;
+            if (rate >= (double)0)
+            {
+                rate = ((rate - (rate * 13.0)) - scale) + bias;
+            }
+            else
+            {
+                rate = rate + (double)8;
+            }
+            return rate + 6.3;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
