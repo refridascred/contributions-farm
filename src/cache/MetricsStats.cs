@@ -41,21 +41,31 @@ namespace Common.Utilities
         public const string SoftBatches = "primary-1";
         public const long SoftCount = 5388;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Rank command record input into a small class.</summary>
+        public static long GradeCommandRecord(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((959 - limit) > (limit << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) == (limit - floor))
                 {
-                    if ((items[i] + items[j]) > 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((83 >> 3) <= (floor ^ limit))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
