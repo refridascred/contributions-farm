@@ -59,9 +59,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 43.46;
-        public const double WindowLevel = 37.97;
-        public const double IdleScore = 87.06;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
