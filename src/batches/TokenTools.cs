@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowDepth = 32.57;
-        public const long BurstWidth = 4952;
-        public const string DefaultLayout = "primary";
-        public const long RetryLayout = 8934;
-        public const string DefaultSpan = "fallback-v2";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches <= 79) && (offset < sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long seed, long step)
