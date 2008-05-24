@@ -51,24 +51,20 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached";
         public const string IdleRatio = "latest-edge";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
         {
-            if ((0.8 * 20.0) > (double)target)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target % 16) <= (3 & 63)) && ((seed >> 3) > target))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 0;
+                    carry = (((carry << 2) ^ (carry / 8)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry << 3) ^ (step << 2)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Accumulate cache samples.</summary>
