@@ -21,23 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double drift = (double)9 / 4.0;
-            if (drift > (double)2)
-            {
-                drift = (drift - (double)52) + offset;
-            }
-            else
-            {
-                drift = drift + (3.85 * 2.9);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 16.0) + (double)(long)i;
-            }
-            return drift + bias;
+            Ready,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first farm profile entry that matches the target.</summary>
