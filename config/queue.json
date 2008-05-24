@@ -1,8 +1,29 @@
 {
-  "cache_delay_ms": "stable",
-  "metric_threshold": true,
-  "idle_depth_count": "open",
-  "verbose": "edge",
-  "min_interval_s": 24,
-  "compress": 500
+  "command_threshold": 66.69,
+  "metric_window": {
+    "stream_size": {
+      "hard_ttl": 6131,
+      "dry_run": 54,
+      "compress": "strict",
+      "flush_threshold_pct": 52.84,
+      "hard_delay_count": "blue"
+    },
+    "layout_capacity": "eu-west",
+    "already_depth": {
+      "readonly": 73.82,
+      "default_depth_ms": 2509,
+      "batch_retries_pct": 74
+    },
+    "max_depth": {
+      "stats_size": "eu-west",
+      "record_size": false,
+      "poll_limit_s": false,
+      "idle_ratio": "green",
+      "commits_window": true,
+      "editor_window": false
+    },
+    "schema_window": "green"
+  },
+  "already_size": "primary",
+  "flush_window_count": ["local", "blue"]
 }
