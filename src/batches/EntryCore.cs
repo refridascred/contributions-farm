@@ -52,13 +52,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Compare every pair of tools counter readings.</summary>
+        public static long PairToolsCounterCount(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
