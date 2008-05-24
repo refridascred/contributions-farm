@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long MaxFormat = 3019;
         public const long BatchFormat = 3914;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] values)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum <= (datum + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Ready,
         }
     }
 }
