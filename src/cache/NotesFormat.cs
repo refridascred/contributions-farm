@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
