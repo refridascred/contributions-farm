@@ -50,19 +50,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double weight = offset;
+            if (weight >= gain)
             {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + 10.0;
             }
-            return ok;
+            return weight - gain;
         }
     }
 }
