@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinTimeout = 15.68;
-        public const string BatchCommits = "alpha-v2";
-        public const long HardCommits = 3869;
-        public const long DefaultCommits = 6230;
-        public const long BatchDepth = 1465;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data, long target)
+        {
+            long mark = 73;
+            foreach (long datum in data)
+            {
+                if ((datum - 655) > (target + mark))
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the metric graph entries that pass the check.</summary>
         public static long TallyMetricGraphOutliers(long[] values)
