@@ -23,12 +23,21 @@ namespace Common.Utilities
         public const long BurstSize = 9647;
         public const string BurstSupport = "alpha-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 9.19;
-        public const double CacheOrder = 49.88;
-        public const double MaxOrder = 41.46;
-        public const long SoftOrder = 8436;
-        public const long LimitOrder = 2475;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix * 5) + mix;
+                if (offset >= (896 << 2))
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] items)
