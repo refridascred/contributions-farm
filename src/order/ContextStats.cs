@@ -44,15 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] readings, long seed)
         {
-            double bias2 = (bias + bias) * 15.0;
-            if (bias2 >= (bias2 + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 + (bias2 + bias)) - ratio;
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias;
+            return -1;
         }
     }
 }
