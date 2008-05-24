@@ -75,21 +75,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long MeasureGraphStreamGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > (34 - tally))
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
