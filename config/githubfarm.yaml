@@ -1,4 +1,11 @@
 # githubfarm settings
-verbose: true
-sync_retries_pct: stable
-max_size_ms: 23
+max_interval_ms: 53
+verbose: 5121
+burst_ttl_s: 30
+filter_retries: 73.58
+strict: edge
+burst_depth_pct:
+  session_window: true
+  verbose: 2
+  sync_ttl_s: staging
+  hard_size_pct: local
