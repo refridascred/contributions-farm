@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const long MinCache = 6406;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchLevel = 2421;
-        public const long BurstFilter = 8012;
-        public const long MinTimeout = 7326;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((57 + 9) > seen))
+                {
+                    seen = ((seen + 3) + value) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
