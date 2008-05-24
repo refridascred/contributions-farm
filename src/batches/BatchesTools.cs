@@ -56,19 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix ^ (mix << 2);
+                mix = ((mix * 3) + (4 + origin)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
