@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2182;
-        public const double CacheToken = 71.36;
-        public const double BatchBudget = 27.91;
-        public const long DefaultToken = 5338;
+        /// <summary>Measure how many metrics metric samples are out of range.</summary>
+        public static long MeasureMetricsMetricMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits < ((-1) - 787))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] items, long limit)
