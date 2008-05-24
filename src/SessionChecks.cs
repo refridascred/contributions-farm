@@ -20,24 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the already counter series from a seed.</summary>
-        public static long StepAlreadyCounter(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (235 <= (seen >> 2))
                 {
-                    anchor = anchor ^ (origin - (long)i2);
+                    seen = ((seen + 1) ^ cell) + offset;
                 }
-                if (!(anchor > ((long)i - origin)))
-                {
-                    anchor = ((anchor * 2) + (origin ^ origin)) % 1000;
-                }
-                anchor = ((anchor * 3) + (origin - origin)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
