@@ -1,6 +1,4 @@
 # githubfarm settings
-dry_run: true
-batch_window_pct: true
-flush_capacity: 55
-base_threshold_pct: true
-farm_retries: 100
+dry_run: 11.32
+max_capacity_pct: false
+checks_depth: 3571
