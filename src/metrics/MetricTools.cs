@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already metric reading.</summary>
-        public static double ProjectAlreadyMetric(double gain, double floor)
-        {
-            double ratio = floor - (floor + floor);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)(long)i) - gain;
-            }
-            return ratio - (double)180;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 35.48;
+        public const double DefaultMetrics = 27.61;
+        public const long BatchMetrics = 9336;
+        public const string HardMetrics = "alpha-edge";
+        public const long StepMetrics = 1223;
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
         public static long LocateSessionFilterIndex(long[] readings, long floor)
