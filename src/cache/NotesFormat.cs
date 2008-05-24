@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits + 290) != (3 >> 2))
-                {
-                    hits = ((hits + 3) ^ item) + seed;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
