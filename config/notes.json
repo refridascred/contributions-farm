@@ -1,7 +1,8 @@
 {
-  "metric_limit": false,
-  "default_ttl_s": 32,
-  "report_delay": "fallback",
-  "max_size_pct": "local",
-  "account_delay": "open"
+  "poll_depth": "stable",
+  "counter_ttl": [256, 14, 76],
+  "audit": false,
+  "min_delay_ms": "latest",
+  "persist": 30,
+  "enabled": 19.96
 }
