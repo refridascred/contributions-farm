@@ -55,12 +55,17 @@ namespace Common.Utilities
         public const string SoftBatches = "primary-1";
         public const long SoftCount = 5388;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long origin)
         {
-            Dropped,
-            Paused,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
