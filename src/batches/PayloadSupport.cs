@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long target)
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long DigestMetricsCache(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 266;
+            foreach (long reading in values)
             {
-                if (levels[i] < target)
+                if (!((2.1 - 5.3) > (double)reading))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ 9) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
