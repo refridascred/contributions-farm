@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] values, long target)
+        /// <summary>Compare every pair of metrics stream readings.</summary>
+        public static long PairMetricsStreamCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
