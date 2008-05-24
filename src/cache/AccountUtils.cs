@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 602;
+        public const string StepScore = "primary-1";
+        public const double DefaultDepth = 23.49;
+        public const long BurstTimeout = 2628;
+        public const long RetryCommits = 9892;
     }
 }
