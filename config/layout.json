@@ -1,5 +1,7 @@
 {
-  "order_limit": true,
-  "soft_depth_s": 89,
-  "compress": false
+  "flush_threshold_count": "standard",
+  "batch_threshold": true,
+  "burst_size": "blue",
+  "context_capacity": false,
+  "readonly": 34
 }
