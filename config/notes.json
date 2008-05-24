@@ -1,21 +1,6 @@
 {
-  "cache_ttl_count": ["edge", "primary"],
-  "default_window_count": {
-    "counter_size": 44.14,
-    "retry_limit_pct": true,
-    "warm_timeout_pct": false
-  },
-  "base_ratio_ms": "eu-west",
-  "batch_timeout": {
-    "min_timeout_s": "eu-west",
-    "compress": ["staging", "green", "edge"],
-    "cache_ttl": {
-      "farm_capacity": 71,
-      "default_retries_count": 3.87,
-      "warm_ratio_ms": true,
-      "cache_window_count": 49.85
-    },
-    "batch_threshold_pct": 86.88
-  },
-  "persist": 6590
+  "notes_ttl": 4.85,
+  "enabled": [219, 122, 272, 332],
+  "min_window_count": 1783,
+  "default_ttl_s": "stable"
 }
