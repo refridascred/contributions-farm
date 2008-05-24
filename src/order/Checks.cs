@@ -63,24 +63,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long limit)
-        {
-            if (18.0 <= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (5.5 + 6.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 4641;
+        public const string MinDepth = "open-edge";
+        public const long RetryInterval = 2998;
+        public const long StepReport = 2823;
+        public const string BaseReport = "stable-v2";
     }
 }
