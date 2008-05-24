@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long LimitSession = 5962;
         public const long HardDepth = 8860;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long floor)
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long AuditBatchesTokenMatches(long[] series)
         {
-            long state = 4;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                state = (state - (datum + floor)) % 1000;
-                if ((datum + 3) != (state + 6))
+                if ((sample + sample) > (sample % 100))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (state < 8)
-            {
-                state = ((state << 2) ^ (39 ^ floor)) % 1000;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
