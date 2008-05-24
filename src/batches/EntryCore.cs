@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] series)
         {
-            long acc = -3;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = (((acc * 3) + ((-31) * 2)) % 4096) ^ sample;
+                if (count <= (706 - 63))
+                {
+                    count = (count + 2) - datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first githubfarm command entry that matches the target.</summary>
