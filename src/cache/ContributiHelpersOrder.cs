@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] readings, long limit)
         {
-            double bias = (double)78 - (double)7;
-            if (bias > ratio)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                bias = bias + span;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (span / 3.0);
+            return stale;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
