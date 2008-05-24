@@ -1,11 +1,4 @@
 # githubfarm settings
-enabled:
-  flush_timeout: edge
-  idle_threshold: primary
-  already_limit: 28.39
-  warm_ttl: staging
-base_delay_pct:
-  - cached
-  - primary
-poll_size: 89.57
-min_capacity: 27
+compress: 70.43
+strict: legacy
+metrics_capacity: primary
