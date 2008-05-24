@@ -14,27 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long sum = 24;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum - ((long)i & 3)) % 1000;
-                    sum = ((sum * 2) + (sum + (long)i)) % 65521;
-                }
-                if ((0.83 - 8.0) == (double)item)
-                {
-                    sum = (sum - (item + sum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum + item);
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
