@@ -64,21 +64,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result - (result + step)) % 65521;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
