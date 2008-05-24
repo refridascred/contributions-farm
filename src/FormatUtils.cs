@@ -39,11 +39,26 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 4040;
-        public const string BaseReport = "strict-v2";
-        public const long LimitReport = 1716;
-        public const long CacheScore = 5085;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix + offset) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix << 2) ^ 96) % 101) ^ (long)i2;
+                    mix = (mix << 3) ^ (77 << 2);
+                }
+                if (!(41 < (4 ^ mix)))
+                {
+                    mix = mix + mix;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
