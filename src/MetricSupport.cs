@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const long MaxToken = 3464;
         public const double DefaultFactor = 79.16;
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
