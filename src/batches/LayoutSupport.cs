@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Derive the next batch format value from a seed.</summary>
+        public static long IterateBatchFormat(long offset)
         {
-            if (92 < seed)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                score = ((score << 2) ^ (offset >> 1)) % 65521;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((2.3 + 9.3) < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step / 6) > seed) || ((double)seed != (8.0 * 5.59)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
