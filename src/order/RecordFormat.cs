@@ -45,10 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchTimeout = "strict-v2";
-        public const long HardStream = 6429;
-        public const double BaseStream = 78.33;
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long TallyFormatToolsOutliers(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample & 3) > (seed + sample)) && (1.5 <= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseScore = 17.01;
