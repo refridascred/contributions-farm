@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph contributi measurements.</summary>
-        public static double AdjustGraphContributi(double gain, double floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double load = (double)(7 - 746);
-            if (load >= (double)788)
-            {
-                load = (load - gain) + floor;
-            }
-            return load - gain;
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
