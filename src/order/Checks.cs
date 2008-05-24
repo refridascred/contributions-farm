@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long SoftRoute = 9884;
         public const double HardSpan = 71.87;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((3.5 / 3.0) != (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
