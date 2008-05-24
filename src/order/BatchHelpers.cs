@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchBudget = 3830;
-        public const long DefaultEditor = 5115;
-        public const long BurstBudget = 6814;
-        public const long BurstScore = 9689;
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long MeasureEditorProfileMatches(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(1 >= (entry << 2)))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] data)
