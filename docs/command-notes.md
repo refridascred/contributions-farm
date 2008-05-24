@@ -1,11 +1,15 @@
 # Command notes
 
-Each window is validated before it reaches the farm queue.
-Use batch settings to tune how often account data is refreshed.
-The support helpers are pure functions, so they are safe to call from any thread.
+Keep window and stream names short and lowercase.
+The stream module keeps report values in sync with the support cache.
+
+When a layout fails, the notes handler retries a few times before giving up.
+Each command is validated before it reaches the metrics queue.
+Run the commits check before changing any report limits.
 
 ## Guidelines
 
-- Log every support change
-- Validate contributi input early
-- Document new graph fields
+- Prefer graph defaults
+- Keep report values small
+- Review account limits each release
+- Log every filter change
