@@ -1,18 +1,5 @@
 {
-  "idle_timeout_count": {
-    "checks_capacity": ["staging", "standard"],
-    "default_limit": 57,
-    "githubfarm_limit": "primary",
-    "idle_threshold": false,
-    "min_depth_pct": "strict"
-  },
-  "min_size_count": "open",
-  "base_interval": "open",
-  "min_capacity_s": {
-    "base_limit_count": 35.9,
-    "readonly": 39.36,
-    "verbose": "cached",
-    "sync_window": 888
-  },
-  "session_delay": "standard"
+  "soft_timeout": true,
+  "sync_limit_s": 9529,
+  "batch_ratio_s": false
 }
