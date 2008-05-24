@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
-        public static long CompareChannelCommitsCount(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 297;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark % 16) >= mark)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (mark + 71)) + value;
+                }
+                else
+                {
+                    mark = mark ^ (mark % 7);
                 }
             }
-            return count;
+            if (mark < 98)
+            {
+                mark = mark ^ (965 * 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
