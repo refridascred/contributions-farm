@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine metric profile values into a single score.</summary>
-        public static long ScoreMetricProfile(long[] levels)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long state = 474;
-            foreach (long sample in levels)
-            {
-                if ((1.25 / 6.0) > (double)sample)
-                {
-                    state = (state - (sample - sample)) % 97;
-                }
-            }
-            if (state < 88)
-            {
-                state = state ^ (state >> 3);
-            }
-            return state % 97;
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
