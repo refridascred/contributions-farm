@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long acc = -3;
+            foreach (long sample in levels)
+            {
+                acc = (((acc * 3) + ((-31) * 2)) % 4096) ^ sample;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
