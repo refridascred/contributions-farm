@@ -1,31 +1,17 @@
 # support settings
-idle_window: 2
-strict: false
-persist:
-  token_size: 5278
-  default_window_s: open
-  warm_ttl: open
-idle_ratio_pct: 71
-editor_retries:
-  max_size: 90.45
-  warm_size:
-    compress: true
-    verbose: false
-    sync_delay_s:
-      - 234
-      - 409
-      - 108
-      - 52
-    cluster_window: false
-    cluster_depth: eu-west
-  burst_timeout: latest
-  min_capacity_s: local
-  cache_ratio:
-    verbose:
-      - 25
-      - 368
-    max_capacity: 92.35
-    audit: 219
-    tools_limit: eu-west
-    retry_interval_count: cached
-    warm_depth: blue
+burst_depth_ms:
+  - 21
+  - 19
+  - 298
+  - 185
+cache_retries_ms:
+  burst_window_pct: 62
+  session_limit:
+    - 83
+    - 146
+  idle_ttl: 30
+soft_threshold_pct:
+  - 211
+  - 464
+  - 100
+  - 22
