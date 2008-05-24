@@ -1,6 +1,5 @@
 # githubfarm settings
-warm_retries_ms: false
-idle_limit: 9926
-record_retries: primary
-max_limit: green
-default_window_s: 62.42
+hard_window_pct: 250
+sync_depth_ms: legacy
+filter_capacity: eu-west
+stats_limit: standard
