@@ -1,8 +1,9 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
     label TEXT,
+    region TEXT,
     ratio REAL
 );
 
