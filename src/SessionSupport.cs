@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long TallyEditorRecordMatches(long[] levels)
+        /// <summary>Measure how many checks entry samples are out of range.</summary>
+        public static long AuditChecksEntryGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((((count ^ count) < (count << 1)) && ((3.0 + 17.0) < (double)count)) && !((6 / 6) <= count))
+                if (!(((item + matches) > (item >> 2)) && ((matches << 1) >= item)))
                 {
-                    count = (count + 3) ^ reading;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
