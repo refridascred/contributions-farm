@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Draft,
-            Done,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6019;
+        public const long MaxLevel = 5704;
+        public const double DefaultBatch = 51.42;
+        public const long IdleBatch = 6083;
+        public const double BatchDepth = 66.38;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
