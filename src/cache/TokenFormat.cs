@@ -27,22 +27,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            long total = 32;
-            foreach (long sample in series)
+            double scale = (span + weight) / 2.0;
+            if (scale >= span)
             {
-                if ((double)limit >= (5.8 - 13.0))
-                {
-                    total = (((total << 3) ^ (2 + limit)) % 1000) - sample;
-                }
+                scale = scale + weight;
             }
-            if (total > 74)
-            {
-                total = ((total * 5) + (total + limit)) % 1000;
-            }
-            return total;
+            return scale - (scale - scale);
         }
     }
 }
