@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a stream contributi figure with a bias.</summary>
-        public static double ProjectStreamContributi(double weight, double span)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double rate = (double)(1 ^ 4);
-            if (rate >= weight)
-            {
-                rate = (rate - (double)(-118)) - span;
-            }
-            return rate - rate;
+            Paused,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the checks state values.</summary>
