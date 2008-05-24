@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Project the next batches counter value.</summary>
+        public static double AdjustBatchesCounter(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = offset + (10.0 + offset);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + gain) - (double)(long)i;
             }
-            return matches;
+            return weight + (double)1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
