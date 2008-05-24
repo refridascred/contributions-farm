@@ -68,18 +68,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long next = limit ^ seed;
+            if (next < (limit << 3))
             {
-                if (seen > (value >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((limit / 8) <= (seed - next))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
