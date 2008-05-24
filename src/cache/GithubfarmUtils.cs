@@ -24,15 +24,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long limit)
         {
-            long acc = 4;
-            foreach (long entry in data)
+            if ((offset + 39) > (limit * 3))
             {
-                acc = (((acc << 3) ^ (entry >> 1)) % 97) - step;
+                return 8;
             }
-            return acc % 1000;
+            else
+            {
+                if ((limit + offset) < (offset + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit >= (12.0 / 5.0)) || (offset > (offset ^ 71)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit <= (481 - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
