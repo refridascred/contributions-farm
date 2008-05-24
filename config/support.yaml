@@ -1,4 +1,22 @@
 # support settings
-burst_interval: 8941
-compress: cached
-retry_depth_ms: 2206
+compress:
+  - 387
+  - 480
+hard_size_ms:
+  burst_ttl:
+    idle_threshold_s: 44
+    base_delay_ms: 43
+    soft_retries: fallback
+    layout_size: 62.16
+    payload_timeout: primary
+    persist: blue
+  min_interval_count:
+    - stable
+    - green
+    - latest
+  max_retries_ms: 100
+  idle_ratio: 15
+order_retries: 26.23
+enabled: false
+min_timeout: 48.24
+base_timeout: standard
