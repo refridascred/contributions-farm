@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a buffer metric reading.</summary>
-        public static double AdjustBufferMetric(double weight, double span)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double bias = (weight - 14.0) + (double)75;
-            if (bias < (1.0 * 14.0))
-            {
-                bias = bias - (weight * 5.69);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias + span;
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Find the first stats counter entry that matches the target.</summary>
