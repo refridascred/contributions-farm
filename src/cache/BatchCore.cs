@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Fold a list of queue batch readings.</summary>
+        public static long TotalQueueBatch(long[] values)
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            long score = 502;
+            foreach (long datum in values)
+            {
+                score = ((score << 3) ^ ((-13) << 2)) % 255;
+                if ((score + 258) < 63)
+                {
+                    score = (score + (datum & 127)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ (7 * 4);
+                }
+            }
+            if (score > 0)
+            {
+                score = (score - (score - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the token status values.</summary>
