@@ -38,26 +38,11 @@ namespace Common.Utilities
         public const string MinCount = "standard-v2";
         public const string RetryCount = "fallback";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long target)
-        {
-            long offset = seed ^ target;
-            if ((2.61 >= (double)target) || ((offset + seed) > (-835)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target < 132)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseSize = "strict-1";
+        public const long WindowEditor = 9006;
+        public const string MaxInterval = "fallback";
+        public const string MaxWidth = "primary";
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] samples)
