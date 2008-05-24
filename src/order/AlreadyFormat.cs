@@ -37,11 +37,19 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Validate window session readings against a bound.</summary>
+        public static bool CheckWindowSessionBounds(long[] samples, long step)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
