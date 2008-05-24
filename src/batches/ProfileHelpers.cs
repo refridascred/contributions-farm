@@ -57,18 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((((5 * 4) >= (sample + sample)) || ((8 & 15) < (tally - tally))) || ((14.0 + 8.0) == (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the layout editor entries that pass the check.</summary>
