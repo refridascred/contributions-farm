@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format record values into a single score.</summary>
-        public static long TallyFormatRecord(long[] samples, long step)
+        /// <summary>Validate format report readings against a bound.</summary>
+        public static bool ValidateFormatReportLimits(long[] data, long seed)
         {
-            long anchor = 961;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (!((double)anchor < (1.0 * 7.2)))
+                if (reading < seed)
                 {
-                    anchor = anchor ^ step;
-                }
-                if (((106 & 127) <= (entry & 63)) && ((step ^ anchor) > anchor))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Hold a order snapshot.</summary>
