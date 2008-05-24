@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long origin)
         {
-            long score = 834;
-            foreach (long entry in levels)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score + 0) - (long)i;
-                }
-                if (((score + score) < 34) && ((56 * 4) != (entry + score)))
-                {
-                    score = (score + (score / 2)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score % 5)) % 65521;
-                }
+                anchor = anchor + (origin ^ value);
             }
-            return score % 4096;
+            if (anchor < 875)
+            {
+                anchor = ((anchor << 3) ^ (681 + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the already counter series from a seed.</summary>
