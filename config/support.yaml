@@ -1,14 +1,9 @@
 # support settings
-default_threshold_pct:
-  - primary
-  - fallback
-  - strict
-  - cached
-schema_ttl: edge
-report_capacity:
-  - latest
-  - open
-  - stable
-  - edge
-poll_window_count: local
-farm_timeout: false
+route_depth: true
+max_delay_count: legacy
+warm_interval: true
+dry_run: 85.41
+soft_delay_s:
+  - 125
+  - 437
+checks_threshold: 94.08
