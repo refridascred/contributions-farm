@@ -32,21 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = target ^ bound;
+            if (((target * 2) >= diff) || ((9 - bound) > diff))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((diff ^ diff) >= bound)
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
