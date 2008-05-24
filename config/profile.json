@@ -1,5 +1,10 @@
 {
-  "flush_window_count": false,
-  "verbose": "staging",
-  "cache_delay_ms": true
+  "tools_retries": {
+    "default_window": "blue",
+    "max_depth_s": ["green", "legacy", "primary"],
+    "strict": true
+  },
+  "warm_delay": 4453,
+  "tools_delay": "legacy",
+  "soft_ratio_pct": "strict"
 }
