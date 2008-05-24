@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long BaseFactor = 5862;
         public const double RetryGraph = 86.43;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstScore = 98.96;
-        public const string SoftReport = "legacy";
-        public const long StepReport = 5921;
-        public const long RetryReport = 5480;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long target)
