@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long target)
         {
-            long sum = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((entry ^ 97) <= (sum + entry))
+                if (entry != target)
                 {
-                    sum = (sum + (entry & 31)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 97)
-            {
-                sum = (sum - (sum - sum)) % 97;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a layout info.</summary>
