@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double StepSpan = 83.55;
         public const long BurstCommits = 2515;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Draft,
-            Active,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardWidth = "fallback";
+        public const long StepRoute = 3015;
+        public const long SoftInterval = 2502;
+        public const long MaxDepth = 9972;
+        public const double IdleLevel = 68.11;
 
         /// <summary>Roll a record route counter forward.</summary>
         public static long DeriveRecordRoute(long offset)
