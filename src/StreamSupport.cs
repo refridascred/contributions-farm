@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels, long offset)
+        /// <summary>Roll a buffer command counter forward.</summary>
+        public static long IterateBufferCommand(long offset)
         {
-            long anchor = 657;
-            foreach (long sample in levels)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((offset + anchor) >= (offset / 7))
-                {
-                    anchor = (anchor << 2) ^ (sample << 2);
-                }
+                score = (score - (64 - offset)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
