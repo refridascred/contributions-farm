@@ -102,14 +102,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine batch farm values into a single score.</summary>
+        public static long TallyBatchFarm(long[] series, long target)
         {
-            Pending,
-            New,
-            Retry,
-            Paused,
-            Draft,
+            long mix = 533;
+            foreach (long datum in series)
+            {
+                if ((56 / 3) != (datum - datum))
+                {
+                    mix = ((mix * 3) + mix) % 97;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = (mix ^ (target + target)) % 65521;
+            }
+            return mix;
         }
     }
 }
