@@ -1,7 +1,6 @@
 {
-  "default_capacity_ms": 53.77,
-  "max_interval_ms": [157, 72, 327, 302],
-  "idle_limit": "primary",
-  "base_capacity": 8115,
-  "account_depth": true
+  "warm_window_ms": [440, 450],
+  "poll_ratio_ms": 89.36,
+  "metric_depth": 50.71,
+  "flush_window_count": "cached"
 }
