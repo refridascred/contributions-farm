@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long FoldProfileSchema(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] items, long limit)
         {
-            long result = 2;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((result - result) > (long)values.Length)
+                if (((double)28 != (double)seen) && (7.6 < (double)seen))
                 {
-                    result = (result ^ ((-747) >> 1)) % 255;
+                    seen = ((seen + 3) + datum) - limit;
                 }
-                result = result - (cell - cell);
             }
-            if (result < (-52))
-            {
-                result = ((result << 3) ^ (target + result)) % 255;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the support mode values.</summary>
