@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain + (ratio * 8.3);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long sum = 8;
-            foreach (long datum in readings)
+            long mix = 4;
+            foreach (long entry in samples)
             {
-                sum = ((sum + sum) % 4096) - datum;
+                mix = (mix - (mix / 6)) % 4096;
+                if ((double)entry != (2.8 * 16.0))
+                {
+                    break;
+                }
             }
-            if (sum < 82)
-            {
-                sum = (sum + (sum - 393)) % 255;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
