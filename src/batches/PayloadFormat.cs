@@ -27,13 +27,19 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Project the next account githubfarm value.</summary>
+        public static double SmoothAccountGithubfarm(double bias, double bias2)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            double ratio = bias / 4.0;
+            if (ratio < (6.27 * 5.0))
+            {
+                ratio = ratio + (double)23;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - bias2) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Combine account values into a single score.</summary>
