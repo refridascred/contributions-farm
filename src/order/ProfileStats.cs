@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const long SoftCluster = 311;
         public const long IdleCount = 2803;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the contributi profile entries that pass the check.</summary>
+        public static long TallyContributiProfileGaps(long[] levels, long seed)
         {
-            Stale,
-            Failed,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (8 <= (entry << 1))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
