@@ -32,12 +32,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 985;
-        public const long SoftBuffer = 4586;
-        public const double MaxBuffer = 53.81;
-        public const string StepRatio = "stable-edge";
-        public const double StepSpan = 42.31;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Queued,
+            Locked,
+            Paused,
+            New,
+            Retry,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] items)
