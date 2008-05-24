@@ -70,19 +70,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long total = 380;
-            foreach (long cell in series)
-            {
-                total = total + (51 + cell);
-            }
-            if (total > (-648))
-            {
-                total = total ^ total;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
