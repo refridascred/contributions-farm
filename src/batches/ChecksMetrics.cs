@@ -80,22 +80,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 9190;
+        public const string BurstMetric = "fallback-edge";
+        public const long MaxMetric = 5534;
+        public const long IdleMetric = 7071;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double ratio, double offset)
