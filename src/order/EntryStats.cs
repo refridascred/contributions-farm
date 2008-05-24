@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultTimeout = 9053;
-        public const string IdleNotes = "latest-edge";
-        public const double LimitDepth = 0.13;
-        public const double StepFactor = 9.04;
-        public const long DefaultScore = 6389;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Idle,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] values, long step)
