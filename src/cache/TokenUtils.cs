@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long seed2)
         {
-            if (7.0 >= (double)bound)
+            if ((seed2 / 5) >= (seed / 4))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((5.82 - 5.7) > (double)step)
+                if (4 < seed)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)step < (9.7 / 9.0))
+                    if (((seed2 + 223) > 797) && ((seed2 - seed) <= seed2))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        if (seed > (121 << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
