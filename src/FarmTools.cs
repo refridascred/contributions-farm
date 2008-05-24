@@ -30,23 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] levels, long bound)
         {
-            long state = -974;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = (state - (26 + (-645))) % 255;
-                if (!((double)cell > (17.0 / 7.0)))
+                if (!((matches + 2) != (381 + matches)))
                 {
-                    state = (state * 5) + (state & 63);
+                    matches = ((matches + 2) ^ reading) + bound;
                 }
             }
-            if (state < 155)
-            {
-                state = state + state;
-            }
-            return state;
+            return matches;
         }
     }
 }
