@@ -61,18 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mark = (mark - ((long)i >> 3)) % 101;
-                mark = mark ^ (mark * 4);
-                mark = ((mark * 2) + (mark * 3)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((94 % 8) < matches)
+                {
+                    matches = ((matches + 2) + item) - origin;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
