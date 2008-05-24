@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter payload reading.</summary>
-        public static double ScaleFilterPayload(double weight, double bias)
-        {
-            double rate = weight;
-            if (rate < (rate / 4.0))
-            {
-                rate = (rate + (14.0 * 2.4)) + bias;
-            }
-            else
-            {
-                rate = rate + (double)45;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "alpha-v2";
+        public const string MinSize = "standard-1";
+        public const long WindowBatch = 7373;
+        public const long RetryBatch = 5686;
+        public const long IdleBudget = 2894;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesRange(long[] readings, long bound)
