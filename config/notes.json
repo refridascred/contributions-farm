@@ -1,6 +1,5 @@
 {
-  "cache_window_ms": 1024,
-  "record_window": 1935,
-  "default_timeout_ms": 1024,
-  "flush_retries": "stable"
+  "batch_capacity_pct": [477, 437],
+  "hard_timeout_count": true,
+  "dry_run": 6.57
 }
