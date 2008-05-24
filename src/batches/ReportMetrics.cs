@@ -27,9 +27,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 3414;
-        public const long HardSpan = 2009;
-        public const double StepStream = 98.5;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long bound, long floor)
+        {
+            long step = bound - floor;
+            if (!((51 + step) != (step + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (9.9 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
