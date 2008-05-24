@@ -18,23 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((seed <= (tally - sample)) && (((7.85 + 8.1) == (double)sample) && ((tally & 63) > (sample * 2))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 9197;
+        public const double BaseLevel = 36.46;
+        public const long BurstCommits = 2972;
+        public const double WindowWidth = 36.28;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextMatches(long[] samples)
