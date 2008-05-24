@@ -45,13 +45,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Idle,
+            Locked,
+            Draft,
+            New,
         }
     }
 }
