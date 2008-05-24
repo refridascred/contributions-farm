@@ -24,17 +24,13 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
