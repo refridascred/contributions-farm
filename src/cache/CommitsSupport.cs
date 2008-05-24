@@ -65,15 +65,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!((seen + target) >= (seen * 2)) && !((target >> 3) <= target))
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
