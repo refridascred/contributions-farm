@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings)
         {
-            Ready,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 3) == (sample - sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
