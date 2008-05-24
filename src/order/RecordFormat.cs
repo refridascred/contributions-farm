@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long BurstStats = 3827;
         public const double MaxStats = 62.13;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 66.04;
-        public const long BatchDepth = 3302;
-        public const double MinCount = 79.43;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
