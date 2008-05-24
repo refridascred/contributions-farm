@@ -41,15 +41,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] values, long offset)
         {
-            long total = 62;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total ^ 3) % 97) ^ sample;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit entry buffer readings against a rule.</summary>
