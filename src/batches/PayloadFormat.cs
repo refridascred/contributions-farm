@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (scale - scale) + (double)4;
+            return (load - load) + floor;
         }
 
         /// <summary>Adjust a metrics notes reading.</summary>
