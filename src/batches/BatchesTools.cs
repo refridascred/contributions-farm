@@ -23,13 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            Failed,
-            Ready,
-            Paused,
-            Closed,
+            long mark = 621;
+            foreach (long value in values)
+            {
+                mark = mark - (4 - value);
+                if ((mark - mark) != (41 - mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
