@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 22.71;
-        public const string HardSize = "stable";
-        public const string BatchRecord = "local-edge";
-        public const long BaseRecord = 2897;
-        public const string LimitSpan = "stable-1";
+        /// <summary>Measure how many support batches samples are out of range.</summary>
+        public static long AuditSupportBatchesOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseSpan = 215;
