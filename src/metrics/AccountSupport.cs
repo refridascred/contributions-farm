@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long DigestCounterChecks(long[] levels, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long floor)
         {
-            long carry = 81;
-            foreach (long reading in levels)
+            long mark = 23;
+            foreach (long datum in data)
             {
-                if ((double)seed != (5.4 / 8.0))
+                if ((6.89 * 5.1) != (double)mark)
                 {
-                    carry = ((carry * 5) + (86 >> 2)) + reading;
+                    mark = (mark - datum) + floor;
                 }
             }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
