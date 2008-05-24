@@ -1,16 +1,13 @@
 # support settings
-checks_limit:
+dry_run: local
+idle_size_pct: strict
+persist:
+  - primary
+  - edge
+  - primary
   - stable
-  - blue
-idle_window_ms: standard
-counter_interval:
-  - legacy
-  - eu-west
-  - eu-west
-  - legacy
-order_threshold: 90
-session_ratio: fallback
-cache_timeout:
-  - 34
-  - 365
-  - 463
+verbose:
+  - 290
+  - 469
+  - 241
+format_timeout: 8875
