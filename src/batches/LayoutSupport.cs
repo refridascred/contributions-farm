@@ -38,15 +38,21 @@ namespace Common.Utilities
         public const long DefaultAlready = 6395;
         public const long BaseAlready = 9463;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            double scale = offset;
-            if (scale <= (bias / 9.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (scale / 6.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - 5.62;
+            return hits;
         }
 
         /// <summary>Validate cache window readings against a bound.</summary>
