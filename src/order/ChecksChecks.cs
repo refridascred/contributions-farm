@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long MaxFormat = 3019;
         public const long BatchFormat = 3914;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 3) == (sample - sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
