@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool CheckSupportCounterRange(long[] values, long target)
         {
-            long score = 1;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                double rate = (1.4 / 8.0) * 3.18;
-                if ((double)score >= rate)
+                if (datum < target)
                 {
-                    score = score - score;
-                }
-                else
-                {
-                    rate = rate - 8.8;
-                    score = ((score << 2) ^ (datum % 8)) % 1000;
-                }
-                if (score > ((-542) ^ score))
-                {
-                    score = score + (datum & 7);
+                    ok = false;
+                    break;
                 }
             }
-            if (score < (-9))
-            {
-                score = score - (score ^ score);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Check that every record notes entry stays within the limit.</summary>
