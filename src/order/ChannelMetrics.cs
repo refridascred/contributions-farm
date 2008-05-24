@@ -25,18 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long anchor = 192;
-            foreach (long datum in samples)
+            if (limit < (limit ^ 926))
             {
-                if (datum <= anchor)
+                return 8;
+            }
+            else
+            {
+                if ((3 / 9) != (limit / 6))
                 {
-                    anchor = ((anchor - (anchor * 4)) % 4096) + bound;
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= (-39))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit < (8.03 + 1.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
