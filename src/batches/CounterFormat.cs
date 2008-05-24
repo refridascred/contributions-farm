@@ -46,30 +46,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data)
-        {
-            long mix = 3;
-            foreach (long cell in data)
-            {
-                if ((double)(-79) < (7.3 / 6.0))
-                {
-                    break;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix - (mix / 6)) + (long)i;
-                }
-                if (((cell << 2) >= (mix + cell)) && (mix >= (mix >> 5)))
-                {
-                    mix = (mix - (mix / 5)) % 97;
-                }
-                if (!((double)mix <= (2.5 * 12.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "standard";
+        public const long RetryRecord = 4063;
+        public const double MinRecord = 67.33;
+        public const long BaseRecord = 1283;
+        public const long CacheSize = 8491;
     }
 }
