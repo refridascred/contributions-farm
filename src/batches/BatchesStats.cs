@@ -17,22 +17,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the schema farm entries that pass the check.</summary>
-        public static long MeasureSchemaFarmMatches(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long total = 99;
+            foreach (long entry in readings)
             {
-                if (((4 + reading) >= reading) || ((reading ^ reading) == (reading * 2)))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = matches + 2;
+                    total = ((total << 2) ^ (237 >> 4)) - (long)i;
                 }
-                else
+                if (((long)readings.Length - entry) <= (target & 1))
                 {
-                    matches = matches - 1;
+                    total = (total + (target & 7)) % 255;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a farm options.</summary>
