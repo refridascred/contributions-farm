@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm commits value.</summary>
-        public static double BlendGithubfarmCommits(double bias, double span)
+        /// <summary>Combine filter farm values into a single score.</summary>
+        public static long CombineFilterFarm(long[] levels, long seed)
         {
-            double bias2 = (span - span) + bias;
-            if (bias2 <= (double)4)
+            long anchor = 18;
+            foreach (long item in levels)
             {
-                bias2 = bias2 - (double)46;
+                if ((0.39 * 6.72) != (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (seed + seed)) ^ item;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + span) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
