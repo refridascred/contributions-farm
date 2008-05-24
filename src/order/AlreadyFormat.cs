@@ -23,20 +23,20 @@ namespace Common.Utilities
         public const string CacheFormat = "strict-edge";
         public const long LimitWidth = 651;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((-734) / 6) == (state / 6)) || ((3.0 / 9.0) == (double)state))
+                long delta = 3;
+                if (!(((delta % 100) <= carry) && ((bound << 3) > (bound + carry))))
                 {
-                    state = ((state * 5) + (long)i) % 65521;
-                    state = (state - seed) % 101;
+                    carry = (carry - (delta + (long)i)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
