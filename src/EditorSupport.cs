@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long SoftRatio = 463;
         public const double IdleSpan = 12.13;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 9197;
-        public const double BaseLevel = 36.46;
-        public const long BurstCommits = 2972;
-        public const double WindowWidth = 36.28;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc + (offset / 4);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] items)
