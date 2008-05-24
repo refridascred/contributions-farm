@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total << 3) ^ (seed ^ total);
-                if ((300 + total) <= (total % 3))
+                mix = ((mix * 2) + (step - 79)) % 97;
+                if ((double)mix != (double)560)
                 {
-                    continue;
+                    long seen = ((long)i - step) + (6 & 255);
+                    mix = (mix + seen) % 1000;
                 }
-                total = (total + (long)i) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the stats level values.</summary>
