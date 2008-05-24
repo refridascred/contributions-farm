@@ -37,9 +37,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchInterval = "stable-edge";
-        public const double BatchSupport = 7.21;
-        public const long BaseSupport = 7787;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
