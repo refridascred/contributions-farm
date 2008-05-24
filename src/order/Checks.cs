@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + hits) == (hits << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 3445;
+        public const string CacheChecks = "alpha-1";
+        public const long HardCount = 1727;
+        public const long MaxInterval = 7409;
+        public const string HardSpan = "fallback-v2";
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double bias, double bias2)
