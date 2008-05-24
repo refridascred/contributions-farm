@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale2 + (1.0 - offset);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Audit batches graph readings against a rule.</summary>
+        public static long MeasureBatchesGraphGaps(long[] readings)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((long)items.Length <= 8)
+                if (!((hits % 8) >= 267))
                 {
-                    anchor = (anchor - (value * 2)) - origin;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
