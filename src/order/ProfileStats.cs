@@ -23,24 +23,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long total = -6;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum + datum) > 48) && ((8.34 * 2.4) < (double)datum))
+                if (((double)target >= 3.5) && ((total << 3) >= (target - total)))
                 {
-                    total = ((total << 2) ^ (datum + 6)) % 65521;
+                    total = ((total << 2) ^ (target - target)) % 255;
+                    break;
                 }
-                else
-                {
-                    total = (total + (step / 4)) % 4096;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total ^ (total & 1)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
             return total;
         }
