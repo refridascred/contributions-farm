@@ -36,24 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((double)target >= (19.0 + 4.05))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < (target ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
