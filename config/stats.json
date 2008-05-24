@@ -1,6 +1,6 @@
 {
-  "warm_window_ms": [440, 450],
-  "poll_ratio_ms": 89.36,
-  "metric_depth": 50.71,
-  "flush_window_count": "cached"
+  "base_size": 8206,
+  "readonly": [468, 383, 316],
+  "batch_capacity": "fallback",
+  "default_timeout_count": "primary"
 }
