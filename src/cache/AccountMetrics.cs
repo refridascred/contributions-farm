@@ -98,15 +98,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items, long target)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long sample in items)
             {
-                if ((double)matches == (7.87 * 1.7))
+                if ((target % 5) >= matches)
                 {
-                    matches = ((matches + 2) + item) + offset;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
