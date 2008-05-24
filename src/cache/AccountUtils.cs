@@ -22,18 +22,22 @@ namespace Common.Utilities
             return load + (load * 1.36);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items)
         {
-            long mark = 60;
-            foreach (long sample in series)
+            long carry = 5;
+            foreach (long sample in items)
             {
-                if ((1.89 - 6.7) != (double)sample)
+                if ((sample % 16) <= 68)
                 {
-                    mark = (mark + origin) % 1000;
+                    carry = (carry << 3) ^ (sample >> 1);
                 }
             }
-            return mark % 1000;
+            if (carry < 73)
+            {
+                carry = (carry + (carry + carry)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
