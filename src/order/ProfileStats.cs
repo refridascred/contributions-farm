@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double scale, double floor)
-        {
-            double bias = scale * 9.92;
-            if (bias > floor)
-            {
-                bias = bias - (double)95;
-            }
-            else
-            {
-                bias = bias + floor;
-            }
-            return bias + (floor / 7.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 22.71;
+        public const string HardSize = "stable";
+        public const string BatchRecord = "local-edge";
+        public const long BaseRecord = 2897;
+        public const string LimitSpan = "stable-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseSpan = 215;
