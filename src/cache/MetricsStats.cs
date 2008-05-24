@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 9045;
-        public const long SoftEntry = 3037;
-        public const long LimitEntry = 4989;
-        public const long BatchEntry = 9537;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)carry <= 3.2)
+                {
+                    carry = (carry ^ (carry - limit)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] readings, long seed)
