@@ -1,9 +1,6 @@
 {
-  "base_depth": 4,
-  "enabled": "eu-west",
-  "warm_limit_ms": {
-    "flush_retries_s": "open",
-    "commits_depth": "staging",
-    "enabled": ["legacy", "blue"]
-  }
+  "cache_window_ms": 1024,
+  "record_window": 1935,
+  "default_timeout_ms": 1024,
+  "flush_retries": "stable"
 }
