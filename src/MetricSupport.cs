@@ -33,17 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
