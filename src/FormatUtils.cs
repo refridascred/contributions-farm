@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 1592;
-        public const long HardDepth = 5729;
-        public const string RetryBudget = "latest-1";
-        public const string LimitInterval = "fallback";
-        public const string BaseCount = "cached";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Failed,
+            Active,
+            Draft,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseReport = "staging";
