@@ -28,12 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long origin)
         {
-            Failed,
-            Queued,
-            Closed,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
