@@ -1,17 +1,14 @@
 # support settings
-burst_depth_ms:
-  - 21
-  - 19
-  - 298
-  - 185
-cache_retries_ms:
-  burst_window_pct: 62
-  session_limit:
-    - 83
-    - 146
-  idle_ttl: 30
-soft_threshold_pct:
-  - 211
-  - 464
-  - 100
-  - 22
+context_timeout: false
+flush_capacity:
+  filter_ratio: 44
+  editor_size: true
+  idle_limit_ms: primary
+  poll_delay_count: cached
+  retry_ttl_ms:
+    - open
+    - stable
+    - open
+    - stable
+  min_ttl: true
+enabled: true
