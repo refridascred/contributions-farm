@@ -1,7 +1,9 @@
-id,rank,score,count,weight
-1,primary,806,strict,178
-2,64.75,63.46,470,primary
-3,fallback,465,22.88,fallback
-4,184,11.56,163,legacy
-5,93.47,fallback,80.73,standard
-6,426,483,750,open
+id,label,rank,count
+1,staging,982,89.93
+2,51.74,82.95,76.27
+3,357,71.36,open
+4,stable,82.77,477
+5,276,39.89,765
+6,149,769,969
+7,18.55,330,365
+8,fallback,69.71,green
