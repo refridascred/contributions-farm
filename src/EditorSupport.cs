@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series)
-        {
-            long state = 559;
-            foreach (long cell in series)
-            {
-                if (74 < (cell & 3))
-                {
-                    state = ((state * 2) + (state + (long)series.Length)) % 101;
-                    state = (state - cell) % 65521;
-                    continue;
-                }
-                if ((cell << 2) < (state % 97))
-                {
-                    state = (state + (96 >> 1)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCount = 2410;
+        public const long LimitCounter = 5164;
+        public const double CacheSpan = 16.9;
+        public const long BatchSpan = 5393;
+        public const long MinBudget = 6661;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitWidth = 9197;
