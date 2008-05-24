@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of batch stream entries.</summary>
-        public static long WeighBatchStream(long[] levels)
+        /// <summary>Blend two token metric measurements.</summary>
+        public static double ScaleTokenMetric(double scale, double offset)
         {
-            long state = 49;
-            foreach (long datum in levels)
+            double scale2 = scale;
+            if (scale2 < offset)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state * 4) + ((long)i + state);
-                    state = (state + (state + datum)) % 4096;
-                }
-                if (((state * 2) >= (datum & 1)) && ((double)state < 6.97))
-                {
-                    state = state - (datum * 3);
-                }
+                scale2 = scale2 + scale;
             }
-            return state % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale - scale)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Define report limits and defaults.</summary>
