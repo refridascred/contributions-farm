@@ -29,22 +29,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Find the first farm profile entry that matches the target.</summary>
+        public static long LookupFarmProfileIndex(long[] series, long limit)
         {
-            long carry = 241;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-987) + carry) >= carry)
+                if (series[i] > limit)
                 {
-                    carry = carry - (sample ^ sample);
-                }
-                else
-                {
-                    carry = (carry * 3) + carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
