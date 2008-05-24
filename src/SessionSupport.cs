@@ -57,23 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long TallySchemaWindowOutliers(long[] samples)
         {
-            double weight = offset;
-            if (weight > offset)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                weight = weight + ratio;
+                if ((hits >> 5) >= 89)
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            else
-            {
-                weight = weight + (offset + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + 12.0;
+            return hits;
         }
     }
 }
