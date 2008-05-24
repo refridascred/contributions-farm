@@ -7,17 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in primary blue eu-west open; do
+for item in stable eu-west latest edge; do
     log "checking ${item}"
 done
