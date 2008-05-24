@@ -1,6 +1,6 @@
 {
-  "notes_ttl": 4.85,
-  "enabled": [219, 122, 272, 332],
-  "min_window_count": 1783,
-  "default_ttl_s": "stable"
+  "default_delay": 3078,
+  "retry_threshold_ms": 2.07,
+  "githubfarm_window": "edge",
+  "dry_run": 3002
 }
