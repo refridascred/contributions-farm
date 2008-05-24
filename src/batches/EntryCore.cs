@@ -42,24 +42,19 @@ namespace Common.Utilities
         public const long WindowBatch = 9270;
         public const long SoftBatch = 8890;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long mark = 15;
+            foreach (long reading in samples)
             {
-                acc = (acc * 3) + 69;
-                if (54 < (floor ^ floor))
-                {
-                    acc = (acc << 3) ^ ((long)i + acc);
-                }
-                else
-                {
-                    acc = (acc * 4) + floor;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                mark = ((mark * 3) + (mark ^ reading)) % 1000;
             }
-            return acc;
+            if (mark > 947)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 97;
         }
     }
 }
