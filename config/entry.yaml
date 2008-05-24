@@ -1,5 +1,20 @@
 # entry settings
-cache_retries_s: 98
-verbose: local
-retry_threshold: local
-route_ttl: edge
+soft_capacity_s:
+  soft_ratio_pct: legacy
+  format_delay:
+    readonly: edge
+    idle_retries_s: 4669
+    hard_ttl: true
+    warm_limit: staging
+    audit: fallback
+    idle_limit_ms: standard
+  burst_interval_count: 30
+verbose:
+  - strict
+  - standard
+  - standard
+  - stable
+enabled:
+  - eu-west
+  - blue
+  - strict
