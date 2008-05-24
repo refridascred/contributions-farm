@@ -78,24 +78,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            if (8.7 > (double)floor)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.1 + 3.0) < (double)target)
+                long slot = total;
+                if (((long)i & 255) != (90 / 4))
                 {
-                    return 8;
+                    total = (total - offset) % 4096;
+                    total = (total + (slot - total)) % 65521;
+                    break;
                 }
                 else
                 {
-                    return 0;
+                    total = ((total * 4) + (offset & 15)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
