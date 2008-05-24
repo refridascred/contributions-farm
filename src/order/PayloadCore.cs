@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mark = 520;
-            foreach (long entry in samples)
-            {
-                mark = (mark - (entry % 5)) % 101;
-                if ((456 % 3) == (5 - entry))
-                {
-                    mark = (mark - (limit % 2)) % 65521;
-                }
-            }
-            return mark % 97;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
