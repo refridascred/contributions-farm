@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a stream graph figure with a bias.</summary>
-        public static double ScaleStreamGraph(double ratio, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long limit)
         {
-            double drift = ratio / 4.0;
-            return (drift - (double)3) + offset;
+            long anchor = -9;
+            foreach (long value in samples)
+            {
+                if (!((double)limit != (6.0 / 2.0)))
+                {
+                    anchor = anchor + value;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor ^ (limit << 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
