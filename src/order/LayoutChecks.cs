@@ -29,22 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long result = 4;
-            foreach (long entry in items)
-            {
-                if (seed <= (result & 3))
-                {
-                    result = result + entry;
-                }
-            }
-            if (result < 74)
-            {
-                result = (result - seed) % 101;
-            }
-            return result;
+            Idle,
+            Pending,
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a command options.</summary>
