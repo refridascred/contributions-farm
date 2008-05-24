@@ -20,10 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 926;
-        public const string BaseDepth = "cached-v2";
-        public const string IdleContext = "fallback";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 4416;
+        public const long MaxToken = 3464;
+        public const double DefaultFactor = 79.16;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long SortCommits(long origin, long bound)
