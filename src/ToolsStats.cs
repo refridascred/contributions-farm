@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double weight = bias;
+            if (weight >= weight)
+            {
+                weight = (weight + (double)7) - span;
+            }
+            else
+            {
+                weight = weight - (weight / 4.0);
+            }
+            return weight + (double)9;
         }
 
         /// <summary>Hold a notes entry.</summary>
