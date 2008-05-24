@@ -38,11 +38,18 @@ namespace Common.Utilities
             return ratio - (bias2 * 7.8);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "open-edge";
-        public const long MaxLevel = 7056;
-        public const double RetrySize = 29.98;
-        public const long LimitFactor = 2944;
-        public const long MaxScore = 5152;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (9.6 + 7.7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
