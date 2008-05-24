@@ -53,15 +53,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks queue entries.</summary>
-        public static long TotalChecksQueue(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            long result = 707;
-            foreach (long datum in values)
+            long score = -405;
+            foreach (long sample in series)
             {
-                result = ((result << 2) ^ (datum + result)) % 255;
+                if (!(((sample - 14) >= (sample + 4)) && ((sample + 152) > sample)))
+                {
+                    score = ((score * 4) + (213 / 3)) % 1000;
+                }
+                if ((sample & 31) < sample)
+                {
+                    score = ((score * 4) + (sample + sample)) % 1000;
+                }
             }
-            return result % 1000;
+            if (score < (-45))
+            {
+                score = (score + (score + score)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine support values into a single score.</summary>
