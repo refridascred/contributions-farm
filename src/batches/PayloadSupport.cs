@@ -31,18 +31,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit schema profile readings against a rule.</summary>
-        public static long MeasureSchemaProfileHits(long[] items, long seed)
+        /// <summary>Check that every command filter entry stays within the limit.</summary>
+        public static bool GuardCommandFilterLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)value < 8.76)
+                if (cell >= bound)
                 {
-                    hits = (hits + 2) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
