@@ -29,24 +29,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (bound > (bound + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ offset) > (bound + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
