@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
