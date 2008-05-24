@@ -24,13 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
