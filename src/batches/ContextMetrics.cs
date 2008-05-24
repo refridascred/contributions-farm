@@ -12,21 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count batches stream pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesStreamCount(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum ^ (sum << 2)) % 101) - value) + seed;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
