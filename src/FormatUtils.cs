@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            Retry,
-            Paused,
-            Failed,
-            Dropped,
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank session input into a small class.</summary>
