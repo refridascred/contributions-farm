@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] data, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the batch status values.</summary>
