@@ -29,9 +29,13 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 852;
-        public const long MinRatio = 9214;
-        public const long HardSize = 5979;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Draft,
+            Retry,
+            Ready,
+            Failed,
+        }
     }
 }
