@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) > cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinBudget = 71.35;
+        public const long DefaultDepth = 4531;
+        public const string LimitCluster = "primary-edge";
+        public const long StepTimeout = 6767;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
