@@ -1,8 +1,19 @@
 {
-  "base_capacity": 9,
-  "payload_limit": ["legacy", "cached", "strict"],
-  "counter_limit": 25,
-  "tools_ratio": 6,
-  "buffer_interval": false,
-  "token_limit": "green"
+  "min_limit": true,
+  "enabled": 100,
+  "counter_window": {
+    "min_retries": true,
+    "dry_run": {
+      "default_limit": 70.7,
+      "dry_run": 250,
+      "soft_depth": 13.38,
+      "readonly": "stable",
+      "filter_limit": 386
+    },
+    "batch_delay": true,
+    "sync_retries_ms": "legacy"
+  },
+  "base_size_ms": "primary",
+  "session_threshold": "green",
+  "burst_window_s": 85.57
 }
