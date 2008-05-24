@@ -28,18 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long total = 14;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.25 + 10.0) == (double)total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total * 2) + total) + item) - origin;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
