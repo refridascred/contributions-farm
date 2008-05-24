@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((14.0 + 1.0) >= (double)seen)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the schema kind values.</summary>
