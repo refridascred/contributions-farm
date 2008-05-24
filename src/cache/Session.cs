@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a command route figure with a bias.</summary>
-        public static double BlendCommandRoute(double gain, double bias)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double gain2 = (bias - 6.3) + gain;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 - (bias / 3.0);
-            }
-            return gain2 + gain;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
