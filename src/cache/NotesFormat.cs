@@ -29,13 +29,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long offset)
         {
-            Queued,
-            Closed,
-            Paused,
-            Dropped,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
