@@ -32,21 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Iterate the command account series from a seed.</summary>
+        public static long DeriveCommandAccount(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((state + (long)i) > bound) && ((9.3 / 4.0) != (double)state))
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - ((long)i - (long)i)) % 1000;
                 }
+                state = (state * 3) + (state + state);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
