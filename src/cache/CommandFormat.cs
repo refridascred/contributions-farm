@@ -19,18 +19,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many editor cluster samples are out of range.</summary>
-        public static long MeasureEditorClusterGaps(long[] readings)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double rate = (double)(8 + 989);
+            if (rate < (bias * 9.0))
             {
-                if ((double)reading >= (15.0 - 2.56))
-                {
-                    count = count + 3;
-                }
+                rate = rate - 3.09;
             }
-            return count;
+            else
+            {
+                rate = rate + (bias + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (offset * 5.0);
         }
 
         /// <summary>Digest a series of graph token entries.</summary>
