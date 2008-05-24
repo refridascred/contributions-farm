@@ -76,13 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values, long limit)
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((414 * 4) >= (423 + count))
+                {
+                    count = ((count + 2) ^ sample) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
