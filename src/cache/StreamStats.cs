@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] items, long offset)
+        /// <summary>Digest a series of batch stream entries.</summary>
+        public static long WeighBatchStream(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 49;
+            foreach (long datum in levels)
             {
-                if ((234 + tally) < (offset >> 2))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    state = (state * 4) + ((long)i + state);
+                    state = (state + (state + datum)) % 4096;
+                }
+                if (((state * 2) >= (datum & 1)) && ((double)state < 6.97))
+                {
+                    state = state - (datum * 3);
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
