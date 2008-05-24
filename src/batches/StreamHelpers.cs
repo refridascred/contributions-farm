@@ -55,18 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] series, long target)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long sample in series)
             {
-                if ((sample - sample) == (count / 9))
+                if (sample > target)
                 {
-                    count = (count + 3) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the window level values.</summary>
