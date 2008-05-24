@@ -1,5 +1,5 @@
 # entry settings
-contributi_ttl: 60
-flush_delay_count: cached
-poll_size: false
-token_capacity: local
+max_size_count: true
+cluster_ttl: 28
+stats_ratio: staging
+verbose: edge
