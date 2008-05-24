@@ -56,14 +56,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] readings)
         {
-            Stale,
-            Active,
-            Failed,
-            Retry,
-            Draft,
+            long mix = 8;
+            foreach (long entry in readings)
+            {
+                if (entry <= (7 * 3))
+                {
+                    break;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix + entry) ^ (long)i;
+                    mix = mix + (entry >> 4);
+                }
+                if (4.0 >= (double)entry)
+                {
+                    mix = mix ^ (entry - entry);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (entry + mix)) % 97;
+                }
+            }
+            return mix;
         }
     }
 }
