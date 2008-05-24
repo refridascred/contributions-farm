@@ -50,15 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double load = 18.0;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - ratio) + (double)(long)i) + floor;
-            }
-            return load + load;
+            Dropped,
+            New,
+            Idle,
+            Queued,
         }
     }
 }
