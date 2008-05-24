@@ -36,13 +36,17 @@ namespace Common.Utilities
         public const long MaxFactor = 1544;
         public const double BurstLevel = 4.59;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long limit)
         {
-            Done,
-            Draft,
-            Queued,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
