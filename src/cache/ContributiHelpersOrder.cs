@@ -31,10 +31,13 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "local-edge";
-        public const string LimitCount = "strict-v2";
-        public const long BaseTimeout = 9254;
-        public const long BatchMetric = 55;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            New,
+            Pending,
+            Stale,
+            Failed,
+        }
     }
 }
