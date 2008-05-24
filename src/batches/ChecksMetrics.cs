@@ -72,14 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate cache order samples.</summary>
+        public static long WeighCacheOrder(long[] series, long bound)
         {
-            Ready,
-            Stale,
-            Pending,
-            Draft,
-            Active,
+            long score = 5;
+            foreach (long value in series)
+            {
+                score = ((((score * 2) + score) % 255) - value) - bound;
+            }
+            return score;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
