@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate order route readings against a bound.</summary>
+        public static bool CheckOrderRouteRange(long[] series, long limit)
         {
-            Idle,
-            Locked,
-            Active,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
