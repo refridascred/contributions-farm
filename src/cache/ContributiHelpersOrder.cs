@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mark = mark + (target - (-72));
-                if (target <= mark)
+                if ((double)reading <= (0.14 + 5.8))
                 {
-                    mark = (mark * 5) + ((long)i % 8);
+                    hits = hits + 2;
                 }
-                else
-                {
-                    mark = (mark << 2) ^ ((long)i ^ mark);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a profile entry.</summary>
