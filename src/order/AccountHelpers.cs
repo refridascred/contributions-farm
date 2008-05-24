@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 626;
-        public const long LimitGraph = 6982;
-        public const string MaxGraph = "alpha-edge";
-        public const string CacheScore = "staging-1";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] items, long offset)
