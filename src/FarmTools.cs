@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long item in readings)
             {
-                if (!((57 + 9) > seen))
+                if ((((35 - seen) > seen) && ((item >> 5) > (seen ^ item))) && (item >= (item + item)))
                 {
-                    seen = ((seen + 3) + value) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
