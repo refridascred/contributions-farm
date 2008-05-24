@@ -27,15 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            double scale = 8.13;
+            if (scale <= bias)
             {
-                result = ((result * 5) + (long)i) % 97;
+                scale = scale - gain;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (scale * 2.4);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
