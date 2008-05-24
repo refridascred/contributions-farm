@@ -43,18 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count <= (-734))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
