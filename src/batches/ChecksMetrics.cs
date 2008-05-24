@@ -85,23 +85,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values)
         {
-            double rate = (double)550 + 7.74;
-            if (rate <= 8.6)
+            long mix = 574;
+            foreach (long cell in values)
             {
-                rate = rate + bias;
+                if ((44 / 5) == (cell - mix))
+                {
+                    mix = (mix - (cell & 31)) % 4096;
+                }
+                if ((cell << 3) >= (-4))
+                {
+                    mix = (mix + mix) % 4096;
+                }
             }
-            else
+            if (mix < 232)
             {
-                rate = rate - (3.76 / 8.0);
+                mix = (mix - (mix + 21)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (gain - bias)) - (double)(long)i;
-            }
-            return rate + gain;
+            return mix;
         }
     }
 }
