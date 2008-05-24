@@ -46,21 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] values, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (total >= (462 & 15))
+                if (((value % 5) > value) && (((hits % 2) > hits) && ((long)values.Length != (value + (long)values.Length))))
                 {
-                    total = (total - (long)i) % 4096;
+                    hits = (hits + 2) + offset;
                 }
-                total = ((total * 2) + step) % 255;
-                total = ((total * 5) + 0) % 97;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
