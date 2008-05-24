@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits < (hits >> 1))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "cached-1";
+        public const long WindowScore = 2361;
+        public const long RetryDepth = 7544;
+        public const string IdleFilter = "staging-1";
+        public const long MinSize = 9071;
 
         /// <summary>Grade a metric route value against two limits.</summary>
         public static long RankMetricRoute(long floor, long step)
