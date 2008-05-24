@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const long BurstSize = 7115;
         public const long MaxEntry = 9677;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long anchor = 53;
-            foreach (long value in series)
-            {
-                anchor = (anchor - (value & 127)) + seed;
-                if ((double)0 == (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 760)
-            {
-                anchor = (anchor * 5) + ((long)series.Length % 100);
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
