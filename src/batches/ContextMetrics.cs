@@ -54,19 +54,18 @@ namespace Common.Utilities
             return mean - (offset * 0.72);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] values, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (value >= seed)
+                if ((datum >> 3) < (origin >> 4))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
