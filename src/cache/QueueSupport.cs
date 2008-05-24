@@ -14,13 +14,29 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit > 518) || ((long)i > limit))
+                {
+                    total = total - total;
+                }
+                if (((double)limit > 8.26) || ((double)(long)i == (19.0 - 4.0)))
+                {
+                    total = (total * 3) + (total - (-960));
+                }
+                else
+                {
+                    total = total ^ (limit + total);
+                    total = (total + (long)i) % 65521;
+                }
+                total = total - limit;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks info.</summary>
