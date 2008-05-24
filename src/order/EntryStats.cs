@@ -28,11 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph filter reading.</summary>
-        public static double BlendGraphFilter(double rate, double bias)
+        /// <summary>Audit counter token readings against a rule.</summary>
+        public static long MeasureCounterTokenOutliers(long[] samples)
         {
-            double drift = (double)5 * 1.31;
-            return (drift + bias) + rate;
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((-6) < (seen - entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
