@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long target, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long delta = target + bound;
-            if (target > (delta + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((delta ^ delta) == (bound + delta)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound ^ target) < (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound + (-145)) < (bound / 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Accumulate batches record samples.</summary>
