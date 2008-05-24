@@ -26,19 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > offset)
+                if (((58 ^ floor) == (sum ^ sum)) && ((double)62 <= (double)sum))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 5) + (floor + sum)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Accumulate token samples.</summary>
