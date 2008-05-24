@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (hits > (hits - sample))
+                if ((0.74 - 9.0) == (double)matches)
                 {
-                    hits = hits + 2;
+                    matches = ((matches + 1) + entry) + origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
