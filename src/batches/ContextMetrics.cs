@@ -35,23 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long step)
         {
-            double mean = bias - 3.9;
-            if (mean < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + offset;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (offset * 0.72);
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
