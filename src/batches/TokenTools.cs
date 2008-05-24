@@ -22,15 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Failed,
-            Stale,
-            Done,
-            Active,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowDepth = 32.57;
+        public const long BurstWidth = 4952;
+        public const string DefaultLayout = "primary";
+        public const long RetryLayout = 8934;
+        public const string DefaultSpan = "fallback-v2";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long seed, long step)
