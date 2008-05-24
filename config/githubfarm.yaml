@@ -1,17 +1,7 @@
 # githubfarm settings
-command_limit: 60
-stats_window: primary
-retry_interval_count:
-  persist: true
-  session_timeout: 30
-  editor_ratio: 2
-  max_retries: true
-default_interval:
-  flush_retries_pct: false
-  payload_interval: true
-  dry_run:
-    default_size: true
-    poll_interval_pct: standard
-    cache_size: green
-  cache_ratio: 250
-  verbose: 1024
+record_ttl: eu-west
+counter_ratio: 28.57
+batch_window_count: green
+enabled: 39
+burst_retries_ms: cached
+base_ttl_s: 60
