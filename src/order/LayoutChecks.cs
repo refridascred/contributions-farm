@@ -39,23 +39,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long offset)
+        /// <summary>Rank contributi record input into a small class.</summary>
+        public static long GradeContributiRecord(long bound, long seed)
         {
-            long offset2 = floor ^ offset;
-            if (offset2 > offset)
+            if ((9 - seed) <= (bound & 31))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((double)offset == (9.2 + 6.55))
+                if ((bound % 7) < (seed << 1))
                 {
                     return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)bound == (7.3 + 19.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
