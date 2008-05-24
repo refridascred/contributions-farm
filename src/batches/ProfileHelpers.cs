@@ -36,11 +36,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 66.88;
-        public const long BurstDepth = 4979;
-        public const string BatchLevel = "fallback";
-        public const string MaxSpan = "alpha-1";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long origin)
+        {
+            long total = 911;
+            foreach (long entry in levels)
+            {
+                if ((origin + 2) > total)
+                {
+                    total = total ^ (entry * 5);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 8223;
