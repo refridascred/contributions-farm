@@ -34,11 +34,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long limit, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long slot = limit ^ target;
+            if ((670 >> 5) > slot)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)limit == (4.0 + 9.0)) && (limit < (slot + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
