@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            Retry,
-            Stale,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value << 2) >= (tally >> 5))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm class values.</summary>
