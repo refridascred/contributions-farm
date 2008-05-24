@@ -36,18 +36,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            long total = 911;
-            foreach (long entry in levels)
+            double mean = gain;
+            if (mean <= (double)15)
             {
-                if ((origin + 2) > total)
-                {
-                    total = total ^ (entry * 5);
-                }
+                mean = (mean - mean) - span;
             }
-            return total;
+            return mean - (gain / 7.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
