@@ -14,22 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long total = 99;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total << 2) ^ (237 >> 4)) - (long)i;
-                }
-                if (((long)readings.Length - entry) <= (target & 1))
-                {
-                    total = (total + (target & 7)) % 255;
-                }
-            }
-            return total;
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
