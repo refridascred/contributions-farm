@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support counter readings against a bound.</summary>
-        public static bool CheckSupportCounterRange(long[] values, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] levels, long limit)
         {
             bool ok = true;
-            foreach (long datum in values)
+            foreach (long item in levels)
             {
-                if (datum < target)
+                if (item < limit)
                 {
                     ok = false;
                     break;
