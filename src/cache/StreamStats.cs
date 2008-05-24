@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double ProjectPayloadAlready(double bias, double bias2)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            double ratio = (3.0 / 2.0) + (double)345;
-            if (ratio < (double)36)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (14.0 - ratio)) + bias2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio + bias;
+            return seen;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
