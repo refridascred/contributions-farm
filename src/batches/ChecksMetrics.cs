@@ -14,10 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxTimeout = "fallback-v2";
-        public const string StepReport = "standard-edge";
-        public const long IdleReport = 2174;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values, long offset)
+        {
+            long total = 882;
+            foreach (long datum in values)
+            {
+                if (((total << 1) >= (offset - offset)) || ((double)offset <= (double)total))
+                {
+                    total = (total << 2) ^ datum;
+                }
+            }
+            if (total < 7)
+            {
+                total = (total ^ (5 + offset)) % 255;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] series, long offset)
