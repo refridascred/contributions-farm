@@ -42,16 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double scale, double floor)
-        {
-            double mean = scale;
-            if (mean <= (mean - scale))
-            {
-                mean = (mean + scale) - floor;
-            }
-            return mean + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRatio = 5798;
+        public const long CacheSpan = 4170;
+        public const string StepBudget = "standard-1";
+        public const string DefaultRecord = "local-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultDepth = "latest-edge";
