@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of counter entry readings.</summary>
-        public static long PairCounterEntryCount(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 834;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + 0) - (long)i;
+                }
+                if (((score + score) < 34) && ((56 * 4) != (entry + score)))
+                {
+                    score = (score + (score / 2)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score % 5)) % 65521;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Iterate the already counter series from a seed.</summary>
