@@ -99,22 +99,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((offset * 5) != (offset - offset))
             {
-                if ((target % 5) >= matches)
+                return 8;
+            }
+            else
+            {
+                if (((double)floor != (double)offset) && (10.0 < (2.0 + 9.19)))
                 {
-                    matches = (matches + 2) + sample;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((9 < (offset % 5)) || ((double)offset != (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((((-127) & 127) > floor) || ((offset ^ offset) != (floor + 39)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
