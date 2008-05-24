@@ -24,11 +24,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double gain, double floor)
-        {
-            double ratio = floor;
-            return (ratio + floor) + gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3020;
+        public const double StepFactor = 20.21;
+        public const string StepGithubfarm = "stable-edge";
     }
 }
