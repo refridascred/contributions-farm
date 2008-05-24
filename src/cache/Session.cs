@@ -52,17 +52,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 28;
+            foreach (long value in data)
             {
-                if (series[i] == floor)
+                if (anchor < (1 / 3))
                 {
-                    return (long)i;
+                    anchor = anchor - origin;
+                }
+                else
+                {
+                    anchor = (anchor ^ (5 + value)) % 1000;
                 }
             }
-            return -1;
+            if (anchor > 713)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
