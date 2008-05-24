@@ -108,19 +108,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstBudget = 7611;
+        public const double CacheChecks = 46.23;
+        public const double BurstSize = 59.58;
+        public const double LimitChecks = 70.79;
+        public const double LimitFactor = 58.29;
     }
 }
