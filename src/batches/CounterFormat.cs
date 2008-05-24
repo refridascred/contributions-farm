@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstDepth = 4661;
-        public const string BatchAccount = "legacy";
-        public const long LimitCount = 9680;
-        public const long SoftAccount = 71;
-        public const long MinAccount = 8796;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double span)
+        {
+            double mean = scale;
+            return mean + (span + mean);
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordGaps(long[] series, long bound)
