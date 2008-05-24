@@ -49,27 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long state = 8;
-            foreach (long entry in series)
-            {
-                long step2 = (state & 15) & 3;
-                if ((state + step2) == (step & 255))
-                {
-                    step2 = (step2 ^ step) % 97;
-                }
-                if ((step - 21) > state)
-                {
-                    state = state + ((long)series.Length - entry);
-                }
-            }
-            if (state > (-536))
-            {
-                state = ((state * 4) + (state + (-90))) % 1000;
-            }
-            return state % 4096;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
