@@ -39,19 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter stream values into a single score.</summary>
-        public static long DigestCounterStream(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long offset)
         {
-            long carry = -1;
-            foreach (long value in levels)
+            long anchor = 12;
+            foreach (long sample in readings)
             {
-                carry = ((carry ^ (874 / 4)) % 255) + value;
+                anchor = anchor + (offset - sample);
             }
-            if (carry > 5)
+            if (anchor < 929)
             {
-                carry = (carry + carry) % 1000;
+                anchor = (anchor << 3) ^ (anchor / 8);
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the token level values.</summary>
