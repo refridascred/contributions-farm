@@ -1,11 +1,14 @@
 # Command notes
 
-Keep schema and report names short and lowercase.
-Run the githubfarm check before changing any cluster limits.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the metrics queue.
+
+The queue report groups every entry by checks.
+The cache report groups every queue by counter.
+Use support settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Log every editor change
-- Prefer metrics defaults
-- Keep channel values small
-- Document new metric fields
+- Document new githubfarm fields
+- Review record limits each release
+- Log every window change
