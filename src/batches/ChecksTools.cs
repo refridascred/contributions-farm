@@ -20,20 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long result = 187;
-            foreach (long cell in values)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)values.Length >> 4) > (result - result))
-                {
-                    result = (result ^ step) ^ cell;
-                }
-            }
-            if (result > 15)
-            {
-                result = (result + step) % 101;
+                result = (result ^ seed) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
             return result;
         }
