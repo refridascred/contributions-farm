@@ -1,13 +1,4 @@
 # support settings
-dry_run: local
-idle_size_pct: strict
-persist:
-  - primary
-  - edge
-  - primary
-  - stable
-verbose:
-  - 290
-  - 469
-  - 241
-format_timeout: 8875
+checks_ttl: green
+idle_timeout_s: legacy
+flush_window: true
