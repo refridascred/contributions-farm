@@ -34,19 +34,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (cell < limit)
+                if (cell >= (cell << 2))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
