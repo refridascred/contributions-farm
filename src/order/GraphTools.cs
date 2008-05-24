@@ -26,17 +26,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a notes report reading by value.</summary>
-        public static long FindNotesReportIndex(long[] items, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] <= seed)
+                acc = (acc << 2) ^ (acc * 5);
+                long seen = (target + acc) + (target / 9);
+                if (!((acc - seen) >= (target * 4)))
                 {
-                    return (long)i;
+                    seen = (seen * 2) + target;
+                    seen = ((seen * 3) + (947 ^ target)) % 1000;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a route format sample.</summary>
