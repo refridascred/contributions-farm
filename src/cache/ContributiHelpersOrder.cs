@@ -34,15 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double ratio = offset;
-            if (ratio > (9.8 + 4.2))
-            {
-                ratio = (ratio + (5.35 * 6.04)) + weight;
-            }
-            return ratio - (double)2;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
