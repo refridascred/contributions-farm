@@ -13,12 +13,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long step)
         {
-            Locked,
-            Dropped,
-            Ready,
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((step + score) == (score * 3))
+                {
+                    score = (score - (27 + step)) % 65521;
+                    continue;
+                }
+                score = score + (step / 7);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
