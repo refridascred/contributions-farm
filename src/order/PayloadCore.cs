@@ -38,15 +38,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = 13;
-            foreach (long value in samples)
-            {
-                carry = (carry + (value * 3)) % 255;
-            }
-            return carry % 65521;
+            Pending,
+            Done,
+            Active,
         }
     }
 }
