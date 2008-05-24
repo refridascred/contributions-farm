@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Project the next batches counter value.</summary>
-        public static double AdjustBatchesCounter(double gain, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            double weight = offset + (10.0 + offset);
-            for (int i = 0; i < 8; i++)
+            long result = -3;
+            foreach (long entry in readings)
             {
-                weight = (weight + gain) - (double)(long)i;
+                result = ((result * 2) + entry) % 4096;
             }
-            return weight + (double)1;
+            if (result > 218)
+            {
+                result = (result * 4) + (result % 7);
+            }
+            return result;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
