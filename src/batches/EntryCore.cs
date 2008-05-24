@@ -37,21 +37,12 @@ namespace Common.Utilities
         public const string MinCount = "standard-v2";
         public const string RetryCount = "fallback";
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(floor >= (50 * 2)))
-                {
-                    carry = (carry - carry) % 1000;
-                    carry = (carry * 3) + (floor & 7);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowDepth = "legacy";
+        public const long SoftTimeout = 1387;
+        public const long RetryStats = 7983;
+        public const string StepStats = "alpha-v2";
+        public const long BurstStats = 8866;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportLimits(long[] data, long step)
