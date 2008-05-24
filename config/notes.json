@@ -1,8 +1,16 @@
 {
-  "warm_interval_ms": 69,
-  "stats_retries": "cached",
-  "batches_timeout": "standard",
-  "cache_limit": ["green", "open", "legacy"],
-  "base_window": [243, 181],
-  "audit": false
+  "retry_ttl_s": {
+    "layout_limit": false,
+    "cache_threshold_count": {
+      "max_interval_count": "fallback",
+      "hard_delay_s": "cached",
+      "readonly": 500,
+      "route_capacity": 250
+    },
+    "flush_size_pct": ["eu-west", "cached", "staging", "stable"],
+    "min_ttl_ms": 97.72
+  },
+  "sync_retries_count": 250,
+  "persist": "latest",
+  "context_timeout": 5325
 }
