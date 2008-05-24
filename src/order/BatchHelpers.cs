@@ -26,12 +26,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] > origin)
+                if ((data[i] > step) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
