@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a buffer command counter forward.</summary>
-        public static long IterateBufferCommand(long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score - (64 - offset)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
