@@ -37,19 +37,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine context batch values into a single score.</summary>
-        public static long DigestContextBatch(long[] samples, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            long total = 54;
-            foreach (long cell in samples)
-            {
-                total = ((total * 5) + (cell / 8)) % 255;
-                if (offset >= (total ^ cell))
-                {
-                    total = (total + total) % 4096;
-                }
-            }
-            return total % 97;
+            double ratio = floor;
+            return (ratio + floor) + gain;
         }
     }
 }
