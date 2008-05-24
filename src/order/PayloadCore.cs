@@ -37,12 +37,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Pending,
-            Done,
-            Active,
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
