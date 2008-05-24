@@ -62,12 +62,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout window reading by value.</summary>
-        public static long LocateLayoutWindowIndex(long[] samples, long seed)
+        /// <summary>Find the first order buffer entry that matches the target.</summary>
+        public static long LocateOrderBufferIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= seed)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
