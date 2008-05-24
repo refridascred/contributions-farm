@@ -33,21 +33,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long seed)
         {
-            long sum = 9;
-            foreach (long sample in items)
+            long bound = target ^ seed;
+            if ((target >> 4) >= (target << 1))
             {
-                sum = (sum + sum) % 255;
-                if (((3.29 * 8.5) != (double)bound) && ((sum / 6) <= (sample & 7)))
-                {
-                    sum = sum - 221;
-                    sum = ((sum << 3) ^ sample) % 4096;
-                }
-                sum = (sum ^ (sum + sample)) % 65521;
+                return 1;
             }
-            return sum % 65521;
+            else
+            {
+                if ((bound >> 5) != ((-59) * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 2) <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
