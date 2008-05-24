@@ -1,10 +1,7 @@
-id,ratio,rank,label,region
-1,latest,44.66,119,36.59
-2,5,646,59.48,primary
-3,staging,green,84.31,105
-4,655,142,739,716
-5,547,654,97.65,48.93
-6,edge,443,631,open
-7,green,latest,cached,legacy
-8,396,166,17.65,91.05
-9,edge,eu-west,606,1.73
+id,label,score,ratio
+1,15.1,open,legacy
+2,strict,blue,170
+3,582,330,96.95
+4,local,782,edge
+5,strict,317,cached
+6,70.06,612,97.94
