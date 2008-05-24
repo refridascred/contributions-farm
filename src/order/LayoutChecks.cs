@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchScore = 7.04;
-        public const long StepOrder = 184;
-        public const long SoftOrder = 3834;
-        public const long BurstTimeout = 5705;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((tally * 3) < (tally * 2)) && (datum < (datum + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] levels)
