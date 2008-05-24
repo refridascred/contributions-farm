@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinScore = 47.56;
-        public const string MaxRoute = "alpha";
-        public const long RetryRoute = 4948;
-        public const long DefaultRoute = 7954;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Retry,
+            Paused,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long bound, long offset)
