@@ -42,25 +42,17 @@ namespace Common.Utilities
             return ratio - 1.8;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long origin)
         {
-            long slot = step ^ target;
-            if ((target > slot) && ((16.0 - 6.35) < (2.43 + 10.0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((15 < slot) && ((step + step) >= (target - step)))
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
