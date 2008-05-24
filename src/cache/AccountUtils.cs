@@ -34,15 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            long carry = 766;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                carry = (((carry - carry) % 97) - reading) - offset;
+                if (((double)value == (2.9 - 13.0)) && ((8.28 / 8.0) >= (double)value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
