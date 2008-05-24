@@ -13,22 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long anchor = 54;
-            foreach (long reading in levels)
-            {
-                if ((reading + anchor) <= (anchor << 1))
-                {
-                    anchor = (anchor - (reading % 97)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (reading << 2)) % 101;
-                }
-            }
-            return anchor;
+            Pending,
+            Dropped,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
