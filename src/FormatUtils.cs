@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((limit ^ limit) >= matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinScore = 47.56;
+        public const string MaxRoute = "alpha";
+        public const long RetryRoute = 4948;
+        public const long DefaultRoute = 7954;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long bound, long offset)
