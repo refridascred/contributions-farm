@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
