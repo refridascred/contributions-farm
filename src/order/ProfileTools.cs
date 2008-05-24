@@ -36,27 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long origin)
         {
-            long anchor = 76;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (step + step)) % 4096;
-                if ((double)item >= 4.0)
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
-                    anchor = ((anchor << 3) ^ item) % 97;
-                }
-                if (((item - step) <= (step & 1)) || ((double)item > 8.41))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 48)
-            {
-                anchor = (anchor ^ (step >> 1)) % 1000;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
