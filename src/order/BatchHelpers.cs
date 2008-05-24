@@ -15,30 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long TallyCounterFilter(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long origin)
         {
-            long result = 295;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if ((matches + reading) <= 85)
                 {
-                    result = ((result - ((long)i & 127)) % 65521) + reading;
-                }
-                if ((double)result != (2.3 * 5.3))
-                {
-                    result = result + 160;
-                }
-                if ((3.0 / 8.0) == (double)result)
-                {
-                    break;
+                    matches = (matches + 3) - origin;
                 }
             }
-            if (result < 35)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
