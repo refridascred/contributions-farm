@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Ready,
-            New,
-            Pending,
-            Done,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchScore = 7.04;
+        public const long StepOrder = 184;
+        public const long SoftOrder = 3834;
+        public const long BurstTimeout = 5705;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] levels)
