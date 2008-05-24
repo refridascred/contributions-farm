@@ -34,10 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 66.69;
-        public const string RetryCluster = "latest-edge";
-        public const double MaxScore = 49.18;
-        public const double StepCluster = 67.93;
+        /// <summary>Scale a editor checks figure with a bias.</summary>
+        public static double SmoothEditorChecks(double gain, double floor)
+        {
+            double gain2 = 0.13;
+            if (gain2 <= gain2)
+            {
+                gain2 = (gain2 - (double)194) - floor;
+            }
+            return gain2 - gain;
+        }
     }
 }
