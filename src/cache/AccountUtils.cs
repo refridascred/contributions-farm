@@ -34,27 +34,18 @@ namespace Common.Utilities
             return load + (load * 1.36);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series, long origin)
         {
-            long result = 82;
-            foreach (long datum in samples)
+            long mark = 60;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((1.89 - 6.7) != (double)sample)
                 {
-                    result = (result - (result / 4)) + (long)i;
-                }
-                result = ((result << 2) ^ (34 / 5)) % 1000;
-                if ((limit * 5) < datum)
-                {
-                    result = (result ^ (result - limit)) % 65521;
+                    mark = (mark + origin) % 1000;
                 }
             }
-            if (result > 84)
-            {
-                result = result - (0 ^ result);
-            }
-            return result;
+            return mark % 1000;
         }
     }
 }
