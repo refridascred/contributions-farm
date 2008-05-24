@@ -1,9 +1,7 @@
 # githubfarm settings
-default_timeout: primary
-persist: 9332
-hard_delay_ms:
-  - 287
-  - 157
-poll_retries:
-  - fallback
-  - blue
+burst_ttl_s:
+  - 17
+  - 340
+  - 288
+contributi_limit: strict
+burst_ratio: true
