@@ -33,16 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples)
-        {
-            long mark = 667;
-            foreach (long value in samples)
-            {
-                mark = ((mark + (mark * 3)) % 255) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7018;
+        public const string MinRatio = "standard-edge";
+        public const double BurstCount = 60.51;
+        public const long HardTools = 595;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] levels, long target)
