@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long LimitSession = 5962;
         public const long HardDepth = 8860;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinInterval = 2974;
-        public const long DefaultBudget = 5179;
-        public const double MinDepth = 61.26;
-        public const long RetryFactor = 6114;
-        public const string MaxContext = "standard-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxRatio = 1841;
+        public const string IdleSupport = "primary";
+        public const long BatchSupport = 5655;
+        public const string CacheInterval = "standard-edge";
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
