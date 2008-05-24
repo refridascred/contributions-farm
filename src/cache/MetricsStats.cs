@@ -54,22 +54,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long OverlapGraphTokenCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 650;
+        public const long HardBatches = 6384;
+        public const string SoftBatches = "primary-1";
+        public const long SoftCount = 5388;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
