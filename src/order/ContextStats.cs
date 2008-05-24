@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Closed,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 6666;
+        public const long MinInterval = 3770;
+        public const double MaxRoute = 8.43;
+        public const long MinRoute = 6745;
+        public const long LimitDepth = 5905;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long FoldSession(long[] items)
