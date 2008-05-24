@@ -24,12 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long score = 8;
+            foreach (long reading in readings)
+            {
+                score = (((score << 2) ^ (250 % 64)) % 255) ^ reading;
+            }
+            if (score < 248)
+            {
+                score = ((score << 2) ^ (floor + score)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the already phase values.</summary>
