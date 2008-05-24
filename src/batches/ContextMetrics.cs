@@ -68,19 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double span)
-        {
-            double drift = weight;
-            if (drift <= (0.53 - span))
-            {
-                drift = drift + (drift * 3.18);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - weight;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 780;
+        public const long DefaultLevel = 4102;
+        public const long SoftInterval = 3200;
+        public const long MinBuffer = 969;
     }
 }
