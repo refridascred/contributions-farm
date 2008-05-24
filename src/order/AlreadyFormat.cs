@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate order route readings against a bound.</summary>
-        public static bool CheckOrderRouteRange(long[] series, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
