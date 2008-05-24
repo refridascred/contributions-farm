@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowScore = "fallback";
-        public const long SoftFactor = 1899;
-        public const long DefaultAlready = 6395;
-        public const long BaseAlready = 9463;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
