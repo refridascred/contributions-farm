@@ -1,18 +1,12 @@
 {
-  "flush_threshold_pct": 63,
-  "batch_interval": "strict",
-  "metrics_interval": false,
-  "hard_limit_ms": {
-    "counter_size": 6616,
-    "poll_limit_pct": 29,
-    "counter_ratio": {
-      "strict": ["cached", "edge", "local"],
-      "flush_size": false,
-      "filter_window": 79.53,
-      "batch_ratio": false,
-      "readonly": "primary"
-    }
+  "profile_ratio": {
+    "session_ratio": 28.81,
+    "notes_window": 1895,
+    "max_timeout": 30,
+    "commits_timeout": "standard",
+    "flush_timeout_ms": "eu-west",
+    "readonly": 1024
   },
-  "dry_run": 64.3,
-  "profile_threshold": 97.72
+  "verbose": 38,
+  "audit": "primary"
 }
