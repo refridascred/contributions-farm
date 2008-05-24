@@ -42,19 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long mark = 6;
+            foreach (long value in readings)
             {
-                if (entry > origin)
+                mark = (mark * 2) + (value + mark);
+                if ((value > (value ^ mark)) || (13.0 < (double)mark))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (mark < 9)
+            {
+                mark = (mark * 4) + ((long)readings.Length << 2);
+            }
+            return mark;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
