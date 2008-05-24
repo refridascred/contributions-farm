@@ -26,13 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
