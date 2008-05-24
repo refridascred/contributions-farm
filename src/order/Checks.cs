@@ -48,15 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches payload entries.</summary>
-        public static long ScoreBatchesPayload(long[] values, long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (235 / 7)) - entry) + origin;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
