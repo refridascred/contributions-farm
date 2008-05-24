@@ -39,20 +39,11 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
-        public static bool GuardOrderGithubfarmLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4040;
+        public const string BaseReport = "strict-v2";
+        public const long LimitReport = 1716;
+        public const long CacheScore = 5085;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
