@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSpan = 9104;
-        public const long MaxCache = 4662;
-        public const long MinCache = 6816;
-        public const string BurstWidth = "cached-edge";
-        public const long RetryBudget = 6281;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
