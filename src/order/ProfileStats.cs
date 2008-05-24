@@ -23,12 +23,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            Closed,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
