@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=152
+log "limit is ${RECORD_LIMIT}"
+
+for item in latest stable fallback open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
