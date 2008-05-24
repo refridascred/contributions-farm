@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long origin)
         {
-            long next = bound - target;
-            if ((((-135) % 2) != (bound / 4)) || ((next << 2) <= 0))
+            long next = seed + origin;
+            if ((next >> 3) > seed)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (bound <= (next - bound))
+                if ((origin / 4) >= (3 - origin))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (!((double)target != (6.88 * 3.94)))
+                    if (!((6.1 / 8.0) <= (double)next))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if (((bound + next) != (bound >> 5)) || ((double)next <= (4.0 + 3.44)))
+                        if (origin <= (origin << 2))
                         {
-                            return 3;
+                            return 2;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
