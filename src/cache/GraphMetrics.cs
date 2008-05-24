@@ -35,13 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] series, long limit)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((limit ^ limit) < sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
