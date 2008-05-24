@@ -21,19 +21,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long FoldProfileCounter(long[] series)
+        /// <summary>Classify a stats profile pair into a bucket.</summary>
+        public static long RankStatsProfile(long offset, long limit)
         {
-            long anchor = 7;
-            foreach (long cell in series)
+            if (((double)limit <= (double)offset) || ((double)offset > (1.8 + 7.2)))
             {
-                anchor = (anchor ^ cell) % 65521;
+                return 5;
             }
-            if (anchor < (-3))
+            else
             {
-                anchor = ((anchor * 2) + (0 + anchor)) % 97;
+                if ((double)offset < (0.7 + 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((50 < (limit >> 2)) && ((2.17 * 2.28) < (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
