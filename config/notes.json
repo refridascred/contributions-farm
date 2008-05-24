@@ -1,8 +1,5 @@
 {
-  "poll_depth": "stable",
-  "counter_ttl": [256, 14, 76],
-  "audit": false,
-  "min_delay_ms": "latest",
-  "persist": 30,
-  "enabled": 19.96
+  "default_interval_s": 45.24,
+  "base_timeout": "standard",
+  "format_depth": 30
 }
