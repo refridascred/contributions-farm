@@ -44,19 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long limit)
         {
-            double bias = offset;
-            if (bias < (offset * 8.1))
+            bool found = true;
+            foreach (long value in data)
             {
-                bias = (bias - bias) + weight;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 8.9) - (double)(long)i;
-            }
-            return bias - (bias / 7.0);
+            return found;
         }
     }
 }
