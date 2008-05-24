@@ -43,12 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Count the account graph entries that pass the check.</summary>
+        public static long CountAccountGraphOutliers(long[] series)
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits >> 3) > (8 - hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
