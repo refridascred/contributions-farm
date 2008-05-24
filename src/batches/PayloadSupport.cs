@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long bound, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long step = bound ^ target;
-            if ((7.1 / 2.0) == (double)step)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((2.48 / 8.0) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate buffer token samples.</summary>
