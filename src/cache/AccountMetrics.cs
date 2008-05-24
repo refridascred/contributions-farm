@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((datum + hits) > hits)
+                if (value < limit)
                 {
-                    hits = (hits + 1) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
