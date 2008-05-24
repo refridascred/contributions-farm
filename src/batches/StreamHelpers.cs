@@ -91,15 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long score = 9;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                score = ((((score * 4) + (0 * 2)) % 97) + datum) - seed;
+                if ((tally - 32) > cell)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
