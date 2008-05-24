@@ -65,21 +65,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Fold a list of queue order readings.</summary>
+        public static long WeighQueueOrder(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 18;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = ((result << 3) ^ value) % 4096;
+                result = (result + (87 + 332)) % 1000;
+                if ((value - 709) == (3 - result))
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ result) % 97;
+                }
+                else
+                {
+                    result = (result ^ (1 << 2)) % 65521;
                 }
             }
-            return count;
+            if (result < 4)
+            {
+                result = (result + (result % 7)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
