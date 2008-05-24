@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings, long floor)
         {
-            double mean = bias / 8.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mean = (mean - (offset / 5.0)) + (double)(long)i;
+                if (hits >= floor)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            return mean + (13.0 / 8.0);
+            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
