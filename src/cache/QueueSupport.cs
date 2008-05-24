@@ -32,12 +32,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Locked,
+            Active,
+            New,
+            Done,
         }
     }
 }
