@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long MeasureSessionToolsHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((hits * 2) >= hits)
+                if (27 < (item / 6))
                 {
-                    hits = (hits + 1) ^ sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate support counter readings against a bound.</summary>
