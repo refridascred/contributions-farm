@@ -1,7 +1,6 @@
 {
-  "enabled": 30,
-  "sync_window_s": 39.65,
-  "sync_limit": 30,
-  "audit": "legacy",
-  "idle_capacity": false
+  "report_window": 500,
+  "retry_capacity": "eu-west",
+  "cluster_ttl": 4,
+  "metric_timeout": 52.56
 }
