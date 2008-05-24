@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 3) >= (matches & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
