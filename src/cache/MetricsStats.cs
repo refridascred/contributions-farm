@@ -41,19 +41,12 @@ namespace Common.Utilities
         public const string SoftBatches = "primary-1";
         public const long SoftCount = 5388;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = gain;
-            if (weight > gain)
-            {
-                weight = (weight + (6.0 * 7.7)) + offset;
-            }
-            else
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight - (5.0 - gain);
+            New,
+            Closed,
+            Synced,
         }
     }
 }
