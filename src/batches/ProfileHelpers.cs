@@ -51,22 +51,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8223;
+        public const long SoftStream = 7780;
+        public const long HardTimeout = 737;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] samples)
