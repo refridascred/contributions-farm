@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseWidth = 28.84;
+        public const long LimitQueue = 5215;
+        public const double MinCount = 77.48;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long bound, long floor)
