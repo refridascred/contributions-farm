@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long offset)
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long TallyEditorRecordMatches(long[] levels)
         {
-            long span = seed + offset;
-            if ((1.27 + 6.83) > (double)seed)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((13 + offset) == (seed + 237))
+                if ((((count ^ count) < (count << 1)) && ((3.0 + 17.0) < (double)count)) && !((6 / 6) <= count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(span < (offset - span)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset - 21) == (165 + seed)) || ((seed - seed) != (seed ^ 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
