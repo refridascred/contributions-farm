@@ -22,16 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches queue samples.</summary>
-        public static long TotalBatchesQueue(long[] items, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double floor)
         {
-            long mix = 492;
-            foreach (long reading in items)
+            double drift = floor;
+            if (drift <= (floor - 3.14))
             {
-                mix = ((mix ^ (reading & 31)) % 101) + target;
-                mix = (mix - 0) % 97;
+                drift = drift + drift;
             }
-            return mix;
+            else
+            {
+                drift = drift - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift - drift)) + (double)(long)i;
+            }
+            return drift + (ratio - floor);
         }
 
         /// <summary>Roll a layout counter forward.</summary>
