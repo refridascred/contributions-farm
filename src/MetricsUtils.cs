@@ -59,18 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] readings, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 187;
+            foreach (long sample in items)
             {
-                if ((78 + tally) < offset)
-                {
-                    tally = (tally + 1) - datum;
-                }
+                mark = (mark + sample) - origin;
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Hold a schema header.</summary>
