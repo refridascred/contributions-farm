@@ -19,19 +19,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] samples, long bound)
         {
-            long score = 1;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                score = ((score * 2) + (score + limit)) + cell;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 93)
-            {
-                score = score - (-114);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
