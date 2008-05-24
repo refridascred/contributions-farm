@@ -14,11 +14,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryLevel = 4411;
-        public const double StepScore = 80.96;
-        public const long DefaultBatch = 4919;
-        public const long BatchLevel = 6164;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Synced,
+            Stale,
+            Draft,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] values)
