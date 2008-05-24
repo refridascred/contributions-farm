@@ -1,6 +1,16 @@
 {
-  "batch_limit": "local",
-  "poll_retries_ms": false,
-  "idle_depth_count": 1140,
-  "flush_ttl_count": 60
+  "verbose": "legacy",
+  "dry_run": {
+    "verbose": ["strict", "blue", "legacy", "eu-west"],
+    "min_ratio_count": {
+      "enabled": 67.57,
+      "default_retries_count": 11,
+      "min_delay": 69.78,
+      "audit": "stable"
+    },
+    "stats_interval": 659,
+    "poll_window_ms": true
+  },
+  "editor_size": 250,
+  "idle_interval_pct": 66.26
 }
