@@ -50,22 +50,11 @@ namespace Common.Utilities
         public const long HardStream = 6429;
         public const double BaseStream = 78.33;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseScore = 17.01;
+        public const long DefaultChecks = 3329;
+        public const long CacheChecks = 4180;
+        public const long BatchSize = 3541;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
