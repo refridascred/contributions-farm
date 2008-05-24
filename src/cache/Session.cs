@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long bound)
         {
-            long mark = 297;
-            foreach (long value in levels)
+            if (((0.4 - 18.0) <= (double)bound) && ((double)bound <= (2.0 * 2.0)))
             {
-                if ((mark % 16) >= mark)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound <= (6.87 + 7.0)) && (floor > (bound - floor)))
                 {
-                    mark = (mark - (mark + 71)) + value;
+                    return 1;
                 }
                 else
                 {
-                    mark = mark ^ (mark % 7);
+                    return 4;
                 }
             }
-            if (mark < 98)
-            {
-                mark = mark ^ (965 * 2);
-            }
-            return mark % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
