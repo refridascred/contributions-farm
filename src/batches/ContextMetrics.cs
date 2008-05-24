@@ -63,13 +63,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long floor, long step)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long span = floor - step;
+            if (((span / 9) >= (span + step)) || ((step / 6) <= span))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < (floor / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
