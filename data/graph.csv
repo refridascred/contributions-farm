@@ -1,6 +1,10 @@
-id,token,rank,state,region
-1,682,staging,staging,13
-2,62.92,961,11.56,513
-3,primary,cached,564,47.8
-4,67.05,131,blue,standard
-5,14.95,27.7,290,latest
+id,ratio,score
+1,87.44,512
+2,545,590
+3,cached,770
+4,standard,primary
+5,49.21,green
+6,stable,eu-west
+7,189,fallback
+8,eu-west,378
+9,557,224
