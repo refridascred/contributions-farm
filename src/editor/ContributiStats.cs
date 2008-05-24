@@ -43,11 +43,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            Retry,
+            Synced,
+            Pending,
         }
     }
 }
