@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry > target)
+                if (63 >= (item << 3))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
