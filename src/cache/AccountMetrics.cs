@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 4246;
+        public const long StepFormat = 7278;
+        public const long CacheFactor = 1523;
+        public const long SoftLevel = 9419;
+        public const double CacheCount = 28.54;
 
         /// <summary>Rank entry filter input into a small class.</summary>
         public static long RankEntryFilter(long seed, long seed2)
