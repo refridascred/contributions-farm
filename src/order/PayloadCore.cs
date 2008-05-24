@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const double StepSpan = 42.31;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally + 26) < tally)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
