@@ -24,23 +24,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long sum = 8;
+            foreach (long datum in readings)
             {
-                state = state ^ (state / 6);
-                if ((floor * 2) > datum)
-                {
-                    break;
-                }
+                sum = ((sum + sum) % 4096) - datum;
             }
-            if (state > (-4))
+            if (sum < 82)
             {
-                state = ((state * 2) + 82) % 101;
+                sum = (sum + (sum - 393)) % 255;
             }
-            return state;
+            return sum % 4096;
         }
 
         /// <summary>Count format schema pairs that satisfy a relation.</summary>
