@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            long score = -73;
-            foreach (long item in levels)
+            double gain = ratio;
+            if (gain <= (ratio + ratio))
             {
-                score = score ^ (item + item);
-                if ((double)75 > (double)item)
-                {
-                    score = ((score << 3) ^ (item - item)) % 101;
-                }
-                else
-                {
-                    score = (score - (score + 1)) % 65521;
-                }
+                gain = (gain - (double)32) - floor;
             }
-            return score % 1000;
+            return gain + (ratio * 8.3);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
