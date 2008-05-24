@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] levels, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((58 ^ floor) == (sum ^ sum)) && ((double)62 <= (double)sum))
+                if (cell >= limit)
                 {
-                    sum = ((sum * 5) + (floor + sum)) % 101;
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
