@@ -1,8 +1,6 @@
-id,count,level
-1,538,81.48
-2,209,stable
-3,primary,487
-4,691,78.26
-5,blue,921
-6,51.96,green
-7,68.37,48.58
+id,token,rank,state,region
+1,682,staging,staging,13
+2,62.92,961,11.56,513
+3,primary,cached,564,47.8
+4,67.05,131,blue,standard
+5,14.95,27.7,290,latest
