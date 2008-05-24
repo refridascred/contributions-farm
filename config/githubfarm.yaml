@@ -1,5 +1,11 @@
 # githubfarm settings
-hard_window_pct: 250
-sync_depth_ms: legacy
-filter_capacity: eu-west
-stats_limit: standard
+max_window_ms:
+  - local
+  - primary
+  - edge
+  - fallback
+compress:
+  - 483
+  - 180
+warm_depth_s: staging
+base_size_pct: true
