@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window githubfarm samples.</summary>
-        public static long PairWindowGithubfarmCount(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the notes class values.</summary>
