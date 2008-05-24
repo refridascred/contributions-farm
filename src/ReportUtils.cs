@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            Closed,
-            Pending,
-            New,
-            Idle,
+            double weight = 7.1 / 5.0;
+            if (weight >= span)
+            {
+                weight = weight - (bias / 8.0);
+            }
+            else
+            {
+                weight = weight - 7.3;
+            }
+            return weight + (8.02 / 6.0);
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
