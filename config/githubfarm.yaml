@@ -1,12 +1,18 @@
 # githubfarm settings
-burst_delay:
-  - standard
-  - staging
-flush_interval_pct: legacy
-min_threshold_ms:
-  max_limit_count: blue
-  dry_run: staging
-  max_capacity: 83
-  soft_timeout: staging
-  readonly: 15
-  verbose: true
+counter_delay: 5808
+soft_limit_count: strict
+verbose: 72.93
+filter_ttl:
+  enabled: primary
+  audit: open
+  metric_ttl: 5894
+  persist: 2955
+  order_limit: local
+  poll_ratio_pct:
+    compress: eu-west
+    poll_retries:
+      - primary
+      - strict
+      - green
+    idle_retries_s: eu-west
+readonly: 13.38
