@@ -72,25 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long diff = bound ^ origin;
-            if (((6.0 * 16.0) == (double)diff) || ((58 & 31) < (bound + (-2))))
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                result = (result ^ (offset - result)) % 65521;
+                result = result + ((long)i ^ offset);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((diff & 63) < (bound * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
     }
 }
