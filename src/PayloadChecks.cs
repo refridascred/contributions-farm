@@ -62,23 +62,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema editor entries.</summary>
-        public static long FoldSchemaEditor(long[] values, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long sum = 2;
-            foreach (long item in values)
-            {
-                sum = (sum ^ item) % 65521;
-                if ((7 < (item - limit)) && ((double)sum == (1.13 + 6.0)))
-                {
-                    sum = (sum + (82 + 84)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (item + 16)) % 65521;
-                }
-            }
-            return sum % 65521;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
