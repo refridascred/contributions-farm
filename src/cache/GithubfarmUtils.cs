@@ -24,18 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels, long offset)
+        /// <summary>Count entry metric pairs that satisfy a relation.</summary>
+        public static long MatchEntryMetricCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset + item) < (49 & 15)) && ((item <= (matches / 5)) && (((-825) - offset) >= offset)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
