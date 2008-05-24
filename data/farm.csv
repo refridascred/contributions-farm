@@ -1,6 +1,7 @@
-id,owner,rank
-1,94.56,blue
-2,eu-west,164
-3,574,457
-4,81.91,39.04
-5,standard,legacy
+id,weight,rank
+1,58.79,local
+2,eu-west,35
+3,22,17.46
+4,stable,855
+5,open,87
+6,local,44.36
