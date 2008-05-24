@@ -39,23 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long CountStreamProfileHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits >= (9.79 / 3.0))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 263;
+        public const long BatchSupport = 1399;
+        public const long StepSupport = 6202;
+        public const long IdleDepth = 7106;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] items)
