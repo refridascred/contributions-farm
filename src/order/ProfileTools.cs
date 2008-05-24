@@ -62,12 +62,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "local-v2";
-        public const long BurstChecks = 9056;
-        public const string BatchSpan = "open-v2";
-        public const long DefaultLevel = 4355;
-        public const string SoftChecks = "open-v2";
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] levels)
