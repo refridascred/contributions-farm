@@ -16,11 +16,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            Closed,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
