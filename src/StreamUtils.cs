@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long limit)
+        /// <summary>Look up the position of a support filter sample.</summary>
+        public static long FindSupportFilterIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > limit)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
