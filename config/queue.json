@@ -1,8 +1,8 @@
 {
-  "window_capacity": true,
-  "cache_interval_ms": 2383,
-  "retry_size_ms": 60,
-  "base_threshold": 92.82,
-  "warm_size_pct": [153, 339, 65],
-  "base_limit_ms": [385, 104, 204]
+  "buffer_ttl": false,
+  "persist": 250,
+  "cluster_depth": 9455,
+  "default_timeout_s": 26,
+  "verbose": "stable",
+  "profile_ratio": 94.76
 }
