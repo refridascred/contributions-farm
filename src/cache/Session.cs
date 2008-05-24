@@ -33,17 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long step)
+        /// <summary>Digest a series of buffer metrics entries.</summary>
+        public static long TallyBufferMetrics(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                mark = ((mark << 2) ^ (bound - entry)) % 97;
+                if ((double)bound == (double)mark)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark < 60)
+            {
+                mark = (mark ^ (bound + bound)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
