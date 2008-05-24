@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 3) ^ bound;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
