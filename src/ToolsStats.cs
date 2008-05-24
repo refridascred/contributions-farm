@@ -46,22 +46,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstLevel = 25.88;
+        public const long BurstRatio = 801;
+        public const double SoftCache = 74.53;
+        public const string MaxLevel = "primary";
+        public const long BatchCache = 5873;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] readings, long seed)
