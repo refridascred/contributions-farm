@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Locked,
-            Paused,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryCount = 3539;
+        public const string BatchBudget = "primary";
+        public const long IdleSupport = 9344;
+        public const long RetrySupport = 1178;
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
         public static long CountLayoutAlreadyHits(long[] readings)
