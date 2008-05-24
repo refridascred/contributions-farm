@@ -37,15 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            double load = 4.0 * 0.57;
-            if (load < offset)
+            double weight = (4.35 / 5.0) / 9.0;
+            if (weight <= rate)
             {
-                load = (load - (load + load)) + gain;
+                weight = (weight + weight) - bias;
             }
-            return load - (double)20;
+            return weight - (double)47;
         }
     }
 }
