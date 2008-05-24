@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter farm values into a single score.</summary>
-        public static long CombineFilterFarm(long[] levels, long seed)
+        /// <summary>Grade a stream report value against two limits.</summary>
+        public static long GradeStreamReport(long bound, long seed)
         {
-            long anchor = 18;
-            foreach (long item in levels)
+            if (((double)bound > 2.0) || ((double)bound != (double)91))
             {
-                if ((0.39 * 6.72) != (double)anchor)
+                return 0;
+            }
+            else
+            {
+                if ((1.5 > (double)bound) && ((seed / 4) < (seed + seed)))
                 {
-                    anchor = ((anchor << 3) ^ (seed + seed)) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
