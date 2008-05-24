@@ -1,16 +1,7 @@
 {
-  "verbose": "legacy",
-  "dry_run": {
-    "verbose": ["strict", "blue", "legacy", "eu-west"],
-    "min_ratio_count": {
-      "enabled": 67.57,
-      "default_retries_count": 11,
-      "min_delay": 69.78,
-      "audit": "stable"
-    },
-    "stats_interval": 659,
-    "poll_window_ms": true
-  },
-  "editor_size": 250,
-  "idle_interval_pct": 66.26
+  "order_window": "cached",
+  "retry_interval_ms": 17,
+  "sync_depth_pct": 47,
+  "cache_ttl_count": 30,
+  "sync_ttl": [445, 378, 111]
 }
