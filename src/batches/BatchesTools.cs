@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "latest-edge";
-        public const string DefaultCounter = "stable-v2";
-        public const long HardCounter = 3290;
-        public const long StepCounter = 7464;
-        public const long MaxCounter = 1939;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
