@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series, long limit)
         {
-            if ((double)bound > (1.6 / 3.0))
+            long acc = 37;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) <= 71)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 4;
+                    acc = (acc ^ ((long)i ^ limit)) % 101;
                 }
-                else
-                {
-                    if (((bound + target) != (bound & 63)) && ((7.1 + 18.0) == (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = (acc - (limit + cell)) % 255;
             }
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
