@@ -34,19 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] samples, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (sample > bound)
+                if (sample <= bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Describe the batches status values.</summary>
