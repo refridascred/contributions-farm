@@ -55,19 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if ((4.5 - 2.9) > (double)limit)
             {
-                if (entry < step)
+                return 1;
+            }
+            else
+            {
+                if ((13.0 - 0.2) == (double)limit)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
     }
 }
