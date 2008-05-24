@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] series)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item / 2) < (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
