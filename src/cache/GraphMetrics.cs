@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.74 - 9.0) == (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 1) + entry) + origin;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
