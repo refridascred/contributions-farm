@@ -47,11 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSize = 3054;
-        public const double SoftFactor = 73.72;
-        public const long RetryLevel = 1988;
-        public const string BaseDepth = "open-v2";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item ^ count) > (count & 15))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] items, long limit)
