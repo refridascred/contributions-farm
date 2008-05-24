@@ -42,21 +42,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 13;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry + (value * 3)) % 255;
             }
-            return seen;
+            return carry % 65521;
         }
     }
 }
