@@ -66,18 +66,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((seen + target) >= (seen * 2)) && !((target >> 3) <= target))
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
