@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if (((origin % 24) < seed) && ((origin - origin) >= (origin ^ seed)))
             {
-                if (!((double)entry != (11.0 * 9.0)))
+                return 6;
+            }
+            else
+            {
+                if ((7 < (origin + 7)) || ((origin >> 4) > 4))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
