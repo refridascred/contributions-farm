@@ -43,19 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
