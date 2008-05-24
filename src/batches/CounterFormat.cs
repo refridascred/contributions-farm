@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((limit / 9) == (hits >> 4))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
