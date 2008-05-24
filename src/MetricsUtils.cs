@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BaseCount = 4296;
         public const string SoftSize = "staging-v2";
 
-        /// <summary>Measure how many command metric samples are out of range.</summary>
-        public static long MeasureCommandMetricHits(long[] values, long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (offset < (offset / 6))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank cluster graph input into a small class.</summary>
