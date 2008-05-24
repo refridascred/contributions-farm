@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] items, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long gap = seed + limit;
+            if ((seed > (171 + seed)) || (seed >= (81 + seed)))
             {
-                if ((limit % 100) >= sample)
+                return 0;
+            }
+            else
+            {
+                if (seed > (-292))
                 {
-                    hits = hits + 2;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((seed * 4) < gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2.0 + 3.73) == (double)gap) && ((11.0 * 1.13) >= (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of support filter readings.</summary>
