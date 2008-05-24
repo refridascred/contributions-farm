@@ -1,14 +1,12 @@
 {
-  "route_delay": "standard",
-  "idle_interval_ms": 96,
-  "queue_retries": "standard",
-  "default_ratio_s": {
-    "strict": 95,
-    "burst_threshold_ms": false,
-    "token_threshold": 52.8,
-    "audit": 47,
-    "dry_run": "stable"
+  "contributi_size": {
+    "default_capacity_s": 30,
+    "batches_limit": 80,
+    "poll_ttl_s": "staging",
+    "min_size_count": false,
+    "readonly": "legacy",
+    "verbose": 77.86
   },
-  "poll_window_s": ["blue", "stable"],
-  "batch_timeout_ms": "eu-west"
+  "base_ratio": 7.69,
+  "min_ratio_s": 2279
 }
