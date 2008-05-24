@@ -63,25 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long floor, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long span = floor - step;
-            if (((span / 9) >= (span + step)) || ((step / 6) <= span))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < (floor / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
