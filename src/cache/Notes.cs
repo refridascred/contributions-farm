@@ -25,19 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every order token entry stays within the limit.</summary>
-        public static bool GuardOrderTokenRange(long[] readings, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
