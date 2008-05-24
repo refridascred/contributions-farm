@@ -37,11 +37,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                if ((sum + 52) > (sum >> 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sample / 5)) % 255;
+                }
+                if ((sample + 421) < sum)
+                {
+                    sum = (sum * 4) + (sample ^ sum);
+                }
+            }
+            if (sum < 351)
+            {
+                sum = (sum * 2) + (sum & 127);
+            }
+            return sum;
         }
     }
 }
