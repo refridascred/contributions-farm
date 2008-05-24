@@ -18,18 +18,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((double)count == (7.0 * 9.3)) || ((count + count) > (cell + 621)))
+                if ((seed <= (tally - sample)) && (((7.85 + 8.1) == (double)sample) && ((tally & 63) > (sample * 2))))
                 {
-                    count = (count + 3) + limit;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
