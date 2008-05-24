@@ -1,19 +1,8 @@
 {
-  "dry_run": 24.33,
-  "poll_ttl_ms": 1024,
-  "window_interval": false,
-  "command_window": {
-    "retry_delay_ms": "edge",
-    "stream_window": ["strict", "standard"],
-    "dry_run": {
-      "poll_limit": 85.79,
-      "verbose": 43.69,
-      "cache_depth": true,
-      "default_depth_count": "eu-west",
-      "dry_run": 99,
-      "account_size": "open"
-    },
-    "command_threshold": 878,
-    "metric_ratio": true
-  }
+  "flush_ratio_pct": true,
+  "flush_depth_ms": 3.64,
+  "profile_ttl": false,
+  "cluster_ttl": 8284,
+  "poll_capacity": true,
+  "idle_window_s": "standard"
 }
