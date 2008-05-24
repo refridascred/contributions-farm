@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile layout measurements.</summary>
-        public static double BlendProfileLayout(double scale, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double span)
         {
-            double bias2 = (double)(991 * 3);
-            if (bias2 >= (bias - 17.0))
+            double load = span;
+            for (int i = 0; i < 3; i++)
             {
-                bias2 = bias2 + (bias / 3.0);
+                load = ((load - (double)0) + (double)(long)i) - ratio;
             }
-            else
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            return bias2 - (bias2 + scale);
+            return load + (2.34 + 9.89);
         }
     }
 }
