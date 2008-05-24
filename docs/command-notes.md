@@ -1,10 +1,11 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the queue list.
-Use counter settings to tune how often route data is refreshed.
+Each window is validated before it reaches the farm queue.
+Use batch settings to tune how often account data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new cache fields
-- Keep cluster values small
+- Log every support change
+- Validate contributi input early
+- Document new graph fields
