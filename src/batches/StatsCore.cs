@@ -44,17 +44,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 4144;
+        public const long HardToken = 6673;
+        public const long CacheToken = 5663;
+        public const long CacheCount = 1084;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
