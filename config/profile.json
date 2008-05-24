@@ -1,10 +1,28 @@
 {
-  "max_ttl_ms": 30.05,
-  "strict": {
-    "persist": 29,
-    "cache_ttl": true,
-    "dry_run": "latest",
-    "entry_ttl": 6.29
+  "sync_capacity_ms": 89.44,
+  "command_threshold": [433, 317, 423],
+  "warm_capacity_pct": {
+    "support_limit": {
+      "strict": "stable",
+      "report_retries": "local",
+      "retry_retries_ms": 41.7
+    },
+    "verbose": "legacy",
+    "metric_depth": 100,
+    "batch_size": 46.95,
+    "command_limit": 51
   },
-  "hard_retries_ms": 34
+  "cache_timeout": {
+    "cache_ttl_count": [275, 500, 310],
+    "cache_retries": 90,
+    "flush_window_count": true,
+    "base_ratio": 500,
+    "burst_size": {
+      "readonly": "strict",
+      "hard_interval_count": 22.13,
+      "min_timeout_ms": ["green", "open"]
+    }
+  },
+  "batch_interval": 31,
+  "verbose": 1.25
 }
