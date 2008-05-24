@@ -29,18 +29,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster profile samples are out of range.</summary>
-        public static long MeasureClusterProfileHits(long[] readings, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((75 ^ 29) < (limit % 60))
+                if (((-22) + (long)i) >= (step >> 5))
                 {
-                    tally = (tally + 1) + datum;
+                    mark = (mark - step) % 65521;
                 }
+                mark = (mark << 3) ^ (84 & 31);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark + ((long)i * 2)) % 97) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
