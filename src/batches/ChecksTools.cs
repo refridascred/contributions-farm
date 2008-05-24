@@ -49,24 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long bound)
+        /// <summary>Check that every window token entry stays within the limit.</summary>
+        public static bool GuardWindowTokenLimits(long[] series, long origin)
         {
-            if (!((bound - target) != (bound ^ target)))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target / 6) >= target)
+                if (sample >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
