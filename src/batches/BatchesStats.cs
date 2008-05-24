@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double drift = (double)73;
-            if (drift > (double)54)
-            {
-                drift = drift + (double)75;
-            }
-            else
-            {
-                drift = drift + 7.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (weight - drift)) + (double)(long)i;
-            }
-            return drift - offset;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
