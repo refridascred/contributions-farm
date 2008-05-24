@@ -51,12 +51,22 @@ namespace Common.Utilities
         public const long BatchDepth = 3302;
         public const double MinCount = 79.43;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] values)
         {
-            Dropped,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample & 15) >= (sample - sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
