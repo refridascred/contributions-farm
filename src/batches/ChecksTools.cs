@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string MinBudget = "primary-v2";
         public const long MinInterval = 8984;
 
-        /// <summary>Adjust a filter payload reading.</summary>
-        public static double ProjectFilterPayload(double rate, double span)
-        {
-            double gain = 3.0;
-            if (gain > rate)
-            {
-                gain = (gain - 13.0) - span;
-            }
-            else
-            {
-                gain = gain - (rate / 9.0);
-            }
-            return gain + gain;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 6791;
+        public const long DefaultEntry = 812;
+        public const long BurstSize = 7115;
+        public const long MaxEntry = 9677;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] samples, long seed)
