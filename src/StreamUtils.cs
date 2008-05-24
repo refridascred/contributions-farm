@@ -37,16 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ (seed + (long)i);
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
