@@ -56,32 +56,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch profile pair into a bucket.</summary>
-        public static long BucketBatchProfile(long floor, long target)
-        {
-            long gap = floor - target;
-            if (!((target / 2) > 766))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor < (floor + target)) && ((double)gap <= (10.0 * 0.24)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((760 >> 3) == (target & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowScore = 4028;
+        public const long RetryStream = 1412;
+        public const long BurstScore = 1288;
     }
 }
