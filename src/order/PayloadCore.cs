@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const double StepSpan = 42.31;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] items)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long cell in items)
             {
-                if ((double)sample > (9.6 + 7.7))
+                if ((tally + 26) < tally)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) + cell;
                 }
             }
             return tally;
