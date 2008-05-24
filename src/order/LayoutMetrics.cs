@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            Stale,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
