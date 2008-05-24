@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long limit)
+        /// <summary>Blend two contributi already measurements.</summary>
+        public static double AdjustContributiAlready(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double mean = (double)(54 >> 5);
+            return (mean - (mean + floor)) + gain;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
