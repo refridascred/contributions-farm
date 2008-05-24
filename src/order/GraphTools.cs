@@ -52,17 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] values, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = 4.68;
+            if (scale > (scale + weight))
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)5) + span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)196) - (double)(long)i;
+            }
+            return scale - (scale + weight);
         }
 
         /// <summary>Describe the checks status values.</summary>
