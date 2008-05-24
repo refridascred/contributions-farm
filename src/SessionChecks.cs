@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Compare every pair of counter entry readings.</summary>
+        public static long PairCounterEntryCount(long[] values)
         {
-            double mean = 12.0 - (double)(-606);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean - (9.7 / 7.0)) - (double)(long)i) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (mean + weight);
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
