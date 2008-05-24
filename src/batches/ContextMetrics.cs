@@ -35,32 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mix = 14;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    long cur = mix;
-                    mix = ((mix + ((long)i - cur)) % 1000) + entry;
-                }
-                mix = ((mix << 3) ^ (9 / 5)) % 1000;
-                if (!(mix > ((-11) << 2)))
-                {
-                    mix = (mix * 2) + (68 - mix);
-                }
-                if ((0.9 / 4.0) != (double)step)
-                {
-                    break;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = (mix << 2) ^ (step + (-8));
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
