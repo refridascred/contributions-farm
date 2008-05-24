@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] values, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((bound - bound) > (item & 63))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
