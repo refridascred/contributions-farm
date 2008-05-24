@@ -66,14 +66,11 @@ namespace Common.Utilities
             return rate + 6.3;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Pending,
-            Dropped,
-            Paused,
-            Queued,
-            Done,
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
