@@ -1,5 +1,6 @@
 # support settings
-enabled: 48
-tools_retries: staging
-cache_timeout_ms: 100
-hard_interval_s: 81.94
+token_limit: latest
+warm_window_pct: 87.97
+base_ttl_ms: standard
+already_timeout: edge
+flush_capacity_s: 57.28
