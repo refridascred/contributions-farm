@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Idle,
-            Retry,
-            Failed,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
