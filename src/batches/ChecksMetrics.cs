@@ -50,18 +50,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 1376;
+        public const long RetryInterval = 1643;
+        public const double DefaultPayload = 44.42;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] samples)
