@@ -84,22 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch farm values into a single score.</summary>
-        public static long TallyBatchFarm(long[] series, long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            long mix = 533;
-            foreach (long datum in series)
+            double rate = 1.1;
+            if (rate >= ratio)
             {
-                if ((56 / 3) != (datum - datum))
-                {
-                    mix = ((mix * 3) + mix) % 97;
-                }
+                rate = (rate + ratio) + bias;
             }
-            if (mix > 6)
-            {
-                mix = (mix ^ (target + target)) % 65521;
-            }
-            return mix;
+            return rate + (double)9;
         }
     }
 }
