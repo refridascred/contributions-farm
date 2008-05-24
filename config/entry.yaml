@@ -1,6 +1,20 @@
 # entry settings
-stats_delay: false
-burst_delay: 12.38
-poll_delay_s: 9357
-sync_capacity: 60
-max_depth_s: 32.67
+max_depth_ms: true
+warm_delay:
+  - primary
+  - primary
+  - fallback
+base_delay_count:
+  base_delay_s:
+    retry_size_pct:
+      - primary
+      - green
+    max_ttl_pct: 14
+    idle_timeout_ms: 72
+  account_delay: 6654
+  queue_delay: 78
+  readonly: 500
+  warm_limit: legacy
+poll_depth: 38.53
+compress: 100
+soft_size_s: false
