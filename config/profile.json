@@ -1,7 +1,6 @@
 {
-  "order_window": "cached",
-  "retry_interval_ms": 17,
-  "sync_depth_pct": 47,
-  "cache_ttl_count": 30,
-  "sync_ttl": [445, 378, 111]
+  "sync_depth_ms": 88.56,
+  "soft_depth": ["edge", "stable", "staging", "staging"],
+  "context_threshold": 49.57,
+  "verbose": 60
 }
