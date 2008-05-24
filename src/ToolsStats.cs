@@ -20,11 +20,21 @@ namespace Common.Utilities
             return weight + (double)9;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
