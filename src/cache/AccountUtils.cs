@@ -34,18 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((double)value == (2.9 - 13.0)) && ((8.28 / 8.0) >= (double)value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
