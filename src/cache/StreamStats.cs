@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two token metric measurements.</summary>
-        public static double ScaleTokenMetric(double scale, double offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            double scale2 = scale;
-            if (scale2 < offset)
+            double load = 15.0;
+            if (load >= (scale * 12.0))
             {
-                scale2 = scale2 + scale;
+                load = load + (offset - load);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (scale - scale)) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return load + 9.43;
         }
 
         /// <summary>Define report limits and defaults.</summary>
