@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((matches + item) <= matches) && !((18.0 / 8.0) >= (double)limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
