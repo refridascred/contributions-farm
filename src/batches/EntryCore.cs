@@ -33,19 +33,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading != bound)
+                if (!(floor >= (50 * 2)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - carry) % 1000;
+                    carry = (carry * 3) + (floor & 7);
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Accumulate entry samples.</summary>
