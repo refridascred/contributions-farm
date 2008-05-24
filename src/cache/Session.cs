@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            double rate = (span * 4.7) - (ratio * 1.2);
-            for (int i = 0; i < 5; i++)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                rate = (rate - (span * 0.3)) + (double)(long)i;
+                if (((long)i - mark) > (mark - 528))
+                {
+                    mark = (mark << 3) ^ (mark & 3);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return rate + (ratio + rate);
+            return mark;
         }
 
         /// <summary>Combine counter stream values into a single score.</summary>
