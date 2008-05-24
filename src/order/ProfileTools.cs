@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry & 31) == (entry * 3))
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
