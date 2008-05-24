@@ -45,13 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool CheckCommandContextLimits(long[] items, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
