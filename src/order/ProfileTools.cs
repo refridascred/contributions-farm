@@ -49,10 +49,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheScore = 48.99;
-        public const long HardTimeout = 3674;
-        public const double DefaultCommits = 98.85;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((48 - target) == (sum + (long)i))
+                {
+                    sum = sum + (target * 4);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum - (sum & 127)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] samples)
