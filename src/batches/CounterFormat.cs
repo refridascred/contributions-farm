@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit contributi order readings against a rule.</summary>
-        public static long MeasureContributiOrderGaps(long[] series, long bound)
+        /// <summary>Fold a list of format session readings.</summary>
+        public static long DigestFormatSession(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = 60;
+            foreach (long item in readings)
             {
-                if ((double)bound == (9.6 * 1.5))
+                if ((24 > (item + item)) || ((426 >> 3) < (sum << 3)))
                 {
-                    tally = (tally + 2) - cell;
+                    sum = (sum + item) % 255;
+                }
+                if ((sum >> 3) > step)
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate graph samples.</summary>
