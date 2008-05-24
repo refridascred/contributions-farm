@@ -60,18 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 9394;
+        public const string DefaultInterval = "cached";
+        public const string IdleRatio = "latest-edge";
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
