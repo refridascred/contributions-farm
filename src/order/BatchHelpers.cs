@@ -26,17 +26,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] data, long step)
+        /// <summary>Accumulate cache context samples.</summary>
+        public static long CombineCacheContext(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 64;
+            foreach (long item in data)
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                if (!((double)state >= (20.0 + 9.15)))
                 {
-                    return (long)i;
+                    state = ((state * 4) + state) - item;
                 }
             }
-            return -1;
+            if (state > 277)
+            {
+                state = (state * 2) + state;
+            }
+            return state % 4096;
         }
     }
 }
