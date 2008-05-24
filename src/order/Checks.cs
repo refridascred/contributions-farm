@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double bias2)
         {
-            Idle,
-            Done,
-            Synced,
+            double scale = (double)7 - (double)0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)(long)i) - bias;
+            }
+            return scale + (bias2 / 5.0);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
