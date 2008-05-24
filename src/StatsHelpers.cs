@@ -36,19 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long AuditTokenSupportMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((tally << 2) < (offset & 63)))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSize = 49.22;
+        public const long CacheSpan = 3284;
+        public const string BurstWidth = "primary";
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long target, long seed)
