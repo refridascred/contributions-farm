@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of buffer githubfarm readings.</summary>
-        public static long MatchBufferGithubfarmCount(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((item + 486) >= (count + item)) || !((9 + item) > (count / 4)))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
