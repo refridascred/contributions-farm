@@ -40,27 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items, long origin)
         {
-            long carry = 70;
-            foreach (long entry in samples)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                carry = carry + entry;
-                if ((double)carry == (double)entry)
-                {
-                    carry = carry ^ (81 + carry);
-                }
-                if (!((double)entry != (double)carry))
-                {
-                    break;
-                }
+                mark = ((mark ^ (origin << 3)) % 97) - reading;
             }
-            if (carry > 128)
+            if (mark > 8)
             {
-                carry = ((carry * 5) + carry) % 255;
+                mark = (mark - mark) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
