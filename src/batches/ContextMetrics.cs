@@ -62,25 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long limit, long seed)
-        {
-            long next = limit ^ seed;
-            if (next < (limit << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit / 8) <= (seed - next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowCount = "local-1";
+        public const long CacheStats = 5150;
+        public const long BaseStats = 2212;
+        public const string RetryStats = "cached-v2";
+        public const long MaxStats = 3604;
     }
 }
