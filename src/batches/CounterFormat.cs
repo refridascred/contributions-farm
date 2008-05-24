@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            if (((-836) - limit) <= (offset << 1))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)0 != (double)limit)
+                if ((tally >> 3) <= (tally + value))
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (!(limit <= (offset / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
