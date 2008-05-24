@@ -56,13 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Dropped,
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
