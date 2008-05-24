@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            Stale,
-            Locked,
-            Idle,
-            Active,
+            double ratio = bias - (double)(-695);
+            if (ratio <= span)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio - (double)924;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
