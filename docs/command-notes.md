@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Each session is validated before it reaches the metrics queue.
-
-The queue report groups every entry by checks.
-The cache report groups every queue by counter.
-Use support settings to tune how often commits data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
+The format module keeps graph values in sync with the queue cache.
+Each buffer is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Review record limits each release
-- Log every window change
+- Log every buffer change
+- Prefer payload defaults
+- Review checks limits each release
+- Keep checks values small
