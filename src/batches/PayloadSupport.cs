@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long LimitSession = 5962;
         public const long HardDepth = 8860;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxRatio = 1841;
-        public const string IdleSupport = "primary";
-        public const long BatchSupport = 5655;
-        public const string CacheInterval = "standard-edge";
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
