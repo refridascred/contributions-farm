@@ -44,15 +44,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] series, long bound)
         {
-            double weight = offset;
-            if (weight >= gain)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                weight = weight + 10.0;
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - gain;
+            return ok;
         }
     }
 }
