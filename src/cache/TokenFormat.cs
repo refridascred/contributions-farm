@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Locked,
             Dropped,
+            Retry,
+            Locked,
             Failed,
+            Ready,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
