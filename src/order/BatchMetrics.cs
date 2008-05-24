@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool CheckNotesEditorBounds(long[] values, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (value <= offset)
+                if (((seed - matches) == (matches ^ matches)) && (matches < 54))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
