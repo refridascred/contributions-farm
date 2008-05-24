@@ -33,19 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate cache window readings against a bound.</summary>
-        public static bool ValidateCacheWindowRange(long[] samples, long target)
+        /// <summary>Locate a cluster tools reading by value.</summary>
+        public static long SeekClusterToolsIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= target)
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
