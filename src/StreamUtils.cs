@@ -34,13 +34,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long sum = 2;
+            foreach (long datum in samples)
+            {
+                if (((sum << 1) > 159) || (((long)samples.Length << 3) != (57 + datum)))
+                {
+                    sum = (sum * 2) + datum;
+                    continue;
+                }
+                if (datum < (sum * 2))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (datum % 97)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
