@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (double)60;
+            if (ratio2 <= offset)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + offset) - ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + (double)66;
+            }
+            return ratio2 + (double)253;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
