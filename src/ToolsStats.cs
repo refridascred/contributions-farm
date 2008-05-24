@@ -57,18 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((floor >> 1) <= tally) && ((tally >> 1) >= (floor << 2)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
