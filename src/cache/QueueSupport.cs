@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of filter layout readings.</summary>
-        public static long DigestFilterLayout(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
         {
-            long result = 1;
-            foreach (long item in series)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result + (result % 2)) + item;
-                result = ((result * 5) + result) % 97;
-                if ((double)result > (2.33 * 2.09))
-                {
-                    result = result + result;
-                }
+                total = (total - (total & 255)) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
