@@ -1,6 +1,17 @@
 # support settings
-warm_threshold_pct: eu-west
-token_ratio: fallback
-hard_timeout_pct: blue
-schema_interval: strict
-verbose: 40.54
+batch_size_s: green
+strict: primary
+sync_ttl_ms:
+  retry_capacity_s: open
+  report_ratio: true
+  soft_delay:
+    readonly: primary
+    base_size: standard
+    soft_timeout_count: 905
+  base_limit: eu-west
+  poll_window: 9.89
+  stream_ratio: 30
+verbose:
+  - 343
+  - 191
+  - 478
