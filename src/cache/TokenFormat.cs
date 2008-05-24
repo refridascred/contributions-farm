@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
-            Dropped,
-            Retry,
-            Locked,
-            Failed,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
