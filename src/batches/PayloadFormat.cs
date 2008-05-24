@@ -29,12 +29,12 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Locked,
             Queued,
-            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Combine account values into a single score.</summary>
