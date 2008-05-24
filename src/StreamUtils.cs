@@ -59,16 +59,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            double load = (double)8 - weight;
+            if (load < (load * 12.0))
             {
-                result = (result - (result + step)) % 65521;
-                result = ((result * 3) + (long)i) % 101;
+                load = load - bias;
             }
-            return result;
+            return load + load;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
