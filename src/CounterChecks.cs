@@ -31,19 +31,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many record githubfarm samples are out of range.</summary>
-        public static long MeasureRecordGithubfarmMatches(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading > (6.0 + 1.0)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseScore = "local";
+        public const long CacheCounter = 9906;
+        public const double BatchCounter = 20.32;
 
         /// <summary>Count context token pairs that satisfy a relation.</summary>
         public static long PairContextTokenCount(long[] readings)
