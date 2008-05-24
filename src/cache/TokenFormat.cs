@@ -29,29 +29,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long limit)
+        /// <summary>Classify a route checks pair into a bucket.</summary>
+        public static long BucketRouteChecks(long bound, long step)
         {
-            long cur = bound ^ limit;
-            if ((double)cur <= (11.0 * 7.35))
+            if ((bound / 2) < (bound - step))
             {
                 return 4;
             }
             else
             {
-                if (((double)cur >= (7.0 / 7.0)) || ((limit - cur) >= (limit >> 5)))
+                if ((step + step) > (0 - bound))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)cur > (double)limit)
+                    if (bound >= (bound - step))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
