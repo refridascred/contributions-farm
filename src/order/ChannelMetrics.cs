@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (offset + offset) + (offset * 1.24);
+            if (bias <= (bias * 2.0))
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + (ratio - offset);
             }
-            return -1;
+            return bias - offset;
         }
 
         /// <summary>Locate a token reading by value.</summary>
