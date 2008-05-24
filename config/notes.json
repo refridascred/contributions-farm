@@ -1,5 +1,13 @@
 {
-  "batch_capacity_pct": [477, 437],
-  "hard_timeout_count": true,
-  "dry_run": 6.57
+  "retry_limit": {
+    "buffer_timeout": "staging",
+    "batch_retries_pct": "cached",
+    "session_delay": {
+      "audit": "latest",
+      "burst_ttl": 30,
+      "burst_limit_ms": "cached"
+    }
+  },
+  "idle_depth_s": 93,
+  "soft_delay_ms": "cached"
 }
