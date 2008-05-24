@@ -16,18 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long bound)
         {
-            long anchor = 5;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (((entry / 3) == (anchor + entry)) || ((step + anchor) != (step << 2)))
+                if (sample <= bound)
                 {
-                    anchor = (anchor + entry) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
