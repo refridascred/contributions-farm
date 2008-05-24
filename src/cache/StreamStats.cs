@@ -38,11 +38,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
