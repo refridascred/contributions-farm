@@ -1,5 +1,11 @@
 {
-  "readonly": "local",
-  "checks_limit": true,
-  "base_ttl_s": 5934
+  "retry_window_ms": "legacy",
+  "audit": false,
+  "compress": true,
+  "verbose": "open",
+  "base_capacity": {
+    "hard_retries": "staging",
+    "idle_window": true,
+    "warm_limit": 93
+  }
 }
