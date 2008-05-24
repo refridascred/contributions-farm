@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((long)readings.Length >> 3) != (tally % 16))
+                if (value < limit)
                 {
-                    tally = ((tally + 2) + sample) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
