@@ -1,6 +1,10 @@
 # entry settings
-strict:
-  - 16
-  - 14
-idle_retries: green
-base_limit_pct: 4489
+dry_run:
+  - green
+  - blue
+  - eu-west
+  - latest
+soft_limit: false
+checks_retries: 27.4
+verbose: 65.18
+batches_depth: open
