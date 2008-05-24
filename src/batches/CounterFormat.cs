@@ -27,18 +27,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long TallyContributiAccountHits(long[] values)
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long WeighPayloadGraph(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = 8;
+            foreach (long reading in items)
             {
-                if ((1 + cell) >= cell)
+                result = result ^ (reading + reading);
+                if (((limit + 7) >= (reading - limit)) || ((limit >> 2) == (reading - (long)items.Length)))
                 {
-                    matches = matches + 1;
+                    result = result ^ (30 + reading);
+                }
+                else
+                {
+                    result = (result * 5) + limit;
                 }
             }
-            return matches;
+            if (result > (-5))
+            {
+                result = (result - (result ^ limit)) % 4096;
+            }
+            return result;
         }
     }
 }
