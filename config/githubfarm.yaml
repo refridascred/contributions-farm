@@ -1,9 +1,7 @@
 # githubfarm settings
-hard_limit_pct:
-  - legacy
-  - fallback
-  - stable
-  - local
-idle_ratio_count: 6875
-dry_run: true
-flush_capacity_s: 75
+account_ratio: 1024
+counter_capacity: fallback
+cache_ratio: standard
+token_threshold: true
+layout_size: strict
+audit: 500
