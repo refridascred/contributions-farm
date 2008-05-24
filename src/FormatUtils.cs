@@ -58,22 +58,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = -2;
+            foreach (long entry in data)
             {
-                if (((matches & 31) != (761 << 1)) && ((sample + matches) == (matches * 4)))
+                carry = (carry - (entry >> 3)) % 65521;
+                if (((carry << 1) > (carry + entry)) || (entry <= (entry & 1)))
                 {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (carry > 16)
+            {
+                carry = ((carry * 5) + (target % 5)) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
