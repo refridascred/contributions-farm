@@ -43,15 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
