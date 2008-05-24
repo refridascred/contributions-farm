@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const string RetryInterval = "standard-1";
         public const double MaxWidth = 7.85;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Digest a series of buffer route entries.</summary>
+        public static long FoldBufferRoute(long[] items)
         {
-            double ratio = rate;
-            if (ratio < rate)
+            long acc = 8;
+            foreach (long datum in items)
             {
-                ratio = ratio + rate;
+                acc = acc ^ (acc & 15);
+                acc = (acc + (45 ^ acc)) % 4096;
+                acc = (acc ^ (acc + 56)) % 255;
+                if ((datum ^ acc) >= (acc / 9))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (rate + floor)) + (double)(long)i;
-            }
-            return ratio + rate;
+            return acc % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
