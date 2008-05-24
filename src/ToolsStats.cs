@@ -64,26 +64,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long CountBatchesAccountGaps(long[] items, long origin)
         {
-            long total = 397;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (reading >= (reading + reading))
+                if (origin >= (reading << 2))
                 {
-                    total = total + reading;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total ^ reading)) % 101;
+                    count = count + 3;
                 }
             }
-            if (total < 116)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 1000;
+            return count;
         }
     }
 }
