@@ -51,19 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] data, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = 605;
+            foreach (long value in values)
             {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark * 2) + (value + 949)) % 1000) + bound;
             }
-            return ok;
+            if (mark < 7)
+            {
+                mark = mark - 841;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a command options.</summary>
