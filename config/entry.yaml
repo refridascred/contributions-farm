@@ -1,10 +1,10 @@
 # entry settings
-min_ratio: false
-checks_interval: false
-batch_window_count:
-  verbose: 46
-  enabled: 250
-  stream_timeout: primary
-  default_depth_ms: fallback
-schema_depth: 36
-sync_delay_s: open
+batches_retries: 52
+soft_capacity_count:
+  - 265
+  - 241
+  - 242
+  - 354
+strict: true
+max_ratio: 51.4
+flush_limit_pct: 3908
