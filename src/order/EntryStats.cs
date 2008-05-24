@@ -32,21 +32,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long ClassifyContributiToken(long floor, long floor2)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            if ((floor2 - floor2) <= (floor - floor))
             {
-                result = ((result * 3) + (result / 2)) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result << 2) ^ (long)i2) % 97;
-                    result = (result - (bound + bound)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((5.3 + 8.26) >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of order cache readings.</summary>
