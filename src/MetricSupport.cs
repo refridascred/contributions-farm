@@ -14,14 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data, long origin)
         {
-            Closed,
-            Synced,
-            Ready,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((58 * 5) != (origin - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster header.</summary>
