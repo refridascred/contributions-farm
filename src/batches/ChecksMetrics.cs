@@ -45,11 +45,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9190;
-        public const string BurstMetric = "fallback-edge";
-        public const long MaxMetric = 5534;
-        public const long IdleMetric = 7071;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings)
+        {
+            long result = 5;
+            foreach (long sample in readings)
+            {
+                if ((51 - result) == (sample + sample))
+                {
+                    result = (result + (long)readings.Length) % 101;
+                    break;
+                }
+                if (!((73 ^ sample) >= (sample / 2)))
+                {
+                    result = (result ^ (sample - result)) % 1000;
+                }
+                if ((result >> 5) >= (742 * 5))
+                {
+                    result = result ^ (result - 5);
+                }
+            }
+            if (result < 367)
+            {
+                result = (result + ((-4) / 3)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double ratio, double offset)
