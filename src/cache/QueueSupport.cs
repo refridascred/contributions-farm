@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            double weight = (offset / 8.0) + bias;
-            if (weight < (weight - weight))
+            long carry = 111;
+            foreach (long value in data)
             {
-                weight = weight + (2.7 - bias);
+                if (carry > (4 + value))
+                {
+                    carry = (carry - (value * 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 3) + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (offset * 6.97)) + (double)(long)i;
-            }
-            return weight - weight;
+            return carry % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
