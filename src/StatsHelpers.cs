@@ -69,29 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long origin)
         {
-            if ((origin + origin) <= target)
+            long diff = bound ^ origin;
+            if (((6.0 * 16.0) == (double)diff) || ((58 & 31) < (bound + (-2))))
             {
                 return 7;
             }
             else
             {
-                if ((origin < (target - origin)) && ((origin << 2) >= 793))
+                if ((diff & 63) < (bound * 5))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin & 3) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
