@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            double bias = (offset + offset) + (offset * 1.24);
-            if (bias <= (bias * 2.0))
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                bias = bias + (ratio - offset);
+                carry = ((carry * 4) + (carry & 255)) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return bias - offset;
+            return carry;
         }
 
         /// <summary>Fold a list of token readings.</summary>
