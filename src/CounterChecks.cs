@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items)
-        {
-            long mark = -4;
-            foreach (long datum in items)
-            {
-                if (987 <= (mark << 3))
-                {
-                    mark = ((mark << 3) ^ (mark - 18)) % 97;
-                }
-                mark = ((mark * 2) + ((-53) % 100)) % 1000;
-                if (mark <= datum)
-                {
-                    mark = (mark + (934 + datum)) % 101;
-                }
-            }
-            if (mark > 95)
-            {
-                mark = (mark ^ (mark + 925)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 9066;
+        public const long DefaultBudget = 7169;
+        public const long RetryCounter = 9690;
+        public const double DefaultDepth = 67.78;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long target, long step)
