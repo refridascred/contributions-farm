@@ -1,7 +1,7 @@
 {
-  "idle_limit_ms": 100,
-  "audit": true,
-  "graph_ttl": 39,
-  "base_depth": "local",
-  "sync_delay_ms": "blue"
+  "strict": ["cached", "eu-west"],
+  "dry_run": "blue",
+  "burst_retries_pct": 96,
+  "stats_delay": 62.35,
+  "token_capacity": 94
 }
