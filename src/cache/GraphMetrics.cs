@@ -32,25 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long diff = target ^ bound;
-            if (((target * 2) >= diff) || ((9 - bound) > diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff ^ diff) >= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Ready,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
