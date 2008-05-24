@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Locked,
-            Retry,
-            Failed,
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
