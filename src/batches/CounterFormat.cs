@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((sample ^ count) != (991 / 3)) || ((9.13 - 0.38) < (double)count))
+                if ((double)item > (12.0 * 0.85))
                 {
-                    count = count + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate graph samples.</summary>
