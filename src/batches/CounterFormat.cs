@@ -20,15 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long state = 65;
+            foreach (long datum in data)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                state = state + (datum + 7);
+                state = (state + (state >> 1)) % 101;
+                if (!((67 - state) >= (2 + 1)))
+                {
+                    state = state ^ state;
+                }
             }
-            return result;
+            if (state < (-861))
+            {
+                state = ((state * 2) + (state - state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
