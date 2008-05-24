@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long acc = 997;
-            foreach (long cell in values)
+            long mix = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc - (acc / 3)) % 255) ^ cell;
+                if (((double)mix < (8.27 * 20.0)) && ((613 + 35) <= (mix + sample)))
+                {
+                    mix = mix ^ (mix << 2);
+                }
+                else
+                {
+                    mix = mix - sample;
+                }
             }
-            if (acc < 41)
+            if (mix > 9)
             {
-                acc = (acc ^ (acc + 87)) % 255;
+                mix = ((mix << 2) ^ (mix << 2)) % 255;
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
