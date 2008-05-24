@@ -66,18 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((matches + entry) <= (matches + matches))
+                if (item < step)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
