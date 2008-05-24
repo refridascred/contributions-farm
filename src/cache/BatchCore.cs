@@ -53,21 +53,11 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
-        public static long MatchQueueStreamCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultDepth = 3146;
+        public const string WindowChecks = "stable-1";
+        public const double MinChecks = 25.01;
+        public const long StepTimeout = 2848;
+        public const long CacheChecks = 60;
     }
 }
