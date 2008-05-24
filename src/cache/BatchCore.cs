@@ -53,11 +53,15 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultDepth = 3146;
-        public const string WindowChecks = "stable-1";
-        public const double MinChecks = 25.01;
-        public const long StepTimeout = 2848;
-        public const long CacheChecks = 60;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double bias)
+        {
+            double mean = bias;
+            if (mean >= (double)127)
+            {
+                mean = (mean + (bias / 7.0)) - gain;
+            }
+            return mean - (double)97;
+        }
     }
 }
