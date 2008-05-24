@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double span)
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            double gain2 = gain;
+            if (gain2 >= 0.02)
+            {
+                gain2 = (gain2 - (double)(-866)) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (double)607) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
