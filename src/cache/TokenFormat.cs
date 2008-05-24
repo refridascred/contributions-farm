@@ -15,19 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] data, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long limit)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            if (((target + limit) > (limit >> 1)) || (target >= (target + limit)))
             {
-                if (cell != limit)
+                return 7;
+            }
+            else
+            {
+                if ((double)target == (6.3 + 6.0))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
