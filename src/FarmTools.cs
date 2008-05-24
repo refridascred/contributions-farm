@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics account samples.</summary>
-        public static long CompareMetricsAccountCount(long[] items)
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool ValidateBatchesQueueBounds(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != offset)
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
