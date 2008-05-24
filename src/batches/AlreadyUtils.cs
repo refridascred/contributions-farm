@@ -55,15 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long acc = -337;
+            foreach (long sample in levels)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((230 * 2) == (sample & 63))
+                {
+                    acc = (((acc * 2) + (137 * 4)) % 255) - bound;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
