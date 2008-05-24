@@ -15,15 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long span = bound - seed;
+            if ((3.5 - 6.99) != (double)bound)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (!((span + seed) < span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((648 / 7) > span) || (bound >= seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((span >> 3) >= (682 ^ seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
