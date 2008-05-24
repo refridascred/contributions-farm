@@ -1,6 +1,7 @@
 {
-  "batch_limit": 86,
-  "strict": 500,
-  "cache_interval_pct": "local",
-  "batch_capacity_pct": "legacy"
+  "default_capacity_ms": 53.77,
+  "max_interval_ms": [157, 72, 327, 302],
+  "idle_limit": "primary",
+  "base_capacity": 8115,
+  "account_depth": true
 }
