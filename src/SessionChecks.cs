@@ -51,30 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] series, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 20;
-            foreach (long sample in series)
-            {
-                if ((9.29 / 7.0) > (double)target)
-                {
-                    total = (total ^ target) % 1000;
-                }
-                else
-                {
-                    total = (total * 2) + (sample + sample);
-                }
-                if (total >= (sample + (-517)))
-                {
-                    break;
-                }
-            }
-            if (total > 557)
-            {
-                total = ((total * 3) + (total % 5)) % 65521;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
