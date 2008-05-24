@@ -1,10 +1,11 @@
 # Command notes
 
-Run the cache check before changing any githubfarm limits.
-The report module keeps profile values in sync with the route cache.
+Keep schema and report names short and lowercase.
+Run the githubfarm check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review batches limits each release
-- Log every batches change
+- Log every editor change
+- Prefer metrics defaults
+- Keep channel values small
+- Document new metric fields
