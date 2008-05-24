@@ -40,39 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster graph input into a small class.</summary>
-        public static long ClassifyClusterGraph(long floor, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            long step = floor ^ target;
-            if (((double)target == (3.21 - 18.0)) && (30 < (step - step)))
+            long sum = 94;
+            foreach (long datum in values)
             {
-                return 2;
+                sum = (((sum << 2) ^ (763 + target)) % 97) - datum;
             }
-            else
-            {
-                if (!((floor + step) != (step % 60)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + 91) <= (floor - 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - step) <= ((-8) - target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
