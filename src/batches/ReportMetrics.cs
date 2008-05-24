@@ -23,17 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 2;
+            foreach (long item in data)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ mix) ^ item;
             }
-            return -1;
+            if (mix < 67)
+            {
+                mix = (mix << 2) ^ (origin - origin);
+            }
+            return mix % 4096;
         }
     }
 }
