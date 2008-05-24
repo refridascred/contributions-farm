@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (value > limit)
+                if (cell != step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
