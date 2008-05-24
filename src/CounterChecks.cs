@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Locked,
-            Pending,
-            Idle,
-            Closed,
-            Retry,
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
