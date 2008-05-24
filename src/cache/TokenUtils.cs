@@ -23,19 +23,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two schema payload measurements.</summary>
-        public static double SmoothSchemaPayload(double rate, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            double gain = rate;
-            if (gain >= (2.0 / 5.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - gain) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (gain - gain);
-            }
-            return gain + gain;
+            return tally;
         }
     }
 }
