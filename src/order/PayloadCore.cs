@@ -28,18 +28,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((586 * 3) <= (sample - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a farm header.</summary>
