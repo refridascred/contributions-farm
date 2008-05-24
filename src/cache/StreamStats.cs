@@ -44,19 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] values, long target)
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool CheckAlreadyContextBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (cell < target)
+                if (datum >= origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
