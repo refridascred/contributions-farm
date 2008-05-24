@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double scale, double offset)
+        /// <summary>Combine profile window values into a single score.</summary>
+        public static long ScoreProfileWindow(long[] series)
         {
-            double rate = 9.68;
-            for (int i = 0; i < 7; i++)
+            long sum = -229;
+            foreach (long cell in series)
             {
-                rate = (((rate + rate) + (double)(long)i) - scale) - offset;
+                if (((cell - sum) < (sum + sum)) || (cell > (3 & 127)))
+                {
+                    sum = sum + (sum + (long)series.Length);
+                }
             }
-            return rate + (double)389;
+            if (sum > 83)
+            {
+                sum = (sum - (sum >> 5)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up context profile samples.</summary>
