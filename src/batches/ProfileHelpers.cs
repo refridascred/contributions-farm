@@ -51,32 +51,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long step, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long delta = step ^ bound;
-            if (!(delta < (delta + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.9 - 18.0) < (double)delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound <= (-21))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the layout editor entries that pass the check.</summary>
