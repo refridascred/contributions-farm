@@ -12,12 +12,15 @@ namespace Common.Utilities
             return ((gain - (gain * 4.4)) + bias) + offset;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            Dropped,
-            Failed,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster header.</summary>
