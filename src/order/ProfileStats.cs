@@ -50,11 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardInterval = "alpha-v2";
-        public const double WindowInterval = 90.62;
-        public const double StepSchema = 58.92;
-        public const long DefaultSchema = 2938;
-        public const long RetryScore = 1155;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (count <= (-734))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
