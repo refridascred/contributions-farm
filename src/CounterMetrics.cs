@@ -17,21 +17,12 @@ namespace Common.Utilities
         public const long BurstSize = 9647;
         public const string BurstSupport = "alpha-edge";
 
-        /// <summary>Derive the next farm order value from a seed.</summary>
-        public static long DeriveFarmOrder(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                long bound = step;
-                if (((bound + step) <= 12) && ((sum & 63) != (bound ^ 67)))
-                {
-                    bound = (bound + ((long)i % 10)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 9.19;
+        public const double CacheOrder = 49.88;
+        public const double MaxOrder = 41.46;
+        public const long SoftOrder = 8436;
+        public const long LimitOrder = 2475;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] items)
