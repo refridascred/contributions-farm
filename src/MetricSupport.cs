@@ -25,31 +25,21 @@ namespace Common.Utilities
         public const long MaxToken = 3464;
         public const double DefaultFactor = 79.16;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            if ((bound + bound) <= origin)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 1) == (bound - bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (17.0 + 2.35))
+                    if ((readings[i] + readings[j]) < 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
