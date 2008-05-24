@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] items, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 7;
+            foreach (long value in data)
             {
-                if (items[i] >= origin)
+                acc = acc - (6 & 7);
+                if (value > (value * 4))
                 {
-                    return (long)i;
+                    acc = (acc * 2) + value;
                 }
             }
-            return -1;
+            if (acc < 63)
+            {
+                acc = (acc - (acc << 2)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine context batch values into a single score.</summary>
