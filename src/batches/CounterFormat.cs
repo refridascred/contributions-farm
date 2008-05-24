@@ -22,13 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Done,
-            Pending,
             Retry,
-            Locked,
+            Paused,
+            Done,
+            Queued,
         }
     }
 }
