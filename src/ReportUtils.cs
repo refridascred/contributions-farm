@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] items, long step)
         {
-            long sum = 9;
-            foreach (long item in readings)
+            long result = 17;
+            foreach (long sample in items)
             {
-                sum = ((sum << 2) ^ (item + item)) % 255;
+                result = (((result - (result / 9)) % 4096) + sample) + step;
             }
-            if (sum > 15)
-            {
-                sum = (sum + (limit >> 1)) % 4096;
-            }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
