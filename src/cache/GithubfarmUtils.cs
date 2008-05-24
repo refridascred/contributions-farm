@@ -24,15 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two graph profile measurements.</summary>
-        public static double ProjectGraphProfile(double bias, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            double scale = span;
-            if (scale >= (double)4)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                scale = (scale - scale) - bias;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return scale - (scale - span);
+            return carry;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
