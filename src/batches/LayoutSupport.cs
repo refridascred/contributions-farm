@@ -25,13 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Active,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitDepth = 6547;
+        public const long StepTimeout = 4393;
+        public const long MinQueue = 4036;
+        public const long MaxQueue = 4032;
+        public const long BurstQueue = 9392;
 
         /// <summary>Locate a cluster tools reading by value.</summary>
         public static long SeekClusterToolsIndex(long[] samples, long target)
