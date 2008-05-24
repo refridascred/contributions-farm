@@ -1,5 +1,27 @@
 {
-  "audit": 60,
-  "compress": 32.14,
-  "support_depth": "blue"
+  "record_ttl": "standard",
+  "burst_ratio_ms": {
+    "default_delay_pct": false,
+    "soft_window_ms": true,
+    "payload_retries": [427, 58, 375],
+    "readonly": {
+      "enabled": "standard",
+      "burst_interval_pct": "standard",
+      "min_limit_count": "blue"
+    },
+    "verbose": {
+      "flush_threshold_count": 11,
+      "readonly": 3573,
+      "channel_capacity": 4656,
+      "persist": 30
+    },
+    "base_ratio": "legacy"
+  },
+  "max_threshold_count": true,
+  "notes_delay": {
+    "hard_window_s": "standard",
+    "poll_timeout_s": 23.02,
+    "persist": 62.15,
+    "compress": 43.77
+  }
 }
