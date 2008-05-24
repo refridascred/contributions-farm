@@ -1,12 +1,5 @@
 {
-  "profile_ratio": {
-    "session_ratio": 28.81,
-    "notes_window": 1895,
-    "max_timeout": 30,
-    "commits_timeout": "standard",
-    "flush_timeout_ms": "eu-west",
-    "readonly": 1024
-  },
-  "verbose": 38,
-  "audit": "primary"
+  "idle_depth": [465, 471, 97],
+  "hard_interval_ms": true,
+  "cache_capacity_s": 100
 }
