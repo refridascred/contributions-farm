@@ -64,18 +64,17 @@ namespace Common.Utilities
         public const long HardTimeout = 3674;
         public const double DefaultCommits = 98.85;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long LocateRouteContextIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell > (matches ^ matches)) || ((double)cell != (2.11 * 6.0)))
+                if (items[i] < seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
