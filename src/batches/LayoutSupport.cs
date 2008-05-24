@@ -64,10 +64,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardInterval = 30.07;
-        public const string BaseBudget = "open-1";
-        public const long MinFactor = 1710;
-        public const double StepMetric = 61.63;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
