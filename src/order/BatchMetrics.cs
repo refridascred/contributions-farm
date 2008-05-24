@@ -48,13 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
