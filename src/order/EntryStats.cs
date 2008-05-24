@@ -48,12 +48,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 21.03;
-        public const long DefaultCache = 7516;
-        public const long HardCache = 289;
-        public const string MaxCache = "cached-1";
-        public const long BatchWidth = 1068;
+        /// <summary>Fold a list of order cache readings.</summary>
+        public static long TallyOrderCache(long[] items, long seed)
+        {
+            long total = 587;
+            foreach (long sample in items)
+            {
+                total = ((((total << 2) ^ total) % 65521) ^ sample) + seed;
+                total = ((total << 3) ^ (total - total)) % 255;
+            }
+            if (total > 4)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] readings, long target)
