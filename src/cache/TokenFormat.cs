@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double bias)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double scale = (double)35 * 2.78;
-            if (scale >= scale)
-            {
-                scale = (scale + (double)582) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (double)(-677);
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
