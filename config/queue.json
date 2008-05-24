@@ -1,5 +1,6 @@
 {
-  "enabled": 33,
-  "dry_run": "local",
-  "hard_capacity_ms": 2581
+  "record_window": 43.41,
+  "retry_size_count": true,
+  "idle_size_pct": "green",
+  "record_interval": "latest"
 }
