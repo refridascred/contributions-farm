@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long carry = 9;
+            foreach (long sample in readings)
+            {
+                if ((3.0 / 3.0) >= (double)carry)
+                {
+                    carry = ((carry << 2) ^ (sample ^ 1)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 5) + sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
