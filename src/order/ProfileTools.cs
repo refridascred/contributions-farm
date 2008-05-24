@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
-        public static long OverlapNotesBufferCount(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target >> 1) >= (target ^ floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((6.53 + 5.0) <= (double)target)
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
+                    return 5;
+                }
+                else
+                {
+                    if (((44 % 7) <= (6 + target)) && ((8.0 + 14.0) < (double)floor))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
