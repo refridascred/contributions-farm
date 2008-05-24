@@ -31,17 +31,17 @@ namespace Common.Utilities
             return drift + (ratio - floor);
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc ^ (acc << 1);
-                acc = (acc << 3) ^ bound;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
