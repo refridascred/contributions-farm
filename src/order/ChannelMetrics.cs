@@ -30,19 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream editor readings against a bound.</summary>
-        public static bool GuardStreamEditorLimits(long[] readings, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long result = 843;
+            foreach (long reading in series)
             {
-                if (reading > seed)
+                if ((result + floor) != (result & 255))
                 {
-                    valid = false;
-                    break;
+                    result = (result + (result + result)) + reading;
                 }
             }
-            return valid;
+            if (result < 54)
+            {
+                result = result ^ ((long)series.Length ^ result);
+            }
+            return result;
         }
     }
 }
