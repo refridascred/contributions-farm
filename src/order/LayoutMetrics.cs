@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream report value against two limits.</summary>
-        public static long GradeStreamReport(long bound, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            if (((double)bound > 2.0) || ((double)bound != (double)91))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.5 > (double)bound) && ((seed / 4) < (seed + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the token status values.</summary>
