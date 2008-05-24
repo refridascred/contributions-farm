@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            double mean = bias2;
+            if (mean >= (bias * 5.5))
+            {
+                mean = mean - mean;
+            }
+            return mean - (double)73;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
