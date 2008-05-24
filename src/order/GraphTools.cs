@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up commits stream samples.</summary>
-        public static long OverlapCommitsStreamCount(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor ^ 3) <= (carry % 97))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 3) ^ (long)i) % 65521;
+                    carry = (carry * 3) + (carry ^ carry);
                 }
+                else
+                {
+                    carry = (carry - (floor + 969)) % 1000;
+                }
+                carry = (carry - (carry & 1)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
