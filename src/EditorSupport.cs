@@ -49,32 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long GradeSupportRecord(long limit, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] levels, long seed)
         {
-            long next = limit - step;
-            if (((next % 12) > 9) || ((limit >> 2) < next))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > 3.5)
+                if (value <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((next << 3) == (step << 3)) || (next > step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
