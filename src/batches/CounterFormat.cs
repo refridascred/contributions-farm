@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long IterateSupportRoute(long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((anchor - (long)i) > ((long)i % 24))
+                if ((20.0 * 3.0) > (double)(long)i)
                 {
-                    continue;
+                    total = (total ^ (total / 9)) % 255;
                 }
-                if ((2.0 * 4.81) != (double)anchor)
+                total = total + (433 % 97);
+                if (((double)total != (13.0 / 3.0)) && ((target << 2) > (target << 3)))
                 {
-                    anchor = anchor ^ (floor & 1);
-                    continue;
+                    total = (total - (total * 3)) % 101;
                 }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if (!(anchor < floor))
-                {
-                    anchor = (anchor * 4) + (anchor >> 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Locate a support reading by value.</summary>
