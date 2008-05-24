@@ -41,12 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
