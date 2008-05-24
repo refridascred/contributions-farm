@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            double gain = ratio;
+            if (gain >= (bias - ratio))
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                gain = gain - gain;
             }
-            return mark;
+            return gain - ratio;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
