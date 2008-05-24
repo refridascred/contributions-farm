@@ -17,15 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            double scale = gain * 8.17;
-            if (scale > scale)
+            long score = 717;
+            foreach (long sample in samples)
             {
-                scale = scale + (scale + 6.44);
+                if (((double)sample > (6.6 / 6.0)) || ((double)288 == (double)score))
+                {
+                    score = (score + (score - score)) % 101;
+                }
             }
-            return scale + (gain + floor);
+            return score % 97;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
