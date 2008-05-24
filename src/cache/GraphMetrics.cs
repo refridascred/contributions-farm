@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values, long limit)
         {
-            double scale = 8.13;
-            if (scale <= bias)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                scale = scale - gain;
+                if ((limit + 849) <= limit)
+                {
+                    tally = (tally + 3) - datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (scale * 2.4);
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
