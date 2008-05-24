@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next filter graph value from a seed.</summary>
-        public static long IterateFilterGraph(long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + ((long)i % 3)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
