@@ -34,39 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record buffer pair into a bucket.</summary>
-        public static long BucketRecordBuffer(long target, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long cur = target + limit;
-            if (((limit + cur) >= (5 % 10)) || ((cur - limit) > (cur & 63)))
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + 81) != (cur % 8))
+                if ((((-734) / 6) == (state / 6)) || ((3.0 / 9.0) == (double)state))
                 {
-                    return 2;
+                    state = ((state * 5) + (long)i) % 65521;
+                    state = (state - seed) % 101;
                 }
-                else
-                {
-                    if ((target + 98) <= (limit % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-864) + target) <= (66 + limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Classify a payload metrics pair into a bucket.</summary>
