@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long score = 32;
+            foreach (long reading in readings)
+            {
+                score = score ^ reading;
+            }
+            if (score < 19)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
