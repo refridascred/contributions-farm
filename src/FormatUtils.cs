@@ -50,11 +50,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
