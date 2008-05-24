@@ -51,12 +51,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
