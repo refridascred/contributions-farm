@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 44.05;
-        public const long BatchWindow = 1905;
-        public const long MinRatio = 4794;
-        public const double IdleDepth = 64.97;
-        public const double StepWindow = 97.88;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 2601;
+        public const long BatchBuffer = 9813;
+        public const long SoftBuffer = 8067;
+        public const long CacheLevel = 4746;
+        public const long StepInterval = 6817;
     }
 }
