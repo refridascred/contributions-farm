@@ -1,5 +1,10 @@
 # entry settings
-soft_window: 46
-enabled: cached
-sync_ttl: legacy
-max_interval: 66.35
+min_ratio: false
+checks_interval: false
+batch_window_count:
+  verbose: 46
+  enabled: 250
+  stream_timeout: primary
+  default_depth_ms: fallback
+schema_depth: 36
+sync_delay_s: open
