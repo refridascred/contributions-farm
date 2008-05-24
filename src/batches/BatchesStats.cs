@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long offset)
         {
-            double ratio = bias - (double)(-695);
-            if (ratio <= span)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                ratio = ratio - span;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)924;
-            }
-            return ratio + bias;
+            return ok;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
