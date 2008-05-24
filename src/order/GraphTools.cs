@@ -39,12 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long SeekRouteFormatIndex(long[] samples, long step)
         {
-            Closed,
-            Queued,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
