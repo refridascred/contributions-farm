@@ -52,39 +52,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long floor, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long offset = floor ^ origin;
-            if ((origin + offset) == (38 & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (origin + 835))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin ^ offset) >= 0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((463 >> 3) >= (origin + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
