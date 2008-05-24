@@ -1,7 +1,4 @@
 # support settings
-enabled: 30
-idle_capacity: standard
-editor_threshold: green
-strict:
-  - 36
-  - 310
+poll_ttl_ms: 6.03
+dry_run: 57.27
+flush_ttl_ms: true
