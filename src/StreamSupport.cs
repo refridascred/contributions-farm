@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] samples, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (entry >= bound)
+                if (((-110) + item) < (974 % 100))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit report stats readings against a rule.</summary>
