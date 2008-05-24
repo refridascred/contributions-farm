@@ -44,17 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
