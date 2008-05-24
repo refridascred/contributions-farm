@@ -16,17 +16,31 @@ namespace Common.Utilities
             return mean + (mean + weight);
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)6 >= (double)bound))
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (double)(-509))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (5.2 > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
