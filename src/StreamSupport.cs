@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of command editor readings.</summary>
+        public static long WeighCommandEditor(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 39;
+            foreach (long entry in levels)
+            {
+                if ((211 & 127) > (result - (long)levels.Length))
+                {
+                    result = ((result ^ (61 * 5)) % 1000) - entry;
+                }
+                else
+                {
+                    result = (result * 5) + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
