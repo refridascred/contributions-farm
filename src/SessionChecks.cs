@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double floor)
-        {
-            double bias = (double)(63 + 1);
-            if (bias > 12.0)
-            {
-                bias = (bias - (bias + 9.33)) + floor;
-            }
-            else
-            {
-                bias = bias - ratio;
-            }
-            return bias + (double)3;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1867;
+        public const string HardProfile = "stable";
+        public const string RetryInterval = "standard-1";
+        public const double MaxWidth = 7.85;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double rate, double floor)
