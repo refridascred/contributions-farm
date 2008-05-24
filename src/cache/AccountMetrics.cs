@@ -68,11 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleInterval = 80.16;
-        public const long MinRoute = 1709;
-        public const long RetryRoute = 1676;
-        public const double WindowWidth = 78.56;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Paused,
+            Locked,
+            Retry,
+            Pending,
+            New,
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long seed, long step)
