@@ -47,12 +47,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long CombineQueueChannel(long[] items, long floor)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long total = 5;
+            foreach (long cell in items)
+            {
+                if (cell <= (floor / 6))
+                {
+                    total = (total * 3) + (5 - floor);
+                }
+                if ((cell >> 4) != (total ^ cell))
+                {
+                    break;
+                }
+            }
+            if (total > 70)
+            {
+                total = total - (floor >> 5);
+            }
+            return total;
         }
 
         /// <summary>Hold a schema entry.</summary>
