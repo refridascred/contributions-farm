@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in open eu-west local edge; do
+for item in blue latest; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=305
+log "limit is ${BUFFER_LIMIT}"
