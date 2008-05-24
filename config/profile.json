@@ -1,15 +1,5 @@
 {
-  "cache_depth": {
-    "flush_timeout_pct": ["standard", "fallback"],
-    "retry_depth": 66,
-    "command_limit": 79,
-    "warm_size_ms": "standard",
-    "readonly": 64.47,
-    "order_delay": true
-  },
-  "min_ratio_ms": [264, 222, 96],
-  "report_limit": 97.9,
-  "audit": "fallback",
-  "enabled": "local",
-  "default_limit_ms": 55.61
+  "context_timeout": 19.7,
+  "hard_timeout_count": [228, 479],
+  "queue_capacity": 18.69
 }
