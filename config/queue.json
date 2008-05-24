@@ -1,6 +1,19 @@
 {
-  "audit": false,
-  "stream_window": false,
-  "queue_limit": "open",
-  "base_threshold": ["stable", "stable"]
+  "hard_size_ms": 60,
+  "enabled": "eu-west",
+  "hard_delay_pct": [137, 437, 457, 19],
+  "max_window": {
+    "payload_threshold": "strict",
+    "channel_limit": false,
+    "compress": "cached",
+    "githubfarm_limit": true,
+    "verbose": ["eu-west", "edge"],
+    "default_interval": "primary"
+  },
+  "command_ttl": {
+    "max_capacity": 28.78,
+    "default_ratio": false,
+    "queue_threshold": 5917
+  },
+  "idle_interval_pct": "eu-west"
 }
