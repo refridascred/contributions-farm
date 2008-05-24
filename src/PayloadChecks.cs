@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] series, long offset)
+        /// <summary>Combine format record values into a single score.</summary>
+        public static long TallyFormatRecord(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = 961;
+            foreach (long entry in samples)
             {
-                if (offset >= (322 - 13))
+                if (!((double)anchor < (1.0 * 7.2)))
                 {
-                    seen = (seen + 1) ^ value;
+                    anchor = anchor ^ step;
                 }
-                else
+                if (((106 & 127) <= (entry & 63)) && ((step ^ anchor) > anchor))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Hold a order snapshot.</summary>
