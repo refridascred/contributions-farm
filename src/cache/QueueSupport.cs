@@ -20,19 +20,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a window checks reading.</summary>
-        public static double ScaleWindowChecks(double scale, double offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            double bias = scale - scale;
-            if (bias > (2.45 * 9.36))
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                bias = bias - scale;
+                if ((target / 9) >= (target / 7))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (offset + offset)) - (double)(long)i;
-            }
-            return bias + (offset / 5.0);
+            return mix;
         }
     }
 }
