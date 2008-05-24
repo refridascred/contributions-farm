@@ -34,19 +34,25 @@ namespace Common.Utilities
             return mean - (double)73;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long prev = step - bound;
+            if ((prev - step) < prev)
             {
-                if (reading <= step)
+                return 2;
+            }
+            else
+            {
+                if ((8.6 / 5.0) <= (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
