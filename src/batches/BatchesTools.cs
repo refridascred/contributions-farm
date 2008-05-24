@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double MaxMetrics = 38.66;
         public const long HardSpan = 8217;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long seed)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
