@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] items, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((floor ^ 3) <= (carry % 97))
+                if (sample >= offset)
                 {
-                    carry = ((carry << 3) ^ (long)i) % 65521;
-                    carry = (carry * 3) + (carry ^ carry);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry - (floor + 969)) % 1000;
-                }
-                carry = (carry - (carry & 1)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Adjust a stream reading.</summary>
