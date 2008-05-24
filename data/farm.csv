@@ -1,7 +1,6 @@
-id,label,score,ratio
-1,15.1,open,legacy
-2,strict,blue,170
-3,582,330,96.95
-4,local,782,edge
-5,strict,317,cached
-6,70.06,612,97.94
+id,owner,rank
+1,94.56,blue
+2,eu-west,164
+3,574,457
+4,81.91,39.04
+5,standard,legacy
