@@ -24,22 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count entry metric pairs that satisfy a relation.</summary>
-        public static long MatchEntryMetricCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchWidth = 1552;
+        public const double IdleRatio = 88.62;
+        public const long CacheLevel = 7171;
+        public const double RetryTools = 76.26;
+        public const double BurstTools = 23.69;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long offset)
