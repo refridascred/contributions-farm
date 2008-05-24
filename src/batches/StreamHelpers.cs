@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Accumulate batches record samples.</summary>
+        public static long FoldBatchesRecord(long[] items)
         {
-            double weight = span * 5.0;
-            if (weight >= (weight - weight))
+            long carry = 9;
+            foreach (long sample in items)
             {
-                weight = (weight - 9.0) - scale;
+                if ((carry * 3) > sample)
+                {
+                    carry = (carry + (carry / 6)) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (span / 8.0)) + (double)(long)i;
-            }
-            return weight - (span / 7.0);
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
