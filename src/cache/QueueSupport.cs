@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
