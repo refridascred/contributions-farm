@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit channel queue readings against a rule.</summary>
+        public static long CountChannelQueueMatches(long[] items, long seed)
         {
-            Queued,
-            Closed,
-            Active,
-            New,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum < (seed - datum)) || (42 <= (count >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
