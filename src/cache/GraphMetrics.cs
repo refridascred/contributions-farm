@@ -55,22 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long step)
         {
-            long mix = 708;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((mix - mix) > (mix ^ entry)) && ((limit << 3) >= limit))
+                if (entry < step)
                 {
-                    mix = mix ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 683)
-            {
-                mix = (mix << 2) ^ (62 - limit);
-            }
-            return mix;
+            return ok;
         }
     }
 }
