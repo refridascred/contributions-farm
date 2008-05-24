@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series, long floor)
         {
-            Draft,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally < (tally ^ cell))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
