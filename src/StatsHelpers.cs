@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long seed)
+        /// <summary>Scale a stream graph figure with a bias.</summary>
+        public static double ScaleStreamGraph(double ratio, double offset)
         {
-            if ((16.0 + 12.0) >= (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= 3.34)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(0.4 <= (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double drift = ratio / 4.0;
+            return (drift - (double)3) + offset;
         }
 
         /// <summary>Hold a command info.</summary>
