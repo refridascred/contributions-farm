@@ -34,13 +34,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            Retry,
-            Pending,
-            Stale,
-            Failed,
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                double gain = (5.0 - 2.5) + (5.02 * 4.0);
+                if ((3.0 <= gain) || ((long)i >= (sum + offset)))
+                {
+                    long next = sum;
+                    sum = (sum ^ (next >> 5)) % 255;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches status values.</summary>
