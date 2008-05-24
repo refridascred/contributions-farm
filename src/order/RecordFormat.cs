@@ -78,10 +78,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinTimeout = 4703;
-        public const double BatchStats = 23.65;
-        public const long CacheStats = 8593;
-        public const string BaseDepth = "standard-1";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long step)
+        {
+            if (target > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 1) == (step / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 10) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
