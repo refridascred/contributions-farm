@@ -22,10 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepScore = "latest-edge";
-        public const string HardLevel = "local";
-        public const long StepLevel = 3228;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] items)
