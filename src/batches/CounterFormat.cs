@@ -26,38 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double scale, double span)
         {
-            if (!((double)step >= (17.0 + 8.0)))
+            double weight = (double)(44 / 5);
+            if (weight < (weight - scale))
             {
-                return 1;
+                weight = weight - weight;
             }
             else
             {
-                if ((step - floor) != (743 / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.38 - 4.5) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - floor) > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = weight + (span - weight);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (span - scale)) + (double)(long)i;
+            }
+            return weight - 3.3;
         }
     }
 }
