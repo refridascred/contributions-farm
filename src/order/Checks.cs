@@ -56,31 +56,21 @@ namespace Common.Utilities
             return load - (load * 5.25);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long mix = 8;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= (7 * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix + entry) ^ (long)i;
-                    mix = mix + (entry >> 4);
-                }
-                if (4.0 >= (double)entry)
-                {
-                    mix = mix ^ (entry - entry);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (entry + mix)) % 97;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
