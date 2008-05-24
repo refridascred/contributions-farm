@@ -1,6 +1,12 @@
 {
-  "queue_capacity": [451, 182],
-  "soft_timeout": 32,
-  "format_size": 7.41,
-  "persist": 44
+  "dry_run": {
+    "min_window_s": 45.44,
+    "strict": "cached",
+    "max_ttl": true
+  },
+  "channel_ratio": 26.09,
+  "sync_ttl_pct": [98, 486],
+  "route_timeout": 38,
+  "soft_retries_s": "fallback",
+  "account_retries": ["eu-west", "cached", "legacy", "edge"]
 }
