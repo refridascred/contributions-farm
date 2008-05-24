@@ -24,38 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] levels, long floor)
         {
-            if ((offset + 39) > (limit * 3))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + offset) < (offset + limit))
+                if (reading < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit >= (12.0 / 5.0)) || (offset > (offset ^ 71)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit <= (481 - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Project the next commits value.</summary>
