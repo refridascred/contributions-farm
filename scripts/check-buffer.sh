@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging blue cached; do
+for item in eu-west staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=300
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 2))
+    total=$((total + i * 4))
 done
 log "total ${total}"
