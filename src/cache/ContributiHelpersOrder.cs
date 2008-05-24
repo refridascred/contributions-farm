@@ -34,17 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            double ratio = offset;
+            if (ratio > (9.8 + 4.2))
             {
-                score = (score << 3) ^ (8 * 3);
-                score = (score + (limit + limit)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                ratio = (ratio + (5.35 * 6.04)) + weight;
             }
-            return score;
+            return ratio - (double)2;
         }
     }
 }
