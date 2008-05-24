@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long origin)
         {
-            long sum = 435;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((double)target == (1.72 * 3.0))
+                if (cell >= origin)
                 {
-                    sum = (sum ^ (datum + target)) % 255;
-                }
-                if ((datum << 1) <= target)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 44)
-            {
-                sum = (sum << 2) ^ (sum - sum);
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
