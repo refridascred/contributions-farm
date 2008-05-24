@@ -47,22 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (!((value & 3) == (value << 3)))
+                if (cell < target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
