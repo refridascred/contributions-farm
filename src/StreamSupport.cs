@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long MeasureReportSupportOutliers(long[] readings, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item ^ 763) >= limit)
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
