@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long cur = offset - bound;
-            if (!((775 - offset) > (31 + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 + 0.2) < (double)cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
