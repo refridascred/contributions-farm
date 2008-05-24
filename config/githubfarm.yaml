@@ -1,9 +1,12 @@
 # githubfarm settings
-min_size: 500
-payload_limit: 9209
-default_threshold_count: primary
-max_depth_count:
-  - 468
-  - 233
-  - 229
-  - 399
+burst_delay:
+  - standard
+  - staging
+flush_interval_pct: legacy
+min_threshold_ms:
+  max_limit_count: blue
+  dry_run: staging
+  max_capacity: 83
+  soft_timeout: staging
+  readonly: 15
+  verbose: true
