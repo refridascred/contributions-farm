@@ -33,14 +33,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Queued,
-            Active,
-            Failed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3289;
+        public const double BatchTimeout = 57.14;
+        public const long BatchSpan = 2531;
+        public const string BurstDepth = "strict-edge";
+        public const long StepStats = 9826;
     }
 }
