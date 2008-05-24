@@ -50,39 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a payload metrics pair into a bucket.</summary>
-        public static long BucketPayloadMetrics(long floor, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long target)
         {
-            long slot = floor - limit;
-            if (3 > (floor + limit))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (slot >= (8 ^ 76))
+                if (item > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)slot != (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor > (double)515) && ((20 * 3) >= slot))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
