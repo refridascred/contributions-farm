@@ -34,11 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(hits >= (hits << 3)))
+                {
+                    hits = ((hits + 3) ^ entry) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
