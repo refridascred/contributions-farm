@@ -59,22 +59,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + 39) < count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
