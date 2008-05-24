@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)tally < (8.93 + 17.0))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2182;
+        public const double CacheToken = 71.36;
+        public const double BatchBudget = 27.91;
+        public const long DefaultToken = 5338;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double gain, double offset)
