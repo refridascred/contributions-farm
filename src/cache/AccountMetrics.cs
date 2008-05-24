@@ -52,18 +52,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long AuditFilterProfileHits(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((hits << 1) < (datum * 5))
+                if (!((1.0 * 5.0) < (double)cell))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) + origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
