@@ -58,32 +58,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long floor)
+        /// <summary>Derive the next contributi token value from a seed.</summary>
+        public static long RollContributiToken(long seed)
         {
-            long gap = offset ^ floor;
-            if ((gap - (-556)) <= (gap - floor))
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                score = ((score * 3) + (seed - score)) % 255;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (floor > (offset - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset > (double)gap) && ((gap % 100) < (514 >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
