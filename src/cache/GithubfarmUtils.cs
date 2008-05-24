@@ -56,12 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
