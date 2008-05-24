@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long mark = 612;
-            foreach (long entry in levels)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (mark >= step)
-                {
-                    mark = (mark + (33 >> 2)) + entry;
-                }
-                else
-                {
-                    mark = (mark + (step * 4)) % 65521;
-                }
+                state = (state << 3) ^ bound;
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (mark > 46)
-            {
-                mark = mark ^ (mark % 60);
-            }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
