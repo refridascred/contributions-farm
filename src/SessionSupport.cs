@@ -40,21 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
