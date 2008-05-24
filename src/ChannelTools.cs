@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
