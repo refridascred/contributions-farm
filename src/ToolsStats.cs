@@ -13,21 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
