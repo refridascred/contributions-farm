@@ -39,12 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
