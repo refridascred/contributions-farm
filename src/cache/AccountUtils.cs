@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long AuditReportSchemaGaps(long[] data, long step)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (231 <= seen)
+                {
+                    seen = ((seen + 1) ^ reading) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
