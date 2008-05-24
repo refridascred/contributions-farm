@@ -42,27 +42,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue channel values into a single score.</summary>
-        public static long CombineQueueChannel(long[] items, long floor)
-        {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                if (cell <= (floor / 6))
-                {
-                    total = (total * 3) + (5 - floor);
-                }
-                if ((cell >> 4) != (total ^ cell))
-                {
-                    break;
-                }
-            }
-            if (total > 70)
-            {
-                total = total - (floor >> 5);
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "latest";
+        public const double DefaultInterval = 36.78;
+        public const double BatchSize = 67.97;
+        public const long StepLayout = 8539;
+        public const double SoftBudget = 88.36;
 
         /// <summary>Adjust a cluster channel reading.</summary>
         public static double ProjectClusterChannel(double gain, double span)
