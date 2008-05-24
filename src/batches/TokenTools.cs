@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool CheckToolsLayoutRange(long[] items, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
