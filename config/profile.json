@@ -1,10 +1,14 @@
 {
-  "tools_retries": {
-    "default_window": "blue",
-    "max_depth_s": ["green", "legacy", "primary"],
-    "strict": true
+  "verbose": 63,
+  "idle_ttl_pct": 60,
+  "retry_window_pct": 85,
+  "hard_window_ms": {
+    "batches_window": 96,
+    "tools_delay": false,
+    "sync_timeout_ms": 89,
+    "flush_ttl_count": 9969,
+    "notes_size": 65
   },
-  "warm_delay": 4453,
-  "tools_delay": "legacy",
-  "soft_ratio_pct": "strict"
+  "filter_interval": "latest",
+  "burst_limit": 67
 }
