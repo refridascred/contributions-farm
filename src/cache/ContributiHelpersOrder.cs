@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
