@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleTimeout = 4279;
-        public const long BurstSize = 9647;
-        public const string BurstSupport = "alpha-edge";
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Level { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long offset)
