@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "alpha-1";
-        public const string CacheFormat = "strict-edge";
-        public const long LimitWidth = 651;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double offset)
+        {
+            double load = rate;
+            if (load <= offset)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (double)(-80);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (rate / 3.0)) + (double)(long)i;
+            }
+            return load + (double)4;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
