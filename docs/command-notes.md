@@ -1,13 +1,11 @@
 # Command notes
 
-When a cluster fails, the cache handler retries a few times before giving up.
-Each already is validated before it reaches the farm queue.
-
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a batches fails, the tools handler retries a few times before giving up.
+Use filter settings to tune how often filter data is refreshed.
+The counter report groups every metric by metrics.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer payload defaults
-- Log every command change
+- Prefer layout defaults
+- Review route limits each release
+- Keep already values small
+- Validate graph input early
