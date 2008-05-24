@@ -40,18 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = 70;
+            foreach (long entry in samples)
             {
-                if ((tally + cell) >= (cell - cell))
+                carry = carry + entry;
+                if ((double)carry == (double)entry)
                 {
-                    tally = tally + 2;
+                    carry = carry ^ (81 + carry);
+                }
+                if (!((double)entry != (double)carry))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry > 128)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
