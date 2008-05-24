@@ -56,15 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry counter readings.</summary>
-        public static long DigestEntryCounter(long[] values, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long origin)
         {
-            long sum = 643;
-            foreach (long value in values)
+            long carry = 772;
+            foreach (long sample in items)
             {
-                sum = ((sum ^ (value * 3)) % 97) + limit;
+                carry = ((carry << 3) ^ origin) ^ sample;
             }
-            return sum % 1000;
+            return carry % 4096;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
