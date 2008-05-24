@@ -1,9 +1,22 @@
 # support settings
-route_depth: true
-max_delay_count: legacy
-warm_interval: true
-dry_run: 85.41
-soft_delay_s:
-  - 125
-  - 437
-checks_threshold: 94.08
+strict: false
+default_ttl_count:
+  channel_retries: standard
+  default_delay_s:
+    - 155
+    - 411
+    - 346
+  route_threshold: 500
+idle_depth: blue
+default_limit: 7280
+sync_window: 58
+dry_run:
+  max_ttl_pct: 30
+  support_interval: legacy
+  compress: false
+  hard_size_pct:
+    - staging
+    - eu-west
+    - green
+  batch_window: 250
+  enabled: fallback
