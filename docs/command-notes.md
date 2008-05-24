@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
+The support module keeps schema values in sync with the metrics cache.
 
 ## Guidelines
 
-- Log every payload change
-- Validate githubfarm input early
-- Document new stream fields
+- Keep order values small
+- Prefer queue defaults
+- Validate queue input early
