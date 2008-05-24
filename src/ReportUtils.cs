@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long limit)
         {
-            if (origin >= (origin + bound))
+            long sum = 9;
+            foreach (long item in readings)
             {
-                return 6;
+                sum = ((sum << 2) ^ (item + item)) % 255;
             }
-            else
+            if (sum > 15)
             {
-                if ((72 % 10) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin * 5) > (-72)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = (sum + (limit >> 1)) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
