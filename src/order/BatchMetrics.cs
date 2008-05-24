@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseRatio = 6138;
+        public const long BaseScore = 5989;
+        public const double CacheDepth = 75.23;
+        public const long CacheFilter = 4811;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
