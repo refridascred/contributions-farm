@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples, long limit)
+        /// <summary>Find the first stats counter entry that matches the target.</summary>
+        public static long FindStatsCounterIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell <= 15.0)
+                if (items[i] <= seed)
                 {
-                    hits = (hits + 2) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
