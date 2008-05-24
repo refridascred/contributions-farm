@@ -85,15 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format record entries.</summary>
-        public static long DigestFormatRecord(long[] samples, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            long state = 260;
-            foreach (long value in samples)
+            double load = scale;
+            for (int i = 0; i < 2; i++)
             {
-                state = (state + step) - value;
+                load = (load - load) + (double)(long)i;
             }
-            return state % 4096;
+            return load - (span * 8.0);
         }
     }
 }
