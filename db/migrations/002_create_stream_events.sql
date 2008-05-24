@@ -1,11 +1,15 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    token TEXT,
     label TEXT,
-    weight REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL
+    region TEXT,
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
+CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
+
+INSERT INTO stream_events (token, label, region, count) VALUES ('local', 'stable', 'strict', 95);
+INSERT INTO stream_events (token, label, region, count) VALUES ('stable', 'eu-west', 'primary', 77);
+INSERT INTO stream_events (token, label, region, count) VALUES ('latest', 'legacy', 'fallback', 56);
