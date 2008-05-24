@@ -31,17 +31,31 @@ namespace Common.Utilities
         public const long BaseFactor = 5862;
         public const double RetryGraph = 86.43;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target % 12) > bound)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (!((bound + target) < target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 4) <= (41 - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
