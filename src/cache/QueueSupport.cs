@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a schema tools pair into a bucket.</summary>
-        public static long SortSchemaTools(long step, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long seed)
         {
-            if ((step * 5) >= (bound % 2))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 15) <= (bound - 557))
+                if (value > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.99 * 8.74) > (6.2 * 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
