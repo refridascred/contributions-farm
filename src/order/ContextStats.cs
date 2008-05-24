@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double span)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            double weight = (double)805;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (ratio + span)) + (double)(long)i;
+            }
+            return weight + (ratio * 10.0);
         }
 
         /// <summary>Blend two graph measurements.</summary>
