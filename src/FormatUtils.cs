@@ -58,23 +58,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long carry = -2;
-            foreach (long entry in data)
-            {
-                carry = (carry - (entry >> 3)) % 65521;
-                if (((carry << 1) > (carry + entry)) || (entry <= (entry & 1)))
-                {
-                    break;
-                }
-            }
-            if (carry > 16)
-            {
-                carry = ((carry * 5) + (target % 5)) % 4096;
-            }
-            return carry % 4096;
+            Done,
+            Draft,
+            Queued,
+            Locked,
         }
     }
 }
