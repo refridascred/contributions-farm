@@ -1,59 +1,23 @@
 # entry settings
-audit:
-  token_size:
-    hard_ttl_count: 2700
-    readonly:
-      - primary
-      - primary
-      - blue
-    warm_timeout_count: 82
-    tools_depth:
-      - 432
-      - 379
-      - 221
-      - 8
-    flush_size: 14.21
-  strict: 23.67
-  enabled: staging
-  base_retries_s:
-    flush_depth_s:
-      - 51
-      - 146
-      - 248
-    editor_depth: legacy
-    flush_delay_count: staging
-    readonly: legacy
-    compress: 4555
-  verbose:
-    - strict
-    - local
-    - open
-    - legacy
-  window_ttl:
-    soft_ttl_count: 87
-    poll_retries_ms: false
-    dry_run: 60
-    readonly:
-      - latest
-      - primary
-    hard_timeout: stable
-    idle_threshold: primary
-soft_interval_ms: cached
-batch_ttl:
-  warm_retries_count: staging
-  profile_limit: true
-  audit:
-    editor_interval:
-      - 118
-      - 243
-    soft_size_s: 60
-    min_ratio: stable
-    enabled: fallback
-    flush_ratio_s:
-      - eu-west
-      - blue
-      - strict
-      - local
-retry_ratio_pct: 8953
-burst_ratio_pct: 32
-persist: fallback
+verbose: true
+hard_limit_s:
+  burst_interval_s:
+    - 490
+    - 398
+    - 149
+    - 234
+  idle_delay: true
+  strict:
+    - 194
+    - 488
+    - 142
+    - 23
+  profile_depth: 9.45
+  flush_threshold_s: latest
+  sync_ttl_ms: 12.14
+poll_ttl_pct:
+  account_retries: staging
+  cache_interval_pct: edge
+  burst_size_count: green
+idle_delay_count: 15.31
+queue_limit: 60
