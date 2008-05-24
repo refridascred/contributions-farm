@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry != (11.0 * 9.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
