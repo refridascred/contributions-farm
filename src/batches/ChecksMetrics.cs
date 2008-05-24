@@ -35,19 +35,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] series, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate cache order samples.</summary>
