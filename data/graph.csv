@@ -1,6 +1,8 @@
-id,region,score
-1,513,864
-2,697,24.2
-3,126,842
-4,fallback,strict
-5,350,675
+id,token,region,ratio,count
+1,69,683,green,standard
+2,980,cached,29.79,793
+3,78.35,121,870,16
+4,692,72.17,legacy,385
+5,local,881,standard,846
+6,9.27,open,473,722
+7,legacy,64.86,96,88.52
