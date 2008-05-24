@@ -30,18 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] levels, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((matches + 2) != (381 + matches)))
+                if (((661 % 12) < (carry << 1)) && ((87 / 7) >= offset))
                 {
-                    matches = ((matches + 2) ^ reading) + bound;
+                    carry = ((carry * 5) + (carry + carry)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
