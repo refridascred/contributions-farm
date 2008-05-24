@@ -29,21 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total ^ (total << 3)) % 101;
+                total = (total ^ (total - total)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
     }
 }
