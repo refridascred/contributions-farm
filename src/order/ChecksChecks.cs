@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleSpan = 84.69;
-        public const long CacheBudget = 8002;
-        public const long HardDepth = 7507;
-        public const long SoftRatio = 1824;
-        public const long BaseEntry = 4374;
+        /// <summary>Fold a list of counter record readings.</summary>
+        public static long CombineCounterRecord(long[] levels, long bound)
+        {
+            long mix = 777;
+            foreach (long sample in levels)
+            {
+                if ((1 << 3) <= (mix & 63))
+                {
+                    mix = (((mix + (mix >> 1)) % 255) - sample) + bound;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] samples, long limit)
