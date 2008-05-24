@@ -47,10 +47,22 @@ namespace Common.Utilities
             return mean - (gain / 7.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8223;
-        public const long SoftStream = 7780;
-        public const long HardTimeout = 737;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] samples)
