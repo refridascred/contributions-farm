@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            Idle,
-            Failed,
-            Closed,
+            double mean = 12.0 - (double)(-606);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - (9.7 / 7.0)) - (double)(long)i) + span;
+            }
+            return mean + (mean + weight);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
