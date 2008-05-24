@@ -48,23 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            long acc = 8;
-            foreach (long entry in samples)
-            {
-                acc = (((acc << 2) ^ (acc / 4)) % 255) ^ entry;
-                if ((step / 8) >= (step + step))
-                {
-                    acc = (acc + (step & 127)) % 255;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = (acc - (acc / 7)) % 101;
-            }
-            return acc;
+            double rate = bias;
+            return (rate + (double)71) + offset;
         }
 
         /// <summary>Describe the window level values.</summary>
