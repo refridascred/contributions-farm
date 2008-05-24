@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            double scale2 = (double)(346 ^ 0);
-            if (scale2 < (double)7)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + scale2) - scale;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (scale2 + scale2);
-            }
-            return scale2 + (1.0 - offset);
+            return -1;
         }
 
         /// <summary>Audit batches graph readings against a rule.</summary>
