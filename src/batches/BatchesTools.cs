@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank entry context input into a small class.</summary>
-        public static long RankEntryContext(long bound, long offset)
-        {
-            if (((-8) + bound) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset % 5) > (bound + (-316))) || ((bound << 2) < (bound + 11)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((9 + bound) <= bound) || (bound <= (offset / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((0.66 * 5.5) > (double)offset) && ((bound / 8) <= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "alpha-v2";
+        public const double MaxMetrics = 38.66;
+        public const long HardSpan = 8217;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] samples)
