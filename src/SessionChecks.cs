@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings, long offset)
         {
-            long anchor = 7;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor + (origin ^ value);
+                if (((long)readings.Length >> 3) != (tally % 16))
+                {
+                    tally = ((tally + 2) + sample) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (anchor < 875)
-            {
-                anchor = ((anchor << 3) ^ (681 + anchor)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
