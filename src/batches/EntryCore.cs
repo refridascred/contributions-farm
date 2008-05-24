@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const string MinCount = "standard-v2";
         public const string RetryCount = "fallback";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheInterval = 5131;
-        public const long WindowBatch = 9270;
-        public const long SoftBatch = 8890;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Idle,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] samples)
