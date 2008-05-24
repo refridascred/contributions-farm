@@ -1,6 +1,19 @@
 {
-  "report_window": 500,
-  "retry_capacity": "eu-west",
-  "cluster_ttl": 4,
-  "metric_timeout": 52.56
+  "dry_run": 24.33,
+  "poll_ttl_ms": 1024,
+  "window_interval": false,
+  "command_window": {
+    "retry_delay_ms": "edge",
+    "stream_window": ["strict", "standard"],
+    "dry_run": {
+      "poll_limit": 85.79,
+      "verbose": 43.69,
+      "cache_depth": true,
+      "default_depth_count": "eu-west",
+      "dry_run": 99,
+      "account_size": "open"
+    },
+    "command_threshold": 878,
+    "metric_ratio": true
+  }
 }
