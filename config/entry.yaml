@@ -1,13 +1,5 @@
 # entry settings
-readonly: true
-editor_size: 100
-sync_retries:
-  hard_ttl_count: stable
-  strict: eu-west
-  idle_retries_ms:
-    retry_delay_pct: local
-    readonly: 60
-    profile_ratio: 67.26
-min_ttl: true
-warm_size: 95
-editor_depth: false
+cache_retries_s: 98
+verbose: local
+retry_threshold: local
+route_ttl: edge
