@@ -1,14 +1,14 @@
 # Command notes
 
-The batches module keeps tools values in sync with the githubfarm cache.
-A layout that stays idle for too long is moved to the profile list.
+Each batches is validated before it reaches the context queue.
+The account report groups every filter by queue.
+Each cache is validated before it reaches the channel queue.
 
-Each queue is validated before it reaches the order queue.
-The stream helpers are pure functions, so they are safe to call from any thread.
-The counter report groups every metric by schema.
+The payload module keeps contributi values in sync with the metric cache.
+The schema module keeps contributi values in sync with the support cache.
 
 ## Guidelines
 
-- Keep session values small
-- Review queue limits each release
-- Log every stats change
+- Document new filter fields
+- Keep checks values small
+- Prefer queue defaults
