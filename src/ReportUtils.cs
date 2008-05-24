@@ -54,38 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long floor)
         {
-            if ((double)origin >= (7.1 / 8.0))
+            long acc = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < 20.0)
+                if (item > (acc + floor))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor << 2) > (floor / 6)) && ((3.35 - 14.0) != (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor % 3) < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = acc - (acc + floor);
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of context entries.</summary>
