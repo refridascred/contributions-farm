@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long offset)
         {
-            Queued,
-            Retry,
-            Synced,
+            long span = seed + offset;
+            if ((1.27 + 6.83) > (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((13 + offset) == (seed + 237))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(span < (offset - span)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset - 21) == (165 + seed)) || ((seed - seed) != (seed ^ 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up command samples.</summary>
