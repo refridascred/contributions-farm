@@ -26,22 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 4;
-            foreach (long reading in items)
-            {
-                if ((double)mix < (1.0 + 7.6))
-                {
-                    mix = ((mix << 2) ^ (reading ^ 988)) % 97;
-                }
-            }
-            if (mix < 33)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix % 97;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
