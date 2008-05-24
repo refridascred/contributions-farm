@@ -33,30 +33,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((sum + 52) > (sum >> 1))
+                if ((double)matches == (0.37 - 1.56))
                 {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sample / 5)) % 255;
-                }
-                if ((sample + 421) < sum)
-                {
-                    sum = (sum * 4) + (sample ^ sum);
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            if (sum < 351)
-            {
-                sum = (sum * 2) + (sum & 127);
-            }
-            return sum;
+            return matches;
         }
     }
 }
