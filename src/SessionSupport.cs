@@ -34,9 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 35.79;
-        public const long DefaultTimeout = 1956;
-        public const string BaseScore = "cached-v2";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
