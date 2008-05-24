@@ -20,35 +20,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long total = 330;
-            foreach (long datum in samples)
-            {
-                if ((total & 31) < (datum / 2))
-                {
-                    total = (total * 3) + (total & 1);
-                    total = ((total << 2) ^ origin) % 65521;
-                }
-                if (!((origin % 60) < (total + (long)samples.Length)))
-                {
-                    total = ((total << 2) ^ (total ^ origin)) % 97;
-                }
-                if (origin >= (total * 2))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = total - (origin ^ origin);
-                }
-                if ((datum * 5) > 8)
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
