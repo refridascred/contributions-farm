@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7238;
-        public const double BaseLevel = 15.17;
-        public const long CacheCluster = 8501;
-        public const long HardCluster = 4000;
-        public const double MaxCluster = 35.27;
+        /// <summary>Locate a stream token reading by value.</summary>
+        public static long LookupStreamTokenIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] data, long limit)
