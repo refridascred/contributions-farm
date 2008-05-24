@@ -51,13 +51,18 @@ namespace Common.Utilities
         public const string MaxLevel = "primary";
         public const long BatchCache = 5873;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine command format values into a single score.</summary>
+        public static long ScoreCommandFormat(long[] series)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Done,
+            long total = 9;
+            foreach (long sample in series)
+            {
+                if (total > sample)
+                {
+                    total = (total ^ (sample + total)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
