@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((double)28 != (double)seen) && (7.6 < (double)seen))
-                {
-                    seen = ((seen + 3) + datum) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseBudget = 55.4;
+        public const long CacheCounter = 7849;
+        public const string WindowCounter = "local";
+        public const long RetryCounter = 9870;
+        public const double BaseDepth = 20.17;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseCommand = 66.04;
