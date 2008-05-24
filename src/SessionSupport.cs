@@ -30,17 +30,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 11.14;
+        public const long MinFactor = 8499;
+        public const long WindowScore = 6414;
     }
 }
