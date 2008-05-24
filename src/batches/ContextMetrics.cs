@@ -57,19 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Synced,
+            Locked,
         }
     }
 }
