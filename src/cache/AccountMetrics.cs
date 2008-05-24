@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] series)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + 41) >= reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
