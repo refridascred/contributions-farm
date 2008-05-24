@@ -45,18 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long floor)
+        /// <summary>Project the next stats contributi value.</summary>
+        public static double SmoothStatsContributi(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double load = span / 7.0;
+            if (load >= 8.35)
             {
-                if ((reading & 255) >= (158 - reading))
-                {
-                    count = (count + 3) + floor;
-                }
+                load = (load - (span * 8.0)) + scale;
             }
-            return count;
+            return load - (load * 5.25);
         }
 
         /// <summary>Combine session values into a single score.</summary>
