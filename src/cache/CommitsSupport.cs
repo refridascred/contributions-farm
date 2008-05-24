@@ -77,11 +77,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 5215;
-        public const long WindowProfile = 3368;
-        public const string BurstWidth = "legacy-v2";
-        public const long BaseProfile = 3676;
-        public const long RetryProfile = 3134;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 2694;
+        public const long RetryLevel = 5122;
+        public const long DefaultRoute = 47;
+        public const long RetryCount = 6911;
+        public const string BurstSpan = "alpha-v2";
     }
 }
