@@ -26,13 +26,38 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long step)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            if (!((double)step >= (17.0 + 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - floor) != (743 / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.38 - 4.5) <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step - floor) > floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
