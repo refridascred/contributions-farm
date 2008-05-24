@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long acc = 8;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item < (4.1 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc - (acc << 2)) % 255) - target;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
