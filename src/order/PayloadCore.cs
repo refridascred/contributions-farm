@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
