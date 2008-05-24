@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry filter input into a small class.</summary>
-        public static long RankEntryFilter(long seed, long seed2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] series)
         {
-            long offset = seed + seed2;
-            if ((seed2 * 2) == ((-17) + seed))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + seed) <= (seed2 * 3))
+                if ((reading + 41) >= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a report header.</summary>
