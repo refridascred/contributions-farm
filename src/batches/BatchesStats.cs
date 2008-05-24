@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
