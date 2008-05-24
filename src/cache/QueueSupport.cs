@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) == (hits / 5))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
