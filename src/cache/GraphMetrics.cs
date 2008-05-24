@@ -13,19 +13,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long CountChannelQueueMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum < (seed - datum)) || (42 <= (count >> 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 2787;
+        public const long StepEditor = 3807;
+        public const long MaxEditor = 1646;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] values, long limit)
