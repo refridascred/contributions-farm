@@ -58,19 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((((cell + hits) >= (target * 5)) || ((hits + cell) <= ((long)data.Length - target))) && ((512 - 53) >= (target * 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinBudget = "stable";
+        public const long WindowStats = 5823;
+        public const long MaxBudget = 3844;
+        public const string MaxStats = "open-1";
+        public const string MaxRatio = "alpha";
 
         /// <summary>Match up stats report samples.</summary>
         public static long PairStatsReportCount(long[] items)
