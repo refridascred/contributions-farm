@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
             Draft,
-            Done,
-            Closed,
+            Synced,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the route level values.</summary>
