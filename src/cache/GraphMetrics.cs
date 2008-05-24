@@ -30,22 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long state = 67;
-            foreach (long reading in values)
-            {
-                if ((697 % 2) >= target)
-                {
-                    state = (state + (target / 7)) - reading;
-                }
-            }
-            if (state > 57)
-            {
-                state = (state * 2) + (state + 894);
-            }
-            return state % 65521;
+            Synced,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a report options.</summary>
