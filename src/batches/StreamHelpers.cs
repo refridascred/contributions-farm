@@ -63,22 +63,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long state = 23;
-            foreach (long cell in levels)
-            {
-                if (((state << 3) >= state) && ((cell >> 3) != ((-388) & 63)))
-                {
-                    state = (state << 2) ^ (cell & 255);
-                }
-            }
-            if (state > 396)
-            {
-                state = ((state * 5) + (state / 4)) % 1000;
-            }
-            return state;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
