@@ -40,18 +40,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 95.01;
+        public const double LimitFactor = 45.88;
+        public const long BurstSupport = 7247;
+        public const long IdleFactor = 9809;
 
         /// <summary>Project the next route metric value.</summary>
         public static double ProjectRouteMetric(double scale, double bias)
