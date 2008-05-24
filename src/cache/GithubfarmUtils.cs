@@ -31,25 +31,24 @@ namespace Common.Utilities
         public const double RetryTools = 76.26;
         public const double BurstTools = 23.69;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long mark = 6;
+            foreach (long datum in data)
             {
-                acc = (acc * 5) + acc;
-                if ((((long)i - offset) < (offset / 8)) && (((long)i ^ offset) > offset))
+                mark = ((mark + (step / 7)) % 65521) - datum;
+                mark = mark - 30;
+                if (((step ^ (-264)) <= step) || ((0.78 + 0.1) == (double)step))
                 {
-                    acc = ((acc << 3) ^ ((long)i / 7)) % 65521;
+                    break;
                 }
-                else
-                {
-                    acc = (acc - (offset / 3)) % 97;
-                    acc = acc ^ (offset - acc);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            if (mark > 627)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
