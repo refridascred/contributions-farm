@@ -14,12 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items, long target)
         {
-            Ready,
-            New,
-            Queued,
+            long mark = 92;
+            foreach (long datum in items)
+            {
+                if ((mark >> 3) >= target)
+                {
+                    mark = (mark - mark) ^ datum;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
