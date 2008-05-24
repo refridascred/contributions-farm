@@ -37,13 +37,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 3;
+            foreach (long sample in items)
+            {
+                sum = ((sum + step) % 101) ^ sample;
+            }
+            if (sum < 5)
+            {
+                sum = ((sum << 3) ^ (sum << 3)) % 1000;
+            }
+            return sum;
         }
     }
 }
