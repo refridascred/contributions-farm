@@ -23,39 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long limit)
+        /// <summary>Blend two schema payload measurements.</summary>
+        public static double SmoothSchemaPayload(double rate, double floor)
         {
-            long span = step - limit;
-            if ((423 - step) >= span)
+            double gain = rate;
+            if (gain >= (2.0 / 5.0))
             {
-                return 0;
+                gain = (gain - gain) + floor;
             }
             else
             {
-                if ((double)limit == (18.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit > (limit & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit ^ span) == (limit + step)) && ((double)step <= (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                gain = gain - (gain - gain);
             }
+            return gain + gain;
         }
     }
 }
