@@ -44,19 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool CheckAlreadyContextBounds(long[] values, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double bias = offset;
+            if (bias < (offset * 8.1))
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - bias) + weight;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 8.9) - (double)(long)i;
+            }
+            return bias - (bias / 7.0);
         }
     }
 }
