@@ -36,10 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSize = 49.22;
-        public const long CacheSpan = 3284;
-        public const string BurstWidth = "primary";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long target, long seed)
