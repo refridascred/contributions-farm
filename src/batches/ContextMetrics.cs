@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
