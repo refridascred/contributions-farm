@@ -61,13 +61,10 @@ namespace Common.Utilities
         public const long CacheChecks = 4180;
         public const long BatchSize = 3541;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinTimeout = 4703;
+        public const double BatchStats = 23.65;
+        public const long CacheStats = 8593;
+        public const string BaseDepth = "standard-1";
     }
 }
