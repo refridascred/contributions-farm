@@ -33,11 +33,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3289;
-        public const double BatchTimeout = 57.14;
-        public const long BatchSpan = 2531;
-        public const string BurstDepth = "strict-edge";
-        public const long StepStats = 9826;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
