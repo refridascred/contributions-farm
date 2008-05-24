@@ -20,19 +20,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (cell != offset)
+                if (!((entry + entry) >= (279 + matches)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
