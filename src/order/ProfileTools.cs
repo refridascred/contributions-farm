@@ -62,12 +62,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double bias)
-        {
-            double gain2 = bias;
-            return (gain2 - bias) + gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "local-v2";
+        public const long BurstChecks = 9056;
+        public const string BatchSpan = "open-v2";
+        public const long DefaultLevel = 4355;
+        public const string SoftChecks = "open-v2";
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] levels)
