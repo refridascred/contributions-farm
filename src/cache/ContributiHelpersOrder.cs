@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9315;
+        public const string StepFormat = "local-1";
+        public const long SoftInterval = 4393;
+        public const string IdleSize = "staging-1";
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double rate, double floor)
