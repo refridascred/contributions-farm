@@ -35,12 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long bound)
         {
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            if (!((bound - target) != (bound ^ target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target / 6) >= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
