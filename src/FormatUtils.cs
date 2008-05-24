@@ -33,16 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel entry series from a seed.</summary>
-        public static long DeriveChannelEntry(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 35.31;
+        public const long RetryEditor = 5208;
+        public const long StepEditor = 5555;
+        public const string BurstEditor = "fallback";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchPayload = 792;
