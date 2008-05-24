@@ -25,11 +25,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowScore = "fallback-v2";
-        public const long MaxTimeout = 8958;
-        public const long StepSupport = 3013;
-        public const double BaseSupport = 28.64;
-        public const long CacheSupport = 4351;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
