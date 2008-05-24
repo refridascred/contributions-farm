@@ -1,8 +1,8 @@
-id,level,count,ratio,weight
-1,98.82,151,296,30.88
-2,latest,772,39.51,527
-3,green,green,289,625
-4,local,97.54,981,87.96
-5,536,450,420,eu-west
-6,607,375,green,68.21
-7,43.64,local,blue,20.07
+id,weight,active,count
+1,473,eu-west,staging
+2,staging,2.43,strict
+3,local,434,412
+4,eu-west,95.78,239
+5,136,15.78,74.09
+6,71.99,775,51.71
+7,619,local,746
