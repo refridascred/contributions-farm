@@ -29,13 +29,13 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Draft,
-            Retry,
-            Ready,
-            Failed,
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
