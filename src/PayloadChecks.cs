@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 4356;
-        public const long CacheSpan = 2004;
-        public const string MinTimeout = "staging-v2";
-        public const long CacheRoute = 2099;
-        public const long IdleRoute = 5201;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long target)
+        {
+            long next = bound - target;
+            if ((((-135) % 2) != (bound / 4)) || ((next << 2) <= 0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (next - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target != (6.88 * 3.94)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + next) != (bound >> 5)) || ((double)next <= (4.0 + 3.44)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] series, long offset)
