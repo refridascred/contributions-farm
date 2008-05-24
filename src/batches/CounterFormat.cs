@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long offset)
+        /// <summary>Locate a record tools reading by value.</summary>
+        public static long SeekRecordToolsIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < offset)
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
