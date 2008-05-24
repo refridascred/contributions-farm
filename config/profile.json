@@ -1,14 +1,13 @@
 {
-  "verbose": 63,
-  "idle_ttl_pct": 60,
-  "retry_window_pct": 85,
-  "hard_window_ms": {
-    "batches_window": 96,
-    "tools_delay": false,
-    "sync_timeout_ms": 89,
-    "flush_ttl_count": 9969,
-    "notes_size": 65
+  "hard_interval_s": {
+    "max_depth_ms": 69,
+    "idle_capacity": "stable",
+    "min_ratio_pct": 22,
+    "cache_threshold_count": 4689
   },
-  "filter_interval": "latest",
-  "burst_limit": 67
+  "idle_window_ms": [384, 69, 492],
+  "default_ttl": [473, 288, 287, 27],
+  "order_window": 7835,
+  "max_depth_ms": 57.83,
+  "route_ratio": "open"
 }
