@@ -1,5 +1,6 @@
 {
-  "default_delay_count": false,
-  "verbose": 68.68,
-  "metric_size": 100
+  "min_size": 30,
+  "route_ttl": 1145,
+  "flush_retries": "staging",
+  "base_size_s": [32, 394, 128]
 }
