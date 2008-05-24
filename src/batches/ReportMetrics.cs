@@ -21,21 +21,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double ScaleSupportLayout(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight = 10.0 / 7.0;
+            return (weight + (floor + floor)) + ratio;
         }
     }
 }
