@@ -26,17 +26,24 @@ namespace Common.Utilities
         public const double DefaultTimeout = 68.25;
         public const string IdleSpan = "alpha-edge";
 
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long FindChannelFilterIndex(long[] data, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset - offset) != (offset << 3))
             {
-                if (data[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if (((offset - 98) > ((-2) / 6)) && ((offset % 12) >= (offset << 3)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of stream cluster entries.</summary>
