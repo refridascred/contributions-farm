@@ -1,9 +1,4 @@
 # entry settings
-buffer_ratio: open
-flush_size_pct: 9490
-profile_window: 8873
-contributi_threshold:
-  - fallback
-  - stable
-  - legacy
-soft_ratio_s: 250
+warm_threshold_ms: local
+token_ttl: stable
+persist: open
