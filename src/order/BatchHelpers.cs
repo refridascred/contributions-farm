@@ -33,11 +33,14 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Queued,
+            Active,
+            Failed,
+            Locked,
+            Draft,
         }
     }
 }
