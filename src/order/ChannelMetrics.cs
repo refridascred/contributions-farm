@@ -31,17 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 85;
+            foreach (long datum in samples)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                if ((datum <= (datum << 1)) || ((double)datum >= (4.0 / 2.0)))
                 {
-                    return (long)i;
+                    anchor = anchor + (anchor + datum);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
