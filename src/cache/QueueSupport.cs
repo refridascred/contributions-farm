@@ -17,20 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseRatio = 4423;
+        public const double IdleScore = 26.0;
+        public const long BurstCommand = 6644;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
