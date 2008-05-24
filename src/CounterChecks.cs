@@ -12,15 +12,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Done,
-            Stale,
-            New,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSpan = "cached-1";
+        public const string StepInterval = "strict-v2";
+        public const double IdleScore = 64.41;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseScore = "local";
