@@ -13,18 +13,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long total = 25;
+            foreach (long value in data)
             {
-                if ((step < (count >> 1)) && !((entry % 3) >= (432 % 16)))
+                if ((long)data.Length <= seed)
                 {
-                    count = count + 2;
+                    total = (total << 2) ^ (value ^ (-5));
+                }
+                else
+                {
+                    total = (total + (67 ^ total)) % 101;
                 }
             }
-            return count;
+            if (total < 95)
+            {
+                total = ((total * 2) + (total * 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
