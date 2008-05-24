@@ -82,16 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi token value from a seed.</summary>
-        public static long RollContributiToken(long seed)
+        /// <summary>Digest a series of format record entries.</summary>
+        public static long DigestFormatRecord(long[] samples, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            long state = 260;
+            foreach (long value in samples)
             {
-                score = ((score * 3) + (seed - score)) % 255;
-                score = ((score * 5) + (long)i) % 101;
+                state = (state + step) - value;
             }
-            return score;
+            return state % 4096;
         }
     }
 }
