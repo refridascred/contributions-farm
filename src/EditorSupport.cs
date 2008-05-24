@@ -68,25 +68,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long bound, long offset)
+        /// <summary>Validate queue window readings against a bound.</summary>
+        public static bool CheckQueueWindowLimits(long[] items, long step)
         {
-            long next = bound - offset;
-            if (((1.1 * 1.3) == (double)next) || ((next ^ bound) <= (bound - offset)))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((297 <= (next + offset)) || ((offset / 8) > offset))
+                if (entry > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
