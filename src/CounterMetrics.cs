@@ -26,10 +26,16 @@ namespace Common.Utilities
         public const long CacheDepth = 5747;
         public const long MinFilter = 8079;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstSize = "staging-1";
-        public const long MinWidth = 5121;
-        public const long BurstBudget = 4982;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items, long bound)
+        {
+            long mix = 27;
+            foreach (long item in items)
+            {
+                mix = ((mix ^ (bound ^ bound)) % 101) ^ item;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
