@@ -54,11 +54,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double weight, double span)
+        /// <summary>Rank metrics queue input into a small class.</summary>
+        public static long SortMetricsQueue(long target, long bound)
         {
-            double scale = (weight * 13.0) + weight;
-            return scale - span;
+            long slot = target + bound;
+            if (bound >= (bound + slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target & 31) != (slot / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((37 / 6) < (target ^ target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target < (target % 100))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
