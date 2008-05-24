@@ -1,14 +1,4 @@
 # support settings
-context_timeout: false
-flush_capacity:
-  filter_ratio: 44
-  editor_size: true
-  idle_limit_ms: primary
-  poll_delay_count: cached
-  retry_ttl_ms:
-    - open
-    - stable
-    - open
-    - stable
-  min_ttl: true
-enabled: true
+filter_capacity: open
+soft_retries: fallback
+compress: green
