@@ -34,18 +34,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] items, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((seed % 5) < matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a checks header.</summary>
