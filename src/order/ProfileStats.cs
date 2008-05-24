@@ -50,21 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardInterval = "alpha-v2";
+        public const double WindowInterval = 90.62;
+        public const double StepSchema = 58.92;
+        public const long DefaultSchema = 2938;
+        public const long RetryScore = 1155;
     }
 }
