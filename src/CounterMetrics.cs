@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] samples, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + (offset - offset)) + (double)(long)i;
             }
-            return -1;
+            return scale2 + (3.4 * 4.8);
         }
 
         /// <summary>Hold a account header.</summary>
