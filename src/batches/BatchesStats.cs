@@ -43,16 +43,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long sum = 26;
+            foreach (long sample in values)
             {
-                mix = mix - (floor >> 5);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (((437 + sum) != (6 << 2)) || (2.52 <= (double)sample))
+                {
+                    sum = sum ^ (sample * 2);
+                }
             }
-            return mix;
+            return sum;
         }
     }
 }
