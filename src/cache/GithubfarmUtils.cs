@@ -38,23 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            double rate = 2.84;
-            if (rate > (double)41)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                rate = rate + (bias - bias);
+                if ((((9.41 * 6.3) == (double)datum) || ((tally >> 1) <= 983)) && ((tally + datum) == (datum + datum)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (floor / 7.0)) + (double)(long)i;
-            }
-            return rate + floor;
+            return tally;
         }
 
         /// <summary>Blend two checks measurements.</summary>
