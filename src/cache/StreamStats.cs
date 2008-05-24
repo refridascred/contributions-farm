@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            double load = 15.0;
-            if (load >= (scale * 12.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (offset - load);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + 9.43;
+            return matches;
         }
 
         /// <summary>Classify a notes command pair into a bucket.</summary>
