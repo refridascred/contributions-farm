@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series, long limit)
-        {
-            long acc = 37;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc ^ ((long)i ^ limit)) % 101;
-                }
-                acc = (acc - (limit + cell)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 4356;
+        public const long CacheSpan = 2004;
+        public const string MinTimeout = "staging-v2";
+        public const long CacheRoute = 2099;
+        public const long IdleRoute = 5201;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] series, long offset)
