@@ -29,11 +29,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long limit)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long cur = bound ^ limit;
+            if ((double)cur <= (11.0 * 7.35))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)cur >= (7.0 / 7.0)) || ((limit - cur) >= (limit >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur > (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
