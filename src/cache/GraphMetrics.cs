@@ -30,18 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] data, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item < (5.7 / 6.0))
-                {
-                    count = (count + 3) - seed;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a report options.</summary>
