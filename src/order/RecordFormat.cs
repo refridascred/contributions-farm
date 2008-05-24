@@ -51,26 +51,12 @@ namespace Common.Utilities
         public const long BatchDepth = 3302;
         public const double MinCount = 79.43;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long score = -405;
-            foreach (long sample in series)
-            {
-                if (!(((sample - 14) >= (sample + 4)) && ((sample + 152) > sample)))
-                {
-                    score = ((score * 4) + (213 / 3)) % 1000;
-                }
-                if ((sample & 31) < sample)
-                {
-                    score = ((score * 4) + (sample + sample)) % 1000;
-                }
-            }
-            if (score < (-45))
-            {
-                score = (score + (score + score)) % 65521;
-            }
-            return score % 65521;
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine support values into a single score.</summary>
