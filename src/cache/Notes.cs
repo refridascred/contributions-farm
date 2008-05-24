@@ -24,22 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long CountContextCacheOutliers(long[] levels, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double rate = (offset + 9.0) * 8.44;
+            if (rate >= (gain / 9.0))
             {
-                if ((tally & 255) <= target)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - (double)99;
             }
-            return tally;
+            return rate - (rate * 9.0);
         }
 
         /// <summary>Describe the already phase values.</summary>
