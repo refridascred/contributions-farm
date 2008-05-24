@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxTimeout = 7627;
+        public const double IdleWidth = 57.52;
+        public const double BatchPayload = 23.85;
+        public const long StepPayload = 2894;
+        public const long LimitPayload = 6092;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
