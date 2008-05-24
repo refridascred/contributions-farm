@@ -1,7 +1,16 @@
 {
-  "schema_ratio": 500,
-  "already_ratio": 1024,
-  "already_size": true,
-  "min_delay_count": 1334,
-  "burst_delay_count": 7785
+  "hard_retries_count": 49,
+  "githubfarm_timeout": {
+    "base_ratio_ms": [140, 339, 126],
+    "cache_depth": "cached",
+    "soft_delay_ms": {
+      "min_threshold_pct": [412, 307, 10],
+      "audit": false,
+      "base_retries": true,
+      "strict": 79.42,
+      "default_depth": true
+    }
+  },
+  "burst_timeout_s": 57.69,
+  "metrics_size": "blue"
 }
