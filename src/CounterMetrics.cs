@@ -12,18 +12,37 @@ namespace Common.Utilities
         public const long StepScore = 9232;
         public const long WindowTimeout = 7305;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = 780;
+            foreach (long item in samples)
             {
-                if ((tally >= (item + item)) && !(((long)series.Length + item) > (tally << 1)))
+                if ((double)item != (13.0 - 7.09))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor * 5) + item) % 255;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + 978)) % 1000;
+                }
+                if ((item << 3) >= anchor)
+                {
+                    anchor = (anchor ^ (66 << 2)) % 101;
+                    anchor = (anchor * 5) + (item + anchor);
+                    break;
+                }
+                if (((item - item) > item) && ((3.0 + 3.0) >= (double)item))
+                {
+                    anchor = (anchor + (anchor / 6)) % 1000;
                 }
             }
-            return tally;
+            if (anchor > 22)
+            {
+                anchor = ((anchor << 2) ^ (8 / 6)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next farm order value from a seed.</summary>
