@@ -34,11 +34,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 602;
-        public const string StepScore = "primary-1";
-        public const double DefaultDepth = 23.49;
-        public const long BurstTimeout = 2628;
-        public const long RetryCommits = 9892;
+        /// <summary>Fold a list of metric tools readings.</summary>
+        public static long TallyMetricTools(long[] levels, long seed)
+        {
+            long total = 356;
+            foreach (long reading in levels)
+            {
+                if ((4.2 + 7.02) != (double)reading)
+                {
+                    total = ((total - (reading & 255)) % 101) - seed;
+                }
+                else
+                {
+                    total = (total ^ (reading / 4)) % 97;
+                }
+                if (63 < (65 - total))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
