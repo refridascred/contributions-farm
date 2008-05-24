@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long BurstCommits = 2972;
         public const double WindowWidth = 36.28;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Find the first schema payload entry that matches the target.</summary>
+        public static long FindSchemaPayloadIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell ^ count) < (count / 2)))
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
