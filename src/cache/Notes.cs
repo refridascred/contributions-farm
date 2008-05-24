@@ -12,17 +12,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] values, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - (score & 1)) % 4096;
-                score = ((score << 3) ^ (52 >> 5)) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
