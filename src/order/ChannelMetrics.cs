@@ -16,17 +16,23 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long datum in samples)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                state = state ^ (state / 6);
+                if ((floor * 2) > datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > (-4))
+            {
+                state = ((state * 2) + 82) % 101;
+            }
+            return state;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
