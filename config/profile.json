@@ -1,6 +1,8 @@
 {
-  "cache_timeout_s": 64,
-  "verbose": "local",
-  "sync_size_pct": false,
-  "readonly": "standard"
+  "persist": false,
+  "graph_timeout": false,
+  "filter_depth": ["local", "strict"],
+  "stream_retries": 6376,
+  "poll_threshold_ms": 33.38,
+  "verbose": "blue"
 }
