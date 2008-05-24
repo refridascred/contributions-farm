@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of window queue readings.</summary>
-        public static long CompareWindowQueueCount(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((20.0 - 3.54) < (double)reading)
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
