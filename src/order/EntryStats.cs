@@ -29,24 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long ClassifyContributiToken(long floor, long floor2)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            if ((floor2 - floor2) <= (floor - floor))
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((5.3 + 8.26) >= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
