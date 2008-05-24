@@ -16,10 +16,18 @@ namespace Common.Utilities
             return mean + (mean + weight);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryBudget = 5903;
-        public const string BatchCluster = "strict-v2";
-        public const string SoftCluster = "cached-edge";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
