@@ -39,12 +39,20 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 792;
-        public const string CachePayload = "alpha-v2";
-        public const long LimitPayload = 454;
-        public const string MaxDepth = "standard";
-        public const long WindowPayload = 3212;
+        /// <summary>Check that every order githubfarm entry stays within the limit.</summary>
+        public static bool GuardOrderGithubfarmLimits(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
