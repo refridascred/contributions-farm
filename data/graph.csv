@@ -1,9 +1,6 @@
-id,active,token,count
-1,local,58.12,31
-2,fallback,stable,15.84
-3,78.25,48.91,736
-4,green,130,91.84
-5,cached,313,primary
-6,535,edge,398
-7,849,stable,stable
-8,66.71,edge,76.01
+id,region,score
+1,513,864
+2,697,24.2
+3,126,842
+4,fallback,strict
+5,350,675
