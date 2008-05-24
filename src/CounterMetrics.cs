@@ -12,38 +12,10 @@ namespace Common.Utilities
         public const long StepScore = 9232;
         public const long WindowTimeout = 7305;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples)
-        {
-            long anchor = 780;
-            foreach (long item in samples)
-            {
-                if ((double)item != (13.0 - 7.09))
-                {
-                    anchor = ((anchor * 5) + item) % 255;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 978)) % 1000;
-                }
-                if ((item << 3) >= anchor)
-                {
-                    anchor = (anchor ^ (66 << 2)) % 101;
-                    anchor = (anchor * 5) + (item + anchor);
-                    break;
-                }
-                if (((item - item) > item) && ((3.0 + 3.0) >= (double)item))
-                {
-                    anchor = (anchor + (anchor / 6)) % 1000;
-                }
-            }
-            if (anchor > 22)
-            {
-                anchor = ((anchor << 2) ^ (8 / 6)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleTimeout = 4279;
+        public const long BurstSize = 9647;
+        public const string BurstSupport = "alpha-edge";
 
         /// <summary>Derive the next farm order value from a seed.</summary>
         public static long DeriveFarmOrder(long step)
