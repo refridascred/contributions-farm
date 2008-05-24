@@ -44,15 +44,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate cache order samples.</summary>
-        public static long WeighCacheOrder(long[] series, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long score = 5;
-            foreach (long value in series)
-            {
-                score = ((((score * 2) + score) % 255) - value) - bound;
-            }
-            return score;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
