@@ -30,22 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!((matches + matches) > (matches - matches)))
+                if ((809 - seen) <= ((long)values.Length - 12))
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 1) ^ item) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
