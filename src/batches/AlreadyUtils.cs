@@ -49,19 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
