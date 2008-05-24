@@ -19,13 +19,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9461;
+        public const long HardSpan = 3039;
+        public const double IdleCluster = 88.22;
+        public const long LimitCluster = 5058;
+        public const long WindowFactor = 9439;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] items)
