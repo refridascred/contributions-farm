@@ -45,11 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheRatio = 74.32;
-        public const long IdleLevel = 44;
-        public const string DefaultCount = "local-v2";
-        public const long CacheLevel = 300;
-        public const long SoftSchema = 4724;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Locked,
+            Done,
+            Closed,
+        }
     }
 }
