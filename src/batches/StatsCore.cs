@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Draft,
-            Synced,
-            Failed,
-            Queued,
-            Retry,
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
