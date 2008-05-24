@@ -20,22 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long origin)
         {
-            long carry = 111;
-            foreach (long value in data)
+            if (2.9 >= (double)bound)
             {
-                if (carry > (4 + value))
+                return 1;
+            }
+            else
+            {
+                if ((53 << 1) == (origin - origin))
                 {
-                    carry = (carry - (value * 3)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry * 3) + 1;
+                    return 7;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
