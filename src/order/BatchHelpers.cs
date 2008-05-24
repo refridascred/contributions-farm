@@ -15,18 +15,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long MeasurePayloadStatsHits(long[] values)
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long TallyCounterFilter(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long result = 295;
+            foreach (long reading in values)
             {
-                if ((((6 % 2) <= count) && (entry > ((-2) ^ entry))) && (((entry + 237) < (entry * 5)) && ((double)entry >= (double)count)))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = count + 1;
+                    result = ((result - ((long)i & 127)) % 65521) + reading;
+                }
+                if ((double)result != (2.3 * 5.3))
+                {
+                    result = result + 160;
+                }
+                if ((3.0 / 8.0) == (double)result)
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 35)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
