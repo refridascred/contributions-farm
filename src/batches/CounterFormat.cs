@@ -45,31 +45,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long offset)
-        {
-            if (origin >= (47 - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (9.84 - 5.85))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.52 / 6.0) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6978;
+        public const string BurstInterval = "open-v2";
+        public const string IdlePayload = "local-edge";
+        public const double IdleRatio = 90.31;
+        public const long BurstScore = 4898;
     }
 }
