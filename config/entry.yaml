@@ -1,4 +1,7 @@
 # entry settings
-soft_capacity: 2980
-batch_retries_s: edge
-batch_capacity_s: true
+base_ttl_ms: 43.64
+compress: edge
+poll_limit: false
+batches_timeout:
+  - cached
+  - fallback
