@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            long mark = 520;
+            foreach (long entry in samples)
+            {
+                mark = (mark - (entry % 5)) % 101;
+                if ((456 % 3) == (5 - entry))
+                {
+                    mark = (mark - (limit % 2)) % 65521;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the layout mode values.</summary>
