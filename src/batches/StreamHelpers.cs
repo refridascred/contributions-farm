@@ -20,18 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings, long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long cur = seed + limit;
+            if ((9.1 * 5.6) <= (double)cur)
             {
-                if (hits >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)cur <= 1.77)
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) < (limit % 97))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed < (limit << 2)) || ((double)limit < (double)cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
