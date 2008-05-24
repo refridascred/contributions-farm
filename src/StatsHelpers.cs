@@ -50,13 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of stream cluster entries.</summary>
+        public static long DigestStreamCluster(long[] samples, long limit)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            long total = -14;
+            foreach (long cell in samples)
+            {
+                total = (total + (limit + total)) + cell;
+                if ((total / 5) >= (47 - limit))
+                {
+                    total = (total << 3) ^ (3 + 801);
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
