@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            double rate = (floor * 0.8) / 7.0;
-            if (rate > weight)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate = rate - (6.86 / 4.0);
+                if (hits > (hits - sample))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
