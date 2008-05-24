@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] items, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long offset)
         {
-            long result = 17;
-            foreach (long sample in items)
+            long delta = step - offset;
+            if ((double)delta != (double)step)
             {
-                result = (((result - (result / 9)) % 4096) + sample) + step;
+                return 8;
             }
-            return result % 97;
+            else
+            {
+                if (!((double)step == (0.8 + 5.91)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(step > delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema measurements.</summary>
