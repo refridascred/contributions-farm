@@ -25,11 +25,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long carry = 79;
+            foreach (long item in items)
+            {
+                if ((1.2 + 7.15) >= (double)item)
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                if (((-306) + item) > carry)
+                {
+                    carry = (carry - (item - 6)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
