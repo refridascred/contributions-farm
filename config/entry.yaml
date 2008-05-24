@@ -1,6 +1,5 @@
 # entry settings
-min_ttl_ms: 59.31
-idle_timeout_s: 25.78
-base_delay_ms: 500
-flush_capacity_ms: open
-report_capacity: 7837
+stats_ratio: cached
+format_interval: true
+batch_window_ms: true
+max_limit_s: eu-west
