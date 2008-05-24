@@ -48,12 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
