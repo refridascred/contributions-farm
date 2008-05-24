@@ -57,31 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long target)
         {
-            long result = 5;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((51 - result) == (sample + sample))
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
                 {
-                    result = (result + (long)readings.Length) % 101;
-                    break;
-                }
-                if (!((73 ^ sample) >= (sample / 2)))
-                {
-                    result = (result ^ (sample - result)) % 1000;
-                }
-                if ((result >> 5) >= (742 * 5))
-                {
-                    result = result ^ (result - 5);
+                    return (long)i;
                 }
             }
-            if (result < 367)
-            {
-                result = (result + ((-4) / 3)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every schema stats entry stays within the limit.</summary>
