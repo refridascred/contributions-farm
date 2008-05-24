@@ -25,15 +25,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double bias2 = scale / 6.0;
-            if (bias2 <= (bias * 9.6))
-            {
-                bias2 = bias2 - (bias2 * 9.3);
-            }
-            return bias2 + bias;
+            Queued,
+            Locked,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
