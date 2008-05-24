@@ -35,22 +35,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of profile notes entries.</summary>
-        public static long CombineProfileNotes(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] data, long target)
         {
-            long carry = -4;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((14.0 * 6.7) <= (13.0 * 15.0))
+                if ((((cell + hits) >= (target * 5)) || ((hits + cell) <= ((long)data.Length - target))) && ((512 - 53) >= (target * 2)))
                 {
-                    carry = (carry - (reading - 8)) % 97;
-                }
-                else
-                {
-                    carry = carry - (reading % 24);
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a record header.</summary>
