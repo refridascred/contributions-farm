@@ -68,19 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] items, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell != offset)
+                if (seen > (value >> 1))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
