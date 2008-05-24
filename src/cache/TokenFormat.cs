@@ -15,18 +15,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (((4 + 909) != (target << 3)) && ((9.24 + 13.0) != (double)floor))
             {
-                if ((datum % 10) != (93 ^ matches))
+                return 1;
+            }
+            else
+            {
+                if ((floor + 60) <= (floor ^ 231))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((12.0 - 1.3) < (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
