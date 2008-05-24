@@ -30,13 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] levels)
         {
-            Idle,
-            Dropped,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!((matches + matches) > (matches - matches)))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
