@@ -1,28 +1,13 @@
 # entry settings
-verbose: true
-command_depth: latest
-batch_ratio:
-  retry_threshold_count: legacy
-  warm_ratio_ms: strict
-  format_threshold:
-    - 248
-    - 207
-    - 206
-    - 39
-  readonly:
-    token_interval: 42.63
-    sync_interval_s: 75.56
-    strict: 81.99
-  default_threshold_count:
-    min_limit_ms: fallback
-    dry_run: true
-    enabled: 25.91
-    audit: 89.5
-    hard_threshold_s: 64
-  min_ttl_count:
-    record_depth: 58.61
-    batches_delay: local
-    buffer_ratio: 9675
-default_delay_pct: open
-default_window_count: 82.66
-min_window_ms: open
+readonly: true
+editor_size: 100
+sync_retries:
+  hard_ttl_count: stable
+  strict: eu-west
+  idle_retries_ms:
+    retry_delay_pct: local
+    readonly: 60
+    profile_ratio: 67.26
+min_ttl: true
+warm_size: 95
+editor_depth: false
