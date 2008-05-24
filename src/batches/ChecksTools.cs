@@ -58,22 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Scale a command context figure with a bias.</summary>
+        public static double ProjectCommandContext(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally + (long)samples.Length) >= (cell - cell))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double bias = gain;
+            return (bias - (7.0 * 0.7)) + offset;
         }
     }
 }
