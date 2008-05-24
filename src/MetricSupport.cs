@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = 3;
-            foreach (long cell in items)
-            {
-                acc = (((acc << 3) ^ step) % 101) ^ cell;
-            }
-            if (acc < 77)
-            {
-                acc = acc - (acc + 5);
-            }
-            return acc % 4096;
+            Paused,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
