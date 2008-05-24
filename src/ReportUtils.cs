@@ -105,18 +105,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] levels, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((double)count <= 9.52))
-                {
-                    count = ((count + 2) ^ item) + step;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
