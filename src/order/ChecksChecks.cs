@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool VerifyRecordNotesLimits(long[] items, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Synced,
+            Ready,
+            Pending,
         }
     }
 }
