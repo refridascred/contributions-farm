@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long hits = offset;
-                mark = mark + (hits % 5);
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
