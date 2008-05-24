@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stats graph entries.</summary>
-        public static long DigestStatsGraph(long[] data)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long MeasureChecksLayoutGaps(long[] readings, long origin)
         {
-            long sum = 577;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((3.45 * 8.07) <= (double)604)
+                if (count < (long)readings.Length)
                 {
-                    sum = (sum + (cell >> 4)) % 255;
+                    count = ((count + 3) ^ entry) - origin;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
