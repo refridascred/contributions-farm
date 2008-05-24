@@ -27,39 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long offset)
+        /// <summary>Blend two profile layout measurements.</summary>
+        public static double BlendProfileLayout(double scale, double bias)
         {
-            long prev = seed + offset;
-            if ((prev * 3) >= (offset - 449))
+            double bias2 = (double)(991 * 3);
+            if (bias2 >= (bias - 17.0))
             {
-                return 0;
+                bias2 = bias2 + (bias / 3.0);
             }
             else
             {
-                if ((double)prev < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-3) & 1) > (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed < (offset ^ seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias2 = bias2 + (bias - bias);
             }
+            return bias2 - (bias2 + scale);
         }
     }
 }
