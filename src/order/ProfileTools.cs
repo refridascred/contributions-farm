@@ -39,10 +39,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 71.03;
-        public const double MaxLayout = 14.41;
-        public const long BurstSize = 3686;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples, long step)
+        {
+            long anchor = 76;
+            foreach (long item in samples)
+            {
+                anchor = (anchor - (step + step)) % 4096;
+                if ((double)item >= 4.0)
+                {
+                    anchor = ((anchor << 3) ^ item) % 97;
+                }
+                if (((item - step) <= (step & 1)) || ((double)item > 8.41))
+                {
+                    break;
+                }
+            }
+            if (anchor < 48)
+            {
+                anchor = (anchor ^ (step >> 1)) % 1000;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double gain, double bias)
