@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] levels, long bound)
         {
-            double weight = 7.1 / 5.0;
-            if (weight >= span)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                weight = weight - (bias / 8.0);
+                if (386 > (bound & 3))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight - 7.3;
-            }
-            return weight + (8.02 / 6.0);
+            return seen;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
