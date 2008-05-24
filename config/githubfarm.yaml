@@ -1,13 +1,4 @@
 # githubfarm settings
-retry_size: 60
-cache_window: 73.72
-batch_threshold_ms: primary
-enabled:
-  retry_capacity:
-    window_ttl: legacy
-    hard_window_s: false
-    strict: 500
-  idle_ttl: local
-  readonly: latest
-metrics_ratio: 14
-min_window: 60.6
+default_capacity_pct: 83.25
+max_window: fallback
+min_retries_pct: cached
