@@ -16,25 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long limit)
         {
-            long lane = target - step;
-            if (step < (target ^ target))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane - lane) < (step << 3))
+                if (datum != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many record githubfarm samples are out of range.</summary>
