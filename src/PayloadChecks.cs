@@ -65,10 +65,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 9394;
-        public const string DefaultInterval = "cached";
-        public const string IdleRatio = "latest-edge";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long limit)
+        {
+            if ((19.0 * 13.0) <= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-848) * 2) >= (target + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
