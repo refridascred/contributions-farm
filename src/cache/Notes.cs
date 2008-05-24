@@ -59,19 +59,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            long mix = 6;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mix = (((mix << 3) ^ (110 << 1)) % 97) ^ item;
+                if ((cell + 39) < count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 11)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
+            return count;
         }
     }
 }
