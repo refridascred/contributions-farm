@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 29.7;
-        public const long BurstBuffer = 4753;
-        public const long IdleBuffer = 3902;
-        public const long CacheFactor = 8622;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double offset)
+        {
+            double mean = bias / 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset / 5.0)) + (double)(long)i;
+            }
+            return mean + (13.0 / 8.0);
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
