@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long bound)
         {
-            double weight2 = offset;
-            if (weight2 >= (4.75 / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = (weight2 - (offset + 9.0)) - weight;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (offset / 7.0);
-            }
-            return weight2 + (double)8;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
