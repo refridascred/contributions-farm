@@ -43,18 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally - tally) > tally)
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a contributi options.</summary>
