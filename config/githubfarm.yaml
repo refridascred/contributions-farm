@@ -1,23 +1,6 @@
 # githubfarm settings
-hard_capacity_ms:
-  metrics_threshold:
-    - strict
-    - stable
-  stream_threshold: 25.24
-  burst_timeout_count:
-    report_limit: blue
-    session_window:
-      - legacy
-      - eu-west
-      - cached
-      - edge
-    batches_retries: 5.18
-    burst_timeout_pct: strict
-    max_ttl_count: 30
-    max_limit_s: 67.9
-  channel_interval: blue
-  flush_delay_count: 28.16
-  persist: blue
-strict: true
-cache_capacity_count: 7.23
-buffer_size: 6221
+editor_threshold: standard
+hard_window_count: 91.87
+default_depth_ms: green
+flush_delay_s: eu-west
+counter_size: open
