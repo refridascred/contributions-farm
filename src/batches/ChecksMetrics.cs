@@ -14,13 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            New,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxTimeout = "fallback-v2";
+        public const string StepReport = "standard-edge";
+        public const long IdleReport = 2174;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamBounds(long[] series, long offset)
