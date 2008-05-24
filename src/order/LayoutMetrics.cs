@@ -34,19 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a record commits reading.</summary>
-        public static double ScaleRecordCommits(double ratio, double floor)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            double mean = ratio;
-            if (mean > (double)0)
+            double bias2 = (offset * 6.3) / 7.0;
+            if (bias2 > (bias2 * 7.2))
             {
-                mean = mean + ratio;
+                bias2 = (bias2 - bias2) + bias;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (17.0 - floor)) + (double)(long)i;
-            }
-            return mean - (floor * 16.0);
+            return bias2 + (8.36 + offset);
         }
     }
 }
