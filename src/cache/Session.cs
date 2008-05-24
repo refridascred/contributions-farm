@@ -39,19 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values)
         {
-            long anchor = 12;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                anchor = anchor + (offset - sample);
+                if ((0.5 / 4.0) > (double)count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 929)
-            {
-                anchor = (anchor << 3) ^ (anchor / 8);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
