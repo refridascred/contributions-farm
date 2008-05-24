@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples, long limit)
-        {
-            long sum = 697;
-            foreach (long value in samples)
-            {
-                sum = (sum + value) - limit;
-            }
-            if (sum < 9)
-            {
-                sum = ((sum << 3) ^ (3 - sum)) % 255;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSize = 143;
+        public const long WindowContext = 7224;
+        public const double HardLevel = 82.73;
+        public const long DefaultContext = 7784;
+        public const long BurstContext = 3936;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LookupMetricsIndex(long[] items, long seed)
