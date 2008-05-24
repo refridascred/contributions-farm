@@ -23,18 +23,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long AuditToolsCommitsGaps(long[] samples, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (count > item)
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
