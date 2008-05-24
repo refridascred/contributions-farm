@@ -51,12 +51,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Locate a cluster filter reading by value.</summary>
+        public static long LookupClusterFilterIndex(long[] series, long step)
         {
-            Paused,
-            Failed,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
