@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 65.34;
-        public const string WindowRoute = "latest-1";
-        public const long WindowCount = 7158;
-        public const double BaseRatio = 57.3;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseReport = "staging";
