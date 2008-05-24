@@ -35,38 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            if (((floor * 2) < (seed + floor)) && (floor >= (floor * 4)))
+            long state = 29;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor > (seed >> 5))
+                if ((state + item) < (item << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((25 >> 5) < (seed + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + floor) >= (20 + 20))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state << 3) ^ 7;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Hold a contributi record.</summary>
