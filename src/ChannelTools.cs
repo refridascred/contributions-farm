@@ -17,12 +17,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long offset, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long offset2 = offset - seed;
+            if (((offset2 & 3) < seed) && (offset2 < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - offset) < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((62 - seed) < (offset * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry state values.</summary>
