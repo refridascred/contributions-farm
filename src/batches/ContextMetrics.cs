@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if ((0.76 / 4.0) != (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.8 - 14.0) != (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed > (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count batches stream pairs that satisfy a relation.</summary>
