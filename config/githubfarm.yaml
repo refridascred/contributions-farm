@@ -1,9 +1,9 @@
 # githubfarm settings
-cluster_retries: false
-enabled: false
-tools_retries: edge
-batch_retries_pct:
-  - stable
-  - blue
+hard_limit_pct:
   - legacy
-  - blue
+  - fallback
+  - stable
+  - local
+idle_ratio_count: 6875
+dry_run: true
+flush_capacity_s: 75
