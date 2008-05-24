@@ -36,21 +36,22 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((value & 3) == (value << 3)))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
