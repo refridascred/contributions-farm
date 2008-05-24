@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] items, long bound)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (9.94 <= (double)bound)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
