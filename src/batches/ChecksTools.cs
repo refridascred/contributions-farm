@@ -37,11 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a command context figure with a bias.</summary>
-        public static double ProjectCommandContext(double gain, double offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double bias = gain;
-            return (bias - (7.0 * 0.7)) + offset;
+            Closed,
+            Failed,
+            Active,
         }
     }
 }
