@@ -41,22 +41,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((9.41 * 6.3) == (double)datum) || ((tally >> 1) <= 983)) && ((tally + datum) == (datum + datum)))
+                acc = (acc * 5) + acc;
+                if ((((long)i - offset) < (offset / 8)) && (((long)i ^ offset) > offset))
                 {
-                    tally = tally + 3;
+                    acc = ((acc << 3) ^ ((long)i / 7)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc - (offset / 3)) % 97;
+                    acc = acc ^ (offset - acc);
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
