@@ -1,10 +1,27 @@
 # entry settings
-dry_run:
-  - green
-  - blue
-  - eu-west
-  - latest
-soft_limit: false
-checks_retries: 27.4
-verbose: 65.18
-batches_depth: open
+dry_run: 1024
+soft_depth:
+  batch_limit:
+    cache_ttl: 86
+    dry_run: 83.04
+    min_depth_s: 61.17
+  base_limit_count:
+    metric_ratio:
+      - 316
+      - 11
+    hard_interval:
+      - green
+      - latest
+      - latest
+    batch_ratio_ms: false
+    route_depth: 7146
+    verbose: 70.66
+  strict: legacy
+  dry_run:
+    - 247
+    - 374
+    - 95
+    - 341
+  verbose: 75
+  burst_capacity_ms: false
+sync_delay_ms: cached
