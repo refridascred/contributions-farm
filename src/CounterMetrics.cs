@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double StepCount = 54.31;
         public const long RetrySchema = 4687;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 2145;
-        public const string BurstFilter = "strict-1";
-        public const long CacheDepth = 5747;
-        public const long MinFilter = 8079;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally >= (item + item)) && !(((long)series.Length + item) > (tally << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] items, long bound)
