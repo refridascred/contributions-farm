@@ -58,11 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitInterval = 61.33;
-        public const long BaseTimeout = 2764;
-        public const double DefaultCount = 35.66;
-        public const long SoftRatio = 4674;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Active,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatMatches(long[] levels, long step)
