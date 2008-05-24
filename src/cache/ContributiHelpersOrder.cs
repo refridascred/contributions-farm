@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long anchor = 873;
-            foreach (long reading in samples)
-            {
-                if (((anchor ^ 132) == (anchor + reading)) && (anchor <= (anchor - 392)))
-                {
-                    anchor = (anchor ^ (reading << 2)) % 1000;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor + (anchor - anchor)) % 101;
-            }
-            return anchor;
+            Active,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
