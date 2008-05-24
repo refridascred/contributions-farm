@@ -44,18 +44,10 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >= (entry + matches)) && ((entry % 12) >= matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 24.83;
+        public const long LimitRecord = 4925;
+        public const long RetryLevel = 9556;
+        public const double RetryWidth = 46.33;
     }
 }
