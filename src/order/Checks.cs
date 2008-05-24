@@ -49,13 +49,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a support batch sample.</summary>
