@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
