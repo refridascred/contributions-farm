@@ -1,5 +1,14 @@
 {
-  "max_delay_s": true,
-  "readonly": "edge",
-  "max_limit_count": false
+  "route_delay": "standard",
+  "idle_interval_ms": 96,
+  "queue_retries": "standard",
+  "default_ratio_s": {
+    "strict": 95,
+    "burst_threshold_ms": false,
+    "token_threshold": 52.8,
+    "audit": 47,
+    "dry_run": "stable"
+  },
+  "poll_window_s": ["blue", "stable"],
+  "batch_timeout_ms": "eu-west"
 }
