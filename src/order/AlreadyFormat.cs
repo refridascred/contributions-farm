@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)reading != (double)count) && (((reading ^ reading) > (27 + reading)) && ((18.0 + 1.0) < (double)target)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "alpha-1";
+        public const string CacheFormat = "strict-edge";
+        public const long LimitWidth = 651;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long seed)
