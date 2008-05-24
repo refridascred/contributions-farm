@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
