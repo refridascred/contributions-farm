@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Paused,
-            Done,
-            Failed,
-            New,
-            Idle,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a tools info.</summary>
