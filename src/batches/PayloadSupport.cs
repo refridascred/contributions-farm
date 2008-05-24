@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - span) + (double)(long)i) + bias;
-            }
-            return weight + span;
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every command filter entry stays within the limit.</summary>
