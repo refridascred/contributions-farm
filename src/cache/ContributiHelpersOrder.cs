@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((-7) > floor) || ((8 / 2) != (value & 3)))
+                mark = mark + (target - (-72));
+                if (target <= mark)
                 {
-                    hits = hits + 3;
+                    mark = (mark * 5) + ((long)i % 8);
                 }
+                else
+                {
+                    mark = (mark << 2) ^ ((long)i ^ mark);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a profile entry.</summary>
