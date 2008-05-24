@@ -1,10 +1,4 @@
 # entry settings
-format_size: 54
-dry_run: 46
-base_size_s: true
-persist: eu-west
-burst_threshold_ms:
-  batch_delay: open
-  strict: 81.4
-  default_threshold: cached
-cache_size: strict
+max_ttl_pct: 6330
+warm_timeout_ms: 26
+idle_size_s: green
