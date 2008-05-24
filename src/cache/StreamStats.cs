@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double ProjectPayloadAlready(double bias, double bias2)
         {
-            double drift = (offset - bias) + bias;
-            if (drift <= (drift - 17.0))
+            double ratio = (3.0 / 2.0) + (double)345;
+            if (ratio < (double)36)
             {
-                drift = drift + bias;
+                ratio = (ratio - (14.0 - ratio)) + bias2;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift - (double)7;
+                ratio = (ratio + bias) - (double)(long)i;
             }
-            return drift - drift;
+            return ratio + bias;
         }
 
         /// <summary>Hold a buffer entry.</summary>
