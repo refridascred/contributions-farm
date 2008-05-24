@@ -24,15 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Audit cache layout readings against a rule.</summary>
+        public static long MeasureCacheLayoutGaps(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((19.0 - 4.9) <= (double)(long)levels.Length)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
