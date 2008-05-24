@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Paused,
-            Done,
+            Active,
+            Queued,
             Ready,
-            Locked,
+            Failed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
