@@ -1,4 +1,6 @@
 # entry settings
-cache_interval_s: 65.53
-idle_depth_s: 100
-poll_ttl_pct: 43
+burst_size_ms: false
+editor_threshold: false
+base_delay: 65.9
+farm_depth: 10.55
+flush_ratio_s: true
