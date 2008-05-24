@@ -30,18 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = 85;
-            foreach (long datum in samples)
-            {
-                if ((datum <= (datum << 1)) || ((double)datum >= (4.0 / 2.0)))
-                {
-                    anchor = anchor + (anchor + datum);
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
