@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a stats cache sample.</summary>
-        public static long FindStatsCacheIndex(long[] series, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (!((430 ^ mix) >= target))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (mix & 127);
+                    continue;
                 }
+                mix = mix + (target + target);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
