@@ -37,11 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series, long limit)
         {
-            double scale = bias * 1.4;
-            return (scale - (double)3) + offset;
+            long mark = 870;
+            foreach (long reading in series)
+            {
+                mark = mark - mark;
+                mark = ((mark << 2) ^ (mark ^ reading)) % 4096;
+            }
+            if (mark > 48)
+            {
+                mark = mark ^ (mark - limit);
+            }
+            return mark;
         }
     }
 }
