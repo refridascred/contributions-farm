@@ -37,11 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 7018;
-        public const string MinRatio = "standard-edge";
-        public const double BurstCount = 60.51;
-        public const long HardTools = 595;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] levels, long target)
