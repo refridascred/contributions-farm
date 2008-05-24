@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((16.0 + 12.0) >= (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= 3.34)
                 {
-                    if ((values[i] + values[j]) == 20)
+                    return 5;
+                }
+                else
+                {
+                    if (!(0.4 <= (double)origin))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
