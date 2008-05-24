@@ -24,18 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long MeasureCacheLayoutGaps(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 4;
+            foreach (long entry in data)
             {
-                if ((19.0 - 4.9) <= (double)(long)levels.Length)
-                {
-                    count = (count + 1) + entry;
-                }
+                acc = (((acc << 3) ^ (entry >> 1)) % 97) - step;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of profile notes entries.</summary>
