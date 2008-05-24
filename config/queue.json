@@ -1,8 +1,10 @@
 {
-  "dry_run": false,
-  "default_threshold_ms": "edge",
-  "default_interval_s": 79.55,
-  "default_limit": ["legacy", "strict"],
-  "hard_interval": "fallback",
-  "cache_limit_ms": true
+  "warm_threshold_ms": [395, 465, 202, 307],
+  "burst_depth": 20.29,
+  "hard_size": {
+    "record_window": 60,
+    "dry_run": 30,
+    "enabled": "legacy",
+    "readonly": "cached"
+  }
 }
