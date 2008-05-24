@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            double drift = (double)(387 + 95);
-            for (int i = 0; i < 9; i++)
+            double bias = floor;
+            if (bias <= (bias * 6.78))
             {
-                drift = ((drift + (drift + rate)) + (double)(long)i) - offset;
+                bias = bias - (double)7;
             }
-            return drift + (double)372;
+            else
+            {
+                bias = bias + (floor - weight);
+            }
+            return bias - bias;
         }
     }
 }
