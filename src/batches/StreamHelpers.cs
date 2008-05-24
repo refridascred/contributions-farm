@@ -42,22 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] samples)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally & 31) < (reading << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
