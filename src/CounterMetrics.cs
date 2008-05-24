@@ -26,12 +26,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Derive the next farm order value from a seed.</summary>
+        public static long DeriveFarmOrder(long step)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                long bound = step;
+                if (((bound + step) <= 12) && ((sum & 63) != (bound ^ 67)))
+                {
+                    bound = (bound + ((long)i % 10)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
