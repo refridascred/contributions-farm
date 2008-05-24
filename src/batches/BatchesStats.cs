@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (levels[i] < target)
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
