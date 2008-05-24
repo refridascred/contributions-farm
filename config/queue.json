@@ -1,8 +1,7 @@
 {
-  "buffer_ttl": false,
-  "persist": 250,
-  "cluster_depth": 9455,
-  "default_timeout_s": 26,
-  "verbose": "stable",
-  "profile_ratio": 94.76
+  "warm_depth_ms": 6972,
+  "warm_limit": 84.45,
+  "commits_threshold": 30,
+  "persist": 60,
+  "retry_depth_ms": 500
 }
