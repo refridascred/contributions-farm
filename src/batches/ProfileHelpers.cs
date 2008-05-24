@@ -43,12 +43,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long step, long bound)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long delta = step ^ bound;
+            if (!(delta < (delta + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.9 - 18.0) < (double)delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound <= (-21))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout editor entries that pass the check.</summary>
