@@ -20,12 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Closed,
+            long anchor = 28;
+            foreach (long sample in samples)
+            {
+                anchor = anchor - (seed - (-10));
+                anchor = (anchor + (sample & 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate channel account samples.</summary>
