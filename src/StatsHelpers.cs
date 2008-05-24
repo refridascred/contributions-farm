@@ -36,12 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long FindChannelFilterIndex(long[] data, long limit)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
