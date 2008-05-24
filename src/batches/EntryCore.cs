@@ -53,18 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter editor samples.</summary>
-        public static long ScoreCounterEditor(long[] levels, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] data, long step)
         {
-            long acc = 3;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((origin - origin) <= (-6))
+                if (sample < step)
                 {
-                    acc = (acc ^ (origin ^ reading)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ready;
         }
     }
 }
