@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            Done,
+            Stale,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
