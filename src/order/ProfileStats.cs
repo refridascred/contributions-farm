@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double bias, double floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double ratio = floor * 10.0;
-            if (ratio > floor)
-            {
-                ratio = (ratio - (floor * 9.0)) - bias;
-            }
-            else
-            {
-                ratio = ratio + (floor * 8.0);
-            }
-            return ratio - 9.3;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
