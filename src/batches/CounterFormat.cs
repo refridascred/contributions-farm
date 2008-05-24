@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item > (12.0 * 0.85))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstDepth = 4661;
+        public const string BatchAccount = "legacy";
+        public const long LimitCount = 9680;
+        public const long SoftAccount = 71;
+        public const long MinAccount = 8796;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] levels)
