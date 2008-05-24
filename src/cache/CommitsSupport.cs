@@ -77,15 +77,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 5215;
+        public const long WindowProfile = 3368;
+        public const string BurstWidth = "legacy-v2";
+        public const long BaseProfile = 3676;
+        public const long RetryProfile = 3134;
     }
 }
