@@ -36,23 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a cluster profile reading.</summary>
-        public static double BlendClusterProfile(double scale, double floor)
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long MeasureFarmCacheOutliers(long[] samples, long step)
         {
-            double ratio = (double)14 / 9.0;
-            if (ratio > scale)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio + 1.86;
+                if ((step + datum) < seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (7.01 - scale)) - (double)(long)i;
-            }
-            return ratio - (double)68;
+            return seen;
         }
 
         /// <summary>Derive the next already record value from a seed.</summary>
