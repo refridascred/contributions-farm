@@ -38,12 +38,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "cached-1";
+        public const double BasePayload = 31.37;
+        public const long HardCount = 5613;
+        public const long IdlePayload = 5123;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] samples, long target)
