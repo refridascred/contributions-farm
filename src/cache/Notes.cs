@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] values, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!((bound * 3) < matches))
+                if ((tally - tally) > tally)
                 {
-                    matches = (matches + 2) + reading;
+                    tally = (tally + 1) - value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
