@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            New,
-            Done,
-            Synced,
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
