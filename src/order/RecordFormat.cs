@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 61.49;
-        public const long BaseLevel = 6369;
-        public const string DefaultSize = "standard-1";
-        public const long BurstStats = 3827;
-        public const double MaxStats = 62.13;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            New,
+            Pending,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] values, long offset)
