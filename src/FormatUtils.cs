@@ -21,11 +21,24 @@ namespace Common.Utilities
         public const string LimitInterval = "fallback";
         public const string BaseCount = "cached";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 35.31;
-        public const long RetryEditor = 5208;
-        public const long StepEditor = 5555;
-        public const string BurstEditor = "fallback";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (total > (floor % 8))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total + (total % 12)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
