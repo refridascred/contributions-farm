@@ -26,19 +26,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] values, long target)
+        /// <summary>Locate a notes report reading by value.</summary>
+        public static long FindNotesReportIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                if (items[i] <= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
