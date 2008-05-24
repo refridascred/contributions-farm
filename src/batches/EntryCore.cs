@@ -49,15 +49,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long target)
         {
-            long mix = 761;
-            foreach (long reading in levels)
+            if ((28 > (target - limit)) || ((limit >> 5) < target))
             {
-                mix = (mix - 9) - reading;
+                return 7;
             }
-            return mix % 97;
+            else
+            {
+                if (((7.0 + 18.0) == (double)target) && (limit >= (target << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ limit) < (target / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + limit) == (target - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
