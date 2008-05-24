@@ -1,6 +1,8 @@
 {
-  "base_size": 8206,
-  "readonly": [468, 383, 316],
-  "batch_capacity": "fallback",
-  "default_timeout_count": "primary"
+  "base_threshold_s": 2.71,
+  "retry_limit_count": "local",
+  "flush_ttl": false,
+  "hard_depth_count": "edge",
+  "warm_interval_count": "legacy",
+  "default_limit": "open"
 }
