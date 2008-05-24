@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] readings, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((double)carry <= 3.2)
+                if (sample <= seed)
                 {
-                    carry = (carry ^ (carry - limit)) % 4096;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
