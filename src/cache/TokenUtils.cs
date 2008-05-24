@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count support batches pairs that satisfy a relation.</summary>
-        public static long MatchSupportBatchesCount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (7.0 >= (double)bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((5.82 - 5.7) > (double)step)
                 {
-                    if ((levels[i] - levels[j]) < 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (9.7 / 9.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
