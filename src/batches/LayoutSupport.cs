@@ -54,17 +54,16 @@ namespace Common.Utilities
             return ratio - (double)68;
         }
 
-        /// <summary>Locate a cluster tools reading by value.</summary>
-        public static long SeekClusterToolsIndex(long[] samples, long target)
+        /// <summary>Derive the next already record value from a seed.</summary>
+        public static long RollAlreadyRecord(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (593 << 2)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
