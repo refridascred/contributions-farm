@@ -44,18 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route format sample.</summary>
-        public static long SeekRouteFormatIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1692;
+        public const long LimitTimeout = 7681;
+        public const string BurstGraph = "staging-1";
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double weight, double span)
