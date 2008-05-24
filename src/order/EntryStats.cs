@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long seed)
         {
-            long score = 32;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ reading;
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 19)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
