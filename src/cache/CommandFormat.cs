@@ -34,15 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            double gain = ratio;
-            if (gain >= (bias - ratio))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                gain = gain - gain;
+                if ((double)seen < (9.04 * 2.44))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return gain - ratio;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
