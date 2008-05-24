@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((item + 486) >= (count + item)) || !((9 + item) > (count / 4)))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 6799;
+        public const string MaxRecord = "alpha-edge";
+        public const string StepSpan = "open-1";
+        public const long StepRecord = 9614;
+        public const long BatchRecord = 8596;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BurstCommits = 79.77;
