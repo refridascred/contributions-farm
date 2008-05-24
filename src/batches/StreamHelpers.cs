@@ -42,17 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = result - result;
-                result = result ^ (374 % 7);
-                result = ((result * 4) + (long)i) % 65521;
+                if ((tally & 31) < (reading << 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
