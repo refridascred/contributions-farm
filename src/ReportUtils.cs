@@ -23,18 +23,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if (((18.0 * 19.0) > (7.3 / 7.0)) || ((seed2 & 127) >= seed2))
             {
-                if ((matches % 100) == (reading << 3))
+                return 5;
+            }
+            else
+            {
+                if (81 <= (seed >> 2))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - 13) >= (seed2 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
