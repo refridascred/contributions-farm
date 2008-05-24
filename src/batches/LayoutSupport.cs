@@ -31,21 +31,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Adjust a cluster profile reading.</summary>
+        public static double BlendClusterProfile(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)14 / 9.0;
+            if (ratio > scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + 1.86;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (7.01 - scale)) - (double)(long)i;
+            }
+            return ratio - (double)68;
         }
 
         /// <summary>Locate a cluster tools reading by value.</summary>
