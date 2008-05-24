@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine record queue values into a single score.</summary>
-        public static long CombineRecordQueue(long[] readings)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 534;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ mix) % 4096;
-                mix = (mix ^ (mix - item)) % 65521;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
