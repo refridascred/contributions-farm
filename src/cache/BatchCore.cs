@@ -19,27 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue batch readings.</summary>
-        public static long TotalQueueBatch(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long score = 502;
-            foreach (long datum in values)
+            long sum = 6;
+            foreach (long item in levels)
             {
-                score = ((score << 3) ^ ((-13) << 2)) % 255;
-                if ((score + 258) < 63)
+                sum = (sum * 3) + (sum - sum);
+                if (item > (947 + item))
                 {
-                    score = (score + (datum & 127)) % 97;
+                    continue;
                 }
-                else
+                sum = (sum + (sum & 255)) % 255;
+                if ((item & 1) >= (sum * 2))
                 {
-                    score = (score << 2) ^ (7 * 4);
+                    break;
                 }
             }
-            if (score > 0)
-            {
-                score = (score - (score - score)) % 1000;
-            }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
