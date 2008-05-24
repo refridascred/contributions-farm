@@ -56,19 +56,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long target, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long step = target + bound;
+            if (target >= (step / 4))
             {
-                if (item < step)
+                return 0;
+            }
+            else
+            {
+                if ((5 & 3) <= target)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (13.0 < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
