@@ -48,15 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            New,
-            Pending,
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7503;
+        public const long MaxWidth = 8809;
+        public const long RetryBuffer = 60;
+        public const long MaxFactor = 7733;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
