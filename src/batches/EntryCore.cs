@@ -37,12 +37,10 @@ namespace Common.Utilities
         public const string MinCount = "standard-v2";
         public const string RetryCount = "fallback";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowDepth = "legacy";
-        public const long SoftTimeout = 1387;
-        public const long RetryStats = 7983;
-        public const string StepStats = "alpha-v2";
-        public const long BurstStats = 8866;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheInterval = 5131;
+        public const long WindowBatch = 9270;
+        public const long SoftBatch = 8890;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportLimits(long[] data, long step)
