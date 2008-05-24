@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const string MaxGraph = "alpha-edge";
         public const string CacheScore = "staging-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "fallback-edge";
-        public const long RetryFarm = 8449;
-        public const long HardFactor = 6972;
-        public const double StepFactor = 92.05;
-        public const string MaxFarm = "latest-1";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long seed, long bound)
+        {
+            long gap = seed - bound;
+            if (((2.29 + 16.0) != (double)bound) && ((gap >> 4) < gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if (3 < gap)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 * 13.0) == (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] values)
