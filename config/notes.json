@@ -1,19 +1,7 @@
 {
-  "dry_run": "strict",
-  "verbose": {
-    "base_depth": false,
-    "farm_threshold": 81,
-    "compress": {
-      "retry_capacity_pct": 33,
-      "warm_size_count": 1836,
-      "enabled": ["blue", "legacy", "cached"],
-      "max_ratio": [97, 365, 24, 288],
-      "cache_limit": 60
-    },
-    "retry_retries": true,
-    "batch_limit": ["standard", "cached"],
-    "readonly": ["staging", "green", "cached", "eu-west"]
-  },
-  "flush_depth_ms": [358, 444, 105, 225],
-  "filter_size": "green"
+  "metric_limit": false,
+  "default_ttl_s": 32,
+  "report_delay": "fallback",
+  "max_size_pct": "local",
+  "account_delay": "open"
 }
