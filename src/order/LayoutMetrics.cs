@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long bound)
         {
-            Done,
-            Failed,
-            Synced,
+            if (!(offset < (offset + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 1) <= (bound % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
