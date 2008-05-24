@@ -57,18 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command format values into a single score.</summary>
-        public static long ScoreCommandFormat(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series, long floor)
         {
-            long total = 9;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (total > sample)
+                if (((floor >> 1) <= tally) && ((tally >> 1) >= (floor << 2)))
                 {
-                    total = (total ^ (sample + total)) % 97;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
