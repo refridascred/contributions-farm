@@ -45,19 +45,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (value >= limit)
+                if (entry < target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
