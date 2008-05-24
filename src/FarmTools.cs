@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "alpha";
+        public const string RetryStream = "stable";
+        public const long MaxStream = 5097;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
