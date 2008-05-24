@@ -54,12 +54,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long origin)
         {
-            Closed,
-            Synced,
-            Dropped,
+            if ((double)origin >= (7.1 / 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < 20.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor << 2) > (floor / 6)) && ((3.35 - 14.0) != (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor % 3) < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes level values.</summary>
