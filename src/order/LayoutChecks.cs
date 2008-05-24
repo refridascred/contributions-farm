@@ -65,28 +65,36 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long limit2)
+        /// <summary>Grade a tools metric value against two limits.</summary>
+        public static long GradeToolsMetric(long target, long limit)
         {
-            if ((double)limit2 == (13.0 / 3.0))
+            long bound = target - limit;
+            if (((bound & 63) <= (limit + target)) || ((double)limit > (4.67 - 2.44)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((limit + limit2) <= (limit2 << 1))
+                if (((limit % 2) > (limit / 2)) && (limit >= (limit + bound)))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)limit != (double)90)
+                    if (((-785) < (bound % 7)) && ((target / 4) < (bound + bound)))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        if ((13 / 2) > limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
