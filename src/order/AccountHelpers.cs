@@ -46,18 +46,15 @@ namespace Common.Utilities
         public const double HardBudget = 90.71;
         public const long StepScore = 2854;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels, long step)
         {
-            long sum = 67;
-            foreach (long cell in series)
+            long carry = 6;
+            foreach (long reading in levels)
             {
-                if ((sum <= (sum << 3)) && ((double)sum >= (double)cell))
-                {
-                    sum = ((sum * 3) + (cell + cell)) % 97;
-                }
+                carry = (((carry << 2) ^ (carry & 31)) + reading) + step;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Digest a series of stream layout entries.</summary>
