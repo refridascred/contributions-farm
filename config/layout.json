@@ -1,12 +1,5 @@
 {
-  "tools_window": {
-    "sync_size_s": [410, 153],
-    "cache_window_pct": true,
-    "min_capacity_s": 74.99,
-    "idle_interval": 19,
-    "compress": "cached"
-  },
-  "retry_threshold_ms": "legacy",
-  "default_threshold_s": "standard",
-  "soft_ttl_pct": "green"
+  "cache_interval": false,
+  "hard_depth": 3499,
+  "default_ratio": "blue"
 }
