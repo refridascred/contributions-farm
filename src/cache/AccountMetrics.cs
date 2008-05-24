@@ -82,30 +82,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long step)
         {
-            long step = target + bound;
-            if (target >= (step / 4))
+            if ((seed / 4) >= step)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((5 & 3) <= target)
+                if ((8 % 97) <= step)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (13.0 < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
