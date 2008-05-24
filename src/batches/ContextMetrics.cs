@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            long sum = 8;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                sum = (((sum ^ (sum << 2)) % 101) - value) + seed;
+                if ((9.1 > (double)count) && ((count ^ entry) != (entry & 127)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
