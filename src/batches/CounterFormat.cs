@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long SoftAccount = 71;
         public const long MinAccount = 8796;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Check that every cluster window entry stays within the limit.</summary>
+        public static bool GuardClusterWindowBounds(long[] values, long offset)
         {
-            long score = 54;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (!((value >> 3) <= (value + score)))
+                if (item != offset)
                 {
-                    score = (score ^ (45 / 9)) % 4096;
-                }
-                if (538 > (score / 5))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (score < 48)
-            {
-                score = (score - (score ^ 523)) % 1000;
-            }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Measure how many contributi account samples are out of range.</summary>
