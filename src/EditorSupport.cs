@@ -24,17 +24,23 @@ namespace Common.Utilities
         public const long BurstCommits = 2972;
         public const double WindowWidth = 36.28;
 
-        /// <summary>Find the first schema payload entry that matches the target.</summary>
-        public static long FindSchemaPayloadIndex(long[] values, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 280;
+            foreach (long sample in readings)
             {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
+                result = ((result << 3) ^ (sample % 24)) % 101;
+                if ((double)result != (17.0 * 19.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result > 1)
+            {
+                result = (result ^ (floor - floor)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
