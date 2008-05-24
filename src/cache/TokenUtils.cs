@@ -24,19 +24,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool CheckTokenSchemaRange(long[] samples, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long span = step - limit;
+            if ((423 - step) >= span)
             {
-                if (entry >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit == (18.0 / 6.0))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (limit > (limit & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit ^ span) == (limit + step)) && ((double)step <= (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
