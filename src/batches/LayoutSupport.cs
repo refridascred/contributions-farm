@@ -17,18 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] samples, long floor)
         {
-            long score = 717;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((double)sample > (6.6 / 6.0)) || ((double)288 == (double)score))
+                if (((seen < (67 + reading)) || ((9 >> 1) < reading)) && ((double)floor <= (20.0 * 9.0)))
                 {
-                    score = (score + (score - score)) % 101;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Adjust a cluster profile reading.</summary>
