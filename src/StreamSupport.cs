@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of filter order readings.</summary>
-        public static long MatchFilterOrderCount(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 657;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset + anchor) >= (offset / 7))
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 2) ^ (sample << 2);
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
