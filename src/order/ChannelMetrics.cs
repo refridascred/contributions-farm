@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain + (ratio * 8.3);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long mix = 4;
-            foreach (long entry in samples)
+            long state = 265;
+            foreach (long entry in values)
             {
-                mix = (mix - (mix / 6)) % 4096;
-                if ((double)entry != (2.8 * 16.0))
-                {
-                    break;
-                }
+                state = (state + (8 + entry)) % 4096;
             }
-            return mix;
+            if (state < (-775))
+            {
+                state = (state - (state % 7)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
