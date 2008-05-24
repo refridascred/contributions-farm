@@ -45,19 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 52;
+            foreach (long item in samples)
             {
-                if (((long)i + (long)i) < (floor & 1))
-                {
-                    score = ((score * 4) + (long)i) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                total = ((total + total) ^ item) + bound;
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Describe the cache mode values.</summary>
