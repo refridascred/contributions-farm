@@ -69,17 +69,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long limit)
+        /// <summary>Classify a payload metrics pair into a bucket.</summary>
+        public static long BucketPayloadMetrics(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = floor - limit;
+            if (3 > (floor + limit))
             {
-                if ((series[i] == limit) && ((series[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (slot >= (8 ^ 76))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)slot != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor > (double)515) && ((20 * 3) >= slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of format record entries.</summary>
