@@ -49,12 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] series, long seed)
         {
-            Ready,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((matches & 1) > (seed - reading)) || !((long)series.Length <= seed))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
