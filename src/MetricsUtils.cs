@@ -27,17 +27,31 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] levels, long bound)
+        /// <summary>Grade a order graph value against two limits.</summary>
+        public static long RankOrderGraph(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((5.84 * 3.0) == (double)origin)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (18.0 < (0.2 / 8.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (7.36 < (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
