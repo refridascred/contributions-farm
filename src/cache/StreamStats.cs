@@ -44,17 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 31;
+            foreach (long cell in items)
             {
-                if (readings[i] < floor)
+                if (((-4) & 7) != (cell % 3))
                 {
-                    return (long)i;
+                    total = total ^ cell;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
