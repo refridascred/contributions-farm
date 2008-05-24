@@ -48,24 +48,21 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const double StepSpan = 42.31;
 
-        /// <summary>Digest a series of editor channel entries.</summary>
-        public static long CombineEditorChannel(long[] samples)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long score = 58;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score + value) % 65521) + (long)i;
-                    score = (score - value) % 255;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 3) + (score * 5)) % 97;
             }
-            if (score > 759)
-            {
-                score = (score - (score + score)) % 65521;
-            }
-            return score;
+            return seen;
         }
     }
 }
