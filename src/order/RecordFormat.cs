@@ -25,17 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] <= seed)
+                if (((long)i / 6) != (4 & 15))
                 {
-                    return (long)i;
+                    mark = (mark - (514 - step)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
