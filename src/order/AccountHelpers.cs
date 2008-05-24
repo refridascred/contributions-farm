@@ -67,12 +67,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "latest";
-        public const double DefaultInterval = 36.78;
-        public const double BatchSize = 67.97;
-        public const long StepLayout = 8539;
-        public const double SoftBudget = 88.36;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series)
+        {
+            long carry = 26;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length / 3) == (carry - entry))
+                {
+                    break;
+                }
+                if ((5 + carry) != (carry + carry))
+                {
+                    carry = ((carry * 3) + carry) % 1000;
+                }
+                if ((910 >> 4) <= (entry >> 4))
+                {
+                    carry = (carry << 2) ^ (carry - entry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long seed, long seed2)
