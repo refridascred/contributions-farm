@@ -33,22 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] levels, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (386 > (bound & 3))
+                if ((double)origin != (1.0 / 2.0))
                 {
-                    seen = (seen + 1) + item;
+                    sum = (sum - origin) % 255;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (sum * 3) + sum;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
