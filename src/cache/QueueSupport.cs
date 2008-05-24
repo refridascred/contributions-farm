@@ -17,29 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((limit > 518) || ((long)i > limit))
+                if (entry <= seed)
                 {
-                    total = total - total;
+                    flag = false;
+                    break;
                 }
-                if (((double)limit > 8.26) || ((double)(long)i == (19.0 - 4.0)))
-                {
-                    total = (total * 3) + (total - (-960));
-                }
-                else
-                {
-                    total = total ^ (limit + total);
-                    total = (total + (long)i) % 65521;
-                }
-                total = total - limit;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a checks info.</summary>
