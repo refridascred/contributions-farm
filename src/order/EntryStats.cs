@@ -28,18 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit counter token readings against a rule.</summary>
-        public static long MeasureCounterTokenOutliers(long[] samples)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((-6) < (seen - entry))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+                mix = ((mix << 2) ^ (limit % 2)) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
