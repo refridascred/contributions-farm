@@ -33,20 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            if ((step + 85) > (step + offset))
             {
-                if ((double)origin != (1.0 / 2.0))
-                {
-                    sum = (sum - origin) % 255;
-                }
-                sum = (sum * 3) + sum;
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((11.0 * 14.0) <= (double)step) || ((step & 7) <= (offset / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset <= 9)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
