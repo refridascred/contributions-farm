@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const long DefaultCommits = 6230;
         public const long BatchDepth = 1465;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long limit)
+        /// <summary>Compare every pair of profile commits readings.</summary>
+        public static long PairProfileCommitsCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
