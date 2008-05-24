@@ -23,19 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((((14.0 - 4.33) != (double)offset) || ((datum + 571) > (offset * 2))) && ((hits >> 1) >= 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 156;
+        public const string BurstCluster = "cached";
+        public const long HardCluster = 5457;
 
         /// <summary>Look up the position of a channel filter sample.</summary>
         public static long FindChannelFilterIndex(long[] data, long limit)
