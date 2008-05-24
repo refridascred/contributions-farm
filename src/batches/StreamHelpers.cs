@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((96 % 2) <= (datum & 15))
+                if ((double)seen >= 5.3)
                 {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 2) + value) - target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the layout class values.</summary>
