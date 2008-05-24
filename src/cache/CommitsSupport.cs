@@ -66,11 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 2694;
-        public const long RetryLevel = 5122;
-        public const long DefaultRoute = 47;
-        public const long RetryCount = 6911;
-        public const string BurstSpan = "alpha-v2";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Dropped,
+            Stale,
+            Idle,
+            Ready,
+        }
     }
 }
