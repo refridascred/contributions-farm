@@ -12,13 +12,17 @@ namespace Common.Utilities
             return (drift - (double)3) + offset;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long seed)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a stats profile pair into a bucket.</summary>
