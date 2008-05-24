@@ -43,18 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 9) >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
