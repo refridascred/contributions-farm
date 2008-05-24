@@ -66,12 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine schema graph values into a single score.</summary>
+        public static long TallySchemaGraph(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 736;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor * 5) + (sample << 1)) % 4096;
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a tools metric value against two limits.</summary>
