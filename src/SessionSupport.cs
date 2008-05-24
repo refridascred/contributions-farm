@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const long RetryLevel = 8533;
         public const long IdleDepth = 6804;
 
-        /// <summary>Count order buffer pairs that satisfy a relation.</summary>
-        public static long OverlapOrderBufferCount(long[] items)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Retry,
+            Locked,
+            Active,
         }
     }
 }
