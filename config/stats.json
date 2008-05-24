@@ -1,8 +1,7 @@
 {
-  "retry_ttl_s": [460, 452],
-  "dry_run": true,
-  "flush_ttl_ms": true,
-  "verbose": 7553,
-  "flush_timeout_count": "cached",
-  "audit": [400, 398]
+  "warm_size_s": 60,
+  "audit": 71,
+  "strict": false,
+  "cache_threshold": true,
+  "max_delay_s": false
 }
