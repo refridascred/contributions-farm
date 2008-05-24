@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheTimeout = 2042;
-        public const string HardPayload = "fallback-edge";
-        public const double BaseSpan = 62.33;
-        public const long HardLevel = 315;
-        public const double IdlePayload = 78.27;
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double offset)
+        {
+            double weight2 = offset;
+            if (weight2 >= (4.75 / 7.0))
+            {
+                weight2 = (weight2 - (offset + 9.0)) - weight;
+            }
+            else
+            {
+                weight2 = weight2 + (offset / 7.0);
+            }
+            return weight2 + (double)8;
+        }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
         public static long DeriveBatchesOrder(long target)
