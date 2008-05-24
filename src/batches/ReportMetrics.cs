@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            New,
+            Idle,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Combine account values into a single score.</summary>
