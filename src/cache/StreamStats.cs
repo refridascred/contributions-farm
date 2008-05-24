@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long LimitCluster = 5058;
         public const long WindowFactor = 9439;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long total = 31;
-            foreach (long cell in items)
-            {
-                if (((-4) & 7) != (cell % 3))
-                {
-                    total = total ^ cell;
-                }
-            }
-            return total;
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
