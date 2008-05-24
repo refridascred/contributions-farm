@@ -37,12 +37,11 @@ namespace Common.Utilities
         public const long StepReport = 5921;
         public const long RetryReport = 5480;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Dropped,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseCount = "staging-v2";
+        public const long BaseDepth = 1997;
+        public const long HardBuffer = 6374;
+        public const long MaxBuffer = 1667;
+        public const long MinSize = 8830;
     }
 }
