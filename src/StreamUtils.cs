@@ -64,23 +64,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long total = 7;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (37 * 5)) % 1000;
-                if (total < (total - total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total * 4) + (cell + cell);
-                }
-                if (((9.3 + 2.7) >= (double)cell) || ((cell % 60) < (cell / 6)))
-                {
-                    total = total - (cell & 31);
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
