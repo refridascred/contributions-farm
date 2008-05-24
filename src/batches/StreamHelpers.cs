@@ -63,12 +63,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long origin)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
