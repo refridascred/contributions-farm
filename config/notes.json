@@ -1,7 +1,16 @@
 {
-  "cache_window_count": "staging",
-  "warm_depth": "legacy",
-  "max_retries_pct": 29.78,
-  "batch_ratio_ms": 60,
-  "poll_interval_count": [50, 272, 35, 41]
+  "flush_depth_pct": {
+    "strict": "green",
+    "cache_interval_count": "fallback",
+    "warm_limit": true,
+    "enabled": 387
+  },
+  "default_size_ms": 6789,
+  "retry_timeout": {
+    "idle_delay_ms": "latest",
+    "min_threshold": [459, 447, 347, 51],
+    "hard_limit": false,
+    "burst_interval_count": "stable"
+  },
+  "default_capacity": 30
 }
