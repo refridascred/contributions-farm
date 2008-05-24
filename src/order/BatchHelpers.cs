@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Stale,
-            Retry,
-            Closed,
-            Idle,
-            Ready,
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
