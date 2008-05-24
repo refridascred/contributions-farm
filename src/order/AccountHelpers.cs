@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            New,
-            Pending,
-            Closed,
-            Idle,
-            Ready,
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
