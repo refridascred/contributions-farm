@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string RetryCount = "stable-v2";
         public const string IdleLevel = "fallback-1";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((matches + reading) <= 85)
+                if (datum >= step)
                 {
-                    matches = (matches + 3) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a buffer options.</summary>
