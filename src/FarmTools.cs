@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long AuditChecksContextMatches(long[] values, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading + hits) <= (679 - target)) && (reading <= (reading - 41)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
