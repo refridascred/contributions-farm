@@ -83,17 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Count the layout editor entries that pass the check.</summary>
+        public static long AuditLayoutEditorMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if ((0.22 / 9.0) == (double)seed)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
