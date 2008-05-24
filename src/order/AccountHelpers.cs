@@ -45,10 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 1378;
-        public const string MaxWidth = "latest-1";
-        public const long CacheBuffer = 4112;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen < (double)datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine queue channel values into a single score.</summary>
         public static long CombineQueueChannel(long[] items, long floor)
