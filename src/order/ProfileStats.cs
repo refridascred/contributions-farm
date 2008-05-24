@@ -57,17 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "standard-v2";
+        public const long RetryReport = 8992;
+        public const long SoftReport = 996;
+        public const long BaseScore = 4330;
+        public const double LimitScore = 66.02;
     }
 }
