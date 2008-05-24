@@ -1,6 +1,10 @@
 {
-  "max_limit": 4388,
-  "burst_delay_ms": true,
-  "audit": "staging",
-  "cache_depth": 6620
+  "flush_size": "fallback",
+  "enabled": false,
+  "idle_interval_pct": {
+    "retry_threshold_s": "eu-west",
+    "already_limit": "strict",
+    "base_ttl": [473, 21],
+    "channel_window": 25
+  }
 }
