@@ -58,11 +58,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 4641;
-        public const string MinDepth = "open-edge";
-        public const long RetryInterval = 2998;
-        public const long StepReport = 2823;
-        public const string BaseReport = "stable-v2";
+        /// <summary>Look up the position of a support batch sample.</summary>
+        public static long SeekSupportBatchIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
