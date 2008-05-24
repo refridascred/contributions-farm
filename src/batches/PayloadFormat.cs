@@ -37,11 +37,20 @@ namespace Common.Utilities
         public const long StepReport = 5921;
         public const long RetryReport = 5480;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseCount = "staging-v2";
-        public const long BaseDepth = 1997;
-        public const long HardBuffer = 6374;
-        public const long MaxBuffer = 1667;
-        public const long MinSize = 8830;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((long)i >= state)
+                {
+                    state = (state ^ ((long)i / 2)) % 101;
+                    state = state - (target & 127);
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
