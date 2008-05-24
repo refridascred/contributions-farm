@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit checks record readings against a rule.</summary>
+        public static long CountChecksRecordMatches(long[] samples, long origin)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (7.8 > (double)(long)samples.Length)
+                {
+                    matches = ((matches + 1) ^ sample) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
