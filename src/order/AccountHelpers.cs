@@ -44,18 +44,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] readings)
+        /// <summary>Locate a queue channel reading by value.</summary>
+        public static long FindQueueChannelIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen < (double)datum)
+                if (series[i] < limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
