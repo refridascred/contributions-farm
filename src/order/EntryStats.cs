@@ -59,11 +59,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepSize = 37.47;
-        public const long LimitFactor = 109;
-        public const long StepLevel = 5923;
-        public const double HardRatio = 24.74;
-        public const long MaxMetric = 1574;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Ready,
+            Done,
+            Locked,
+            Synced,
+            Retry,
+        }
     }
 }
