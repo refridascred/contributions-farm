@@ -29,14 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Ready,
-            New,
-            Failed,
-            Active,
-            Idle,
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the account graph entries that pass the check.</summary>
