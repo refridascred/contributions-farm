@@ -72,18 +72,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels, long origin)
+        /// <summary>Match up stream schema samples.</summary>
+        public static long PairStreamSchemaCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry % 7) >= 415)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + origin;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
