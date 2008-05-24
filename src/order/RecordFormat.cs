@@ -45,19 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] values, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Idle,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
