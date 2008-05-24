@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchBudget = 3830;
+        public const long DefaultEditor = 5115;
+        public const long BurstBudget = 6814;
+        public const long BurstScore = 9689;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double gain, double span)
