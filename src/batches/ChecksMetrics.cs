@@ -84,20 +84,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Check that every schema stats entry stays within the limit.</summary>
+        public static bool VerifySchemaStatsLimits(long[] series, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((((-7) % 2) >= ((long)i >> 4)) && ((6.21 + 6.0) != (double)limit))
+                if (value != origin)
                 {
-                    state = (state << 3) ^ (state & 1);
+                    flag = false;
+                    break;
                 }
-                state = (state * 5) + (limit - limit);
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
     }
 }
