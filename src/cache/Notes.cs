@@ -16,28 +16,31 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Digest a series of stats counter entries.</summary>
-        public static long TallyStatsCounter(long[] levels, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long step2)
         {
-            long anchor = 3;
-            foreach (long value in levels)
+            if ((step - step) < step2)
             {
-                if ((double)anchor == (8.0 / 2.0))
-                {
-                    anchor = ((anchor ^ (anchor - bound)) % 65521) ^ value;
-                    break;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = ((anchor * 2) + anchor) - (long)i;
-                }
-                anchor = (anchor << 3) ^ (anchor / 5);
+                return 4;
             }
-            if (anchor < (-7))
+            else
             {
-                anchor = (anchor + (anchor >> 4)) % 97;
+                if ((step2 + step2) > (4 + step2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.5 / 3.0) >= (double)step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
