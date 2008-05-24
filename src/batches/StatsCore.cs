@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ratio2 + (double)253;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftCount = 6594;
-        public const long BaseBudget = 9487;
-        public const string LimitInterval = "stable-edge";
-        public const double WindowChecks = 58.68;
-        public const string LimitChecks = "local";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
