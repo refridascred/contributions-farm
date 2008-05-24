@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = seed - bound;
+            if ((double)diff > 2.9)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed <= 2.42))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
