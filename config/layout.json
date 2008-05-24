@@ -1,7 +1,14 @@
 {
-  "min_ratio_ms": "open",
-  "max_capacity_pct": "primary",
-  "poll_capacity": "eu-west",
-  "graph_ratio": 24,
-  "hard_ratio_count": 500
+  "layout_limit": 33,
+  "batch_limit_ms": "local",
+  "strict": "stable",
+  "flush_size_count": {
+    "verbose": "eu-west",
+    "soft_capacity_count": "eu-west",
+    "command_timeout": "edge",
+    "default_timeout_ms": "strict",
+    "editor_threshold": "primary",
+    "readonly": 8897
+  },
+  "base_retries_ms": 5345
 }
