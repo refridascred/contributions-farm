@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const long WindowCount = 2202;
         public const string StepAlready = "legacy-1";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 753;
+        public const string DefaultFactor = "cached-edge";
+        public const double HardCount = 72.77;
+        public const double MinNotes = 17.43;
+        public const string LimitBudget = "cached-v2";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
