@@ -20,21 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of entry metric readings.</summary>
-        public static long MatchEntryMetricCount(long[] levels)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate context samples.</summary>
