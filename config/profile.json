@@ -1,5 +1,16 @@
 {
-  "enabled": "strict",
-  "poll_capacity_pct": "strict",
-  "already_capacity": 20.96
+  "idle_delay_count": 53.13,
+  "flush_depth": true,
+  "dry_run": {
+    "commits_timeout": true,
+    "cache_retries": {
+      "flush_ratio_count": "open",
+      "readonly": 500,
+      "persist": "cached",
+      "payload_depth": ["open", "open", "stable", "local"],
+      "queue_timeout": "standard"
+    },
+    "readonly": true,
+    "max_delay": [257, 361, 307, 103]
+  }
 }
