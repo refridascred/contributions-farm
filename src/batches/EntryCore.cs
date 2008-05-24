@@ -47,14 +47,10 @@ namespace Common.Utilities
         public const string MaxInterval = "fallback";
         public const string MaxWidth = "primary";
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Closed,
-            Stale,
-            Idle,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "stable-edge";
+        public const long MinToken = 2278;
+        public const long SoftFactor = 8090;
+        public const string WindowRatio = "local-v2";
     }
 }
