@@ -29,17 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] data, long floor)
+        /// <summary>Measure how many cluster profile samples are out of range.</summary>
+        public static long MeasureClusterProfileHits(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                if ((75 ^ 29) < (limit % 60))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
