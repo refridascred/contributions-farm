@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long next = step + offset;
+            if (offset >= (0 / 5))
             {
-                if (!((27 > (entry + (long)series.Length)) || ((entry - entry) <= (entry / 7))))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) == (next / 4))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 3) < next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((next & 1) < (58 & 127)) || ((double)step < (double)301))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
