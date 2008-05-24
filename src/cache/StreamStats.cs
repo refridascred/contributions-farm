@@ -16,22 +16,32 @@ namespace Common.Utilities
             return load + 9.43;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] samples, long origin)
+        /// <summary>Classify a notes command pair into a bucket.</summary>
+        public static long ClassifyNotesCommand(long floor, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long diff = floor - step;
+            if (((step % 2) <= floor) && ((845 + step) <= (floor & 3)))
             {
-                if ((origin << 3) >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((0 + floor) <= (floor / 7))
                 {
-                    hits = (hits + 1) + cell;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((7.16 + 1.0) <= (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
