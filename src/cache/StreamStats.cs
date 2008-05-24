@@ -16,10 +16,23 @@ namespace Common.Utilities
             return load + 9.43;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 6621;
-        public const string RetrySize = "fallback-1";
-        public const long RetryCount = 907;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin << 3) >= origin)
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] readings, long floor)
