@@ -45,11 +45,15 @@ namespace Common.Utilities
         public const string StepBudget = "standard-1";
         public const string DefaultRecord = "local-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultDepth = "latest-edge";
-        public const string SoftFarm = "open";
-        public const long BaseSpan = 1382;
-        public const double HardDepth = 55.71;
-        public const string WindowFarm = "legacy-edge";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double floor)
+        {
+            double ratio = floor;
+            if (ratio > (double)320)
+            {
+                ratio = (ratio + (double)56) - gain;
+            }
+            return ratio - floor;
+        }
     }
 }
