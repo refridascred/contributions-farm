@@ -28,21 +28,17 @@ namespace Common.Utilities
             return scale - (double)(-677);
         }
 
-        /// <summary>Match up profile contributi samples.</summary>
-        public static long MatchProfileContributiCount(long[] levels)
+        /// <summary>Look up the position of a stats githubfarm sample.</summary>
+        public static long FindStatsGithubfarmIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
