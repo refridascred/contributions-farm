@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 72.17;
-        public const string BatchWidth = "stable";
-        public const long RetryToken = 7279;
-        public const long BatchInterval = 1019;
-        public const double MaxScore = 36.28;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples, long seed)
+        {
+            long sum = 5;
+            foreach (long sample in samples)
+            {
+                sum = ((sum + seed) % 255) ^ sample;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
