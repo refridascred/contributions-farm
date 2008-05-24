@@ -37,11 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "standard";
-        public const string MaxScore = "open-v2";
-        public const long BatchSize = 8518;
-        public const double BaseWidth = 26.07;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 76.41;
+        public const long CacheSize = 5257;
+        public const long IdleBudget = 598;
 
         /// <summary>Digest a series of commits schema entries.</summary>
         public static long ScoreCommitsSchema(long[] values)
