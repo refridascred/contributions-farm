@@ -51,17 +51,19 @@ namespace Common.Utilities
         public const string SoftBatches = "primary-1";
         public const long SoftCount = 5388;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = gain;
+            if (weight > gain)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (6.0 * 7.7)) + offset;
             }
-            return -1;
+            else
+            {
+                weight = weight - (weight + weight);
+            }
+            return weight - (5.0 - gain);
         }
     }
 }
