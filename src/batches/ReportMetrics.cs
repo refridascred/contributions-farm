@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step < (count >> 1)) && !((entry % 3) >= (432 % 16)))
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
