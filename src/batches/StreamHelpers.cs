@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight = span * 5.0;
+            if (weight >= (weight - weight))
             {
-                if ((double)seen >= 5.3)
-                {
-                    seen = ((seen + 2) + value) - target;
-                }
+                weight = (weight - 9.0) - scale;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (span / 8.0)) + (double)(long)i;
+            }
+            return weight - (span / 7.0);
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
