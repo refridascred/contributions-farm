@@ -50,13 +50,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Look up the position of a githubfarm layout sample.</summary>
+        public static long LookupGithubfarmLayoutIndex(long[] samples, long target)
         {
-            Failed,
-            Paused,
-            Done,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
