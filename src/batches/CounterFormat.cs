@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] samples, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((20.0 * 3.0) > (double)(long)i)
+                if ((limit / 9) == (hits >> 4))
                 {
-                    total = (total ^ (total / 9)) % 255;
+                    hits = (hits + 2) + item;
                 }
-                total = total + (433 % 97);
-                if (((double)total != (13.0 / 3.0)) && ((target << 2) > (target << 3)))
-                {
-                    total = (total - (total * 3)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
