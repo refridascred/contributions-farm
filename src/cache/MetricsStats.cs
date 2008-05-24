@@ -28,11 +28,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            long carry = 877;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (((carry << 2) ^ carry) % 255) - (long)i;
+                }
+                if ((12.0 * 3.68) <= (double)reading)
+                {
+                    carry = (carry - (carry & 31)) % 255;
+                }
+                if (!((double)carry > (14.0 - 7.5)))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
