@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const string BatchCluster = "strict-v2";
         public const string SoftCluster = "cached-edge";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Idle,
+            Ready,
             New,
-            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
