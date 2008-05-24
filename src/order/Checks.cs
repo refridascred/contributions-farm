@@ -49,18 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] values, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((value % 5) > value) && (((hits % 2) > hits) && ((long)values.Length != (value + (long)values.Length))))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
