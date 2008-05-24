@@ -1,5 +1,6 @@
 {
-  "default_size_count": 41.9,
-  "readonly": "fallback",
-  "entry_ratio": "blue"
+  "batches_capacity": "eu-west",
+  "cache_ttl": 98.96,
+  "editor_capacity": "standard",
+  "warm_retries_pct": "open"
 }
