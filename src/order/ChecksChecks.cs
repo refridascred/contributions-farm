@@ -34,10 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardDepth = 17.73;
-        public const long IdleSize = 7068;
-        public const long LimitRecord = 3459;
-        public const string LimitDepth = "local-1";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Ready,
+            Paused,
+            Failed,
+        }
     }
 }
