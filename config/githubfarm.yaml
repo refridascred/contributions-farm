@@ -1,20 +1,6 @@
 # githubfarm settings
-dry_run: 13
-batch_limit:
-  graph_timeout:
-    - latest
-    - legacy
-  verbose: true
-  already_window:
-    - green
-    - fallback
-  base_window: false
-  hard_retries_ms:
-    - blue
-    - strict
-  flush_threshold: 30
-compress:
-  - 268
-  - 110
-  - 155
-route_depth: blue
+contributi_threshold:
+  - fallback
+  - green
+warm_ttl_count: false
+poll_ratio_s: 7074
