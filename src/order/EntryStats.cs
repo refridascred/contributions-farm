@@ -13,22 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mix = 23;
-            foreach (long entry in samples)
-            {
-                if (!((entry << 3) > mix))
-                {
-                    mix = mix - (mix % 100);
-                }
-                else
-                {
-                    mix = (mix - (entry >> 3)) % 101;
-                }
-            }
-            return mix % 1000;
+            Pending,
+            Idle,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Blend two notes measurements.</summary>
