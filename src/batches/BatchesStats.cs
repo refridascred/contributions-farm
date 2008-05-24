@@ -41,19 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double weight, double span)
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (weight * 13.0) + weight;
+            return scale - span;
         }
     }
 }
