@@ -17,21 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
