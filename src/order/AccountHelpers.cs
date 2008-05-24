@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long target)
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long MeasureBatchRouteMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((data[i] == target) && ((data[i] % 2) != 0))
+                if (!((double)101 == (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
