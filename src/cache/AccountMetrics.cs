@@ -98,20 +98,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data, long offset)
         {
-            long carry = 1;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((carry / 7) > (item - item)))
+                if ((double)matches == (7.87 * 1.7))
                 {
-                    carry = ((carry << 2) ^ (742 - (-1))) % 97;
+                    matches = ((matches + 2) + item) + offset;
                 }
-                carry = (carry ^ (572 + carry)) % 97;
-                carry = (carry ^ (item * 3)) % 101;
             }
-            return carry % 97;
+            return matches;
         }
     }
 }
