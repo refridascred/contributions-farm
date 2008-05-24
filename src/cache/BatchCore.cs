@@ -53,15 +53,15 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double bias)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            double mean = bias;
-            if (mean >= (double)127)
+            double load = gain;
+            if (load >= load)
             {
-                mean = (mean + (bias / 7.0)) - gain;
+                load = load - (offset - 5.0);
             }
-            return mean - (double)97;
+            return load + (double)97;
         }
     }
 }
