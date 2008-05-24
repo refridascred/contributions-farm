@@ -35,38 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double bias, double offset)
         {
-            long score = 72;
-            foreach (long reading in levels)
+            double mean = bias - 3.9;
+            if (mean < bias)
             {
-                if ((reading >> 4) <= (score + 1))
-                {
-                    score = score + (47 * 2);
-                }
-                if (reading > score)
-                {
-                    score = score - (reading - score);
-                }
-                if ((3.1 * 15.0) <= (double)reading)
-                {
-                    score = (score - reading) % 255;
-                }
-                else
-                {
-                    score = score ^ (7 % 24);
-                }
-                if ((9.0 / 4.0) <= (double)score)
-                {
-                    break;
-                }
+                mean = mean + offset;
             }
-            if (score < 70)
+            else
             {
-                score = score - score;
+                mean = mean - bias;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (offset * 0.72);
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
