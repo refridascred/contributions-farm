@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long limit)
         {
-            Synced,
-            Closed,
-            Active,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
