@@ -25,20 +25,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            double scale = rate * 9.17;
+            if (scale <= scale)
             {
-                mix = (mix * 5) + mix;
-                if (offset >= (896 << 2))
-                {
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                scale = (scale - (rate / 2.0)) - bias;
             }
-            return mix;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
