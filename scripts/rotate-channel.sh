@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-edge}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=365
+CHANNEL_LIMIT=331
 log "limit is ${CHANNEL_LIMIT}"
