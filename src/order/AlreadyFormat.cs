@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Idle,
-            Draft,
-            Stale,
-            Failed,
-            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
