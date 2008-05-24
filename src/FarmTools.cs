@@ -28,11 +28,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 1305;
-        public const double LimitLayout = 39.28;
-        public const long MaxDepth = 9908;
-        public const long SoftRatio = 5561;
-        public const long MaxCount = 7025;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long step)
+        {
+            if ((double)step > 5.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((471 << 2) < (bound * 3)) || ((1.4 - 7.72) < (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (7.9 + 7.97))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
