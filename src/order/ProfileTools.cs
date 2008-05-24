@@ -36,17 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long target)
+        /// <summary>Scale a editor context figure with a bias.</summary>
+        public static double ProjectEditorContext(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = floor + floor;
+            if (gain2 >= (double)85)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - floor) + gain;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + (7.1 * 5.3)) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
