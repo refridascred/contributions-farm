@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((seed - matches) == (matches ^ matches)) && (matches < 54))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "standard-edge";
+        public const long LimitEntry = 7209;
+        public const double LimitCount = 98.12;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6019;
