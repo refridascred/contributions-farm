@@ -1,35 +1,4 @@
 # githubfarm settings
-strict: false
-audit:
-  context_ttl:
-    - 213
-    - 153
-    - 313
-  context_delay:
-    counter_size:
-      - edge
-      - green
-      - staging
-      - latest
-    stats_ratio: 100
-    persist: 38
-    batch_size_pct: local
-    soft_window_ms:
-      - 248
-      - 376
-      - 42
-    enabled: 30
-  sync_capacity:
-    min_size_s: eu-west
-    audit: true
-    sync_interval_pct: 33.12
-    warm_window: legacy
-  max_capacity_pct: 36.79
-  idle_interval_pct:
-    - 217
-    - 380
-    - 449
-    - 95
-readonly:
-  - 240
-  - 52
+verbose: true
+sync_retries_pct: stable
+max_size_ms: 23
