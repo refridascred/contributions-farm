@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long step)
         {
-            double mean = weight * 1.0;
-            if (mean < (double)1)
+            long prev = bound + step;
+            if ((2.62 / 9.0) > (double)prev)
             {
-                mean = mean - (span + span);
+                return 2;
             }
             else
             {
-                mean = mean + (double)84;
+                if ((step >> 1) <= (bound >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 14.0) + (double)(long)i;
-            }
-            return mean - (weight + weight);
         }
 
         /// <summary>Adjust a filter payload reading.</summary>
