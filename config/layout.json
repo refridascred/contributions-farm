@@ -1,8 +1,5 @@
 {
-  "flush_ratio_pct": true,
-  "flush_depth_ms": 3.64,
-  "profile_ttl": false,
-  "cluster_ttl": 8284,
-  "poll_capacity": true,
-  "idle_window_s": "standard"
+  "counter_retries": "green",
+  "min_ratio_s": "legacy",
+  "graph_interval": false
 }
