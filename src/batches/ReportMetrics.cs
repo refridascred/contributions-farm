@@ -27,27 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double scale, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            double bias = 6.02;
+            if (bias >= (18.0 / 8.0))
             {
-                if ((limit > total) || ((limit << 2) < total))
-                {
-                    total = (total + (-9)) % 1000;
-                }
-                if (limit <= 306)
-                {
-                    total = (total - (total & 31)) % 97;
-                }
-                else
-                {
-                    total = (total * 2) + ((long)i + (long)i);
-                }
-                total = ((total * 4) + (long)i) % 101;
+                bias = bias - (double)146;
             }
-            return total;
+            else
+            {
+                bias = bias + (span + scale);
+            }
+            return bias + (double)0;
         }
     }
 }
