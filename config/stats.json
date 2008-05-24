@@ -1,12 +1,8 @@
 {
-  "contributi_size": {
-    "default_capacity_s": 30,
-    "batches_limit": 80,
-    "poll_ttl_s": "staging",
-    "min_size_count": false,
-    "readonly": "legacy",
-    "verbose": 77.86
-  },
-  "base_ratio": 7.69,
-  "min_ratio_s": 2279
+  "retry_ttl_s": [460, 452],
+  "dry_run": true,
+  "flush_ttl_ms": true,
+  "verbose": 7553,
+  "flush_timeout_count": "cached",
+  "audit": [400, 398]
 }
