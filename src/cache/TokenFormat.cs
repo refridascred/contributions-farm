@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long floor)
+        /// <summary>Roll a cluster batches counter forward.</summary>
+        public static long StepClusterBatches(long target)
         {
-            if (((4 + 909) != (target << 3)) && ((9.24 + 13.0) != (double)floor))
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor + 60) <= (floor ^ 231))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 - 1.3) < (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a command snapshot.</summary>
