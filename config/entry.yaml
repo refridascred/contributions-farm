@@ -1,5 +1,4 @@
 # entry settings
-max_size_count: true
-cluster_ttl: 28
-stats_ratio: staging
-verbose: edge
+window_ttl: 9179
+cache_retries: 3530
+schema_ttl: 19
