@@ -1,10 +1,5 @@
 # entry settings
-max_interval_ms:
-  - open
-  - local
-  - edge
-  - latest
-soft_ratio_count: green
-soft_size_ms: latest
-counter_threshold: local
-layout_depth: edge
+soft_window: 46
+enabled: cached
+sync_ttl: legacy
+max_interval: 66.35
