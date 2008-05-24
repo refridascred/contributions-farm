@@ -56,17 +56,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 24;
+            foreach (long cell in items)
             {
-                if (items[i] < limit)
+                if (((cell >> 1) < (mix ^ cell)) || ((double)mix == (double)cell))
                 {
-                    return (long)i;
+                    mix = mix + mix;
                 }
             }
-            return -1;
+            if (mix > 60)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
