@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            double ratio = offset / 2.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (ratio / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
