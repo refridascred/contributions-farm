@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            New,
-            Pending,
-            Closed,
-            Dropped,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
