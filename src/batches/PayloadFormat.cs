@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Derive the next contributi batch value from a seed.</summary>
+        public static long DeriveContributiBatch(long limit)
         {
-            Closed,
-            Pending,
-            Failed,
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((47 - 42) > (total + (-8))) || (limit <= (limit + limit)))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
