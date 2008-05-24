@@ -59,17 +59,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Measure how many account checks samples are out of range.</summary>
+        public static long AuditAccountChecksGaps(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                result = (result ^ (offset - result)) % 65521;
-                result = result + ((long)i ^ offset);
-                result = ((result * 3) + (long)i) % 1000;
+                if ((sample ^ 1) >= sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
