@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 3162;
+        public const long CacheSession = 2910;
+        public const long DefaultSession = 7564;
+        public const long WindowWidth = 1318;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmMatches(long[] levels, long origin)
