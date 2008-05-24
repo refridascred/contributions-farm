@@ -68,15 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] items, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
