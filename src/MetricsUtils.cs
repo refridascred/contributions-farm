@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long seed, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long diff = seed - bound;
-            if ((double)diff > 2.9)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed <= 2.42))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
