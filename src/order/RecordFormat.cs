@@ -25,20 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i / 6) != (4 & 15))
-                {
-                    mark = (mark - (514 - step)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchTimeout = "strict-v2";
+        public const long HardStream = 6429;
+        public const double BaseStream = 78.33;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long floor, long bound)
