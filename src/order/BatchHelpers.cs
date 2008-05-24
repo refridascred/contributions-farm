@@ -18,19 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double span)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double rate = (6.3 * 4.9) - span;
+            if (rate <= (double)152)
             {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - (double)847;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Hold a buffer options.</summary>
