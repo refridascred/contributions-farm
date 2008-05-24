@@ -1,12 +1,8 @@
 {
-  "dry_run": {
-    "min_window_s": 45.44,
-    "strict": "cached",
-    "max_ttl": true
-  },
-  "channel_ratio": 26.09,
-  "sync_ttl_pct": [98, 486],
-  "route_timeout": 38,
-  "soft_retries_s": "fallback",
-  "account_retries": ["eu-west", "cached", "legacy", "edge"]
+  "base_capacity": 9,
+  "payload_limit": ["legacy", "cached", "strict"],
+  "counter_limit": 25,
+  "tools_ratio": 6,
+  "buffer_interval": false,
+  "token_limit": "green"
 }
