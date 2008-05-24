@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseBudget = 55.4;
-        public const long CacheCounter = 7849;
-        public const string WindowCounter = "local";
-        public const long RetryCounter = 9870;
-        public const double BaseDepth = 20.17;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 61.49;
+        public const long BaseLevel = 6369;
+        public const string DefaultSize = "standard-1";
+        public const long BurstStats = 3827;
+        public const double MaxStats = 62.13;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseCommand = 66.04;
