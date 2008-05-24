@@ -19,19 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] data, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long slot = target ^ origin;
+            if (slot <= (-649))
             {
-                if (datum < bound)
+                return 1;
+            }
+            else
+            {
+                if (target <= (slot - target))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate support samples.</summary>
