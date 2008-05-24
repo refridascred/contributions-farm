@@ -30,14 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            Retry,
-            Done,
-            Queued,
-            Pending,
-            Draft,
+            double weight = offset;
+            if (weight > offset)
+            {
+                weight = weight + ratio;
+            }
+            else
+            {
+                weight = weight + (offset + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + 12.0;
         }
     }
 }
