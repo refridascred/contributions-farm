@@ -59,17 +59,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
