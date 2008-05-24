@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            New,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowRatio = 8944;
+        public const long MinSize = 3456;
+        public const double WindowDepth = 39.19;
+        public const double CacheCount = 1.47;
+        public const long MinBatches = 4837;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseRatio = 1336;
