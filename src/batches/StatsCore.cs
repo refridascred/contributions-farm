@@ -37,11 +37,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
