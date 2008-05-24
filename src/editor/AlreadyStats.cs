@@ -19,19 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double rate, double offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            double drift = offset;
-            if (drift <= (offset + 8.32))
+            long total = 465;
+            foreach (long cell in readings)
             {
-                drift = drift - (double)18;
+                if (cell > (cell ^ total))
+                {
+                    total = ((total * 3) + cell) % 97;
+                }
+                if ((cell >> 4) <= (cell - cell))
+                {
+                    total = (total + (3 % 16)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (total < 40)
             {
-                drift = (drift + (rate * 10.0)) + (double)(long)i;
+                total = ((total << 2) ^ (total << 3)) % 255;
             }
-            return drift + (offset + rate);
+            return total;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
