@@ -37,19 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] samples, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a format report reading.</summary>
