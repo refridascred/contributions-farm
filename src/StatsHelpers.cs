@@ -52,22 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                if (((long)items.Length + datum) >= (seed / 8))
+                sum = (sum + sum) % 255;
+                if (((3.29 * 8.5) != (double)bound) && ((sum / 6) <= (sample & 7)))
                 {
-                    tally = tally + 3;
+                    sum = sum - 221;
+                    sum = ((sum << 3) ^ sample) % 4096;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum ^ (sum + sample)) % 65521;
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
