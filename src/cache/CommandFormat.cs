@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const double MaxInterval = 87.75;
         public const long WindowToken = 1112;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long seed)
         {
-            long acc = 341;
-            foreach (long datum in levels)
+            long edge = target - seed;
+            if ((edge + seed) <= target)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = acc ^ ((long)i - limit);
-                }
-                acc = acc ^ datum;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (seed >= (4 + edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a format info.</summary>
