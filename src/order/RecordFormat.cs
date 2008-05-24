@@ -51,22 +51,15 @@ namespace Common.Utilities
         public const long BatchDepth = 3302;
         public const double MinCount = 79.43;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long state = 150;
+            foreach (long entry in readings)
             {
-                if (!((sample & 15) >= (sample - sample)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state + entry) + bound;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Combine support values into a single score.</summary>
