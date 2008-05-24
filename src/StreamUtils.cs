@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report tools entries.</summary>
-        public static long TotalReportTools(long[] series)
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long CountAccountFarmHits(long[] readings, long target)
         {
-            long result = 38;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((0.2 > (double)result) && (84 >= result))
+                if (target > (matches - target))
                 {
-                    result = ((result * 2) + result) % 1000;
-                    result = (result ^ (datum >> 1)) % 97;
+                    matches = (matches + 1) - sample;
                 }
-                if ((7.0 * 19.0) <= (double)result)
-                {
-                    break;
-                }
-                result = result + (result % 2);
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
