@@ -28,24 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long step)
         {
-            if ((origin & 3) <= (origin ^ bound))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) != (origin - bound))
+                if (sample != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a payload header.</summary>
