@@ -61,22 +61,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((hits & 127) < (hits + hits)) || ((hits ^ 5) < (hits - reading)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
