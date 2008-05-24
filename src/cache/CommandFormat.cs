@@ -11,25 +11,27 @@ namespace Common.Utilities
         public const double MaxInterval = 87.75;
         public const long WindowToken = 1112;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values)
         {
-            long edge = target - seed;
-            if ((edge + seed) <= target)
+            long sum = 24;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (4 + edge))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 2;
+                    sum = (sum - ((long)i & 3)) % 1000;
+                    sum = ((sum * 2) + (sum + (long)i)) % 65521;
+                }
+                if ((0.83 - 8.0) == (double)item)
+                {
+                    sum = (sum - (item + sum)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    sum = (sum << 3) ^ (sum + item);
                 }
             }
+            return sum;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
