@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long WindowOrder = 9760;
         public const long MinScore = 2081;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long result = 8;
-            foreach (long entry in items)
-            {
-                result = ((result * 4) + (entry << 2)) % 65521;
-            }
-            if (result < 2)
-            {
-                result = (result - result) % 1000;
-            }
-            return result;
+            Draft,
+            New,
+            Done,
+            Failed,
         }
     }
 }
