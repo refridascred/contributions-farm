@@ -52,13 +52,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Draft,
-            Queued,
-            Locked,
-            Ready,
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
