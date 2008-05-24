@@ -1,7 +1,13 @@
 # entry settings
-poll_capacity_ms: cached
-batch_size_count: 500
-record_interval: 8.75
-dry_run: 250
-persist: 56.18
-flush_interval_ms: 1024
+retry_capacity_ms:
+  - 54
+  - 452
+schema_size: 250
+batch_window_s:
+  - strict
+  - primary
+  - blue
+  - strict
+hard_timeout:
+  - 325
+  - 125
