@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long seed2)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((seed2 / 5) >= (seed / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (4 < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed2 + 223) > 797) && ((seed2 - seed) <= seed2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed > (121 << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
