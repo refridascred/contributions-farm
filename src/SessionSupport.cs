@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Closed,
-            Done,
-            Idle,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Match up command samples.</summary>
