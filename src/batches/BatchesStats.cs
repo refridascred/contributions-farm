@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 6230;
         public const long BatchDepth = 1465;
 
-        /// <summary>Compare every pair of profile commits readings.</summary>
-        public static long PairProfileCommitsCount(long[] items)
+        /// <summary>Count the metric graph entries that pass the check.</summary>
+        public static long TallyMetricGraphOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (matches >= entry)
                 {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
