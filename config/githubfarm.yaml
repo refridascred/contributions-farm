@@ -1,7 +1,23 @@
 # githubfarm settings
-strict: 80.07
-idle_retries: true
-readonly: true
-warm_ttl: strict
-verbose: true
-hard_threshold_ms: false
+hard_capacity_ms:
+  metrics_threshold:
+    - strict
+    - stable
+  stream_threshold: 25.24
+  burst_timeout_count:
+    report_limit: blue
+    session_window:
+      - legacy
+      - eu-west
+      - cached
+      - edge
+    batches_retries: 5.18
+    burst_timeout_pct: strict
+    max_ttl_count: 30
+    max_limit_s: 67.9
+  channel_interval: blue
+  flush_delay_count: 28.16
+  persist: blue
+strict: true
+cache_capacity_count: 7.23
+buffer_size: 6221
