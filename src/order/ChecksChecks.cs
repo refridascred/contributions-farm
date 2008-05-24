@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data)
         {
-            Synced,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits * 2) >= hits)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate window samples.</summary>
