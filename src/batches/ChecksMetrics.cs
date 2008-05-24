@@ -70,19 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema stats entry stays within the limit.</summary>
-        public static bool VerifySchemaStatsLimits(long[] series, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = 86;
+            foreach (long sample in samples)
             {
-                if (value != origin)
+                state = ((state << 3) ^ (sample * 3)) % 255;
+                if (((sample + state) <= state) || (state < (sample * 2)))
                 {
-                    flag = false;
-                    break;
+                    state = (state + (sample - 901)) % 1000;
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
