@@ -24,14 +24,12 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            New,
-            Idle,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinTimeout = 15.68;
+        public const string BatchCommits = "alpha-v2";
+        public const long HardCommits = 3869;
+        public const long DefaultCommits = 6230;
+        public const long BatchDepth = 1465;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] items, long limit)
