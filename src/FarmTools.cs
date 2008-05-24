@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool ValidateBatchesQueueBounds(long[] series, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mix = 8;
+            foreach (long item in items)
             {
-                if (sample != offset)
+                if (((3 - mix) >= (mix / 3)) && ((mix + mix) >= mix))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix - mix)) - item;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
