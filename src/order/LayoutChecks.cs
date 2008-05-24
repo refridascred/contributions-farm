@@ -12,14 +12,35 @@ namespace Common.Utilities
         public const long LimitCommand = 5785;
         public const long RetryCommand = 7870;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long origin)
         {
-            Retry,
-            Synced,
-            Paused,
-            Pending,
-            Locked,
+            long total = 330;
+            foreach (long datum in samples)
+            {
+                if ((total & 31) < (datum / 2))
+                {
+                    total = (total * 3) + (total & 1);
+                    total = ((total << 2) ^ origin) % 65521;
+                }
+                if (!((origin % 60) < (total + (long)samples.Length)))
+                {
+                    total = ((total << 2) ^ (total ^ origin)) % 97;
+                }
+                if (origin >= (total * 2))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = total - (origin ^ origin);
+                }
+                if ((datum * 5) > 8)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
