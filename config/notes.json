@@ -1,8 +1,7 @@
 {
-  "command_retries": 65.69,
-  "warm_delay_pct": "latest",
-  "flush_ttl": ["local", "latest", "open"],
-  "graph_size": 4176,
-  "soft_limit": 5982,
-  "poll_interval_count": ["eu-west", "legacy", "eu-west"]
+  "audit": "standard",
+  "record_ttl": ["blue", "eu-west"],
+  "hard_limit": "eu-west",
+  "idle_window_s": "local",
+  "compress": 66.69
 }
