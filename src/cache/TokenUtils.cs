@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 778;
+            foreach (long cell in values)
             {
-                if (((double)step == (7.79 - 14.0)) || (((7.62 * 5.0) < (double)item) && ((double)step < (1.0 * 0.6))))
+                result = (result * 2) + cell;
+                if ((4.16 / 3.0) == (double)limit)
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the commits class values.</summary>
