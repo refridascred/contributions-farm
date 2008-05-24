@@ -20,16 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long result = 187;
+            foreach (long cell in values)
             {
-                acc = acc - (step + (long)i);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (((long)values.Length >> 4) > (result - result))
+                {
+                    result = (result ^ step) ^ cell;
+                }
             }
-            return acc;
+            if (result > 15)
+            {
+                result = (result + step) % 101;
+            }
+            return result;
         }
 
         /// <summary>Match up commits samples.</summary>
