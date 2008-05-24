@@ -35,22 +35,37 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long step)
         {
-            if ((double)step >= 1.66)
+            long step2 = seed + step;
+            if (!((0.3 - 4.4) >= (double)seed))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)limit <= (5.4 - 9.81))
+                if ((step2 + seed) < (seed >> 5))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    if ((seed >> 5) < (seed >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((24 >> 5) <= step2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
