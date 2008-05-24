@@ -35,11 +35,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long mix = 91;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (1.0 + 9.1))
+                {
+                    mix = ((mix << 2) ^ (mix >> 4)) % 255;
+                }
+            }
+            if (mix < 52)
+            {
+                mix = ((mix * 3) + (mix * 5)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
