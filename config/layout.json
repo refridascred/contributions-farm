@@ -1,25 +1,6 @@
 {
-  "default_retries_s": {
-    "enabled": [257, 109, 445, 190],
-    "dry_run": "local",
-    "report_ratio": 4.21,
-    "audit": {
-      "verbose": true,
-      "poll_ttl": ["local", "green"],
-      "soft_ratio": 6099,
-      "max_timeout_ms": "latest",
-      "cache_capacity": 60
-    },
-    "record_threshold": "blue",
-    "filter_depth": 33.09
-  },
-  "command_threshold": {
-    "min_ratio_pct": "local",
-    "retry_threshold": 58,
-    "commits_size": [221, 488, 432, 426],
-    "entry_delay": [116, 257],
-    "token_ratio": "stable",
-    "cache_interval_count": "stable"
-  },
-  "schema_delay": ["strict", "standard", "edge"]
+  "base_delay": ["open", "cached", "local"],
+  "cache_ratio": "edge",
+  "githubfarm_depth": 1024,
+  "default_timeout": "standard"
 }
