@@ -34,13 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Paused,
-            Synced,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardDepth = 17.73;
+        public const long IdleSize = 7068;
+        public const long LimitRecord = 3459;
+        public const string LimitDepth = "local-1";
     }
 }
