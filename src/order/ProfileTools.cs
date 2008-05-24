@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long target)
+        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
+        public static long OverlapNotesBufferCount(long[] readings)
         {
-            long prev = step + target;
-            if (target >= (step - (-926)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((prev + prev) <= (287 - prev)) || ((0.57 * 1.26) > (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - step) < (step * 3)) || ((5.67 / 4.0) <= (double)step))
+                    if ((readings[i] ^ readings[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
