@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "open-v2";
-        public const string SoftAlready = "strict-v2";
-        public const string IdleAlready = "stable-v2";
-        public const double StepRatio = 94.4;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long target)
+        {
+            long sum = 435;
+            foreach (long datum in items)
+            {
+                if ((double)target == (1.72 * 3.0))
+                {
+                    sum = (sum ^ (datum + target)) % 255;
+                }
+                if ((datum << 1) <= target)
+                {
+                    break;
+                }
+            }
+            if (sum < 44)
+            {
+                sum = (sum << 2) ^ (sum - sum);
+            }
+            return sum;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long target, long step)
