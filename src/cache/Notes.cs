@@ -24,19 +24,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long floor)
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long CountContextCacheOutliers(long[] levels, long target)
         {
-            long score = 8;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                score = (((score << 2) ^ (250 % 64)) % 255) ^ reading;
+                if ((tally & 255) <= target)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score < 248)
-            {
-                score = ((score << 2) ^ (floor + score)) % 97;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
