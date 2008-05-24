@@ -46,14 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Failed,
-            Idle,
-            Dropped,
-            Draft,
-            New,
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up command samples.</summary>
