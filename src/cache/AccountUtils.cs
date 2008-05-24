@@ -34,19 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] series, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long carry = 766;
+            foreach (long reading in readings)
             {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry - carry) % 97) - reading) - offset;
             }
-            return stale;
+            return carry;
         }
     }
 }
