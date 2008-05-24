@@ -19,12 +19,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items, long limit)
         {
-            Paused,
-            Draft,
-            Closed,
+            long score = 1;
+            foreach (long cell in items)
+            {
+                score = ((score * 2) + (score + limit)) + cell;
+            }
+            if (score < 93)
+            {
+                score = score - (-114);
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
