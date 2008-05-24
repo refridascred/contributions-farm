@@ -62,24 +62,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
-        {
-            long sum = 73;
-            foreach (long item in items)
-            {
-                sum = (sum + (sum + sum)) % 65521;
-                if (2.0 <= (2.5 / 5.0))
-                {
-                    sum = (sum - (item % 3)) % 1000;
-                }
-            }
-            if (sum < 21)
-            {
-                sum = (sum + (sum - sum)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheScore = 48.99;
+        public const long HardTimeout = 3674;
+        public const double DefaultCommits = 98.85;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricOutliers(long[] readings)
