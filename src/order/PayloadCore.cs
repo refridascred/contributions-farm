@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long target)
+        /// <summary>Audit schema token readings against a rule.</summary>
+        public static long TallySchemaTokenGaps(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (entry != target)
+                if ((2.7 * 2.0) <= (double)tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a layout info.</summary>
