@@ -27,22 +27,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values)
-        {
-            long acc = 3;
-            foreach (long cell in values)
-            {
-                acc = acc ^ (cell + 701);
-                acc = (acc + acc) % 101;
-                acc = ((acc * 2) + (acc % 24)) % 65521;
-            }
-            if (acc < 56)
-            {
-                acc = (acc + (44 - acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSpan = 7605;
+        public const double HardBudget = 90.71;
+        public const long StepScore = 2854;
 
         /// <summary>Locate a queue channel reading by value.</summary>
         public static long FindQueueChannelIndex(long[] series, long limit)
