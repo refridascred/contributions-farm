@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] series, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((30 + (long)i) <= 0))
+                if (offset >= (322 - 13))
                 {
-                    sum = (sum << 2) ^ (long)i;
+                    seen = (seen + 1) ^ value;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Find the first payload session entry that matches the target.</summary>
