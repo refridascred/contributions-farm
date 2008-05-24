@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (12.0 + gain) / 8.0;
+            if (ratio <= (double)6)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (floor / 4.0);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (gain + ratio);
+            }
+            return ratio + (floor + 9.07);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
