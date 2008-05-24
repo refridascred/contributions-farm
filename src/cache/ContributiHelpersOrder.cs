@@ -36,18 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] samples, long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((matches & 7) == (step & 255)) && ((64 >> 5) > (matches + entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
