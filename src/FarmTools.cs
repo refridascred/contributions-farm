@@ -22,16 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Accumulate batches queue samples.</summary>
+        public static long TotalBatchesQueue(long[] items, long target)
         {
-            long mix = 8;
-            foreach (long item in items)
+            long mix = 492;
+            foreach (long reading in items)
             {
-                if (((3 - mix) >= (mix / 3)) && ((mix + mix) >= mix))
-                {
-                    mix = ((mix << 2) ^ (mix - mix)) - item;
-                }
+                mix = ((mix ^ (reading & 31)) % 101) + target;
+                mix = (mix - 0) % 97;
             }
             return mix;
         }
