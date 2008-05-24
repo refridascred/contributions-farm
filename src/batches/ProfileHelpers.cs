@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long StepRecord = 9614;
         public const long BatchRecord = 8596;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] data, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((matches & 7) == (value * 2))
+                if (sample != offset)
                 {
-                    matches = (matches + 1) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the checks phase values.</summary>
