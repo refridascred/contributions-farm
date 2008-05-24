@@ -35,39 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile graph input into a small class.</summary>
-        public static long GradeProfileGraph(long target, long offset)
-        {
-            if (7.6 <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 3) < target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset == (0.78 - 1.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) == (target % 10))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 2485;
+        public const long HardWidth = 7499;
+        public const long StepAlready = 5669;
+        public const long HardAlready = 3764;
+        public const double MinAlready = 54.48;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
