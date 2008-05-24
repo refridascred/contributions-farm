@@ -14,19 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                if ((54 + (long)i) >= (origin * 2))
-                {
-                    state = (state + (state % 97)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                mix = ((mix - (mix << 2)) % 65521) ^ datum;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
