@@ -20,12 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryInterval = 48.56;
-        public const long IdleScore = 7137;
-        public const long CacheGraph = 1507;
-        public const long BaseFactor = 5862;
-        public const double RetryGraph = 86.43;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Done,
+            Active,
+            Idle,
+            Draft,
+            New,
+        }
 
         /// <summary>Compare every pair of command context readings.</summary>
         public static long PairCommandContextCount(long[] readings)
