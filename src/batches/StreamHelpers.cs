@@ -73,12 +73,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long origin)
         {
-            Active,
-            Synced,
-            Paused,
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate checks samples.</summary>
