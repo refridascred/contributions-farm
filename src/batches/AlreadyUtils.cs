@@ -63,11 +63,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Locate a layout window reading by value.</summary>
+        public static long LocateLayoutWindowIndex(long[] samples, long seed)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
