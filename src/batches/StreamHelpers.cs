@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long carry = 583;
-            foreach (long value in values)
-            {
-                carry = (((carry * 5) + carry) + value) + target;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
