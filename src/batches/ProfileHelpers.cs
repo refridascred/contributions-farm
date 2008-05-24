@@ -62,19 +62,31 @@ namespace Common.Utilities
         public const long WindowFactor = 9015;
         public const long MaxLevel = 1708;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long origin)
         {
-            long score = -27;
-            foreach (long item in samples)
+            if ((origin / 5) < (681 + (-229)))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = ((score - (score ^ item)) % 4096) ^ (long)i;
-                }
-                score = ((score * 2) + score) % 4096;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((origin ^ floor) < (3 / 6)) && ((origin ^ floor) >= (origin + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - 36) > (5 >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
