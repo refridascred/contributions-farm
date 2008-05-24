@@ -46,39 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long floor, long target)
-        {
-            if ((0 % 12) < (target & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor < (floor << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ floor) != (floor << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.26 - 5.0) >= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 66.04;
+        public const long BatchDepth = 3302;
+        public const double MinCount = 79.43;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] series)
