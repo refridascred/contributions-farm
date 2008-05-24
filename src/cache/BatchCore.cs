@@ -42,13 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            Draft,
-            Idle,
-            Active,
-            Failed,
+            double mean = scale;
+            if (mean <= (mean - scale))
+            {
+                mean = (mean + scale) - floor;
+            }
+            return mean + scale;
         }
 
         /// <summary>Match up account samples.</summary>
