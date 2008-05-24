@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BaseCount = 4296;
         public const string SoftSize = "staging-v2";
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4158;
+        public const string BatchChecks = "alpha-1";
+        public const long MinChecks = 8497;
+        public const long BaseChecks = 1539;
+        public const long MaxChecks = 9317;
 
         /// <summary>Rank cluster graph input into a small class.</summary>
         public static long ClassifyClusterGraph(long floor, long target)
