@@ -61,19 +61,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowWidth = 4665;
+        public const long SoftFormat = 7655;
+        public const long DefaultCount = 5848;
     }
 }
