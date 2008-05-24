@@ -57,19 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardScore = 6434;
+        public const long RetryMetric = 8502;
+        public const long MaxMetric = 2574;
+        public const double BatchSpan = 32.77;
     }
 }
