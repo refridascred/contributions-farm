@@ -34,22 +34,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter metric entries.</summary>
-        public static long FoldCounterMetric(long[] series)
+        /// <summary>Classify a record buffer pair into a bucket.</summary>
+        public static long BucketRecordBuffer(long target, long limit)
         {
-            long anchor = 41;
-            foreach (long item in series)
+            long cur = target + limit;
+            if (((limit + cur) >= (5 % 10)) || ((cur - limit) > (cur & 63)))
             {
-                if (!((double)item < (2.0 / 3.0)))
+                return 0;
+            }
+            else
+            {
+                if ((target + 81) != (cur % 8))
                 {
-                    anchor = (anchor * 2) + anchor;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 98) <= (limit % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-864) + target) <= (66 + limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor > 323)
-            {
-                anchor = ((anchor * 4) + (anchor / 3)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
