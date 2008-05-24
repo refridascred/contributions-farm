@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] data, long origin)
+        /// <summary>Scale a batches order figure with a bias.</summary>
+        public static double SmoothBatchesOrder(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain = (3.05 / 2.0) / 6.0;
+            return ((gain - (gain * 4.4)) + bias) + offset;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
