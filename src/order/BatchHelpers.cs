@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum & 3) != (datum + datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine editor githubfarm values into a single score.</summary>
