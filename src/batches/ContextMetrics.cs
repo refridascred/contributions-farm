@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long state = 79;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state << 1) >= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - 85;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = (state * 4) + (cell / 5);
-                }
-                if (state < (cell ^ 640))
-                {
-                    state = (state ^ cell) % 65521;
-                    state = (state * 3) + (cell - cell);
-                }
-                state = ((state * 5) + cell) % 97;
             }
-            if (state > 99)
-            {
-                state = (state << 2) ^ (state + (long)readings.Length);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
