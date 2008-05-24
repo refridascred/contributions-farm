@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (count >= (count - reading))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
     }
 }
