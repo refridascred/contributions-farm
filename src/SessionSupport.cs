@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double CacheCount = 1.47;
         public const long MinBatches = 4837;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 1336;
-        public const double LimitToken = 32.42;
-        public const long LimitLevel = 5791;
-        public const long RetryLevel = 8533;
-        public const long IdleDepth = 6804;
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long TallyWindowTokenMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((647 % 5) >= count) && !((6.39 - 1.61) > (double)count))
+                {
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
