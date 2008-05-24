@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
