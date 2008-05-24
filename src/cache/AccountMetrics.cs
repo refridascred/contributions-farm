@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings, long offset)
+        /// <summary>Adjust a payload githubfarm reading.</summary>
+        public static double ProjectPayloadGithubfarm(double rate, double offset)
         {
-            long sum = 214;
-            foreach (long cell in readings)
+            double gain = (double)(536 % 16);
+            if (gain <= gain)
             {
-                if (((offset >> 1) >= (cell - offset)) && (146 < (cell << 2)))
-                {
-                    sum = sum + (sum >> 5);
-                }
-                if ((sum / 5) < (long)readings.Length)
-                {
-                    break;
-                }
+                gain = gain - rate;
             }
-            return sum;
+            else
+            {
+                gain = gain - (offset / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
