@@ -16,13 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Done,
-            Active,
-            Idle,
-            Draft,
+            Failed,
+            Pending,
+            Paused,
+            Stale,
             New,
         }
 
