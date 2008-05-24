@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 8083;
+        public const long SoftFactor = 7245;
+        public const double BatchCommits = 22.9;
+        public const double StepSpan = 83.55;
+        public const long BurstCommits = 2515;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
