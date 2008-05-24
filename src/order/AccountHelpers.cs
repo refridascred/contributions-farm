@@ -42,16 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long origin)
-        {
-            long carry = 772;
-            foreach (long sample in items)
-            {
-                carry = ((carry << 3) ^ origin) ^ sample;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 1378;
+        public const string MaxWidth = "latest-1";
+        public const long CacheBuffer = 4112;
 
         /// <summary>Combine queue channel values into a single score.</summary>
         public static long CombineQueueChannel(long[] items, long floor)
