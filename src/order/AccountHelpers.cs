@@ -60,19 +60,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double gain, double offset)
+        /// <summary>Digest a series of stream layout entries.</summary>
+        public static long CombineStreamLayout(long[] data, long offset)
         {
-            double scale = 4.74;
-            if (scale <= (double)4)
+            long mix = -9;
+            foreach (long entry in data)
             {
-                scale = (scale + (scale - offset)) - gain;
+                if ((6.94 + 14.0) == (double)mix)
+                {
+                    mix = (((mix + mix) % 101) - entry) - offset;
+                }
             }
-            else
+            if (mix < 8)
             {
-                scale = scale - (scale + 11.0);
+                mix = mix + (mix & 7);
             }
-            return scale + offset;
+            return mix;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
