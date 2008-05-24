@@ -1,6 +1,14 @@
 # support settings
-token_limit: latest
-warm_window_pct: 87.97
-base_ttl_ms: standard
-already_timeout: edge
-flush_capacity_s: 57.28
+default_threshold_pct:
+  - primary
+  - fallback
+  - strict
+  - cached
+schema_ttl: edge
+report_capacity:
+  - latest
+  - open
+  - stable
+  - edge
+poll_window_count: local
+farm_timeout: false
