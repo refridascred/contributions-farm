@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6019;
-        public const long MaxLevel = 5704;
-        public const double DefaultBatch = 51.42;
-        public const long IdleBatch = 6083;
-        public const double BatchDepth = 66.38;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
