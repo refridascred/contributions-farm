@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long state = 0;
+            foreach (long datum in data)
             {
-                if (!((430 ^ mix) >= target))
+                if (!((state + 496) >= datum))
                 {
-                    mix = (mix << 2) ^ (mix & 127);
-                    continue;
+                    state = state ^ (datum / 6);
                 }
-                mix = mix + (target + target);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)datum > (10.0 * 7.0))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
