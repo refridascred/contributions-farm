@@ -58,13 +58,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            Done,
-            Draft,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= (seen - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
