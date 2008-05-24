@@ -37,10 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 76.41;
-        public const long CacheSize = 5257;
-        public const long IdleBudget = 598;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardFactor = "strict-edge";
+        public const long IdleInterval = 3935;
+        public const string BurstRatio = "fallback";
+        public const long HardChecks = 4973;
 
         /// <summary>Digest a series of commits schema entries.</summary>
         public static long ScoreCommitsSchema(long[] values)
