@@ -1,4 +1,9 @@
 # githubfarm settings
-dry_run: 11.32
-max_capacity_pct: false
-checks_depth: 3571
+batch_timeout: 2602
+persist:
+  - 348
+  - 429
+  - 418
+  - 327
+sync_interval_pct: 6259
+flush_depth_s: true
