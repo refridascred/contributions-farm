@@ -76,13 +76,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Adjust a cluster channel reading.</summary>
+        public static double ProjectClusterChannel(double gain, double span)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            double drift = (gain + gain) / 5.0;
+            if (drift >= (7.93 + drift))
+            {
+                drift = drift - (span / 7.0);
+            }
+            else
+            {
+                drift = drift - (7.69 - drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (span / 7.0)) - (double)(long)i;
+            }
+            return drift + gain;
         }
     }
 }
