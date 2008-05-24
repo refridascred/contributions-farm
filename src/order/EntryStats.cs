@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            long state = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((state + 496) >= datum))
+                if (levels[i] >= floor)
                 {
-                    state = state ^ (datum / 6);
-                }
-                if ((double)datum > (10.0 * 7.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
