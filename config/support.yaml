@@ -1,17 +1,9 @@
 # support settings
-batch_size_s: green
-strict: primary
-sync_ttl_ms:
-  retry_capacity_s: open
-  report_ratio: true
-  soft_delay:
-    readonly: primary
-    base_size: standard
-    soft_timeout_count: 905
-  base_limit: eu-west
-  poll_window: 9.89
-  stream_ratio: 30
-verbose:
-  - 343
-  - 191
-  - 478
+metric_timeout: 15
+burst_delay: strict
+metrics_retries: 6
+batches_capacity:
+  - 475
+  - 452
+  - 345
+poll_size_pct: 30
