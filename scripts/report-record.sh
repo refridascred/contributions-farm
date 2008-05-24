@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west; do
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable legacy; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=448
+RECORD_LIMIT=307
 log "limit is ${RECORD_LIMIT}"
