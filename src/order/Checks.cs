@@ -62,17 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support batch sample.</summary>
-        public static long SeekSupportBatchIndex(long[] values, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
