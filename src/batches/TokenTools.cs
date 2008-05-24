@@ -14,19 +14,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double rate = (double)123;
-            if (rate > rate)
-            {
-                rate = (rate - 4.0) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)162) + (double)(long)i;
-            }
-            return rate - ratio;
+            Failed,
+            Stale,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
