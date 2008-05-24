@@ -53,12 +53,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8886;
-        public const long SoftCount = 8022;
-        public const string IdleSize = "strict";
-        public const long WindowInterval = 7837;
-        public const long CacheSpan = 3294;
+        /// <summary>Combine githubfarm channel values into a single score.</summary>
+        public static long TotalGithubfarmChannel(long[] values, long offset)
+        {
+            long state = 9;
+            foreach (long sample in values)
+            {
+                if (state <= (offset + 41))
+                {
+                    state = (state * 4) + (state << 3);
+                }
+                else
+                {
+                    state = ((state * 4) + (sample % 97)) % 4096;
+                }
+                if ((double)sample < (6.0 * 2.44))
+                {
+                    state = (state - offset) % 1000;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long limit, long limit2)
