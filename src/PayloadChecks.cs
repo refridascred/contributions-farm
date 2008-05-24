@@ -51,20 +51,11 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached";
         public const string IdleRatio = "latest-edge";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry / 8)) % 4096) ^ (long)i2;
-                }
-                carry = ((carry << 3) ^ (step << 2)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
