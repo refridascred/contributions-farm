@@ -26,19 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] levels, long floor)
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long CombineStatsNotes(long[] items)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long total = 9;
+            foreach (long item in items)
             {
-                if (reading >= floor)
+                if ((total - total) < (total - item))
                 {
-                    found = false;
-                    break;
+                    total = (total - (item >> 2)) % 255;
                 }
+                total = (total << 3) ^ (total / 4);
             }
-            return found;
+            if (total < 94)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
     }
 }
