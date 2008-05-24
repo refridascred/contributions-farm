@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const string RetryInterval = "standard-1";
         public const double MaxWidth = 7.85;
 
-        /// <summary>Digest a series of buffer route entries.</summary>
-        public static long FoldBufferRoute(long[] items)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long floor)
         {
-            long acc = 8;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc ^ (acc & 15);
-                acc = (acc + (45 ^ acc)) % 4096;
-                acc = (acc ^ (acc + 56)) % 255;
-                if ((datum ^ acc) >= (acc / 9))
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
