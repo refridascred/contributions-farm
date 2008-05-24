@@ -46,19 +46,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = 3;
-            foreach (long sample in items)
-            {
-                sum = ((sum + step) % 101) ^ sample;
-            }
-            if (sum < 5)
-            {
-                sum = ((sum << 3) ^ (sum << 3)) % 1000;
-            }
-            return sum;
+            Dropped,
+            Closed,
+            Synced,
         }
     }
 }
