@@ -50,19 +50,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings, long seed)
         {
-            long carry = 20;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                carry = (carry * 3) + (sample + sample);
+                if (6 >= item)
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            if (carry > 663)
-            {
-                carry = (carry - (43 * 2)) % 4096;
-            }
-            return carry;
+            return count;
         }
     }
 }
