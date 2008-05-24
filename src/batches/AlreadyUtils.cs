@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long AuditChecksSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (data[i] >= origin)
+                if ((seen + seen) > (seen - 709))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit batches graph readings against a rule.</summary>
