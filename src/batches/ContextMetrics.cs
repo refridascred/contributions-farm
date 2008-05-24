@@ -45,18 +45,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long step)
+        /// <summary>Combine account route values into a single score.</summary>
+        public static long CombineAccountRoute(long[] data)
         {
-            long mix = 7;
-            foreach (long value in readings)
+            long anchor = 33;
+            foreach (long value in data)
             {
-                if (((step + step) == (1 << 3)) || ((3 * 3) <= (value ^ mix)))
+                if (anchor < (value << 1))
                 {
-                    mix = (mix - ((long)readings.Length & 31)) % 65521;
+                    anchor = ((anchor << 2) ^ (anchor >> 5)) % 97;
+                }
+                if (!((double)value <= (8.0 - 0.02)))
+                {
+                    break;
                 }
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the stream phase values.</summary>
