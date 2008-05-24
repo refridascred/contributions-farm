@@ -32,14 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            Queued,
-            Ready,
-            Failed,
-            Closed,
-            Active,
+            double bias = offset;
+            if (bias > bias)
+            {
+                bias = (bias + (double)1) - gain;
+            }
+            else
+            {
+                bias = bias - (4.54 + bias);
+            }
+            return bias + bias;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
