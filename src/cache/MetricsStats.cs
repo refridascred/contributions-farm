@@ -20,16 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = -51;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor << 3) ^ ((long)readings.Length * 5)) - seed;
-                anchor = anchor - (anchor ^ reading);
-            }
-            return anchor % 4096;
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Match up graph samples.</summary>
