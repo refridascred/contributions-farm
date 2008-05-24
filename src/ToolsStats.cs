@@ -55,19 +55,13 @@ namespace Common.Utilities
         public const string MaxLevel = "primary";
         public const long BatchCache = 5873;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] readings, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
