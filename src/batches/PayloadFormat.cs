@@ -23,12 +23,13 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Queued,
-            Ready,
-            New,
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
