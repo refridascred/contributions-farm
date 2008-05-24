@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Synced,
-            Failed,
-            Draft,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 65.75;
+        public const long BurstSession = 8703;
+        public const string HardSession = "cached-edge";
 
         /// <summary>Accumulate batches record samples.</summary>
         public static long FoldBatchesRecord(long[] items)
