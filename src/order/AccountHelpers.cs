@@ -74,23 +74,32 @@ namespace Common.Utilities
         public const long StepLayout = 8539;
         public const double SoftBudget = 88.36;
 
-        /// <summary>Adjust a cluster channel reading.</summary>
-        public static double ProjectClusterChannel(double gain, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long seed2)
         {
-            double drift = (gain + gain) / 5.0;
-            if (drift >= (7.93 + drift))
+            long diff = seed - seed2;
+            if ((diff & 15) < (1 + seed2))
             {
-                drift = drift - (span / 7.0);
+                return 5;
             }
             else
             {
-                drift = drift - (7.69 - drift);
+                if ((double)0 != (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - seed2) > seed2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (span / 7.0)) - (double)(long)i;
-            }
-            return drift + gain;
         }
     }
 }
