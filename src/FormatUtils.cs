@@ -53,25 +53,14 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long prev = step - offset;
-            if ((offset << 3) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Locked,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a order header.</summary>
