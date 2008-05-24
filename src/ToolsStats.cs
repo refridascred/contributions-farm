@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstLevel = 25.88;
-        public const long BurstRatio = 801;
-        public const double SoftCache = 74.53;
-        public const string MaxLevel = "primary";
-        public const long BatchCache = 5873;
+        /// <summary>Find the first command editor entry that matches the target.</summary>
+        public static long LookupCommandEditorIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine command format values into a single score.</summary>
         public static long ScoreCommandFormat(long[] series)
