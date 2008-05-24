@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long step)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            if ((6 + offset) != (24 & 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step != (3.66 / 6.0)) || ((0.89 / 8.0) <= (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
