@@ -53,24 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm channel values into a single score.</summary>
-        public static long TotalGithubfarmChannel(long[] values, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series, long step)
         {
-            long state = 9;
-            foreach (long sample in values)
+            long state = 8;
+            foreach (long entry in series)
             {
-                if (state <= (offset + 41))
+                long step2 = (state & 15) & 3;
+                if ((state + step2) == (step & 255))
                 {
-                    state = (state * 4) + (state << 3);
+                    step2 = (step2 ^ step) % 97;
                 }
-                else
+                if ((step - 21) > state)
                 {
-                    state = ((state * 4) + (sample % 97)) % 4096;
+                    state = state + ((long)series.Length - entry);
                 }
-                if ((double)sample < (6.0 * 2.44))
-                {
-                    state = (state - offset) % 1000;
-                }
+            }
+            if (state > (-536))
+            {
+                state = ((state * 4) + (state + (-90))) % 1000;
             }
             return state % 4096;
         }
