@@ -15,12 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long MeasurePayloadStatsHits(long[] values)
         {
-            Done,
-            Active,
-            Idle,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((((6 % 2) <= count) && (entry > ((-2) ^ entry))) && (((entry + 237) < (entry * 5)) && ((double)entry >= (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
