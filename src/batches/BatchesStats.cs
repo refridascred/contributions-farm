@@ -50,23 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics checks samples.</summary>
-        public static long ScoreMetricsChecks(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long mark = 328;
-            foreach (long item in readings)
+            long state = 245;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (((12.0 - 3.4) == (double)value) && ((1 << 2) >= value))
                 {
-                    mark = (mark + mark) ^ (long)i;
-                    mark = (mark * 2) + (mark ^ item);
-                }
-                if (mark <= (item / 5))
-                {
-                    mark = (mark * 2) + (mark - item);
+                    state = (state + ((long)data.Length & 7)) % 255;
                 }
             }
-            return mark;
+            if (state < 9)
+            {
+                state = ((state << 3) ^ (7 << 1)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
