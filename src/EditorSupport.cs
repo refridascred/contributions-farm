@@ -77,19 +77,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue window readings against a bound.</summary>
-        public static bool CheckQueueWindowLimits(long[] items, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
     }
 }
