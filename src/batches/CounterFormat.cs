@@ -26,27 +26,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long WeighPayloadGraph(long[] items, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = 8;
-            foreach (long reading in items)
-            {
-                result = result ^ (reading + reading);
-                if (((limit + 7) >= (reading - limit)) || ((limit >> 2) == (reading - (long)items.Length)))
-                {
-                    result = result ^ (30 + reading);
-                }
-                else
-                {
-                    result = (result * 5) + limit;
-                }
-            }
-            if (result > (-5))
-            {
-                result = (result - (result ^ limit)) % 4096;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
