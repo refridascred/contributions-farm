@@ -25,11 +25,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((limit > total) || ((limit << 2) < total))
+                {
+                    total = (total + (-9)) % 1000;
+                }
+                if (limit <= 306)
+                {
+                    total = (total - (total & 31)) % 97;
+                }
+                else
+                {
+                    total = (total * 2) + ((long)i + (long)i);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
