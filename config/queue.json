@@ -1,16 +1,5 @@
 {
-  "hard_threshold_pct": 8870,
-  "idle_timeout_s": {
-    "idle_depth_ms": 84,
-    "retry_size_pct": 8,
-    "warm_ratio_s": {
-      "metric_delay": ["legacy", "strict", "open", "staging"],
-      "verbose": 100,
-      "batches_size": 30,
-      "poll_threshold": "local",
-      "base_depth_s": 31.91
-    },
-    "hard_threshold_s": true
-  },
-  "flush_capacity_s": "edge"
+  "verbose": 2.58,
+  "strict": "green",
+  "sync_delay_pct": "green"
 }
