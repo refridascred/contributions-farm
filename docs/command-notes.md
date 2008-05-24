@@ -1,15 +1,12 @@
 # Command notes
 
-Keep window and stream names short and lowercase.
-The stream module keeps report values in sync with the support cache.
-
-When a layout fails, the notes handler retries a few times before giving up.
-Each command is validated before it reaches the metrics queue.
-Run the commits check before changing any report limits.
+A batch that stays idle for too long is moved to the profile list.
+Use stream settings to tune how often counter data is refreshed.
+The graph module keeps channel values in sync with the account cache.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Keep report values small
-- Review account limits each release
-- Log every filter change
+- Prefer filter defaults
+- Document new tools fields
+- Review stream limits each release
+- Log every metric change
