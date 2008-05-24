@@ -60,32 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache schema pair into a bucket.</summary>
-        public static long SortCacheSchema(long origin, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            long edge = origin - limit;
-            if ((limit - limit) < (978 + 7))
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((717 - origin) < (edge * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.66 - 1.0) >= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
