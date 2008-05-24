@@ -22,31 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long offset)
+        /// <summary>Iterate the already counter series from a seed.</summary>
+        public static long StepAlreadyCounter(long origin)
         {
-            if (!((double)6 >= (double)bound))
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (double)(-509))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 7;
+                    anchor = anchor ^ (origin - (long)i2);
                 }
-                else
+                if (!(anchor > ((long)i - origin)))
                 {
-                    if (5.2 > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = ((anchor * 2) + (origin ^ origin)) % 1000;
                 }
+                anchor = ((anchor * 3) + (origin - origin)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Describe the filter phase values.</summary>
