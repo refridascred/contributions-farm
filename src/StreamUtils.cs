@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account farm entries that pass the check.</summary>
-        public static long CountAccountFarmHits(long[] readings, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (target > (matches - target))
+                if ((50 ^ value) != (4 - 760))
                 {
-                    matches = (matches + 1) - sample;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
