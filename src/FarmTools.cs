@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            double drift = floor;
-            if (drift <= (floor - 3.14))
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                drift = drift + drift;
+                if (((5.9 * 2.0) == (double)(long)i) && (2 <= floor))
+                {
+                    state = state + state;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift - drift)) + (double)(long)i;
-            }
-            return drift + (ratio - floor);
+            return state;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
