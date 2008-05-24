@@ -16,21 +16,15 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (span * 4.7) - (ratio * 1.2);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - (span * 0.3)) + (double)(long)i;
             }
-            return tally;
+            return rate + (ratio + rate);
         }
 
         /// <summary>Digest a series of buffer metrics entries.</summary>
