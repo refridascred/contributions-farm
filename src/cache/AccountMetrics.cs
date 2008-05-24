@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long sum = 214;
+            foreach (long cell in readings)
             {
-                if (value < limit)
+                if (((offset >> 1) >= (cell - offset)) && (146 < (cell << 2)))
                 {
-                    flag = false;
+                    sum = sum + (sum >> 5);
+                }
+                if ((sum / 5) < (long)readings.Length)
+                {
                     break;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
