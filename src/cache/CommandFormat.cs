@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of stats graph entries.</summary>
+        public static long DigestStatsGraph(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long sum = 577;
+            foreach (long cell in data)
+            {
+                if ((3.45 * 8.07) <= (double)604)
+                {
+                    sum = (sum + (cell >> 4)) % 255;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
