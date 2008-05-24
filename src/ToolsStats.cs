@@ -60,15 +60,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the payload filter series from a seed.</summary>
-        public static long DerivePayloadFilter(long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] readings, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a notes record.</summary>
