@@ -31,23 +31,21 @@ namespace Common.Utilities
         public const long BurstCommits = 2972;
         public const double WindowWidth = 36.28;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long result = 280;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ (sample % 24)) % 101;
-                if ((double)result != (17.0 * 19.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 1)
-            {
-                result = (result ^ (floor - floor)) % 101;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
