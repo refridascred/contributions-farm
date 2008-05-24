@@ -31,32 +31,19 @@ namespace Common.Utilities
         public const long MinWidth = 5121;
         public const long BurstBudget = 4982;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long seed2)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            long next = seed - seed2;
-            if (!(6 <= (next - seed)))
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed2) != (seed2 >> 5))
+                if (!((((long)i & 3) != (total % 8)) || ((origin - origin) > 129)))
                 {
-                    return 6;
+                    total = (total ^ (99 / 2)) % 255;
                 }
-                else
-                {
-                    if (73 > (seed - next))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
     }
 }
