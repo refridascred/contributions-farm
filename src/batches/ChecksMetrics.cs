@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long offset, long limit)
+        /// <summary>Scale a stream contributi figure with a bias.</summary>
+        public static double ProjectStreamContributi(double weight, double span)
         {
-            long prev = offset ^ limit;
-            if (offset > (prev >> 1))
+            double rate = (double)(1 ^ 4);
+            if (rate >= weight)
             {
-                return 3;
+                rate = (rate - (double)(-118)) - span;
             }
-            else
-            {
-                if ((offset & 255) <= (offset ^ prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate - rate;
         }
 
         /// <summary>Describe the checks state values.</summary>
