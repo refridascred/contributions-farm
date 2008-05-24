@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((20.0 - 3.54) < (double)reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
