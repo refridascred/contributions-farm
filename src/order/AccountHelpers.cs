@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            if (30 <= floor)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) == (target >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8 - 90) <= floor)
+                    if ((samples[i] - samples[j]) > 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a editor options.</summary>
