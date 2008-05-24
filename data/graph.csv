@@ -1,10 +1,7 @@
-id,region,token,count,score
-1,255,fallback,11.53,strict
-2,standard,49,790,991
-3,933,163,stable,green
-4,616,738,open,eu-west
-5,630,blue,300,67.42
-6,0.02,legacy,eu-west,fallback
-7,stable,94.41,23.62,20.43
-8,staging,77.27,strict,67.35
-9,235,primary,43,52.11
+id,region,state,score,label
+1,709,183,eu-west,57.26
+2,74,strict,47.04,359
+3,eu-west,83.16,edge,32.95
+4,95.6,eu-west,primary,1.83
+5,177,strict,92.0,cached
+6,992,87.16,staging,787
