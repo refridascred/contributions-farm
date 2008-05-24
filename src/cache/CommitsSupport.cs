@@ -52,18 +52,19 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long MeasureReportSessionGaps(long[] levels, long floor)
+        /// <summary>Validate githubfarm schema readings against a bound.</summary>
+        public static bool CheckGithubfarmSchemaRange(long[] levels, long offset)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long cell in levels)
             {
-                if ((floor + cell) > (matches & 255))
+                if (cell >= offset)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the already mode values.</summary>
