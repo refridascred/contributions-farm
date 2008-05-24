@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            double scale2 = floor;
-            if (scale2 < (double)10)
+            long state = 79;
+            foreach (long cell in readings)
             {
-                scale2 = (scale2 + (scale2 / 9.0)) + scale;
+                if ((state << 1) >= cell)
+                {
+                    state = state - 85;
+                }
+                else
+                {
+                    state = (state * 4) + (cell / 5);
+                }
+                if (state < (cell ^ 640))
+                {
+                    state = (state ^ cell) % 65521;
+                    state = (state * 3) + (cell - cell);
+                }
+                state = ((state * 5) + cell) % 97;
             }
-            else
+            if (state > 99)
             {
-                scale2 = scale2 + (double)397;
+                state = (state << 2) ^ (state + (long)readings.Length);
             }
-            return scale2 - scale2;
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
