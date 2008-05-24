@@ -1,6 +1,8 @@
 {
-  "idle_timeout_count": "latest",
-  "idle_ttl_count": [99, 497, 153, 426],
-  "hard_retries": 100,
-  "batch_threshold_pct": 56.41
+  "command_retries": 65.69,
+  "warm_delay_pct": "latest",
+  "flush_ttl": ["local", "latest", "open"],
+  "graph_size": 4176,
+  "soft_limit": 5982,
+  "poll_interval_count": ["eu-west", "legacy", "eu-west"]
 }
