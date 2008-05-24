@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!((27 > (entry + (long)series.Length)) || ((entry - entry) <= (entry / 7))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
