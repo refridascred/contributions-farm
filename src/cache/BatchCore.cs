@@ -39,11 +39,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRatio = 5798;
-        public const long CacheSpan = 4170;
-        public const string StepBudget = "standard-1";
-        public const string DefaultRecord = "local-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryFactor = 49.83;
+        public const long SoftMetrics = 6976;
+        public const double MaxMetrics = 0.3;
+        public const double BatchWidth = 19.89;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double gain, double floor)
