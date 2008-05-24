@@ -37,27 +37,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            long total = 45;
-            foreach (long value in readings)
+            double ratio = gain;
+            if (ratio <= floor)
             {
-                if ((step - total) >= total)
-                {
-                    total = total - (step << 2);
-                    total = (total + total) % 65521;
-                }
-                if ((0 >= step) || ((value % 12) >= total))
-                {
-                    total = total - (value - total);
-                }
-                if ((step > (step - step)) || (value >= (value - value)))
-                {
-                    break;
-                }
+                ratio = ratio + floor;
             }
-            return total;
+            return ratio - 1.8;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
