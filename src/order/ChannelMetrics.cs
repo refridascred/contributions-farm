@@ -39,21 +39,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count format schema pairs that satisfy a relation.</summary>
-        public static long MatchFormatSchemaCount(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -19;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell ^ mark) < (cell >> 5)) && ((mark & 7) > (mark >> 5)))
                 {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (mark - ((long)i / 8)) % 101;
+                    mark = ((mark << 3) ^ mark) % 65521;
+                }
+                mark = mark - 506;
             }
-            return count;
+            return mark % 97;
         }
     }
 }
