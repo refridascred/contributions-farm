@@ -20,21 +20,28 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Roll a record route counter forward.</summary>
+        public static long DeriveRecordRoute(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.0 + 2.0) < (double)acc)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    long tally = acc >> 2;
+                    acc = (acc - tally) % 255;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = ((acc - (acc >> 2)) % 97) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
