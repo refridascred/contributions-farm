@@ -1,26 +1,6 @@
 # entry settings
-min_depth: blue
-burst_delay:
-  audit: 100
-  idle_delay: 1024
-  soft_size_ms: true
-  poll_retries_ms: 93.72
-  base_limit:
-    retry_ttl_ms: green
-    profile_ratio: local
-    flush_timeout_pct: 7
-    entry_limit: 2681
-    min_window_s: 8496
-    warm_threshold:
-      - green
-      - legacy
-      - blue
-      - local
-strict: true
-verbose: 38.75
-hard_depth:
-  - 335
-  - 473
-  - 127
-  - 283
-warm_capacity_s: 77.46
+min_ttl_ms: 59.31
+idle_timeout_s: 25.78
+base_delay_ms: 500
+flush_capacity_ms: open
+report_capacity: 7837
