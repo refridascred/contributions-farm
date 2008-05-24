@@ -1,5 +1,24 @@
 # entry settings
-stats_ratio: cached
-format_interval: true
-batch_window_ms: true
-max_limit_s: eu-west
+base_threshold_count:
+  base_delay_count: cached
+  retry_size_count:
+    - legacy
+    - standard
+    - fallback
+  persist:
+    - 336
+    - 33
+    - 483
+  base_timeout_pct:
+    - eu-west
+    - open
+    - fallback
+    - legacy
+  poll_ttl_s: false
+  session_depth: true
+idle_window: 1957
+min_ratio_pct:
+  - cached
+  - latest
+  - cached
+  - latest
