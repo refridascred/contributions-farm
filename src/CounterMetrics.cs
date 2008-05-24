@@ -26,14 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Paused,
-            Ready,
-            Idle,
-            Closed,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
