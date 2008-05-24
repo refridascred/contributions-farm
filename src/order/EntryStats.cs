@@ -52,20 +52,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order cache readings.</summary>
-        public static long TallyOrderCache(long[] items, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long total = 587;
-            foreach (long sample in items)
+            long mark = 7;
+            foreach (long value in values)
             {
-                total = ((((total << 2) ^ total) % 65521) ^ sample) + seed;
-                total = ((total << 3) ^ (total - total)) % 255;
+                if ((value + 6) >= (value + value))
+                {
+                    mark = (mark ^ (60 << 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 4) + (value * 2);
+                }
             }
-            if (total > 4)
+            if (mark < (-21))
             {
-                total = (total << 2) ^ total;
+                mark = ((mark << 3) ^ (mark * 2)) % 255;
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
