@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long TallyStreamContributiOutliers(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen >= datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
