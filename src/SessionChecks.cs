@@ -44,13 +44,13 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
             public bool Limit { get; set; }
-            public double Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
