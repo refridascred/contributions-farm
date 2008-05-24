@@ -28,13 +28,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((586 * 3) <= (sample - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm header.</summary>
