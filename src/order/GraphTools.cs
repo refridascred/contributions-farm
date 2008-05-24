@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count << 3) >= (datum - datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
