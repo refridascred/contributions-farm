@@ -25,15 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((count >> 4) >= (27 >> 2))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
