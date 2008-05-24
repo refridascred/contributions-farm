@@ -47,14 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Active,
-            Synced,
-            Pending,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSize = 12.5;
+        public const string WindowSupport = "local";
+        public const long LimitSupport = 4546;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long target)
