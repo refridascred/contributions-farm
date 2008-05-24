@@ -56,18 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long CountEntryBufferOutliers(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 1) >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Pending,
         }
     }
 }
