@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long CacheCounter = 9906;
         public const double BatchCounter = 20.32;
 
-        /// <summary>Count context token pairs that satisfy a relation.</summary>
-        public static long PairContextTokenCount(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading >> 4) >= hits)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up stream schema samples.</summary>
