@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long LimitEntry = 4989;
         public const long BatchEntry = 9537;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -51;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ ((long)readings.Length * 5)) - seed;
+                anchor = anchor - (anchor ^ reading);
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
