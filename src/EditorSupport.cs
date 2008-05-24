@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            double gain2 = gain;
-            if (gain2 >= 0.02)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                gain2 = (gain2 - (double)(-866)) + span;
+                if (!((cell ^ count) < (count / 2)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (double)607) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return count;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
