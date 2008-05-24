@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            double load = (scale - scale) + (double)4;
-            return (load - load) + floor;
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a metrics notes reading.</summary>
