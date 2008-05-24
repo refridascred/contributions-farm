@@ -46,11 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
