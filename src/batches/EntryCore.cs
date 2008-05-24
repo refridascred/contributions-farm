@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 9219;
-        public const long StepFactor = 23;
-        public const double StepWindow = 44.63;
-        public const string MinCount = "standard-v2";
-        public const string RetryCount = "fallback";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)target <= (3.11 - 9.67))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseSize = "strict-1";
