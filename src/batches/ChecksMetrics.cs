@@ -41,12 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 6158;
-        public const double RetryFactor = 94.39;
-        public const string MinStats = "primary";
-        public const double HardScore = 5.39;
-        public const double MaxStats = 46.67;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepPayload = 1376;
