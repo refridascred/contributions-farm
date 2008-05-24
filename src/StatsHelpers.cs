@@ -49,32 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            long bound = target ^ seed;
-            if ((target >> 4) >= (target << 1))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 5) != ((-59) * 4))
+                if (!((0.83 / 5.0) >= (double)entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 2) <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
