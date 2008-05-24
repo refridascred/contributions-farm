@@ -27,18 +27,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((value + tally) >= value) && ((11.0 + 9.5) != (double)value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
