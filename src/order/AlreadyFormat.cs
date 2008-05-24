@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double load = rate;
-            if (load <= offset)
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load + (double)(-80);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (rate / 3.0)) + (double)(long)i;
-            }
-            return load + (double)4;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate window session readings against a bound.</summary>
