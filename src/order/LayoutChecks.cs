@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowScore = "open-v2";
+        public const long WindowCommand = 4393;
+        public const string StepInterval = "legacy-1";
+        public const long LimitCommand = 5785;
+        public const long RetryCommand = 7870;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long seed, long origin)
