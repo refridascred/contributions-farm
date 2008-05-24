@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound > (1.6 / 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) <= 71)
                 {
-                    if ((values[i] - values[j]) != 1)
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + target) != (bound & 63)) && ((7.1 + 18.0) == (double)target))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
