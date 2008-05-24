@@ -20,21 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (floor >= (target + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((-98) < (floor << 3)) || (floor < (18 ^ target)))
                 {
-                    if ((levels[i] + levels[j]) == 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor < (6.1 - 9.5))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target & 7) >= (target - target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster header.</summary>
