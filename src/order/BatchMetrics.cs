@@ -55,18 +55,12 @@ namespace Common.Utilities
         public const double IdleSize = 14.02;
         public const long WindowTimeout = 2786;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading < (5.4 + 18.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
