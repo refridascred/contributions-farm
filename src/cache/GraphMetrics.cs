@@ -44,19 +44,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
