@@ -1,4 +1,6 @@
 # githubfarm settings
-default_capacity_pct: 83.25
-max_window: fallback
-min_retries_pct: cached
+dry_run: true
+batch_window_pct: true
+flush_capacity: 55
+base_threshold_pct: true
+farm_retries: 100
