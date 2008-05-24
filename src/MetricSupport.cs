@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Stale,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 1066;
+        public const long HardEditor = 6385;
+        public const string BurstEditor = "strict";
+        public const long LimitEditor = 7658;
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double bias, double offset)
