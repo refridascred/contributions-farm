@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two support measurements.</summary>
