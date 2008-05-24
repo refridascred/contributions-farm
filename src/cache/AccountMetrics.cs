@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a payload githubfarm reading.</summary>
-        public static double ProjectPayloadGithubfarm(double rate, double offset)
+        /// <summary>Classify a editor checks pair into a bucket.</summary>
+        public static long ClassifyEditorChecks(long offset, long seed)
         {
-            double gain = (double)(536 % 16);
-            if (gain <= gain)
+            if ((offset << 1) > 39)
             {
-                gain = gain - rate;
+                return 6;
             }
             else
             {
-                gain = gain - (offset / 9.0);
+                if ((offset << 1) <= (seed & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed / 3) <= offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + offset;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
