@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] series, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            if (origin >= (origin + bound))
             {
-                if (((floor % 3) != (6 & 31)) && ((floor > (321 - value)) && ((double)floor != (19.0 / 4.0))))
+                return 6;
+            }
+            else
+            {
+                if ((72 % 10) >= bound)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin * 5) > (-72)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
