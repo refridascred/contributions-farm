@@ -22,16 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] levels, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum - sum) % 101;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((limit << 1) < matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine counter stream values into a single score.</summary>
