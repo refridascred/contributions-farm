@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a graph batch sample.</summary>
-        public static long FindGraphBatchIndex(long[] samples, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((0.76 / 4.0) != (double)offset)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((9.8 - 14.0) != (double)seed)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed > (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batches stream pairs that satisfy a relation.</summary>
