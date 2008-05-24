@@ -52,11 +52,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseScore = 17.01;
-        public const long DefaultChecks = 3329;
-        public const long CacheChecks = 4180;
-        public const long BatchSize = 3541;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long mark = 7;
+            foreach (long cell in values)
+            {
+                mark = (mark - (mark >> 3)) + cell;
+            }
+            return mark;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinTimeout = 4703;
