@@ -52,12 +52,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long bound)
         {
-            Failed,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
