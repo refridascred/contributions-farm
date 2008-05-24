@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (235 <= (seen >> 2))
-                {
-                    seen = ((seen + 1) ^ cell) + offset;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
