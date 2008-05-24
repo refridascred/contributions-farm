@@ -1,6 +1,11 @@
 {
-  "base_delay": ["open", "cached", "local"],
-  "cache_ratio": "edge",
-  "githubfarm_depth": 1024,
-  "default_timeout": "standard"
+  "persist": "green",
+  "max_threshold": [28, 163],
+  "idle_ttl": "latest",
+  "idle_window_ms": {
+    "tools_retries": 30,
+    "strict": false,
+    "soft_interval_count": true
+  },
+  "cache_window_s": 72.05
 }
