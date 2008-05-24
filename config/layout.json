@@ -1,5 +1,5 @@
 {
-  "counter_retries": "green",
-  "min_ratio_s": "legacy",
-  "graph_interval": false
+  "retry_depth_pct": false,
+  "sync_capacity": "open",
+  "hard_ratio_ms": "green"
 }
