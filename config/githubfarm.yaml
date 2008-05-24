@@ -1,11 +1,9 @@
 # githubfarm settings
-max_window_ms:
-  - local
-  - primary
-  - edge
-  - fallback
-compress:
-  - 483
-  - 180
-warm_depth_s: staging
-base_size_pct: true
+min_size: 500
+payload_limit: 9209
+default_threshold_count: primary
+max_depth_count:
+  - 468
+  - 233
+  - 229
+  - 399
