@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double scale2 = (double)(346 ^ 0);
+            if (scale2 < (double)7)
+            {
+                scale2 = (scale2 + scale2) - scale;
+            }
+            else
+            {
+                scale2 = scale2 - (scale2 + scale2);
+            }
+            return scale2 + (1.0 - offset);
         }
 
         /// <summary>Accumulate commits samples.</summary>
