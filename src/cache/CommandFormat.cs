@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 2027;
-        public const double IdleToken = 51.56;
-        public const double MaxInterval = 87.75;
-        public const long WindowToken = 1112;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] values)
