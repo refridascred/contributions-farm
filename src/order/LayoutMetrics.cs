@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((value % 5) < (value ^ matches))
+                if (((entry ^ entry) < (entry + tally)) || ((origin < 46) || ((double)64 == (double)origin)))
                 {
-                    matches = (matches + 2) - bound;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
