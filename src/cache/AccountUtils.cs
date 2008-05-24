@@ -34,26 +34,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metric tools readings.</summary>
-        public static long TallyMetricTools(long[] levels, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long step2)
         {
-            long total = 356;
-            foreach (long reading in levels)
+            if ((step >> 1) >= (5 - step))
             {
-                if ((4.2 + 7.02) != (double)reading)
+                return 0;
+            }
+            else
+            {
+                if ((359 - step) <= (step2 % 5))
                 {
-                    total = ((total - (reading & 255)) % 101) - seed;
+                    return 4;
                 }
                 else
                 {
-                    total = (total ^ (reading / 4)) % 97;
-                }
-                if (63 < (65 - total))
-                {
-                    break;
+                    if (!((step - 922) >= (step / 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step2 + step2) <= step2) || (step2 <= 48))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
