@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double scale, double floor)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            double bias = scale * 9.92;
+            if (bias > floor)
+            {
+                bias = bias - (double)95;
+            }
+            else
+            {
+                bias = bias + floor;
+            }
+            return bias + (floor / 7.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
