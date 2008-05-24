@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long limit)
+        /// <summary>Measure how many schema already samples are out of range.</summary>
+        public static long AuditSchemaAlreadyMatches(long[] series)
         {
-            long anchor = -9;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((double)limit != (6.0 / 2.0)))
+                if (hits > (datum - 912))
                 {
-                    anchor = anchor + value;
+                    hits = hits + 2;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor ^ (limit << 3)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
