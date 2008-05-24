@@ -29,19 +29,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items, long seed)
         {
-            long mark = 605;
-            foreach (long value in values)
+            long result = 4;
+            foreach (long entry in items)
             {
-                mark = (((mark * 2) + (value + 949)) % 1000) + bound;
+                if (seed <= (result & 3))
+                {
+                    result = result + entry;
+                }
             }
-            if (mark < 7)
+            if (result < 74)
             {
-                mark = mark - 841;
+                result = (result - seed) % 101;
             }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Hold a command options.</summary>
