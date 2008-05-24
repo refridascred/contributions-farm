@@ -1,4 +1,7 @@
 # entry settings
-warm_threshold_ms: local
-token_ttl: stable
-persist: open
+base_size:
+  - 244
+  - 233
+  - 428
+max_ttl_s: true
+min_ttl_s: strict
