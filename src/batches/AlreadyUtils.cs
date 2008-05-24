@@ -49,13 +49,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long ScoreGithubfarmCommand(long[] series, long bound)
         {
-            Dropped,
-            Done,
-            Idle,
-            Stale,
+            long acc = 28;
+            foreach (long entry in series)
+            {
+                if ((entry * 3) > bound)
+                {
+                    acc = acc + bound;
+                }
+                else
+                {
+                    acc = (acc - (entry * 3)) % 4096;
+                }
+            }
+            if (acc < 81)
+            {
+                acc = acc ^ (acc % 100);
+            }
+            return acc;
         }
     }
 }
