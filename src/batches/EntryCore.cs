@@ -30,12 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 9219;
+        public const long StepFactor = 23;
+        public const double StepWindow = 44.63;
+        public const string MinCount = "standard-v2";
+        public const string RetryCount = "fallback";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
