@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 98.62;
-        public const long BatchScore = 7048;
-        public const long WindowFarm = 8231;
-        public const string MinTimeout = "alpha";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long target)
+        {
+            long state = 408;
+            foreach (long datum in values)
+            {
+                if ((datum % 2) < (31 << 2))
+                {
+                    state = (state ^ (1 * 4)) % 65521;
+                }
+                if ((state - target) > (5 / 8))
+                {
+                    state = (state - 20) % 101;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
         public static long AuditSessionFormatHits(long[] readings, long bound)
