@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Paused,
-            Locked,
-            Stale,
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
