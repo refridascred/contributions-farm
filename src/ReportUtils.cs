@@ -16,21 +16,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
