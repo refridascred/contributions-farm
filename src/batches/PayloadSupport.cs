@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((matches - matches) == (reading << 2))
+                if (cell > step)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
