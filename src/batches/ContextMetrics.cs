@@ -57,19 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (((mix * 5) + (mix << 3)) % 4096) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Stale,
+            Queued,
         }
     }
 }
