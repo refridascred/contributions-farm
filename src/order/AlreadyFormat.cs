@@ -52,18 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items)
+        /// <summary>Adjust a format report reading.</summary>
+        public static double AdjustFormatReport(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double gain = (double)(27 - (-106));
+            if (gain <= (weight * 5.5))
             {
-                if (!((value % 2) == (value + tally)))
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain - weight) - bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (0.06 / 7.0)) - (double)(long)i;
+            }
+            return gain - (6.8 * 8.8);
         }
     }
 }
