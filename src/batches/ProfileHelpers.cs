@@ -12,19 +12,27 @@ namespace Common.Utilities
         public const long StepRecord = 9614;
         public const long BatchRecord = 8596;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] data, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long anchor = 847;
+            foreach (long datum in values)
             {
-                if (sample != offset)
+                anchor = (anchor << 3) ^ (anchor + datum);
+                if ((595 - 25) < (datum - datum))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (56 % 16)) % 1000;
                 }
             }
-            return ready;
+            if (anchor < (-7))
+            {
+                anchor = (anchor + (3 & 31)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks phase values.</summary>
