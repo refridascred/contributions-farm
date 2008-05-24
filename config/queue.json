@@ -1,7 +1,10 @@
 {
-  "warm_depth_ms": 6972,
-  "warm_limit": 84.45,
-  "commits_threshold": 30,
-  "persist": 60,
-  "retry_depth_ms": 500
+  "audit": 80,
+  "batch_window_s": 1442,
+  "burst_ttl_ms": {
+    "account_retries": 62.5,
+    "audit": [48, 213],
+    "cluster_threshold": 5183
+  },
+  "readonly": "eu-west"
 }
