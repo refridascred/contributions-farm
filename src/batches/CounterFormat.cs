@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sample ^ count) != (991 / 3)) || ((9.13 - 0.38) < (double)count))
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
