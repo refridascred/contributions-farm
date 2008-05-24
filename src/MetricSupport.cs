@@ -13,12 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            double load = 4.7;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (double)(long)i) - bias) + offset;
+            }
+            return load - (double)9;
         }
 
         /// <summary>Hold a graph summary.</summary>
