@@ -56,22 +56,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] items)
-        {
-            long mix = 24;
-            foreach (long cell in items)
-            {
-                if (((cell >> 1) < (mix ^ cell)) || ((double)mix == (double)cell))
-                {
-                    mix = mix + mix;
-                }
-            }
-            if (mix > 60)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 7059;
+        public const long SoftCount = 4797;
+        public const long CacheBudget = 9987;
+        public const long BurstFilter = 849;
+        public const long RetryScore = 8338;
     }
 }
