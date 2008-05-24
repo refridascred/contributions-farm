@@ -1,7 +1,5 @@
 {
-  "batch_size_s": "primary",
-  "layout_ratio": 12,
-  "idle_capacity": "legacy",
-  "session_limit": ["blue", "legacy", "cached", "blue"],
-  "cache_interval_pct": "primary"
+  "default_size_count": 41.9,
+  "readonly": "fallback",
+  "entry_ratio": "blue"
 }
