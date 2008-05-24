@@ -48,12 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 21.03;
+        public const long DefaultCache = 7516;
+        public const long HardCache = 289;
+        public const string MaxCache = "cached-1";
+        public const long BatchWidth = 1068;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] readings, long target)
