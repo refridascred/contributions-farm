@@ -27,26 +27,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long carry = 877;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (((carry << 2) ^ carry) % 255) - (long)i;
-                }
-                if ((12.0 * 3.68) <= (double)reading)
-                {
-                    carry = (carry - (carry & 31)) % 255;
-                }
-                if (!((double)carry > (14.0 - 7.5)))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
