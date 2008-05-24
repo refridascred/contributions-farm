@@ -54,17 +54,21 @@ namespace Common.Utilities
         public const long HardTimeout = 3674;
         public const double DefaultCommits = 98.85;
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long LocateRouteContextIndex(long[] items, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
