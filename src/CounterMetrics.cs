@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1351;
-        public const double StepCount = 54.31;
-        public const long RetrySchema = 4687;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftCount = 4639;
+        public const string IdleDepth = "standard";
+        public const long BaseAlready = 8719;
+        public const long StepScore = 9232;
+        public const long WindowTimeout = 7305;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmMatches(long[] series)
