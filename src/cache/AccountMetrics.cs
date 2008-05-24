@@ -68,23 +68,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample & 1) <= (sample * 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleInterval = 80.16;
+        public const long MinRoute = 1709;
+        public const long RetryRoute = 1676;
+        public const double WindowWidth = 78.56;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long seed, long step)
