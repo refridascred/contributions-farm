@@ -26,32 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long bound, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long step = bound + floor;
-            if ((floor >> 2) > (9 ^ floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step / 8) == (floor + step)) && ((floor - bound) <= (bound + 537)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound % 3) >= (floor + floor)) || ((step + bound) <= (step & 63)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
