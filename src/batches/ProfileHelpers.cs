@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((matches & 15) != ((long)items.Length + 865))
+                if ((double)9 < (5.6 + 3.7))
                 {
-                    matches = ((matches + 3) - datum) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
