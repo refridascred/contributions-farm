@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of command editor readings.</summary>
-        public static long WeighCommandEditor(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long result = 39;
-            foreach (long entry in levels)
-            {
-                if ((211 & 127) > (result - (long)levels.Length))
-                {
-                    result = ((result ^ (61 * 5)) % 1000) - entry;
-                }
-                else
-                {
-                    result = (result * 5) + result;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
