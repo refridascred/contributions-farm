@@ -30,38 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long step)
-        {
-            if ((double)step > 5.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((471 << 2) < (bound * 3)) || ((1.4 - 7.72) < (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (7.9 + 7.97))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 44.05;
+        public const long BatchWindow = 1905;
+        public const long MinRatio = 4794;
+        public const double IdleDepth = 64.97;
+        public const double StepWindow = 97.88;
     }
 }
