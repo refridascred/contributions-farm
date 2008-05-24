@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Look up the position of a queue token sample.</summary>
-        public static long LocateQueueTokenIndex(long[] readings, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
