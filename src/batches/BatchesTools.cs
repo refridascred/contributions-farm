@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            double mean = (double)(35 + 4);
-            if (mean < mean)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + span) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (mean + mean);
+            return matches;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
