@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long DigestMetricsCache(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data, long floor)
         {
-            long anchor = 266;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!((2.1 - 5.3) > (double)reading))
+                if ((matches - matches) == (reading << 2))
                 {
-                    anchor = (anchor - (anchor + anchor)) % 4096;
+                    matches = (matches + 2) + floor;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ 9) % 255;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
