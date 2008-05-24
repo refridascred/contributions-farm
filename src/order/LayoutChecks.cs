@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowScore = "open-v2";
-        public const long WindowCommand = 4393;
-        public const string StepInterval = "legacy-1";
-        public const long LimitCommand = 5785;
-        public const long RetryCommand = 7870;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] samples, long origin)
