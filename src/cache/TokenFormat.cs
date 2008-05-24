@@ -28,17 +28,22 @@ namespace Common.Utilities
             return scale - (double)(-677);
         }
 
-        /// <summary>Look up the position of a stats githubfarm sample.</summary>
-        public static long FindStatsGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 32;
+            foreach (long sample in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                if ((double)limit >= (5.8 - 13.0))
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ (2 + limit)) % 1000) - sample;
                 }
             }
-            return -1;
+            if (total > 74)
+            {
+                total = ((total * 5) + (total + limit)) % 1000;
+            }
+            return total;
         }
     }
 }
