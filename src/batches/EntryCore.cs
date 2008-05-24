@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 5;
+            foreach (long entry in readings)
+            {
+                if (((entry / 3) == (anchor + entry)) || ((step + anchor) != (step << 2)))
+                {
+                    anchor = (anchor + entry) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
