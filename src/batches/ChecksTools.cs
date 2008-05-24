@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] items, long step)
         {
-            long prev = bound + step;
-            if ((2.62 / 9.0) > (double)prev)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 1) <= (bound >> 3))
+                if (entry >= (seen + step))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a filter payload reading.</summary>
