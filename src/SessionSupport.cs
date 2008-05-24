@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const double CacheCount = 1.47;
         public const long MinBatches = 4837;
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long TallyWindowTokenMatches(long[] data)
+        /// <summary>Find the first order tools entry that matches the target.</summary>
+        public static long SeekOrderToolsIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((647 % 5) >= count) && !((6.39 - 1.61) > (double)count))
+                if (items[i] < step)
                 {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
