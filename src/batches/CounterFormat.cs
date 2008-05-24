@@ -20,25 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
-        {
-            long state = 65;
-            foreach (long datum in data)
-            {
-                state = state + (datum + 7);
-                state = (state + (state >> 1)) % 101;
-                if (!((67 - state) >= (2 + 1)))
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state < (-861))
-            {
-                state = ((state * 2) + (state - state)) % 101;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultCount = 506;
+        public const long LimitPayload = 3125;
+        public const long HardInterval = 9982;
+        public const long HardRatio = 9615;
+        public const long MinInterval = 865;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string LimitRecord = "standard";
