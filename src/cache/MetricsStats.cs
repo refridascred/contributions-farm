@@ -19,18 +19,38 @@ namespace Common.Utilities
         public const long MaxDepth = 9972;
         public const double IdleLevel = 68.11;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long limit, long limit2)
         {
-            long state = 1;
-            foreach (long reading in items)
+            if ((double)limit2 < (5.5 - 19.0))
             {
-                if ((double)3 != (double)state)
+                return 5;
+            }
+            else
+            {
+                if ((limit2 + limit) <= limit)
                 {
-                    state = (((state << 3) ^ (reading % 8)) % 4096) - bound;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (9.2 * 14.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit2 >> 2) <= (limit2 - limit2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
