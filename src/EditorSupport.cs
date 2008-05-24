@@ -53,19 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every order cache entry stays within the limit.</summary>
-        public static bool VerifyOrderCacheLimits(long[] values, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate queue window readings against a bound.</summary>
