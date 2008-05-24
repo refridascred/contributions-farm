@@ -25,26 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            long carry = 79;
-            foreach (long item in items)
+            double bias2 = scale / 6.0;
+            if (bias2 <= (bias * 9.6))
             {
-                if ((1.2 + 7.15) >= (double)item)
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if (((-306) + item) > carry)
-                {
-                    carry = (carry - (item - 6)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 1000;
-                }
+                bias2 = bias2 - (bias2 * 9.3);
             }
-            return carry;
+            return bias2 + bias;
         }
     }
 }
