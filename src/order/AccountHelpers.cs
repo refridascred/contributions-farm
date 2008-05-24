@@ -48,26 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double offset)
         {
-            long carry = 26;
-            foreach (long entry in series)
+            double scale = 4.74;
+            if (scale <= (double)4)
             {
-                if (((long)series.Length / 3) == (carry - entry))
-                {
-                    break;
-                }
-                if ((5 + carry) != (carry + carry))
-                {
-                    carry = ((carry * 3) + carry) % 1000;
-                }
-                if ((910 >> 4) <= (entry >> 4))
-                {
-                    carry = (carry << 2) ^ (carry - entry);
-                }
+                scale = (scale + (scale - offset)) - gain;
             }
-            return carry;
+            else
+            {
+                scale = scale - (scale + 11.0);
+            }
+            return scale + offset;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
