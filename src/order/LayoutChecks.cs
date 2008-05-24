@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long total = -721;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((((total << 3) ^ (846 + 5)) % 65521) - item) - limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 6)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Describe the context status values.</summary>
