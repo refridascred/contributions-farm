@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string BurstWidth = "standard-v2";
         public const long MinCache = 6406;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long anchor = 738;
-            foreach (long entry in series)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor - (261 - anchor)) % 4096) ^ entry;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
