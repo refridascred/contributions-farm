@@ -1,23 +1,7 @@
 {
-  "graph_ttl": {
-    "poll_ratio": "primary",
-    "poll_capacity_ms": "eu-west",
-    "hard_ttl": "green",
-    "base_capacity_count": "eu-west",
-    "contributi_size": "staging"
-  },
-  "soft_depth_ms": 6113,
-  "verbose": {
-    "flush_retries_pct": 1337,
-    "flush_timeout": [321, 154],
-    "warm_interval_count": {
-      "flush_capacity": 95.66,
-      "farm_ratio": true,
-      "cache_timeout_pct": ["latest", "latest", "eu-west"],
-      "sync_ratio": 3394,
-      "hard_delay": 3433,
-      "warm_capacity": 8512
-    }
-  },
-  "base_capacity_pct": 5533
+  "enabled": 30,
+  "sync_window_s": 39.65,
+  "sync_limit": 30,
+  "audit": "legacy",
+  "idle_capacity": false
 }
