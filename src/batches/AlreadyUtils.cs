@@ -49,19 +49,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mix = 4;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix * 4) + value) % 4096) ^ (long)i;
-                }
-                mix = (mix ^ (offset + offset)) % 4096;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
