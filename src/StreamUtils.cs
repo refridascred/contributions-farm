@@ -43,24 +43,24 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback";
         public const long HardChecks = 4973;
 
-        /// <summary>Digest a series of commits schema entries.</summary>
-        public static long ScoreCommitsSchema(long[] values)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long offset)
         {
-            long mark = 70;
-            foreach (long value in values)
+            if ((6.13 / 5.0) >= (double)offset)
             {
-                if (((mark & 1) > (mark + mark)) && ((value + value) <= (value - mark)))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= (6.0 - 18.0))
                 {
-                    mark = mark + value;
-                    mark = mark + (mark + value);
+                    return 8;
                 }
                 else
                 {
-                    mark = ((mark * 4) + (value - value)) % 97;
+                    return 3;
                 }
-                mark = (mark * 5) + mark;
             }
-            return mark;
         }
 
         /// <summary>Blend two tools measurements.</summary>
