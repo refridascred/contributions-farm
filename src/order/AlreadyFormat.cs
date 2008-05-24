@@ -39,11 +39,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinInterval = 423;
-        public const double CacheBudget = 93.69;
-        public const long HardTimeout = 6654;
-        public const double BurstDepth = 57.6;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiHits(long[] items)
