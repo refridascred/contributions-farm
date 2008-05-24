@@ -46,21 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Rank payload context input into a small class.</summary>
+        public static long SortPayloadContext(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + offset) == (5 >> 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 12) < offset)
                 {
-                    if ((data[i] - data[j]) < 10)
+                    return 8;
+                }
+                else
+                {
+                    if (((976 - offset2) != (offset + 8)) && ((double)offset2 <= (7.7 * 4.6)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
