@@ -28,22 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] items, long target)
         {
-            long mark = 434;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((9.2 * 7.0) <= (double)origin)
+                if (sample > target)
                 {
-                    mark = (((mark << 2) ^ ((-3) + mark)) % 4096) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 91)
-            {
-                mark = mark - (origin / 3);
-            }
-            return mark % 97;
+            return flag;
         }
     }
 }
