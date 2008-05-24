@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a queue metrics reading by value.</summary>
-        public static long LookupQueueMetricsIndex(long[] data, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (data[i] <= origin)
+                if ((value % 5) < (value ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next githubfarm commits value.</summary>
