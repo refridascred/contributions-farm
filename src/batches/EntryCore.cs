@@ -38,12 +38,25 @@ namespace Common.Utilities
         public const string MinCount = "standard-v2";
         public const string RetryCount = "fallback";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long target)
         {
-            Idle,
-            Queued,
-            Synced,
+            long offset = seed ^ target;
+            if ((2.61 >= (double)target) || ((offset + seed) > (-835)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < 132)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
