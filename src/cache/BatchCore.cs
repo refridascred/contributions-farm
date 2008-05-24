@@ -53,14 +53,21 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
+        public static long MatchQueueStreamCount(long[] values)
         {
-            Draft,
-            Stale,
-            Locked,
-            Paused,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
