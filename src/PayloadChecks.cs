@@ -50,18 +50,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (6 >= item)
+                if (item <= (item << 1))
                 {
-                    count = (count + 1) + seed;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
