@@ -1,8 +1,6 @@
-id,token,region,ratio,count
-1,69,683,green,standard
-2,980,cached,29.79,793
-3,78.35,121,870,16
-4,692,72.17,legacy,385
-5,local,881,standard,846
-6,9.27,open,473,722
-7,legacy,64.86,96,88.52
+id,weight,token
+1,63.46,85.47
+2,194,legacy
+3,staging,868
+4,legacy,36.67
+5,open,green
