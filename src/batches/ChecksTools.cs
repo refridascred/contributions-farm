@@ -47,24 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            long carry = 91;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)item < 4.4)
+                if ((tally + (long)samples.Length) >= (cell - cell))
                 {
-                    carry = (carry - item) % 97;
+                    tally = tally + 2;
                 }
-                carry = (carry << 2) ^ (item ^ 15);
-                carry = carry - ((long)levels.Length + item);
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry > 845)
-            {
-                carry = carry ^ (36 - carry);
-            }
-            return carry;
+            return tally;
         }
     }
 }
