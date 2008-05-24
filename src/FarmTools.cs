@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "alpha";
-        public const string RetryStream = "stable";
-        public const long MaxStream = 5097;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2151;
+        public const long WindowCount = 3150;
+        public const string HardGithubfarm = "standard-v2";
+        public const string MaxGithubfarm = "staging-edge";
+        public const double BaseScore = 46.24;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
