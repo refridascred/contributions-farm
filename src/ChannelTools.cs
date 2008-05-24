@@ -17,11 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftRatio = 8998;
-        public const long LimitSpan = 9919;
-        public const string RetrySchema = "local-v2";
-        public const double StepSchema = 95.28;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
