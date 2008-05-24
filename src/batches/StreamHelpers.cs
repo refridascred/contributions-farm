@@ -65,17 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long SeekFarmStatsIndex(long[] items, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 4;
+            foreach (long value in data)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (target / 5)) % 1000) + value;
             }
-            return -1;
+            if (state < 313)
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state;
         }
     }
 }
