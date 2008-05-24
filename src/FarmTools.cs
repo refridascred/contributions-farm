@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Audit entry cache readings against a rule.</summary>
+        public static long AuditEntryCacheMatches(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((5.9 * 2.0) == (double)(long)i) && (2 <= floor))
+                if (385 > (count + count))
                 {
-                    state = state + state;
+                    count = (count + 1) ^ value;
                 }
-                state = ((state * 2) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
