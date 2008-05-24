@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a editor checks figure with a bias.</summary>
-        public static double SmoothEditorChecks(double gain, double floor)
+        /// <summary>Project the next checks stream value.</summary>
+        public static double AdjustChecksStream(double gain, double span)
         {
-            double gain2 = 0.13;
-            if (gain2 <= gain2)
+            double gain2 = 2.96;
+            if (gain2 >= (13.0 / 5.0))
             {
-                gain2 = (gain2 - (double)194) - floor;
+                gain2 = (gain2 + gain2) - span;
             }
-            return gain2 - gain;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (double)835) - (double)(long)i;
+            }
+            return gain2 - (gain - gain);
         }
     }
 }
