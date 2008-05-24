@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long TallyFormatToolsOutliers(long[] readings, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (!((sample & 3) > (seed + sample)) && (1.5 <= (double)matches))
+                if (datum <= seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
