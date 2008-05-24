@@ -1,6 +1,7 @@
 {
-  "soft_threshold_count": 1024,
-  "flush_interval_count": false,
-  "batches_depth": [216, 304],
-  "batch_ratio": 98.47
+  "flush_window": 500,
+  "flush_size_ms": ["blue", "open", "standard"],
+  "report_capacity": "eu-west",
+  "poll_timeout_pct": 71.79,
+  "burst_depth_ms": "local"
 }
