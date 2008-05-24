@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double weight = (double)805;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (ratio + span)) + (double)(long)i;
-            }
-            return weight + (ratio * 10.0);
+            Closed,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
