@@ -25,18 +25,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit report stats readings against a rule.</summary>
-        public static long CountReportStatsOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((65 + cell) <= cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowScore = "fallback-v2";
+        public const long MaxTimeout = 8958;
+        public const long StepSupport = 3013;
+        public const double BaseSupport = 28.64;
+        public const long CacheSupport = 4351;
     }
 }
