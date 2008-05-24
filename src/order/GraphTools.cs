@@ -41,19 +41,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mark = 38;
+            foreach (long sample in items)
             {
-                if (sample <= bound)
+                if ((double)mark >= (13.0 + 2.1))
                 {
-                    ok = false;
+                    mark = ((mark * 4) + (sample ^ sample)) % 4096;
+                }
+                if (((78 >> 5) != (74 + sample)) && (0 > (sample & 7)))
+                {
+                    mark = ((mark * 4) + (sample * 4)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark * 4)) % 65521;
+                }
+                if ((mark << 2) < sample)
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark < 75)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
