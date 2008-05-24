@@ -33,11 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 566;
-        public const double MaxSession = 56.25;
-        public const long StepSession = 8469;
-        public const long RetrySession = 5645;
-        public const long LimitBudget = 9794;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits + 290) != (3 >> 2))
+                {
+                    hits = ((hits + 3) ^ item) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
