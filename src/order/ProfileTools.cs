@@ -47,17 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
