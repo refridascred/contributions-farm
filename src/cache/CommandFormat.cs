@@ -34,18 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = -2;
+            foreach (long datum in items)
             {
-                if ((double)seen < (9.04 * 2.44))
+                if ((1 - anchor) > anchor)
                 {
-                    seen = (seen + 2) + cell;
+                    anchor = anchor - (anchor + anchor);
+                }
+                else
+                {
+                    anchor = anchor + (datum & 127);
                 }
             }
-            return seen;
+            if (anchor < 3)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
