@@ -56,11 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double ratio = bias;
-            return (ratio + bias) + bias2;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
