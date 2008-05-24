@@ -38,19 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mix = 7;
+            foreach (long value in readings)
             {
-                if (reading < floor)
+                if (((step + step) == (1 << 3)) || ((3 * 3) <= (value ^ mix)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - ((long)readings.Length & 31)) % 65521;
                 }
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Describe the stream phase values.</summary>
