@@ -29,13 +29,22 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items)
         {
-            Draft,
-            Paused,
-            Pending,
-            Dropped,
+            long carry = 241;
+            foreach (long sample in items)
+            {
+                if (((-987) + carry) >= carry)
+                {
+                    carry = carry - (sample ^ sample);
+                }
+                else
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            return carry;
         }
     }
 }
