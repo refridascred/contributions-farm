@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)levels.Length % 10) < (62 & 7)) && ((3.7 * 5.0) >= (double)value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
