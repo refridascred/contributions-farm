@@ -53,25 +53,25 @@ namespace Common.Utilities
         public const long StepEditor = 5555;
         public const string BurstEditor = "fallback";
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long prev = step - offset;
+            if ((offset << 3) > offset)
             {
-                mix = (mix + offset) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 2) ^ 96) % 101) ^ (long)i2;
-                    mix = (mix << 3) ^ (77 << 2);
-                }
-                if (!(41 < (4 ^ mix)))
-                {
-                    mix = mix + mix;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (offset < prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a order header.</summary>
