@@ -14,15 +14,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings, long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long bound, long floor)
         {
-            long acc = 7;
-            foreach (long entry in readings)
+            long step = bound + floor;
+            if (((6.5 / 7.0) >= (double)floor) || ((floor + bound) > (floor % 7)))
             {
-                acc = ((((acc << 2) ^ 3) % 101) - entry) - target;
+                return 5;
             }
-            return acc % 65521;
+            else
+            {
+                if (!((step ^ 4) == (step << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
