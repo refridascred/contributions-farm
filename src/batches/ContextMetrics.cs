@@ -62,11 +62,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowCount = "local-1";
-        public const long CacheStats = 5150;
-        public const long BaseStats = 2212;
-        public const string RetryStats = "cached-v2";
-        public const long MaxStats = 3604;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (((mix * 5) + (mix << 3)) % 4096) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
