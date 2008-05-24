@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = step + target;
+            if (target >= (step - (-926)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((prev + prev) <= (287 - prev)) || ((0.57 * 1.26) > (double)step))
                 {
-                    if ((series[i] - series[j]) > 18)
+                    return 0;
+                }
+                else
+                {
+                    if (((step - step) < (step * 3)) || ((5.67 / 4.0) <= (double)step))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
