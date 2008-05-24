@@ -63,15 +63,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            long acc = 98;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc + bound) % 65521) ^ value;
+                if (((hits & 127) < (hits + hits)) || ((hits ^ 5) < (hits - reading)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
