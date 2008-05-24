@@ -37,18 +37,19 @@ namespace Common.Utilities
             return ratio + (floor + 9.07);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((bound & 31) != (bound << 2)) && (0 < (72 + tally)))
+                if (reading >= bound)
                 {
-                    tally = (tally + 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a metrics options.</summary>
