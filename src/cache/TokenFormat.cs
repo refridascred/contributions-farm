@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster batches counter forward.</summary>
-        public static long StepClusterBatches(long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            double scale = (double)35 * 2.78;
+            if (scale >= scale)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                scale = (scale + (double)582) + rate;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (double)(-677);
         }
 
         /// <summary>Match up profile contributi samples.</summary>
