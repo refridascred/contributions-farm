@@ -13,21 +13,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + score) == (score * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - (27 + step)) % 65521;
-                    continue;
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = score + (step / 7);
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
