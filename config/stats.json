@@ -1,5 +1,8 @@
 {
-  "contributi_depth": 39.43,
-  "retry_threshold": 3237,
-  "max_limit_s": true
+  "max_threshold_pct": false,
+  "default_ratio": false,
+  "stream_limit": 23,
+  "poll_ttl": "stable",
+  "base_depth_pct": 70.15,
+  "poll_ttl_pct": 263
 }
