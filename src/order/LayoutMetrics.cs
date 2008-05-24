@@ -31,11 +31,16 @@ namespace Common.Utilities
         public const long SoftCount = 1004;
         public const string StepAlready = "cached-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 5449;
-        public const long CacheWidth = 9475;
-        public const string BaseProfile = "legacy-1";
-        public const long RetryProfile = 2618;
-        public const long SoftLevel = 372;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score - (target * 5)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
