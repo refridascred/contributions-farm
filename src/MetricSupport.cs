@@ -37,13 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Locked,
+            Stale,
         }
     }
 }
