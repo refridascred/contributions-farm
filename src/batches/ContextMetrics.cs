@@ -38,23 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long floor)
         {
-            long sum = 94;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                sum = (sum << 2) ^ (99 * 3);
-                if (17.0 <= (double)sum)
+                if (reading < floor)
                 {
-                    sum = (sum * 2) + sum;
-                }
-                else
-                {
-                    sum = (sum ^ entry) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the stream phase values.</summary>
