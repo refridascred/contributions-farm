@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double bias = floor;
-            if (bias <= (bias * 6.78))
-            {
-                bias = bias - (double)7;
-            }
-            else
-            {
-                bias = bias + (floor - weight);
-            }
-            return bias - bias;
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
