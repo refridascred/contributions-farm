@@ -17,22 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] samples, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen < (67 + reading)) || ((9 >> 1) < reading)) && ((double)floor <= (20.0 * 9.0)))
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a cluster profile reading.</summary>
