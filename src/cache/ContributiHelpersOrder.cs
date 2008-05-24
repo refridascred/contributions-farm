@@ -26,22 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally >> 5) >= (tally & 63))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "local-edge";
+        public const string LimitCount = "strict-v2";
+        public const long BaseTimeout = 9254;
+        public const long BatchMetric = 55;
     }
 }
