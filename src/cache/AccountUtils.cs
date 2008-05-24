@@ -22,22 +22,15 @@ namespace Common.Utilities
             return load + (load * 1.36);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long carry = 5;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample % 16) <= 68)
-                {
-                    carry = (carry << 3) ^ (sample >> 1);
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (carry < 73)
-            {
-                carry = (carry + (carry + carry)) % 101;
-            }
-            return carry % 1000;
+            return anchor;
         }
     }
 }
