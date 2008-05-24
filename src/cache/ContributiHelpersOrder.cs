@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((bound / 2) < (bound + bound))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
