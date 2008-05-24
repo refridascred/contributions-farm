@@ -33,22 +33,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long mix = 91;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry <= (1.0 + 9.1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (mix >> 4)) % 255;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 52)
-            {
-                mix = ((mix * 3) + (mix * 5)) % 1000;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Project the next route metric value.</summary>
