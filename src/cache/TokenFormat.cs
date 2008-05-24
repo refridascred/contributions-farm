@@ -15,24 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long limit)
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long AuditTokenFarmHits(long[] series)
         {
-            if (((target + limit) > (limit >> 1)) || (target >= (target + limit)))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target == (6.3 + 6.0))
+                if ((tally * 3) >= (5 + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
