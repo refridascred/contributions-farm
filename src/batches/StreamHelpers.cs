@@ -78,19 +78,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long anchor = 45;
+            foreach (long datum in items)
             {
-                if (sample > target)
+                anchor = anchor + (anchor - origin);
+                if ((origin & 3) != (anchor % 100))
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - (datum + origin);
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
