@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many editor cluster samples are out of range.</summary>
+        public static long MeasureEditorClusterGaps(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (15.0 - 2.56))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph token entries.</summary>
