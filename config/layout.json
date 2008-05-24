@@ -1,5 +1,12 @@
 {
-  "report_capacity": 1370,
-  "entry_window": "cached",
-  "soft_ratio_pct": false
+  "verbose": {
+    "base_ratio_ms": "edge",
+    "enabled": "latest",
+    "githubfarm_retries": 2891
+  },
+  "audit": 73.02,
+  "poll_ratio_ms": 59,
+  "sync_retries_s": 1024,
+  "readonly": true,
+  "batch_limit_ms": 62.09
 }
