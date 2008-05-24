@@ -34,18 +34,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell >= (cell << 2))
+                if ((entry >= (entry + matches)) && ((entry % 12) >= matches))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
