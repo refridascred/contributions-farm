@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
