@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the batch route entries that pass the check.</summary>
-        public static long MeasureBatchRouteMatches(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if (30 <= floor)
             {
-                if (!((double)101 == (double)hits))
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) == (target >> 5))
                 {
-                    hits = (hits + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((8 - 90) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
