@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 8435;
+        public const double CacheContext = 87.35;
+        public const long BaseLevel = 8084;
+        public const long WindowRatio = 3772;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long step)
