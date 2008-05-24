@@ -40,12 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 753;
-        public const string DefaultFactor = "cached-edge";
-        public const double HardCount = 72.77;
-        public const double MinNotes = 17.43;
-        public const string LimitBudget = "cached-v2";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((bound * 3) < matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 197;
