@@ -33,14 +33,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Queued,
-            Synced,
-            Closed,
-            Stale,
-            Retry,
+            Idle,
+            Draft,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
