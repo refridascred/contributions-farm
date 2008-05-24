@@ -23,19 +23,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a metric metrics reading.</summary>
-        public static double AdjustMetricMetrics(double ratio, double span)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            double bias = ratio;
-            if (bias > (bias * 5.3))
+            double ratio = offset / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias - span;
+                ratio = (ratio - weight) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - span;
+            return ratio + (ratio / 2.0);
         }
 
         /// <summary>Describe the checks kind values.</summary>
