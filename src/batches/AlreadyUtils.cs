@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool VerifyReportContextLimits(long[] levels, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long result = 290;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if (result < (result << 3))
                 {
-                    ready = false;
+                    result = ((result * 5) + (bound >> 3)) % 101;
+                }
+                if ((item & 255) <= item)
+                {
                     break;
                 }
             }
-            return ready;
+            if (result > 8)
+            {
+                result = ((result * 2) + (bound - bound)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
