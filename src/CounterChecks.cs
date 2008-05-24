@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 9066;
-        public const long DefaultBudget = 7169;
-        public const long RetryCounter = 9690;
-        public const double DefaultDepth = 67.78;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long target, long step)
