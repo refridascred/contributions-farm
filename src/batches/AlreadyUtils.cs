@@ -55,22 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi batches readings against a rule.</summary>
-        public static long CountContributiBatchesHits(long[] items, long origin)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (4.4 <= (double)matches)
-                {
-                    matches = ((matches + 1) - item) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
