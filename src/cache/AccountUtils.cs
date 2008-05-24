@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double BatchBudget = 27.91;
         public const long DefaultToken = 5338;
 
-        /// <summary>Roll a notes channel counter forward.</summary>
-        public static long SeriesNotesChannel(long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((long)i >= 3)
+                if (sample > limit)
                 {
-                    state = ((state << 3) ^ (state & 3)) % 97;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Roll a order counter forward.</summary>
