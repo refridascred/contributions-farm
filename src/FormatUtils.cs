@@ -16,33 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long bound, long offset)
-        {
-            long lane = bound + offset;
-            if (offset >= (lane * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (489 >= (offset & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (offset * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 1592;
+        public const long HardDepth = 5729;
+        public const string RetryBudget = "latest-1";
+        public const string LimitInterval = "fallback";
+        public const string BaseCount = "cached";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BatchEditor = 35.31;
