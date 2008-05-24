@@ -56,11 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "standard-v2";
-        public const long RetryReport = 8992;
-        public const long SoftReport = 996;
-        public const long BaseScore = 4330;
-        public const double LimitScore = 66.02;
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
