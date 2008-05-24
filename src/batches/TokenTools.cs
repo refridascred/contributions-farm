@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] values, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next counter value.</summary>
