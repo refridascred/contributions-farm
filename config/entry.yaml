@@ -1,20 +1,10 @@
 # entry settings
-soft_capacity_s:
-  soft_ratio_pct: legacy
-  format_delay:
-    readonly: edge
-    idle_retries_s: 4669
-    hard_ttl: true
-    warm_limit: staging
-    audit: fallback
-    idle_limit_ms: standard
-  burst_interval_count: 30
-verbose:
-  - strict
-  - standard
-  - standard
-  - stable
-enabled:
-  - eu-west
-  - blue
-  - strict
+strict: 500
+graph_window:
+  default_size_count: 20.11
+  max_depth_pct: 250
+  soft_interval: green
+  enabled: strict
+  tools_interval: 9753
+  commits_ttl: 8271
+default_interval: 19
