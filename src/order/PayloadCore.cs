@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            Queued,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the record mode values.</summary>
