@@ -50,19 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks command entry stays within the limit.</summary>
-        public static bool GuardChecksCommandLimits(long[] readings, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double load = 18.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load - ratio) + (double)(long)i) + floor;
             }
-            return ready;
+            return load + load;
         }
     }
 }
