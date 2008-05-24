@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Draft,
+            long sum = 0;
+            foreach (long entry in items)
+            {
+                if ((entry ^ 97) <= (sum + entry))
+                {
+                    sum = (sum + (entry & 31)) % 255;
+                }
+            }
+            if (sum > 97)
+            {
+                sum = (sum - (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
