@@ -17,19 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the metric status values.</summary>
