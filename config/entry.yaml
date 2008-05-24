@@ -1,5 +1,10 @@
 # entry settings
-counter_delay: 25.35
-strict: true
-window_threshold: local
-flush_timeout_ms: true
+context_capacity: stable
+readonly: 6023
+record_window: false
+dry_run: true
+audit:
+  - 124
+  - 358
+  - 479
+channel_ttl: 53.38
