@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double scale2 = (span * 9.0) * 15.0;
-            if (scale2 >= (double)28)
-            {
-                scale2 = scale2 - (scale2 + span);
-            }
-            else
-            {
-                scale2 = scale2 - (span - 7.91);
-            }
-            return scale2 + scale;
+            Paused,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate command samples.</summary>
