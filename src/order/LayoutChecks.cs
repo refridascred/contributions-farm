@@ -89,10 +89,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitScore = "latest-edge";
-        public const long RetryEditor = 3673;
-        public const long BatchScore = 6747;
-        public const long CacheScore = 5623;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches >= (6.5 - 6.2))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
