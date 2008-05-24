@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
