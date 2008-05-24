@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 6395;
         public const long BaseAlready = 9463;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Validate cache window readings against a bound.</summary>
