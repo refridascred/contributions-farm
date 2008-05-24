@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long state = 482;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample * 2) <= (sample >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state - (2 + 56);
-                }
-                if ((10.0 / 5.0) < (double)state)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 20)
-            {
-                state = (state ^ target) % 101;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Find the first cluster entry entry that matches the target.</summary>
