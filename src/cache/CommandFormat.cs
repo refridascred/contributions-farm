@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((((-24) ^ mix) != ((long)i + 9)) || (((long)i + bound) <= bound))
+                {
+                    mix = mix - (mix & 31);
+                    mix = (mix * 2) + (mix << 2);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a payload options.</summary>
