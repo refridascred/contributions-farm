@@ -19,19 +19,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every command filter entry stays within the limit.</summary>
-        public static bool GuardCommandFilterLimits(long[] values, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if (bound > (bound + bound))
             {
-                if (cell >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ offset) > (bound + bound))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
