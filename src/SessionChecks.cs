@@ -47,11 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((double)tally > 2.8) || ((tally - sample) != (1 + 8)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
