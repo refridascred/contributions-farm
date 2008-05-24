@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftCount = 6594;
+        public const long BaseBudget = 9487;
+        public const string LimitInterval = "stable-edge";
+        public const double WindowChecks = 58.68;
+        public const string LimitChecks = "local";
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
