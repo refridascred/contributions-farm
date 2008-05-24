@@ -1,10 +1,11 @@
 # Command notes
 
-Each already is validated before it reaches the queue queue.
-When a token fails, the route handler retries a few times before giving up.
+The schema report groups every context by token.
+Run the commits check before changing any token limits.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new notes fields
-- Review already limits each release
+- Log every batch change
+- Review batch limits each release
+- Validate report input early
+- Document new metric fields
