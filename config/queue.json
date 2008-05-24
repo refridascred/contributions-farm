@@ -1,5 +1,5 @@
 {
-  "warm_capacity_ms": 2161,
-  "idle_size_count": "open",
-  "hard_ttl": "staging"
+  "enabled": 33,
+  "dry_run": "local",
+  "hard_capacity_ms": 2581
 }
