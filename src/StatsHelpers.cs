@@ -56,18 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long TallyMetricsBatchesMatches(long[] samples, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((seen + bound) == (bound * 4))
+                if (((double)tally > (6.6 + 7.78)) && ((double)cell <= (1.58 * 4.5)))
                 {
-                    seen = (seen + 2) + entry;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
