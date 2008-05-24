@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] readings, long limit)
+        /// <summary>Adjust a cache context reading.</summary>
+        public static double SmoothCacheContext(double rate, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = rate;
+            return (gain + gain) + span;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
