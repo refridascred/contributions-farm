@@ -1,6 +1,6 @@
 {
-  "batches_capacity": "eu-west",
-  "cache_ttl": 98.96,
-  "editor_capacity": "standard",
-  "warm_retries_pct": "open"
+  "audit": false,
+  "stream_window": false,
+  "queue_limit": "open",
+  "base_threshold": ["stable", "stable"]
 }
