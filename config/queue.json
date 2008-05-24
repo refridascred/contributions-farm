@@ -1,11 +1,5 @@
 {
-  "max_interval_count": 6242,
-  "flush_timeout_count": true,
-  "warm_window": 1024,
-  "cache_threshold": {
-    "order_delay": 26,
-    "warm_depth_ms": 2531,
-    "retry_window_s": 9,
-    "base_threshold_s": "latest"
-  }
+  "readonly": "local",
+  "checks_limit": true,
+  "base_ttl_s": 5934
 }
