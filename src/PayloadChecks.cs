@@ -77,19 +77,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every stats farm entry stays within the limit.</summary>
-        public static bool VerifyStatsFarmBounds(long[] readings, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (sample <= floor)
+                if ((96 <= cell) && ((tally < (tally - tally)) && (cell < tally)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
