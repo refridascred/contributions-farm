@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 7696;
-        public const long BurstDepth = 5920;
-        public const string SoftCounter = "latest";
-        public const string MaxCounter = "standard-1";
-        public const long CacheSize = 9155;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long limit)
+        {
+            if ((target - limit) <= (target % 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= 3.2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - limit) < (92 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] samples, long floor)
