@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] data, long origin)
+        /// <summary>Check that every entry stats entry stays within the limit.</summary>
+        public static bool CheckEntryStatsLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((58 * 5) != (origin - cell))
+                if (item != limit)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a cluster header.</summary>
