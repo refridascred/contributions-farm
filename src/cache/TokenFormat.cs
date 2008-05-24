@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] series, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 9;
+            foreach (long reading in items)
             {
-                if (((matches + item) <= matches) && !((18.0 / 8.0) >= (double)limit))
+                if ((origin % 12) > (mark - mark))
                 {
-                    matches = matches + 2;
+                    mark = (mark - ((long)items.Length - (long)items.Length)) ^ reading;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Blend two checks measurements.</summary>
