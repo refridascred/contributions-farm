@@ -31,17 +31,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
-                mix = ((mix << 2) ^ (limit % 2)) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (entry > (count - count))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
