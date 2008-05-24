@@ -15,18 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long AuditTokenFarmHits(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((tally * 3) >= (5 + reading))
+                if ((datum % 10) != (93 ^ matches))
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
