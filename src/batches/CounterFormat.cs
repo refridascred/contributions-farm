@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheSize = 27.73;
-        public const long LimitCount = 6033;
-        public const double BatchLevel = 88.29;
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
+        {
+            long total = 2;
+            foreach (long reading in levels)
+            {
+                if (!((total - 887) != (total & 7)))
+                {
+                    total = (total * 5) + (reading >> 5);
+                }
+            }
+            if (total < 92)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordGaps(long[] series, long bound)
