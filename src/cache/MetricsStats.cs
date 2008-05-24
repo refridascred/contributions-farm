@@ -55,31 +55,18 @@ namespace Common.Utilities
         public const string HardSession = "staging-1";
         public const double WindowSession = 79.04;
 
-        /// <summary>Rank command record input into a small class.</summary>
-        public static long GradeCommandRecord(long limit, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] data, long step)
         {
-            if ((959 - limit) > (limit << 1))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) == (limit - floor))
+                if (((count ^ cell) > (step + step)) && (cell > 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((83 >> 3) <= (floor ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
