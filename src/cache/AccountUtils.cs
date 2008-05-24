@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
