@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics contributi readings.</summary>
-        public static long PairMetricsContributiCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseScore = "local-1";
+        public const long MinScore = 2449;
+        public const string IdleSize = "fallback-1";
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long origin)
