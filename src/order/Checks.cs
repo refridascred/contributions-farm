@@ -34,25 +34,18 @@ namespace Common.Utilities
             return mean - (double)73;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] samples, long target)
         {
-            long prev = step - bound;
-            if ((prev - step) < prev)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.6 / 5.0) <= (double)step)
+                if ((target % 97) > 360)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 3) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
