@@ -14,23 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values, long offset)
-        {
-            long total = 882;
-            foreach (long datum in values)
-            {
-                if (((total << 1) >= (offset - offset)) || ((double)offset <= (double)total))
-                {
-                    total = (total << 2) ^ datum;
-                }
-            }
-            if (total < 7)
-            {
-                total = (total ^ (5 + offset)) % 255;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowBudget = 3187;
+        public const string HardSession = "fallback-v2";
+        public const long StepInterval = 4204;
+        public const long IdleSession = 897;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
