@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long target)
         {
-            long state = 81;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                state = ((state << 3) ^ (cell % 64)) % 65521;
-                if ((-500) <= origin)
+                if (entry > target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
