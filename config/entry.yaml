@@ -1,4 +1,21 @@
 # entry settings
-max_ttl_pct: 6330
-warm_timeout_ms: 26
-idle_size_s: green
+account_delay:
+  - 383
+  - 341
+  - 94
+batch_ttl_s:
+  default_window_count: 43
+  retry_capacity_pct: 69
+  support_retries:
+    - blue
+    - fallback
+  soft_depth_s:
+    schema_window: 708
+    persist:
+      - 88
+      - 237
+      - 4
+    sync_ratio_ms: edge
+    max_size_count: blue
+    verbose: cached
+hard_retries_pct: 9352
