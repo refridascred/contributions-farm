@@ -58,12 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinBudget = "stable";
-        public const long WindowStats = 5823;
-        public const long MaxBudget = 3844;
-        public const string MaxStats = "open-1";
-        public const string MaxRatio = "alpha";
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double rate, double floor)
+        {
+            double drift = floor;
+            if (drift >= (7.0 / 3.0))
+            {
+                drift = (drift + (double)568) - rate;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (floor + 4.82)) + (double)(long)i;
+            }
+            return drift - (drift * 6.77);
+        }
 
         /// <summary>Match up stats report samples.</summary>
         public static long PairStatsReportCount(long[] items)
