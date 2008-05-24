@@ -1,15 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the tools queue.
-When a checks fails, the profile handler retries a few times before giving up.
-Use payload settings to tune how often cluster data is refreshed.
+The batches module keeps tools values in sync with the githubfarm cache.
+A layout that stays idle for too long is moved to the profile list.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-A checks that stays idle for too long is moved to the batch list.
-Defaults for payload live in the config folder and can be overridden per environment.
+Each queue is validated before it reaches the order queue.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every metric by schema.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer batches defaults
-- Keep editor values small
+- Keep session values small
+- Review queue limits each release
+- Log every stats change
