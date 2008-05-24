@@ -48,11 +48,26 @@ namespace Common.Utilities
             return ratio - 1.8;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5881;
-        public const long IdleContributi = 8980;
-        public const string MaxContributi = "alpha-1";
-        public const long HardWidth = 3146;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long target)
+        {
+            long slot = step ^ target;
+            if ((target > slot) && ((16.0 - 6.35) < (2.43 + 10.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((15 < slot) && ((step + step) >= (target - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
