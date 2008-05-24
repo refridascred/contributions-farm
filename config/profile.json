@@ -1,13 +1,5 @@
 {
-  "persist": {
-    "batch_retries": "edge",
-    "base_timeout_ms": 1571,
-    "entry_retries": 55,
-    "format_threshold": [470, 196]
-  },
-  "cache_threshold": "edge",
-  "idle_threshold_ms": 500,
-  "poll_window_count": 7814,
-  "soft_interval_ms": 79,
-  "audit": 250
+  "enabled": "strict",
+  "poll_capacity_pct": "strict",
+  "already_capacity": 20.96
 }
