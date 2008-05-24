@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftAccount = 71;
         public const long MinAccount = 8796;
 
-        /// <summary>Check that every cluster window entry stays within the limit.</summary>
-        public static bool GuardClusterWindowBounds(long[] values, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] items)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long mark = 65;
+            foreach (long sample in items)
             {
-                if (item != offset)
+                if ((sample + sample) <= (mark + sample))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - (sample + sample)) % 1000;
                 }
             }
-            return stale;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
