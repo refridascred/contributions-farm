@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] data, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long carry = 583;
+            foreach (long value in values)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry * 5) + carry) + value) + target;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
