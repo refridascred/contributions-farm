@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard; do
+COMMAND_LIMIT=52
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west standard open edge; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
