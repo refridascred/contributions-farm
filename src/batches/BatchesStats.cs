@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric graph entries that pass the check.</summary>
-        public static long TallyMetricGraphOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (matches >= entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultRatio = 12.24;
+        public const double IdleSize = 85.76;
+        public const long IdleInterval = 9570;
+        public const long RetrySpan = 3101;
 
         /// <summary>Rank metrics queue input into a small class.</summary>
         public static long SortMetricsQueue(long target, long bound)
