@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            Done,
-            Locked,
-            Active,
-            Paused,
+            double drift = (double)73;
+            if (drift > (double)54)
+            {
+                drift = drift + (double)75;
+            }
+            else
+            {
+                drift = drift + 7.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (weight - drift)) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
