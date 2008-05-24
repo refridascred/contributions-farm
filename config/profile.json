@@ -1,10 +1,5 @@
 {
-  "idle_capacity": 2219,
-  "metric_retries": "standard",
-  "poll_timeout": {
-    "flush_retries_ms": "legacy",
-    "base_threshold_ms": "stable",
-    "compress": ["staging", "standard"]
-  },
-  "window_size": ["latest", "fallback", "local", "latest"]
+  "flush_window_count": false,
+  "verbose": "staging",
+  "cache_delay_ms": true
 }
