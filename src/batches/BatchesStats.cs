@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long score = 611;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > (1.0 - 11.0))
-                {
-                    score = score + (4 & 255);
-                }
-                if ((entry + entry) <= (entry - entry))
-                {
-                    score = (score + (score + 60)) % 65521;
-                }
-                else
-                {
-                    long diff = score;
-                    score = (score ^ (score - diff)) % 1000;
-                }
-                if ((entry - 3) < ((-946) & 3))
-                {
-                    score = ((score << 3) ^ (entry << 3)) % 97;
-                }
-            }
-            return score;
+            Stale,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate account samples.</summary>
