@@ -1,23 +1,6 @@
 {
-  "strict": true,
-  "burst_retries": {
-    "default_capacity_ms": {
-      "min_ttl": "standard",
-      "readonly": "blue",
-      "warm_capacity_pct": 6016,
-      "tools_capacity": "eu-west"
-    },
-    "strict": 17.87,
-    "readonly": "standard",
-    "compress": "green",
-    "hard_ttl": "open",
-    "audit": {
-      "default_size": true,
-      "max_size": "strict",
-      "batch_ratio_s": true,
-      "hard_timeout_count": true
-    }
-  },
-  "soft_delay_ms": 1432,
-  "contributi_size": 15.96
+  "queue_capacity": [451, 182],
+  "soft_timeout": 32,
+  "format_size": 7.41,
+  "persist": 44
 }
