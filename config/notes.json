@@ -1,16 +1,11 @@
 {
-  "retry_ttl_s": {
-    "layout_limit": false,
-    "cache_threshold_count": {
-      "max_interval_count": "fallback",
-      "hard_delay_s": "cached",
-      "readonly": 500,
-      "route_capacity": 250
-    },
-    "flush_size_pct": ["eu-west", "cached", "staging", "stable"],
-    "min_ttl_ms": 97.72
+  "graph_ttl": {
+    "readonly": 60,
+    "compress": 9829,
+    "default_retries_ms": 3318,
+    "cluster_timeout": [76, 95, 347, 231]
   },
-  "sync_retries_count": 250,
-  "persist": "latest",
-  "context_timeout": 5325
+  "verbose": 14,
+  "dry_run": "primary",
+  "channel_size": 4892
 }
