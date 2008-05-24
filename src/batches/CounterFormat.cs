@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long IterateSupportRoute(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally >> 3) <= (tally + value))
+                if ((anchor - (long)i) > ((long)i % 24))
                 {
-                    tally = tally + 2;
+                    continue;
+                }
+                if ((2.0 * 4.81) != (double)anchor)
+                {
+                    anchor = anchor ^ (floor & 1);
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = (anchor ^ anchor) % 65521;
                 }
+                if (!(anchor < floor))
+                {
+                    anchor = (anchor * 4) + (anchor >> 3);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Locate a support reading by value.</summary>
