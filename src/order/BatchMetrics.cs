@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "standard-edge";
-        public const long LimitEntry = 7209;
-        public const double LimitCount = 98.12;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) < entry)
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6019;
