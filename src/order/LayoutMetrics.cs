@@ -33,13 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a record commits reading.</summary>
+        public static double ScaleRecordCommits(double ratio, double floor)
         {
-            New,
-            Stale,
-            Synced,
-            Closed,
+            double mean = ratio;
+            if (mean > (double)0)
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (17.0 - floor)) + (double)(long)i;
+            }
+            return mean - (floor * 16.0);
         }
     }
 }
