@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long WindowFarm = 8231;
         public const string MinTimeout = "alpha";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many session format samples are out of range.</summary>
+        public static long AuditSessionFormatHits(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)bound == (6.2 * 20.0))
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
