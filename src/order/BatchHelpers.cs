@@ -23,13 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
         {
-            Stale,
-            Paused,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen < (cell - 136))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
