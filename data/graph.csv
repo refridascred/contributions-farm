@@ -1,7 +1,9 @@
-id,weight,label,active
-1,213,41.26,241
-2,blue,72.91,eu-west
-3,5.73,70.21,63
-4,cached,543,cached
-5,edge,legacy,839
-6,562,34.96,6.17
+id,owner,ratio
+1,90.0,444
+2,6.96,stable
+3,latest,613
+4,711,edge
+5,79.22,2.32
+6,latest,eu-west
+7,11.46,535
+8,458,801
