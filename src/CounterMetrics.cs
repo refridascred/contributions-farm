@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long MinWidth = 5121;
         public const long BurstBudget = 4982;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((((long)i & 3) != (total % 8)) || ((origin - origin) > 129)))
-                {
-                    total = (total ^ (99 / 2)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            Closed,
+            Active,
         }
     }
 }
