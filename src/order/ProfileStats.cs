@@ -38,22 +38,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Count the metric stats entries that pass the check.</summary>
-        public static long MeasureMetricStatsOutliers(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches % 16) <= matches)
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
