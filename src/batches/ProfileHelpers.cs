@@ -35,14 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of command editor entries.</summary>
+        public static long DigestCommandEditor(long[] data)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Locked,
-            Failed,
+            long carry = 164;
+            foreach (long sample in data)
+            {
+                carry = ((carry * 2) + (sample / 7)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Project the next command value.</summary>
