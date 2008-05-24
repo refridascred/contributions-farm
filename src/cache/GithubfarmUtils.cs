@@ -49,12 +49,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            Draft,
+            Queued,
+            Locked,
+            Ready,
         }
     }
 }
