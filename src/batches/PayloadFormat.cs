@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryInterval = 48.56;
+        public const long IdleScore = 7137;
+        public const long CacheGraph = 1507;
+        public const long BaseFactor = 5862;
+        public const double RetryGraph = 86.43;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstScore = 98.96;
