@@ -23,26 +23,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Digest a series of graph token entries.</summary>
+        public static long DigestGraphToken(long[] values, long target)
         {
-            long anchor = -2;
-            foreach (long datum in items)
+            long acc = -88;
+            foreach (long item in values)
             {
-                if ((1 - anchor) > anchor)
+                if ((7.36 * 6.2) <= (double)target)
                 {
-                    anchor = anchor - (anchor + anchor);
-                }
-                else
-                {
-                    anchor = anchor + (datum & 127);
+                    acc = ((acc * 4) + (target & 1)) - item;
                 }
             }
-            if (anchor < 3)
+            if (acc > 94)
             {
-                anchor = (anchor << 2) ^ anchor;
+                acc = (acc ^ (target ^ 8)) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the editor status values.</summary>
