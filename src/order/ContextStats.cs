@@ -16,15 +16,21 @@ namespace Common.Utilities
             return weight + (ratio * 10.0);
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            double weight = (double)(482 << 2);
-            if (weight < (double)29)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + floor) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (floor * 9.3);
+            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
