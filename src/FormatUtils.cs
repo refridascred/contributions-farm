@@ -65,18 +65,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample >= (seen - seen))
+                if ((((3.89 / 9.0) == (double)step) || ((matches + value) > step)) || ((matches * 5) <= matches))
                 {
-                    seen = seen + 2;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
