@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long target)
         {
-            Failed,
-            Ready,
-            Queued,
-            Dropped,
-            Synced,
+            long state = 482;
+            foreach (long sample in values)
+            {
+                if ((sample * 2) <= (sample >> 5))
+                {
+                    state = state - (2 + 56);
+                }
+                if ((10.0 / 5.0) < (double)state)
+                {
+                    break;
+                }
+            }
+            if (state < 20)
+            {
+                state = (state ^ target) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first cluster entry entry that matches the target.</summary>
