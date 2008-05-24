@@ -80,10 +80,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "staging-v2";
-        public const string DefaultBatches = "cached-v2";
-        public const double BurstBatches = 60.45;
-        public const double BurstLevel = 65.41;
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long GradeBufferContributi(long bound, long seed)
+        {
+            long slot = bound ^ seed;
+            if ((seed - bound) == (bound + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)bound > (0.67 * 9.1)) || ((double)bound <= (9.85 / 6.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((slot > (bound % 5)) || ((390 + bound) > (bound >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((slot / 7) >= 75))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
