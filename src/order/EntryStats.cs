@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long cur = offset - bound;
+            if (!((775 - offset) > (31 + bound)))
             {
-                if (entry > matches)
+                return 7;
+            }
+            else
+            {
+                if ((2.0 + 0.2) < (double)cur)
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
