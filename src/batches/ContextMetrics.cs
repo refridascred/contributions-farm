@@ -63,12 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Done,
-            Synced,
-            Locked,
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
