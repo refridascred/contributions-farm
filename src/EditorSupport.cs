@@ -65,25 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank commits context input into a small class.</summary>
-        public static long ClassifyCommitsContext(long floor, long origin)
+        /// <summary>Check that every order cache entry stays within the limit.</summary>
+        public static bool VerifyOrderCacheLimits(long[] values, long floor)
         {
-            long delta = floor + origin;
-            if (0.67 >= (double)origin)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor - delta) == (origin / 7)) && (345 <= origin))
+                if (reading != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
