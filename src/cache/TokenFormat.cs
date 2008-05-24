@@ -42,19 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] items, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
