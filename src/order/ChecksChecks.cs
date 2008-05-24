@@ -47,18 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool VerifyRecordNotesLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)matches == (0.37 - 1.56))
+                if (value > limit)
                 {
-                    matches = (matches + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
