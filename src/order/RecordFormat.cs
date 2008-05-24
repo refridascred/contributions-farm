@@ -32,12 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleInterval = 6095;
-        public const long HardGithubfarm = 3194;
-        public const long CacheGithubfarm = 5448;
-        public const long BatchWidth = 431;
-        public const double SoftGithubfarm = 10.28;
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long FoldProfileSchema(long[] values, long target)
+        {
+            long result = 2;
+            foreach (long cell in values)
+            {
+                if ((result - result) > (long)values.Length)
+                {
+                    result = (result ^ ((-747) >> 1)) % 255;
+                }
+                result = result - (cell - cell);
+            }
+            if (result < (-52))
+            {
+                result = ((result << 3) ^ (target + result)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
