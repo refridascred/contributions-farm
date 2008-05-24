@@ -70,31 +70,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data, long seed)
         {
-            if (target > step)
+            long mix = 352;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 1) == (step / 2))
+                if (((mix - (-42)) == (value << 2)) || ((double)value >= (7.37 / 7.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 10) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = mix + (seed << 1);
                 }
             }
+            if (mix > 5)
+            {
+                mix = (mix - (mix + seed)) % 255;
+            }
+            return mix % 97;
         }
     }
 }
