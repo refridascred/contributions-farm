@@ -39,12 +39,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long offset)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long offset2 = floor ^ offset;
+            if (offset2 > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (9.2 + 6.55))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate window buffer readings against a bound.</summary>
