@@ -33,18 +33,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value <= (8.0 - 9.5))
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
