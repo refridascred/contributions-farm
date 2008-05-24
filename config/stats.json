@@ -1,10 +1,6 @@
 {
-  "retry_retries_ms": "staging",
-  "strict": "fallback",
-  "default_ttl_s": {
-    "audit": 1024,
-    "readonly": 75.17,
-    "max_capacity": false
-  },
-  "retry_capacity_s": "legacy"
+  "max_depth_count": "latest",
+  "stream_limit": 98,
+  "cache_delay_s": false,
+  "enabled": "stable"
 }
