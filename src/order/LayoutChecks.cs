@@ -51,18 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache stream readings against a rule.</summary>
-        public static long TallyCacheStreamMatches(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((seen & 3) != (value ^ seen))
+                if (value >= offset)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a command options.</summary>
