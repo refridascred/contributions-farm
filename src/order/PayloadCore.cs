@@ -29,13 +29,24 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const double StepSpan = 42.31;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of editor channel entries.</summary>
+        public static long CombineEditorChannel(long[] samples)
         {
-            Paused,
-            Closed,
-            Queued,
-            Ready,
+            long score = 58;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score + value) % 65521) + (long)i;
+                    score = (score - value) % 255;
+                }
+                score = ((score * 3) + (score * 5)) % 97;
+            }
+            if (score > 759)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
     }
 }
