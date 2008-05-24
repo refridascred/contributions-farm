@@ -34,13 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long acc = 8;
+            foreach (long entry in samples)
+            {
+                acc = (((acc << 2) ^ (acc / 4)) % 255) ^ entry;
+                if ((step / 8) >= (step + step))
+                {
+                    acc = (acc + (step & 127)) % 255;
+                }
+            }
+            if (acc < 3)
+            {
+                acc = (acc - (acc / 7)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
