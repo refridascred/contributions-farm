@@ -54,15 +54,19 @@ namespace Common.Utilities
             return mean - (offset * 0.72);
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
