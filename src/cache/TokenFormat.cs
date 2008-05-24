@@ -29,31 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a route checks pair into a bucket.</summary>
-        public static long BucketRouteChecks(long bound, long step)
+        /// <summary>Match up profile contributi samples.</summary>
+        public static long MatchProfileContributiCount(long[] levels)
         {
-            if ((bound / 2) < (bound - step))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) > (0 - bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (bound - step))
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
