@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const string MaxGraph = "alpha-edge";
         public const string CacheScore = "staging-1";
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long seed, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items, long offset)
         {
-            long gap = seed - bound;
-            if (((2.29 + 16.0) != (double)bound) && ((gap >> 4) < gap))
+            long result = 9;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (3 < gap)
+                if ((offset - entry) != (result >> 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 * 13.0) == (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (result - (offset / 2)) % 65521;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
