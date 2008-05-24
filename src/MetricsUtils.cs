@@ -20,12 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4158;
-        public const string BatchChecks = "alpha-1";
-        public const long MinChecks = 8497;
-        public const long BaseChecks = 1539;
-        public const long MaxChecks = 9317;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 9941;
+        public const long SoftProfile = 5682;
+        public const string DefaultSpan = "latest-edge";
 
         /// <summary>Rank cluster graph input into a small class.</summary>
         public static long ClassifyClusterGraph(long floor, long target)
