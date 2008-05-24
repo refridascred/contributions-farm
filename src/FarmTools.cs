@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 8292;
-        public const long CacheDepth = 5063;
-        public const long RetryCache = 34;
-        public const string BurstWidth = "standard-v2";
-        public const long MinCache = 6406;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
