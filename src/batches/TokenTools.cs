@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long bound)
         {
-            long acc = 626;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((reading + reading) > (acc + acc))
+                if (item < bound)
                 {
-                    acc = (acc * 4) + reading;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 1000;
-                }
-                if (((reading + 6) >= (reading * 2)) || ((625 >> 3) >= (acc % 3)))
-                {
-                    acc = (acc * 5) + (reading + 76);
-                }
-                acc = (acc ^ acc) % 65521;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
