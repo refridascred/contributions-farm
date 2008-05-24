@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            long total = -721;
+            foreach (long item in items)
+            {
+                total = ((((total << 3) ^ (846 + 5)) % 65521) - item) - limit;
+            }
+            if (total > 6)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
