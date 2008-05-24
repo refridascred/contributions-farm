@@ -54,19 +54,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] readings, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long carry = 261;
+            foreach (long value in values)
             {
-                if (cell >= seed)
+                if ((carry + value) <= carry)
                 {
-                    valid = false;
-                    break;
+                    carry = carry + (carry & 31);
+                }
+                carry = carry + step;
+                if ((value / 8) >= (carry % 12))
+                {
+                    carry = ((carry << 3) ^ 2) % 4096;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the profile status values.</summary>
