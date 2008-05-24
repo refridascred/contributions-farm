@@ -34,20 +34,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 2884;
+        public const long IdleCount = 1444;
+        public const string BaseRatio = "stable-v2";
+        public const long WindowAccount = 1708;
+        public const string SoftBudget = "standard-v2";
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] series, long offset)
