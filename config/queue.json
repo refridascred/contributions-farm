@@ -1,7 +1,22 @@
 {
-  "hard_window_pct": false,
-  "batch_size_ms": 98.61,
-  "soft_interval_ms": "edge",
-  "idle_delay_s": "legacy",
-  "compress": "local"
+  "hard_interval": 7744,
+  "soft_capacity_pct": {
+    "min_capacity": ["standard", "primary", "legacy", "eu-west"],
+    "strict": 42.32,
+    "burst_size_ms": "eu-west",
+    "compress": false,
+    "metric_limit": "staging"
+  },
+  "max_delay": 23,
+  "dry_run": "green",
+  "route_depth": "local",
+  "tools_limit": {
+    "dry_run": 250,
+    "idle_delay_count": "cached",
+    "poll_timeout_pct": {
+      "cache_timeout_count": "stable",
+      "farm_interval": 30,
+      "window_timeout": "fallback"
+    }
+  }
 }
