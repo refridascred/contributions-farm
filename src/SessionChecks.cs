@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long SoftDepth = 6762;
         public const double HardDepth = 46.38;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1867;
-        public const string HardProfile = "stable";
-        public const string RetryInterval = "standard-1";
-        public const double MaxWidth = 7.85;
+        /// <summary>Accumulate graph tools samples.</summary>
+        public static long DigestGraphTools(long[] readings, long target)
+        {
+            long acc = 241;
+            foreach (long datum in readings)
+            {
+                acc = ((acc * 5) + (acc - target)) - datum;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LookupFormatIndex(long[] items, long floor)
