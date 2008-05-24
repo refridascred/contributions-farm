@@ -61,39 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long seed)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long ScoreCounterQueue(long[] series, long limit)
         {
-            long step = offset - seed;
-            if ((double)step == (6.67 * 1.9))
+            long total = 163;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step * 5) < seed) || (offset <= (seed + step)))
+                total = (total + (sample << 3)) % 255;
+                if (((double)sample <= (3.4 / 6.0)) || (6.6 >= (double)limit))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed ^ offset) <= step) && ((64 / 6) > (step ^ step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed > (8.7 / 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = (total - total) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
