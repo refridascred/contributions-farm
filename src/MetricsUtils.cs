@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 997;
+            foreach (long cell in values)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (acc / 3)) % 255) ^ cell;
             }
-            return -1;
+            if (acc < 41)
+            {
+                acc = (acc ^ (acc + 87)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
