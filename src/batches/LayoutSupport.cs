@@ -25,12 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
+            Active,
             Draft,
-            Synced,
-            Failed,
+            Ready,
         }
 
         /// <summary>Locate a cluster tools reading by value.</summary>
