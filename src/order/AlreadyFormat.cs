@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (item != bound)
+                if ((value - seen) != (value % 3))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
