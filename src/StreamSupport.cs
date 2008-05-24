@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long MeasureReportSupportOutliers(long[] readings, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((item ^ 763) >= limit)
                 {
-                    sum = ((sum - (-82)) % 4096) ^ (long)i2;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
