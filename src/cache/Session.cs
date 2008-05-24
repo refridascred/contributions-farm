@@ -34,22 +34,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values)
+        /// <summary>Locate a context already reading by value.</summary>
+        public static long FindContextAlreadyIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.5 / 4.0) > (double)count)
+                if (data[i] > step)
                 {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
