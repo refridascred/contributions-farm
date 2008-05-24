@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a stream token reading by value.</summary>
-        public static long LookupStreamTokenIndex(long[] data, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= seed)
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
