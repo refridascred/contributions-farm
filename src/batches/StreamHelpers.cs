@@ -46,19 +46,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] data, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long cur = origin - origin2;
+            if ((origin2 >= (origin2 + origin2)) && ((3.61 / 2.0) < (double)origin2))
             {
-                if (cell <= origin)
+                return 8;
+            }
+            else
+            {
+                if (((origin & 255) < (origin2 * 4)) || ((892 << 2) != (origin2 & 1)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin2 > (origin - origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (cur > (origin2 >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
