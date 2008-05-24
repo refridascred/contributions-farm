@@ -42,19 +42,24 @@ namespace Common.Utilities
         public const long WindowBatch = 9270;
         public const long SoftBatch = 8890;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] data, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample < step)
+                acc = (acc * 3) + 69;
+                if (54 < (floor ^ floor))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 3) ^ ((long)i + acc);
                 }
+                else
+                {
+                    acc = (acc * 4) + floor;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
     }
 }
