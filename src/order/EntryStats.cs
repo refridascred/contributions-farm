@@ -23,15 +23,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            double ratio = gain;
-            if (ratio <= floor)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio + floor;
+                result = ((result * 3) + (result / 2)) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result << 2) ^ (long)i2) % 97;
+                    result = (result - (bound + bound)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ratio - 1.8;
+            return result;
         }
 
         /// <summary>Hold a channel header.</summary>
