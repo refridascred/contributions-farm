@@ -26,21 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of commits buffer readings.</summary>
-        public static long CompareCommitsBufferCount(long[] data)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
