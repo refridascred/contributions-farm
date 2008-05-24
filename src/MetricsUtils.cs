@@ -87,38 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if (((92 ^ target) > (target ^ target)) || ((double)seed == (5.7 - 5.4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)target <= (double)target) || ((double)seed != (2.0 + 7.2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + 17) < (target + (-740)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((15.0 * 18.0) >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
