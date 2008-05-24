@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
             Ready,
-            Pending,
-            Active,
-            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
