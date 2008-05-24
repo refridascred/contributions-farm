@@ -14,13 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((54 + (long)i) >= (origin * 2))
+                {
+                    state = (state + (state % 97)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the report mode values.</summary>
