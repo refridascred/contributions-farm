@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Synced,
-            Draft,
+            Queued,
             Paused,
-            Closed,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
