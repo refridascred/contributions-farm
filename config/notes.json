@@ -1,5 +1,24 @@
 {
-  "idle_depth": [465, 471, 97],
-  "hard_interval_ms": true,
-  "cache_capacity_s": 100
+  "hard_ttl": 6901,
+  "compress": 49,
+  "burst_size_ms": {
+    "token_size": "standard",
+    "audit": "staging",
+    "already_limit": 500,
+    "min_capacity_pct": {
+      "min_size_count": 100,
+      "verbose": "stable",
+      "min_limit": "latest",
+      "enabled": 56.93
+    },
+    "sync_retries": {
+      "farm_depth": 67.16,
+      "cache_ratio_s": ["blue", "fallback", "green", "legacy"],
+      "counter_size": 4145,
+      "report_interval": "strict"
+    }
+  },
+  "farm_retries": 60,
+  "hard_threshold_pct": "primary",
+  "flush_ttl_pct": "primary"
 }
