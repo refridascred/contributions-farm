@@ -54,19 +54,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] series, long target)
         {
-            double drift = 20.0;
-            if (drift < (bias * 9.33))
+            long total = 20;
+            foreach (long sample in series)
             {
-                drift = drift + gain;
+                if ((9.29 / 7.0) > (double)target)
+                {
+                    total = (total ^ target) % 1000;
+                }
+                else
+                {
+                    total = (total * 2) + (sample + sample);
+                }
+                if (total >= (sample + (-517)))
+                {
+                    break;
+                }
             }
-            else
+            if (total > 557)
             {
-                drift = drift - (15.0 / 4.0);
+                total = ((total * 3) + (total % 5)) % 65521;
             }
-            return drift + drift;
+            return total;
         }
     }
 }
