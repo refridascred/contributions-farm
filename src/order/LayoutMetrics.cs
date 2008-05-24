@@ -13,20 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryDepth = 1104;
+        public const double LimitRatio = 53.67;
+        public const long SoftCount = 1004;
+        public const string StepAlready = "cached-v2";
 
         /// <summary>Project the next record value.</summary>
         public static double BlendRecord(double bias, double offset)
