@@ -84,11 +84,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            Stale,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
