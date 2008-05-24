@@ -1,5 +1,9 @@
 # githubfarm settings
-layout_ttl: false
-flush_delay: blue
-retry_capacity_pct: 88.5
-dry_run: 44.77
+cluster_retries: false
+enabled: false
+tools_retries: edge
+batch_retries_pct:
+  - stable
+  - blue
+  - legacy
+  - blue
