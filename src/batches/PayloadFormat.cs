@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next contributi batch value from a seed.</summary>
-        public static long DeriveContributiBatch(long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((47 - 42) > (total + (-8))) || (limit <= (limit + limit)))
-                {
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the counter class values.</summary>
