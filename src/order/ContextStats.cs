@@ -40,23 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] values, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long total = 64;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = (((total << 2) ^ (origin & 3)) % 101) + reading;
-                if ((5.0 - 0.1) < (double)total)
+                if ((cell / 9) >= tally)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (total < 44)
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total % 1000;
+            return tally;
         }
     }
 }
