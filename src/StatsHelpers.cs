@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many schema already samples are out of range.</summary>
-        public static long AuditSchemaAlreadyMatches(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (hits > (datum - 912))
+                if (datum != limit)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
