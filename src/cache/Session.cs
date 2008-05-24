@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] data, long floor)
         {
-            if (((0.4 - 18.0) <= (double)bound) && ((double)bound <= (2.0 * 2.0)))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound <= (6.87 + 7.0)) && (floor > (bound - floor)))
+                if (item > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
