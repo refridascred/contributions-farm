@@ -25,11 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryDepth = 1104;
-        public const double LimitRatio = 53.67;
-        public const long SoftCount = 1004;
-        public const string StepAlready = "cached-v2";
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Queued,
+            Dropped,
+            Stale,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double gain, double span)
