@@ -31,10 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7604;
-        public const double StepInterval = 55.0;
-        public const double RetryRoute = 76.81;
-        public const long BaseCount = 1461;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 1305;
+        public const double LimitLayout = 39.28;
+        public const long MaxDepth = 9908;
+        public const long SoftRatio = 5561;
+        public const long MaxCount = 7025;
     }
 }
