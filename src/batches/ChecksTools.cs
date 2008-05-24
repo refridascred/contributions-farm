@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4475;
-        public const string MinBudget = "primary-v2";
-        public const long MinInterval = 8984;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long step, long bound)
+        {
+            if (!((549 / 8) > bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((12.0 + 5.01) <= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step > 9.65)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step % 100) <= (bound + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 6791;
