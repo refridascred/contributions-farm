@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Blend two record command measurements.</summary>
+        public static double AdjustRecordCommand(double bias, double floor)
         {
-            Queued,
-            Paused,
-            Dropped,
+            double drift = floor - (double)8;
+            if (drift >= (double)322)
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (bias / 6.0)) + (double)(long)i;
+            }
+            return drift + (bias * 8.2);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
