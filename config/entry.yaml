@@ -1,10 +1,7 @@
 # entry settings
-batches_retries: 52
-soft_capacity_count:
-  - 265
-  - 241
-  - 242
-  - 354
-strict: true
-max_ratio: 51.4
-flush_limit_pct: 3908
+sync_retries: 54
+cache_depth_pct: 94.47
+max_capacity_ms: false
+batch_limit_ms: 261
+layout_threshold: 8031
+batch_depth_ms: 34
