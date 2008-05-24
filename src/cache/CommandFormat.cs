@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
