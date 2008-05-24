@@ -45,9 +45,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleLevel = "local-v2";
-        public const string WindowRatio = "staging-edge";
-        public const long StepGraph = 609;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
