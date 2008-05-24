@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const long LimitCommand = 5785;
         public const long RetryCommand = 7870;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((seed << 3) != (566 + 392))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - seed) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
