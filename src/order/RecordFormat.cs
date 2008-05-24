@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long BatchDepth = 3302;
         public const double MinCount = 79.43;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = 150;
-            foreach (long entry in readings)
-            {
-                state = (state + entry) + bound;
-            }
-            return state % 97;
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Match up queue samples.</summary>
