@@ -29,12 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
