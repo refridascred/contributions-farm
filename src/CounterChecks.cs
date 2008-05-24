@@ -61,11 +61,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 8918;
-        public const long MaxGraph = 5384;
-        public const long MinDepth = 4677;
-        public const long CacheRatio = 8784;
-        public const long RetrySpan = 4353;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark ^ (mark & 1)) % 255;
+                    mark = (mark << 3) ^ ((long)i2 & 255);
+                }
+                if ((long)i > (mark - mark))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
