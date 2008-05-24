@@ -46,18 +46,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] items, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long floor, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((0 % 12) < (target & 255))
             {
-                if (9.94 <= (double)bound)
+                return 7;
+            }
+            else
+            {
+                if (floor < (floor << 3))
                 {
-                    count = (count + 3) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ floor) != (floor << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.26 - 5.0) >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
