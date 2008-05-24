@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long mix = 7;
-            foreach (long value in data)
+            double load = (double)(435 << 3);
+            if (load <= (load / 3.0))
             {
-                if (!((value - 803) != (9 - origin)))
-                {
-                    mix = ((mix * 5) + (5 + mix)) % 255;
-                }
+                load = ((load + (double)26) + weight) - bias;
             }
-            return mix;
+            return load + (4.4 * 6.02);
         }
 
         /// <summary>Match up commits samples.</summary>
