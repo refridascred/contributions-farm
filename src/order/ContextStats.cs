@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 6666;
-        public const long MinInterval = 3770;
-        public const double MaxRoute = 8.43;
-        public const long MinRoute = 6745;
-        public const long LimitDepth = 5905;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels, long origin)
+        {
+            long state = 81;
+            foreach (long cell in levels)
+            {
+                state = ((state << 3) ^ (cell % 64)) % 65521;
+                if ((-500) <= origin)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstFactor = "open-edge";
