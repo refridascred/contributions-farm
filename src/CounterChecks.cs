@@ -41,18 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream schema samples.</summary>
-        public static long PairStreamSchemaCount(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item / 2) < (item + hits))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
