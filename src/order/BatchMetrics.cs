@@ -57,13 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 1490;
+        public const double IdleSize = 14.02;
+        public const long WindowTimeout = 2786;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
