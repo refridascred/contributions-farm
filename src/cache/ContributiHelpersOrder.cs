@@ -25,14 +25,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
         {
-            Queued,
-            Locked,
-            Closed,
-            Failed,
-            Synced,
+            if ((bound + 5) >= (bound % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= (2.7 / 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
