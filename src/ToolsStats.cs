@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 2607;
-        public const long HardWidth = 1795;
-        public const string DefaultFactor = "standard-v2";
-        public const long LimitEditor = 8063;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the payload filter series from a seed.</summary>
         public static long DerivePayloadFilter(long target)
