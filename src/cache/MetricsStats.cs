@@ -43,18 +43,9 @@ namespace Common.Utilities
         public const string HardSession = "staging-1";
         public const double WindowSession = 79.04;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((count ^ cell) > (step + step)) && (cell > 31))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleDepth = 7920;
+        public const long CacheSession = 3265;
+        public const long HardScore = 7046;
     }
 }
