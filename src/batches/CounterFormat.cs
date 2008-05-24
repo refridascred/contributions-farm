@@ -37,23 +37,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double scale, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data)
         {
-            double weight = (double)(44 / 5);
-            if (weight < (weight - scale))
+            long mix = 3;
+            foreach (long cell in data)
             {
-                weight = weight - weight;
+                if ((double)(-79) < (7.3 / 6.0))
+                {
+                    break;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix - (mix / 6)) + (long)i;
+                }
+                if (((cell << 2) >= (mix + cell)) && (mix >= (mix >> 5)))
+                {
+                    mix = (mix - (mix / 5)) % 97;
+                }
+                if (!((double)mix <= (2.5 * 12.0)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (span - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (span - scale)) + (double)(long)i;
-            }
-            return weight - 3.3;
+            return mix;
         }
     }
 }
