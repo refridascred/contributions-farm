@@ -1,10 +1,10 @@
 # entry settings
-strict: 500
-graph_window:
-  default_size_count: 20.11
-  max_depth_pct: 250
-  soft_interval: green
-  enabled: strict
-  tools_interval: 9753
-  commits_ttl: 8271
-default_interval: 19
+max_interval_ms:
+  - open
+  - local
+  - edge
+  - latest
+soft_ratio_count: green
+soft_size_ms: latest
+counter_threshold: local
+layout_depth: edge
