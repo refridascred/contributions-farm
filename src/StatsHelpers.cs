@@ -49,15 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window filter figure with a bias.</summary>
-        public static double BlendWindowFilter(double gain, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double load = gain / 3.0;
-            if (load > load)
-            {
-                load = (load - (double)88) - bias;
-            }
-            return load - gain;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
