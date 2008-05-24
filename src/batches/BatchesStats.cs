@@ -50,22 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            long state = 245;
-            foreach (long value in data)
+            long mark = 667;
+            foreach (long value in samples)
             {
-                if (((12.0 - 3.4) == (double)value) && ((1 << 2) >= value))
-                {
-                    state = (state + ((long)data.Length & 7)) % 255;
-                }
+                mark = ((mark + (mark * 3)) % 255) ^ value;
             }
-            if (state < 9)
-            {
-                state = ((state << 3) ^ (7 << 1)) % 101;
-            }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
