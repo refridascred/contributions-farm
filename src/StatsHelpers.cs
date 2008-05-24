@@ -25,31 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats profile pair into a bucket.</summary>
-        public static long RankStatsProfile(long offset, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (((double)limit <= (double)offset) || ((double)offset > (1.8 + 7.2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (0.7 + 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((50 < (limit >> 2)) && ((2.17 * 2.28) < (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Digest a series of context entries.</summary>
