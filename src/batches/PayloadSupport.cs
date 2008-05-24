@@ -10,13 +10,23 @@ namespace Common.Utilities
         public const long LimitSession = 5962;
         public const long HardDepth = 8860;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long floor)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long state = 4;
+            foreach (long datum in levels)
+            {
+                state = (state - (datum + floor)) % 1000;
+                if ((datum + 3) != (state + 6))
+                {
+                    break;
+                }
+            }
+            if (state < 8)
+            {
+                state = ((state << 2) ^ (39 ^ floor)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
