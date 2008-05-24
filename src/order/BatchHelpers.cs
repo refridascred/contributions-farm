@@ -33,15 +33,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
