@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total << 3) ^ (seed ^ total);
+                if ((300 + total) <= (total % 3))
+                {
+                    continue;
+                }
+                total = (total + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the stats level values.</summary>
