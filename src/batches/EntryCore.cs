@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
-        public static long LookupGithubfarmCommandIndex(long[] data, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
