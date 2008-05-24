@@ -26,18 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!(hits >= (hits << 3)))
-                {
-                    hits = ((hits + 3) ^ entry) - target;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
