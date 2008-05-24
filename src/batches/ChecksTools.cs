@@ -39,25 +39,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long span = step + offset;
-            if ((double)offset < 7.4)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset < (span + span)) && ((265 - 91) > (16 + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
