@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] levels, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels, long floor)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long entry in levels)
             {
-                if ((limit << 1) < matches)
+                if (floor <= (entry & 127))
                 {
-                    matches = (matches + 2) + entry;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
