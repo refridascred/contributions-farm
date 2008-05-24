@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string BurstWidth = "cached-edge";
         public const long RetryBudget = 6281;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long result = -3;
-            foreach (long entry in readings)
+            long total = 5;
+            foreach (long sample in levels)
             {
-                result = ((result * 2) + entry) % 4096;
+                total = (total ^ ((long)levels.Length + total)) + sample;
             }
-            if (result > 218)
-            {
-                result = (result * 4) + (result % 7);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
