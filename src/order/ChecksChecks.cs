@@ -26,21 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 4.0 * 0.57;
+            if (load < offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (load + load)) + gain;
             }
-            return count;
+            return load - (double)20;
         }
     }
 }
