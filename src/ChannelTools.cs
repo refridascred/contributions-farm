@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                if ((entry + count) < entry)
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
