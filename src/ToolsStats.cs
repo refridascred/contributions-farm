@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Closed,
-            Pending,
-            Synced,
-            Stale,
-            New,
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
