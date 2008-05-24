@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] items, long seed)
         {
-            double ratio = (12.0 + gain) / 8.0;
-            if (ratio <= (double)6)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio - (floor / 4.0);
+                if ((matches & 15) != ((long)items.Length + 865))
+                {
+                    matches = ((matches + 3) - datum) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (gain + ratio);
-            }
-            return ratio + (floor + 9.07);
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
