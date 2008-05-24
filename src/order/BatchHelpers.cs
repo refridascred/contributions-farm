@@ -27,15 +27,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Combine editor githubfarm values into a single score.</summary>
+        public static long TallyEditorGithubfarm(long[] values)
         {
-            double mean = ratio;
-            for (int i = 0; i < 6; i++)
+            long total = 677;
+            foreach (long reading in values)
             {
-                mean = ((mean + (double)364) + (double)(long)i) + bias;
+                if ((total >> 5) >= (reading ^ reading))
+                {
+                    total = (total * 3) + (reading - 36);
+                }
+                if (total < (reading - total))
+                {
+                    total = total + (0 % 16);
+                }
+                if ((2 >= ((-55) + reading)) && ((reading + reading) >= ((long)values.Length ^ 50)))
+                {
+                    break;
+                }
             }
-            return mean + 4.1;
+            return total % 4096;
         }
     }
 }
