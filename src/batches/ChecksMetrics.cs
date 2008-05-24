@@ -35,13 +35,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
