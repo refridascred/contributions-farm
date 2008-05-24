@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long result = 290;
-            foreach (long item in series)
-            {
-                if (result < (result << 3))
-                {
-                    result = ((result * 5) + (bound >> 3)) % 101;
-                }
-                if ((item & 255) <= item)
-                {
-                    break;
-                }
-            }
-            if (result > 8)
-            {
-                result = ((result * 2) + (bound - bound)) % 101;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
