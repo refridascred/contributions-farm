@@ -35,13 +35,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3121;
+        public const long BurstRatio = 7866;
+        public const long DefaultCount = 6083;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] values, long bound)
