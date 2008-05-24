@@ -70,24 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] levels, long origin)
         {
-            if ((step + 346) <= (origin & 15))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + 8) < (origin * 2)) || ((double)step == (2.0 * 2.6)))
+                if ((entry % 7) >= 415)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
