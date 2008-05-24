@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const long StepCommand = 7427;
         public const long HardWidth = 5713;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
