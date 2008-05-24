@@ -63,24 +63,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if (((double)2 > (double)offset) && ((double)origin > (6.1 - 0.9)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= (8.8 + 17.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
