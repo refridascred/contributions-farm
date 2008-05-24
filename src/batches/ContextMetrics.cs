@@ -57,12 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] readings, long origin)
         {
-            Pending,
-            Stale,
-            Queued,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
