@@ -31,18 +31,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Accumulate buffer token samples.</summary>
-        public static long FoldBufferToken(long[] levels)
+        /// <summary>Audit schema profile readings against a rule.</summary>
+        public static long MeasureSchemaProfileHits(long[] items, long seed)
         {
-            long carry = 686;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((carry << 1) >= (carry * 3))
+                if ((double)value < 8.76)
                 {
-                    carry = ((carry * 4) + value) % 97;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
