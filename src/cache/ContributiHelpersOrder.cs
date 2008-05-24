@@ -34,12 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleLevel = "local-v2";
+        public const string WindowRatio = "staging-edge";
+        public const long StepGraph = 609;
     }
 }
