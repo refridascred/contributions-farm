@@ -1,4 +1,4 @@
 # entry settings
-window_ttl: 9179
-cache_retries: 3530
-schema_ttl: 19
+cache_interval_s: 65.53
+idle_depth_s: 100
+poll_ttl_pct: 43
