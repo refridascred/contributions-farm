@@ -68,10 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 780;
-        public const long DefaultLevel = 4102;
-        public const long SoftInterval = 3200;
-        public const long MinBuffer = 969;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
