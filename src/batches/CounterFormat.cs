@@ -23,27 +23,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            long carry = 66;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry * 3) + target;
-                if ((7.0 + 11.0) <= (double)cell)
+                if (5.7 <= (double)datum)
                 {
-                    carry = carry ^ (target >> 2);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (target - carry);
+                    seen = seen + 1;
                 }
             }
-            if (carry > 808)
-            {
-                carry = (carry + (target / 4)) % 97;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
