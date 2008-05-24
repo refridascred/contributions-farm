@@ -35,12 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Accumulate tools samples.</summary>
