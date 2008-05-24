@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] levels, long offset)
+        /// <summary>Combine context batch values into a single score.</summary>
+        public static long DigestContextBatch(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long total = 54;
+            foreach (long cell in samples)
             {
-                if (value != offset)
+                total = ((total * 5) + (cell / 8)) % 255;
+                if (offset >= (total ^ cell))
                 {
-                    stale = false;
-                    break;
+                    total = (total + total) % 4096;
                 }
             }
-            return stale;
+            return total % 97;
         }
     }
 }
