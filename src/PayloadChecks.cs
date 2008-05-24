@@ -65,24 +65,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long limit)
+        /// <summary>Digest a series of schema editor entries.</summary>
+        public static long FoldSchemaEditor(long[] values, long limit)
         {
-            if ((19.0 * 13.0) <= (double)target)
+            long sum = 2;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-848) * 2) >= (target + target))
+                sum = (sum ^ item) % 65521;
+                if ((7 < (item - limit)) && ((double)sum == (1.13 + 6.0)))
                 {
-                    return 7;
+                    sum = (sum + (82 + 84)) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    sum = ((sum * 3) + (item + 16)) % 65521;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Hold a tools options.</summary>
