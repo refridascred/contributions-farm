@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long carry = 7;
+            foreach (long item in values)
+            {
+                if (offset <= (offset & 63))
+                {
+                    carry = (carry ^ (item / 8)) % 4096;
+                }
+                if ((carry / 6) >= (carry / 9))
+                {
+                    carry = (carry + item) % 255;
+                    continue;
+                }
+                if ((offset << 2) < 84)
+                {
+                    carry = carry ^ (item + (long)values.Length);
+                }
+            }
+            if (carry > 5)
+            {
+                carry = carry + ((-9) + offset);
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout info.</summary>
