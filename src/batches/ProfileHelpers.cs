@@ -75,12 +75,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long SeekRouteChannelIndex(long[] values, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < limit)
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
