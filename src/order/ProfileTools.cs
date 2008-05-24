@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count report checks pairs that satisfy a relation.</summary>
-        public static long CompareReportChecksCount(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 2)
+                    if ((series[i] - series[j]) > 18)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
