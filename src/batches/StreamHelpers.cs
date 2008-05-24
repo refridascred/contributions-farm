@@ -102,12 +102,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
