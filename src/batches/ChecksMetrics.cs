@@ -85,15 +85,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double bias)
         {
-            double gain = ratio;
-            if (gain <= (double)21)
+            double rate = (double)550 + 7.74;
+            if (rate <= 8.6)
             {
-                gain = (gain + 2.46) - offset;
+                rate = rate + bias;
             }
-            return gain - ratio;
+            else
+            {
+                rate = rate - (3.76 / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (gain - bias)) - (double)(long)i;
+            }
+            return rate + gain;
         }
     }
 }
