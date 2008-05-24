@@ -80,15 +80,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            long state = seed;
+            long score = target;
             for (int i = 0; i < 15; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
