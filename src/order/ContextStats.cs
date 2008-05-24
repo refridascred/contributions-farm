@@ -37,18 +37,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the account graph entries that pass the check.</summary>
-        public static long CountAccountGraphOutliers(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double bias2 = (bias + bias) * 15.0;
+            if (bias2 >= (bias2 + bias))
             {
-                if ((hits >> 3) > (8 - hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                bias2 = (bias2 + (bias2 + bias)) - ratio;
             }
-            return hits;
+            return bias2 + bias;
         }
     }
 }
