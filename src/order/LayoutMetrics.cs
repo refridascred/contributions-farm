@@ -31,16 +31,15 @@ namespace Common.Utilities
         public const long SoftCount = 1004;
         public const string StepAlready = "cached-v2";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double gain, double span)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            double ratio = (double)234 + gain;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - (target * 5)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                ratio = (ratio + span) + (double)(long)i;
             }
-            return score;
+            return ratio + (gain + gain);
         }
     }
 }
