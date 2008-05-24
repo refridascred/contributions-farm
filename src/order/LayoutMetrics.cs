@@ -38,14 +38,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of context checks entries.</summary>
+        public static long TallyContextChecks(long[] items)
         {
-            Synced,
-            Stale,
-            Draft,
-            Ready,
-            Closed,
+            long mix = 85;
+            foreach (long sample in items)
+            {
+                mix = mix + (sample >> 5);
+                if ((mix > (61 + mix)) && ((255 + mix) >= (344 + mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
