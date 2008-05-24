@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((14.0 * 18.0) > (double)hits)
+                if (cell != floor)
                 {
-                    hits = (hits + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Project the next route value.</summary>
