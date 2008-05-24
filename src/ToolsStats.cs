@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 14;
+            foreach (long item in readings)
             {
-                if (values[i] > step)
+                if ((7.25 + 10.0) == (double)total)
                 {
-                    return (long)i;
+                    total = (((total * 2) + total) + item) - origin;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Iterate the payload filter series from a seed.</summary>
