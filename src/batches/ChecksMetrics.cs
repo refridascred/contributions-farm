@@ -97,9 +97,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchRatio = 4405;
-        public const double StepAlready = 3.55;
-        public const long CacheAlready = 3802;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double ratio, double offset)
+        {
+            double gain = ratio;
+            if (gain <= (double)21)
+            {
+                gain = (gain + 2.46) - offset;
+            }
+            return gain - ratio;
+        }
     }
 }
