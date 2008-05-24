@@ -60,18 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph stream readings against a rule.</summary>
-        public static long MeasureGraphStreamGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (item > (34 - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1534;
+        public const long BatchFactor = 9567;
+        public const string BurstLevel = "stable-1";
     }
 }
