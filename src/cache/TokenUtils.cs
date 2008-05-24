@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long step)
         {
-            long result = 778;
-            foreach (long cell in values)
+            long span = origin - step;
+            if ((748 - origin) != (step / 7))
             {
-                result = (result * 2) + cell;
-                if ((4.16 / 3.0) == (double)limit)
+                return 6;
+            }
+            else
+            {
+                if (step <= (origin << 1))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((15 ^ span) > (step - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the commits class values.</summary>
