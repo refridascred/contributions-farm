@@ -1,6 +1,7 @@
-id,state,active
-1,primary,883
-2,322,298
-3,644,legacy
-4,7.61,148
-5,blue,green
+id,level
+1,572
+2,standard
+3,legacy
+4,latest
+5,cached
+6,47.75
