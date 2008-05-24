@@ -43,19 +43,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool GuardSupportPayloadBounds(long[] series, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Classify a support record pair into a bucket.</summary>
