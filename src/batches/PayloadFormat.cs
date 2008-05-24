@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two entry tools measurements.</summary>
-        public static double ProjectEntryTools(double scale, double span)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double drift = scale;
-            if (drift < (scale + 5.1))
-            {
-                drift = (drift + (double)29) - span;
-            }
-            else
-            {
-                drift = drift + (double)74;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (6.3 - 4.8)) - (double)(long)i;
-            }
-            return drift + scale;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
