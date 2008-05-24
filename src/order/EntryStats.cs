@@ -20,23 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long mark = 126;
-            foreach (long datum in samples)
+            long score = 5;
+            foreach (long datum in items)
             {
-                mark = ((mark << 2) ^ (mark % 64)) % 101;
-                if (!(4 < (mark & 7)))
-                {
-                    mark = mark - (datum ^ mark);
-                }
-                else
-                {
-                    mark = mark ^ (mark >> 3);
-                }
+                score = (((score << 2) ^ (score / 9)) % 1000) + datum;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Grade a contributi token value against two limits.</summary>
