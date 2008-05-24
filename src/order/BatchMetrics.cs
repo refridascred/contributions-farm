@@ -62,18 +62,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count * 2) != (target + count))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 43.46;
+        public const double WindowLevel = 37.97;
+        public const double IdleScore = 87.06;
     }
 }
