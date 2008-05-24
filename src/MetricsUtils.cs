@@ -51,39 +51,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long target)
-        {
-            if (!((target + target) == (target + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (target - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((999 - floor) <= (floor + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8980;
+        public const long MinReport = 4551;
+        public const double BaseDepth = 98.55;
+        public const long SoftReport = 1452;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] levels, long bound)
