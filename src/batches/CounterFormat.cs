@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "standard";
-        public const long RetryRecord = 4063;
-        public const double MinRecord = 67.33;
-        public const long BaseRecord = 1283;
-        public const long CacheSize = 8491;
+        /// <summary>Combine channel window values into a single score.</summary>
+        public static long TotalChannelWindow(long[] items)
+        {
+            long acc = 307;
+            foreach (long entry in items)
+            {
+                if (!(7.61 < (double)entry))
+                {
+                    acc = (acc << 3) ^ (acc / 9);
+                }
+            }
+            if (acc > 302)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+            }
+            return acc;
+        }
     }
 }
