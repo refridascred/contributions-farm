@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 4416;
-        public const long MaxToken = 3464;
-        public const double DefaultFactor = 79.16;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
