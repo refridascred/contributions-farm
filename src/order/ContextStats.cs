@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many order already samples are out of range.</summary>
+        public static long TallyOrderAlreadyGaps(long[] data, long offset)
         {
-            Synced,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((83 & 3) == (offset >> 1)) && (((offset << 1) <= (tally >> 5)) && (tally < (tally + offset))))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two support measurements.</summary>
