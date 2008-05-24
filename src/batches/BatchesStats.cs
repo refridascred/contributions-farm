@@ -13,18 +13,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long target, long step)
         {
-            long mark = 73;
-            foreach (long datum in data)
+            if (((79 + target) >= (step - target)) && ((target - target) == (64 << 2)))
             {
-                if ((datum - 655) > (target + mark))
+                return 3;
+            }
+            else
+            {
+                if ((target >> 4) <= step)
                 {
-                    mark = mark - mark;
+                    return 0;
+                }
+                else
+                {
+                    if ((target + step) == (target + (-65)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count the metric graph entries that pass the check.</summary>
