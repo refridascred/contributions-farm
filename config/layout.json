@@ -1,18 +1,5 @@
 {
-  "idle_capacity": {
-    "sync_ratio": "primary",
-    "strict": {
-      "batch_delay_pct": 2649,
-      "soft_threshold": [405, 88, 36, 180],
-      "min_timeout_pct": 87.6,
-      "cache_size_ms": 61.06,
-      "audit": 13,
-      "batch_delay": 1974
-    },
-    "audit": false,
-    "flush_window": true
-  },
-  "default_delay_pct": true,
-  "filter_capacity": true,
-  "record_window": "eu-west"
+  "idle_threshold_ms": 100,
+  "dry_run": ["primary", "fallback", "primary"],
+  "farm_size": 83
 }
