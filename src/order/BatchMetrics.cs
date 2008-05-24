@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseRatio = 6138;
-        public const long BaseScore = 5989;
-        public const double CacheDepth = 75.23;
-        public const long CacheFilter = 4811;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Draft,
+            Done,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
