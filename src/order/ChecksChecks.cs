@@ -37,15 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double weight = (4.35 / 5.0) / 9.0;
-            if (weight <= rate)
-            {
-                weight = (weight + weight) - bias;
-            }
-            return weight - (double)47;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
