@@ -1,13 +1,5 @@
 {
-  "flush_timeout_s": 5957,
-  "retry_timeout_ms": 29.87,
-  "route_interval": [107, 64],
-  "flush_capacity_ms": {
-    "hard_capacity_s": 100,
-    "base_delay": 68.0,
-    "strict": "staging",
-    "retry_interval_count": ["primary", "legacy", "open"],
-    "poll_window": 60
-  },
-  "base_limit_s": false
+  "profile_threshold": ["green", "legacy", "standard"],
+  "sync_window_count": 89,
+  "dry_run": 7396
 }
