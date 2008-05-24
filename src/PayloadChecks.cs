@@ -50,17 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload session entry that matches the target.</summary>
-        public static long LocatePayloadSessionIndex(long[] readings, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
