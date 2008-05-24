@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double bias = floor;
+            if (bias >= rate)
             {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias + rate;
             }
-            return valid;
+            else
+            {
+                bias = bias + floor;
+            }
+            return bias - floor;
         }
     }
 }
