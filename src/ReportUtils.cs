@@ -58,12 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Active,
-            Closed,
-            Pending,
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
