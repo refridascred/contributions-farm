@@ -46,14 +46,13 @@ namespace Common.Utilities
         public const long IdleInterval = 9570;
         public const long RetrySpan = 3101;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Idle,
-            Ready,
-            Closed,
-            Paused,
-            Stale,
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
