@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
