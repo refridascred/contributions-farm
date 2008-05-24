@@ -27,20 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel window values into a single score.</summary>
-        public static long TotalChannelWindow(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long acc = 307;
-            foreach (long entry in items)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(7.61 < (double)entry))
-                {
-                    acc = (acc << 3) ^ (acc / 9);
-                }
-            }
-            if (acc > 302)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
+                acc = (acc ^ ((long)i >> 5)) % 65521;
+                acc = acc - (acc % 8);
+                acc = (acc + (origin - acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
