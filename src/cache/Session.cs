@@ -52,10 +52,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftBudget = 2066;
-        public const long MinStats = 4067;
-        public const long RetryInterval = 4700;
-        public const long LimitStats = 9169;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items)
+        {
+            long result = 8;
+            foreach (long entry in items)
+            {
+                result = ((result * 4) + (entry << 2)) % 65521;
+            }
+            if (result < 2)
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
+        }
     }
 }
