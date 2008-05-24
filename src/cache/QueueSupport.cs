@@ -52,14 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long step)
         {
-            Retry,
-            Locked,
-            Active,
-            New,
-            Done,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
