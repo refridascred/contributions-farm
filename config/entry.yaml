@@ -1,23 +1,4 @@
 # entry settings
-verbose: true
-hard_limit_s:
-  burst_interval_s:
-    - 490
-    - 398
-    - 149
-    - 234
-  idle_delay: true
-  strict:
-    - 194
-    - 488
-    - 142
-    - 23
-  profile_depth: 9.45
-  flush_threshold_s: latest
-  sync_ttl_ms: 12.14
-poll_ttl_pct:
-  account_retries: staging
-  cache_interval_pct: edge
-  burst_size_count: green
-idle_delay_count: 15.31
-queue_limit: 60
+soft_capacity: 2980
+batch_retries_s: edge
+batch_capacity_s: true
