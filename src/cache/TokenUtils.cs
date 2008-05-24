@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
