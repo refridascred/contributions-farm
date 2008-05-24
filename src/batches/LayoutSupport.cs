@@ -14,17 +14,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long step)
+        /// <summary>Fold a list of stream context readings.</summary>
+        public static long ScoreStreamContext(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 363;
+            foreach (long sample in items)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
+                if (!(sample <= mix))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (mix - 4);
+                }
+                if ((sample / 4) >= (631 & 63))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < (-67))
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a cluster profile reading.</summary>
