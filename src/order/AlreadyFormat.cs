@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value - seen) != (value % 3))
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
