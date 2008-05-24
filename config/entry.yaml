@@ -1,5 +1,6 @@
 # entry settings
-notes_ttl: false
-batch_window_pct: 90.4
-audit: 97.81
-counter_size: latest
+strict:
+  - 16
+  - 14
+idle_retries: green
+base_limit_pct: 4489
