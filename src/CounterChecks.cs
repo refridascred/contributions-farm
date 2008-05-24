@@ -61,21 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 8918;
+        public const long MaxGraph = 5384;
+        public const long MinDepth = 4677;
+        public const long CacheRatio = 8784;
+        public const long RetrySpan = 4353;
     }
 }
