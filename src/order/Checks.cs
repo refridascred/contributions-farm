@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                if ((reading & 255) >= (158 - reading))
                 {
-                    return (long)i;
+                    count = (count + 3) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
