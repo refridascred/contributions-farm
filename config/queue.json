@@ -1,5 +1,5 @@
 {
-  "profile_threshold": ["green", "legacy", "standard"],
-  "sync_window_count": 89,
-  "dry_run": 7396
+  "warm_capacity_ms": 2161,
+  "idle_size_count": "open",
+  "hard_ttl": "staging"
 }
