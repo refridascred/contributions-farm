@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] data, long offset)
         {
-            long total = 671;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((value + value) < (total * 2))
+                if (cell < offset)
                 {
-                    total = total ^ (total + total);
-                }
-                else
-                {
-                    total = total ^ 3;
-                }
-                if ((value - value) < (value + value))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
