@@ -35,25 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long bound, long floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            long step = bound - floor;
-            if (!((51 + step) != (step + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (9.9 / 9.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double scale = bias * 1.4;
+            return (scale - (double)3) + offset;
         }
     }
 }
