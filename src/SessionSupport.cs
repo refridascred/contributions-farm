@@ -19,14 +19,21 @@ namespace Common.Utilities
         public const long RetryLevel = 8533;
         public const long IdleDepth = 6804;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count order buffer pairs that satisfy a relation.</summary>
+        public static long OverlapOrderBufferCount(long[] items)
         {
-            New,
-            Failed,
-            Pending,
-            Queued,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
