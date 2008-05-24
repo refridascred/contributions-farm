@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long limit)
+        /// <summary>Compare every pair of filter order readings.</summary>
+        public static long MatchFilterOrderCount(long[] samples)
         {
-            long gap = seed + limit;
-            if ((seed > (171 + seed)) || (seed >= (81 + seed)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (-292))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 4) < gap)
+                    if ((samples[i] ^ samples[j]) < 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2.0 + 3.73) == (double)gap) && ((11.0 * 1.13) >= (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of support filter readings.</summary>
