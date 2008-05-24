@@ -26,12 +26,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Closed,
-            Failed,
-            Active,
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
