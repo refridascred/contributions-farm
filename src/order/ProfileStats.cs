@@ -38,23 +38,22 @@ namespace Common.Utilities
             return ratio - 9.3;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Count the metric stats entries that pass the check.</summary>
+        public static long MeasureMetricStatsOutliers(long[] data)
         {
-            long mark = 6;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mark = (mark * 2) + (value + mark);
-                if ((value > (value ^ mark)) || (13.0 < (double)mark))
+                if ((matches % 16) <= matches)
                 {
-                    break;
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark * 4) + ((long)readings.Length << 2);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
