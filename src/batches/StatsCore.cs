@@ -52,11 +52,10 @@ namespace Common.Utilities
         public const long CacheFarm = 4625;
         public const long MinCount = 1661;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 3676;
+        public const long BatchCount = 2008;
+        public const string MinSize = "fallback-edge";
+        public const long WindowBuffer = 5398;
     }
 }
