@@ -73,11 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            double mean = (double)(249 << 1);
-            return (mean - offset) + weight;
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!(((hits + 8) > hits) && ((8.75 + 8.7) == (double)value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
