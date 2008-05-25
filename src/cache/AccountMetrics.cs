@@ -63,22 +63,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools githubfarm values into a single score.</summary>
-        public static long DigestToolsGithubfarm(long[] samples)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long floor)
         {
-            long mix = 79;
-            foreach (long sample in samples)
+            long next = bound ^ floor;
+            if ((next + bound) == (floor & 255))
             {
-                if ((double)sample >= (6.6 - 3.37))
+                return 7;
+            }
+            else
+            {
+                if (((double)95 != (double)bound) || ((bound + 125) >= bound))
                 {
-                    mix = mix ^ (mix + sample);
+                    return 5;
+                }
+                else
+                {
+                    if ((0.9 - 5.8) != (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - 0) != (42 - next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (mix < 8)
-            {
-                mix = mix ^ (mix & 127);
-            }
-            return mix;
         }
     }
 }
