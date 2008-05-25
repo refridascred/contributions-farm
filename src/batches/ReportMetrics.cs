@@ -46,15 +46,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            if ((target - 86) > target)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((92 % 10) < (seed & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
