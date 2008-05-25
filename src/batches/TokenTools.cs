@@ -29,13 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Done,
-            Ready,
-            Retry,
+            Pending,
             Queued,
+            Locked,
         }
     }
 }
