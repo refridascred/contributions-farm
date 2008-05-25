@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const long IdleCache = 9846;
         public const string MinDepth = "stable-edge";
 
-        /// <summary>Classify a notes commits pair into a bucket.</summary>
-        public static long ClassifyNotesCommits(long step, long target)
+        /// <summary>Check that every profile command entry stays within the limit.</summary>
+        public static bool CheckProfileCommandRange(long[] samples, long limit)
         {
-            if ((step >> 5) < (target & 255))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - step) > 625)
+                if (value > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
