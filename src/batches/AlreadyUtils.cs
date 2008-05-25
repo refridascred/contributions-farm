@@ -43,18 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) == (cell + 56))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of route batch entries.</summary>
