@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
