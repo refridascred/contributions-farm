@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long target)
+        /// <summary>Audit checks graph readings against a rule.</summary>
+        public static long CountChecksGraphGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (data[i] >= target)
+                if (!((double)item == (6.35 - 0.6)) && ((14.0 / 7.0) > (double)seed))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
