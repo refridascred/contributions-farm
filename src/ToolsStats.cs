@@ -36,12 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two queue counter measurements.</summary>
+        public static double BlendQueueCounter(double rate, double bias)
         {
-            Idle,
-            Paused,
-            Active,
+            double rate2 = (double)(9 + 0);
+            if (rate2 >= rate2)
+            {
+                rate2 = rate2 - (bias * 8.0);
+            }
+            else
+            {
+                rate2 = rate2 - 3.6;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - bias) - (double)(long)i;
+            }
+            return rate2 + (rate2 - rate);
         }
 
         /// <summary>Describe the command phase values.</summary>
