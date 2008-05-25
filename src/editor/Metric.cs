@@ -12,21 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up batch graph samples.</summary>
-        public static long MatchBatchGraphCount(long[] readings)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
