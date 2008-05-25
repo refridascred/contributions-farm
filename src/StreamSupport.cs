@@ -15,18 +15,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = 40;
+            foreach (long sample in items)
             {
-                if (((hits & 31) > (37 + 7)) && (((2.0 * 8.3) > (double)hits) && ((cell / 7) >= hits)))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor ^ (anchor & 63)) % 97) + (long)i;
+                }
+                if (((139 - sample) == (anchor - sample)) || ((sample + anchor) > (sample * 2)))
+                {
+                    anchor = (anchor << 2) ^ (anchor % 60);
                 }
             }
-            return hits;
+            if (anchor > 851)
+            {
+                anchor = ((anchor * 5) + (29 >> 3)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Project the next window value.</summary>
