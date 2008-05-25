@@ -7,18 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in cached green strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
