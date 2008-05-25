@@ -24,12 +24,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Draft,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepRatio = "standard-v2";
+        public const long BaseSpan = 2938;
+        public const long DefaultRatio = 325;
     }
 }
