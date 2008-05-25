@@ -41,18 +41,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double rate = 7.35 * 0.8;
+            for (int i = 0; i < 3; i++)
             {
-                if (value > tally)
-                {
-                    tally = (tally + 1) + floor;
-                }
+                rate = ((rate + bias) + (double)(long)i) + weight;
             }
-            return tally;
+            return rate + rate;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
