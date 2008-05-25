@@ -1,8 +1,7 @@
-id,owner,weight,rank
-1,13.83,434,4.64
-2,local,967,legacy
-3,86.27,378,85.78
-4,50.3,254,9.37
-5,366,open,675
-6,230,25.67,160
-7,317,fallback,local
+id,count,region
+1,standard,cached
+2,694,28
+3,edge,172
+4,2.57,950
+5,open,92.39
+6,81.52,6
