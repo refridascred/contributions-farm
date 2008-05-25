@@ -31,12 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
