@@ -44,15 +44,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                mark = (mark - 471) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
