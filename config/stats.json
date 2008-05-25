@@ -1,7 +1,7 @@
 {
-  "flush_threshold": [253, 413],
-  "readonly": "cached",
-  "soft_window": "blue",
-  "buffer_delay": "eu-west",
-  "persist": true
+  "min_limit": 500,
+  "warm_size_pct": "latest",
+  "idle_size_pct": 500,
+  "compress": 75.09,
+  "session_delay": 44
 }
