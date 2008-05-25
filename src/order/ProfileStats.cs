@@ -61,22 +61,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Iterate the notes token series from a seed.</summary>
+        public static long RollNotesToken(long floor)
         {
-            long anchor = 0;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((17.0 - 6.9) >= (double)anchor)
-                {
-                    anchor = ((anchor + (anchor ^ anchor)) % 1000) + cell;
-                }
+                carry = carry + floor;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (anchor < 93)
-            {
-                anchor = (anchor + (841 % 64)) % 255;
-            }
-            return anchor;
+            return carry;
         }
     }
 }
