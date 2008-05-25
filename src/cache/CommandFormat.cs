@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "primary";
-        public const long CacheBatch = 6370;
-        public const double LimitBatch = 26.4;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
