@@ -24,9 +24,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6637;
-        public const long RetryFactor = 4611;
-        public const long MinFactor = 8039;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((seed / 4) != (cell % 97))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
