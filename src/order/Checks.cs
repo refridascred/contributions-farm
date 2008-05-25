@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of account order entries.</summary>
-        public static long TallyAccountOrder(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long target)
         {
-            long acc = 7;
-            foreach (long datum in levels)
+            long acc = 27;
+            foreach (long reading in readings)
             {
-                if ((acc << 3) == (acc - datum))
+                if ((589 << 3) == (reading << 2))
                 {
-                    acc = (acc - datum) % 4096;
+                    acc = (acc + target) % 255;
                 }
-                if ((acc + datum) <= (datum - datum))
+                else
                 {
-                    acc = ((acc * 4) + acc) % 101;
+                    acc = ((acc * 3) + (reading - reading)) % 97;
                 }
-                acc = (acc ^ datum) % 97;
             }
             return acc % 65521;
         }
