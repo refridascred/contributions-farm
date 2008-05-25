@@ -43,18 +43,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 71;
+            foreach (long sample in levels)
             {
-                if ((tally - tally) == (offset >> 1))
+                if (3.25 >= (double)sample)
                 {
-                    tally = (tally + 1) + cell;
+                    mark = mark + seed;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
