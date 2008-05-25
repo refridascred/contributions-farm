@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double MaxLevel = 81.87;
         public const long BatchCount = 584;
 
-        /// <summary>Combine tools order values into a single score.</summary>
-        public static long DigestToolsOrder(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long origin)
         {
-            long total = 6;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                total = (total + (value * 4)) % 1000;
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < 514)
-            {
-                total = (total - (total % 10)) % 101;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Digest a series of already entries.</summary>
