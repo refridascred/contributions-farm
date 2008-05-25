@@ -1,5 +1,5 @@
 {
-  "channel_threshold": false,
-  "window_capacity": "stable",
-  "retry_ratio_count": 64
+  "hard_capacity_ms": "standard",
+  "compress": 75,
+  "contributi_delay": 30
 }
