@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long LimitToken = 4924;
         public const long BaseToken = 4477;
 
-        /// <summary>Check that every profile command entry stays within the limit.</summary>
-        public static bool CheckProfileCommandRange(long[] samples, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = offset;
+            return gain + weight;
         }
     }
 }
