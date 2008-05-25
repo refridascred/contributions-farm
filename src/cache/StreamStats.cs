@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 48;
+            foreach (long sample in data)
             {
-                if ((double)hits == (7.8 / 3.0))
+                if ((double)acc >= 1.0)
                 {
-                    hits = (hits + 2) + cell;
+                    acc = ((((acc << 2) ^ (0 - acc)) % 1000) + sample) + floor;
+                }
+                else
+                {
+                    acc = (acc * 3) + 75;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
