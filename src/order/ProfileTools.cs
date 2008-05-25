@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (reading != origin)
+                if ((((long)series.Length >= tally) && ((tally + cell) == (cell - tally))) || ((tally << 2) == (cell ^ 94)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
