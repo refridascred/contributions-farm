@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultRatio = 12.24;
-        public const double IdleSize = 85.76;
-        public const long IdleInterval = 9570;
-        public const long RetrySpan = 3101;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double offset)
+        {
+            double scale = offset / 3.0;
+            if (scale < (double)411)
+            {
+                scale = (scale - (double)17) - weight;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Accumulate already editor samples.</summary>
         public static long TallyAlreadyEditor(long[] data)
