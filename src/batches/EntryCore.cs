@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
