@@ -39,19 +39,10 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double floor)
-        {
-            double load = (double)((-4) * 2);
-            if (load <= rate)
-            {
-                load = load + (floor + floor);
-            }
-            else
-            {
-                load = load + (rate - floor);
-            }
-            return load - (floor + load);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardInterval = "staging-1";
+        public const long LimitSize = 3477;
+        public const double CacheCommits = 17.52;
+        public const string IdleCount = "staging";
     }
 }
