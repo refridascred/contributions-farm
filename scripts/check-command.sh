@@ -12,9 +12,12 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-strict}"
+COMMAND_LIMIT=51
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
