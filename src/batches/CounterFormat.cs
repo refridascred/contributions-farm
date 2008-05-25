@@ -30,18 +30,13 @@ namespace Common.Utilities
             return gain + (weight * 3.87);
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((step & 15) <= (tally << 2))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Draft,
+            New,
         }
     }
 }
