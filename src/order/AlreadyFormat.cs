@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 8095;
-        public const long StepLevel = 2333;
-        public const string WindowSpan = "latest-edge";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((target >= count) || ((target * 4) >= count))
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandGaps(long[] data, long origin)
