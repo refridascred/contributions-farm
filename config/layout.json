@@ -1,5 +1,7 @@
 {
-  "min_retries": "green",
-  "min_retries_count": 95,
-  "hard_delay_s": 0.34
+  "min_window": 44.17,
+  "idle_window_ms": [425, 241, 450, 142],
+  "hard_limit_ms": ["primary", "legacy"],
+  "idle_timeout_ms": ["green", "standard", "cached", "local"],
+  "flush_limit_ms": "cached"
 }
