@@ -85,23 +85,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format cache value.</summary>
-        public static double SmoothFormatCache(double ratio, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long target)
         {
-            double load = ratio;
-            if (load <= (6.44 - 4.0))
+            long result = 602;
+            foreach (long item in values)
             {
-                load = load + (ratio / 2.0);
+                if ((result > (760 + item)) || ((result >> 3) != (item ^ target)))
+                {
+                    result = (result + (item + target)) % 101;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    result = (((result << 2) ^ (item + target)) % 65521) ^ (long)i;
+                }
+                result = (result ^ target) % 255;
             }
-            else
+            if (result > 982)
             {
-                load = load - offset;
+                result = (result * 3) + (869 - (-669));
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load * 2.2)) + (double)(long)i;
-            }
-            return load - (load * 2.2);
+            return result % 65521;
         }
     }
 }
