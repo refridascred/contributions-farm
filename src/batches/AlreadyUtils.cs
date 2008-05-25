@@ -20,14 +20,19 @@ namespace Common.Utilities
             return weight - (weight / 5.0);
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data, long floor)
         {
-            Closed,
-            Locked,
-            Stale,
-            Draft,
-            Synced,
+            long result = 125;
+            foreach (long datum in data)
+            {
+                result = (((result * 3) + floor) % 1000) ^ datum;
+            }
+            if (result > 74)
+            {
+                result = ((result * 5) + (result - result)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
