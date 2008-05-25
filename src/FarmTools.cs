@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long target)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long TallySupportRecordGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value != target)
+                if (((4.88 - 3.5) > (double)seen) || ((1.3 + 8.6) <= (1.4 + 7.0)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
