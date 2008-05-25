@@ -26,18 +26,32 @@ namespace Common.Utilities
         public const long DefaultRatio = 8571;
         public const double StepSession = 21.97;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long diff = offset - limit;
+            if ((double)diff > (double)limit)
             {
-                if ((limit + 849) <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((1.62 - 9.7) != (double)limit)
                 {
-                    tally = (tally + 3) - datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 % 64) >= (limit / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
