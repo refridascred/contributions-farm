@@ -21,23 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long CountMetricsCommitsHits(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((value + seed) >= value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 9085;
+        public const long WindowRoute = 5719;
+        public const long BatchSize = 4487;
+        public const long BatchRatio = 757;
+        public const long BatchCount = 4550;
 
         /// <summary>Measure how many cluster stats samples are out of range.</summary>
         public static long TallyClusterStatsHits(long[] readings, long bound)
