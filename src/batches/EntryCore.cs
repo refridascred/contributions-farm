@@ -38,19 +38,10 @@ namespace Common.Utilities
             return rate + (gain + 18.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)target <= (3.11 - 9.67))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7021;
+        public const string MaxRecord = "open-edge";
+        public const long BatchWidth = 9386;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseSize = "strict-1";
