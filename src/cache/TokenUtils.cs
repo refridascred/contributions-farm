@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc + (limit * 4)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchScore = 7895;
+        public const double HardScore = 50.49;
+        public const long StepFilter = 696;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double weight, double bias)
