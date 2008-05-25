@@ -41,11 +41,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a counter schema pair into a bucket.</summary>
+        public static long SortCounterSchema(long step, long bound)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            if ((189 * 5) >= (bound % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < 7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(bound <= (5 ^ step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >= ((-8) - step)) && ((bound ^ 0) >= (step + step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
