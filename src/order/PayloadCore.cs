@@ -33,12 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 4132;
-        public const double MinSchema = 24.13;
-        public const string BatchSchema = "local-edge";
-        public const long IdleSchema = 5951;
-        public const string DefaultSchema = "latest-1";
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
