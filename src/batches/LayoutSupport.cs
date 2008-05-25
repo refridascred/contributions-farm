@@ -46,20 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long step)
-        {
-            long score = 4;
-            foreach (long entry in levels)
-            {
-                score = (score ^ (score * 5)) - entry;
-                score = (score << 3) ^ step;
-            }
-            if (score > 2)
-            {
-                score = (score - (step ^ score)) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 8930;
+        public const long MaxOrder = 6912;
+        public const long WindowDepth = 7555;
+        public const long IdleDepth = 1117;
+        public const long RetryOrder = 6449;
     }
 }
