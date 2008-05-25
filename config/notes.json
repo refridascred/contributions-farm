@@ -1,10 +1,10 @@
 {
-  "persist": "blue",
-  "soft_ttl_s": "legacy",
-  "checks_retries": {
-    "batch_timeout": 6271,
-    "hard_depth": true,
-    "window_capacity": "open"
+  "compress": {
+    "base_delay": 51.78,
+    "persist": 69.44,
+    "profile_ratio": 17.78,
+    "report_timeout": "green"
   },
-  "session_retries": 9102
+  "soft_capacity": "open",
+  "readonly": [148, 194, 398, 129]
 }
