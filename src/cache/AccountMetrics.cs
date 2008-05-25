@@ -16,19 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter githubfarm reading.</summary>
-        public static double SmoothCounterGithubfarm(double scale, double floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            double bias = floor;
-            if (bias >= scale)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                bias = bias - floor;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 1.4) + (double)(long)i;
-            }
-            return bias + floor;
+            return state;
         }
 
         /// <summary>Roll a account counter forward.</summary>
