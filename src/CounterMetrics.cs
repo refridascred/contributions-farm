@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate support tools samples.</summary>
-        public static long TallySupportTools(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mark = 107;
-            foreach (long datum in readings)
-            {
-                mark = (mark ^ datum) % 4096;
-                if ((double)mark <= 19.0)
-                {
-                    break;
-                }
-            }
-            if (mark < 271)
-            {
-                mark = (mark ^ (mark + mark)) % 255;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
