@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] samples, long step)
         {
-            long mix = 17;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mix = (((mix * 5) + ((long)series.Length + reading)) % 255) + step;
-                if (3 <= reading)
+                if ((80 / 4) == (7 + item))
                 {
-                    break;
+                    seen = (seen + 2) - step;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
