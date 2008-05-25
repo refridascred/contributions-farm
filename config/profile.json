@@ -1,8 +1,7 @@
 {
-  "counter_delay": 68,
-  "format_ratio": 88,
-  "metric_threshold": "local",
-  "default_timeout": 89.55,
-  "soft_window_s": "legacy",
-  "warm_threshold_ms": true
+  "idle_size_count": 54,
+  "sync_ratio_s": "fallback",
+  "dry_run": "cached",
+  "sync_window_pct": 250,
+  "metrics_depth": 5255
 }
