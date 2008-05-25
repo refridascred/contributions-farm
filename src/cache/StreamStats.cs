@@ -57,19 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long step)
+        /// <summary>Digest a series of account batches entries.</summary>
+        public static long WeighAccountBatches(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long state = 10;
+            foreach (long sample in values)
             {
-                if (value >= step)
+                state = (state - (seed & 15)) % 1000;
+                state = (state - (sample >> 1)) % 1000;
+                if ((double)seed == (19.0 - 6.0))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
