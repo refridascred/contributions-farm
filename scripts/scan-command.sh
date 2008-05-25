@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging latest stable; do
+COMMAND_LIMIT=222
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest fallback legacy open; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=496
-log "limit is ${COMMAND_LIMIT}"
