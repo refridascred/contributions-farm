@@ -1,14 +1,5 @@
 {
-  "burst_capacity_count": true,
-  "hard_limit_ms": "stable",
-  "layout_ratio": {
-    "session_limit": 250,
-    "flush_ratio_pct": [146, 290, 90],
-    "default_delay": 2534,
-    "dry_run": {
-      "farm_size": true,
-      "poll_timeout": 78.62,
-      "warm_limit": "legacy"
-    }
-  }
+  "audit": 41,
+  "channel_ttl": "fallback",
+  "default_ttl_pct": 3172
 }
