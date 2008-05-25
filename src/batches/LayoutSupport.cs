@@ -12,15 +12,18 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((((reading + reading) <= (reading / 2)) || ((tally ^ reading) < (reading << 3))) && ((reading % 60) < (reading << 2)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
