@@ -1,5 +1,8 @@
 {
-  "enabled": ["strict", "green", "staging", "edge"],
-  "compress": 60,
-  "strict": 3843
+  "retry_window": ["strict", "green", "edge"],
+  "verbose": false,
+  "cache_size_ms": "blue",
+  "max_capacity": 18.99,
+  "max_retries_count": "edge",
+  "enabled": 64
 }
