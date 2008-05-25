@@ -51,39 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long floor, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] samples, long floor)
         {
-            long cur = floor ^ seed;
-            if (floor >= (seed >> 4))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (cur > (seed >> 4))
+                if ((entry + entry) <= (7 % 7))
                 {
-                    return 2;
+                    hits = (hits + 1) - floor;
                 }
                 else
                 {
-                    if (!((cur - 1) > (seed * 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor >> 4) != (cur << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
