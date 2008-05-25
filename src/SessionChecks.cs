@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long SoftDepth = 6762;
         public const double HardDepth = 46.38;
 
-        /// <summary>Accumulate graph tools samples.</summary>
-        public static long DigestGraphTools(long[] readings, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = 241;
-            foreach (long datum in readings)
-            {
-                acc = ((acc * 5) + (acc - target)) - datum;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
