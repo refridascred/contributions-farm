@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] levels, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = 0;
+            foreach (long value in series)
             {
-                if (((377 - target) == (target - count)) && (((cell - target) != (cell & 15)) || ((target % 8) < count)))
-                {
-                    count = count + 3;
-                }
+                sum = (((sum * 2) + (sum << 3)) % 97) - value;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up queue commits samples.</summary>
