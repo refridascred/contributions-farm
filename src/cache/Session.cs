@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long result = 2;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - cell;
-                result = ((result << 2) ^ (cell / 2)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
