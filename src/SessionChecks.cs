@@ -43,11 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 8954;
-        public const string WindowCount = "standard-edge";
-        public const string RetryRoute = "stable-v2";
-        public const long StepWidth = 2625;
-        public const long HardRoute = 2634;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
