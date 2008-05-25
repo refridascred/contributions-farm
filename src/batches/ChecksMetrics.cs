@@ -77,17 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long limit)
+        /// <summary>Audit githubfarm schema readings against a rule.</summary>
+        public static long TallyGithubfarmSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                if (((tally - datum) != (datum + (long)readings.Length)) && ((double)tally < 9.4))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
