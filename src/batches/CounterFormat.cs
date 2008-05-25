@@ -16,15 +16,19 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long floor)
         {
-            double weight = (double)(747 + 7);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                weight = ((weight + floor) + (double)(long)i) - rate;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight + (double)6;
+            return stale;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
