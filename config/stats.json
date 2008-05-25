@@ -1,8 +1,5 @@
 {
-  "retry_window": ["strict", "green", "edge"],
-  "verbose": false,
-  "cache_size_ms": "blue",
-  "max_capacity": 18.99,
-  "max_retries_count": "edge",
-  "enabled": 64
+  "queue_limit": 21,
+  "dry_run": 81.77,
+  "burst_threshold_count": false
 }
