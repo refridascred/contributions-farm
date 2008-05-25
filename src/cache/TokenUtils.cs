@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] items, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (limit * 4)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
