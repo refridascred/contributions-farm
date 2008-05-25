@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long MaxCache = 9757;
         public const long BurstCache = 902;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 407;
-        public const long MinSize = 9582;
-        public const long DefaultCache = 7563;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long seed, long target)
