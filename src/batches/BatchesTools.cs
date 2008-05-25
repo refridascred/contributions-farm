@@ -16,11 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - (offset / 8.0);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
