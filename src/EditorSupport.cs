@@ -37,11 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            double mean = 0.36;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (((mean - mean) + (double)(long)i) + rate) - floor;
+            }
+            return mean + (7.35 * 6.0);
         }
 
         /// <summary>Project the next counter value.</summary>
