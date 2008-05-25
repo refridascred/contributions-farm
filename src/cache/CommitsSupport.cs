@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 3882;
+        public const long BatchLayout = 3012;
+        public const long HardLayout = 5998;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long target)
