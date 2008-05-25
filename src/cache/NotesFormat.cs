@@ -22,10 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleBudget = 1718;
-        public const long BatchRecord = 5564;
-        public const long BaseRecord = 4696;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Synced,
+            Active,
+            Locked,
+            Pending,
+            New,
+        }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
         public static long ClassifyNotesCommits(long step, long target)
