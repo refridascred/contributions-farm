@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double floor)
+        /// <summary>Count already layout pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyLayoutCount(long[] levels)
         {
-            double bias = 18.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias + (double)436) + (double)(long)i) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + (scale * 5.4);
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
