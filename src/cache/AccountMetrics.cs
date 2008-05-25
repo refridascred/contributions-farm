@@ -27,23 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)seed == (double)score)
-                {
-                    score = (score ^ (long)i) % 255;
-                    continue;
-                }
-                long prev = score ^ score;
-                score = (score + (prev - 14)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepInterval = 7839;
+        public const string BurstScore = "legacy-v2";
+        public const string BatchScore = "latest";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long step)
