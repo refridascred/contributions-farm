@@ -47,10 +47,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftLevel = "legacy-1";
-        public const long WindowLevel = 5600;
-        public const long BatchDepth = 5872;
-        public const long DefaultInterval = 5588;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
