@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long carry = -624;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + entry) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 1)
-            {
-                carry = ((carry * 4) + (carry << 2)) % 65521;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
