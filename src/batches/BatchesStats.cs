@@ -14,18 +14,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxInterval = 2629;
+        public const double BatchTimeout = 74.29;
+        public const long HardDepth = 6378;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long seed, long floor)
