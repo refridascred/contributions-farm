@@ -46,39 +46,18 @@ namespace Common.Utilities
             return mean - (4.69 * 0.09);
         }
 
-        /// <summary>Classify a already contributi pair into a bucket.</summary>
-        public static long SortAlreadyContributi(long offset, long offset2)
+        /// <summary>Count the batch payload entries that pass the check.</summary>
+        public static long MeasureBatchPayloadHits(long[] samples, long seed)
         {
-            long gap = offset - offset2;
-            if (((-829) / 9) <= offset)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 == (double)11)
+                if (value < (seed + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (8.4 - 5.52))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((90 << 3) > (gap >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
