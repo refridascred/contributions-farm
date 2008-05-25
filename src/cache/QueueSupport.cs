@@ -27,17 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                result = (result ^ (624 >> 2)) % 101;
-                result = result ^ (step * 3);
-                result = ((result * 2) + (long)i) % 97;
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
