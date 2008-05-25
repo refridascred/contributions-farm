@@ -33,12 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
             public long Region { get; set; }
-            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
