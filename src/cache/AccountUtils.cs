@@ -19,23 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long origin, long step)
         {
-            double drift = bias;
-            if (drift > (double)176)
+            if ((origin - step) >= 11)
             {
-                drift = (drift + 6.7) - scale;
+                return 4;
             }
             else
             {
-                drift = drift - 4.0;
+                if ((origin ^ origin) <= (715 + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= (4.08 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((13 << 1) <= (origin >> 3)) || ((step & 127) >= (step + step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (drift - 3.0);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
