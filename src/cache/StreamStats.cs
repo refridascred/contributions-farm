@@ -40,23 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm channel measurements.</summary>
-        public static double ScaleGithubfarmChannel(double ratio, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] samples, long floor)
         {
-            double bias = span;
-            if (bias >= (bias * 3.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                bias = bias - (ratio / 6.0);
+                if (((15.0 * 9.64) >= (double)reading) && ((floor > (85 << 3)) && ((matches - floor) <= (matches >> 5))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                bias = bias - (ratio - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + 9.1;
+            return matches;
         }
 
         /// <summary>Digest a series of account batches entries.</summary>
