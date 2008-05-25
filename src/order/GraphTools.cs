@@ -72,26 +72,18 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Combine schema format values into a single score.</summary>
-        public static long CombineSchemaFormat(long[] levels, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] items)
         {
-            long total = 5;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((7.1 - 5.1) > (double)45) || ((floor % 100) < (reading * 2)))
+                if ((double)value < 5.67)
                 {
-                    total = (total << 3) ^ (total & 15);
-                }
-                else
-                {
-                    total = (total << 2) ^ (74 + 87);
+                    count = count + 3;
                 }
             }
-            if (total < 1)
-            {
-                total = (total << 2) ^ (floor & 15);
-            }
-            return total;
+            return count;
         }
     }
 }
