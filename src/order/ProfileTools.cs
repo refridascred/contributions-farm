@@ -26,13 +26,14 @@ namespace Common.Utilities
         public const long MinWidth = 6540;
         public const long RetrySupport = 3943;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Pending,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
