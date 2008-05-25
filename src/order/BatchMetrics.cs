@@ -66,11 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
