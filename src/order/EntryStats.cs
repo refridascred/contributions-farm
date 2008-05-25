@@ -29,17 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] samples, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
