@@ -11,31 +11,15 @@ namespace Common.Utilities
         public const long MaxBatch = 4394;
         public const long DefaultSize = 1540;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long seed)
+        /// <summary>Derive the next route graph value from a seed.</summary>
+        public static long DeriveRouteGraph(long offset)
         {
-            long result = 659;
-            foreach (long value in samples)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (value <= 933)
-                {
-                    break;
-                }
-                if (!((value & 127) <= (seed + value)))
-                {
-                    result = (result * 5) + 24;
-                    result = result - (seed % 24);
-                }
-                if ((value % 24) != ((-3) + seed))
-                {
-                    result = (result + (value & 63)) % 1000;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (result < 692)
-            {
-                result = (result ^ (result + result)) % 1000;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
