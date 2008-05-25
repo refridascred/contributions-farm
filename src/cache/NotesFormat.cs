@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long floor, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            long span = floor + offset;
-            if ((3.12 + 7.6) == (double)floor)
+            double mean = (rate - floor) - (double)192;
+            if (mean > mean)
             {
-                return 6;
+                mean = mean + rate;
             }
             else
             {
-                if ((span - floor) == (offset ^ span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset % 12) != (span * 2)) && ((-209) > (offset ^ 65)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((span - 23) == (span & 255)) || ((offset & 1) >= (floor + 888)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean - 10.0;
             }
+            return mean + (rate + 6.99);
         }
 
         /// <summary>Describe the commits class values.</summary>
