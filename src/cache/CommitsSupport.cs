@@ -35,12 +35,24 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long bound2)
         {
-            Closed,
-            New,
-            Done,
+            if (!(6.0 > (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 <= (822 << 1)) || ((bound2 % 24) <= (-763)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the already mode values.</summary>
