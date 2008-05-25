@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long HardFactor = 582;
         public const long StepGraph = 1921;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            long result = 125;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result * 3) + floor) % 1000) ^ datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > 74)
-            {
-                result = ((result * 5) + (result - result)) % 255;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
