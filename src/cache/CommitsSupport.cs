@@ -22,21 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - ((long)i / 4)) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a counter options.</summary>
