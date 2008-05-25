@@ -63,19 +63,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate buffer metric readings against a bound.</summary>
-        public static bool ValidateBufferMetricBounds(long[] data, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
