@@ -1,6 +1,5 @@
 {
-  "enabled": 16.7,
-  "hard_retries_ms": "edge",
-  "account_interval": 60,
-  "soft_ttl_s": false
+  "compress": "edge",
+  "base_interval_ms": "open",
+  "audit": [321, 394, 30]
 }
