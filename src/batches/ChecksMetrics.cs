@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const double BaseSession = 96.09;
         public const long HardSession = 5251;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5962;
-        public const long DefaultBuffer = 2249;
-        public const string MinBuffer = "stable-1";
-        public const long StepSize = 674;
-        public const double SoftBuffer = 39.06;
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double span)
+        {
+            double ratio2 = span;
+            if (ratio2 > (6.65 + ratio2))
+            {
+                ratio2 = (ratio2 + 9.4) - ratio;
+            }
+            return ratio2 + ratio2;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] values, long origin)
