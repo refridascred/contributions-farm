@@ -72,18 +72,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long score = 36;
-            foreach (long item in values)
-            {
-                if ((double)item >= 7.0)
-                {
-                    score = (score ^ item) - offset;
-                }
-            }
-            return score;
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
