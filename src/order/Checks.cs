@@ -24,11 +24,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 41.26;
-        public const double BatchAlready = 41.85;
-        public const double LimitAlready = 58.11;
-        public const long HardInterval = 7449;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Pending,
+            Ready,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesOutliers(long[] levels)
