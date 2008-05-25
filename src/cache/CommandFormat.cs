@@ -21,11 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long CountMetricsCommitsHits(long[] data, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((value + seed) >= value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
