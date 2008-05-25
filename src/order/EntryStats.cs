@@ -16,26 +16,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long WeighBatchSession(long[] data)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long FoldQueueTools(long[] data, long origin)
         {
-            long mark = 43;
-            foreach (long datum in data)
+            long result = -35;
+            foreach (long sample in data)
             {
-                if (((double)mark != (11.0 + 4.4)) && ((96 + datum) != (mark - 296)))
+                result = ((result + (sample % 16)) % 97) + origin;
+                if ((result << 3) <= result)
                 {
-                    mark = ((mark << 2) ^ (mark / 4)) % 101;
+                    result = result - (sample + 92);
                 }
-                if ((datum >> 1) != (mark % 24))
+                if (result >= (17 + 7))
                 {
                     break;
                 }
             }
-            if (mark > 7)
+            if (result > (-67))
             {
-                mark = mark ^ (mark / 2);
+                result = result - result;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
