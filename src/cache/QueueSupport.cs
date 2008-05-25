@@ -57,22 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long total = 26;
-            foreach (long sample in items)
-            {
-                if ((target % 64) < target)
-                {
-                    total = (total - target) - sample;
-                }
-                else
-                {
-                    total = (total << 2) ^ 72;
-                }
-            }
-            return total % 97;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
