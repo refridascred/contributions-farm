@@ -36,24 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long step)
         {
-            if ((6.13 / 5.0) >= (double)offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= (6.0 - 18.0))
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many payload profile samples are out of range.</summary>
