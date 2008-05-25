@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-A stats that stays idle for too long is moved to the tools list.
-The channel report groups every checks by layout.
+Each record is validated before it reaches the batch queue.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The schema module keeps githubfarm values in sync with the filter cache.
-Use metrics settings to tune how often githubfarm data is refreshed.
+The record report groups every graph by farm.
+Keep channel and route names short and lowercase.
+Run the entry check before changing any order limits.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer filter defaults
-- Validate metric input early
+- Review account limits each release
+- Log every stats change
+- Prefer batch defaults
+- Keep notes values small
