@@ -33,11 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = offset;
-            return gain + weight;
+            Synced,
+            Locked,
+            Stale,
         }
     }
 }
