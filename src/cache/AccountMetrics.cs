@@ -35,14 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Paused,
-            Locked,
+            Queued,
+            Draft,
             Retry,
             Pending,
-            New,
+            Paused,
         }
 
         /// <summary>Match up tools samples.</summary>
