@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
+            Ready,
+            Synced,
             New,
-            Active,
             Failed,
         }
 
