@@ -47,24 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total << 3) ^ (long)i) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total + total) % 97) ^ (long)i2;
-                }
-                if ((5 + bound) >= (bound / 8))
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Locked,
+            Dropped,
         }
     }
 }
