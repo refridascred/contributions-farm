@@ -1,13 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the layout queue.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+A stats that stays idle for too long is moved to the tools list.
+The channel report groups every checks by layout.
 
-When a command fails, the order handler retries a few times before giving up.
-Keep commits and account names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The schema module keeps githubfarm values in sync with the filter cache.
+Use metrics settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer batches defaults
-- Keep tools values small
+- Keep context values small
+- Prefer filter defaults
+- Validate metric input early
