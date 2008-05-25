@@ -37,21 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark - (mark & 15)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
