@@ -57,12 +57,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long floor2)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long prev = floor ^ floor2;
+            if (((double)prev > (double)floor) && ((1.75 + 3.0) >= (double)floor2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor2 + prev) != (floor + floor)) && (floor > (floor + prev)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
