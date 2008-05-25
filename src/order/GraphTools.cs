@@ -49,18 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits + hits) <= (value + 151))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
