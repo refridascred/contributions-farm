@@ -1,7 +1,4 @@
 # entry settings
-verbose:
-  - stable
-  - latest
-  - strict
-strict: 250
-max_delay_pct: 95
+persist: 96.55
+cache_ratio: cached
+metric_timeout: 9675
