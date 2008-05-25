@@ -16,13 +16,21 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of order stats readings.</summary>
+        public static long OverlapOrderStatsCount(long[] series)
         {
-            Closed,
-            Paused,
-            Stale,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
