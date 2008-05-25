@@ -23,24 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings)
         {
-            if ((13.0 + 15.0) <= (double)limit)
+            long mix = 51;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 1) > (step + step))
+                if ((double)mix == (8.0 + 12.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    mix = ((mix + (mix - mix)) % 255) ^ cell;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
