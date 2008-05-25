@@ -56,19 +56,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a batches options.</summary>
