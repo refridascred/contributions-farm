@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 3445;
-        public const string CacheChecks = "alpha-1";
-        public const long HardCount = 1727;
-        public const long MaxInterval = 7409;
-        public const string HardSpan = "fallback-v2";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double bias, double bias2)
