@@ -23,39 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long limit, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            long lane = limit ^ target;
-            if (target < (lane % 97))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((19.0 / 3.0) == (double)target)
+                if (((entry * 3) <= tally) || (entry > (3 / 7)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((lane - limit) > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane + limit) >= (limit % 97))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
