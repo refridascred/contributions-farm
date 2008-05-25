@@ -24,19 +24,11 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Scale a graph stats figure with a bias.</summary>
-        public static double SmoothGraphStats(double bias, double floor)
-        {
-            double bias2 = (double)(23 << 2);
-            if (bias2 <= (double)390)
-            {
-                bias2 = (bias2 - bias) - floor;
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - 4.1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 58.51;
+        public const double HardTimeout = 2.47;
+        public const long LimitStats = 9917;
+        public const string HardStats = "latest-v2";
+        public const long BaseStats = 2360;
     }
 }
