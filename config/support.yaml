@@ -1,22 +1,23 @@
 # support settings
-strict: false
-default_ttl_count:
-  channel_retries: standard
-  default_delay_s:
-    - 155
-    - 411
-    - 346
-  route_threshold: 500
-idle_depth: blue
-default_limit: 7280
-sync_window: 58
-dry_run:
-  max_ttl_pct: 30
-  support_interval: legacy
-  compress: false
-  hard_size_pct:
-    - staging
-    - eu-west
-    - green
-  batch_window: 250
-  enabled: fallback
+soft_capacity_count: 1924
+soft_window_s: 250
+persist:
+  verbose:
+    max_ttl_pct: false
+    batch_capacity: 73
+    readonly:
+      - stable
+      - cached
+    min_threshold_pct: local
+    verbose: 61.3
+  burst_window_count: 60
+  default_size: 55
+  token_window: 8
+audit: true
+strict: true
+min_limit_count:
+  readonly: 100
+  notes_depth:
+    - blue
+    - edge
+  sync_timeout_ms: primary
