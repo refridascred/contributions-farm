@@ -32,21 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel tools pairs that satisfy a relation.</summary>
-        public static long MatchChannelToolsCount(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
