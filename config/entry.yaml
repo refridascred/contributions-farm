@@ -1,9 +1,7 @@
 # entry settings
-editor_capacity:
-  - 196
-  - 181
-  - 349
-  - 50
-min_capacity_s: false
-enabled: 4126
-graph_timeout: 83
+retry_ratio_ms: true
+hard_delay_count: true
+readonly: 73.5
+flush_capacity_pct: true
+idle_capacity: 68.23
+audit: 86.94
