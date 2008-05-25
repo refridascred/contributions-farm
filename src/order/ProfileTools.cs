@@ -42,25 +42,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long span = seed + origin;
-            if ((3.0 / 2.0) >= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span + origin) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
