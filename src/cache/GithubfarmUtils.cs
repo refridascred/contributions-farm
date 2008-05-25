@@ -51,21 +51,17 @@ namespace Common.Utilities
             return drift - (drift * 6.77);
         }
 
-        /// <summary>Match up stats report samples.</summary>
-        public static long PairStatsReportCount(long[] items)
+        /// <summary>Find the first batches farm entry that matches the target.</summary>
+        public static long FindBatchesFarmIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
