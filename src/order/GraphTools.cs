@@ -49,18 +49,26 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Count the batch layout entries that pass the check.</summary>
-        public static long CountBatchLayoutOutliers(long[] items, long limit)
+        /// <summary>Combine schema format values into a single score.</summary>
+        public static long CombineSchemaFormat(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = 5;
+            foreach (long reading in levels)
             {
-                if (!((limit < (37 / 9)) || ((cell * 4) >= (seen / 3))))
+                if (((7.1 - 5.1) > (double)45) || ((floor % 100) < (reading * 2)))
                 {
-                    seen = seen + 3;
+                    total = (total << 3) ^ (total & 15);
+                }
+                else
+                {
+                    total = (total << 2) ^ (74 + 87);
                 }
             }
-            return seen;
+            if (total < 1)
+            {
+                total = (total << 2) ^ (floor & 15);
+            }
+            return total;
         }
     }
 }
