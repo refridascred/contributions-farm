@@ -22,19 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Accumulate stats contributi samples.</summary>
+        public static long WeighStatsContributi(long[] levels, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long anchor = 52;
+            foreach (long reading in levels)
             {
-                if ((double)(long)i <= (4.3 - 17.0))
-                {
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                anchor = (anchor + (1 * 5)) ^ reading;
+                anchor = anchor - (limit + anchor);
             }
-            return carry;
+            if (anchor > 612)
+            {
+                anchor = (anchor << 3) ^ (limit + limit);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
