@@ -17,18 +17,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            long sum = 29;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)(-8) == (double)cell)
+                if ((datum % 3) > (datum % 8))
                 {
-                    sum = sum - (cell - sum);
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
