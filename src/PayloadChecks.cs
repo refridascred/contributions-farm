@@ -12,12 +12,38 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long seed)
         {
-            Synced,
-            Ready,
-            Active,
+            if (5.81 > (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((8.3 * 7.0) <= (double)origin) || ((5.95 + 1.4) > (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 38) != (origin >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin ^ 1) == (seed % 5)) && (seed >= (seed * 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
