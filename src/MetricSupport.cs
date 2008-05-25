@@ -53,17 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 2) ^ ((-3) - floor);
-                anchor = (anchor - ((long)i + (long)i)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
