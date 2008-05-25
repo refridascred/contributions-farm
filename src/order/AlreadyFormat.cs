@@ -32,18 +32,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (count <= 614)
+                if (hits <= (998 * 2))
                 {
-                    count = (count + 2) + reading;
+                    hits = ((hits + 3) + cell) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a context snapshot.</summary>
