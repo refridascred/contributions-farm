@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long ScoreSchemaOrder(long[] values)
         {
-            Locked,
-            Done,
-            Retry,
-            Idle,
+            long score = 2;
+            foreach (long reading in values)
+            {
+                if ((double)score > (14.0 + 2.9))
+                {
+                    score = score + (score - score);
+                }
+                else
+                {
+                    score = score - (reading & 7);
+                }
+            }
+            if (score < 8)
+            {
+                score = (score + (score / 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a token snapshot.</summary>
