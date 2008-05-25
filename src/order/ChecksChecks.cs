@@ -14,12 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardInterval = 33.73;
+        public const long BaseSupport = 9446;
+        public const double SoftSupport = 77.36;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MaxRecord = 73.44;
