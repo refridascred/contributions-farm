@@ -70,18 +70,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((94 % 8) < matches)
-                {
-                    matches = ((matches + 2) + item) - origin;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
