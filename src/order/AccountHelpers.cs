@@ -55,15 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long limit)
         {
-            long carry = 6;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry & 31)) + reading) + step;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate graph counter readings against a bound.</summary>
