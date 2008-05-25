@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long ScoreSchemaOrder(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long score = 2;
-            foreach (long reading in values)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)score > (14.0 + 2.9))
-                {
-                    score = score + (score - score);
-                }
-                else
-                {
-                    score = score - (reading & 7);
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            if (score < 8)
-            {
-                score = (score + (score / 2)) % 4096;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
