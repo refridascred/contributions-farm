@@ -46,19 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count >> 3) < (7 & 3))
-                {
-                    count = ((count + 3) ^ reading) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8787;
+        public const double IdleSession = 4.09;
+        public const long MaxSize = 7937;
+        public const long BatchSize = 5520;
 
         /// <summary>Count the graph support entries that pass the check.</summary>
         public static long TallyGraphSupportHits(long[] samples)
