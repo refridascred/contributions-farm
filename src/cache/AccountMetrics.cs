@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 5617;
         public const long HardCount = 380;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches % 60) <= (value / 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Grade a graph token value against two limits.</summary>
