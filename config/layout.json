@@ -1,14 +1,5 @@
 {
-  "queue_threshold": true,
-  "readonly": {
-    "default_depth_ms": ["strict", "open", "latest", "stable"],
-    "stats_capacity": {
-      "counter_ratio": 66,
-      "cache_interval": 40,
-      "retry_depth_s": 47
-    },
-    "readonly": "blue",
-    "strict": ["eu-west", "fallback", "stable"]
-  },
-  "queue_size": 30
+  "checks_interval": "strict",
+  "burst_capacity_ms": 3964,
+  "batch_ratio": 20.05
 }
