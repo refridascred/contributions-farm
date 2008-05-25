@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Match up window graph samples.</summary>
+        public static long MatchWindowGraphCount(long[] values)
         {
-            Closed,
-            Idle,
-            Retry,
-            New,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a payload graph value against two limits.</summary>
