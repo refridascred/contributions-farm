@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const double HardScore = 50.49;
         public const long StepFilter = 696;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double bias)
-        {
-            double scale = bias;
-            return (scale - 2.0) + weight;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultInterval = 9143;
+        public const string BurstRoute = "fallback-1";
+        public const string RetryRoute = "standard-v2";
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double rate, double floor)
