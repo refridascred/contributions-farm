@@ -34,21 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Adjust a session route reading.</summary>
+        public static double ProjectSessionRoute(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 11.0;
+            if (drift < floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (double)868) + weight;
             }
-            return seen;
+            else
+            {
+                drift = drift - 0.02;
+            }
+            return drift + (floor - 9.15);
         }
 
         /// <summary>Check that every window token entry stays within the limit.</summary>
