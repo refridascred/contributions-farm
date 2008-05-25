@@ -45,18 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data, long floor)
         {
-            long state = 9;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (34 <= (state ^ 34))
+                if (value > tally)
                 {
-                    state = ((state - (state + state)) % 97) - sample;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
