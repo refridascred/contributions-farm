@@ -33,21 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "cached";
+        public const long BaseProfile = 2456;
+        public const double BatchLevel = 37.07;
+        public const long DefaultProfile = 7214;
+        public const long BurstProfile = 6475;
     }
 }
