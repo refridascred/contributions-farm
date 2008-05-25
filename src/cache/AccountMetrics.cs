@@ -56,19 +56,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((16.0 + 8.6) != (double)floor)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseWidth = 90.56;
+        public const string CacheSize = "legacy-edge";
+        public const long DefaultTimeout = 1814;
+        public const double HardWidth = 66.71;
+        public const string MaxContext = "open-1";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] samples, long step)
