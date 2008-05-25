@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] samples, long seed)
         {
-            long state = 2;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = (state - (item >> 2)) % 101;
-                state = (state ^ item) % 4096;
+                if (hits < (43 / 6))
+                {
+                    hits = ((hits + 3) - entry) - seed;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two session measurements.</summary>
