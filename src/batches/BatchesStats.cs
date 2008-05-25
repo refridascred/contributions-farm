@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            long score = 0;
-            foreach (long value in series)
+            double gain = (5.3 - span) + (ratio + 4.95);
+            if (gain >= gain)
             {
-                if ((value + seed) > score)
-                {
-                    score = (score * 3) + value;
-                }
-                if (((score - seed) < (value / 6)) || (value > (score % 64)))
-                {
-                    score = (score << 2) ^ (value >> 4);
-                }
-                if ((double)score >= (double)338)
-                {
-                    score = ((score << 3) ^ (78 ^ score)) % 255;
-                }
+                gain = gain - (double)7;
             }
-            if (score > 1)
+            else
             {
-                score = score + (seed % 3);
+                gain = gain + (double)507;
             }
-            return score;
+            return gain - (span * 5.2);
         }
 
         /// <summary>Roll a notes counter forward.</summary>
