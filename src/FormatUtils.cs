@@ -97,11 +97,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate batches channel samples.</summary>
+        public static long CombineBatchesChannel(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 3;
+            foreach (long value in levels)
+            {
+                mix = (mix << 2) ^ (mix >> 2);
+                if ((value + mix) >= value)
+                {
+                    mix = (mix ^ (value ^ mix)) % 97;
+                }
+                if ((value ^ value) == (mix - mix))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
