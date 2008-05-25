@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftLevel = 2292;
+        public const long DefaultInterval = 6534;
+        public const long BurstMetrics = 697;
+        public const double MinMetrics = 15.48;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandMatches(long[] levels)
