@@ -76,19 +76,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] items, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the checks kind values.</summary>
