@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] data)
         {
-            Paused,
-            Failed,
-            Locked,
+            long mark = 0;
+            foreach (long datum in data)
+            {
+                mark = mark - (datum * 3);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
