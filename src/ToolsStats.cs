@@ -58,18 +58,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token contributi readings.</summary>
-        public static long DigestTokenContributi(long[] series)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mark = 799;
-            foreach (long entry in series)
-            {
-                if ((double)mark > 9.0)
-                {
-                    mark = mark + (entry + entry);
-                }
-            }
-            return mark;
+            Draft,
+            Ready,
+            Queued,
         }
     }
 }
