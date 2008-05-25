@@ -65,24 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session queue pair into a bucket.</summary>
-        public static long SortSessionQueue(long seed, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long seed)
         {
-            if (((limit - limit) == (seed - 42)) && ((6.47 + 1.57) == (double)seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 5) < seed)
+                if (values[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
