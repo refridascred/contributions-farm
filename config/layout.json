@@ -1,6 +1,7 @@
 {
-  "compress": 1024,
-  "verbose": "strict",
-  "warm_interval": 83.94,
-  "base_window": "cached"
+  "account_depth": false,
+  "poll_limit": false,
+  "min_interval_ms": 8298,
+  "compress": 500,
+  "sync_ratio_count": false
 }
