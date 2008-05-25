@@ -27,11 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryWidth = "standard-1";
-        public const long IdleSpan = 8616;
-        public const double MinToken = 77.34;
-        public const double LimitToken = 32.16;
-        public const long BatchToken = 2977;
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long FoldClusterEditor(long[] series)
+        {
+            long sum = -680;
+            foreach (long datum in series)
+            {
+                if ((double)3 >= (double)sum)
+                {
+                    sum = (sum ^ (sum << 3)) ^ datum;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (430 % 12)) % 4096;
+                }
+            }
+            return sum;
+        }
     }
 }
