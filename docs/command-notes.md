@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The session module keeps support values in sync with the account cache.
+Use order settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Log every tools change
-- Keep payload values small
-- Validate stats input early
+- Document new account fields
+- Prefer payload defaults
+- Review buffer limits each release
+- Log every notes change
