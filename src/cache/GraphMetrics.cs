@@ -50,11 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 4471;
-        public const long IdleCache = 3403;
-        public const double RetryBudget = 46.42;
-        public const long SoftCache = 6416;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2978;
+        public const long BaseTimeout = 4965;
+        public const long CacheFactor = 4442;
+        public const long IdleRoute = 3103;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long step)
