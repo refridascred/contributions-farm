@@ -1,7 +1,10 @@
-id,active,count
-1,11.43,latest
-2,905,edge
-3,346,fallback
-4,503,453
-5,785,88.48
-6,cached,150
+id,token,label,rank
+1,92.47,289,828
+2,594,14,edge
+3,20.84,stable,133
+4,874,400,26.7
+5,local,17.02,527
+6,standard,stable,cached
+7,350,824,76.51
+8,940,900,830
+9,819,779,12.15
