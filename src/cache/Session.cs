@@ -39,12 +39,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the notes farm entries that pass the check.</summary>
