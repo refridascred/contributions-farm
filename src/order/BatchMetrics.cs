@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit queue farm readings against a rule.</summary>
-        public static long MeasureQueueFarmMatches(long[] readings)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits - hits) <= (hits >> 5))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
