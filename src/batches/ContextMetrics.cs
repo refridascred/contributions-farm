@@ -10,22 +10,25 @@ namespace Common.Utilities
         public const long BatchFarm = 6851;
         public const string SoftCount = "standard-v2";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long diff = bound + step;
+            if (4.9 >= (double)diff)
             {
-                if ((9.1 > (double)count) && ((count ^ entry) != (entry & 127)))
+                return 8;
+            }
+            else
+            {
+                if (!(diff > (diff / 8)))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
