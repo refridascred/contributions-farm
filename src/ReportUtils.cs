@@ -49,20 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 9.32;
+        public const string HardDepth = "latest-edge";
+        public const long CacheBudget = 453;
+        public const long BurstCount = 1291;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
