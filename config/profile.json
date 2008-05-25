@@ -1,5 +1,6 @@
 {
-  "default_interval_s": 28,
-  "compress": 5696,
-  "retry_interval_ms": "local"
+  "persist": true,
+  "soft_retries_pct": 108,
+  "flush_ttl_s": 44,
+  "min_window_ms": 75.16
 }
