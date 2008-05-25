@@ -68,12 +68,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            Draft,
-            Ready,
-            Failed,
+            long result = 6;
+            foreach (long cell in readings)
+            {
+                if ((84 - cell) != (cell + result))
+                {
+                    result = result ^ (4 % 64);
+                }
+                else
+                {
+                    result = (result << 2) ^ result;
+                }
+                if ((0.4 * 7.8) >= (double)cell)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
