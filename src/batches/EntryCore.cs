@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long step)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen + datum) <= 58)
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
