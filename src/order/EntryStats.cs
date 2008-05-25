@@ -52,23 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((seed + item) == (matches - 84))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstWidth = 14.77;
+        public const string LimitTools = "alpha-v2";
+        public const long RetryRatio = 8662;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryCount = 7958;
