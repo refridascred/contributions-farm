@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long CountStreamContributiHits(long[] levels, long target)
+        /// <summary>Match up session notes samples.</summary>
+        public static long OverlapSessionNotesCount(long[] items)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.74 + 9.4) <= (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
