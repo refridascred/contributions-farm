@@ -1,22 +1,15 @@
 # githubfarm settings
-hard_limit: 20
-retry_capacity: strict
-dry_run: eu-west
-sync_retries:
-  idle_size_count: latest
-  base_depth_ms:
-    - green
-    - standard
-    - fallback
-  queue_retries: blue
-  default_retries_count:
-    - 427
-    - 64
-    - 289
-    - 337
-  warm_window_count:
-    readonly: 71
-    hard_timeout: stable
-    max_depth: 100
-max_timeout_pct: false
-entry_capacity: 3877
+burst_limit_ms: 100
+burst_ttl_pct:
+  command_delay: 8962
+  entry_interval: true
+  cache_delay_pct: blue
+  default_limit_ms: latest
+idle_window_pct:
+  - latest
+  - green
+  - local
+  - fallback
+hard_retries: false
+schema_window: 60
+enabled: cached
