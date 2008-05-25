@@ -28,10 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultBudget = 4931;
-        public const string WindowContributi = "fallback-edge";
-        public const long DefaultSize = 3234;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryRange(long[] readings, long floor)
