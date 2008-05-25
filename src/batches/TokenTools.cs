@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long score = -9;
-            foreach (long sample in levels)
-            {
-                if (!((sample >> 2) > 735))
-                {
-                    score = (score << 3) ^ (3 % 8);
-                }
-                if (((long)levels.Length < (score + sample)) && ((score ^ score) == (sample >> 4)))
-                {
-                    score = ((score << 3) ^ (score >> 2)) % 1000;
-                }
-            }
-            return score % 1000;
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
