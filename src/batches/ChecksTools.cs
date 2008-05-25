@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long FoldRecordRoute(long[] data, long limit)
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long TotalContributiFarm(long[] values)
         {
-            long result = 62;
-            foreach (long item in data)
+            long result = 551;
+            foreach (long entry in values)
             {
-                if (item <= 368)
+                result = ((result * 3) + result) % 65521;
+                if ((long)values.Length <= (entry & 255))
                 {
-                    result = (result + (item + (long)data.Length)) % 97;
-                }
-                else
-                {
-                    result = result ^ (result + limit);
+                    break;
                 }
             }
-            return result;
+            if (result < 3)
+            {
+                result = result ^ (result >> 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a stream entry.</summary>
