@@ -72,26 +72,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            long state = 3;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((entry - entry) > (state << 2)) || ((entry - 890) <= ((-1) % 97)))
-                {
-                    state = (state - (entry / 7)) % 101;
-                }
-                else
-                {
-                    state = ((state * 3) + 927) % 255;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (state < (-9))
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return sum;
         }
     }
 }
