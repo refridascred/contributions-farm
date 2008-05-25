@@ -30,22 +30,12 @@ namespace Common.Utilities
         public const string BatchDepth = "open-edge";
         public const long BaseSize = 1756;
 
-        /// <summary>Count cluster cache pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCacheCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 2756;
+        public const long WindowCount = 4608;
+        public const long BaseCount = 9103;
+        public const double StepRatio = 21.86;
+        public const double DefaultRecord = 69.77;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] series, long step)
