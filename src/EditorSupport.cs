@@ -27,18 +27,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long result = 197;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result / 6) != (datum - result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (result - datum)) % 101;
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
