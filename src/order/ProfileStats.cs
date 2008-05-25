@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = 9;
-            foreach (long value in data)
-            {
-                if (value < (43 - value))
-                {
-                    anchor = (anchor - (anchor & 7)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            if (anchor < 40)
-            {
-                anchor = (anchor + (anchor ^ anchor)) % 101;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
