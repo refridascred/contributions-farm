@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long acc = 5;
-            foreach (long reading in samples)
-            {
-                if (((double)acc == (7.9 + 9.0)) || (317 >= (876 + step)))
-                {
-                    acc = (((acc << 3) ^ 2) % 65521) ^ reading;
-                }
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
