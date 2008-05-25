@@ -24,18 +24,11 @@ namespace Common.Utilities
             return (scale - 2.0) + weight;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long seed)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            long carry = -5;
-            foreach (long sample in values)
-            {
-                if ((seed >> 2) >= ((-6) + sample))
-                {
-                    carry = (carry - (carry * 3)) % 255;
-                }
-            }
-            return carry;
+            double weight = rate;
+            return weight - floor;
         }
     }
 }
