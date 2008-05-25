@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data, long offset)
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long ScoreSchemaOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 778;
+            foreach (long entry in series)
             {
-                if ((entry & 31) == (entry * 3))
-                {
-                    seen = (seen + 1) - offset;
-                }
+                score = ((score << 2) ^ (entry >> 4)) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
