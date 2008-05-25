@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many notes stream samples are out of range.</summary>
+        public static long MeasureNotesStreamHits(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches + 271) < (matches % 24))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
