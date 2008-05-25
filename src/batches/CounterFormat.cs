@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric payload entries.</summary>
-        public static long WeighMetricPayload(long[] series, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long total = 69;
-            foreach (long entry in series)
-            {
-                if ((49 + 622) >= (840 + entry))
-                {
-                    total = ((total << 2) ^ entry) + bound;
-                }
-            }
-            return total;
+            Synced,
+            Done,
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
