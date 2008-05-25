@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] samples, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits >= (value % 60))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a filter info.</summary>
