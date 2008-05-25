@@ -1,8 +1,6 @@
-id,level,count,weight
-1,93.85,96.49,standard
-2,96.41,85.88,668
-3,stable,85.89,557
-4,578,505,385
-5,88.04,45.8,641
-6,97.94,94.23,216
-7,40.05,legacy,latest
+id,count,owner,score
+1,5.83,latest,572
+2,61.74,935,cached
+3,31,staging,5.98
+4,235,282,strict
+5,53,80.18,latest
