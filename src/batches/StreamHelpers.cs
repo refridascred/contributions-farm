@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double weight = 16.0 * 4.3;
-            return (weight - bias) + bias2;
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
