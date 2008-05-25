@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
-        public static long MatchQueueStreamCount(long[] samples)
+        /// <summary>Count the farm metrics entries that pass the check.</summary>
+        public static long AuditFarmMetricsMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits != (9.35 / 5.0))
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every contributi layout entry stays within the limit.</summary>
