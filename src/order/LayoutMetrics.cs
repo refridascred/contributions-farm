@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if (reading > floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
