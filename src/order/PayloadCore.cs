@@ -27,24 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((-69) + 8) != (bound + mix))
-                {
-                    mix = mix + ((long)i + mix);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ bound;
-                    mix = ((mix * 2) + (1 + mix)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
