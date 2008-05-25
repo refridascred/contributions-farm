@@ -63,31 +63,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long floor2)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if (floor >= (floor & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor2 < (floor / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 2) < floor2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
