@@ -1,7 +1,16 @@
 # githubfarm settings
-burst_ttl_pct: 100
-audit:
-  - green
-  - edge
-idle_depth: 1886
-idle_window: 19.44
+cache_size: false
+warm_interval_ms:
+  token_size: 250
+  max_ttl:
+    strict: 28.78
+    token_retries:
+      - 128
+      - 421
+    flush_interval_s: open
+    burst_retries: strict
+    flush_ratio: 30
+  order_ttl: fallback
+format_timeout: local
+poll_ttl_ms: 78.66
+checks_limit: false
