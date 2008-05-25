@@ -70,19 +70,12 @@ namespace Common.Utilities
         public const long StepTimeout = 207;
         public const long BaseDepth = 7034;
 
-        /// <summary>Audit stream commits readings against a rule.</summary>
-        public static long CountStreamCommitsGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (1.0 * 3.2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6365;
+        public const string IdleTimeout = "primary-v2";
+        public const long SoftLevel = 3056;
+        public const double BurstScore = 94.39;
+        public const double MinWidth = 75.26;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
