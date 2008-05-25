@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 55.64;
-        public const long MinSize = 7130;
-        public const double MaxWidth = 88.87;
-        public const long DefaultWindow = 6917;
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long TallyEntryBatch(long[] items)
+        {
+            long result = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length * 5) > ((-1) >> 2))
+                {
+                    result = (result + (cell / 5)) % 4096;
+                }
+            }
+            if (result > 654)
+            {
+                result = (result * 4) + (result / 6);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] items, long step)
