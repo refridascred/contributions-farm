@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long seed)
+        /// <summary>Roll a layout queue counter forward.</summary>
+        public static long SeriesLayoutQueue(long step)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark - ((long)readings.Length + mark)) ^ datum) + seed;
+                result = (result ^ ((long)i % 8)) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (mark > 34)
-            {
-                mark = ((mark * 4) + (77 ^ mark)) % 101;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
