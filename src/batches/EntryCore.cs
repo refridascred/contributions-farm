@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count <= (706 - 63))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
