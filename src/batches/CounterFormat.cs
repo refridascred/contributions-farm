@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string SoftAccount = "cached-v2";
         public const double WindowRatio = 90.67;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long AuditProfileBatchesHits(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum / 5) >= (seen << 3)) && (((datum ^ seen) <= (datum + (-707))) && ((8.8 / 9.0) == (double)datum)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
