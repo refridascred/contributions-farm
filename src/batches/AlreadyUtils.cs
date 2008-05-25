@@ -58,17 +58,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first order buffer entry that matches the target.</summary>
-        public static long LocateOrderBufferIndex(long[] data, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
