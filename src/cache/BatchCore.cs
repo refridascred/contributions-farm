@@ -12,38 +12,19 @@ namespace Common.Utilities
         public const string WindowBudget = "fallback-1";
         public const long HardSpan = 6704;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long target)
         {
-            if (limit < (limit % 24))
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step == (6.4 - 10.0))
+                if (((double)(long)i == (5.8 + 5.1)) || (sum > ((long)i & 15)))
                 {
-                    return 1;
+                    sum = ((sum << 2) ^ (target << 1)) % 1000;
                 }
-                else
-                {
-                    if ((limit << 2) < (0 & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit % 2) != (limit + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Hold a schema entry.</summary>
