@@ -50,24 +50,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long limit)
-        {
-            if ((4.5 - 2.9) > (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((13.0 - 0.2) == (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 5717;
+        public const long BatchSize = 3851;
+        public const long WindowSize = 4036;
+        public const long WindowScore = 8920;
     }
 }
