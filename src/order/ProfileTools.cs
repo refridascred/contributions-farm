@@ -56,17 +56,11 @@ namespace Common.Utilities
         public const long HardRatio = 6907;
         public const long WindowLevel = 9547;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double gain, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state - (floor + state);
-                state = (state - ((long)i * 2)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            double load = (double)(441 << 3);
+            return ((load + (double)2) + gain) + span;
         }
     }
 }
