@@ -70,18 +70,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter window samples are out of range.</summary>
-        public static long CountFilterWindowOutliers(long[] data, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen / 2) >= (step - (-64)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + cell;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
