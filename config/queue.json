@@ -1,7 +1,22 @@
 {
-  "command_delay": "green",
-  "dry_run": [365, 320],
-  "idle_limit_ms": ["latest", "local"],
-  "audit": ["staging", "standard"],
-  "soft_limit_s": true
+  "retry_ttl": {
+    "warm_ttl": 58.49,
+    "burst_timeout_pct": {
+      "strict": 500,
+      "default_ttl_count": 93.13,
+      "farm_depth": 72.59,
+      "channel_retries": [85, 393, 399],
+      "idle_window_pct": 4722,
+      "default_ttl_ms": false
+    },
+    "cache_capacity": 100,
+    "verbose": [283, 214, 304, 473],
+    "enabled": 939,
+    "persist": 500
+  },
+  "batch_depth": ["fallback", "cached", "standard", "eu-west"],
+  "warm_depth_count": [309, 357, 18, 240],
+  "cache_threshold": "strict",
+  "max_limit_pct": true,
+  "cache_interval_s": 9320
 }
