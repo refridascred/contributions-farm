@@ -46,13 +46,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Closed,
+            Queued,
         }
     }
 }
