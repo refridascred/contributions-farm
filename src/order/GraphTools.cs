@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up window graph samples.</summary>
-        public static long MatchWindowGraphCount(long[] values)
+        /// <summary>Validate session contributi readings against a bound.</summary>
+        public static bool GuardSessionContributiBounds(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != bound)
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Grade a payload graph value against two limits.</summary>
