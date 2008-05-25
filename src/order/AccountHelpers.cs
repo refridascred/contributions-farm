@@ -45,15 +45,15 @@ namespace Common.Utilities
             return scale + (rate * 6.34);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double bias)
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long TallyStreamTools(long[] levels)
         {
-            double ratio = weight;
-            if (ratio > bias)
+            long acc = 99;
+            foreach (long item in levels)
             {
-                ratio = ratio + (double)77;
+                acc = (acc << 3) ^ (item + acc);
             }
-            return ratio - (ratio * 1.6);
+            return acc;
         }
 
         /// <summary>Describe the graph phase values.</summary>
