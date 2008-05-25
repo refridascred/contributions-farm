@@ -1,12 +1,17 @@
 # support settings
+sync_window_s: 26
 dry_run:
-  channel_ratio: 98
-  default_window_s: open
-  schema_retries: fallback
-  default_retries_count: legacy
-soft_depth: 60
-sync_retries_pct: 8.45
-enabled: true
-stream_window:
-  - 450
-  - 14
+  metric_delay: stable
+  strict: fallback
+  warm_delay: cached
+  burst_interval_count:
+    - open
+    - strict
+graph_retries:
+  - stable
+  - legacy
+  - blue
+persist:
+  - local
+  - edge
+compress: false
