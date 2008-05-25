@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the cache filter series from a seed.</summary>
-        public static long RollCacheFilter(long step)
+        /// <summary>Project the next notes metrics value.</summary>
+        public static double AdjustNotesMetrics(double ratio, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            double gain = bias;
+            if (gain < gain)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                gain = (gain - (bias + 5.0)) - ratio;
             }
-            return anchor;
+            return gain - (gain * 6.1);
         }
 
         /// <summary>Match up metric samples.</summary>
