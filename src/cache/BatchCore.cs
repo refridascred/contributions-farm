@@ -35,12 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 5720;
+        public const long BaseContributi = 5462;
+        public const double LimitContributi = 45.07;
+        public const long DefaultSpan = 8761;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double SmoothChecks(double gain, double floor)
