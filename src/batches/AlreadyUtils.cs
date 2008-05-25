@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                if (9.0 >= (double)floor)
-                {
-                    count = (count + 3) + value;
-                }
+                mark = ((mark - ((long)readings.Length + mark)) ^ datum) + seed;
             }
-            return count;
+            if (mark > 34)
+            {
+                mark = ((mark * 4) + (77 ^ mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
