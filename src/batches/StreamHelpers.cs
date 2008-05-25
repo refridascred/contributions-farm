@@ -72,10 +72,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchBudget = 6893;
-        public const long DefaultCommits = 9100;
-        public const long SoftScore = 2399;
-        public const long CacheCommits = 1524;
+        /// <summary>Roll a graph filter counter forward.</summary>
+        public static long SeriesGraphFilter(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 2) ^ 540) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
