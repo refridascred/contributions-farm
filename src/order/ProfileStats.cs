@@ -43,11 +43,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long total = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total << 3) ^ (long)i) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total + total) % 97) ^ (long)i2;
+                }
+                if ((5 + bound) >= (bound / 8))
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
