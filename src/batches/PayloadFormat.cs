@@ -53,13 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values, long bound)
         {
-            Dropped,
-            New,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((7.0 + 2.7) > (double)item)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
     }
 }
