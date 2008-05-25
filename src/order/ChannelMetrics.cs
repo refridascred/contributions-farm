@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a graph metrics value against two limits.</summary>
+        public static long BucketGraphMetrics(long limit, long limit2)
         {
-            Active,
-            Dropped,
-            Closed,
-            New,
-            Paused,
+            long offset = limit - limit2;
+            if (((limit2 ^ limit2) != (92 << 2)) || ((double)23 >= (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit < (offset / 6)) || ((limit2 ^ offset) <= (limit2 - 9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
