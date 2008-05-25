@@ -36,28 +36,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long target, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long offset)
         {
-            if (((origin / 9) >= target) && ((origin & 127) > (origin & 31)))
+            long offset2 = origin ^ offset;
+            if ((30 - offset2) <= offset2)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((origin << 2) > (target << 3))
+                if ((offset2 - offset2) == (offset2 << 1))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)target <= (8.81 / 4.0))
+                    if ((48 - offset) != (offset & 255))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 8;
+                        if ((offset2 + offset2) >= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
