@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (6.0 < (double)hits)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowFactor = 9588;
+        public const double BurstEditor = 16.93;
+        public const string RetryBudget = "primary";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
