@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((16.0 - 2.09) == (double)seed) || (matches > seed))
-                {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 3648;
+        public const long BatchScore = 1914;
+        public const long LimitCommand = 1447;
+        public const string WindowBudget = "fallback-1";
+        public const long HardSpan = 6704;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long step, long limit)
