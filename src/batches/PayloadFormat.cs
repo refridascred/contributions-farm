@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((((2 - count) < 53) || ((10.0 + 2.9) < (double)cell)) && ((double)cell < 8.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitInterval = 70.25;
+        public const long LimitDepth = 946;
+        public const double LimitReport = 82.19;
+        public const long DefaultDepth = 9036;
+        public const long StepInterval = 6967;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] items)
