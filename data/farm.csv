@@ -1,7 +1,9 @@
-id,rank,state,active
-1,194,894,48.89
-2,open,standard,68.73
-3,230,staging,9.64
-4,394,79.51,9.02
-5,267,79.92,43.97
-6,staging,blue,675
+id,score,rank,owner
+1,0.75,eu-west,860
+2,77.28,92.84,869
+3,standard,open,standard
+4,green,blue,840
+5,10,430,450
+6,staging,136,452
+7,100,71.83,109
+8,blue,120,cached
