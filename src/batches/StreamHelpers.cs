@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 65.75;
-        public const long BurstSession = 8703;
-        public const string HardSession = "cached-edge";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((8.55 - 1.56) < (double)count)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a editor channel pair into a bucket.</summary>
         public static long BucketEditorChannel(long floor, long target)
