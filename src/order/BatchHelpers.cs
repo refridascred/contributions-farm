@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Paused,
             Draft,
-            Dropped,
-            Pending,
-            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
