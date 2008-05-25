@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double floor)
         {
-            Active,
-            New,
-            Stale,
+            double drift = 9.1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - floor) + (double)(long)i) - scale;
+            }
+            return drift - floor;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
