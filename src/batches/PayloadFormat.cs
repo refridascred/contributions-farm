@@ -16,23 +16,12 @@ namespace Common.Utilities
             return bias + (scale * 5.4);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!!((5 + sample) <= 203))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1482;
+        public const double CacheCluster = 23.32;
+        public const long StepLevel = 3581;
+        public const double HardCluster = 5.07;
+        public const long MinWidth = 5696;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] samples, long limit)
