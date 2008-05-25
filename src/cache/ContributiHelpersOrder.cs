@@ -26,18 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long origin)
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long CountEntryFilterHits(long[] series)
         {
-            long mark = 7;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((84 ^ mark) > (origin >> 4)) && (mark <= (mark - datum)))
+                if (matches <= reading)
                 {
-                    mark = (mark * 4) + (datum >> 3);
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
