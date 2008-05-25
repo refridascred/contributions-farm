@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const string SoftLayout = "open-edge";
         public const long LimitLayout = 5721;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                result = result - 533;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster state values.</summary>
