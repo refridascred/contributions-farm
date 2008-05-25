@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const double LimitContributi = 45.07;
         public const long DefaultSpan = 8761;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            double mean = (double)(155 + 2);
-            if (mean < gain)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (1.05 + gain)) + (double)(long)i;
-            }
-            return mean - (double)0;
+            return tally;
         }
     }
 }
