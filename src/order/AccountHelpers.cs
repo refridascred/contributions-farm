@@ -23,22 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many session format samples are out of range.</summary>
-        public static long AuditSessionFormatHits(long[] readings, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)bound == (6.2 * 20.0))
-                {
-                    seen = (seen + 1) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
