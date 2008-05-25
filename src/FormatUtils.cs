@@ -26,38 +26,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            if ((bound << 2) == (limit - limit))
+            double load = 8.9;
+            if (load >= (double)4)
             {
-                return 3;
+                load = (load - 6.2) - span;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((bound % 2) >= (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((18.0 - 6.12) >= 4.17)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + 872) >= (85 - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load + (double)(long)i;
             }
+            return load - (gain - load);
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
