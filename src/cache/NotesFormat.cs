@@ -23,14 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
-            Active,
+            Dropped,
             Locked,
-            Pending,
-            New,
+            Retry,
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
