@@ -32,15 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long ScoreSchemaOrder(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long score = 778;
-            foreach (long entry in series)
+            long sum = 255;
+            foreach (long item in levels)
             {
-                score = ((score << 2) ^ (entry >> 4)) % 65521;
+                if (((item >> 3) <= sum) || ((6 + 54) != (sum - item)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (56 / 4)) % 101;
+                }
+                if ((double)82 <= (double)sum)
+                {
+                    sum = sum + (sum ^ item);
+                    sum = sum - (396 * 2);
+                }
+                else
+                {
+                    sum = (sum * 5) + (item % 7);
+                }
+                sum = (sum + (long)levels.Length) % 1000;
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
