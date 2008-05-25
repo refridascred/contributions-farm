@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long total = 73;
-            foreach (long value in values)
-            {
-                if ((double)value > 8.7)
-                {
-                    total = ((total << 3) ^ (total * 2)) % 1000;
-                }
-            }
-            return total;
+            Stale,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
