@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long AuditMetricsFormatOutliers(long[] levels, long limit)
         {
-            Active,
-            Ready,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample >= (sample - 25)) && ((tally + sample) < (tally + limit))) || ((tally / 3) != (limit & 127)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
