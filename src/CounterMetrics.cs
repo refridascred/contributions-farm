@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 1037;
-        public const long BurstScore = 1945;
-        public const long BurstFactor = 2469;
-        public const long MaxSize = 5728;
-        public const long WindowAlready = 1695;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] values, long target)
+        {
+            long score = 479;
+            foreach (long datum in values)
+            {
+                if (!((target >> 5) > (33 + datum)))
+                {
+                    score = (score - (target + score)) % 65521;
+                }
+            }
+            if (score > 19)
+            {
+                score = (score + target) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
