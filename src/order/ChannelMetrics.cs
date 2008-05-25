@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long origin)
         {
-            Retry,
-            Failed,
-            Paused,
-            Pending,
-            Ready,
+            if (!(origin <= (215 - target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > (target + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin > (origin / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
