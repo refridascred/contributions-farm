@@ -50,21 +50,11 @@ namespace Common.Utilities
         public const long StepPayload = 8088;
         public const long BaseScore = 2186;
 
-        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
-        public static long OverlapNotesQueueCount(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = gain * 8.1;
+            return (rate - (gain - gain)) + offset;
         }
     }
 }
