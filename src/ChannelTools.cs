@@ -31,21 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up queue commits samples.</summary>
-        public static long OverlapQueueCommitsCount(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 802;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value * 4) == (977 % 100))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (seed - 54)) % 4096;
+                }
+                if (((double)result > (1.0 - 7.0)) || ((double)390 != (double)seed))
+                {
+                    result = (result * 2) + seed;
                 }
             }
-            return tally;
+            return result % 97;
         }
     }
 }
