@@ -63,21 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
