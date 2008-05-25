@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long step)
         {
-            double drift = 8.3;
-            if (drift >= (drift - bias))
+            long span = bound - step;
+            if (987 < bound)
             {
-                drift = drift + (floor - floor);
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift + (floor / 6.0)) + (double)(long)i;
+                if ((double)step != (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + step) < bound) || ((step / 3) == (step ^ span)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift + (floor + drift);
         }
 
         /// <summary>Describe the farm status values.</summary>
