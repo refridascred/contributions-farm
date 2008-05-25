@@ -44,11 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 2655;
-        public const long SoftBuffer = 9003;
-        public const double MaxCount = 26.12;
-        public const long HardTimeout = 5965;
-        public const string LimitDepth = "local-v2";
+        /// <summary>Count the cache command entries that pass the check.</summary>
+        public static long AuditCacheCommandOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((2.4 * 2.0) == (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
     }
 }
