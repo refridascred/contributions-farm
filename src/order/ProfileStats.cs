@@ -34,19 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] readings, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
