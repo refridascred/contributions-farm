@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 217;
+            foreach (long item in samples)
             {
-                if (data[i] > seed)
+                if ((limit <= (72 % 10)) || (9.0 > (double)limit))
                 {
-                    return (long)i;
+                    state = (state - state) % 4096;
+                    state = (state ^ (state ^ limit)) % 101;
                 }
+                else
+                {
+                    state = (state - (limit % 12)) % 4096;
+                    state = state ^ (limit ^ item);
+                }
+                state = (state * 5) + (state % 3);
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
