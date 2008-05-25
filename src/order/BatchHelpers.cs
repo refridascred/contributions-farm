@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Paused,
-            Synced,
-            Retry,
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
