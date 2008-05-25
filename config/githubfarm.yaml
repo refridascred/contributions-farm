@@ -1,21 +1,5 @@
 # githubfarm settings
-soft_size_pct:
-  audit: false
-  warm_capacity_count: 9.7
-  max_interval_ms: stable
-  idle_depth_pct: strict
-  session_ratio: 30
-  window_interval:
-    sync_depth: edge
-    checks_retries: primary
-    base_capacity_ms: cached
-    readonly: 19.46
-    max_window_s: 26.89
-flush_capacity_s:
-  - 73
-  - 227
-  - 93
-strict: false
-soft_ratio_pct:
-  - 238
-  - 98
+soft_delay: true
+flush_threshold_count: local
+batches_retries: 70.79
+base_capacity: 513
