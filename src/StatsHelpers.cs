@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheCount = 4266;
-        public const double CacheBudget = 79.02;
-        public const double DefaultTimeout = 68.25;
-        public const string IdleSpan = "alpha-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxInterval = 4744;
+        public const double BatchBudget = 26.46;
+        public const double SoftQueue = 31.44;
+        public const long StepRatio = 8634;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long offset, long origin)
