@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 850;
-        public const string SoftAccount = "cached-v2";
-        public const double WindowRatio = 90.67;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the profile batches entries that pass the check.</summary>
         public static long AuditProfileBatchesHits(long[] samples)
