@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseRatio = 6.17;
+        public const string BaseInterval = "alpha-v2";
+        public const long MaxMetrics = 127;
+        public const double RetryFactor = 98.75;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
