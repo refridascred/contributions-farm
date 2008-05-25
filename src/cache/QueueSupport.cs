@@ -14,38 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank filter payload input into a small class.</summary>
-        public static long BucketFilterPayload(long origin, long origin2)
+        /// <summary>Project the next farm tools value.</summary>
+        public static double ScaleFarmTools(double ratio, double floor)
         {
-            if ((double)(-178) != (double)origin2)
+            double scale = ratio;
+            if (scale <= 1.63)
             {
-                return 7;
+                scale = (scale + (scale + ratio)) - floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin2 + (-6)) <= 40)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin2 ^ 92) <= origin2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (6.2 <= (double)origin2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                scale = (scale - 9.94) + (double)(long)i;
             }
+            return scale - scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
