@@ -35,22 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] series, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seed > sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
