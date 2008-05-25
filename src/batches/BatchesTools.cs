@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next batch filter value from a seed.</summary>
-        public static long SeriesBatchFilter(long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.1 + 0.79) < (double)(long)i) && (((long)i & 7) <= 9))
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
                 {
-                    result = ((result * 3) + (result & 31)) % 101;
+                    return (long)i;
                 }
-                if (result <= (result + (long)i))
-                {
-                    result = result - (54 >> 3);
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
