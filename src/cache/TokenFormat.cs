@@ -23,13 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowInterval = 7151;
+        public const double CacheSupport = 94.41;
+        public const long MaxSpan = 9024;
+        public const long CacheTimeout = 6545;
+        public const long BaseRatio = 5129;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] values, long bound)
