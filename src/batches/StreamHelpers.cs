@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long state = 1;
+            foreach (long cell in samples)
+            {
+                if ((double)4 >= (double)state)
+                {
+                    state = (((state << 2) ^ (state ^ cell)) % 1000) + seed;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two session measurements.</summary>
