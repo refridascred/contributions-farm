@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels)
         {
-            Retry,
-            Done,
-            Pending,
-            Paused,
-            Ready,
+            long score = 32;
+            foreach (long value in levels)
+            {
+                if (((double)value != (8.7 - 4.02)) || (value > (score - value)))
+                {
+                    score = score + (7 - 75);
+                }
+            }
+            return score % 4096;
         }
     }
 }
