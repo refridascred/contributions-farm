@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a account editor pair into a bucket.</summary>
-        public static long GradeAccountEditor(long offset, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] series)
         {
-            long bound = offset + limit;
-            if (!((offset << 2) <= bound))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (75 <= (offset % 12))
+                if (!((hits >> 2) <= (value << 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + 5) > (limit + bound)) && ((5 + offset) != (limit * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two profile measurements.</summary>
