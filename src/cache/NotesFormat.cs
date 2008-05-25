@@ -16,14 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Stale,
-            Locked,
-            Pending,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxScore = 70.7;
+        public const string LimitRatio = "strict";
+        public const long IdleCache = 9846;
+        public const string MinDepth = "stable-edge";
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
         public static long ClassifyNotesCommits(long step, long target)
