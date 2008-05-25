@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "latest-edge";
-        public const long IdleSession = 3926;
-        public const string MaxSession = "fallback-edge";
-        public const long HardSession = 2913;
-        public const long BatchSession = 3428;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state - state) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] data)
