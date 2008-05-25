@@ -54,11 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "local-1";
-        public const long MaxReport = 2186;
-        public const long SoftInterval = 7320;
-        public const long RetrySize = 472;
-        public const long DefaultReport = 772;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor << 2) ^ ((-3) - floor);
+                anchor = (anchor - ((long)i + (long)i)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
