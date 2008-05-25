@@ -48,25 +48,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long prev = target - floor;
-            if (((target % 10) >= (floor - target)) && ((8.0 + 14.0) < (double)prev))
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev <= (2.0 / 9.0))
+                if (floor >= (floor + 722))
                 {
-                    return 5;
+                    total = total + floor;
                 }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
