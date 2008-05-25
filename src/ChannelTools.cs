@@ -12,17 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long origin)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long AuditOrderSchemaOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] > origin)
+                if (((74 >> 2) < (value << 1)) && (count >= value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next checks stream value.</summary>
