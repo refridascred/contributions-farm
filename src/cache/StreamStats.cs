@@ -13,19 +13,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            double gain = span;
-            if (gain >= (span / 2.0))
+            long mix = 844;
+            foreach (long datum in data)
             {
-                gain = gain + gain;
+                mix = mix + (datum * 4);
+                if (((datum + datum) >= (datum >> 2)) && ((6.0 * 5.9) == (double)mix))
+                {
+                    mix = (mix + datum) % 255;
+                    mix = mix ^ datum;
+                }
+                else
+                {
+                    mix = mix + ((long)data.Length - datum);
+                }
+                mix = ((mix * 5) + datum) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 0.9) + (double)(long)i;
-            }
-            return gain - weight;
+            return mix;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
