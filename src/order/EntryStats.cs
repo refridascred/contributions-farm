@@ -16,15 +16,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session profile samples.</summary>
-        public static long ScoreSessionProfile(long[] samples)
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long WeighBatchSession(long[] data)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            long mark = 43;
+            foreach (long datum in data)
             {
-                carry = ((carry * 3) + (3 * 5)) - sample;
+                if (((double)mark != (11.0 + 4.4)) && ((96 + datum) != (mark - 296)))
+                {
+                    mark = ((mark << 2) ^ (mark / 4)) % 101;
+                }
+                if ((datum >> 1) != (mark % 24))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mark > 7)
+            {
+                mark = mark ^ (mark / 2);
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
