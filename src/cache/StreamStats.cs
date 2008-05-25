@@ -51,21 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout buffer samples.</summary>
-        public static long MatchLayoutBufferCount(long[] values)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor >> 1) <= floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((limit - 46) < floor))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
