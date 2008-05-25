@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool GuardSupportGraphLimits(long[] series, long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < limit)
+                if (levels[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
