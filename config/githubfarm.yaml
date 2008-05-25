@@ -1,4 +1,11 @@
 # githubfarm settings
-min_threshold_ms: 94
-editor_window: 5002
-stats_ratio: 1024
+verbose: legacy
+layout_depth: green
+dry_run:
+  - open
+  - local
+  - edge
+  - fallback
+sync_ratio: 24
+soft_limit: 16.11
+flush_timeout_count: blue
