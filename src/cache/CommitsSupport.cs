@@ -61,13 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Dropped,
-            Stale,
-            Idle,
-            Ready,
+            New,
+            Pending,
+            Closed,
+            Queued,
+            Synced,
         }
     }
 }
