@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double rate, double floor)
-        {
-            double mean = (rate - floor) - (double)192;
-            if (mean > mean)
-            {
-                mean = mean + rate;
-            }
-            else
-            {
-                mean = mean - 10.0;
-            }
-            return mean + (rate + 6.99);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 28.35;
+        public const double IdleFactor = 54.49;
+        public const long StepWidth = 6535;
 
         /// <summary>Adjust a contributi queue reading.</summary>
         public static double AdjustContributiQueue(double gain, double bias)
