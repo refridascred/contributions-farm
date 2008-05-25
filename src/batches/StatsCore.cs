@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many graph account samples are out of range.</summary>
+        public static long TallyGraphAccountGaps(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((seen - seen) >= seen) || (((origin ^ seen) <= value) || ((origin & 255) >= (seen - 173))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
