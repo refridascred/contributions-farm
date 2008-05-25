@@ -24,18 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record command samples are out of range.</summary>
-        public static long MeasureRecordCommandOutliers(long[] samples, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((double)matches < 2.4) && ((matches - floor) == (matches & 31))) || ((floor + 1) > cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
