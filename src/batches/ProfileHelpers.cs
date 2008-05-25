@@ -30,15 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long DigestCommandEditor(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            long carry = 164;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (sample / 7)) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
