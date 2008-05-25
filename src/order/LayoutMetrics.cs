@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 1367;
-        public const long RetryBudget = 3212;
-        public const long MaxCache = 9757;
-        public const long BurstCache = 902;
+        /// <summary>Match up filter report samples.</summary>
+        public static long OverlapFilterReportCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LocateLayoutIndex(long[] items, long offset)
