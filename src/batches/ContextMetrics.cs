@@ -24,12 +24,39 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long floor, long seed)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long cur = floor ^ seed;
+            if (floor >= (seed >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (cur > (seed >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((cur - 1) > (seed * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) != (cur << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
