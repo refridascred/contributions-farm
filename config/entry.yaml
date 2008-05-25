@@ -1,10 +1,8 @@
 # entry settings
+cache_threshold:
+  - fallback
+  - primary
 enabled: false
-metrics_threshold: 4064
-min_ttl: edge
-idle_timeout_pct:
-  - fallback
-  - fallback
-  - legacy
-default_retries_ms: local
-flush_timeout: local
+retry_size_count: stable
+flush_window_s: cached
+dry_run: 37.91
