@@ -29,13 +29,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of tools cluster readings.</summary>
+        public static long ScoreToolsCluster(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mix = -125;
+            foreach (long sample in samples)
+            {
+                mix = (mix ^ (mix - sample)) % 65521;
+                mix = (mix ^ (5 - sample)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the contributi window entries that pass the check.</summary>
