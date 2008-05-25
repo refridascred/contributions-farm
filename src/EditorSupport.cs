@@ -34,21 +34,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = span;
+            if (drift <= 8.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + weight;
             }
-            return matches;
+            return drift + span;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
