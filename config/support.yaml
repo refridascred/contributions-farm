@@ -1,8 +1,11 @@
 # support settings
-channel_size: green
-stream_limit: cached
-compress: 35
-enabled:
-  - open
-  - staging
-  - cached
+verbose: green
+default_timeout_count: eu-west
+editor_retries: 30
+farm_limit: 33.81
+warm_capacity_pct:
+  - 39
+  - 487
+cache_delay_count:
+  - 65
+  - 424
