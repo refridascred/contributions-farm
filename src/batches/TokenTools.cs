@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheRatio = 2757;
-        public const string SoftTimeout = "primary";
-        public const long MaxRatio = 5815;
-        public const long DefaultFilter = 120;
-        public const long LimitFilter = 8727;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
