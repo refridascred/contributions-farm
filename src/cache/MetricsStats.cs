@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long slot = step - bound;
-            if ((10.0 - 5.0) != (double)slot)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step - step) <= bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step / 8) >= (slot + slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a token snapshot.</summary>
