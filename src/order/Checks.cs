@@ -24,12 +24,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 53.84;
-        public const long HardCount = 919;
-        public const string LimitWidth = "latest-v2";
-        public const long MinCluster = 2084;
-        public const long BaseInterval = 909;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 41.26;
+        public const double BatchAlready = 41.85;
+        public const double LimitAlready = 58.11;
+        public const long HardInterval = 7449;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long limit, long origin)
