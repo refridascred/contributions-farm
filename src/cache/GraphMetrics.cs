@@ -25,10 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSpan = 3843;
-        public const long DefaultCommits = 3442;
-        public const long CacheCommits = 3773;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading / 8) >= ((long)levels.Length * 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long DeriveCommits(long step)
