@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate queue tools samples.</summary>
