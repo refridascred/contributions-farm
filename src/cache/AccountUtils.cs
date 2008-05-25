@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] readings)
         {
-            double bias = floor;
-            if (bias > (rate - 0.42))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                bias = bias + (double)3;
+                if (!(hits > (hits - datum)) && (((datum + datum) > (hits / 6)) && ((hits * 2) > (hits / 5))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (rate * 15.0)) + (double)(long)i;
-            }
-            return bias - 20.0;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
