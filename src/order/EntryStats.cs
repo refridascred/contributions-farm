@@ -26,21 +26,10 @@ namespace Common.Utilities
         public const long WindowContributi = 940;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = mark - (long)i2;
-                }
-                mark = ((mark * 2) + (mark - mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 7330;
+        public const long MinInterval = 2756;
+        public const long SoftScore = 3376;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstWidth = 14.77;
