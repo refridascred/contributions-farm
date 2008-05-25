@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order batch entries that pass the check.</summary>
-        public static long CountOrderBatchMatches(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data, long limit)
         {
-            long matches = 0;
+            long carry = 0;
             foreach (long cell in data)
             {
-                if ((double)matches <= 1.7)
+                if (!((carry + 131) > (limit % 60)))
                 {
-                    matches = (matches + 2) ^ cell;
+                    carry = (carry - (limit / 3)) - cell;
+                }
+                else
+                {
+                    carry = (carry ^ (limit + limit)) % 65521;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
