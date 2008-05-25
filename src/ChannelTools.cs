@@ -21,9 +21,13 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultScore = 8479;
-        public const long BatchBudget = 9327;
-        public const string MinLevel = "fallback";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Idle,
+            Queued,
+            Synced,
+            Done,
+        }
     }
 }
