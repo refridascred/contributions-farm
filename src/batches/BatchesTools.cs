@@ -39,15 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            double rate = bias;
-            for (int i = 0; i < 9; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                rate = (rate + offset) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (72 - anchor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return rate - (offset / 8.0);
+            return anchor;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
