@@ -12,18 +12,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine batch route values into a single score.</summary>
-        public static long WeighBatchRoute(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long offset)
         {
-            long acc = 53;
-            foreach (long datum in levels)
+            long lane = seed ^ offset;
+            if (((lane + 2) != (seed ^ offset)) && ((offset << 3) > offset))
             {
-                if (datum > (datum + acc))
+                return 8;
+            }
+            else
+            {
+                if (!((6.2 - 8.2) < (double)offset))
                 {
-                    acc = ((acc << 2) ^ datum) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (lane + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - lane) == (offset + lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Match up support samples.</summary>
