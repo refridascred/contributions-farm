@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long target)
-        {
-            if ((step - target) != (step << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step & 15) == (3 >> 5)) && ((step + 728) >= 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 35.66;
+        public const double RetryLayout = 36.29;
+        public const double MaxLayout = 20.82;
+        public const double SoftLayout = 30.89;
+        public const double IdleLayout = 65.77;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
