@@ -20,39 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long step)
+        /// <summary>Measure how many record command samples are out of range.</summary>
+        public static long MeasureRecordCommandOutliers(long[] samples, long floor)
         {
-            long prev = floor + step;
-            if ((double)prev >= 7.0)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - floor) > (657 + floor))
+                if ((((double)matches < 2.4) && ((matches - floor) == (matches & 31))) || ((floor + 1) > cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(floor > (prev % 60)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev & 127) > (floor >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
