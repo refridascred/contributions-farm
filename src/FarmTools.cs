@@ -31,11 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchTimeout = 5786;
-        public const string RetryQueue = "staging-edge";
-        public const long IdleWidth = 5904;
-        public const long HardWidth = 9522;
-        public const double CacheFactor = 75.51;
+        /// <summary>Derive the next payload metric value from a seed.</summary>
+        public static long SeriesPayloadMetric(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + ((long)i % 2)) % 255;
+                if ((long)i <= score)
+                {
+                    score = (score * 4) + ((-62) % 5);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
