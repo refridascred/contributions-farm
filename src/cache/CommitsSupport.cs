@@ -29,24 +29,21 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long bound, long bound2)
+        /// <summary>Compare every pair of payload batch readings.</summary>
+        public static long OverlapPayloadBatchCount(long[] values)
         {
-            if (!(6.0 > (double)bound))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 <= (822 << 1)) || ((bound2 % 24) <= (-763)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
