@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((221 % 97) != (seed2 * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8 + seed2) <= (884 / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed >= (10.0 - 0.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (41 <= (seed2 ^ seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Fold a list of account readings.</summary>
