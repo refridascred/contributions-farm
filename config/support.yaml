@@ -1,4 +1,6 @@
 # support settings
-base_interval_ms: 35.55
-default_interval: 47
-min_retries: true
+sync_ratio_pct:
+  - strict
+  - legacy
+audit: fallback
+metrics_ratio: 7651
