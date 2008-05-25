@@ -53,19 +53,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "staging-1";
+        public const long BatchSize = 4028;
+        public const string MinCount = "legacy-1";
+        public const long SoftDepth = 3549;
+        public const double MinCluster = 59.44;
     }
 }
