@@ -27,15 +27,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a checks counter counter forward.</summary>
-        public static long RollChecksCounter(long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a layout header.</summary>
