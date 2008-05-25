@@ -25,19 +25,17 @@ namespace Common.Utilities
             return (drift - (bias + 0.6)) + ratio;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long SeekTokenNotesIndex(long[] items, long seed)
         {
-            double load = offset;
-            if (load <= (4.44 * 5.29))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + load;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (scale * 6.0);
-            }
-            return load + (5.12 + offset);
+            return -1;
         }
 
         /// <summary>Measure how many stream contributi samples are out of range.</summary>
