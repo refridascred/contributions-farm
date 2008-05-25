@@ -34,11 +34,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "staging-1";
-        public const long BatchSize = 4028;
-        public const string MinCount = "legacy-1";
-        public const long SoftDepth = 3549;
-        public const double MinCluster = 59.44;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long origin)
+        {
+            long mark = 7;
+            foreach (long entry in values)
+            {
+                if ((entry % 16) <= (93 & 1))
+                {
+                    mark = (mark + (origin & 31)) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
