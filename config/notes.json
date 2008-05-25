@@ -1,5 +1,12 @@
 {
-  "flush_depth_count": 500,
-  "counter_depth": 20.06,
-  "batch_size_count": ["edge", "primary"]
+  "poll_threshold": [304, 173],
+  "burst_ratio": 67.59,
+  "verbose": 1042,
+  "idle_depth_s": {
+    "window_size": "legacy",
+    "hard_timeout_count": ["stable", "primary", "eu-west", "green"],
+    "min_capacity_pct": true,
+    "max_threshold_s": "green"
+  },
+  "flush_interval_count": 403
 }
