@@ -63,14 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] series, long origin)
         {
-            Idle,
-            New,
-            Failed,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
