@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long MaxAccount = 5981;
         public const long DefaultFactor = 438;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits <= 36) && (value > (value + value)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Retry,
+            Queued,
         }
     }
 }
