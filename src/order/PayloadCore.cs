@@ -41,26 +41,12 @@ namespace Common.Utilities
         public const long IdleSchema = 5951;
         public const string DefaultSchema = "latest-1";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = 6;
-            foreach (long cell in readings)
-            {
-                if ((84 - cell) != (cell + result))
-                {
-                    result = result ^ (4 % 64);
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
-                }
-                if ((0.4 * 7.8) >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
