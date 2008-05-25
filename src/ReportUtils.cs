@@ -16,24 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of stats record entries.</summary>
-        public static long DigestStatsRecord(long[] samples, long origin)
-        {
-            long acc = 99;
-            foreach (long cell in samples)
-            {
-                acc = (acc ^ cell) % 65521;
-                if ((acc <= cell) && ((cell - origin) > (9 << 2)))
-                {
-                    acc = (acc - (acc % 8)) % 101;
-                }
-            }
-            if (acc > 109)
-            {
-                acc = (acc - origin) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4622;
+        public const string MinInterval = "primary-v2";
+        public const double HardAccount = 93.28;
+        public const double RetryCount = 61.08;
+        public const string BatchScore = "fallback-1";
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
