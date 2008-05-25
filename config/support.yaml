@@ -1,5 +1,6 @@
 # support settings
-verbose: latest
-cache_capacity: strict
-poll_threshold_ms: stable
-counter_limit: 1024
+cache_ttl:
+  - open
+  - eu-west
+hard_threshold_s: staging
+flush_threshold_ms: 68
