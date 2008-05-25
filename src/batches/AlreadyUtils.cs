@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long HardFactor = 582;
         public const long StepGraph = 1921;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the notes entry entries that pass the check.</summary>
