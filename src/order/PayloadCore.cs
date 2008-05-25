@@ -55,18 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 4132;
+        public const double MinSchema = 24.13;
+        public const string BatchSchema = "local-edge";
+        public const long IdleSchema = 5951;
+        public const string DefaultSchema = "latest-1";
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] readings)
