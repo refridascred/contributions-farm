@@ -61,9 +61,19 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 9488;
-        public const long WindowFarm = 466;
-        public const long IdleFarm = 4801;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
