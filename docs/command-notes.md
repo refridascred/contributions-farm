@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the profile handler retries a few times before giving up.
-Defaults for farm live in the config folder and can be overridden per environment.
+The format helpers are pure functions, so they are safe to call from any thread.
+The session report groups every profile by order.
 
 ## Guidelines
 
-- Validate route input early
-- Review token limits each release
-- Document new payload fields
-- Prefer metrics defaults
+- Keep session values small
+- Prefer stream defaults
+- Log every session change
+- Validate cluster input early
