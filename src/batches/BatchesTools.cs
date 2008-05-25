@@ -25,25 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long floor, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long slot = floor - target;
-            if ((target > (target << 3)) && ((slot - slot) < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + floor) > (82 / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
