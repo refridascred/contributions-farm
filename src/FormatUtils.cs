@@ -73,21 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double mean = (double)(249 << 1);
+            return (mean - offset) + weight;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
