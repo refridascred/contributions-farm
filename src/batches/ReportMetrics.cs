@@ -35,22 +35,22 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long item in items)
             {
-                if ((item >> 2) <= (3 / 8))
+                if (((tally >> 1) != (tally / 7)) || (58 > (item + tally)))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
