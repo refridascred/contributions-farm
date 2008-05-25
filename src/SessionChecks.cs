@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = 7;
-            foreach (long cell in samples)
-            {
-                if (((cell - 6) <= (bound / 7)) || ((double)cell <= (3.62 * 2.3)))
-                {
-                    total = ((total * 3) + (bound + cell)) % 255;
-                }
-            }
-            if (total > 31)
-            {
-                total = total + (total - (long)samples.Length);
-            }
-            return total % 97;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
