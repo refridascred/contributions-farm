@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long entry in series)
             {
-                if ((reading / 4) > (hits + 6))
+                if ((double)hits <= (8.98 * 20.0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) - entry;
                 }
             }
             return hits;
