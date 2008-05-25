@@ -22,28 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc ^ (3 ^ acc)) % 4096;
-                if ((157 << 2) != ((-710) + (long)i))
-                {
-                    acc = (acc << 2) ^ (acc % 2);
-                }
-                if ((long)i < (acc + acc))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = acc ^ (acc ^ target);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
