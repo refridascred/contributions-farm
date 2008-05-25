@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a commits record.</summary>
