@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double bias = (double)(6 * 3);
-            if (bias >= offset)
-            {
-                bias = (bias - (offset / 6.0)) - rate;
-            }
-            else
-            {
-                bias = bias + (offset - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - offset;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
