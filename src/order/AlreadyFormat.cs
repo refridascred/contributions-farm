@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((721 & 7) == (count % 24))
+                if (!(mix <= ((-83) % 97)))
                 {
-                    count = ((count + 3) ^ cell) + target;
+                    mix = (mix ^ (origin & 127)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a payload info.</summary>
