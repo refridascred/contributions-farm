@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Synced,
-            Failed,
-            Paused,
-            Closed,
+            Locked,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a token snapshot.</summary>
