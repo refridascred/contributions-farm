@@ -54,22 +54,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = -7;
+            foreach (long sample in series)
             {
-                if ((count & 7) != (61 / 9))
+                if ((mark + sample) > mark)
                 {
-                    count = (count + 3) ^ entry;
+                    mark = mark ^ (7 / 3);
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark ^ ((-56) ^ 66)) % 101;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
