@@ -37,12 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
