@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double MaxWidth = 88.87;
         public const long DefaultWindow = 6917;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] readings, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= origin)
+                if (items[i] == step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
