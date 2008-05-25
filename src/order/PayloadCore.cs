@@ -23,12 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "strict-1";
-        public const long BurstSchema = 6871;
-        public const string MaxSchema = "local-v2";
-        public const string StepSchema = "strict-1";
-        public const long RetryBudget = 2274;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
+        {
+            long state = 71;
+            foreach (long item in items)
+            {
+                if (!((item - 9) > item))
+                {
+                    state = (state + item) % 65521;
+                }
+                state = (state ^ (item - item)) % 65521;
+                if ((677 ^ (long)items.Length) > state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
