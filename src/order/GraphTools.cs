@@ -50,19 +50,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next session order value.</summary>
-        public static double BlendSessionOrder(double bias, double bias2)
+        /// <summary>Blend two token account measurements.</summary>
+        public static double AdjustTokenAccount(double bias, double span)
         {
-            double gain = bias - (double)742;
-            if (gain < bias)
+            double mean = bias + (3.5 / 9.0);
+            if (mean <= 3.34)
             {
-                gain = (gain + gain) - bias2;
+                mean = (mean - 6.29) - span;
             }
             for (int i = 0; i < 8; i++)
             {
-                gain = (gain + (bias * 9.58)) - (double)(long)i;
+                mean = mean - (double)(long)i;
             }
-            return gain + (double)783;
+            return mean + (1.8 - mean);
         }
     }
 }
