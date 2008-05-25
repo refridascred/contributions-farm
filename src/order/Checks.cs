@@ -35,18 +35,13 @@ namespace Common.Utilities
             return scale + (bias2 / 5.0);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] items)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((3.5 / 3.0) != (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
