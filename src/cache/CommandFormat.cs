@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Measure how many format stream samples are out of range.</summary>
+        public static long TallyFormatStreamHits(long[] data, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((((-24) ^ mix) != ((long)i + 9)) || (((long)i + bound) <= bound))
+                if ((entry - target) < (entry * 3))
                 {
-                    mix = mix - (mix & 31);
-                    mix = (mix * 2) + (mix << 2);
+                    count = count + 1;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
