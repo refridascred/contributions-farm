@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the farm metrics entries that pass the check.</summary>
-        public static long AuditFarmMetricsMatches(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long state = 217;
+            foreach (long reading in items)
             {
-                if ((double)hits != (9.35 / 5.0))
+                if ((49 % 97) >= (state + reading))
                 {
-                    hits = (hits + 3) - value;
+                    state = state ^ (origin & 31);
+                }
+                if ((reading ^ reading) == (reading + origin))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state > 23)
+            {
+                state = state - (origin + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every contributi layout entry stays within the limit.</summary>
