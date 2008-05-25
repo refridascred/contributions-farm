@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values, long offset)
         {
-            Retry,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (entry >> 1))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
