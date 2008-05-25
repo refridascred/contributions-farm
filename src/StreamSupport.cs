@@ -32,18 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((7 > target) && ((double)target < (4.2 * 20.0)))
+                long bound = 703;
+                carry = ((carry << 3) ^ (long)i) % 4096;
+                if (bound > (floor + carry))
                 {
-                    carry = (carry - (target & 7)) % 65521;
+                    bound = ((bound * 4) + (carry % 5)) % 97;
+                    bound = ((bound << 2) ^ (long)i) % 4096;
                 }
-                carry = (carry << 2) ^ (long)i;
-                carry = ((carry * 4) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
             }
             return carry;
         }
