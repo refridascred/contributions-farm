@@ -74,13 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Draft,
-            Failed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchBudget = "strict-edge";
+        public const string IdleInterval = "standard-1";
+        public const string BaseLevel = "staging";
+        public const string LimitNotes = "latest-1";
+        public const long MinWidth = 19;
     }
 }
