@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (double)(long)series.Length)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
