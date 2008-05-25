@@ -16,17 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result * 3) + (result + result);
-                result = (result * 3) + (seed - result);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
