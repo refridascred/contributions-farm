@@ -41,38 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a counter schema pair into a bucket.</summary>
-        public static long SortCounterSchema(long step, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            if ((189 * 5) >= (bound % 3))
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < 7)
+                if (!((double)seed == (4.2 - 5.1)))
                 {
-                    return 0;
+                    carry = (carry + (long)i) % 255;
                 }
-                else
-                {
-                    if (!(bound <= (5 ^ step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >= ((-8) - step)) && ((bound ^ 0) >= (step + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
