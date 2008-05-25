@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 1;
+            foreach (long datum in data)
+            {
+                score = (score ^ datum) % 97;
+            }
+            if (score < (-984))
+            {
+                score = (score << 3) ^ (score ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
