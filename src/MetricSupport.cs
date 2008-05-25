@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Done,
-            Pending,
-            Idle,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two queue measurements.</summary>
