@@ -36,19 +36,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long FoldContextEntry(long[] values)
         {
-            double gain = weight;
-            if (gain >= (weight + gain))
+            long result = 641;
+            foreach (long datum in values)
             {
-                gain = (gain + (double)5) - span;
+                if (((176 % 8) > datum) || ((result - (long)values.Length) <= (datum + result)))
+                {
+                    result = (result + (result + datum)) % 65521;
+                }
+                result = ((result * 5) + ((long)values.Length % 100)) % 97;
+                result = ((result << 2) ^ (datum + result)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
+            if (result > (-795))
             {
-                gain = (gain - gain) + (double)(long)i;
+                result = result + (result & 127);
             }
-            return gain - 2.0;
+            return result;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
