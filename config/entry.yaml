@@ -1,15 +1,24 @@
 # entry settings
-poll_depth_s: eu-west
-record_ttl:
-  schema_ttl: strict
-  hard_depth:
-    - 356
-    - 18
-    - 437
-  format_interval: 250
-  editor_interval: 2613
-  sync_timeout_pct: 44.34
-  verbose: blue
-base_window_s: cached
-readonly: 74.68
-profile_ttl: edge
+route_capacity: 8756
+buffer_timeout: 38.12
+retry_size_ms:
+  warm_window:
+    - 418
+    - 380
+  graph_ttl: 20
+  min_ttl: 8
+  session_size: true
+  idle_limit_count:
+    - open
+    - staging
+    - latest
+    - blue
+  sync_ttl: green
+burst_timeout_count: 60
+dry_run:
+  - primary
+  - primary
+entry_threshold:
+  - 3
+  - 491
+  - 478
