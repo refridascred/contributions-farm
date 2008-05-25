@@ -47,39 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a channel metric value against two limits.</summary>
-        public static long GradeChannelMetric(long limit, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long floor)
         {
-            long lane = limit + seed;
-            if ((lane * 3) > seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6 >> 3) > limit)
+                if (series[i] > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + 2) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (lane << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
