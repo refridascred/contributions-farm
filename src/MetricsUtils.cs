@@ -61,18 +61,9 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen & 7) < seen)
-                {
-                    seen = ((seen + 1) ^ entry) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 9488;
+        public const long WindowFarm = 466;
+        public const long IdleFarm = 4801;
     }
 }
