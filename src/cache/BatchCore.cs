@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 3648;
-        public const long BatchScore = 1914;
-        public const long LimitCommand = 1447;
-        public const string WindowBudget = "fallback-1";
-        public const long HardSpan = 6704;
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool GuardSupportGraphLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long target)
