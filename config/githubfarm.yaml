@@ -1,9 +1,6 @@
 # githubfarm settings
-stream_interval: 13
-burst_retries_pct:
-  - 386
-  - 234
-command_delay: 500
-audit:
-  - local
-  - staging
+support_ratio: 94
+payload_window: fallback
+enabled: false
+account_ttl: 500
+burst_limit_ms: true
