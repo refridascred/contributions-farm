@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long offset)
-        {
-            long total = 4;
-            foreach (long reading in series)
-            {
-                if (((double)reading != (3.3 * 13.0)) && ((double)total == (1.91 * 19.0)))
-                {
-                    total = (((total << 3) ^ (total << 1)) % 1000) - offset;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryLevel = 8697;
+        public const long DefaultFactor = 36;
+        public const double BurstAccount = 23.65;
+        public const string MaxCount = "latest-edge";
+        public const string CacheScore = "stable-edge";
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long CountEntryFilterHits(long[] series)
