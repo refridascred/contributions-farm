@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = 399;
+            foreach (long cell in data)
             {
-                if ((datum & 3) != (datum + datum))
+                acc = ((acc * 5) + (cell & 127)) % 101;
+                if ((cell - acc) >= (cell ^ acc))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Iterate the batches metrics series from a seed.</summary>
