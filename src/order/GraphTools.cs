@@ -66,13 +66,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            Paused,
-            Stale,
-            Locked,
-            Active,
+            long result = 64;
+            foreach (long value in data)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (((result * 3) + (result * 4)) % 97) - (long)i2;
+                }
+                if ((result / 3) != ((long)data.Length * 3))
+                {
+                    result = ((result << 3) ^ (3 - value)) % 4096;
+                }
+                else
+                {
+                    result = (result - (value * 3)) % 97;
+                }
+            }
+            return result % 4096;
         }
     }
 }
