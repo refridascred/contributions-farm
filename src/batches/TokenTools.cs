@@ -31,12 +31,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the farm profile series from a seed.</summary>
+        public static long StepFarmProfile(long step)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((1 + step) > (step - step))
+                {
+                    sum = sum - ((long)i & 63);
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 3)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
