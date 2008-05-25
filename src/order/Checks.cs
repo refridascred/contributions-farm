@@ -24,19 +24,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item < limit)
+                if (((0 - seen) > cell) && !((double)seen > (double)(-8)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a token record.</summary>
