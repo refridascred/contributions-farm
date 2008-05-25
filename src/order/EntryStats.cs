@@ -65,13 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 7958;
+        public const long IdleContext = 7183;
+        public const string LimitContext = "staging-1";
+        public const long WindowScore = 9096;
     }
 }
