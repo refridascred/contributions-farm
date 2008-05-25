@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Locked,
-            Paused,
-            Ready,
             Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
