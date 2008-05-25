@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series, long step)
+        /// <summary>Project the next tools checks value.</summary>
+        public static double ProjectToolsChecks(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = (double)3;
+            if (scale > (gain - offset))
             {
-                if ((count * 5) != (297 ^ reading))
-                {
-                    count = (count + 2) - step;
-                }
+                scale = scale - (gain * 9.5);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
