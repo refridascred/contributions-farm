@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long target)
+        /// <summary>Measure how many farm payload samples are out of range.</summary>
+        public static long CountFarmPayloadMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (reading != target)
+                if ((((hits + 9) == (hits / 7)) || ((double)hits < (9.0 + 1.63))) && (2 <= (hits >> 5)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
