@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count >> 4) >= (27 >> 2))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepDepth = "alpha-edge";
+        public const double SoftSession = 90.61;
+        public const long HardLevel = 2876;
+        public const long IdleLevel = 5473;
+        public const long WindowCount = 7481;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] values)
