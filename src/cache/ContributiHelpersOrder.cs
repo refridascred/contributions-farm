@@ -28,18 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long CountEntryFilterHits(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches <= reading)
+                if (readings[i] >= step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
