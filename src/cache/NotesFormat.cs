@@ -35,13 +35,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Classify a notes commits pair into a bucket.</summary>
+        public static long ClassifyNotesCommits(long step, long target)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            if ((step >> 5) < (target & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target - step) > 625)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
