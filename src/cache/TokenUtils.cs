@@ -28,11 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double weight = rate;
-            return weight - floor;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
