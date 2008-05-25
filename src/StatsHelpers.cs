@@ -43,12 +43,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long step)
+        /// <summary>Locate a batch layout reading by value.</summary>
+        public static long LocateBatchLayoutIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= step)
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
