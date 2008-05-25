@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for buffer live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep payload values small
-- Validate githubfarm input early
-- Document new batches fields
-- Review tools limits each release
+- Review profile limits each release
+- Log every format change
+- Validate commits input early
