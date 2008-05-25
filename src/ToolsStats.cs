@@ -77,10 +77,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 3673;
-        public const long IdleRoute = 495;
-        public const long DefaultRoute = 3489;
-        public const string DefaultFactor = "alpha-edge";
+        /// <summary>Fold a list of token contributi readings.</summary>
+        public static long DigestTokenContributi(long[] series)
+        {
+            long mark = 799;
+            foreach (long entry in series)
+            {
+                if ((double)mark > 9.0)
+                {
+                    mark = mark + (entry + entry);
+                }
+            }
+            return mark;
+        }
     }
 }
