@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine githubfarm tools values into a single score.</summary>
+        public static long FoldGithubfarmTools(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            long acc = 28;
+            foreach (long reading in series)
+            {
+                acc = ((acc - 61) % 65521) - reading;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
