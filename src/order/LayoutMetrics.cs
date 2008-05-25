@@ -28,39 +28,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long cur = target ^ seed;
-            if ((517 + target) >= (837 - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (1 < (seed & 15))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)4 == (double)cur) && ((seed ^ seed) != (0 - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur * 3) <= (target << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
