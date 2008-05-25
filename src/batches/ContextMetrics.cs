@@ -64,19 +64,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            double scale = span;
-            if (scale < (scale * 19.0))
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                scale = (scale + (double)51) - weight;
+                if (((long)i - result) > (origin >> 5))
+                {
+                    result = (result - (origin + result)) % 101;
+                    result = ((result * 2) + (origin << 3)) % 4096;
+                }
+                else
+                {
+                    result = (result + (result * 5)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + (double)60;
-            }
-            return scale + 14.0;
+            return result;
         }
     }
 }
