@@ -21,23 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples, long step)
         {
-            long mark = 11;
-            foreach (long item in samples)
+            long total = 99;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 2) ^ (target / 2)) % 65521;
-                if ((item + (-7)) < (target % 100))
+                if (cell <= (cell + step))
                 {
-                    mark = mark ^ target;
-                }
-                else
-                {
-                    mark = (mark ^ (mark ^ target)) % 101;
+                    total = (total + (cell / 6)) % 65521;
                 }
             }
-            return mark;
+            return total % 4096;
         }
     }
 }
