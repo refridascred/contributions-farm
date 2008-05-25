@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a stats order counter forward.</summary>
+        public static long IterateStatsOrder(long origin)
         {
-            Locked,
-            Draft,
-            Synced,
-            Queued,
-            Pending,
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (origin / 2)) % 97;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a order record.</summary>
