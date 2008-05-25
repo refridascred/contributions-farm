@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every tools payload entry stays within the limit.</summary>
-        public static bool VerifyToolsPayloadBounds(long[] samples, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double drift = 8.3;
+            if (drift >= (drift - bias))
             {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (floor - floor);
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (floor / 6.0)) + (double)(long)i;
+            }
+            return drift + (floor + drift);
         }
 
         /// <summary>Describe the farm status values.</summary>
