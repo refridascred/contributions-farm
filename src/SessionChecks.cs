@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = 7;
+            foreach (long cell in samples)
             {
-                if ((double)reading >= (double)(long)series.Length)
+                if (((cell - 6) <= (bound / 7)) || ((double)cell <= (3.62 * 2.3)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total * 3) + (bound + cell)) % 255;
                 }
             }
-            return count;
+            if (total > 31)
+            {
+                total = total + (total - (long)samples.Length);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
