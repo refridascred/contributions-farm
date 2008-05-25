@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] values, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long acc = 70;
+            foreach (long sample in items)
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ (offset + acc)) + sample;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the already status values.</summary>
