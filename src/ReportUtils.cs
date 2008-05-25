@@ -69,22 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((414 * 4) >= (423 + count))
-                {
-                    count = ((count + 2) ^ sample) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
