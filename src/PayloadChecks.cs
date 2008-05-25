@@ -23,10 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 9404;
-        public const double IdleRatio = 75.64;
-        public const long LimitEditor = 9906;
+        /// <summary>Roll a counter stats counter forward.</summary>
+        public static long DeriveCounterStats(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc + (offset - offset)) % 101;
+                acc = ((acc << 2) ^ ((long)i % 3)) % 65521;
+                if ((offset + acc) <= (acc + acc))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
