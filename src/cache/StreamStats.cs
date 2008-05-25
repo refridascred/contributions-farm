@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
