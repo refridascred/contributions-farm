@@ -35,22 +35,16 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((tally >> 1) != (tally / 7)) || (58 > (item + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result - (801 + (long)i)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
