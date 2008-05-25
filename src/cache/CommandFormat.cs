@@ -28,11 +28,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double weight, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long step)
         {
-            double weight2 = (double)225 - (weight + weight);
-            return weight2 - floor;
+            if (((step - limit) < limit) || ((step * 4) >= (93 + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7 + limit) >= (-13))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit << 2) < (774 << 1)) && ((limit - 7) != (53 & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
