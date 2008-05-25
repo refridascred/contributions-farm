@@ -43,11 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count * 4) < (3 & 1)) && (((9.49 / 2.0) != (double)count) || ((count * 3) > 82)))
+                {
+                    count = ((count + 3) + value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
