@@ -1,9 +1,8 @@
-id,score,rank,owner
-1,0.75,eu-west,860
-2,77.28,92.84,869
-3,standard,open,standard
-4,green,blue,840
-5,10,430,450
-6,staging,136,452
-7,100,71.83,109
-8,blue,120,cached
+id,label,ratio
+1,64,690
+2,strict,170
+3,81.52,3.66
+4,894,40.99
+5,31.31,40.41
+6,local,cached
+7,green,standard
