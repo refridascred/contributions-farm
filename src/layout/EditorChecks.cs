@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] values, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Blend two record measurements.</summary>
