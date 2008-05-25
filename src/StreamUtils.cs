@@ -19,32 +19,12 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long origin2)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long step = origin - origin2;
-            if (((origin2 & 31) < (origin % 3)) && ((step * 3) == (step & 127)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((489 - origin) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin ^ step) > (origin2 - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
