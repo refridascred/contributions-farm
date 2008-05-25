@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Combine window schema values into a single score.</summary>
+        public static long DigestWindowSchema(long[] series, long target)
         {
-            double rate = ratio + (bias - 12.0);
-            if (rate <= 8.4)
+            long result = 881;
+            foreach (long reading in series)
             {
-                rate = rate + 7.36;
+                if (((549 & 3) <= (reading * 3)) || ((reading ^ reading) < (result << 3)))
+                {
+                    result = (((result * 2) + (result - 798)) % 97) - target;
+                }
             }
-            return rate - (double)30;
+            return result;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
