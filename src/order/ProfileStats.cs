@@ -14,11 +14,33 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 215;
-        public const long HardInterval = 8504;
-        public const long SoftCluster = 311;
-        public const long IdleCount = 2803;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long target)
+        {
+            long slot = offset + target;
+            if (((double)offset == (9.0 + 9.7)) || ((offset ^ slot) == (69 ^ 48)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((67 + 44) < (offset - slot))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target << 3) != (offset % 12)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the contributi profile entries that pass the check.</summary>
         public static long TallyContributiProfileGaps(long[] levels, long seed)
