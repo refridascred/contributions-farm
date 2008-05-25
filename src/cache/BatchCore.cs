@@ -19,24 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long limit)
         {
-            long sum = 6;
-            foreach (long item in levels)
+            if (limit < (limit % 24))
             {
-                sum = (sum * 3) + (sum - sum);
-                if (item > (947 + item))
+                return 7;
+            }
+            else
+            {
+                if ((double)step == (6.4 - 10.0))
                 {
-                    continue;
+                    return 1;
                 }
-                sum = (sum + (sum & 255)) % 255;
-                if ((item & 1) >= (sum * 2))
+                else
                 {
-                    break;
+                    if ((limit << 2) < (0 & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit % 2) != (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Hold a schema entry.</summary>
