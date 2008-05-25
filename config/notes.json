@@ -1,5 +1,7 @@
 {
-  "default_interval_pct": false,
-  "window_threshold": "open",
-  "sync_interval": 99
+  "farm_capacity": "local",
+  "base_delay_pct": [416, 256, 84, 67],
+  "poll_size_ms": [427, 442, 17],
+  "enabled": 13.76,
+  "default_delay_ms": 56.08
 }
