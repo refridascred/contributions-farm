@@ -48,17 +48,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Roll a format counter counter forward.</summary>
+        public static long DeriveFormatCounter(long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (floor >= (floor + 722))
-                {
-                    total = total + floor;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
             return total;
         }
