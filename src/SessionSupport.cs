@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinCount = 6749;
+        public const long RetrySpan = 3328;
+        public const long BatchDepth = 1892;
+        public const long BaseDepth = 5513;
+        public const long LimitTimeout = 3532;
 
         /// <summary>Match up buffer samples.</summary>
         public static long OverlapBufferCount(long[] items)
