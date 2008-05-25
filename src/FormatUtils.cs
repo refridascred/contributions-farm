@@ -22,11 +22,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "staging";
-        public const long WindowSpan = 6653;
-        public const long BatchBudget = 1032;
-        public const long WindowReport = 5999;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long bound)
+        {
+            if ((bound << 2) == (limit - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound % 2) >= (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((18.0 - 6.12) >= 4.17)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + 872) >= (85 - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
