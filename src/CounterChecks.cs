@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two record command measurements.</summary>
-        public static double AdjustRecordCommand(double bias, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            double drift = floor - (double)8;
-            if (drift >= (double)322)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                drift = drift + floor;
+                if ((matches >= ((-640) & 127)) || ((9.63 / 2.0) > (double)cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (bias / 6.0)) + (double)(long)i;
-            }
-            return drift + (bias * 8.2);
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
