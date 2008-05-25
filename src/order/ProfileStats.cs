@@ -75,16 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes token series from a seed.</summary>
-        public static long RollNotesToken(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = carry + floor;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 841;
+        public const long BurstBudget = 1493;
+        public const long StepRatio = 8352;
+        public const long BatchSpan = 6826;
     }
 }
