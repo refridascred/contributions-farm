@@ -26,22 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long offset)
         {
-            long state = 83;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((sample * 3) >= ((long)levels.Length ^ state))
+                if (value > offset)
                 {
-                    state = state + (limit << 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 205)
-            {
-                state = state + (state + limit);
-            }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
