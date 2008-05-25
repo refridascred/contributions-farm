@@ -44,18 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values, long step)
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long MeasureToolsChannelHits(long[] values)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long cell in values)
             {
-                if (hits <= (998 * 2))
+                if (((-42) + count) > (count - cell))
                 {
-                    hits = ((hits + 3) + cell) + step;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
