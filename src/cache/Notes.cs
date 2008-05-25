@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of layout report readings.</summary>
-        public static long OverlapLayoutReportCount(long[] readings)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
