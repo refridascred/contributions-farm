@@ -15,17 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor - target;
+            if ((target > (target << 3)) && ((slot - slot) < target))
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((target + floor) > (82 / 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
