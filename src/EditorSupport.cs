@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 332;
-        public const long BatchFilter = 9081;
-        public const long CacheFilter = 3486;
-        public const long CacheTimeout = 6600;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Done,
+            Idle,
+            Stale,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Digest a series of queue cluster entries.</summary>
         public static long FoldQueueCluster(long[] readings)
