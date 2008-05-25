@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const long LimitLevel = 4915;
         public const double MaxMetric = 11.86;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total - limit;
-                if ((total + (long)i) == (total + 3))
-                {
-                    total = (total + limit) % 101;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 38.62;
+        public const long LimitWidth = 9148;
+        public const long StepInterval = 2268;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatGaps(long[] samples, long step)
