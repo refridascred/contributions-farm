@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Match up metric checks samples.</summary>
+        public static long PairMetricChecksCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 17)
+                    if ((levels[i] - levels[j]) > 0)
                     {
                         count = count + 1;
                     }
