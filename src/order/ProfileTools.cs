@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Ready,
-            Draft,
-            Done,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitScore = 5.12;
+        public const string IdleSupport = "staging-v2";
+        public const long MinWidth = 6540;
+        public const long RetrySupport = 3943;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
