@@ -1,10 +1,10 @@
 # Command notes
 
-Run the session check before changing any context limits.
-Run the session check before changing any token limits.
+Use buffer settings to tune how often window data is refreshed.
+Run the support check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every graph change
-- Keep report values small
-- Document new context fields
+- Keep stats values small
+- Review report limits each release
+- Prefer payload defaults
