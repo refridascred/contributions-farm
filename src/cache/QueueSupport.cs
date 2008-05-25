@@ -14,17 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] data, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a stats header.</summary>
