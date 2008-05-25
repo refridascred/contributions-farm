@@ -1,36 +1,17 @@
 # entry settings
-route_limit:
-  - 47
-  - 414
-  - 2
-  - 44
-schema_threshold:
-  order_depth:
-    - standard
-    - fallback
-  contributi_timeout: false
-  idle_timeout_s: standard
-  retry_depth: 27.77
-  idle_threshold_count:
-    max_retries_ms: 79.66
-    poll_ratio_pct: 443
-    cache_ttl_pct: false
-    warm_depth_pct: strict
-  min_threshold_s:
-    - edge
-    - staging
-dry_run: 57.97
-retry_depth_count: false
-warm_retries_count:
-  persist:
-    - green
-    - local
-    - local
-  buffer_ratio: fallback
-  checks_capacity: eu-west
-  readonly: 19.52
-  sync_ratio: 64
-default_retries_s:
-  - 203
-  - 94
-  - 373
+layout_size: 33.64
+poll_interval_ms:
+  enabled: open
+  metric_delay:
+    dry_run: 69.93
+    readonly:
+      - 252
+      - 64
+    graph_delay: 250
+  strict: 94.23
+  min_timeout_pct: strict
+warm_timeout_ms:
+  - 415
+  - 281
+  - 404
+hard_threshold: false
