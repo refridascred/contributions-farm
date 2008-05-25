@@ -81,13 +81,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseScore = "standard-v2";
+        public const double MinBudget = 80.73;
+        public const double HardEditor = 96.67;
+        public const string DefaultLevel = "fallback-edge";
+        public const long RetryEditor = 8500;
     }
 }
