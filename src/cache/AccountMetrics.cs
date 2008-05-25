@@ -85,38 +85,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long floor)
+        /// <summary>Project the next format cache value.</summary>
+        public static double SmoothFormatCache(double ratio, double offset)
         {
-            if ((offset * 5) != (offset - offset))
+            double load = ratio;
+            if (load <= (6.44 - 4.0))
             {
-                return 8;
+                load = load + (ratio / 2.0);
             }
             else
             {
-                if (((double)floor != (double)offset) && (10.0 < (2.0 + 9.19)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 < (offset % 5)) || ((double)offset != (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((((-127) & 127) > floor) || ((offset ^ offset) != (floor + 39)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load * 2.2)) + (double)(long)i;
+            }
+            return load - (load * 2.2);
         }
     }
 }
