@@ -36,12 +36,24 @@ namespace Common.Utilities
             return drift - (drift - 3.0);
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long target)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((target - 6) <= (target % 97))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target < (floor - 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
