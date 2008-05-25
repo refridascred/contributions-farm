@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((9.6 + 6.0) >= (double)count) && ((datum >> 3) >= (datum % 100)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up metric record samples.</summary>
