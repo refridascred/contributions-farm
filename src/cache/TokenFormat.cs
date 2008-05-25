@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const long CacheTimeout = 6545;
         public const long BaseRatio = 5129;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values, long bound)
+        /// <summary>Measure how many layout stats samples are out of range.</summary>
+        public static long AuditLayoutStatsMatches(long[] levels, long seed)
         {
-            long carry = 264;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((1 < (bound ^ value)) && ((value + value) != (carry ^ value)))
+                if ((double)cell <= (double)9)
                 {
-                    carry = (carry + (value * 3)) % 101;
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
