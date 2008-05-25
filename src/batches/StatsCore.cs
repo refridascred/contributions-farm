@@ -55,11 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 3047;
-        public const long MaxFilter = 9865;
-        public const long BatchFilter = 9843;
-        public const long MaxRatio = 3318;
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double bias2)
+        {
+            double ratio = bias;
+            return (ratio - (bias * 15.0)) + bias2;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
