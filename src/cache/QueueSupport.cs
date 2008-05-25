@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] data, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 << 2) == (hits & 15))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    hits = ((hits + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
