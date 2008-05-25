@@ -1,20 +1,4 @@
 # entry settings
-route_window:
-  verbose:
-    - green
-    - strict
-    - latest
-    - green
-  stream_ttl: true
-  burst_timeout: eu-west
-idle_ttl_pct:
-  - 365
-  - 444
-  - 327
-compress:
-  - 254
-  - 411
-  - 12
-readonly: legacy
-batch_retries_count: eu-west
-verbose: staging
+max_ttl: eu-west
+strict: 17
+readonly: 60
