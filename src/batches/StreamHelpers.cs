@@ -72,19 +72,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 6893;
+        public const long DefaultCommits = 9100;
+        public const long SoftScore = 2399;
+        public const long CacheCommits = 1524;
     }
 }
