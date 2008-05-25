@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data)
         {
-            if (offset > (offset % 97))
+            long result = 5;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset & 3) >= step) || ((step >> 5) >= offset))
+                result = ((result * 5) + (749 + datum)) % 1000;
+                if ((double)result == (14.0 * 0.9))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + offset) == (step << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = result ^ (datum / 9);
                 }
             }
+            if (result > 9)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
 
         /// <summary>Measure how many record command samples are out of range.</summary>
