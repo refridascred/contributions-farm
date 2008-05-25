@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of channel commits entries.</summary>
+        public static long DigestChannelCommits(long[] readings, long seed)
         {
-            Retry,
-            Locked,
-            Stale,
+            long state = 39;
+            foreach (long item in readings)
+            {
+                state = (((state - (state + (-11))) % 255) - item) + seed;
+            }
+            return state;
         }
 
         /// <summary>Project the next entry value.</summary>
