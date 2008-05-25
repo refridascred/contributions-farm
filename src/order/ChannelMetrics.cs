@@ -38,18 +38,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi window entries that pass the check.</summary>
-        public static long AuditContributiWindowMatches(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((2 >= bound) && (49 >= bound))
             {
-                if ((hits & 255) <= ((long)data.Length / 2))
+                return 1;
+            }
+            else
+            {
+                if (!((origin % 64) < (bound - origin)))
                 {
-                    hits = (hits + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin + origin) < (bound - 50)) || ((6.6 - 0.4) >= (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (9.0 * 8.1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
