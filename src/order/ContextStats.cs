@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine batch route values into a single score.</summary>
+        public static long WeighBatchRoute(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 53;
+            foreach (long datum in levels)
+            {
+                if (datum > (datum + acc))
+                {
+                    acc = ((acc << 2) ^ datum) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up support samples.</summary>
