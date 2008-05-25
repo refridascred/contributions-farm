@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((18.0 + 9.0) >= (double)reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
