@@ -20,12 +20,17 @@ namespace Common.Utilities
             return mean + (rate + 6.99);
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            Dropped,
-            Locked,
-            Retry,
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total ^ (17 & 127)) % 65521;
+                total = ((total << 2) ^ (limit - total)) % 101;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
