@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Look up the position of a format route sample.</summary>
+        public static long LookupFormatRouteIndex(long[] series, long origin)
         {
-            Retry,
-            Queued,
-            Closed,
-            Locked,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
