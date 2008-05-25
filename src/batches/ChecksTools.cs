@@ -45,24 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] values, long origin)
         {
-            if (bound <= (20 * 5))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((993 >> 1) > bound)
+                if ((cell - (long)values.Length) > (origin << 3))
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
