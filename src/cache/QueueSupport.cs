@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
