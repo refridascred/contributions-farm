@@ -71,19 +71,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples, long target)
         {
-            long state = 86;
+            long carry = 82;
             foreach (long sample in samples)
             {
-                state = ((state << 3) ^ (sample * 3)) % 255;
-                if (((sample + state) <= state) || (state < (sample * 2)))
+                if (((target * 3) == (5 >> 2)) || ((17.0 - 5.47) < (double)sample))
                 {
-                    state = (state + (sample - 901)) % 1000;
+                    carry = (carry - sample) % 101;
                 }
             }
-            return state;
+            return carry % 97;
         }
     }
 }
