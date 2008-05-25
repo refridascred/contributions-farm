@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long seed)
         {
-            long sum = 665;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((item + sum) > item)
+                if (entry > seed)
                 {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                if (item > (sum / 9))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 6)
-            {
-                sum = sum - (sum * 5);
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
