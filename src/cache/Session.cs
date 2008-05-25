@@ -50,19 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] values, long step)
+        /// <summary>Count the graph format entries that pass the check.</summary>
+        public static long MeasureGraphFormatOutliers(long[] values)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long value in values)
             {
-                if (value > step)
+                if (!((11 + value) <= (seen % 100)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
