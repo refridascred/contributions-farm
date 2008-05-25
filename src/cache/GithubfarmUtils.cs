@@ -37,19 +37,11 @@ namespace Common.Utilities
             return drift - (drift * 6.77);
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double load = floor;
-            if (load > (double)599)
-            {
-                load = load + (11.0 + rate);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load + (rate / 6.0);
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
