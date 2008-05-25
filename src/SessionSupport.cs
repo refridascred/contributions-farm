@@ -30,19 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (cell > offset)
+                if ((0.82 - 3.1) >= (double)datum)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
