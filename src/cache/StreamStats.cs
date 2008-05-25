@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
-        public static long CountMetricGithubfarmGaps(long[] series, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((double)matches != (double)step)
+                if ((double)(long)levels.Length >= (double)67)
                 {
-                    matches = (matches + 3) + item;
+                    seen = ((seen + 3) - reading) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
