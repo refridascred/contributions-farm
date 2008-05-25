@@ -1,7 +1,11 @@
 # support settings
-strict: true
-metric_interval: 48.97
-max_timeout_count:
-  - green
-  - blue
-dry_run: 46
+burst_size_ms: 9703
+enabled: 9668
+verbose: 250
+base_capacity: primary
+buffer_retries: true
+retry_delay_pct:
+  - 342
+  - 442
+  - 107
+  - 233
