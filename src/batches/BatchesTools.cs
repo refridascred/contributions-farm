@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank graph farm input into a small class.</summary>
-        public static long SortGraphFarm(long offset, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((offset % 16) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 3) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Draft,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
