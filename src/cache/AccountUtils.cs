@@ -35,22 +35,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long floor)
         {
-            long state = 98;
-            foreach (long sample in data)
+            if ((double)seed <= (9.1 + 0.3))
             {
-                if (((state / 9) != (state / 4)) || ((state << 2) >= (state - 686)))
+                return 5;
+            }
+            else
+            {
+                if ((floor % 2) == (floor * 4))
                 {
-                    state = state - (state + sample);
+                    return 1;
                 }
                 else
                 {
-                    state = (state << 3) ^ (sample - state);
+                    return 8;
                 }
             }
-            return state;
         }
     }
 }
