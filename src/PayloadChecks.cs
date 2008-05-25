@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long seed, long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] series)
         {
-            long next = seed + origin;
-            if ((next >> 3) > seed)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 4) >= (3 - origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((6.1 / 8.0) <= (double)next))
+                    if ((series[i] - series[j]) != 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin <= (origin << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
