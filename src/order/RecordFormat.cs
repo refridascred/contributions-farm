@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Dropped,
-            Done,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "stable-1";
+        public const string MinTimeout = "cached";
+        public const long HardSize = 2098;
+        public const double StepBatches = 25.88;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long step)
