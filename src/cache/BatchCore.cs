@@ -35,12 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Synced,
+            Closed,
+            Locked,
             Done,
-            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
