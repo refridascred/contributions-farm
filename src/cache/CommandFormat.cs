@@ -21,21 +21,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = 9.88 - (bias * 3.7);
+            if (rate >= (bias - 19.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + 5.98) + scale;
             }
-            return tally;
+            return rate - (bias * 5.38);
         }
 
         /// <summary>Hold a profile entry.</summary>
