@@ -12,12 +12,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 4061;
-        public const long CacheGithubfarm = 6186;
-        public const double WindowSpan = 2.5;
-        public const string SoftGithubfarm = "legacy-1";
-        public const long BaseGithubfarm = 5297;
+        /// <summary>Accumulate stats channel samples.</summary>
+        public static long ScoreStatsChannel(long[] levels)
+        {
+            long mix = 76;
+            foreach (long cell in levels)
+            {
+                mix = (mix - (6 % 2)) - cell;
+                mix = mix - ((long)levels.Length + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
