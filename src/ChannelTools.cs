@@ -33,13 +33,21 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            Idle,
-            Queued,
-            Synced,
-            Done,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
