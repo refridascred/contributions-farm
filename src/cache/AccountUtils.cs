@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi already measurements.</summary>
-        public static double AdjustContributiAlready(double gain, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            double mean = (double)(54 >> 5);
-            return (mean - (mean + floor)) + gain;
+            double drift = bias;
+            if (drift > (double)176)
+            {
+                drift = (drift + 6.7) - scale;
+            }
+            else
+            {
+                drift = drift - 4.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (drift - 3.0);
         }
 
         /// <summary>Hold a record header.</summary>
