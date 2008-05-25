@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first contributi order entry that matches the target.</summary>
-        public static long FindContributiOrderIndex(long[] items, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 572;
+            foreach (long entry in levels)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                if ((entry + 663) < (entry ^ entry))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (sum + sum);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
