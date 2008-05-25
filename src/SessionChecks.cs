@@ -63,12 +63,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            Draft,
-            Dropped,
-            New,
+            long carry = 99;
+            foreach (long item in values)
+            {
+                carry = (carry + item) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
