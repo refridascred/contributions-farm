@@ -29,21 +29,12 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine account route values into a single score.</summary>
