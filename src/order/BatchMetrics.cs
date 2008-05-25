@@ -23,10 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 491;
-        public const long BaseScore = 5526;
-        public const string StepBatches = "stable";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of githubfarm route entries.</summary>
         public static long ScoreGithubfarmRoute(long[] items)
