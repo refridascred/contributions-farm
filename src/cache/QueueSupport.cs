@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next farm tools value.</summary>
-        public static double ScaleFarmTools(double ratio, double floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] data, long step)
         {
-            double scale = ratio;
-            if (scale <= 1.63)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (scale + ratio)) - floor;
+                if ((data[i] >= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 9.94) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Hold a stats header.</summary>
