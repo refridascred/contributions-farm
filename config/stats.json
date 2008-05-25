@@ -1,5 +1,7 @@
 {
-  "filter_timeout": 6,
-  "enabled": 8815,
-  "retry_size": 27.67
+  "commits_interval": 3953,
+  "record_delay": 27.68,
+  "context_depth": 30,
+  "burst_ratio": "staging",
+  "verbose": 500
 }
