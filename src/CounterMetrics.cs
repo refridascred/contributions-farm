@@ -23,11 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((item + count) < (5 / 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
