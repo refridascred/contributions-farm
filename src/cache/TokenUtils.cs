@@ -19,26 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long offset)
-        {
-            long next = step ^ offset;
-            if ((next * 3) != ((-84) + 24))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + 523) >= (step ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "staging-1";
+        public const long CacheScore = 4625;
+        public const long BurstToken = 390;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
