@@ -54,12 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long step)
         {
-            Closed,
-            Retry,
-            Idle,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
