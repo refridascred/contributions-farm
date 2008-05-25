@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "staging-v2";
-        public const long BaseTimeout = 2987;
-        public const long MaxMetrics = 1644;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long offset)
+        {
+            long lane = step ^ offset;
+            if ((offset << 3) > (lane % 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4.3 * 12.0) < (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double weight, double offset)
