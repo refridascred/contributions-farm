@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long AuditChecksSchemaMatches(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((seen + seen) > (seen - 709))
+                if (item != origin)
                 {
-                    seen = (seen + 2) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit batches graph readings against a rule.</summary>
