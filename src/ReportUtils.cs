@@ -38,18 +38,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate notes buffer samples.</summary>
-        public static long TallyNotesBuffer(long[] levels, long bound)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            long mark = 486;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound >> 4) <= mark)
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
                 {
-                    mark = (((mark << 3) ^ (mark % 10)) % 101) ^ cell;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
