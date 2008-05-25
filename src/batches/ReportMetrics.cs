@@ -38,24 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long step)
         {
-            if ((target - 86) > target)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((92 % 10) < (seed & 63))
+                if (cell < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
