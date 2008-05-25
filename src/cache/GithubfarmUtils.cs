@@ -48,17 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format farm counter forward.</summary>
-        public static long SeriesFormatFarm(long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ ((long)i - state);
-                state = state - (limit * 3);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            Paused,
+            Stale,
+            Pending,
+            Failed,
         }
     }
 }
