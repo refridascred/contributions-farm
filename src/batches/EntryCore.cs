@@ -19,23 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long origin)
         {
-            double rate = 9.0;
-            if (rate < rate)
+            if (!((7 - origin) <= floor))
             {
-                rate = rate + span;
+                return 8;
             }
             else
             {
-                rate = rate - rate;
+                if ((origin * 3) > (9 ^ origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)167 >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > 6.1)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)(-7)) + (double)(long)i;
-            }
-            return rate + (gain + 18.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
