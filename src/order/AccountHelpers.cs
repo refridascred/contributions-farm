@@ -23,14 +23,18 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long AuditSupportSessionHits(long[] values, long offset)
         {
-            Retry,
-            New,
-            Done,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry > (entry * 2)) || ((seen + (long)values.Length) < (5 << 1)))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
