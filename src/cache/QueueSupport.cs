@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings, long floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            long result = 676;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor - item) <= (result + floor))
-                {
-                    break;
-                }
-                if (item > (item + result))
-                {
-                    result = result + item;
-                }
-            }
-            if (result > 87)
-            {
-                result = (result ^ floor) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
             return result;
         }
