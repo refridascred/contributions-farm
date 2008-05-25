@@ -14,18 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit metrics already readings against a rule.</summary>
-        public static long AuditMetricsAlreadyOutliers(long[] values, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = -75;
+            foreach (long datum in series)
             {
-                if (target < (matches % 12))
+                if (!((1.0 / 2.0) > (double)anchor))
                 {
-                    matches = (matches + 2) ^ cell;
+                    anchor = anchor - (datum + datum);
                 }
             }
-            return matches;
+            if (anchor > 16)
+            {
+                anchor = anchor - (anchor / 6);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
