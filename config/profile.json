@@ -1,13 +1,5 @@
 {
-  "cache_threshold_s": 34,
-  "support_limit": false,
-  "sync_depth_count": {
-    "soft_threshold_ms": false,
-    "channel_depth": 1714,
-    "cluster_interval": "stable",
-    "cache_delay": 30
-  },
-  "verbose": ["cached", "open", "strict"],
-  "min_depth_count": "legacy",
-  "flush_limit_pct": "eu-west"
+  "cache_retries_count": 50,
+  "default_ttl": "cached",
+  "verbose": false
 }
