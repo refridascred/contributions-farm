@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((count ^ count) >= (long)series.Length)
+                if (item >= origin)
                 {
-                    count = (count + 3) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
