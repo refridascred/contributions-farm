@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double gain2 = (double)773 / 4.0;
-            if (gain2 >= gain)
-            {
-                gain2 = (gain2 + 1.0) - offset;
-            }
-            return gain2 - gain;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of metric payload entries.</summary>
