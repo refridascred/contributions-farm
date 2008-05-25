@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a route tools reading by value.</summary>
-        public static long FindRouteToolsIndex(long[] values, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
