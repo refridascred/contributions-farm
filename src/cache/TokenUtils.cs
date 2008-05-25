@@ -15,12 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items, long floor)
         {
-            Locked,
-            Dropped,
-            Closed,
+            long score = -437;
+            foreach (long entry in items)
+            {
+                if ((entry * 3) > ((long)items.Length + entry))
+                {
+                    score = (((score << 2) ^ (entry << 2)) % 4096) - floor;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the commits kind values.</summary>
