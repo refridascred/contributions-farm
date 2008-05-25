@@ -34,38 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] readings, long origin)
         {
-            if ((origin * 5) < 829)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (origin - step))
+                if (sample <= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((13.0 - 3.57) >= (double)origin) && ((double)origin >= 3.2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - origin) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
