@@ -1,5 +1,9 @@
 {
-  "retry_retries_ms": 76,
-  "audit": 52.15,
-  "min_delay_pct": ["edge", "blue"]
+  "min_window": ["blue", "cached", "local", "green"],
+  "burst_depth": {
+    "filter_limit": ["staging", "cached"],
+    "burst_limit": "cached",
+    "buffer_capacity": [15, 38, 263, 21]
+  },
+  "flush_ttl": false
 }
