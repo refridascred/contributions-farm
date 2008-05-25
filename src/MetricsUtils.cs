@@ -38,26 +38,18 @@ namespace Common.Utilities
             return ((drift - (double)19) + bias) + bias2;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            long mark = 46;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (seed >= 866)
+                if ((matches - datum) >= (datum + datum))
                 {
-                    mark = (mark << 2) ^ entry;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark << 1);
+                    matches = matches + 3;
                 }
             }
-            if (mark < 20)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
