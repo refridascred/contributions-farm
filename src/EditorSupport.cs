@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSize = 6580;
-        public const long SoftRatio = 463;
-        public const double IdleSpan = 12.13;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Stale,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long offset)
