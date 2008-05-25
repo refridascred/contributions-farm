@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long MinCluster = 2084;
         public const long BaseInterval = 909;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!(matches > item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
