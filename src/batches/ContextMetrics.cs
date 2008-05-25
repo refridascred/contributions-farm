@@ -64,14 +64,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long floor, long step)
         {
-            Ready,
-            Queued,
-            Retry,
-            Failed,
-            Synced,
+            long edge = floor + step;
+            if ((536 * 2) <= (edge + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 1) <= ((-1) + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
