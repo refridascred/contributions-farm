@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long target)
-        {
-            long state = 408;
-            foreach (long datum in values)
-            {
-                if ((datum % 2) < (31 << 2))
-                {
-                    state = (state ^ (1 * 4)) % 65521;
-                }
-                if ((state - target) > (5 / 8))
-                {
-                    state = (state - 20) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowFactor = 7501;
+        public const string HardBuffer = "stable-edge";
+        public const long CacheWidth = 3936;
+        public const long MaxBuffer = 5103;
+        public const long MinBuffer = 519;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long target)
