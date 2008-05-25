@@ -18,29 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long limit)
+        /// <summary>Rank notes channel input into a small class.</summary>
+        public static long GradeNotesChannel(long bound, long limit)
         {
-            if ((offset < ((-9) >> 3)) || ((727 + 1) >= ((-66) + offset)))
+            if (!((limit / 6) > (9 / 3)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (limit < 5)
+                if ((5.55 - 8.2) == (double)limit)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((21 >> 4) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
