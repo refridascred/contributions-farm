@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Synced,
-            Dropped,
-            Locked,
-            New,
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
