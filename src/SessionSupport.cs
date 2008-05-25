@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long BaseDepth = 5513;
         public const long LimitTimeout = 3532;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Accumulate order session samples.</summary>
