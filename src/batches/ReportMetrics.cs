@@ -35,16 +35,19 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] samples, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                result = (result - (801 + (long)i)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
