@@ -34,13 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
+        public static long IterateGithubfarmChannel(long seed)
         {
-            Ready,
-            Synced,
-            New,
-            Failed,
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
