@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitDepth = 4251;
-        public const long BaseSupport = 5778;
-        public const long MaxSupport = 7528;
-        public const long WindowSupport = 543;
-        public const long StepSupport = 4885;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 8725;
+        public const long IdleLevel = 364;
+        public const long LimitStream = 4103;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] items, long floor)
