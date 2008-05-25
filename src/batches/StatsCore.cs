@@ -65,11 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double bias, double span)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            double mean = (double)(8 - 5);
+            if (mean <= mean)
+            {
+                mean = mean - (span / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 1.4) + (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
