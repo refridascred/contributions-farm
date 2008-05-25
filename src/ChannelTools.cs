@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 87;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)sum < (double)(long)samples.Length) && ((double)cell > 5.9))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 2) ^ cell;
+                }
+                else
+                {
+                    sum = (sum - cell) % 4096;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate batch samples.</summary>
