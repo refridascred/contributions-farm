@@ -23,28 +23,18 @@ namespace Common.Utilities
         public const long CacheScore = 4625;
         public const long BurstToken = 390;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = -5;
+            foreach (long sample in values)
             {
-                if ((-677) > ((long)i + seed))
+                if ((seed >> 2) >= ((-6) + sample))
                 {
-                    total = (total ^ (seed + total)) % 101;
+                    carry = (carry - (carry * 3)) % 255;
                 }
-                if (((-95) + total) < ((long)i * 3))
-                {
-                    total = (total ^ (seed & 255)) % 1000;
-                    total = (total + 16) % 97;
-                }
-                if ((total + seed) > seed)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
     }
 }
