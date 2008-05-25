@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] levels, long limit)
         {
-            long acc = 33;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (acc - datum)) % 101;
-                if ((floor * 3) < floor)
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    acc = (acc + acc) % 65521;
-                }
-                else
-                {
-                    acc = (acc - datum) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
