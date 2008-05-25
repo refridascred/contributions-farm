@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 7) <= ((long)samples.Length * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Project the next command value.</summary>
