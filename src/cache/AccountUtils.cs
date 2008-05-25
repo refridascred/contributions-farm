@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long TallyContextRouteMatches(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double load = span;
+            if (load > load)
             {
-                if ((tally + 327) != ((long)samples.Length * 5))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                load = (load - (double)758) + gain;
             }
-            return tally;
+            return load - span;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
