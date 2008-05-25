@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long limit)
-        {
-            if ((target - limit) <= (target % 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target >= 3.2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - limit) < (92 * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 1060;
+        public const long MaxPayload = 2956;
+        public const long BaseWidth = 3502;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
