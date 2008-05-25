@@ -48,19 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchScore = "stable";
+        public const long BurstBudget = 6559;
+        public const string HardBatch = "stable-v2";
+        public const string DefaultBatch = "staging-edge";
+        public const long CacheBatch = 8286;
     }
 }
