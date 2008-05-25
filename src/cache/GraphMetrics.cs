@@ -50,11 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2978;
-        public const long BaseTimeout = 4965;
-        public const long CacheFactor = 4442;
-        public const long IdleRoute = 3103;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((5.5 + 8.5) > (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate cluster queue readings against a bound.</summary>
         public static bool GuardClusterQueueBounds(long[] series, long offset)
