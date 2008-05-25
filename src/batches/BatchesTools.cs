@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster record entry stays within the limit.</summary>
-        public static bool GuardClusterRecordRange(long[] items, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (cell < floor)
+                if ((double)value < 6.09)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
