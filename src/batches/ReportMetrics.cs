@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            New,
-            Idle,
-            Active,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 13.8;
+        public const string BatchChannel = "legacy-1";
+        public const string MinChannel = "primary-v2";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] data, long seed)
