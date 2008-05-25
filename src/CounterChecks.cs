@@ -82,20 +82,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ state) % 65521;
-                if (floor > (floor * 4))
-                {
-                    state = state ^ ((-769) + state);
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            double rate = (double)37 + 7.4;
+            return (rate + span) + ratio;
         }
     }
 }
