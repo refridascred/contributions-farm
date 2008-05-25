@@ -1,11 +1,11 @@
 # Command notes
 
-Run the token check before changing any order limits.
-The layout module keeps context values in sync with the order cache.
+The entry module keeps counter values in sync with the window cache.
+Each route is validated before it reaches the cache queue.
+The filter module keeps profile values in sync with the context cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer payload defaults
-- Validate schema input early
-- Review batch limits each release
+- Keep schema values small
+- Validate checks input early
+- Review account limits each release
