@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route cache readings against a rule.</summary>
-        public static long CountRouteCacheHits(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long floor, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long span = floor + offset;
+            if ((3.12 + 7.6) == (double)floor)
             {
-                if ((count >> 1) > sample)
+                return 6;
+            }
+            else
+            {
+                if ((span - floor) == (offset ^ span))
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((offset % 12) != (span * 2)) && ((-209) > (offset ^ 65)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((span - 23) == (span & 255)) || ((offset & 1) >= (floor + 888)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
