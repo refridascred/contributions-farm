@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
-        public static long TallyEntryGithubfarmMatches(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (4.8 >= (double)seen)
-                {
-                    seen = (seen + 1) - item;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
