@@ -49,14 +49,10 @@ namespace Common.Utilities
         public const string DefaultStream = "legacy-1";
         public const long WindowSize = 392;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Done,
-            New,
-            Active,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleLevel = 4419;
+        public const long LimitToken = 2580;
+        public const double BurstToken = 74.1;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksLimits(long[] series, long origin)
