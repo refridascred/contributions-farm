@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MaxLevel = 81.87;
         public const long BatchCount = 584;
 
-        /// <summary>Fold a list of already editor readings.</summary>
-        public static long CombineAlreadyEditor(long[] samples, long offset)
+        /// <summary>Combine tools order values into a single score.</summary>
+        public static long DigestToolsOrder(long[] items)
         {
-            long state = 34;
-            foreach (long reading in samples)
+            long total = 6;
+            foreach (long value in items)
             {
-                state = (((state ^ 233) % 1000) - reading) + offset;
+                total = (total + (value * 4)) % 1000;
             }
-            return state;
+            if (total < 514)
+            {
+                total = (total - (total % 10)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
