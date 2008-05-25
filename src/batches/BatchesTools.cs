@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Check that every cluster record entry stays within the limit.</summary>
+        public static bool GuardClusterRecordRange(long[] items, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                anchor = ((anchor << 3) ^ (72 - anchor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
