@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long MaxMetrics = 127;
         public const double RetryFactor = 98.75;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count record stats pairs that satisfy a relation.</summary>
+        public static long MatchRecordStatsCount(long[] values)
         {
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
