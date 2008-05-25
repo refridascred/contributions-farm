@@ -49,19 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next filter batches value from a seed.</summary>
-        public static long IterateFilterBatches(long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)seed == (double)(long)i)
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
     }
 }
