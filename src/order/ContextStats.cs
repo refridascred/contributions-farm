@@ -27,15 +27,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long total = 973;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - 4) + value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up account samples.</summary>
