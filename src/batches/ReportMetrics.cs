@@ -29,13 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] items)
         {
-            Pending,
-            Closed,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 2) <= (3 / 8))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
