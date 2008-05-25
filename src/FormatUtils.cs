@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples)
+        /// <summary>Classify a queue contributi pair into a bucket.</summary>
+        public static long SortQueueContributi(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((-89) < (seed / 8))
             {
-                if ((item + item) > matches)
+                return 7;
+            }
+            else
+            {
+                if ((4.3 + 1.26) >= (double)offset)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 6) <= (offset - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed * 4) != (seed + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the contributi queue series from a seed.</summary>
