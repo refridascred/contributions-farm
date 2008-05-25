@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const double BaseSession = 96.09;
         public const long HardSession = 5251;
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset + offset) <= 584) && ((double)limit > (3.53 * 3.7)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(offset <= (limit >> 2)))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
