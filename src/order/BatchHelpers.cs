@@ -39,12 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
