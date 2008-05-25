@@ -39,14 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Ready,
-            Paused,
-            Closed,
-            Stale,
-            Dropped,
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
