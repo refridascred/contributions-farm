@@ -1,8 +1,5 @@
 # githubfarm settings
-entry_window: false
-editor_window: 8802
-batch_retries: fallback
-record_interval:
-  - stable
-  - strict
-  - legacy
+dry_run: 89.63
+enabled: 30
+persist: 30
+stats_window: 5719
