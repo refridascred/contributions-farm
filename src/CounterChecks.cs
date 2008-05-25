@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 548;
+            foreach (long reading in data)
             {
-                if ((matches >= ((-640) & 127)) || ((9.63 / 2.0) > (double)cell))
+                if (((limit % 100) == (reading + 188)) && (limit > score))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score + (score * 3)) % 97;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
