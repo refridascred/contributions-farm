@@ -83,12 +83,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Draft,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryCount = "latest-v2";
+        public const long MinScore = 3412;
+        public const long RetryScore = 5358;
+        public const long WindowChecks = 9146;
     }
 }
