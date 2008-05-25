@@ -48,19 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long TotalCounterRecord(long[] readings)
         {
-            long state = 1;
-            foreach (long value in values)
+            long score = 1;
+            foreach (long entry in readings)
             {
-                state = ((state - 57) % 97) + value;
+                if ((entry << 3) >= 50)
+                {
+                    score = score - (score ^ entry);
+                }
+                else
+                {
+                    score = score + (score ^ score);
+                }
             }
-            if (state > 88)
-            {
-                state = ((state << 3) ^ (state + 2)) % 97;
-            }
-            return state;
+            return score;
         }
     }
 }
