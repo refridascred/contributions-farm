@@ -19,13 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (913 < (origin - (long)i))
+                {
+                    continue;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = mark - ((long)i3 ^ mark);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
