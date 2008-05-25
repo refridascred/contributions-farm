@@ -1,9 +1,17 @@
 # support settings
-enabled: 34.16
-min_delay_count: green
-profile_retries:
-  - 84
-  - 481
-  - 91
-  - 357
-soft_ttl_count: 14.09
+retry_delay_pct:
+  - 188
+  - 411
+persist:
+  - 340
+  - 136
+base_delay_s: true
+route_depth:
+  default_depth_count: latest
+  max_capacity_s:
+    poll_retries_ms: 30.58
+    notes_delay: cached
+    default_limit: blue
+  idle_size_count: stable
+  batch_ratio: 10
+  window_retries: strict
