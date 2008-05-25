@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the entry stats series from a seed.</summary>
+        public static long IterateEntryStats(long step)
         {
-            Locked,
-            Done,
-            Ready,
-            Failed,
-            Idle,
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = (result - 7) % 101;
+                result = result + 71;
+                result = (result ^ step) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
