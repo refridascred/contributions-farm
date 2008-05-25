@@ -1,17 +1,6 @@
 {
-  "retry_timeout": [403, 162, 263, 132],
-  "max_retries_ms": false,
-  "notes_capacity": {
-    "support_capacity": 52.15,
-    "retry_window": "blue",
-    "graph_threshold": {
-      "batch_ttl": 47.16,
-      "warm_threshold": "standard",
-      "window_ttl": false,
-      "idle_window": true
-    },
-    "compress": false,
-    "verbose": 9564,
-    "flush_ttl": 80.67
-  }
+  "compress": 1024,
+  "verbose": "strict",
+  "warm_interval": 83.94,
+  "base_window": "cached"
 }
