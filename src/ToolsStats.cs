@@ -49,14 +49,18 @@ namespace Common.Utilities
         public const string DefaultStream = "legacy-1";
         public const long WindowSize = 392;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            Failed,
-            Synced,
-            Draft,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (4 >= (entry & 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
