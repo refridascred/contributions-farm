@@ -20,12 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long step)
         {
-            Locked,
-            Draft,
-            Closed,
+            long prev = floor + step;
+            if ((double)prev >= 7.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - floor) > (657 + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(floor > (prev % 60)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev & 127) > (floor >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
