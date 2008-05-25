@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit entry cache readings against a rule.</summary>
-        public static long AuditEntryCacheMatches(long[] levels)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (385 > (count + count))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
