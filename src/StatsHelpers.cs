@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRatio = "staging";
-        public const long RetryRoute = 9572;
-        public const long HardSpan = 5381;
-        public const double LimitInterval = 30.89;
-        public const long BaseDepth = 861;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Synced,
+            Paused,
+            Locked,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxInterval = 4744;
