@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stats tools readings against a rule.</summary>
