@@ -28,22 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if (!((entry + entry) >= (279 + matches)))
+                if (((84 ^ mark) > (origin >> 4)) && (mark <= (mark - datum)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark * 4) + (datum >> 3);
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
