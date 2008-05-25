@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 5617;
         public const long HardCount = 380;
 
-        /// <summary>Look up the position of a report metric sample.</summary>
-        public static long LocateReportMetricIndex(long[] values, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                if ((matches % 60) <= (value / 6))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
