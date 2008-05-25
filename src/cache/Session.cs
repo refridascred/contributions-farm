@@ -39,14 +39,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Stale,
-            Draft,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 9532;
+        public const string RetryToken = "legacy-v2";
+        public const string StepDepth = "standard";
 
         /// <summary>Count the notes farm entries that pass the check.</summary>
         public static long CountNotesFarmGaps(long[] data, long step)
