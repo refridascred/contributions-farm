@@ -37,13 +37,12 @@ namespace Common.Utilities
             return (drift - (bias + 0.6)) + ratio;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Pending,
-            Stale,
-            Queued,
-            Paused,
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
