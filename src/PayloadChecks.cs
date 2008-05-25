@@ -50,12 +50,15 @@ namespace Common.Utilities
         public const double DefaultMetric = 24.41;
         public const double DefaultCount = 87.98;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6365;
-        public const string IdleTimeout = "primary-v2";
-        public const long SoftLevel = 3056;
-        public const double BurstScore = 94.39;
-        public const double MinWidth = 75.26;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Done,
+            Pending,
+            New,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] readings)
