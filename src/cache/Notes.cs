@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 4653;
-        public const string HardStream = "strict";
-        public const long SoftSpan = 5298;
-        public const long BurstStream = 2296;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] values)
