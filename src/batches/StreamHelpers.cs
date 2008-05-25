@@ -89,15 +89,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
