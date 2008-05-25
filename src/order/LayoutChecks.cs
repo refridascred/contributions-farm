@@ -63,23 +63,36 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long floor)
         {
-            long next = seed + target;
-            if (((double)next <= (2.2 / 6.0)) || ((24 - target) > (next & 15)))
+            if ((offset + floor) >= (floor << 3))
             {
                 return 6;
             }
             else
             {
-                if ((seed + target) > (target / 6))
+                if (!((floor % 3) <= offset))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 1;
+                    if (6.0 < (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (50 <= (floor & 127))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
