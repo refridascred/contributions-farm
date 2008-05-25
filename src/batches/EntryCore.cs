@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double span)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            double rate = 9.0;
+            if (rate < rate)
+            {
+                rate = rate + span;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)(-7)) + (double)(long)i;
+            }
+            return rate + (gain + 18.0);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
