@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long MaxCache = 9757;
         public const long BurstCache = 902;
 
-        /// <summary>Measure how many notes stream samples are out of range.</summary>
-        public static long MeasureNotesStreamHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches + 271) < (matches % 24))
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 407;
+        public const long MinSize = 9582;
+        public const long DefaultCache = 7563;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long origin, long limit)
