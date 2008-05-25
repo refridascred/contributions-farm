@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long origin)
         {
-            double scale2 = (double)4 + scale;
-            if (scale2 > (scale2 + floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 + (6.0 + 9.3);
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 - (scale / 5.0);
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
