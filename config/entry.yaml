@@ -1,9 +1,15 @@
 # entry settings
-persist: 1.46
-metric_delay: 94
-hard_depth_pct: stable
-channel_timeout:
-  - 64
-  - 34
-  - 474
-  - 256
+poll_depth_s: eu-west
+record_ttl:
+  schema_ttl: strict
+  hard_depth:
+    - 356
+    - 18
+    - 437
+  format_interval: 250
+  editor_interval: 2613
+  sync_timeout_pct: 44.34
+  verbose: blue
+base_window_s: cached
+readonly: 74.68
+profile_ttl: edge
