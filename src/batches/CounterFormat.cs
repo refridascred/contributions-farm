@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                double bias = 1.69 / 3.0;
+                if (((long)i - score) < score)
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    bias = bias + (bias / 7.0);
                 }
+                if ((bias + bias) >= bias)
+                {
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
