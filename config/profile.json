@@ -1,7 +1,8 @@
 {
-  "idle_size_count": 54,
-  "sync_ratio_s": "fallback",
-  "dry_run": "cached",
-  "sync_window_pct": 250,
-  "metrics_depth": 5255
+  "idle_delay_pct": 87,
+  "audit": 14.66,
+  "readonly": 75,
+  "verbose": 70,
+  "warm_size": ["staging", "stable"],
+  "queue_window": "cached"
 }
