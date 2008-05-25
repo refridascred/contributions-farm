@@ -36,18 +36,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "standard-v2";
+        public const long BatchNotes = 6107;
+        public const long RetryScore = 710;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long ClassifyBuffer(long origin, long offset)
