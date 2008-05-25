@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] levels, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (levels[i] <= step)
+                if (value > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
