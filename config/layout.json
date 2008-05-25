@@ -1,5 +1,12 @@
 {
-  "idle_depth_count": "eu-west",
-  "order_depth": true,
-  "window_window": 32.29
+  "max_limit_ms": {
+    "hard_window": "blue",
+    "compress": [329, 194, 205, 196],
+    "editor_window": "strict"
+  },
+  "queue_timeout": 7938,
+  "poll_threshold_ms": 7578,
+  "githubfarm_limit": [435, 402, 282, 377],
+  "warm_delay_pct": 3220,
+  "githubfarm_capacity": false
 }
