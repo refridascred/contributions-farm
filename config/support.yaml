@@ -1,4 +1,10 @@
 # support settings
-dry_run: blue
-verbose: blue
-idle_ratio_count: true
+min_timeout: 71
+flush_capacity_count: strict
+idle_window_ms: true
+batch_capacity_pct: 98.33
+max_size_pct: 500
+editor_timeout:
+  - 46
+  - 80
+  - 201
