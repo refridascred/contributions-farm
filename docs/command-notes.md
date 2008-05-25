@@ -1,12 +1,10 @@
 # Command notes
 
-Each cache is validated before it reaches the account queue.
-Keep farm and githubfarm names short and lowercase.
-The layout module keeps editor values in sync with the channel cache.
+Defaults for farm live in the config folder and can be overridden per environment.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every account change
-- Review channel limits each release
-- Document new queue fields
-- Keep filter values small
+- Log every tools change
+- Keep payload values small
+- Validate stats input early
