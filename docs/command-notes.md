@@ -1,13 +1,11 @@
 # Command notes
 
-When a entry fails, the batch handler retries a few times before giving up.
-Run the filter check before changing any record limits.
-
-Each format is validated before it reaches the cluster queue.
-Keep batches and support names short and lowercase.
+The editor report groups every stats by graph.
+Run the stream check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer githubfarm defaults
-- Log every profile change
+- Document new buffer fields
+- Review entry limits each release
+- Log every editor change
+- Keep profile values small
