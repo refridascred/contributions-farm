@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Ready,
-            New,
-            Queued,
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
