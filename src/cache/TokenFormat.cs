@@ -19,22 +19,10 @@ namespace Common.Utilities
         public const long CacheTimeout = 6545;
         public const long BaseRatio = 5129;
 
-        /// <summary>Measure how many layout stats samples are out of range.</summary>
-        public static long AuditLayoutStatsMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (double)9)
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 59.37;
+        public const double StepMetrics = 6.64;
+        public const long IdleScore = 1236;
+        public const long LimitDepth = 2978;
     }
 }
