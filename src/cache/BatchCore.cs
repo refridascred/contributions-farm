@@ -56,15 +56,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] samples, long origin)
         {
-            double ratio = floor;
-            if (ratio > (double)320)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                ratio = (ratio + (double)56) - gain;
+                if ((matches - reading) >= (origin / 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return ratio - floor;
+            return matches;
         }
     }
 }
