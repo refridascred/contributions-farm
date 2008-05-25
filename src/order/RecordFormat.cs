@@ -65,19 +65,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] data, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < step)
+                if (items[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
