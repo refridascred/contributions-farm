@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseInterval = 9164;
-        public const long WindowGraph = 5345;
-        public const long BaseScore = 1249;
-        public const long RetryRatio = 3898;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "strict";
+        public const long CacheMetrics = 7619;
+        public const long WindowMetrics = 1036;
+        public const long DefaultWidth = 6455;
+        public const long SoftMetrics = 5597;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
