@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry * 3) <= tally) || (entry > (3 / 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a channel record.</summary>
