@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session batches values into a single score.</summary>
-        public static long FoldSessionBatches(long[] levels, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = 175;
-            foreach (long value in levels)
-            {
-                if (((0 + floor) <= (floor + 208)) && ((5 >> 1) >= value))
-                {
-                    state = state + (state + floor);
-                }
-            }
-            if (state < (-419))
-            {
-                state = (state * 3) + floor;
-            }
-            return state;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
