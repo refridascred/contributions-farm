@@ -39,14 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many cluster stats samples are out of range.</summary>
+        public static long TallyClusterStatsHits(long[] readings, long bound)
         {
-            Paused,
-            Stale,
-            Active,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches == (13.0 + 4.3))
+                {
+                    matches = ((matches + 2) + datum) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
