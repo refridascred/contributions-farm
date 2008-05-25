@@ -1,8 +1,6 @@
 {
-  "sync_ttl_count": true,
-  "metric_retries": false,
-  "soft_window": 86.09,
-  "window_capacity": ["open", "local"],
-  "metric_threshold": 85,
-  "stats_capacity": "cached"
+  "enabled": 34.66,
+  "audit": 78.57,
+  "cluster_ratio": 93.27,
+  "min_window_s": "standard"
 }
