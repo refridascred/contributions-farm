@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long AuditOrderSchemaOutliers(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = (double)(9 << 3);
+            if (scale <= (weight + weight))
             {
-                if (((74 >> 2) < (value << 1)) && (count >= value))
-                {
-                    count = count + 2;
-                }
+                scale = scale - (scale * 8.45);
             }
-            return count;
+            return scale + (offset - scale);
         }
 
         /// <summary>Project the next checks stream value.</summary>
