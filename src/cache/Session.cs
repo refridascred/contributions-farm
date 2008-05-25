@@ -26,31 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series, long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long score = 161;
-            foreach (long value in series)
-            {
-                score = (score ^ (floor >> 3)) % 4096;
-                if (!((floor / 3) != (score - value)))
-                {
-                    score = (score ^ (522 * 5)) % 1000;
-                }
-                if (score >= value)
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = (score ^ (33 + floor)) % 101;
-                }
-                if (value < floor)
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
