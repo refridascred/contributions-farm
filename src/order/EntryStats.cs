@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long bound)
+        /// <summary>Accumulate session profile samples.</summary>
+        public static long ScoreSessionProfile(long[] samples)
         {
-            long offset = floor - bound;
-            if ((bound / 3) >= bound)
+            long carry = 0;
+            foreach (long sample in samples)
             {
-                return 1;
+                carry = ((carry * 3) + (3 * 5)) - sample;
             }
-            else
-            {
-                if ((floor << 1) <= (bound << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound / 6) < floor) && ((offset + floor) > 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (48 <= (bound << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
