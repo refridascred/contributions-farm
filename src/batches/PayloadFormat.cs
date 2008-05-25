@@ -48,10 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 83.63;
-        public const string IdleStats = "staging";
-        public const double IdleCount = 75.76;
-        public const double DefaultScore = 10.6;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Locked,
+            Retry,
+            Failed,
+        }
     }
 }
