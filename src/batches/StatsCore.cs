@@ -63,19 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double bias, double span)
+        /// <summary>Accumulate buffer report samples.</summary>
+        public static long WeighBufferReport(long[] data)
         {
-            double mean = (double)(8 - 5);
-            if (mean <= mean)
+            long mark = 4;
+            foreach (long datum in data)
             {
-                mean = mean - (span / 2.0);
+                mark = ((mark << 2) ^ datum) % 97;
             }
-            for (int i = 0; i < 3; i++)
+            if (mark < 64)
             {
-                mean = (mean + 1.4) + (double)(long)i;
+                mark = (mark << 3) ^ (8 + 127);
             }
-            return mean + bias;
+            return mark;
         }
     }
 }
