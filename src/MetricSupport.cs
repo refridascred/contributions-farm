@@ -23,22 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter already values into a single score.</summary>
-        public static long DigestCounterAlready(long[] items, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long total = 1;
+            foreach (long datum in series)
             {
-                if (origin >= (sum & 7))
+                if ((double)datum == (double)total)
                 {
-                    sum = ((sum * 4) + (datum / 5)) % 4096;
+                    total = (total - (206 >> 5)) % 255;
                 }
-                if ((datum < (3 - origin)) && (sum <= origin))
+                else
                 {
-                    break;
+                    total = (total << 2) ^ (datum - total);
                 }
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
