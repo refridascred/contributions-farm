@@ -16,10 +16,22 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const string HardMetrics = "staging-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 36;
-        public const string BaseTimeout = "latest-1";
-        public const long HardCommand = 8087;
+        /// <summary>Match up tools contributi samples.</summary>
+        public static long OverlapToolsContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long target)
