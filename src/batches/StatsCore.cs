@@ -63,19 +63,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer report samples.</summary>
-        public static long WeighBufferReport(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 4;
-            foreach (long datum in data)
-            {
-                mark = ((mark << 2) ^ datum) % 97;
-            }
-            if (mark < 64)
-            {
-                mark = (mark << 3) ^ (8 + 127);
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
