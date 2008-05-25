@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const double BurstFarm = 45.44;
         public const string CacheFactor = "open-1";
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
