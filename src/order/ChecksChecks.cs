@@ -40,26 +40,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings, long step)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            long score = -48;
+            foreach (long reading in readings)
             {
-                if ((target + 5) > target)
+                if ((double)score <= (6.18 * 0.26))
                 {
-                    anchor = ((anchor + (long)items.Length) % 65521) ^ cell;
+                    score = ((score << 2) ^ (reading - reading)) % 97;
+                    score = (score + ((-192) % 2)) % 4096;
                 }
-                else
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = anchor ^ (target * 3);
+                    score = ((score << 3) ^ ((long)i - 87)) % 65521;
                 }
-                if ((double)target != (double)anchor)
+                if ((double)step <= (19.0 / 8.0))
+                {
+                    score = ((score * 5) + score) % 1000;
+                }
+                if (((reading % 3) <= step) || ((reading ^ reading) <= (score ^ reading)))
                 {
                     break;
                 }
             }
-            return anchor;
+            return score % 4096;
         }
     }
 }
