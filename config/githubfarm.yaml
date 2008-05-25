@@ -1,18 +1,9 @@
 # githubfarm settings
-dry_run:
-  batches_size:
-    - open
-    - blue
-    - primary
-    - primary
-  sync_retries_ms:
-    min_ttl_count: edge
-    warm_limit_ms: 75.61
-    poll_limit_pct: primary
-    queue_window: 50.96
-    poll_capacity_s: 76.93
-  base_window: 57
-farm_depth:
-  - cached
-  - latest
-flush_depth: strict
+stream_interval: 13
+burst_retries_pct:
+  - 386
+  - 234
+command_delay: 500
+audit:
+  - local
+  - staging
