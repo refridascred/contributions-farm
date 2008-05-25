@@ -23,10 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSpan = "cached-1";
-        public const string StepInterval = "strict-v2";
-        public const double IdleScore = 64.41;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry + carry) % 1000;
+                carry = (carry * 2) + (seed + (long)i);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseScore = "local";
