@@ -36,19 +36,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] readings, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= floor)
+                if (values[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
