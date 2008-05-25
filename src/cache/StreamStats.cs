@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
