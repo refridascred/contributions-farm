@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] values, long bound)
         {
-            long sum = 33;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (cell * 2)) % 4096;
-                sum = (sum + (sum - bound)) % 65521;
-                if ((bound - sum) > bound)
+                if (values[i] >= bound)
                 {
-                    sum = sum + sum;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
