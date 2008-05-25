@@ -47,28 +47,35 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long offset)
         {
-            if (floor >= (target - target))
+            if (!((double)offset >= 5.3))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((2 + 47) < floor)
+                if (offset > (origin + origin))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor + 878) != (740 + floor))
+                    if ((0 * 2) > (offset + offset))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 1;
+                        if ((origin + 521) > (origin % 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
