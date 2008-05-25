@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item < (count % 10))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "primary";
+        public const long CacheBatch = 6370;
+        public const double LimitBatch = 26.4;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long origin, long offset)
