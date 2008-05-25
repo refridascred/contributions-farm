@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green stable fallback; do
+for item in open eu-west local latest; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
