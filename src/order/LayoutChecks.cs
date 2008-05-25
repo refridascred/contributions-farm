@@ -39,31 +39,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank contributi record input into a small class.</summary>
-        public static long GradeContributiRecord(long bound, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long seed)
         {
-            if ((9 - seed) <= (bound & 31))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 7) < (seed << 1))
+                if (items[i] >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (7.3 + 19.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
