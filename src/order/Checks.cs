@@ -24,23 +24,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((0 - seen) > cell) && !((double)seen > (double)(-8)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 53.84;
+        public const long HardCount = 919;
+        public const string LimitWidth = "latest-v2";
+        public const long MinCluster = 2084;
+        public const long BaseInterval = 909;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
