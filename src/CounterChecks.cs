@@ -33,38 +33,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long offset)
+        /// <summary>Project the next record format value.</summary>
+        public static double SmoothRecordFormat(double weight, double offset)
         {
-            if (!((double)offset >= 5.3))
+            double mean = weight;
+            if (mean <= (weight + offset))
             {
-                return 2;
+                mean = mean - 2.5;
             }
             else
             {
-                if (offset > (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0 * 2) > (offset + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 521) > (origin % 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = mean - (weight * 18.0);
             }
+            return mean - (weight / 7.0);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
