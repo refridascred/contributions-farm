@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseBudget = 4534;
-        public const string BatchCount = "cached-v2";
-        public const string StepCount = "local-v2";
-        public const double WindowTimeout = 53.42;
+        /// <summary>Rank graph farm input into a small class.</summary>
+        public static long SortGraphFarm(long offset, long seed)
+        {
+            if ((offset % 16) >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 3) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long floor, long target)
