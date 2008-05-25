@@ -14,19 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long result = 84;
-            foreach (long reading in items)
-            {
-                result = (result + (9 + (long)items.Length)) + reading;
-            }
-            if (result > 166)
-            {
-                result = (result << 3) ^ (step / 3);
-            }
-            return result % 97;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
