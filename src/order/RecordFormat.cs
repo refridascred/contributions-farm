@@ -76,19 +76,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long offset)
+        /// <summary>Derive the next report session value from a seed.</summary>
+        public static long StepReportSession(long bound)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
     }
 }
