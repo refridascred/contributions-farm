@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 8185;
-        public const long MinGithubfarm = 880;
-        public const long SoftBudget = 1493;
-        public const long BurstGithubfarm = 5077;
+        /// <summary>Check that every tools metric entry stays within the limit.</summary>
+        public static bool VerifyToolsMetricRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] levels, long floor)
