@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 973;
+            foreach (long value in values)
             {
-                if (7 <= (item + item))
-                {
-                    tally = tally + 1;
-                }
+                total = (total - 4) + value;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
