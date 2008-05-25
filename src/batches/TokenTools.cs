@@ -31,23 +31,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm profile series from a seed.</summary>
-        public static long StepFarmProfile(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((1 + step) > (step - step))
+                if (((count - 753) <= (datum - count)) || ((datum - count) >= (count & 127)))
                 {
-                    sum = sum - ((long)i & 63);
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = (sum ^ (sum / 3)) % 97;
+                    count = count - 1;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
     }
 }
