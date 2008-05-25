@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account counter readings.</summary>
-        public static long OverlapAccountCounterCount(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((offset < ((-9) >> 3)) || ((727 + 1) >= ((-66) + offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (limit < 5)
                 {
-                    if ((series[i] + series[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((21 >> 4) >= limit)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
