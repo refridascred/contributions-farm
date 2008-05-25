@@ -1,7 +1,6 @@
-id,level,state
-1,741,29.63
-2,342,eu-west
-3,46.76,blue
-4,79.47,blue
-5,latest,343
-6,533,735
+id,level,weight,label
+1,16,5.99,eu-west
+2,805,primary,803
+3,68.04,927,60
+4,green,430,32
+5,208,873,401
