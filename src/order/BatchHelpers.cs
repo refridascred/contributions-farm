@@ -27,17 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "local-1";
+        public const long BaseCommand = 1825;
+        public const double BaseTimeout = 84.21;
+        public const long WindowRatio = 391;
+        public const long MaxBudget = 5448;
     }
 }
