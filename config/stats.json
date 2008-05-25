@@ -1,19 +1,6 @@
 {
-  "max_timeout": 32.01,
-  "report_delay": 1024,
-  "min_depth_s": {
-    "max_size_count": 250,
-    "persist": true,
-    "support_delay": {
-      "counter_retries": "local",
-      "soft_limit_ms": [306, 30, 415, 98],
-      "soft_window": "local",
-      "tools_depth": "local"
-    },
-    "base_capacity": 250,
-    "soft_depth": 14.02
-  },
-  "flush_depth": "edge",
-  "session_threshold": "latest",
-  "flush_delay_s": false
+  "session_capacity": 30,
+  "graph_retries": ["standard", "primary", "fallback", "eu-west"],
+  "sync_ratio": "edge",
+  "sync_timeout": [216, 93, 411]
 }
