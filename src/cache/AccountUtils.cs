@@ -28,18 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] series, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor >> 3) >= tally)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
             return tally;
