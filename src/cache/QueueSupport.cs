@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Active,
-            Dropped,
-            Retry,
-            Queued,
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
