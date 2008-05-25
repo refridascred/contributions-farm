@@ -53,11 +53,27 @@ namespace Common.Utilities
         public const string MaxRecord = "open-edge";
         public const long BatchWidth = 9386;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseSize = "strict-1";
-        public const long WindowEditor = 9006;
-        public const string MaxInterval = "fallback";
-        public const string MaxWidth = "primary";
+        /// <summary>Digest a series of account farm entries.</summary>
+        public static long TallyAccountFarm(long[] samples, long limit)
+        {
+            long sum = 266;
+            foreach (long value in samples)
+            {
+                if ((double)sum != (7.73 + 9.5))
+                {
+                    sum = ((sum << 2) ^ value) % 101;
+                }
+                if (63 <= (sum & 63))
+                {
+                    sum = (sum - (limit * 5)) % 255;
+                }
+                if (limit >= (value / 6))
+                {
+                    sum = ((sum * 3) + (limit - limit)) % 101;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string IdleToken = "stable-edge";
