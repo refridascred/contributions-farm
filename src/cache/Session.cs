@@ -58,15 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long CountNotesFarmGaps(long[] data, long step)
+        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
+        public static long OverlapNotesQueueCount(long[] readings)
         {
             long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen >> 1) > (seen - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) - value;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
