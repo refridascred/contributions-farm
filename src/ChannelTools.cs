@@ -15,15 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] values, long floor)
         {
-            double scale = (double)(9 << 3);
-            if (scale <= (weight + weight))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (scale * 8.45);
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (offset - scale);
+            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
