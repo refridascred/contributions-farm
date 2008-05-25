@@ -28,9 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepRatio = "standard-v2";
-        public const long BaseSpan = 2938;
-        public const long DefaultRatio = 325;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 2608;
+        public const string BurstSpan = "latest-1";
+        public const double StepCounter = 5.03;
+        public const double HardRatio = 16.08;
     }
 }
