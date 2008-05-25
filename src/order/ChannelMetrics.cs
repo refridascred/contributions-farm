@@ -29,16 +29,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of tools cluster readings.</summary>
-        public static long ScoreToolsCluster(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long mix = -125;
-            foreach (long sample in samples)
+            long score = 303;
+            foreach (long item in samples)
             {
-                mix = (mix ^ (mix - sample)) % 65521;
-                mix = (mix ^ (5 - sample)) % 101;
+                if (!!((double)item <= (3.39 / 3.0)))
+                {
+                    score = (score - score) % 65521;
+                }
+                score = score - (item / 6);
+                if (!((item ^ score) == (673 / 6)))
+                {
+                    score = score ^ (score >> 4);
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count the contributi window entries that pass the check.</summary>
