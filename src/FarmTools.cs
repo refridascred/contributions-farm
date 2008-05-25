@@ -28,18 +28,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((item ^ origin) < 331))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitCount = "latest-edge";
+        public const long DefaultScore = 5975;
+        public const long MaxOrder = 8096;
     }
 }
