@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheFactor = 6270;
-        public const string IdleProfile = "stable";
-        public const long BatchProfile = 4783;
-        public const string WindowProfile = "local-1";
-        public const string HardCount = "open";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Active,
+            Ready,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseSpan = 215;
