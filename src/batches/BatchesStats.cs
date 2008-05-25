@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
+            Paused,
+            Retry,
             Pending,
-            Failed,
-            Ready,
+            Draft,
             Queued,
-            Idle,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
