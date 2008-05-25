@@ -27,20 +27,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                long seen = floor;
-                if ((floor ^ sum) <= (seen * 5))
+                if (!((carry + 660) < (1 * 3)))
                 {
-                    sum = ((sum << 2) ^ seen) % 4096;
+                    carry = (carry + origin) % 255;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
+                carry = (carry + carry) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
