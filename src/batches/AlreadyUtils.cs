@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Synced,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSpan = 9380;
+        public const long HardFactor = 582;
+        public const long StepGraph = 1921;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] data, long floor)
