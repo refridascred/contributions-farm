@@ -50,20 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((long)i & 63) >= (carry & 127)))
-                {
-                    carry = carry + (84 + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 4471;
+        public const long IdleCache = 3403;
+        public const double RetryBudget = 46.42;
+        public const long SoftCache = 6416;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long step)
