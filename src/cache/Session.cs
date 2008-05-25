@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((value ^ seen) > (target % 97)) || ((double)value != (16.0 + 1.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSize = 409;
+        public const long StepReport = 8598;
+        public const double MaxLevel = 81.87;
+        public const long BatchCount = 584;
 
         /// <summary>Fold a list of already editor readings.</summary>
         public static long CombineAlreadyEditor(long[] samples, long offset)
