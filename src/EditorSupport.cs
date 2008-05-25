@@ -51,19 +51,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] levels, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (value <= seed)
+                if (sample <= floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Adjust a layout reading.</summary>
