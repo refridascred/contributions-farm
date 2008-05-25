@@ -33,31 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long limit, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if (((double)limit <= (4.0 - 0.92)) && ((seed + 2) <= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 3) > (limit % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(94 < (limit * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
