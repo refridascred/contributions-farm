@@ -31,11 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchTimeout = 5786;
+        public const string RetryQueue = "staging-edge";
+        public const long IdleWidth = 5904;
+        public const long HardWidth = 9522;
+        public const double CacheFactor = 75.51;
     }
 }
