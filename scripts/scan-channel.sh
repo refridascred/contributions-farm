@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west fallback primary; do
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue eu-west cached primary; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
