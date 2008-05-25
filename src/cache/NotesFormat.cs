@@ -16,11 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstCount = 9141;
-        public const long SoftToken = 4868;
-        public const long LimitToken = 4924;
-        public const long BaseToken = 4477;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double weight, double offset)
