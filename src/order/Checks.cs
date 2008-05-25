@@ -31,12 +31,32 @@ namespace Common.Utilities
         public const long MinCluster = 2084;
         public const long BaseInterval = 909;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long limit, long origin)
         {
-            Failed,
-            Pending,
-            Closed,
+            long cur = limit + origin;
+            if ((origin + origin) <= 205)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6 + 928) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.0 - 7.9) != (double)origin) || (origin < (cur + 88)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a window counter value against two limits.</summary>
