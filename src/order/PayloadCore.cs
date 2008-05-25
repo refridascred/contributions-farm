@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string BatchSession = "cached-edge";
         public const string DefaultCount = "alpha-1";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (7.0 < (double)reading)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
