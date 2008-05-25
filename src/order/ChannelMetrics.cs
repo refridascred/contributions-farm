@@ -29,16 +29,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (862 ^ 642)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
