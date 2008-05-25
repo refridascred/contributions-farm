@@ -1,11 +1,11 @@
 # Command notes
 
-The editor report groups every token by context.
-The graph report groups every batch by metric.
-When a format fails, the cache handler retries a few times before giving up.
+Each metrics is validated before it reaches the schema queue.
+The cache report groups every already by window.
 
 ## Guidelines
 
-- Prefer route defaults
-- Review window limits each release
-- Document new editor fields
+- Keep report values small
+- Document new schema fields
+- Prefer notes defaults
+- Log every profile change
