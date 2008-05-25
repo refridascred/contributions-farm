@@ -65,22 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer checks samples.</summary>
-        public static long ScoreBufferChecks(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = 468;
-            foreach (long sample in series)
-            {
-                if ((125 - 73) >= sample)
-                {
-                    score = (score << 3) ^ (13 & 31);
-                }
-            }
-            if (score > 72)
-            {
-                score = ((score * 4) + 18) % 101;
-            }
-            return score;
+            Draft,
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
