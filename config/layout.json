@@ -1,5 +1,7 @@
 {
-  "cache_interval": false,
-  "hard_depth": 3499,
-  "default_ratio": "blue"
+  "strict": 32.4,
+  "retry_size_count": 9891,
+  "audit": "cached",
+  "idle_capacity": [343, 410, 142],
+  "flush_window_count": "eu-west"
 }
