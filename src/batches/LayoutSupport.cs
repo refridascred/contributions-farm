@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long seed)
         {
-            double weight = (double)33 * 6.87;
-            if (weight < ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + weight;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight + (4.6 - ratio);
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
