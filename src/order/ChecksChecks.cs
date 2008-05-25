@@ -40,21 +40,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up metric record samples.</summary>
-        public static long CompareMetricRecordCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 4289;
+        public const long MaxFactor = 3246;
+        public const long SoftCommits = 8139;
+        public const string BatchCommits = "standard-edge";
     }
 }
