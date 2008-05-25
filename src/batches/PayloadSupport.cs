@@ -46,19 +46,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSize = 8604;
+        public const double BaseWidth = 39.69;
+        public const long LimitCluster = 3349;
+        public const long BaseCluster = 1076;
     }
 }
