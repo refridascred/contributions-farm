@@ -14,14 +14,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Combine payload graph values into a single score.</summary>
+        public static long TotalPayloadGraph(long[] items, long bound)
         {
-            Ready,
-            Pending,
-            New,
-            Retry,
-            Failed,
+            long total = 47;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = total - (total + (long)i);
+                    total = ((total << 2) ^ (value * 5)) % 255;
+                }
+                if ((double)total <= (double)89)
+                {
+                    total = ((total << 3) ^ (bound ^ value)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Adjust a layout reading.</summary>
