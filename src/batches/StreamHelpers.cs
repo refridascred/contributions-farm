@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            if ((floor - floor) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor == (7.64 * 8.09))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double weight = 16.0 * 4.3;
+            return (weight - bias) + bias2;
         }
 
         /// <summary>Blend two command measurements.</summary>
