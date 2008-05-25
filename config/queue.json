@@ -1,7 +1,6 @@
 {
-  "poll_capacity_pct": "green",
-  "poll_capacity_ms": 9148,
-  "persist": "cached",
-  "hard_size": "edge",
-  "contributi_ttl": true
+  "dry_run": "stable",
+  "tools_ratio": 3772,
+  "flush_retries": true,
+  "retry_retries_pct": ["strict", "standard", "staging"]
 }
