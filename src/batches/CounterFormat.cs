@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long AuditProfileBatchesHits(long[] samples)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum / 5) >= (seen << 3)) && (((datum ^ seen) <= (datum + (-707))) && ((8.8 / 9.0) == (double)datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
