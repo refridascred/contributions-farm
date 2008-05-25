@@ -51,20 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account batches entries.</summary>
-        public static long WeighAccountBatches(long[] values, long seed)
+        /// <summary>Match up layout buffer samples.</summary>
+        public static long MatchLayoutBufferCount(long[] values)
         {
-            long state = 10;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (seed & 15)) % 1000;
-                state = (state - (sample >> 1)) % 1000;
-                if ((double)seed == (19.0 - 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
