@@ -1,17 +1,5 @@
 # support settings
-readonly:
-  burst_interval: strict
-  batch_retries_pct: true
-  graph_timeout:
-    - 433
-    - 412
-    - 54
-    - 20
-  base_window_ms: 2140
-  cache_delay: 32.04
-  soft_delay_count: fallback
-default_ttl: blue
-strict: 60
-counter_size:
-  - 302
-  - 137
+route_interval: staging
+default_capacity: strict
+default_timeout_pct: true
+burst_window: 2284
