@@ -82,18 +82,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long seed)
         {
-            long sum = 630;
-            foreach (long reading in values)
+            long span = offset - seed;
+            if (((seed % 12) < (180 + 1)) && ((double)seed < (6.55 + 8.9)))
             {
-                if ((4.47 + 6.6) >= (double)reading)
+                return 3;
+            }
+            else
+            {
+                if ((offset >= (seed + seed)) || ((span & 15) <= offset))
                 {
-                    sum = (((sum * 2) + (1 % 97)) % 1000) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - seed) >= span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span >= (span >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
