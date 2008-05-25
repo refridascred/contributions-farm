@@ -22,12 +22,24 @@ namespace Common.Utilities
             return (drift - (bias + 0.6)) + ratio;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)floor != (double)carry)
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+                if ((double)carry != (5.0 / 6.0))
+                {
+                    carry = ((carry * 5) + 6) % 4096;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
