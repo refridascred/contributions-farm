@@ -1,5 +1,14 @@
 {
-  "soft_threshold_pct": false,
-  "window_window": "fallback",
-  "report_ratio": "cached"
+  "filter_ratio": true,
+  "base_retries": {
+    "retry_capacity_pct": 100,
+    "batches_retries": 75.23,
+    "githubfarm_threshold": "staging",
+    "support_retries": true,
+    "min_threshold_count": true,
+    "audit": "eu-west"
+  },
+  "route_ttl": "open",
+  "min_window": 40,
+  "compress": [348, 202]
 }
