@@ -1,11 +1,7 @@
 {
-  "editor_delay": 40,
-  "dry_run": {
-    "flush_interval": 36.05,
-    "max_interval_count": 39.29,
-    "persist": [179, 18],
-    "payload_threshold": 8291,
-    "report_ttl": [388, 307, 490, 305]
-  },
-  "soft_delay_count": 15.65
+  "idle_threshold": ["open", "strict", "cached", "strict"],
+  "base_timeout_ms": ["latest", "cached", "primary", "strict"],
+  "max_interval_s": "strict",
+  "support_window": [157, 254, 258, 168],
+  "batch_timeout_pct": 1024
 }
