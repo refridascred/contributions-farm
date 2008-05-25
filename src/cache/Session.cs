@@ -19,26 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long mark = 7;
-            foreach (long cell in levels)
+            long mix = 762;
+            foreach (long cell in readings)
             {
-                if ((double)cell > (9.27 / 2.0))
+                if (93 < (mix / 7))
                 {
-                    break;
-                }
-                if (!((double)mark == (8.0 + 1.6)))
-                {
-                    mark = (mark ^ (mark - cell)) + target;
+                    mix = ((mix * 4) + (cell & 63)) % 65521;
+                    mix = ((mix * 3) + cell) % 4096;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (7 + 46);
+                    mix = (mix ^ 161) % 101;
                 }
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix - (cell * 4)) ^ (long)i;
+                }
+                mix = mix ^ (mix + 3);
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
