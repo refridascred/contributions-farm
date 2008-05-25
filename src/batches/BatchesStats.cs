@@ -14,31 +14,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long target, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long limit)
         {
-            if (((79 + target) >= (step - target)) && ((target - target) == (64 << 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 4) <= step)
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + step) == (target + (-65)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine window schema values into a single score.</summary>
