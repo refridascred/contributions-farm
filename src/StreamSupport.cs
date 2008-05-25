@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Stale,
-            Draft,
-            New,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchTimeout = "latest-edge";
+        public const long BurstChannel = 8332;
+        public const double MaxChannel = 59.03;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double scale, double bias)
