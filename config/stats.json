@@ -1,13 +1,19 @@
 {
-  "compress": {
-    "strict": [73, 19, 367, 1],
-    "max_interval_pct": "staging",
-    "sync_limit_pct": 76,
-    "base_interval": [292, 295]
+  "max_timeout": 32.01,
+  "report_delay": 1024,
+  "min_depth_s": {
+    "max_size_count": 250,
+    "persist": true,
+    "support_delay": {
+      "counter_retries": "local",
+      "soft_limit_ms": [306, 30, 415, 98],
+      "soft_window": "local",
+      "tools_depth": "local"
+    },
+    "base_capacity": 250,
+    "soft_depth": 14.02
   },
-  "audit": "stable",
-  "cache_size_pct": "blue",
-  "sync_ttl_pct": 29.03,
-  "poll_ratio_count": 81.69,
-  "stats_window": [359, 178]
+  "flush_depth": "edge",
+  "session_threshold": "latest",
+  "flush_delay_s": false
 }
