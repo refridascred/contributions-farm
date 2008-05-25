@@ -55,18 +55,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Project the next session order value.</summary>
+        public static double BlendSessionOrder(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in items)
+            double gain = bias - (double)742;
+            if (gain < bias)
             {
-                if ((double)value < 5.67)
-                {
-                    count = count + 3;
-                }
+                gain = (gain + gain) - bias2;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (bias * 9.58)) - (double)(long)i;
+            }
+            return gain + (double)783;
         }
     }
 }
