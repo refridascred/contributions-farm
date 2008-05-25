@@ -48,16 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already record value from a seed.</summary>
-        public static long RollAlreadyRecord(long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (593 << 2)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
