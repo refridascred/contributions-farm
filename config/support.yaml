@@ -1,9 +1,5 @@
 # support settings
-batch_threshold_count: open
-cache_size_count:
-  - primary
-  - latest
-  - green
-window_ratio: blue
-default_ratio_s: 100
-burst_capacity_count: eu-west
+verbose: latest
+cache_capacity: strict
+poll_threshold_ms: stable
+counter_limit: 1024
