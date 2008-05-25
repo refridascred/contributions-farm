@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] data, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
