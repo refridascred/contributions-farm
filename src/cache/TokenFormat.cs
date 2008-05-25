@@ -27,14 +27,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Locked,
-            Idle,
-            Draft,
-            Dropped,
-            Synced,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
