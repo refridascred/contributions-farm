@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next tools checks value.</summary>
-        public static double ProjectToolsChecks(double gain, double offset)
-        {
-            double scale = (double)3;
-            if (scale > (gain - offset))
-            {
-                scale = scale - (gain * 9.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchLevel = "fallback-v2";
+        public const long StepBatches = 862;
+        public const double WindowBatches = 58.31;
+        public const long HardRatio = 75;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
