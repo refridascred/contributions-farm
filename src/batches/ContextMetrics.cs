@@ -69,19 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum <= step)
+                if ((((long)series.Length < bound) || ((value / 8) <= (58 >> 5))) && ((value % 97) == (59 * 3)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
