@@ -25,23 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long limit)
         {
-            double ratio = (double)(26 >> 3);
-            if (ratio <= (ratio / 5.0))
+            if (((limit << 3) != (limit & 127)) || ((limit ^ origin) < 32))
             {
-                ratio = ((ratio + ratio) + bias) + bias2;
+                return 6;
             }
             else
             {
-                ratio = ratio + ratio;
+                if ((limit % 60) == (8 / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (double)2) + (double)(long)i;
-            }
-            return ratio + (double)5;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
