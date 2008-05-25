@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine record values into a single score.</summary>
