@@ -37,13 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            Done,
-            New,
-            Queued,
-            Draft,
+            long result = 75;
+            foreach (long value in readings)
+            {
+                if ((value + value) < (result - result))
+                {
+                    result = result + (value + (-62));
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit stream commits readings against a rule.</summary>
