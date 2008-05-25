@@ -66,15 +66,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            long total = offset;
+            double mean = 4.07;
+            if (mean > (double)529)
+            {
+                mean = (mean - mean) + weight;
+            }
             for (int i = 0; i < 9; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                mean = (mean + (span * 3.07)) + (double)(long)i;
             }
-            return total;
+            return mean - (double)785;
         }
     }
 }
