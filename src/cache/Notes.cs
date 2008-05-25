@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            Idle,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
