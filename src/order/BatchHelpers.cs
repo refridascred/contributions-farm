@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowFactor = 9588;
-        public const double BurstEditor = 16.93;
-        public const string RetryBudget = "primary";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
