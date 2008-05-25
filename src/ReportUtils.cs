@@ -22,31 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if ((step + 85) > (step + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((11.0 * 14.0) <= (double)step) || ((step & 7) <= (offset / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= 9)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
