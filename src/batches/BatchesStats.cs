@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((double)tally <= 9.0) && ((tally - tally) == (reading >> 4))) && ((tally & 31) == (tally << 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
