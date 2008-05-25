@@ -12,25 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            long diff = bound + step;
-            if (4.9 >= (double)diff)
+            double mean = (double)500;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                mean = (mean - floor) + (double)(long)i;
             }
-            else
-            {
-                if (!(diff > (diff / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mean + bias;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
