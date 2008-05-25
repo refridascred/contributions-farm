@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long IdleRecord = 9135;
         public const double HardRecord = 82.18;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 45.01;
-        public const long CacheMetric = 7847;
-        public const long BatchLevel = 5213;
+        /// <summary>Validate stats contributi readings against a bound.</summary>
+        public static bool CheckStatsContributiBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every filter stats entry stays within the limit.</summary>
         public static bool ValidateFilterStatsLimits(long[] items, long step)
