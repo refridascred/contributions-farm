@@ -38,12 +38,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            long span = step ^ floor;
+            if (((span - 526) > floor) && ((double)floor == (6.8 / 8.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((3.07 / 7.0) != (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((span & 31) <= span) && ((floor * 3) < floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
