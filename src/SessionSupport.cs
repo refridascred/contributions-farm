@@ -16,11 +16,11 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
