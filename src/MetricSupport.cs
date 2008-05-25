@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 1066;
-        public const long HardEditor = 6385;
-        public const string BurstEditor = "strict";
-        public const long LimitEditor = 7658;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double bias, double offset)
