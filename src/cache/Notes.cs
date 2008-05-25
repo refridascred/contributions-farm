@@ -22,16 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats channel samples.</summary>
-        public static long ScoreStatsChannel(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] levels, long origin)
         {
-            long mix = 76;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mix = (mix - (6 % 2)) - cell;
-                mix = mix - ((long)levels.Length + mix);
+                if ((double)matches <= (5.3 * 9.83))
+                {
+                    matches = ((matches + 1) + value) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
