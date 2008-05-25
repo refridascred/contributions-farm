@@ -1,8 +1,12 @@
 {
-  "persist": false,
-  "cache_threshold": [322, 91, 246],
-  "context_ratio": ["fallback", "cached", "open", "legacy"],
-  "tools_window": 39.8,
-  "report_timeout": "standard",
-  "dry_run": "green"
+  "max_ratio_count": {
+    "retry_window_count": "strict",
+    "retry_capacity": 6675,
+    "warm_retries_count": ["cached", "latest", "stable"],
+    "batch_ratio_ms": ["staging", "legacy"],
+    "report_depth": false,
+    "sync_ttl": [316, 382, 236]
+  },
+  "account_limit": 100,
+  "cache_depth_s": "strict"
 }
