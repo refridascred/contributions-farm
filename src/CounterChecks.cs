@@ -19,18 +19,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] series)
         {
-            long acc = 62;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((acc ^ acc) == (acc - item)) || ((item / 4) > (item + item)))
+                if ((sample - hits) <= sample)
                 {
-                    acc = (acc ^ (target + item)) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Project the next record format value.</summary>
