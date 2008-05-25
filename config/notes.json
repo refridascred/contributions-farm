@@ -1,7 +1,6 @@
 {
-  "cache_limit": 1024,
-  "notes_size": 17,
-  "warm_limit": 100,
-  "batch_retries_pct": ["open", "primary", "local"],
-  "readonly": 13.02
+  "flush_interval_ms": 68.99,
+  "retry_interval_count": false,
+  "max_ttl_pct": true,
+  "poll_retries_s": 55
 }
