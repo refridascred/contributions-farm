@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in latest primary legacy standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-BUFFER_LIMIT=185
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
