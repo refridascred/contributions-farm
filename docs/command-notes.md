@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The session report groups every profile by order.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer stream defaults
-- Log every session change
-- Validate cluster input early
+- Keep payload values small
+- Validate githubfarm input early
+- Document new batches fields
+- Review tools limits each release
