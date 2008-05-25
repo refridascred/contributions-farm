@@ -1,8 +1,5 @@
 {
-  "compress": "cached",
-  "min_ratio": false,
-  "idle_capacity_pct": "latest",
-  "sync_delay_s": "edge",
-  "command_interval": 84.22,
-  "flush_retries_s": 13.53
+  "enabled": ["primary", "open"],
+  "idle_timeout_s": 51.7,
+  "hard_delay_ms": 57
 }
