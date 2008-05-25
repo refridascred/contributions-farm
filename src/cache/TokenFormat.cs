@@ -31,38 +31,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long limit, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long bound)
         {
-            if (((limit + offset) >= (limit << 2)) && ((double)offset >= (double)limit))
+            long carry = 264;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7 + offset) < (offset + offset))
+                if ((1 < (bound ^ value)) && ((value + value) != (carry ^ value)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + 5) < (252 + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit > (4.0 * 4.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = (carry + (value * 3)) % 101;
                 }
             }
+            return carry;
         }
     }
 }
