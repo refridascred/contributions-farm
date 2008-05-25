@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] data, long target)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((721 & 7) == (count % 24))
+                {
+                    count = ((count + 3) ^ cell) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload info.</summary>
