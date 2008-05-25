@@ -13,10 +13,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 294;
-        public const double LimitBudget = 32.29;
-        public const string SoftBudget = "legacy-v2";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
