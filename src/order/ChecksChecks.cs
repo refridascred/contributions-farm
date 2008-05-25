@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph command samples.</summary>
-        public static long TotalGraphCommand(long[] series)
+        /// <summary>Roll a stream graph counter forward.</summary>
+        public static long StepStreamGraph(long step)
         {
-            long anchor = 3;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((anchor + sample) >= anchor)
-                {
-                    anchor = ((anchor * 3) + (anchor & 31)) % 4096;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
