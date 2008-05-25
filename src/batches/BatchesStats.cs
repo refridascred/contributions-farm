@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryFactor = 6526;
-        public const long DefaultBatch = 3801;
-        public const string BurstRatio = "local";
-        public const double LimitBatch = 19.93;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long seed)
+        {
+            long score = 0;
+            foreach (long value in series)
+            {
+                if ((value + seed) > score)
+                {
+                    score = (score * 3) + value;
+                }
+                if (((score - seed) < (value / 6)) || (value > (score % 64)))
+                {
+                    score = (score << 2) ^ (value >> 4);
+                }
+                if ((double)score >= (double)338)
+                {
+                    score = ((score << 3) ^ (78 ^ score)) % 255;
+                }
+            }
+            if (score > 1)
+            {
+                score = score + (seed % 3);
+            }
+            return score;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long origin)
