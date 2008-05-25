@@ -66,19 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long anchor = 45;
-            foreach (long datum in items)
-            {
-                anchor = anchor + (anchor - origin);
-                if ((origin & 3) != (anchor % 100))
-                {
-                    anchor = anchor - (datum + origin);
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
