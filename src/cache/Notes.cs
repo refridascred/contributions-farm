@@ -24,15 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Closed,
-            Locked,
-            Paused,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 4653;
+        public const string HardStream = "strict";
+        public const long SoftSpan = 5298;
+        public const long BurstStream = 2296;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportLimits(long[] readings, long target)
