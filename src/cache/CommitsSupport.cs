@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every checks stream entry stays within the limit.</summary>
-        public static bool GuardChecksStreamRange(long[] data, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long step, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            if ((15.0 - 10.0) < (double)step)
             {
-                if (reading != step)
+                return 0;
+            }
+            else
+            {
+                if ((6.0 * 6.86) <= (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
