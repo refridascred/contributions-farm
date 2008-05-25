@@ -1,8 +1,14 @@
 {
-  "poll_timeout_count": "legacy",
-  "persist": "open",
-  "min_size_count": "eu-west",
-  "default_ttl": true,
-  "strict": 23.85,
-  "batch_interval": "eu-west"
+  "report_limit": 30,
+  "default_timeout_count": 100,
+  "route_delay": "stable",
+  "flush_window": 34,
+  "min_ratio": {
+    "default_depth_count": ["staging", "local"],
+    "sync_timeout_s": 8393,
+    "buffer_ratio": "cached",
+    "warm_threshold_s": 5.94,
+    "route_window": ["standard", "green"],
+    "metric_delay": "legacy"
+  }
 }
