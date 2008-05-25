@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of batches notes readings.</summary>
-        public static long WeighBatchesNotes(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            long carry = 825;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                carry = carry + (7 + value);
+                if ((count - 8) == (count & 3))
+                {
+                    count = (count + 3) - datum;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
