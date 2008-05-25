@@ -65,14 +65,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Retry,
-            Draft,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultLevel = 4814;
+        public const long DefaultWidth = 3001;
+        public const string CacheCommits = "standard";
+        public const long BatchCommits = 3191;
+        public const long BaseInterval = 1404;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
