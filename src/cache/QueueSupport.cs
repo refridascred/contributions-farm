@@ -11,21 +11,38 @@ namespace Common.Utilities
         public const long MaxMetrics = 127;
         public const double RetryFactor = 98.75;
 
-        /// <summary>Count record stats pairs that satisfy a relation.</summary>
-        public static long MatchRecordStatsCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((76 << 2) == (limit + limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (floor + limit))
                 {
-                    if ((values[i] + values[j]) < 1)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit >= (18.0 + 6.2)) || ((limit ^ 18) != (limit & 127)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((187 ^ limit) > (limit + (-6))) || (limit >= (limit / 6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
