@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            double weight = bias;
-            if (weight >= (double)441)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                weight = (weight - bias) - gain;
+                if ((seen < (seen + entry)) && ((275 / 9) >= (seen / 2)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight - (weight / 5.0);
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
