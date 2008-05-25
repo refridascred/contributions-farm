@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const string WindowScore = "primary-1";
         public const long SoftReport = 3061;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] values, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
