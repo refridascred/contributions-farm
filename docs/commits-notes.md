@@ -1,11 +1,11 @@
 # Commits notes
 
-A queue that stays idle for too long is moved to the batch list.
-When a already fails, the format handler retries a few times before giving up.
+Each queue is validated before it reaches the channel queue.
+The order module keeps cluster values in sync with the format cache.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep window values small
-- Prefer stream defaults
-- Log every report change
+- Prefer token defaults
+- Keep cluster values small
+- Validate route input early
+- Log every stream change
