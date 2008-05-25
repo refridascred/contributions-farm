@@ -14,21 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = origin ^ limit;
+            if ((limit % 24) >= (prev ^ limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((98 + prev) < (limit + prev))
                 {
-                    if ((values[i] - values[j]) != 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((origin / 8) >= (773 ^ prev))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two checks stats measurements.</summary>
