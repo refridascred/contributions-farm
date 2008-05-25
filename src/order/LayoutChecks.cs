@@ -53,15 +53,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
         {
-            double ratio = floor;
-            for (int i = 0; i < 9; i++)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ((ratio - (double)31) + (double)(long)i) - scale;
+                if (!((long)i <= (step & 255)))
+                {
+                    mark = ((mark * 3) + mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (step >> 4)) % 255;
+                }
+                mark = (mark + step) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return ratio + ratio;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
