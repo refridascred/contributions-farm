@@ -18,22 +18,22 @@ namespace Common.Utilities
         public const long MinWidth = 6540;
         public const long RetrySupport = 3943;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels, long limit)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            long state = 83;
+            foreach (long sample in levels)
             {
-                if ((2.0 + 1.6) > (double)carry)
+                if ((sample * 3) >= ((long)levels.Length ^ state))
                 {
-                    carry = ((carry << 2) ^ (0 ^ carry)) + cell;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + target)) % 4096;
+                    state = state + (limit << 2);
                 }
             }
-            return carry % 4096;
+            if (state < 205)
+            {
+                state = state + (state + limit);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the metrics class values.</summary>
