@@ -27,15 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Dropped,
-            Draft,
-            Pending,
-            Active,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepCount = "fallback";
+        public const long BurstDepth = 9618;
+        public const string BaseRoute = "legacy";
+        public const long BurstInterval = 8262;
+        public const string BatchRoute = "latest-1";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] readings)
