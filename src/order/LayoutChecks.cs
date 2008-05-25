@@ -31,15 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
-        public static long StepSchemaGithubfarm(long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank contributi record input into a small class.</summary>
