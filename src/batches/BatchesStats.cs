@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples)
         {
-            double gain = (5.3 - span) + (ratio + 4.95);
-            if (gain >= gain)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                gain = gain - (double)7;
+                if ((((double)tally <= 9.0) && ((tally - tally) == (reading >> 4))) && ((tally & 31) == (tally << 3)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)507;
-            }
-            return gain - (span * 5.2);
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
