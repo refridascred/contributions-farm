@@ -99,22 +99,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long result = 860;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((origin + result) <= item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result * 5) + 715;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = (result ^ (origin % 97)) % 97;
-            }
-            return result % 1000;
+            return seen;
         }
     }
 }
