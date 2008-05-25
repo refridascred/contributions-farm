@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Paused,
-            Queued,
-            Locked,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
