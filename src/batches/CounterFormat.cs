@@ -27,19 +27,11 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long seed)
-        {
-            long anchor = 9;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor + (seed << 3)) % 65521) ^ cell;
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ seed) % 65521;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 6814;
+        public const long BurstPayload = 6437;
+        public const long MinPayload = 7124;
+        public const string StepTimeout = "standard-edge";
+        public const long BasePayload = 1583;
     }
 }
