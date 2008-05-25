@@ -39,30 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi queue series from a seed.</summary>
-        public static long RollContributiQueue(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)595 != (double)(long)i)
-                {
-                    break;
-                }
-                double scale = (double)(seed + (long)i);
-                if ((seed > (seed - seed)) || ((double)mix >= (scale / 5.0)))
-                {
-                    mix = (mix - mix) % 1000;
-                    mix = mix - (seed ^ 4);
-                }
-                else
-                {
-                    mix = (mix ^ (256 % 97)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseLevel = 8194;
+        public const long MaxMetric = 4937;
+        public const double SoftMetric = 14.61;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long limit, long bound)
