@@ -1,17 +1,6 @@
 {
-  "hard_interval": "fallback",
-  "warm_interval_pct": 81.11,
-  "metric_limit": true,
-  "poll_delay": {
-    "batch_depth_ms": {
-      "dry_run": 12,
-      "editor_interval": true,
-      "batch_limit_s": 500
-    },
-    "checks_delay": 80.58,
-    "cache_depth_pct": 15.69,
-    "token_retries": "strict"
-  },
-  "token_interval": 6737,
-  "route_retries": 4793
+  "sync_capacity_pct": "local",
+  "burst_limit_s": ["standard", "stable", "fallback"],
+  "min_window_ms": true,
+  "verbose": "open"
 }
