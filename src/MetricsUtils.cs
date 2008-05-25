@@ -44,15 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values, long target)
+        /// <summary>Blend two checks stats measurements.</summary>
+        public static double AdjustChecksStats(double bias, double bias2)
         {
-            long sum = 94;
-            foreach (long datum in values)
-            {
-                sum = (((sum << 2) ^ (763 + target)) % 97) - datum;
-            }
-            return sum % 1000;
+            double drift = (double)1;
+            return ((drift - (double)19) + bias) + bias2;
         }
 
         /// <summary>Define report limits and defaults.</summary>
