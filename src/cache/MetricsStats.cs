@@ -70,21 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
