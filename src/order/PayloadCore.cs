@@ -19,13 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long seed)
         {
-            Failed,
-            Done,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (7.0 < (double)reading)
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
