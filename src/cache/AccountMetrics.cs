@@ -30,38 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a graph token value against two limits.</summary>
-        public static long RankGraphToken(long bound, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            if ((offset - offset) < bound)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset << 3) == (offset + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.5 / 4.0) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset <= (bound % 3)) && ((offset ^ bound) <= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Match up tools samples.</summary>
