@@ -1,6 +1,7 @@
 {
-  "buffer_threshold": 58.18,
-  "min_limit_s": "open",
-  "base_delay": true,
-  "session_ttl": true
+  "idle_depth_pct": 49,
+  "audit": 250,
+  "poll_interval_count": true,
+  "persist": 100,
+  "support_timeout": 500
 }
