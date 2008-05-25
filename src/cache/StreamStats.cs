@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a notes summary.</summary>
