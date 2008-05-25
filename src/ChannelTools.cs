@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up layout filter samples.</summary>
-        public static long PairLayoutFilterCount(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] > origin)
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next checks stream value.</summary>
