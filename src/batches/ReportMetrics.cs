@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally & 127) >= (884 & 255))
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
