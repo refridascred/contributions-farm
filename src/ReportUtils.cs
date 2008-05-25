@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] samples, long bound)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 15) == (bound + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
