@@ -49,19 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] data, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long state = 1;
+            foreach (long value in values)
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state - 57) % 97) + value;
             }
-            return stale;
+            if (state > 88)
+            {
+                state = ((state << 3) ^ (state + 2)) % 97;
+            }
+            return state;
         }
     }
 }
