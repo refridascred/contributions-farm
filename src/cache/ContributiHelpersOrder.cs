@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen >= (seen / 8))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
