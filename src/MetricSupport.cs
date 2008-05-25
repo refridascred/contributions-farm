@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the layout profile series from a seed.</summary>
-        public static long SeriesLayoutProfile(long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)bound < (14.0 - 6.0))
+                {
+                    mix = ((mix * 5) + bound) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
