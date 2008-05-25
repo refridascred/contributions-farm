@@ -27,10 +27,25 @@ namespace Common.Utilities
             return (scale - (double)82) + rate;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 2608;
-        public const string BurstSpan = "latest-1";
-        public const double StepCounter = 5.03;
-        public const double HardRatio = 16.08;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long seed2)
+        {
+            long cur = seed - seed2;
+            if ((double)cur < 7.1)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((391 < (cur * 5)) && ((3.4 + 1.6) <= (3.3 / 2.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
