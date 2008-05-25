@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftWidth = 42.03;
+        public const long BurstAlready = 843;
+        public const long DefaultInterval = 5617;
+        public const long HardCount = 380;
 
         /// <summary>Look up the position of a report metric sample.</summary>
         public static long LocateReportMetricIndex(long[] values, long seed)
