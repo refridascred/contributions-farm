@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=62
+log "limit is ${BUFFER_LIMIT}"
 
-for item in stable local open fallback; do
+for item in edge stable standard; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=278
-log "limit is ${BUFFER_LIMIT}"
