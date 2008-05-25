@@ -58,18 +58,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((34 + item) <= (count / 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
