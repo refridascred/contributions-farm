@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string SoftLayout = "open-edge";
         public const long LimitLayout = 5721;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) > 4)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the cluster state values.</summary>
