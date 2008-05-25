@@ -50,12 +50,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
