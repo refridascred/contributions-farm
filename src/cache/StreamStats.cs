@@ -44,25 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats format pair into a bucket.</summary>
-        public static long BucketStatsFormat(long seed, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long bound = seed + target;
-            if (((seed << 2) <= seed) || ((20.0 / 6.0) == (double)bound))
+            long mix = 19;
+            foreach (long cell in items)
             {
-                return 1;
+                mix = mix - (cell - mix);
             }
-            else
+            if (mix > 628)
             {
-                if ((double)seed == (double)31)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                mix = mix + (mix + mix);
             }
+            return mix;
         }
     }
 }
