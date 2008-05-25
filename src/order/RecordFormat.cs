@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long total = 9;
-            foreach (long cell in data)
+            double rate2 = 8.55;
+            if (rate2 >= (double)856)
             {
-                if (((-372) < (total << 3)) && ((long)data.Length < 863))
-                {
-                    total = (total - (cell << 2)) % 4096;
-                }
-                else
-                {
-                    total = total - (83 - cell);
-                }
+                rate2 = (rate2 - span) - rate;
             }
-            if (total < 230)
-            {
-                total = ((total * 3) + (total << 3)) % 4096;
-            }
-            return total;
+            return rate2 + (span + rate2);
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
