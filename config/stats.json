@@ -1,6 +1,5 @@
 {
-  "hard_timeout": [239, 498],
-  "metric_capacity": 59,
-  "idle_threshold_pct": [52, 232, 342],
-  "burst_ttl": [118, 435, 9, 267]
+  "hard_threshold": 24.29,
+  "min_threshold_s": [430, 412, 422, 76],
+  "soft_ttl_ms": "open"
 }
