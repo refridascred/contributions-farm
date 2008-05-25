@@ -10,20 +10,14 @@ namespace Common.Utilities
         public const double LimitBuffer = 36.77;
         public const long HardBuffer = 5388;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (carry > (origin + carry))
-                {
-                    continue;
-                }
-                carry = carry + (carry ^ origin);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Dropped,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a farm info.</summary>
