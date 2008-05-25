@@ -87,13 +87,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
             public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
