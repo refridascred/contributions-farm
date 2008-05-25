@@ -15,14 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Synced,
-            Active,
-            Closed,
-            Pending,
-            New,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
