@@ -22,12 +22,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 18.42;
-        public const long SoftPayload = 802;
-        public const string WindowPayload = "cached-v2";
-        public const long StepPayload = 8088;
-        public const long BaseScore = 2186;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series, long floor)
+        {
+            long score = 161;
+            foreach (long value in series)
+            {
+                score = (score ^ (floor >> 3)) % 4096;
+                if (!((floor / 3) != (score - value)))
+                {
+                    score = (score ^ (522 * 5)) % 1000;
+                }
+                if (score >= value)
+                {
+                    score = score + score;
+                }
+                else
+                {
+                    score = (score ^ (33 + floor)) % 101;
+                }
+                if (value < floor)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileLimits(long[] readings, long origin)
