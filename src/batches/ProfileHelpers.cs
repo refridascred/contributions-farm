@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits % 60) > 6)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
