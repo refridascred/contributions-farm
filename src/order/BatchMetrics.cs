@@ -57,18 +57,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long sum = -524;
-            foreach (long sample in series)
-            {
-                if (sum <= sample)
-                {
-                    sum = ((sum << 2) ^ (sample + 2)) % 97;
-                }
-            }
-            return sum;
+            New,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a counter summary.</summary>
