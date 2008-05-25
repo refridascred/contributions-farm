@@ -53,39 +53,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long cur = offset ^ origin;
-            if ((origin ^ 965) >= cur)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)cur <= (double)47))
+                if ((699 << 3) < (mix - mix))
                 {
-                    return 8;
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    if ((offset <= (origin >> 1)) && ((cur % 60) <= (cur - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur + origin) > (origin >> 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix ^ ((long)i + mix)) % 65521;
                 }
+                if (((long)i << 1) <= (75 + mix))
+                {
+                    mix = mix ^ ((long)i * 5);
+                    mix = mix ^ (mix << 1);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
