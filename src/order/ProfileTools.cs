@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long MinWidth = 6540;
         public const long RetrySupport = 3943;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Queued,
-            Pending,
-            Stale,
-            Done,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftBudget = 7554;
+        public const string IdleBudget = "legacy";
+        public const long StepSession = 2000;
+        public const long DefaultSpan = 8495;
+        public const long WindowSession = 3832;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheWidth = "alpha-1";
