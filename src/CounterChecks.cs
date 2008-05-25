@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                carry = (carry + carry) % 1000;
-                carry = (carry * 2) + (seed + (long)i);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((datum * 5) >= (datum + datum))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
