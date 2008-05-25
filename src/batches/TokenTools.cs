@@ -23,13 +23,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Queued,
-            Active,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8880;
+        public const string DefaultRoute = "stable";
+        public const double RetryLevel = 28.01;
+        public const long BaseSize = 1487;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] series)
