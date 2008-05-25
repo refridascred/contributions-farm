@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a format cache sample.</summary>
-        public static long SeekFormatCacheIndex(long[] samples, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
+                if (((limit + matches) < (matches - sample)) && ((137 >= (matches - sample)) || ((matches * 4) != (matches ^ limit))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a stream graph counter forward.</summary>
