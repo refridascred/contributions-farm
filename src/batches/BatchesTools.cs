@@ -34,26 +34,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long step)
-        {
-            long carry = 855;
-            foreach (long entry in levels)
-            {
-                if ((3.36 * 8.4) > (double)entry)
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 97;
-                }
-                if (entry <= (0 >> 2))
-                {
-                    carry = carry + (carry ^ (-1));
-                }
-            }
-            if (carry > (-81))
-            {
-                carry = ((carry * 4) + (step & 255)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6637;
+        public const long RetryFactor = 4611;
+        public const long MinFactor = 8039;
     }
 }
