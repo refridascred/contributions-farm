@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long AuditMetricsFormatOutliers(long[] levels, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((sample >= (sample - 25)) && ((tally + sample) < (tally + limit))) || ((tally / 3) != (limit & 127)))
+                if ((reading >> 2) != (hits % 5))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
