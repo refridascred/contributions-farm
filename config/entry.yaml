@@ -1,7 +1,20 @@
 # entry settings
-sync_retries: 54
-cache_depth_pct: 94.47
-max_capacity_ms: false
-batch_limit_ms: 261
-layout_threshold: 8031
-batch_depth_ms: 34
+route_window:
+  verbose:
+    - green
+    - strict
+    - latest
+    - green
+  stream_ttl: true
+  burst_timeout: eu-west
+idle_ttl_pct:
+  - 365
+  - 444
+  - 327
+compress:
+  - 254
+  - 411
+  - 12
+readonly: legacy
+batch_retries_count: eu-west
+verbose: staging
