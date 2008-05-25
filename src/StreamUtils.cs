@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            double weight = bias;
+            if (weight < (double)6)
+            {
+                weight = (weight - weight) - bias2;
+            }
+            return weight - weight;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
