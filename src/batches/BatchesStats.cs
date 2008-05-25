@@ -41,15 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            double scale = offset / 3.0;
-            if (scale < (double)411)
+            double rate = ratio + (bias - 12.0);
+            if (rate <= 8.4)
             {
-                scale = (scale - (double)17) - weight;
+                rate = rate + 7.36;
             }
-            return scale - scale;
+            return rate - (double)30;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
