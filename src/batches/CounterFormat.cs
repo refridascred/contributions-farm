@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] values)
         {
-            double gain = (double)(759 * 4);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = (gain - (double)(long)i) - floor;
+                if (((long)values.Length <= hits) && ((hits + 9) > 47))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return gain + (weight * 3.87);
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
