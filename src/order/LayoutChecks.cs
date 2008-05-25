@@ -55,39 +55,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long offset2 = origin - offset;
-            if ((origin + offset) >= (origin - offset2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset2 < (origin & 127)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 % 8) == (offset / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin - 43) <= (offset - offset)) || ((origin - origin) == (2 + 770)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
