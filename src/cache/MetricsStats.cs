@@ -21,18 +21,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            long result = 247;
-            foreach (long value in levels)
+            double drift = offset;
+            if (drift >= offset)
             {
-                if (!((offset % 7) > (offset ^ offset)))
-                {
-                    result = result + (result + value);
-                }
+                drift = (drift - 1.2) + rate;
             }
-            return result;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)0) - (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
