@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long BaseScore = 1249;
         public const long RetryRatio = 3898;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double bias2 = rate;
-            return bias2 - (bias - bias);
+            Pending,
+            Active,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
