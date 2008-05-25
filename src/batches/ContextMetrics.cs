@@ -32,18 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double ratio2 = (double)528;
+            if (ratio2 <= (offset / 2.0))
             {
-                if ((16.0 + 6.4) < (double)value)
-                {
-                    hits = hits + 1;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return hits;
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 + (ratio + 1.4);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
