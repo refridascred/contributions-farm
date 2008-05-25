@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 7809;
-        public const long DefaultContext = 6081;
-        public const long BatchLevel = 951;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double span)
