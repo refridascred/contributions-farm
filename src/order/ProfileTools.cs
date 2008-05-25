@@ -66,9 +66,13 @@ namespace Common.Utilities
         public const long HardRatio = 6907;
         public const long WindowLevel = 9547;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1534;
-        public const long BatchFactor = 9567;
-        public const string BurstLevel = "stable-1";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Ready,
+            Idle,
+            Retry,
+            Synced,
+        }
     }
 }
