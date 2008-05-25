@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Dropped,
-            Queued,
-            New,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Roll a checks counter counter forward.</summary>
