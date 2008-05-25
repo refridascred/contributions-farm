@@ -1,5 +1,7 @@
 {
-  "cache_retries_count": 50,
-  "default_ttl": "cached",
-  "verbose": false
+  "cache_retries_ms": 75.78,
+  "context_ratio": 66,
+  "base_capacity_ms": [116, 239, 448, 245],
+  "poll_ratio": "open",
+  "burst_limit_s": "eu-west"
 }
