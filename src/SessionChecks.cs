@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepWidth = 4251;
-        public const long StepNotes = 6933;
-        public const string MaxNotes = "standard-edge";
-        public const string LimitRatio = "open-1";
-        public const string RetryScore = "stable-v2";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
