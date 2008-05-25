@@ -15,24 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            if (((limit << 3) != (limit & 127)) || ((limit ^ origin) < 32))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 60) == (8 / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
