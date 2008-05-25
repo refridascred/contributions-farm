@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many format stream samples are out of range.</summary>
-        public static long TallyFormatStreamHits(long[] data, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((entry - target) < (entry * 3))
+                if ((4.0 - 4.0) != (double)value)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
