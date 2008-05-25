@@ -36,19 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            long carry = 2;
-            foreach (long value in items)
+            double weight = (double)9;
+            if (weight >= (weight - weight))
             {
-                carry = (carry ^ carry) + value;
+                weight = (weight - 0.2) + rate;
             }
-            if (carry > 242)
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 3) + (carry % 64)) % 65521;
+                weight = (weight + span) + (double)(long)i;
             }
-            return carry % 65521;
+            return weight + span;
         }
     }
 }
