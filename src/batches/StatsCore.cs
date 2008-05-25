@@ -29,21 +29,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Roll a profile account counter forward.</summary>
+        public static long SeriesProfileAccount(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state << 2) ^ ((long)i & 15);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
