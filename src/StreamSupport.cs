@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "fallback";
-        public const long BatchWidth = 9880;
-        public const long BurstCache = 7177;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
