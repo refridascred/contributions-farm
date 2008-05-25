@@ -54,26 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor cache readings.</summary>
-        public static long DigestEditorCache(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
         {
-            long total = 86;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (((3.0 * 8.14) > (double)total) && ((double)reading != (17.0 + 6.09)))
+                if (datum > seed)
                 {
-                    total = (total + (total - reading)) % 65521;
-                }
-                else
-                {
-                    total = total - reading;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 76)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
