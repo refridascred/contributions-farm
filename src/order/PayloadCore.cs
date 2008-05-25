@@ -23,11 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((-69) + 8) != (bound + mix))
+                {
+                    mix = mix + ((long)i + mix);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ bound;
+                    mix = ((mix * 2) + (1 + mix)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
