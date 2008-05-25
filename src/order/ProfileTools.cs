@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((((long)series.Length >= tally) && ((tally + cell) == (cell - tally))) || ((tally << 2) == (cell ^ 94)))
+                if (item < step)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
