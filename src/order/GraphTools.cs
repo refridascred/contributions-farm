@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate session contributi readings against a bound.</summary>
-        public static bool GuardSessionContributiBounds(long[] items, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long result = 7;
+            foreach (long entry in data)
             {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (((result * 2) + 925) % 1000) ^ entry;
             }
-            return ok;
+            if (result > 4)
+            {
+                result = (result ^ (4 & 15)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the route kind values.</summary>
