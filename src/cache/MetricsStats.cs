@@ -50,12 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long anchor = 400;
+            foreach (long datum in readings)
+            {
+                anchor = (((anchor * 5) + (-214)) + datum) + bound;
+            }
+            if (anchor > 995)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
