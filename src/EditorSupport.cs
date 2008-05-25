@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Active,
-            Locked,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 71.02;
+        public const string StepAccount = "standard";
+        public const long RetryDepth = 5787;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
