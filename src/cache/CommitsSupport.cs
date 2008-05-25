@@ -47,10 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheTimeout = "local-edge";
-        public const long MinRatio = 4986;
-        public const string MinGithubfarm = "standard-v2";
+        /// <summary>Count the graph support entries that pass the check.</summary>
+        public static long TallyGraphSupportHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((36 <= (item - hits)) && !((16.0 + 6.0) >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
