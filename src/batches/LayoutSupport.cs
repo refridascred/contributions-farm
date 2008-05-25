@@ -12,26 +12,30 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Fold a list of stream context readings.</summary>
-        public static long ScoreStreamContext(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series, long floor)
         {
-            long mix = 363;
-            foreach (long sample in items)
+            long result = -970;
+            foreach (long datum in series)
             {
-                if (!(sample <= mix))
+                if ((floor % 100) < (datum + result))
                 {
-                    mix = (mix << 2) ^ (mix - 4);
+                    result = ((result << 2) ^ (datum >> 2)) % 4096;
                 }
-                if ((sample / 4) >= (631 & 63))
+                else
+                {
+                    result = ((result * 5) + (datum - floor)) % 101;
+                }
+                if ((17.0 <= (double)result) && ((result << 1) >= result))
                 {
                     break;
                 }
             }
-            if (mix < (-67))
+            if (result > 646)
             {
-                mix = ((mix << 3) ^ mix) % 65521;
+                result = (result + (result + result)) % 255;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
