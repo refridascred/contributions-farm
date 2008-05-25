@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BaseDepth = 5513;
         public const long LimitTimeout = 3532;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = -65;
-            foreach (long sample in series)
-            {
-                mark = ((mark << 3) ^ sample) % 1000;
-            }
-            return mark % 65521;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate order session samples.</summary>
