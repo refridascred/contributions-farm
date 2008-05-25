@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of account filter readings.</summary>
-        public static long TotalAccountFilter(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long limit)
         {
-            long score = 656;
-            foreach (long entry in items)
+            long acc = 724;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ (score << 3)) - entry;
+                acc = acc + (cell + cell);
+                acc = acc ^ cell;
+                if ((limit >> 2) >= (acc / 6))
+                {
+                    acc = acc - (acc & 31);
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 7)) % 101;
+                }
             }
-            return score;
+            if (acc > 5)
+            {
+                acc = (acc * 5) + (acc * 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
