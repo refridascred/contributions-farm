@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum + sum) + reading;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Describe the commits phase values.</summary>
