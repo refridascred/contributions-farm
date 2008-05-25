@@ -16,21 +16,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Compare every pair of order stats readings.</summary>
-        public static long OverlapOrderStatsCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.12 + 4.69) == (double)entry)
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
