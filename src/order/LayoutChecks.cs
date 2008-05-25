@@ -22,15 +22,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                acc = (acc ^ (3 ^ acc)) % 4096;
+                if ((157 << 2) != ((-710) + (long)i))
+                {
+                    acc = (acc << 2) ^ (acc % 2);
+                }
+                if ((long)i < (acc + acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc ^ (acc ^ target);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a filter info.</summary>
