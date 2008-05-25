@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every filter tools entry stays within the limit.</summary>
-        public static bool VerifyFilterToolsRange(long[] data, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Dropped,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
