@@ -20,21 +20,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sum < (sample / 6)))
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (sum << 3);
+                }
+                else
+                {
+                    sum = (sum + sample) % 255;
                 }
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = (sum - (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
