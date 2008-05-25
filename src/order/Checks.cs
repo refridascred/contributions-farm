@@ -40,18 +40,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] series, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((reading / 7) < (bound ^ bound)) && !((double)hits > (5.32 + 6.0)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = hits + 1;
+                    state = ((state ^ (long)i) % 1000) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
