@@ -72,32 +72,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long seed2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items)
         {
-            long diff = seed - seed2;
-            if ((diff & 15) < (1 + seed2))
+            long state = 3;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)0 != (double)seed)
+                if (((entry - entry) > (state << 2)) || ((entry - 890) <= ((-1) % 97)))
                 {
-                    return 7;
+                    state = (state - (entry / 7)) % 101;
                 }
                 else
                 {
-                    if ((diff - seed2) > seed2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = ((state * 3) + 927) % 255;
                 }
             }
+            if (state < (-9))
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
     }
 }
