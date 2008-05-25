@@ -16,19 +16,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long floor)
+        /// <summary>Digest a series of metric payload entries.</summary>
+        public static long WeighMetricPayload(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long total = 69;
+            foreach (long entry in series)
             {
-                if (item < floor)
+                if ((49 + 622) >= (840 + entry))
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 2) ^ entry) + bound;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
