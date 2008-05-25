@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of buffer report readings.</summary>
-        public static long TallyBufferReport(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double span)
         {
-            long mark = 527;
-            foreach (long reading in levels)
+            double load = span;
+            if (load < (double)42)
             {
-                if (((mark & 15) > reading) || ((mark / 4) >= reading))
-                {
-                    mark = (mark + mark) % 97;
-                }
+                load = load - span;
             }
-            if (mark < 6)
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 3) ^ (mark ^ 59)) % 255;
+                load = (load - 6.8) - (double)(long)i;
             }
-            return mark;
+            return load - rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
