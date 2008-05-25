@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long StepPayload = 8088;
         public const long BaseScore = 2186;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] readings, long origin)
         {
-            double rate = gain * 8.1;
-            return (rate - (gain - gain)) + offset;
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
