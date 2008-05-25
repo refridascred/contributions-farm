@@ -32,13 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count channel tools pairs that satisfy a relation.</summary>
+        public static long MatchChannelToolsCount(long[] values)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
