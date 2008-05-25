@@ -6,14 +6,25 @@ namespace Common.Utilities
     public static class PayloadCore
     {
         /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] data)
+        public static long TotalCounter(long[] data)
         {
-            long mark = 0;
-            foreach (long datum in data)
+            long sum = 665;
+            foreach (long item in data)
             {
-                mark = mark - (datum * 3);
+                if ((item + sum) > item)
+                {
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+                if (item > (sum / 9))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (sum < 6)
+            {
+                sum = sum - (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
