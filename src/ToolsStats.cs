@@ -64,18 +64,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long CountBatchesAccountGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (origin >= (reading << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 3673;
+        public const long IdleRoute = 495;
+        public const long DefaultRoute = 3489;
+        public const string DefaultFactor = "alpha-edge";
     }
 }
