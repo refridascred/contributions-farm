@@ -16,11 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long MeasureMetricsNotesHits(long[] readings, long target)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!(hits <= (sample + hits)))
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
