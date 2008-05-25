@@ -1,11 +1,13 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Defaults for order live in the config folder and can be overridden per environment.
-Run the checks check before changing any filter limits.
+Each account is validated before it reaches the layout queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+
+When a command fails, the order handler retries a few times before giving up.
+Keep commits and account names short and lowercase.
 
 ## Guidelines
 
-- Log every stream change
-- Validate githubfarm input early
-- Keep route values small
+- Validate layout input early
+- Prefer batches defaults
+- Keep tools values small
