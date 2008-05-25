@@ -28,21 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 29;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)(-8) == (double)cell)
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (cell - sum);
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
