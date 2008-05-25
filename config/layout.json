@@ -1,14 +1,6 @@
 {
-  "retry_timeout_ms": true,
-  "cache_threshold_s": ["latest", "strict"],
-  "max_limit_count": [348, 210],
-  "burst_threshold": ["standard", "fallback", "stable"],
-  "burst_threshold_ms": true,
-  "warm_limit": {
-    "report_capacity": "fallback",
-    "cache_ttl_pct": 6640,
-    "warm_limit": true,
-    "base_ratio_ms": 48,
-    "persist": 2285
-  }
+  "min_threshold_pct": "blue",
+  "retry_timeout_ms": [297, 183, 466, 363],
+  "idle_ttl": false,
+  "max_timeout": "primary"
 }
