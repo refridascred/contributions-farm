@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long target, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            if ((3.67 * 7.1) <= (double)target)
             {
-                if ((double)bound < (14.0 - 6.0))
-                {
-                    mix = ((mix * 5) + bound) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (limit < (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + 361) <= (limit & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit % 60) <= (limit << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
