@@ -42,12 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 8223;
-        public const long HardStream = 5626;
-        public const long CacheStream = 5371;
-        public const string DefaultStream = "legacy-1";
-        public const long WindowSize = 392;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleLevel = 4419;
