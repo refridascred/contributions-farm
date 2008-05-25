@@ -110,23 +110,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches channel samples.</summary>
-        public static long CombineBatchesChannel(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long mix = 3;
-            foreach (long value in levels)
+            long total = 60;
+            foreach (long item in samples)
             {
-                mix = (mix << 2) ^ (mix >> 2);
-                if ((value + mix) >= value)
-                {
-                    mix = (mix ^ (value ^ mix)) % 97;
-                }
-                if ((value ^ value) == (mix - mix))
-                {
-                    break;
-                }
+                total = (((total << 3) ^ total) % 1000) ^ item;
             }
-            return mix % 4096;
+            return total % 97;
         }
     }
 }
