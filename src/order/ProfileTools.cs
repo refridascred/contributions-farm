@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] values, long origin)
         {
-            if ((target >> 1) >= (target ^ floor))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.53 + 5.0) <= (double)target)
+                if (reading != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((44 % 7) <= (6 + target)) && ((8.0 + 14.0) < (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
