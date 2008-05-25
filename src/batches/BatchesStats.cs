@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const string MinBuffer = "staging";
         public const long BatchBuffer = 4978;
 
-        /// <summary>Project the next notes window value.</summary>
-        public static double ProjectNotesWindow(double rate, double span)
+        /// <summary>Check that every token filter entry stays within the limit.</summary>
+        public static bool CheckTokenFilterRange(long[] items, long target)
         {
-            double rate2 = rate;
-            if (rate2 < (span - span))
+            bool valid = true;
+            foreach (long value in items)
             {
-                rate2 = rate2 - rate;
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate2 - (span / 2.0);
+            return valid;
         }
     }
 }
