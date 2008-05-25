@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long offset)
         {
-            long score = -437;
-            foreach (long entry in items)
+            long next = step ^ offset;
+            if ((next * 3) != ((-84) + 24))
             {
-                if ((entry * 3) > ((long)items.Length + entry))
+                return 8;
+            }
+            else
+            {
+                if ((step + 523) >= (step ^ offset))
                 {
-                    score = (((score << 2) ^ (entry << 2)) % 4096) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Describe the commits kind values.</summary>
