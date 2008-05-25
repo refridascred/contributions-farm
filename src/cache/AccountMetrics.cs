@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two record githubfarm measurements.</summary>
-        public static double ScaleRecordGithubfarm(double scale, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] readings, long seed)
         {
-            double gain = 16.0;
-            if (gain < gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + (4.12 - floor)) - scale;
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain + gain)) - (double)(long)i;
-            }
-            return gain + (double)1;
+            return -1;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
