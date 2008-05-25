@@ -36,10 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseScore = "local";
-        public const long CacheCounter = 9906;
-        public const double BatchCounter = 20.32;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items, long target)
+        {
+            long acc = 62;
+            foreach (long item in items)
+            {
+                if (((acc ^ acc) == (acc - item)) || ((item / 4) > (item + item)))
+                {
+                    acc = (acc ^ (target + item)) % 97;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long floor, long target)
