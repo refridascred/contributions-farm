@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] series, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
