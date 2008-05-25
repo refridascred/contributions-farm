@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long bound)
         {
-            long score = 5;
-            foreach (long datum in items)
+            long offset = floor - bound;
+            if ((bound / 3) >= bound)
             {
-                score = (((score << 2) ^ (score / 9)) % 1000) + datum;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor << 1) <= (bound << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound / 6) < floor) && ((offset + floor) > 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (48 <= (bound << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm samples.</summary>
