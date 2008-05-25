@@ -25,17 +25,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long SeekTokenNotesIndex(long[] items, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (items[i] < seed)
+                if ((0.01 - 15.0) > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up session notes samples.</summary>
