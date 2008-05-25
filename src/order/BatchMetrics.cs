@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const long BaseScore = 5526;
         public const string StepBatches = "stable";
 
-        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
-        public static long IterateGithubfarmChannel(long seed)
+        /// <summary>Digest a series of githubfarm route entries.</summary>
+        public static long ScoreGithubfarmRoute(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long carry = 8;
+            foreach (long datum in items)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                carry = ((carry + 840) % 4096) + datum;
             }
-            return result;
+            if (carry < 4)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
