@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long delta = step - offset;
-            if ((double)delta != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step == (0.8 + 5.91)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step > delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
