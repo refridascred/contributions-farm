@@ -43,18 +43,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long CountTokenBatchHits(long[] levels)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((993 + (-51)) >= (count + 53))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Done,
+            New,
         }
     }
 }
