@@ -48,10 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7021;
-        public const string MaxRecord = "open-edge";
-        public const long BatchWidth = 9386;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of account farm entries.</summary>
         public static long TallyAccountFarm(long[] samples, long limit)
