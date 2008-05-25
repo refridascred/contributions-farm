@@ -13,19 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = 434;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor ^ (anchor + anchor)) % 255) + reading;
-            }
-            if (anchor < 463)
-            {
-                anchor = anchor + (43 / 6);
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a tools support value against two limits.</summary>
