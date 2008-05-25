@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count - cell) == (count / 5))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryFactor = 6526;
+        public const long DefaultBatch = 3801;
+        public const string BurstRatio = "local";
+        public const double LimitBatch = 19.93;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long origin)
