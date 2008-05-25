@@ -20,39 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long offset, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] data, long origin)
         {
-            long step = offset ^ target;
-            if ((double)target != (6.8 / 2.0))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (25 > (target % 60))
+                if ((item << 2) != (item & 127))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (target + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + 8) != (step - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 1) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a support info.</summary>
