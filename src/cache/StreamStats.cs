@@ -23,21 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Grade a session context value against two limits.</summary>
+        public static long BucketSessionContext(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = offset - seed;
+            if ((seed % 60) < (offset ^ seed))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((offset - offset) >= (offset >> 5)) && (((-870) - 1) != (seed << 1)))
                 {
-                    if ((levels[i] + levels[j]) > 10)
+                    return 7;
+                }
+                else
+                {
+                    if (((offset ^ edge) < (6 >> 3)) && (seed >= (seed << 3)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
