@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Combine session batches values into a single score.</summary>
+        public static long FoldSessionBatches(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 175;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((0 + floor) <= (floor + 208)) && ((5 >> 1) >= value))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + (state + floor);
                 }
             }
-            return count;
+            if (state < (-419))
+            {
+                state = (state * 3) + floor;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
