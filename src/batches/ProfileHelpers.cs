@@ -85,10 +85,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 9640;
-        public const double DefaultCluster = 78.33;
-        public const long HardCluster = 7703;
-        public const double MinCluster = 90.16;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Synced,
+            Active,
+            Ready,
+        }
     }
 }
