@@ -25,22 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((count - 753) <= (datum - count)) || ((datum - count) >= (count & 127)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 3329;
+        public const long BurstLevel = 1060;
+        public const string BurstQueue = "cached-1";
+        public const long BaseFactor = 1097;
     }
 }
