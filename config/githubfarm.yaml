@@ -1,6 +1,7 @@
 # githubfarm settings
-sync_limit: 250
-session_size: 1567
-already_depth:
-  - 453
-  - 11
+burst_ttl_pct: 100
+audit:
+  - green
+  - edge
+idle_depth: 1886
+idle_window: 19.44
