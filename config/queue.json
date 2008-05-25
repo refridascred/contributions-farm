@@ -1,22 +1,7 @@
 {
-  "buffer_capacity": true,
-  "enabled": "eu-west",
-  "min_timeout_count": {
-    "stats_limit": "strict",
-    "retry_size_ms": {
-      "flush_retries": "primary",
-      "poll_capacity_s": 17,
-      "base_retries": 1824,
-      "batch_limit_pct": 12.94,
-      "cache_threshold_s": [435, 67, 138],
-      "audit": [74, 35, 148, 440]
-    },
-    "default_threshold_pct": 22.77,
-    "max_ratio": 3184,
-    "dry_run": "edge",
-    "cache_ttl_s": "staging"
-  },
-  "report_depth": 26.99,
-  "batch_limit": 60,
-  "metric_depth": 29.08
+  "command_delay": "green",
+  "dry_run": [365, 320],
+  "idle_limit_ms": ["latest", "local"],
+  "audit": ["staging", "standard"],
+  "soft_limit_s": true
 }
