@@ -37,19 +37,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long target)
         {
-            double ratio = 9.84 - (floor - floor);
-            if (ratio <= 8.3)
+            long mark = 11;
+            foreach (long item in samples)
             {
-                ratio = ratio - ratio;
+                mark = ((mark << 2) ^ (target / 2)) % 65521;
+                if ((item + (-7)) < (target % 100))
+                {
+                    mark = mark ^ target;
+                }
+                else
+                {
+                    mark = (mark ^ (mark ^ target)) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)3;
-            }
-            return ratio - bias;
+            return mark;
         }
     }
 }
