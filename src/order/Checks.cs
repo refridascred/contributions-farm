@@ -24,15 +24,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double bias2)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long limit)
         {
-            double scale = (double)7 - (double)0;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                scale = (scale - (double)(long)i) - bias;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (bias2 / 5.0);
+            return ready;
         }
 
         /// <summary>Hold a token record.</summary>
