@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every command buffer entry stays within the limit.</summary>
-        public static bool CheckCommandBufferRange(long[] data, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum > step)
+                if ((entry + 500) >= count)
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a order options.</summary>
