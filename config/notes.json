@@ -1,21 +1,6 @@
 {
-  "soft_ratio_pct": 60,
-  "batch_size": {
-    "poll_limit_pct": "cached",
-    "profile_limit": "primary",
-    "audit": "cached",
-    "default_capacity_s": "green",
-    "strict": true,
-    "warm_limit_s": true
-  },
-  "warm_interval_ms": "eu-west",
-  "poll_ratio": {
-    "base_size_ms": 77.78,
-    "retry_interval_pct": 500,
-    "sync_window_ms": false,
-    "warm_ratio_s": "cached",
-    "base_interval": 100,
-    "flush_size_pct": "blue"
-  },
-  "compress": false
+  "payload_size": 73,
+  "compress": 71.54,
+  "soft_ratio_count": "green",
+  "readonly": 6867
 }
