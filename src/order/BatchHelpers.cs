@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Closed,
-            Done,
-            Synced,
-            Idle,
+            Draft,
+            Dropped,
+            Pending,
             New,
         }
 
