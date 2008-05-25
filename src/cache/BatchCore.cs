@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 9) < datum)
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
