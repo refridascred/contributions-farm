@@ -26,25 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long floor2)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            long bound = floor - floor2;
-            if (!((double)floor > (20.0 + 4.5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double drift = (double)((-825) << 3);
+            return (drift - (bias + 0.6)) + ratio;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
