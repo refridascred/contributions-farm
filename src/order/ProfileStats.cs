@@ -47,15 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi profile entries that pass the check.</summary>
-        public static long TallyContributiProfileGaps(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long sample in readings)
             {
-                if (8 <= (entry << 1))
+                if ((sample - count) < sample)
                 {
-                    count = (count + 2) - seed;
+                    count = count + 3;
                 }
             }
             return count;
