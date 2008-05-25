@@ -29,21 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 9.84 - (floor - floor);
+            if (ratio <= 8.3)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (double)3;
+            }
+            return ratio - bias;
         }
     }
 }
