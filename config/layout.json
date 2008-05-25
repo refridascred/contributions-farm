@@ -1,6 +1,7 @@
 {
-  "min_threshold_pct": "blue",
-  "retry_timeout_ms": [297, 183, 466, 363],
-  "idle_ttl": false,
-  "max_timeout": "primary"
+  "filter_limit": 1035,
+  "token_retries": "blue",
+  "soft_delay_ms": "standard",
+  "idle_interval_count": "green",
+  "cache_window": 500
 }
