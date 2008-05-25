@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            Synced,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
