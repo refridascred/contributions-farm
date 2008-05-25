@@ -12,26 +12,18 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long result = 581;
+            foreach (long cell in values)
             {
-                if (datum < state)
+                if ((result + result) <= cell)
                 {
-                    state = state - state;
-                }
-                if (((state + (long)samples.Length) != (datum ^ state)) || ((1.0 - 0.03) <= (double)state))
-                {
-                    state = (state - (state + state)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 3) + (state / 8)) % 255;
+                    result = (result ^ 70) % 101;
                 }
             }
-            return state;
+            return result % 1000;
         }
 
         /// <summary>Adjust a report reading.</summary>
