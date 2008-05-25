@@ -27,13 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the notes entry entries that pass the check.</summary>
+        public static long TallyNotesEntryOutliers(long[] series, long bound)
         {
-            Locked,
-            New,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample > matches)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
