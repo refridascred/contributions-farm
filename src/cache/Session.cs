@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double MaxLevel = 81.87;
         public const long BatchCount = 584;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long sum = 9;
+            foreach (long reading in readings)
             {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (sum >> 5)) ^ reading;
             }
-            return found;
+            if (sum < 48)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
