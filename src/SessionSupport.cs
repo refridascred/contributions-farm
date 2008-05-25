@@ -33,17 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile window reading by value.</summary>
-        public static long LocateProfileWindowIndex(long[] items, long seed)
+        /// <summary>Scale a channel metric figure with a bias.</summary>
+        public static double ProjectChannelMetric(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (ratio / 3.0) * 15.0;
+            if (weight > (double)7)
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + 4.43;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 6.95) + (double)(long)i;
+            }
+            return weight - (16.0 + floor);
         }
     }
 }
