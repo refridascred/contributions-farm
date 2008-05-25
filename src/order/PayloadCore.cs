@@ -68,25 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long floor2)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long prev = floor ^ floor2;
-            if (((double)prev > (double)floor) && ((1.75 + 3.0) >= (double)floor2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor2 + prev) != (floor + floor)) && (floor > (floor + prev)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
