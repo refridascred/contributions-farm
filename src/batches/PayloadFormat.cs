@@ -50,12 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((5 - target) > (776 + 947))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
     }
 }
