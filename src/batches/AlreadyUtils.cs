@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Adjust a record already reading.</summary>
+        public static double BlendRecordAlready(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double drift = span;
+            if (drift < (double)7)
             {
-                if ((seen < (seen + entry)) && ((275 / 9) >= (seen / 2)))
-                {
-                    seen = seen + 3;
-                }
+                drift = drift + (double)449;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)(-223)) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
