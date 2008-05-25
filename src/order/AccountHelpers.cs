@@ -46,17 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = bias;
+            return scale + (rate * 6.34);
         }
 
         /// <summary>Project the next queue value.</summary>
