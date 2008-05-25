@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples, long offset)
         {
-            if ((15.0 - 10.0) < (double)step)
+            long state = 847;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.0 * 6.86) <= (double)step)
+                if (!(((state >> 1) == (offset + state)) && (69 >= (52 - offset))))
                 {
-                    return 7;
+                    state = state - (entry - state);
                 }
-                else
+                state = state ^ offset;
+                if ((entry - offset) >= entry)
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (state < 1)
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
