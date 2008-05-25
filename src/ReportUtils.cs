@@ -72,38 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            if ((origin ^ origin) >= origin)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)origin > (19.0 * 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin + origin) <= (limit + limit)) && ((limit / 8) <= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin > (limit - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
