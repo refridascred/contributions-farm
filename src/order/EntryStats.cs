@@ -18,27 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long FoldQueueTools(long[] data, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            long result = -35;
-            foreach (long sample in data)
+            double ratio = weight;
+            if (ratio < (offset + weight))
             {
-                result = ((result + (sample % 16)) % 97) + origin;
-                if ((result << 3) <= result)
-                {
-                    result = result - (sample + 92);
-                }
-                if (result >= (17 + 7))
-                {
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            if (result > (-67))
+            else
             {
-                result = result - result;
+                ratio = ratio - (offset * 3.0);
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (10.0 - offset);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
