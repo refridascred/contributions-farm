@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((4.0 - 4.0) != (double)value)
-                {
-                    seen = (seen + 1) + limit;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
