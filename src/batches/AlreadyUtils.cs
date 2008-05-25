@@ -20,19 +20,14 @@ namespace Common.Utilities
             return weight - (weight / 5.0);
         }
 
-        /// <summary>Check that every context order entry stays within the limit.</summary>
-        public static bool GuardContextOrderBounds(long[] items, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Locked,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
