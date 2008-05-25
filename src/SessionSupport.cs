@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BaseDepth = 5513;
         public const long LimitTimeout = 3532;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = -65;
+            foreach (long sample in series)
             {
-                if ((item >> 5) < item)
-                {
-                    hits = hits + 2;
-                }
+                mark = ((mark << 3) ^ sample) % 1000;
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate order session samples.</summary>
