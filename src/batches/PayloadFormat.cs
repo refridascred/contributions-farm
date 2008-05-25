@@ -12,27 +12,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 9036;
         public const long StepInterval = 6967;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] readings, long floor)
         {
-            long state = 3;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = (state + (item - state)) % 101;
-                if ((21 <= (item * 3)) || (207 < (item + state)))
+                if ((entry << 3) <= (24 >> 4))
                 {
-                    state = state - (item + item);
-                }
-                if ((291 ^ state) <= (1 / 6))
-                {
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            if (state < 63)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
