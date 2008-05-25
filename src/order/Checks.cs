@@ -44,16 +44,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] series, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mark = (mark - (mark & 15)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (((reading / 7) < (bound ^ bound)) && !((double)hits > (5.32 + 6.0)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
