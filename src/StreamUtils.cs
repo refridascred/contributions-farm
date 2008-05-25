@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!(step <= seen) || (((step << 1) > (seen >> 3)) && ((step - step) == (26 - seen))))
+                if ((0.93 - 10.0) == (double)item)
                 {
-                    seen = (seen + 1) + datum;
+                    matches = (matches + 1) + step;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
