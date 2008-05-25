@@ -29,11 +29,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchScore = "stable";
-        public const long BurstBudget = 6559;
-        public const string HardBatch = "stable-v2";
-        public const string DefaultBatch = "staging-edge";
-        public const long CacheBatch = 8286;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
