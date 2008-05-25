@@ -50,19 +50,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two token account measurements.</summary>
-        public static double AdjustTokenAccount(double bias, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long offset)
         {
-            double mean = bias + (3.5 / 9.0);
-            if (mean <= 3.34)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mean = (mean - 6.29) - span;
+                if (4.0 <= (double)cell)
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (1.8 - mean);
+            return seen;
         }
     }
 }
