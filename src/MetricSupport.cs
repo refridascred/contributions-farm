@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long TallyEntryBatch(long[] items)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long step)
         {
-            long result = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)items.Length * 5) > ((-1) >> 2))
+                if (data[i] <= step)
                 {
-                    result = (result + (cell / 5)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result > 654)
-            {
-                result = (result * 4) + (result / 6);
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
