@@ -28,13 +28,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] levels, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] values, long origin)
         {
             bool flag = true;
-            foreach (long cell in levels)
+            foreach (long entry in values)
             {
-                if (cell >= limit)
+                if (entry > origin)
                 {
                     flag = false;
                     break;
