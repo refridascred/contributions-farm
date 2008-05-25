@@ -28,19 +28,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] values, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
