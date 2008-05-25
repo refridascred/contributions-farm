@@ -1,13 +1,6 @@
 {
-  "counter_ratio": "primary",
-  "max_depth_s": [260, 136, 446],
-  "min_interval_count": "staging",
-  "schema_retries": 65.98,
-  "flush_window": {
-    "batch_size_pct": 44.87,
-    "base_depth_pct": "local",
-    "burst_capacity_s": "stable",
-    "compress": 68
-  },
-  "cache_ttl": 74.08
+  "cluster_ttl": [147, 390, 41],
+  "idle_retries": false,
+  "retry_interval": "primary",
+  "audit": [186, 155, 281]
 }
