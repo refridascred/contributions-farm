@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] series, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Match up support samples.</summary>
