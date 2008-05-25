@@ -33,19 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values)
         {
-            double weight = (double)9;
-            if (weight >= (weight - weight))
+            long result = 810;
+            foreach (long reading in values)
             {
-                weight = (weight - 0.2) + rate;
+                if ((result + result) >= (204 & 7))
+                {
+                    result = ((result - ((long)values.Length ^ 65)) % 255) - reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (result > 5)
             {
-                weight = (weight + span) + (double)(long)i;
+                result = (result + result) % 65521;
             }
-            return weight + span;
+            return result;
         }
     }
 }
