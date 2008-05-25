@@ -1,5 +1,8 @@
 {
-  "hard_threshold": 24.29,
-  "min_threshold_s": [430, 412, 422, 76],
-  "soft_ttl_ms": "open"
+  "hard_capacity_count": 7.88,
+  "batches_delay": ["eu-west", "legacy", "open"],
+  "poll_interval": "eu-west",
+  "warm_depth_s": "eu-west",
+  "batch_interval_ms": 96.44,
+  "editor_capacity": "staging"
 }
