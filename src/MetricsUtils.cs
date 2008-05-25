@@ -47,15 +47,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Roll a editor channel counter forward.</summary>
+        public static long RollEditorChannel(long target)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (((long)i - mix) == (712 % 8))
+                {
+                    mix = mix ^ target;
+                    mix = (mix + (mix + mix)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
