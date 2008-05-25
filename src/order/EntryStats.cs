@@ -60,11 +60,18 @@ namespace Common.Utilities
         public const string LimitTools = "alpha-v2";
         public const long RetryRatio = 8662;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowLevel = "fallback";
-        public const long RetryBudget = 3396;
-        public const double MaxRecord = 46.45;
-        public const string WindowInterval = "staging-edge";
-        public const string CacheRecord = "strict";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((394 <= (hits & 1)) && ((hits + 56) < (sample / 6)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
