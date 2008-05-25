@@ -41,22 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)count <= (double)count)
-                {
-                    count = ((count + 3) + sample) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 8439;
+        public const string HardProfile = "local-edge";
+        public const long IdleProfile = 1412;
     }
 }
