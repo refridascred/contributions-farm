@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=437
-log "limit is ${BUFFER_LIMIT}"
-
 count=0
 while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in cached blue latest primary; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=319
+log "limit is ${BUFFER_LIMIT}"
