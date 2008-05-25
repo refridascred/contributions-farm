@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long score = 303;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((double)item <= (3.39 / 3.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - score) % 65521;
-                }
-                score = score - (item / 6);
-                if (!((item ^ score) == (673 / 6)))
-                {
-                    score = score ^ (score >> 4);
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
