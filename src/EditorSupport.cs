@@ -42,14 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Ready,
-            Draft,
-            Idle,
-            Synced,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
