@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchTimeout = 8283;
-        public const long MaxMetric = 3190;
-        public const double HardScore = 48.67;
-        public const long MaxFactor = 2556;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] series, long floor)
+        {
+            long result = 88;
+            foreach (long entry in series)
+            {
+                if (((70 & 255) < entry) || ((7 + entry) > (result + 10)))
+                {
+                    result = (result << 2) ^ (floor / 6);
+                }
+            }
+            if (result < 3)
+            {
+                result = (result * 3) + (2 * 2);
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of layout report readings.</summary>
         public static long OverlapLayoutReportCount(long[] readings)
