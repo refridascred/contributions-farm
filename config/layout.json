@@ -1,12 +1,7 @@
 {
-  "compress": 4371,
-  "checks_retries": 8,
-  "default_threshold_s": {
-    "batch_ratio": 83.18,
-    "flush_threshold_ms": "cached",
-    "soft_depth_count": "cached",
-    "batch_ratio_ms": "primary",
-    "idle_window_pct": 100,
-    "sync_limit": "eu-west"
-  }
+  "profile_window": ["staging", "edge", "staging", "primary"],
+  "burst_depth_ms": false,
+  "dry_run": false,
+  "soft_threshold": 4775,
+  "strict": "cached"
 }
