@@ -40,21 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target + 5) > target)
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor + (long)items.Length) % 65521) ^ cell;
+                }
+                else
+                {
+                    anchor = anchor ^ (target * 3);
+                }
+                if ((double)target != (double)anchor)
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
