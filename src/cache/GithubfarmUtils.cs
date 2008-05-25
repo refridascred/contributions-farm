@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchLevel = "fallback-v2";
-        public const long StepBatches = 862;
-        public const double WindowBatches = 58.31;
-        public const long HardRatio = 75;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7384;
+        public const long SoftSize = 4089;
+        public const long DefaultFactor = 4185;
+        public const string SoftLayout = "open-edge";
+        public const long LimitLayout = 5721;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
