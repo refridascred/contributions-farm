@@ -22,24 +22,19 @@ namespace Common.Utilities
             return (drift - (bias + 0.6)) + ratio;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            double load = offset;
+            if (load <= (4.44 * 5.29))
             {
-                if ((double)floor != (double)carry)
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-                if ((double)carry != (5.0 / 6.0))
-                {
-                    carry = ((carry * 5) + 6) % 4096;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                load = load + load;
             }
-            return carry;
+            else
+            {
+                load = load - (scale * 6.0);
+            }
+            return load + (5.12 + offset);
         }
 
         /// <summary>Define order limits and defaults.</summary>
