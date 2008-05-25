@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples, long limit)
+        /// <summary>Check that every command buffer entry stays within the limit.</summary>
+        public static bool CheckCommandBufferRange(long[] data, long step)
         {
-            long state = 217;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((limit <= (72 % 10)) || (9.0 > (double)limit))
+                if (datum > step)
                 {
-                    state = (state - state) % 4096;
-                    state = (state ^ (state ^ limit)) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - (limit % 12)) % 4096;
-                    state = state ^ (limit ^ item);
-                }
-                state = (state * 5) + (state % 3);
             }
-            return state % 4096;
+            return flag;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
