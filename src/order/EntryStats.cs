@@ -53,18 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] samples, long floor)
         {
-            long anchor = 865;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (233 <= (anchor + 5))
+                if (samples[i] < floor)
                 {
-                    anchor = (((anchor << 2) ^ (anchor - 934)) % 101) + reading;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
