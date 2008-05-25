@@ -42,32 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long target)
         {
-            long edge = target - floor;
-            if ((floor + edge) < target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ 326) <= floor)
+                if (series[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (edge < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
