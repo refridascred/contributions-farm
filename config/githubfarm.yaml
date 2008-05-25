@@ -1,9 +1,8 @@
 # githubfarm settings
-idle_depth_s: 60
-enabled: 5914
-base_ttl: cached
-verbose:
-  - 261
-  - 7
-  - 323
-base_ratio: false
+queue_interval: 72.81
+base_retries_s:
+  - 34
+  - 132
+  - 485
+  - 258
+warm_ttl_ms: true
