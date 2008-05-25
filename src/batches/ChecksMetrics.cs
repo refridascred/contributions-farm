@@ -78,20 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema batches counter forward.</summary>
-        public static long RollSchemaBatches(long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((17 - 7) > (target - acc)) || ((6.6 / 2.0) == (double)(long)i))
-                {
-                    acc = (acc + (acc + acc)) % 97;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
