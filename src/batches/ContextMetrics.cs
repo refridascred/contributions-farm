@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Idle,
-            Synced,
-            Active,
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
