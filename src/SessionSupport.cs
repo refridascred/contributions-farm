@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 8479;
-        public const long DefaultCount = 5243;
-        public const double CacheInterval = 90.83;
-        public const string BurstLevel = "stable-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFactor = 2677;
+        public const long BurstRatio = 2625;
+        public const string DefaultFormat = "legacy-v2";
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] items)
