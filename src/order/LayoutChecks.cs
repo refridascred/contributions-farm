@@ -42,18 +42,39 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long offset2 = origin - offset;
+            if ((origin + offset) >= (origin - offset2))
             {
-                if (!((matches ^ entry) != (offset * 5)))
+                return 8;
+            }
+            else
+            {
+                if (!(offset2 < (origin & 127)))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 % 8) == (offset / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin - 43) <= (offset - offset)) || ((origin - origin) == (2 + 770)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
