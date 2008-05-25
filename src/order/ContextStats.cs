@@ -36,13 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of metric checks readings.</summary>
+        public static long WeighMetricChecks(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long acc = 70;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) > acc)
+                {
+                    acc = acc - 862;
+                }
+                acc = ((acc << 3) ^ (reading >> 4)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
