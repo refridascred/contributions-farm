@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Iterate the farm profile series from a seed.</summary>
