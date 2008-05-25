@@ -25,16 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (origin + state)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
