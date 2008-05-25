@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cache record entries that pass the check.</summary>
-        public static long TallyCacheRecordHits(long[] readings)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((item + item) == (item & 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
