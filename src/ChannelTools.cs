@@ -34,22 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
-            long result = 802;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((value * 4) == (977 % 100))
+                if (!!((datum * 5) != (datum + (long)samples.Length)))
                 {
-                    result = (result - (seed - 54)) % 4096;
-                }
-                if (((double)result > (1.0 - 7.0)) || ((double)390 != (double)seed))
-                {
-                    result = (result * 2) + seed;
+                    tally = tally + 2;
                 }
             }
-            return result % 97;
+            return tally;
         }
     }
 }
