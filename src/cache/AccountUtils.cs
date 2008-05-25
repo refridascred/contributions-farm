@@ -16,18 +16,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Fold a list of batches notes readings.</summary>
+        public static long WeighBatchesNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 825;
+            foreach (long value in levels)
             {
-                if ((7.12 + 4.69) == (double)entry)
-                {
-                    tally = tally + 3;
-                }
+                carry = carry + (7 + value);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
