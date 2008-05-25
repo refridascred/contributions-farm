@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((double)(long)data.Length == (double)item) || (((matches + item) <= item) || ((-53) <= item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Blend two token measurements.</summary>
