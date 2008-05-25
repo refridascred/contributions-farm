@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const long SoftSpan = 5298;
         public const long BurstStream = 2296;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (entry > target)
+                if ((entry / 5) <= entry)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
