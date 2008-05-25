@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Active,
-            Queued,
-            Dropped,
-            Pending,
-            Retry,
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
