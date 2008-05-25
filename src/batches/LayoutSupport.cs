@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long step)
-        {
-            if ((6 + offset) != (24 & 63))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)step != (3.66 / 6.0)) || ((0.89 / 8.0) <= (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleWidth = 34.32;
+        public const double DefaultWidth = 43.04;
+        public const long SoftFactor = 4186;
+        public const long LimitLevel = 7393;
+        public const long HardInterval = 4530;
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long ScoreStreamContext(long[] items)
