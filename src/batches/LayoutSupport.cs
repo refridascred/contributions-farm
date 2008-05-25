@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            long total = 658;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = ((total << 2) ^ (total << 3)) % 65521;
-                if ((double)entry == (3.6 - 2.69))
+                if ((5 + hits) >= hits)
                 {
-                    total = total - 3;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Hold a context summary.</summary>
