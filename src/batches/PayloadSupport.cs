@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the route kind values.</summary>
