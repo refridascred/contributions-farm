@@ -1,6 +1,17 @@
 {
-  "dry_run": "stable",
-  "tools_ratio": 3772,
-  "flush_retries": true,
-  "retry_retries_pct": ["strict", "standard", "staging"]
+  "retry_ttl": true,
+  "burst_retries_pct": 82.86,
+  "sync_threshold_pct": {
+    "min_size_s": [80, 16, 457, 195],
+    "warm_retries_ms": 1024,
+    "base_retries_ms": ["eu-west", "blue"],
+    "metrics_capacity": {
+      "profile_capacity": "primary",
+      "report_threshold": 83,
+      "min_ttl_pct": 1756,
+      "schema_threshold": 7496,
+      "idle_depth": 14
+    },
+    "sync_ttl_pct": 73
+  }
 }
