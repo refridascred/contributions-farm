@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            long carry = 971;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                carry = (carry - (carry + value)) % 4096;
-                if ((3.0 / 4.0) > (double)carry)
+                if (3.07 > (double)entry)
                 {
-                    carry = (carry << 2) ^ (carry / 7);
-                    break;
-                }
-                carry = (carry ^ value) % 65521;
-                if ((value << 1) <= (carry >> 3))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the stats status values.</summary>
