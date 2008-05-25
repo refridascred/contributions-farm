@@ -20,13 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long target)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long diff = offset ^ target;
+            if ((diff % 2) == (diff + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target % 16) < (target + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 255) >= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
