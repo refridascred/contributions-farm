@@ -34,13 +34,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a token batch pair into a bucket.</summary>
+        public static long RankTokenBatch(long floor, long offset)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long offset2 = floor - offset;
+            if ((offset / 9) > offset2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (15.0 > (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset != (3.34 + 6.49)) || ((offset + 4) < offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < offset2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window token entry stays within the limit.</summary>
