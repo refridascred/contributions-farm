@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Paused,
-            Ready,
-            Synced,
-            Done,
-            Draft,
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
