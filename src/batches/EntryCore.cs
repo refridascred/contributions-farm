@@ -46,13 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            New,
+            Queued,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of account farm entries.</summary>
