@@ -28,22 +28,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits / 8) >= (datum >> 4))
+                if (readings[i] <= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
