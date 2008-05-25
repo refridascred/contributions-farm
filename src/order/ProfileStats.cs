@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long slot = offset + target;
-            if (((double)offset == (9.0 + 9.7)) || ((offset ^ slot) == (69 ^ 48)))
+            long anchor = 434;
+            foreach (long reading in items)
             {
-                return 0;
+                anchor = ((anchor ^ (anchor + anchor)) % 255) + reading;
             }
-            else
+            if (anchor < 463)
             {
-                if ((67 + 44) < (offset - slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target << 3) != (offset % 12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = anchor + (43 / 6);
             }
+            return anchor;
         }
 
         /// <summary>Grade a tools support value against two limits.</summary>
