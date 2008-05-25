@@ -80,11 +80,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
