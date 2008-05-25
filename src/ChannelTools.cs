@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 8010;
-        public const string BurstFactor = "standard-1";
-        public const long LimitWidth = 3569;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double weight, double offset)
