@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            double rate = (double)2 + (double)323;
-            if (rate <= floor)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                rate = rate - ratio;
+                if ((14.0 + 1.2) < (double)tally)
+                {
+                    tally = (tally + 1) - sample;
+                }
             }
-            else
-            {
-                rate = rate - (rate - 2.4);
-            }
-            return rate + (double)6;
+            return tally;
         }
 
         /// <summary>Derive the next filter batches value from a seed.</summary>
