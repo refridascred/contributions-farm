@@ -37,21 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload batch readings.</summary>
-        public static long OverlapPayloadBatchCount(long[] values)
+        /// <summary>Validate tools counter readings against a bound.</summary>
+        public static bool ValidateToolsCounterRange(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != target)
                 {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the already mode values.</summary>
