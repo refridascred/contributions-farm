@@ -29,15 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double gain, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            double ratio = (double)234 + gain;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + span) + (double)(long)i;
+                if ((datum ^ 7) > (seen & 31))
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio + (gain + gain);
+            return seen;
         }
     }
 }
