@@ -29,18 +29,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = (double)((-4) * 2);
+            if (load <= rate)
             {
-                if ((datum % 3) > (datum % 8))
-                {
-                    seen = seen + 3;
-                }
+                load = load + (floor + floor);
             }
-            return seen;
+            else
+            {
+                load = load + (rate - floor);
+            }
+            return load - (floor + load);
         }
     }
 }
