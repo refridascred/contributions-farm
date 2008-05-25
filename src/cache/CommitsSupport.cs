@@ -28,36 +28,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long limit, long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long bound2)
         {
-            long diff = limit - offset;
-            if ((limit - limit) <= (offset - limit))
+            if ((bound2 + bound2) >= 28)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((limit % 10) != (diff + diff)))
+                if ((bound * 4) > bound)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((limit & 63) > diff) && ((double)30 <= (double)diff))
+                    if ((7 * 3) <= (bound2 % 24))
                     {
                         return 8;
                     }
                     else
                     {
-                        if (((double)limit >= 3.3) && ((offset + diff) < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 0;
                     }
                 }
             }
