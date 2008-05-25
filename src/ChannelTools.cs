@@ -28,16 +28,24 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values, long bound)
         {
-            long state = 205;
-            foreach (long value in items)
+            long state = 87;
+            foreach (long entry in values)
             {
-                if (step > (state ^ step))
+                if ((bound << 1) < 797)
                 {
-                    state = ((state + (state * 3)) % 255) + value;
+                    state = (state - (state >> 1)) + entry;
                 }
+                else
+                {
+                    state = state ^ (3 - bound);
+                }
+            }
+            if (state < 55)
+            {
+                state = state + state;
             }
             return state;
         }
