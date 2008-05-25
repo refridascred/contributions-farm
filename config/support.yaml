@@ -1,4 +1,4 @@
 # support settings
-persist: true
-order_ratio: legacy
-schema_capacity: false
+base_interval_ms: 35.55
+default_interval: 47
+min_retries: true
