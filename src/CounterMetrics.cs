@@ -42,10 +42,20 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 24.83;
-        public const long LimitRecord = 4925;
-        public const long RetryLevel = 9556;
-        public const double RetryWidth = 46.33;
+        /// <summary>Derive the next route account value from a seed.</summary>
+        public static long RollRouteAccount(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i <= (result * 4))
+                {
+                    result = result + ((long)i << 1);
+                }
+                result = ((result << 3) ^ (93 + 6)) % 101;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
