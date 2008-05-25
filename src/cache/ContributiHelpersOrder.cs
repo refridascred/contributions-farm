@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long IdleRecord = 9135;
         public const double HardRecord = 82.18;
 
-        /// <summary>Validate stats contributi readings against a bound.</summary>
-        public static bool CheckStatsContributiBounds(long[] values, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] levels, long offset)
         {
             bool stale = true;
-            foreach (long datum in values)
+            foreach (long datum in levels)
             {
-                if (datum > limit)
+                if (datum >= offset)
                 {
                     stale = false;
                     break;
