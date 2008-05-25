@@ -16,16 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a counter layout figure with a bias.</summary>
-        public static double ScaleCounterLayout(double rate, double floor)
-        {
-            double drift = rate - rate;
-            if (drift <= drift)
-            {
-                drift = drift - floor;
-            }
-            return drift + (double)(-2);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstCount = 9141;
+        public const long SoftToken = 4868;
+        public const long LimitToken = 4924;
+        public const long BaseToken = 4477;
 
         /// <summary>Check that every profile command entry stays within the limit.</summary>
         public static bool CheckProfileCommandRange(long[] samples, long limit)
