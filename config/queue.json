@@ -1,22 +1,30 @@
 {
-  "retry_ttl": {
-    "warm_ttl": 58.49,
-    "burst_timeout_pct": {
-      "strict": 500,
-      "default_ttl_count": 93.13,
-      "farm_depth": 72.59,
-      "channel_retries": [85, 393, 399],
-      "idle_window_pct": 4722,
-      "default_ttl_ms": false
+  "verbose": "standard",
+  "cache_window": {
+    "max_window_pct": 1522,
+    "idle_limit_count": "eu-west",
+    "burst_size_ms": {
+      "support_ratio": 68,
+      "batch_ttl_count": 88,
+      "sync_threshold": ["strict", "stable", "legacy", "stable"],
+      "idle_timeout_ms": "open",
+      "profile_window": "green"
     },
-    "cache_capacity": 100,
-    "verbose": [283, 214, 304, 473],
-    "enabled": 939,
-    "persist": 500
+    "soft_ratio_s": 7
   },
-  "batch_depth": ["fallback", "cached", "standard", "eu-west"],
-  "warm_depth_count": [309, 357, 18, 240],
-  "cache_threshold": "strict",
-  "max_limit_pct": true,
-  "cache_interval_s": 9320
+  "retry_limit": {
+    "report_limit": 60.96,
+    "default_interval_count": {
+      "cluster_ttl": "primary",
+      "retry_interval": 9836,
+      "cache_ratio_count": 18.19,
+      "route_interval": true,
+      "verbose": 2078,
+      "report_ttl": 61.79
+    },
+    "graph_threshold": 33.86,
+    "retry_retries_pct": "staging",
+    "idle_capacity_count": [48, 22, 315, 264]
+  },
+  "min_timeout_s": [172, 406]
 }
