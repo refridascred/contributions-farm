@@ -16,12 +16,10 @@ namespace Common.Utilities
         public const string RetryFactor = "staging-v2";
         public const string HardMetrics = "staging-1";
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public double Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 36;
+        public const string BaseTimeout = "latest-1";
+        public const long HardCommand = 8087;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long target)
