@@ -1,7 +1,10 @@
-id,score,weight,owner
-1,fallback,534,7.88
-2,870,27.01,green
-3,legacy,edge,38.61
-4,74.64,20.73,344
-5,542,358,stable
-6,600,62.91,latest
+id,weight,level,owner
+1,blue,259,legacy
+2,77,390,edge
+3,green,strict,fallback
+4,latest,local,60.78
+5,807,59.86,58
+6,25,210,96.75
+7,legacy,open,stable
+8,266,495,edge
+9,blue,51.99,local
