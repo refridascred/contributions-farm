@@ -1,10 +1,5 @@
 {
-  "compress": {
-    "base_delay": 51.78,
-    "persist": 69.44,
-    "profile_ratio": 17.78,
-    "report_timeout": "green"
-  },
-  "soft_capacity": "open",
-  "readonly": [148, 194, 398, 129]
+  "cache_retries": "staging",
+  "cache_ttl_s": ["latest", "edge", "staging"],
+  "idle_depth_pct": 39
 }
