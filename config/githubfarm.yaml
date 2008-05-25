@@ -1,8 +1,26 @@
 # githubfarm settings
-hard_capacity: cached
-retry_size_count:
-  hard_timeout: latest
-  default_limit: 42.76
-  verbose: 54.1
-  base_ttl: latest
-warm_timeout_count: 50.61
+idle_capacity_pct: true
+sync_threshold_s:
+  poll_window:
+    - fallback
+    - staging
+    - latest
+    - staging
+  dry_run: 1024
+  hard_timeout_ms: false
+  verbose: 7352
+  compress:
+    - standard
+    - legacy
+  poll_threshold: local
+idle_size_pct: 34
+max_limit_ms:
+  hard_timeout:
+    - blue
+    - legacy
+    - stable
+  sync_timeout_s: 30
+  batch_window_pct: 1024
+  editor_timeout: 5186
+  idle_delay_s: open
+hard_ratio: 53.05
