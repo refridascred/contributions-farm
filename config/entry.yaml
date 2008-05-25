@@ -1,4 +1,13 @@
 # entry settings
-max_ttl: eu-west
-strict: 17
-readonly: 60
+batch_limit_count: 99
+payload_size:
+  retry_threshold_ms: standard
+  cache_size: 51.8
+  readonly: 30.67
+  max_timeout_ms: latest
+soft_retries_count:
+  - edge
+  - green
+burst_retries_ms: 82.99
+counter_ttl: false
+persist: 60
