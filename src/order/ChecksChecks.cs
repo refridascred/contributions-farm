@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream graph counter forward.</summary>
-        public static long StepStreamGraph(long step)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Ready,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the command record entries that pass the check.</summary>
