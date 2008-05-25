@@ -27,11 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowDepth = "cached";
-        public const long IdleReport = 4140;
-        public const string WindowScore = "primary-1";
-        public const long SoftReport = 3061;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] samples)
