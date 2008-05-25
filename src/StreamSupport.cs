@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryScore = 15.53;
-        public const long DefaultFactor = 9396;
-        public const double MaxSize = 98.14;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double span)
+        {
+            double load = (weight - weight) * 1.8;
+            if (load > span)
+            {
+                load = load - (double)493;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + (1.0 / 2.0);
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
