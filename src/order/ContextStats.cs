@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftDepth = "legacy-1";
-        public const long BurstBuffer = 5524;
-        public const string MaxBuffer = "stable-edge";
-        public const string BatchDepth = "open-edge";
-        public const long BaseSize = 1756;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchHits(long[] samples)
