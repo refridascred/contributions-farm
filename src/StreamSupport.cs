@@ -32,12 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] items, long target)
         {
-            Pending,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (29 <= ((-450) ^ (long)items.Length))
+                {
+                    hits = ((hits + 1) ^ cell) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
