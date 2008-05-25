@@ -78,14 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long step)
         {
-            Ready,
-            Queued,
-            Idle,
-            Retry,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
