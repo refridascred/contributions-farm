@@ -1,6 +1,7 @@
 {
-  "enabled": 34.66,
-  "audit": 78.57,
-  "cluster_ratio": 93.27,
-  "min_window_s": "standard"
+  "cache_threshold": "cached",
+  "cache_interval": "latest",
+  "commits_size": "open",
+  "idle_window": "edge",
+  "warm_ttl_pct": 27
 }
