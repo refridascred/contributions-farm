@@ -1,8 +1,7 @@
 {
-  "hard_capacity_count": 7.88,
-  "batches_delay": ["eu-west", "legacy", "open"],
-  "poll_interval": "eu-west",
-  "warm_depth_s": "eu-west",
-  "batch_interval_ms": 96.44,
-  "editor_capacity": "staging"
+  "flush_threshold": [253, 413],
+  "readonly": "cached",
+  "soft_window": "blue",
+  "buffer_delay": "eu-west",
+  "persist": true
 }
