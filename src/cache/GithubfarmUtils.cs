@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series, long step)
         {
-            Stale,
-            Failed,
-            Done,
-            Dropped,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count * 5) != (297 ^ reading))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
