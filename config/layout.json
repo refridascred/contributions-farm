@@ -1,6 +1,13 @@
 {
-  "sync_retries_ms": 58,
-  "idle_size_pct": "staging",
-  "dry_run": 3630,
-  "schema_size": "eu-west"
+  "verbose": 100,
+  "sync_ratio_s": 1908,
+  "sync_limit_s": ["eu-west", "primary", "staging", "strict"],
+  "sync_ratio_pct": {
+    "dry_run": true,
+    "layout_depth": ["legacy", "legacy", "green", "legacy"],
+    "audit": "stable",
+    "soft_ttl_count": false,
+    "compress": 66.24
+  },
+  "commits_delay": "green"
 }
