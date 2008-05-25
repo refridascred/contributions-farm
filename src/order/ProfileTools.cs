@@ -42,18 +42,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long span = seed + origin;
+            if ((3.0 / 2.0) >= (double)seed)
             {
-                if ((tally ^ reading) >= (6 ^ reading))
+                return 0;
+            }
+            else
+            {
+                if ((span + origin) > seed)
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
