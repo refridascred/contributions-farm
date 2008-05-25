@@ -44,14 +44,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Pending,
-            Locked,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 32.66;
+        public const double MinRatio = 43.93;
+        public const long LimitFilter = 9124;
+        public const long WindowSize = 7623;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatLimits(long[] data, long origin)
