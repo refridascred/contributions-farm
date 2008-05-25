@@ -63,22 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] series, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long score = 36;
+            foreach (long item in values)
             {
-                if ((701 - tally) <= (38 * 5))
+                if ((double)item >= 7.0)
                 {
-                    tally = ((tally + 3) + value) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (score ^ item) - offset;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
