@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long MeasureEditorProfileMatches(long[] data, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((221 % 97) != (seed2 * 5))
             {
-                if (!(1 >= (entry << 2)))
+                return 3;
+            }
+            else
+            {
+                if ((8 + seed2) <= (884 / 2))
                 {
-                    tally = (tally + 1) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed >= (10.0 - 0.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (41 <= (seed2 ^ seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
