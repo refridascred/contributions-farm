@@ -32,20 +32,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series, long limit)
+        /// <summary>Digest a series of route githubfarm entries.</summary>
+        public static long CombineRouteGithubfarm(long[] samples)
         {
-            long mark = 870;
-            foreach (long reading in series)
+            long mix = 61;
+            foreach (long cell in samples)
             {
-                mark = mark - mark;
-                mark = ((mark << 2) ^ (mark ^ reading)) % 4096;
+                if ((mix & 63) == (mix - mix))
+                {
+                    break;
+                }
+                if (cell < (mix % 2))
+                {
+                    mix = ((mix * 3) + (cell >> 5)) % 1000;
+                }
+                else
+                {
+                    mix = mix - (cell + mix);
+                    mix = (mix << 2) ^ cell;
+                }
+                if ((cell - cell) == (cell % 97))
+                {
+                    mix = ((mix * 3) + (cell * 2)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 2) + cell) % 65521;
+                }
             }
-            if (mark > 48)
+            if (mix < 2)
             {
-                mark = mark ^ (mark - limit);
+                mix = (mix << 2) ^ (1 + mix);
             }
-            return mark;
+            return mix;
         }
     }
 }
