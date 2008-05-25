@@ -12,18 +12,16 @@ namespace Common.Utilities
             return (load - ratio) + bias;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] readings, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((limit & 15) != (limit * 5))
-                {
-                    count = (count + 1) ^ value;
-                }
+                score = (score + score) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
