@@ -1,10 +1,6 @@
-id,ratio,score
-1,blue,standard
-2,blue,fallback
-3,37.3,480
-4,legacy,45.64
-5,77.57,legacy
-6,eu-west,standard
-7,662,38.6
-8,35.0,fallback
-9,strict,286
+id,rank,owner,ratio
+1,55.47,79.06,primary
+2,91.4,365,62.21
+3,577,565,cached
+4,97.41,cached,standard
+5,785,35,7.01
