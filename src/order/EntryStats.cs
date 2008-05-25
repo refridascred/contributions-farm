@@ -38,13 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ seed) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
