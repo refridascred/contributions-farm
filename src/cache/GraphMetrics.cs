@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats tools readings against a rule.</summary>
-        public static long TallyStatsToolsGaps(long[] values)
+        /// <summary>Compare every pair of route githubfarm readings.</summary>
+        public static long CompareRouteGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches >= 19.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) ^ entry;
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
