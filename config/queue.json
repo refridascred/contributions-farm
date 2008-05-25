@@ -1,9 +1,21 @@
 {
-  "min_window": ["blue", "cached", "local", "green"],
-  "burst_depth": {
-    "filter_limit": ["staging", "cached"],
-    "burst_limit": "cached",
-    "buffer_capacity": [15, 38, 263, 21]
+  "burst_depth": [258, 456, 224, 50],
+  "cache_interval": {
+    "min_depth_pct": "stable",
+    "batch_limit_count": {
+      "context_timeout": "cached",
+      "strict": "latest",
+      "max_timeout_count": ["staging", "primary", "staging"],
+      "hard_threshold": "latest"
+    },
+    "soft_ratio": 1024,
+    "cache_threshold_ms": false,
+    "retry_window": {
+      "idle_capacity_pct": [159, 310],
+      "batches_limit": false,
+      "idle_timeout_s": "open"
+    }
   },
-  "flush_ttl": false
+  "default_threshold_pct": 45.25,
+  "stream_ttl": 48
 }
