@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long mix = 58;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (mix ^ limit)) % 97;
-                mix = mix ^ datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > 8)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
