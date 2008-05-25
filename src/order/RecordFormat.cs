@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool GuardFilterWindowLimits(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
