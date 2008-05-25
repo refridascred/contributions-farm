@@ -34,13 +34,14 @@ namespace Common.Utilities
         public const string DefaultStream = "legacy-1";
         public const long WindowSize = 392;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Synced,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
