@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long IdleSession = 698;
         public const double BurstRatio = 83.33;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = offset;
+            if (mean > (mean / 8.0))
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) + scale;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)497;
+            }
+            return mean - (4.69 * 0.09);
         }
 
         /// <summary>Hold a commits record.</summary>
