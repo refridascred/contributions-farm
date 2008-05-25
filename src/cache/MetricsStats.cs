@@ -75,21 +75,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (score << 2) ^ (score >> 5);
+                if ((item % 8) > score)
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + (score & 31);
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
