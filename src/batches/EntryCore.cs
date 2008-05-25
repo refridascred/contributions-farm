@@ -19,38 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] levels, long target)
         {
-            if (!((7 - origin) <= floor))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 3) > (9 ^ origin))
+                if (((target / 2) <= value) && ((hits / 6) < (target - value)))
                 {
-                    return 4;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)167 >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > 6.1)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
