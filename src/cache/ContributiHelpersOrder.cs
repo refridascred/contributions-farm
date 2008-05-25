@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits + hits) < 22)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every filter stats entry stays within the limit.</summary>
