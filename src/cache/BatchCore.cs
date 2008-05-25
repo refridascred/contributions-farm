@@ -64,18 +64,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] samples, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = (double)(155 + 2);
+            if (mean < gain)
             {
-                if ((matches - reading) >= (origin / 3))
-                {
-                    matches = matches + 3;
-                }
+                mean = mean - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (1.05 + gain)) + (double)(long)i;
+            }
+            return mean - (double)0;
         }
     }
 }
