@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long CountChannelLayoutOutliers(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (cell >= (cell + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
