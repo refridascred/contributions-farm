@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a metrics stream figure with a bias.</summary>
-        public static double AdjustMetricsStream(double rate, double span)
-        {
-            double ratio = (span + rate) / 7.0;
-            return ratio + (3.93 * 14.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitDepth = 4251;
+        public const long BaseSupport = 5778;
+        public const long MaxSupport = 7528;
+        public const long WindowSupport = 543;
+        public const long StepSupport = 4885;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] values)
