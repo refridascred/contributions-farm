@@ -1,18 +1,7 @@
 {
-  "max_capacity": 18,
-  "idle_retries": "latest",
-  "persist": {
-    "batch_delay_count": "fallback",
-    "command_timeout": 500,
-    "compress": 92.54,
-    "batch_depth_ms": "cached",
-    "retry_delay": 60
-  },
-  "farm_ttl": [337, 98, 496],
-  "poll_retries_count": {
-    "flush_ratio_s": "eu-west",
-    "retry_depth_ms": 30,
-    "verbose": "fallback"
-  },
-  "checks_size": 94
+  "min_size": 500,
+  "default_delay_ms": "standard",
+  "min_depth_ms": "blue",
+  "flush_delay_ms": ["cached", "standard", "staging", "eu-west"],
+  "idle_interval_s": "cached"
 }
