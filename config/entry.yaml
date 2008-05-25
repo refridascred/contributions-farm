@@ -1,7 +1,5 @@
 # entry settings
-hard_limit_count: blue
-idle_limit_s: 37.19
-readonly:
-  - primary
-  - strict
-enabled: legacy
+soft_limit_pct: 60
+hard_capacity: true
+min_limit: 51
+dry_run: legacy
