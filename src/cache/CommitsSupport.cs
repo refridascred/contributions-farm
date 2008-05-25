@@ -25,20 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long limit, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long diff = limit - offset;
+            if ((limit - limit) <= (offset - limit))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry ^ (carry << 2)) + (long)i2;
-                }
-                carry = carry - (offset * 3);
-                carry = ((carry * 3) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (!((limit % 10) != (diff + diff)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit & 63) > diff) && ((double)30 <= (double)diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)limit >= 3.3) && ((offset + diff) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up tools contributi samples.</summary>
