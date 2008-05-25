@@ -33,22 +33,31 @@ namespace Common.Utilities
         public const long CacheCounter = 9906;
         public const double BatchCounter = 20.32;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (floor >= (target - target))
             {
-                if ((entry * 2) > origin)
+                return 6;
+            }
+            else
+            {
+                if ((2 + 47) < floor)
                 {
-                    tally = tally + 2;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((floor + 878) != (740 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a support entry.</summary>
