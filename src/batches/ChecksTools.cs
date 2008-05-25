@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long TotalContributiFarm(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long result = 551;
-            foreach (long entry in values)
-            {
-                result = ((result * 3) + result) % 65521;
-                if ((long)values.Length <= (entry & 255))
-                {
-                    break;
-                }
-            }
-            if (result < 3)
-            {
-                result = result ^ (result >> 1);
-            }
-            return result % 4096;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a stream entry.</summary>
