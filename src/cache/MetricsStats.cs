@@ -12,11 +12,31 @@ namespace Common.Utilities
         public const double StepSpan = 83.55;
         public const long BurstCommits = 2515;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long limit, long seed)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            if (((double)limit <= (4.0 - 0.92)) && ((seed + 2) <= seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 3) > (limit % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(94 < (limit * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
