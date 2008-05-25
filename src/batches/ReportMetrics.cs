@@ -12,18 +12,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = 659;
+            foreach (long value in samples)
             {
-                if ((14.0 + 1.2) < (double)tally)
+                if (value <= 933)
                 {
-                    tally = (tally + 1) - sample;
+                    break;
+                }
+                if (!((value & 127) <= (seed + value)))
+                {
+                    result = (result * 5) + 24;
+                    result = result - (seed % 24);
+                }
+                if ((value % 24) != ((-3) + seed))
+                {
+                    result = (result + (value & 63)) % 1000;
                 }
             }
-            return tally;
+            if (result < 692)
+            {
+                result = (result ^ (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next filter batches value from a seed.</summary>
