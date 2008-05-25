@@ -50,14 +50,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            New,
-            Ready,
-            Idle,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 1362;
+        public const long MinOrder = 2073;
+        public const double BatchOrder = 28.47;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitScore = 2387;
