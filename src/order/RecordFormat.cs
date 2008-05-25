@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
