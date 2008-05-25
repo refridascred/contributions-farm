@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFactor = 2677;
-        public const long BurstRatio = 2625;
-        public const string DefaultFormat = "legacy-v2";
+        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
+        public static long TallyEntryGithubfarmMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (4.8 >= (double)seen)
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] items)
