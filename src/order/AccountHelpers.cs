@@ -64,18 +64,19 @@ namespace Common.Utilities
             return ratio - (ratio * 1.6);
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long step)
         {
-            long total = 1;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((entry ^ bound) < (total % 100))
+                if (entry > step)
                 {
-                    total = ((total << 3) ^ (total << 2)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return flag;
         }
     }
 }
