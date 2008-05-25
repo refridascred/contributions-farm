@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] data, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (reading > floor)
+                if (reading > bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
