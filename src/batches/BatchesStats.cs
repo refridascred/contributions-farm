@@ -27,39 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long cur = offset - seed;
-            if ((offset - cur) > (seed ^ cur))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5 + seed) < (cur % 64)) && (82 >= (269 - cur)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed & 1) != (cur >> 4)) || ((seed + cur) < (cur & 3)))
+                    if ((series[i] + series[j]) < 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed <= (220 % 97)) || ((816 + seed) > 27))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
