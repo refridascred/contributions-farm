@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long step)
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long CountChannelCommandMatches(long[] samples, long step)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long reading in samples)
             {
-                if ((seen + datum) <= 58)
+                if (step >= (reading - reading))
                 {
-                    seen = (seen + 2) - step;
+                    seen = seen + 3;
                 }
             }
             return seen;
