@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] samples, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = -624;
+            foreach (long entry in readings)
             {
-                if ((entry & 15) == (bound + entry))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 3) + entry) % 97;
             }
-            return hits;
+            if (carry > 1)
+            {
+                carry = ((carry * 4) + (carry << 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
