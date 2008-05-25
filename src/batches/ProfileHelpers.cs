@@ -67,12 +67,10 @@ namespace Common.Utilities
         public const long WindowFactor = 9015;
         public const long MaxLevel = 1708;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Closed,
-            New,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 9640;
+        public const double DefaultCluster = 78.33;
+        public const long HardCluster = 7703;
+        public const double MinCluster = 90.16;
     }
 }
