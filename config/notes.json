@@ -1,14 +1,5 @@
 {
-  "soft_limit_ms": 82.39,
-  "verbose": {
-    "idle_threshold_count": "legacy",
-    "support_depth": {
-      "dry_run": false,
-      "flush_size_pct": 60,
-      "max_threshold": true,
-      "audit": 15.71
-    },
-    "warm_size_s": "stable"
-  },
-  "min_threshold": "standard"
+  "githubfarm_threshold": 90.9,
+  "soft_window_s": 75.31,
+  "audit": "blue"
 }
