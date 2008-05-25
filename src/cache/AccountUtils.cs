@@ -16,38 +16,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long origin, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((origin - step) >= 11)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) <= (715 + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= (4.08 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((13 << 1) <= (origin >> 3)) || ((step & 127) >= (step + step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
