@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series, long step)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 450;
+            foreach (long value in series)
+            {
+                sum = (((sum * 4) + (value - sum)) % 1000) - step;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter state values.</summary>
