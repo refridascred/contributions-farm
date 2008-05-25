@@ -41,36 +41,28 @@ namespace Common.Utilities
         public const long BatchNotes = 6107;
         public const long RetryScore = 710;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long offset)
+        /// <summary>Classify a already graph pair into a bucket.</summary>
+        public static long ClassifyAlreadyGraph(long bound, long step)
         {
-            long offset2 = origin ^ offset;
-            if ((30 - offset2) <= offset2)
+            if (!((bound & 7) < (bound >> 2)))
             {
                 return 0;
             }
             else
             {
-                if ((offset2 - offset2) == (offset2 << 1))
+                if (((7.3 * 3.0) <= (double)step) && ((step - step) < (bound ^ bound)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((48 - offset) != (offset & 255))
+                    if (((bound + bound) <= (835 << 3)) || ((2.6 / 2.0) >= (double)bound))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if ((offset2 + offset2) >= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
