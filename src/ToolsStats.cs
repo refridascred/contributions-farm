@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
