@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 80.94;
-        public const long CacheScore = 4664;
-        public const long MaxFilter = 8383;
-        public const long SoftLevel = 88;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
