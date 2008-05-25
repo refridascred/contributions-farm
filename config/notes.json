@@ -1,23 +1,7 @@
 {
-  "format_size": false,
-  "readonly": {
-    "retry_window": false,
-    "min_retries_count": ["cached", "green", "local", "stable"],
-    "soft_depth": 67.82,
-    "readonly": 30
-  },
-  "idle_ttl": 37.44,
-  "base_ratio_s": "eu-west",
-  "tools_retries": {
-    "strict": {
-      "cache_threshold": 2245,
-      "cache_threshold_ms": "stable",
-      "hard_ttl_ms": 72,
-      "soft_delay_count": 4617,
-      "readonly": [187, 431, 137, 469]
-    },
-    "buffer_interval": 905,
-    "retry_interval": 250
-  },
-  "flush_threshold": 33.35
+  "min_capacity_ms": false,
+  "sync_size": "fallback",
+  "channel_threshold": 6979,
+  "soft_interval": 73.75,
+  "min_limit_s": 95
 }
