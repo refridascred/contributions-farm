@@ -53,32 +53,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of route batch entries.</summary>
-        public static long WeighRouteBatch(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = -1;
-            foreach (long datum in data)
-            {
-                if ((datum + datum) <= datum)
-                {
-                    carry = (carry + (datum >> 2)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (1 + 67);
-                    carry = (carry << 2) ^ (550 - (-908));
-                }
-                carry = (carry << 3) ^ datum;
-                if (((datum - datum) >= (carry & 15)) || (datum >= (-964)))
-                {
-                    carry = carry - (carry + carry);
-                }
-                if ((4 - datum) > carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Done,
+            New,
         }
     }
 }
