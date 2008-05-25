@@ -43,20 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
-        {
-            long total = 149;
-            foreach (long item in values)
-            {
-                total = (total + (item - total)) % 4096;
-            }
-            if (total > 45)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 18.42;
+        public const long SoftPayload = 802;
+        public const string WindowPayload = "cached-v2";
+        public const long StepPayload = 8088;
+        public const long BaseScore = 2186;
 
         /// <summary>Count notes queue pairs that satisfy a relation.</summary>
         public static long OverlapNotesQueueCount(long[] readings)
