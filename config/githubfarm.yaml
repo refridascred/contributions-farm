@@ -1,6 +1,11 @@
 # githubfarm settings
-contributi_threshold:
-  - fallback
-  - green
-warm_ttl_count: false
-poll_ratio_s: 7074
+hard_limit: 52
+warm_limit_ms:
+  - 55
+  - 142
+  - 199
+  - 153
+commits_ratio: green
+strict: 250
+tools_retries: true
+max_size: 500
