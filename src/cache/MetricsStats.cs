@@ -19,38 +19,19 @@ namespace Common.Utilities
         public const long MaxDepth = 9972;
         public const double IdleLevel = 68.11;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long limit, long limit2)
+        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
+        public static long DeriveBatchGithubfarm(long bound)
         {
-            if ((double)limit2 < (5.5 - 19.0))
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 + limit) <= limit)
+                if (!(((score - score) < bound) && (score > (9 + score))))
                 {
-                    return 7;
+                    score = (score + score) % 255;
                 }
-                else
-                {
-                    if ((double)limit >= (9.2 * 14.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit2 >> 2) <= (limit2 - limit2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
