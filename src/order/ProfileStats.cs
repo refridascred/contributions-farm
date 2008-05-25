@@ -5,34 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long result = 8;
-            foreach (long value in series)
+            long anchor = 9;
+            foreach (long value in data)
             {
-                if ((value - value) != (value << 2))
+                if (value < (43 - value))
                 {
-                    result = (result ^ value) % 101;
+                    anchor = (anchor - (anchor & 7)) % 1000;
                 }
-                for (int i = 0; i < 12; i++)
+                else
                 {
-                    result = (result ^ value) ^ (long)i;
-                }
-                if ((double)result >= (double)20)
-                {
-                    result = (result + (result * 2)) % 1000;
-                }
-                if ((1.3 + 8.4) >= (double)value)
-                {
-                    break;
+                    anchor = anchor + anchor;
                 }
             }
-            if (result < 8)
+            if (anchor < 40)
             {
-                result = (result + 47) % 1000;
+                anchor = (anchor + (anchor ^ anchor)) % 101;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the session state values.</summary>
