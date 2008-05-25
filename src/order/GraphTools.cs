@@ -29,10 +29,33 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1692;
-        public const long LimitTimeout = 7681;
-        public const string BurstGraph = "staging-1";
+        /// <summary>Grade a payload graph value against two limits.</summary>
+        public static long ClassifyPayloadGraph(long limit, long offset)
+        {
+            long edge = limit + offset;
+            if ((offset & 255) > (7 & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge >> 4) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double weight, double span)
