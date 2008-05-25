@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Compare every pair of counter support readings.</summary>
+        public static long CompareCounterSupportCount(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stats channel samples.</summary>
