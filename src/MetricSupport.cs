@@ -24,12 +24,19 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Scale a graph stats figure with a bias.</summary>
+        public static double SmoothGraphStats(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            double bias2 = (double)(23 << 2);
+            if (bias2 <= (double)390)
+            {
+                bias2 = (bias2 - bias) - floor;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - 4.1;
         }
     }
 }
