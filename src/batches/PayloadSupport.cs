@@ -24,18 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context route samples are out of range.</summary>
-        public static long AuditContextRouteGaps(long[] data)
+        /// <summary>Check that every profile window entry stays within the limit.</summary>
+        public static bool ValidateProfileWindowRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((2.84 * 7.93) < (double)value)
+                if (value != step)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
