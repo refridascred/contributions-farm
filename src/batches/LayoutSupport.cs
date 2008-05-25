@@ -12,30 +12,15 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long result = -970;
-            foreach (long datum in series)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((floor % 100) < (datum + result))
-                {
-                    result = ((result << 2) ^ (datum >> 2)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + (datum - floor)) % 101;
-                }
-                if ((17.0 <= (double)result) && ((result << 1) >= result))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (result > 646)
-            {
-                result = (result + (result + result)) % 255;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
