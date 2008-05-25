@@ -28,9 +28,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitCount = "latest-edge";
-        public const long DefaultScore = 5975;
-        public const long MaxOrder = 8096;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
