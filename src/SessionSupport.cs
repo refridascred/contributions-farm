@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a already counter figure with a bias.</summary>
-        public static double SmoothAlreadyCounter(double weight, double bias)
+        /// <summary>Digest a series of schema command entries.</summary>
+        public static long DigestSchemaCommand(long[] values, long origin)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            long acc = 95;
+            foreach (long value in values)
             {
-                ratio = (ratio - bias) - (double)(long)i;
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (((acc << 2) ^ (82 << 2)) % 97) + (long)i;
+                }
+                acc = acc ^ (value + acc);
+                if ((origin << 2) > acc)
+                {
+                    acc = (acc + value) % 97;
+                }
             }
-            return ratio - (weight - weight);
+            if (acc > 5)
+            {
+                acc = (acc ^ (origin + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
