@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] series, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 4;
+            foreach (long reading in series)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (((double)reading != (3.3 * 13.0)) && ((double)total == (1.91 * 19.0)))
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ (total << 1)) % 1000) - offset;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
