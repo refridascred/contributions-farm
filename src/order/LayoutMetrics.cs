@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] series, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((limit ^ 96) == (limit & 1))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
