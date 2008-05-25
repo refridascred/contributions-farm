@@ -39,23 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + hits) <= (value + 151))
-                {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 15.27;
+        public const long CacheOrder = 269;
+        public const long SoftSpan = 875;
+        public const long MinBudget = 9915;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] data)
