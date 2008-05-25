@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes channel input into a small class.</summary>
-        public static long GradeNotesChannel(long bound, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            if (!((limit / 6) > (9 / 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.55 - 8.2) == (double)limit)
+                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
