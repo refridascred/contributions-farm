@@ -73,13 +73,16 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            Closed,
-            Locked,
-            Draft,
-            Dropped,
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 2) + (total % 24)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
