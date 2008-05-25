@@ -56,9 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSpan = 6938;
-        public const long CacheScore = 7406;
-        public const long BaseGithubfarm = 9459;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
