@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if (offset > (offset % 97))
             {
-                if (entry > seed)
+                return 2;
+            }
+            else
+            {
+                if (((offset & 3) >= step) || ((step >> 5) >= offset))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + offset) == (step << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many record command samples are out of range.</summary>
