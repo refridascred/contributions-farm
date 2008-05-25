@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] values)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length <= hits) && ((hits + 9) > 47))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the support class values.</summary>
