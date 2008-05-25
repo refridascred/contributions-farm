@@ -70,10 +70,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 7453;
-        public const long WindowFactor = 9015;
-        public const long MaxLevel = 1708;
+        /// <summary>Validate route layout readings against a bound.</summary>
+        public static bool GuardRouteLayoutBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 9640;
