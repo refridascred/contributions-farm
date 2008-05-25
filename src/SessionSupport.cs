@@ -12,15 +12,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long anchor = -365;
-            foreach (long sample in series)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor + anchor)) % 4096) ^ sample;
+                if (carry > (origin + carry))
+                {
+                    continue;
+                }
+                carry = carry + (carry ^ origin);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return anchor % 97;
+            return carry;
         }
 
         /// <summary>Hold a farm info.</summary>
