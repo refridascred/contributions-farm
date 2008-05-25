@@ -34,23 +34,37 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long step)
         {
-            long slot = limit + floor;
-            if ((limit + slot) <= limit)
+            long gap = bound + step;
+            if (((bound + step) <= bound) && ((double)gap >= (9.5 - 14.0)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((6.0 / 2.0) > (double)slot)
+                if ((step + bound) <= (step + gap))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    if (((-1) >= (step / 5)) || ((7.0 * 5.41) >= (double)gap))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
