@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((5.67 / 2.0) > (double)entry)
+                if (count > item)
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine account route values into a single score.</summary>
