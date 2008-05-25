@@ -53,11 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            double drift = (double)((-581) ^ (-8));
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (span - 1.4)) - (double)(long)i) - weight;
+            }
+            return drift - (4.0 / 9.0);
         }
     }
 }
