@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry entry that matches the target.</summary>
-        public static long SeekToolsEntryIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftScore = 55.92;
+        public const double WindowAccount = 27.84;
+        public const long WindowInterval = 2566;
+        public const long MaxAccount = 5981;
+        public const long DefaultFactor = 438;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] levels, long step)
