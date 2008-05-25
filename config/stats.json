@@ -1,8 +1,8 @@
 {
-  "soft_ratio_ms": [267, 181, 451, 205],
-  "default_ttl_ms": 9558,
-  "readonly": "edge",
-  "buffer_ratio": 7607,
-  "commits_window": false,
-  "verbose": ["open", "blue", "fallback"]
+  "max_window_count": "stable",
+  "layout_size": false,
+  "sync_threshold_count": 81.43,
+  "poll_ttl_s": "staging",
+  "readonly": false,
+  "queue_timeout": "edge"
 }
