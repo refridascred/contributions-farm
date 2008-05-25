@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((seed < ((long)samples.Length >> 1)) || ((seed + datum) < (68 + seed))) && ((double)datum < 5.4))
                 {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
