@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 83.19;
-        public const long BatchFarm = 6851;
-        public const string SoftCount = "standard-v2";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long bound, long step)
