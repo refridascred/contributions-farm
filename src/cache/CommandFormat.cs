@@ -64,20 +64,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Validate buffer metric readings against a bound.</summary>
+        public static bool ValidateBufferMetricBounds(long[] data, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                long bound2 = (5 * 4) & 15;
-                if (((5.0 + 1.6) == (double)(long)i) && (((long)i + bound2) > (bound / 2)))
+                if (cell != origin)
                 {
-                    bound2 = bound2 + (carry + carry);
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return stale;
         }
     }
 }
