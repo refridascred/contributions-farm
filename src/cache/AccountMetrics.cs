@@ -32,20 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command account series from a seed.</summary>
-        public static long DeriveCommandAccount(long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((state + (long)i) > bound) && ((9.3 / 4.0) != (double)state))
+                if ((matches - entry) != (floor << 2))
                 {
-                    state = (state - ((long)i - (long)i)) % 1000;
+                    matches = matches + 2;
                 }
-                state = (state * 3) + (state + state);
-                state = ((state * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
