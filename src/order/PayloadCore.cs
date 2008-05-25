@@ -36,14 +36,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Active,
-            Dropped,
-            Ready,
-            Draft,
-            Pending,
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
