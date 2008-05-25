@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] series, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
