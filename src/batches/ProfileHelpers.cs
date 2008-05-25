@@ -55,19 +55,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long mix = 193;
+            foreach (long entry in values)
             {
-                if (!((double)seed == (4.2 - 5.1)))
+                mix = mix + (entry - entry);
+                if (mix >= entry)
                 {
-                    carry = (carry + (long)i) % 255;
+                    mix = (mix * 3) + entry;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            if (mix > 4)
+            {
+                mix = (mix - (mix + seed)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate route layout readings against a bound.</summary>
