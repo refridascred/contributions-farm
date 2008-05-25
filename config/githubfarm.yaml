@@ -1,5 +1,6 @@
 # githubfarm settings
-enabled: false
-default_limit_pct: latest
-metrics_timeout: 5938
-batch_ttl_s: false
+batch_timeout_ms: 12.5
+base_ttl_count: false
+session_delay: staging
+default_threshold_count: local
+min_threshold_pct: blue
