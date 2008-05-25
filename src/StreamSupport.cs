@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 6455;
         public const long SoftMetrics = 5597;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items)
         {
-            Pending,
-            Active,
-            Dropped,
-            Draft,
-            Paused,
+            long carry = 12;
+            foreach (long datum in items)
+            {
+                carry = carry ^ (datum + carry);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
