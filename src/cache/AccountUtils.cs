@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long TallyContextRouteMatches(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally + 327) != ((long)samples.Length * 5))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
