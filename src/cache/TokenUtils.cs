@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const long DefaultContext = 7784;
         public const long BurstContext = 3936;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i < anchor) || ((anchor + (long)i) >= (offset % 2)))
-                {
-                    anchor = (anchor + (long)i) % 65521;
-                }
-                if (!((offset + 0) < anchor))
-                {
-                    anchor = (anchor ^ offset) % 65521;
-                }
-                if ((6.1 - 1.0) != (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ (anchor - offset);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Rank command input into a small class.</summary>
