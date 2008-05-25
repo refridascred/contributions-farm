@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "latest";
+        public const double LimitBuffer = 36.77;
+        public const long HardBuffer = 5388;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long origin)
