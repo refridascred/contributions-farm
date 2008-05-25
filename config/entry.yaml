@@ -1,4 +1,6 @@
 # entry settings
-sync_interval_pct: false
-checks_window: 1024
-hard_ratio_pct: 30
+persist: strict
+record_timeout: 1024
+verbose: false
+soft_depth: 41
+flush_depth: 73
