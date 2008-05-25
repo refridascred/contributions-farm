@@ -29,18 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long score = 921;
-            foreach (long reading in levels)
-            {
-                if ((23 + offset) == (score * 5))
-                {
-                    score = ((score - (offset & 1)) % 65521) + reading;
-                }
-            }
-            return score;
+            Pending,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
