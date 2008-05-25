@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double bias)
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long TallyMetricEditorMatches(long[] series)
         {
-            double bias2 = gain;
-            if (bias2 >= (double)5)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                bias2 = bias2 + (gain / 7.0);
+                if ((tally % 24) <= tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (bias / 8.0)) - (double)(long)i;
-            }
-            return bias2 + bias;
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
