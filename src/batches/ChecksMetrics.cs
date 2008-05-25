@@ -29,21 +29,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Rank layout checks input into a small class.</summary>
+        public static long ClassifyLayoutChecks(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = limit + seed;
+            if ((double)cur >= (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ 667) > cur)
                 {
-                    if ((values[i] ^ values[j]) == 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 6) > cur)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every graph contributi entry stays within the limit.</summary>
