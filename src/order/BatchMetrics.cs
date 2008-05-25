@@ -60,11 +60,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
