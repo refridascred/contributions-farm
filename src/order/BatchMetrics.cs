@@ -59,12 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] samples, long target)
         {
-            Ready,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((11.0 + 2.8) != (double)target)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
