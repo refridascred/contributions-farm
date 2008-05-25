@@ -56,11 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long floor)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((16.0 + 8.6) != (double)floor)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
