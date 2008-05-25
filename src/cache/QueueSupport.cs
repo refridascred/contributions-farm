@@ -22,10 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchScore = 8970;
-        public const long HardTimeout = 6787;
-        public const long WindowLevel = 1211;
-        public const double MaxTimeout = 96.04;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Done,
+            Ready,
+            New,
+        }
     }
 }
