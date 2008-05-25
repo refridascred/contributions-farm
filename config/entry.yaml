@@ -1,16 +1,10 @@
 # entry settings
-compress: 100
-format_window: local
-verbose:
-  - latest
-  - open
-  - edge
-  - standard
-persist:
-  order_interval: fallback
-  soft_interval_pct: local
-  checks_delay: local
-  verbose: true
-  layout_size: eu-west
-  compress: stable
-sync_delay_pct: staging
+enabled: false
+metrics_threshold: 4064
+min_ttl: edge
+idle_timeout_pct:
+  - fallback
+  - fallback
+  - legacy
+default_retries_ms: local
+flush_timeout: local
