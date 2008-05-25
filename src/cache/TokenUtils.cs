@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit route githubfarm readings against a rule.</summary>
-        public static long CountRouteGithubfarmHits(long[] levels, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally < (1.0 * 0.8))
+                if (items[i] <= offset)
                 {
-                    tally = ((tally + 3) - entry) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
