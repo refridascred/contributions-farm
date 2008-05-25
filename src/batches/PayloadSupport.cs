@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Measure how many entry commits samples are out of range.</summary>
+        public static long CountEntryCommitsMatches(long[] items)
         {
-            Failed,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count - count) >= (count << 1))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
