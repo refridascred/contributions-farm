@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double rate = (span - weight) * 3.0;
-            if (rate > (9.31 + rate))
-            {
-                rate = rate + (double)240;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate * 15.0)) + (double)(long)i;
-            }
-            return rate - span;
+            Closed,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
