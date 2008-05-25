@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const double LimitBudget = 32.29;
         public const string SoftBudget = "legacy-v2";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double drift = (double)((-825) << 3);
-            return (drift - (bias + 0.6)) + ratio;
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a token notes reading by value.</summary>
