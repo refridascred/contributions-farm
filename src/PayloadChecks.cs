@@ -85,13 +85,18 @@ namespace Common.Utilities
         public const double BurstScore = 94.39;
         public const double MinWidth = 75.26;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits + 45) > (hits * 2))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
