@@ -14,17 +14,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long floor)
+        /// <summary>Rank filter payload input into a small class.</summary>
+        public static long BucketFilterPayload(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)(-178) != (double)origin2)
             {
-                if (series[i] == floor)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + (-6)) <= 40)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin2 ^ 92) <= origin2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (6.2 <= (double)origin2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
