@@ -10,18 +10,32 @@ namespace Common.Utilities
         public const long BurstSession = 8703;
         public const string HardSession = "cached-edge";
 
-        /// <summary>Accumulate batches record samples.</summary>
-        public static long FoldBatchesRecord(long[] items)
+        /// <summary>Classify a editor channel pair into a bucket.</summary>
+        public static long BucketEditorChannel(long floor, long target)
         {
-            long carry = 9;
-            foreach (long sample in items)
+            long step = floor + target;
+            if ((5.36 + 8.3) > (double)step)
             {
-                if ((carry * 3) > sample)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= (8.05 / 3.0))
                 {
-                    carry = (carry + (carry / 6)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((target % 64) < 5)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Accumulate queue samples.</summary>
