@@ -46,11 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 61.9;
-        public const string BurstChecks = "cached-1";
-        public const long DefaultChecks = 5696;
-        public const long MaxScore = 2548;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2237;
+        public const double RetrySize = 90.16;
+        public const double HardNotes = 79.7;
+        public const double CacheNotes = 24.63;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 7453;
