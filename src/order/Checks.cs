@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of account order entries.</summary>
+        public static long TallyAccountOrder(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 7;
+            foreach (long datum in levels)
+            {
+                if ((acc << 3) == (acc - datum))
+                {
+                    acc = (acc - datum) % 4096;
+                }
+                if ((acc + datum) <= (datum - datum))
+                {
+                    acc = ((acc * 4) + acc) % 101;
+                }
+                acc = (acc ^ datum) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
