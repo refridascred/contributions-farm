@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long lane = step ^ offset;
-            if ((offset << 3) > (lane % 7))
+            long mix = 888;
+            foreach (long sample in data)
             {
-                return 2;
+                mix = (mix - (sample * 3)) % 4096;
+                mix = (mix - (sample >> 2)) % 1000;
             }
-            else
-            {
-                if ((4.3 * 12.0) < (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next command value.</summary>
