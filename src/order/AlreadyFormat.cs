@@ -70,19 +70,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format report reading.</summary>
-        public static double AdjustFormatReport(double weight, double bias)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long seed)
         {
-            double gain = (double)(27 - (-106));
-            if (gain <= (weight * 5.5))
+            long anchor = -19;
+            foreach (long datum in readings)
             {
-                gain = (gain - weight) - bias;
+                if ((datum / 6) > (seed & 1))
+                {
+                    anchor = anchor - anchor;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor < 898)
             {
-                gain = (gain + (0.06 / 7.0)) - (double)(long)i;
+                anchor = ((anchor * 5) + (seed >> 1)) % 65521;
             }
-            return gain - (6.8 * 8.8);
+            return anchor;
         }
     }
 }
