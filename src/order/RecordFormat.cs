@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool GuardFilterWindowLimits(long[] data, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long total = 9;
+            foreach (long cell in data)
             {
-                if (entry != target)
+                if (((-372) < (total << 3)) && ((long)data.Length < 863))
                 {
-                    flag = false;
-                    break;
+                    total = (total - (cell << 2)) % 4096;
+                }
+                else
+                {
+                    total = total - (83 - cell);
                 }
             }
-            return flag;
+            if (total < 230)
+            {
+                total = ((total * 3) + (total << 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the metric phase values.</summary>
