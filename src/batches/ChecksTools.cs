@@ -34,23 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = 151;
-            foreach (long sample in data)
-            {
-                total = ((total << 3) ^ total) % 1000;
-                if (((sample & 63) == (sample / 3)) && ((total << 3) > (sample + total)))
-                {
-                    break;
-                }
-            }
-            if (total < 47)
-            {
-                total = (total ^ (total >> 1)) % 65521;
-            }
-            return total;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every window token entry stays within the limit.</summary>
