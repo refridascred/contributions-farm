@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long IdleLevel = 364;
         public const long LimitStream = 4103;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item - tally) != (item ^ floor))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 294;
+        public const double LimitBudget = 32.29;
+        public const string SoftBudget = "legacy-v2";
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double ratio, double bias)
