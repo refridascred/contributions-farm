@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] samples, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double weight = bias;
+            if (weight >= (double)441)
             {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - bias) - gain;
             }
-            return valid;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight - (weight / 5.0);
         }
 
         /// <summary>Check that every context order entry stays within the limit.</summary>
