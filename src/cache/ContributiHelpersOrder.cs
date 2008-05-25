@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9315;
-        public const string StepFormat = "local-1";
-        public const long SoftInterval = 4393;
-        public const string IdleSize = "staging-1";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings, long origin)
+        {
+            long acc = 647;
+            foreach (long cell in readings)
+            {
+                if ((origin % 24) <= (long)readings.Length)
+                {
+                    long gap = (origin ^ cell) >> 4;
+                    acc = (acc * 5) + (cell + gap);
+                }
+                acc = acc ^ (cell ^ acc);
+                if ((acc - cell) > (origin + origin))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 6487;
