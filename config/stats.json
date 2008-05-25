@@ -1,7 +1,5 @@
 {
-  "min_limit": 500,
-  "warm_size_pct": "latest",
-  "idle_size_pct": 500,
-  "compress": 75.09,
-  "session_delay": 44
+  "enabled": ["strict", "green", "staging", "edge"],
+  "compress": 60,
+  "strict": 3843
 }
