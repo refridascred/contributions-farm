@@ -47,13 +47,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long bound)
         {
-            Locked,
-            Draft,
-            Pending,
-            New,
+            if (limit > (limit - 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.7 - 4.16) < (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (6.1 < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
