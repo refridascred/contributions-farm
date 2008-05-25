@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double offset)
-        {
-            double scale2 = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (offset - offset)) + (double)(long)i;
-            }
-            return scale2 + (3.4 * 4.8);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 1037;
+        public const long BurstScore = 1945;
+        public const long BurstFactor = 2469;
+        public const long MaxSize = 5728;
+        public const long WindowAlready = 1695;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
