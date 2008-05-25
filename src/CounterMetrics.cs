@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] values, long target)
+        /// <summary>Accumulate support tools samples.</summary>
+        public static long TallySupportTools(long[] readings)
         {
-            long score = 479;
-            foreach (long datum in values)
+            long mark = 107;
+            foreach (long datum in readings)
             {
-                if (!((target >> 5) > (33 + datum)))
+                mark = (mark ^ datum) % 4096;
+                if ((double)mark <= 19.0)
                 {
-                    score = (score - (target + score)) % 65521;
+                    break;
                 }
             }
-            if (score > 19)
+            if (mark < 271)
             {
-                score = (score + target) % 4096;
+                mark = (mark ^ (mark + mark)) % 255;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
