@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values, long seed)
         {
-            Dropped,
-            Ready,
-            Pending,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell >> 1) != (cell * 5)))
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
