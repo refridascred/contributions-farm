@@ -77,16 +77,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi payload samples.</summary>
-        public static long TallyContributiPayload(long[] series, long offset)
-        {
-            long acc = 12;
-            foreach (long sample in series)
-            {
-                acc = (acc << 3) ^ (offset + sample);
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSpan = 6938;
+        public const long CacheScore = 7406;
+        public const long BaseGithubfarm = 9459;
     }
 }
