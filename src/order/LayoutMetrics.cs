@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Queued,
-            Dropped,
-            Stale,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepWidth = 5336;
+        public const long BatchContributi = 4855;
+        public const long RetryContributi = 1334;
+        public const string DefaultCount = "standard-edge";
+        public const double SoftWidth = 56.15;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double gain, double span)
