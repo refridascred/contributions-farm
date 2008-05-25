@@ -1,7 +1,5 @@
 {
-  "filter_limit": 1035,
-  "token_retries": "blue",
-  "soft_delay_ms": "standard",
-  "idle_interval_count": "green",
-  "cache_window": 500
+  "min_retries": "green",
+  "min_retries_count": 95,
+  "hard_delay_s": 0.34
 }
