@@ -14,24 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank layout route input into a small class.</summary>
-        public static long GradeLayoutRoute(long floor, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            if ((double)offset != (8.15 - 0.2))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (9.45 - 7.71))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two checks stats measurements.</summary>
