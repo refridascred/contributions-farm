@@ -27,21 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 197;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result / 6) != (datum - result))
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (result - datum)) % 101;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
