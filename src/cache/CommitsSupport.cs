@@ -37,19 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools counter readings against a bound.</summary>
-        public static bool ValidateToolsCounterRange(long[] data, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
