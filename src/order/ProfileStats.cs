@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((80 / 4) == (7 + item))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 2712;
+        public const string SoftSize = "strict-edge";
+        public const double LimitRatio = 81.51;
+        public const long WindowRatio = 1011;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] levels)
