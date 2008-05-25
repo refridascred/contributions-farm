@@ -14,23 +14,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine payload graph values into a single score.</summary>
-        public static long TotalPayloadGraph(long[] items, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long floor)
         {
-            long total = 47;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (series[i] == floor)
                 {
-                    total = total - (total + (long)i);
-                    total = ((total << 2) ^ (value * 5)) % 255;
-                }
-                if ((double)total <= (double)89)
-                {
-                    total = ((total << 3) ^ (bound ^ value)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
