@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] series, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (step < (seen ^ seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a commits info.</summary>
