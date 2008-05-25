@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples, long floor)
+        /// <summary>Blend two record githubfarm measurements.</summary>
+        public static double ScaleRecordGithubfarm(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double gain = 16.0;
+            if (gain < gain)
             {
-                if ((matches - entry) != (floor << 2))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain + (4.12 - floor)) - scale;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain + gain)) - (double)(long)i;
+            }
+            return gain + (double)1;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
