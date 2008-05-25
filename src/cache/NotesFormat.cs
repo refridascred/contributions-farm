@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            if (((origin % 24) < seed) && ((origin - origin) >= (origin ^ seed)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7 < (origin + 7)) || ((origin >> 4) > 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of metrics schema entries.</summary>
