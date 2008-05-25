@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long CompareCounterEditorCount(long[] series)
+        /// <summary>Count the route batches entries that pass the check.</summary>
+        public static long CountRouteBatchesMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)levels.Length < (entry % 64)) && ((seed << 3) < (seed - 512)))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of support order entries.</summary>
