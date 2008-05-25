@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const string MinBuffer = "staging";
         public const long BatchBuffer = 4978;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Project the next notes window value.</summary>
+        public static double ProjectNotesWindow(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = rate;
+            if (rate2 < (span - span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = rate2 - rate;
             }
-            return tally;
+            return rate2 - (span / 2.0);
         }
     }
 }
