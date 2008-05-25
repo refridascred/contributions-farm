@@ -67,39 +67,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long step)
         {
-            long next = bound ^ floor;
-            if ((next + bound) == (floor & 255))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)95 != (double)bound) || ((bound + 125) >= bound))
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.9 - 5.8) != (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - 0) != (42 - next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
