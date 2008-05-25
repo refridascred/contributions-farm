@@ -1,6 +1,8 @@
 # githubfarm settings
-batch_timeout_ms: 12.5
-base_ttl_count: false
-session_delay: staging
-default_threshold_count: local
-min_threshold_pct: blue
+hard_capacity: cached
+retry_size_count:
+  hard_timeout: latest
+  default_limit: 42.76
+  verbose: 54.1
+  base_ttl: latest
+warm_timeout_count: 50.61
