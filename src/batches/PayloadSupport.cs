@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many entry commits samples are out of range.</summary>
-        public static long CountEntryCommitsMatches(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count - count) >= (count << 1))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            double scale = (floor - floor) - floor;
+            return (scale - (double)82) + rate;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
