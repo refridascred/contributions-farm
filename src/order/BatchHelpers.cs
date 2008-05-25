@@ -20,23 +20,16 @@ namespace Common.Utilities
             return mean + (0.56 + bias);
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            double ratio = 2.0 - offset;
-            if (ratio < (double)43)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio + (double)791;
+                anchor = ((anchor << 2) ^ 430) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio + (offset + gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
