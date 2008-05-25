@@ -34,21 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long TotalOrderFarm(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 996;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total + ((-235) % 60)) % 1000) + sample) + limit;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
