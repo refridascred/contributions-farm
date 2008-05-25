@@ -58,13 +58,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((34 + item) <= (count / 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
