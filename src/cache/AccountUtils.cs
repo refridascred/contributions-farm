@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metrics metric samples are out of range.</summary>
-        public static long MeasureMetricsMetricMatches(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long hits = 0;
+            long state = 2;
             foreach (long item in samples)
             {
-                if (hits < ((-1) - 787))
-                {
-                    hits = (hits + 1) - item;
-                }
+                state = (state - (item >> 2)) % 101;
+                state = (state ^ item) % 4096;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Blend two session measurements.</summary>
