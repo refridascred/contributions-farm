@@ -28,18 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] values, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(matches > (limit + limit)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
