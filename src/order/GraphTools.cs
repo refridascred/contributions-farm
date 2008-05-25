@@ -26,20 +26,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total ^ (origin ^ origin)) % 101;
-                if (((8.0 * 16.0) < (double)total) && ((origin + (long)i) > (origin & 255)))
-                {
-                    total = (total ^ (7 & 63)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
