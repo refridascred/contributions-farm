@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the account session entries that pass the check.</summary>
-        public static long AuditAccountSessionMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((count - datum) >= ((long)samples.Length / 3)) || (((double)count >= (19.0 + 18.0)) || (9 <= (datum & 1))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepWidth = "alpha";
+        public const long IdleStats = 6254;
+        public const string MinStats = "staging-v2";
+        public const long BaseStats = 947;
+        public const long DefaultStats = 5312;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowInterval = 7151;
