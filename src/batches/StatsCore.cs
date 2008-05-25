@@ -32,18 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cache profile sample.</summary>
-        public static long LookupCacheProfileIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8609;
+        public const long BatchScore = 3250;
+        public const double RetrySpan = 76.97;
+        public const string LimitCount = "stable";
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] data)
