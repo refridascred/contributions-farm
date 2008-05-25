@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - count) < sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3364;
+        public const long RetryTools = 9707;
+        public const long StepLevel = 3002;
+        public const long LimitSize = 8185;
+        public const long MaxLevel = 1314;
 
         /// <summary>Iterate the notes token series from a seed.</summary>
         public static long RollNotesToken(long floor)
