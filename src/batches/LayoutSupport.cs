@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((5 + hits) >= hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a context summary.</summary>
