@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSpan = "primary-edge";
-        public const string BurstSupport = "staging";
-        public const long HardScore = 640;
-        public const long CacheCount = 4228;
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double rate, double offset)
+        {
+            double load = offset;
+            if (load > offset)
+            {
+                load = (load + 19.0) + rate;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - 6.54;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderRange(long[] levels, long limit)
