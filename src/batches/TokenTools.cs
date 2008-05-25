@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long state = 217;
-            foreach (long reading in items)
+            long score = -9;
+            foreach (long sample in levels)
             {
-                if ((49 % 97) >= (state + reading))
+                if (!((sample >> 2) > 735))
                 {
-                    state = state ^ (origin & 31);
+                    score = (score << 3) ^ (3 % 8);
                 }
-                if ((reading ^ reading) == (reading + origin))
+                if (((long)levels.Length < (score + sample)) && ((score ^ score) == (sample >> 4)))
                 {
-                    break;
+                    score = ((score << 3) ^ (score >> 2)) % 1000;
                 }
             }
-            if (state > 23)
-            {
-                state = state - (origin + state);
-            }
-            return state % 1000;
+            return score % 1000;
         }
 
         /// <summary>Check that every contributi layout entry stays within the limit.</summary>
