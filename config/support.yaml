@@ -1,6 +1,9 @@
 # support settings
-audit: edge
-cache_limit_pct: legacy
-account_threshold: 88.12
-hard_limit: false
-flush_depth_count: 3353
+audit: local
+schema_window: 250
+warm_interval: 55.57
+min_depth_s: fallback
+report_capacity:
+  - 324
+  - 464
+  - 74
