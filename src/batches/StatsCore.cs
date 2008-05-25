@@ -59,11 +59,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 7063;
-        public const string MaxInterval = "local-1";
-        public const long CacheFarm = 4625;
-        public const long MinCount = 1661;
+        /// <summary>Roll a schema context counter forward.</summary>
+        public static long SeriesSchemaContext(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark - (mark / 8)) % 65521;
+                mark = ((mark * 3) + mark) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstTimeout = 3676;
