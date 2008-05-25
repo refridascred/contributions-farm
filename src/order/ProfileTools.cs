@@ -24,20 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxDepth = 322;
+        public const long CacheSize = 9528;
+        public const string MinSchema = "primary-edge";
+        public const string RetrySpan = "staging-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleFilter = 32.66;
