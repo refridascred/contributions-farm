@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph account samples are out of range.</summary>
-        public static long TallyGraphAccountGaps(long[] levels, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (((seen - seen) >= seen) || (((origin ^ seen) <= value) || ((origin & 255) >= (seen - 173))))
+                if (value != bound)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Match up format samples.</summary>
