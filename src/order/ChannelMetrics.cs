@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((20.0 + 12.0) != (double)target)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((5.0 / 4.0) >= (double)target)
                 {
-                    if ((series[i] - series[j]) < 20)
+                    return 8;
+                }
+                else
+                {
+                    if (((29 ^ target) < floor) || ((target - floor) <= (floor / 9)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (220 * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
