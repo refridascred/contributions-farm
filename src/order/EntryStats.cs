@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardTimeout = 33.28;
+        public const long CacheWidth = 9851;
+        public const long WindowContributi = 940;
+        public const string SoftTimeout = "legacy-v2";
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadHits(long[] data, long seed)
