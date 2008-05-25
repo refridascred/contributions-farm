@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const double LimitBuffer = 36.77;
         public const long HardBuffer = 5388;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples, long step)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Locked,
-            Queued,
+            long carry = 961;
+            foreach (long entry in samples)
+            {
+                if ((step >> 4) <= (step >> 3))
+                {
+                    continue;
+                }
+                if ((double)step <= (1.6 + 4.0))
+                {
+                    carry = ((carry * 2) + (carry % 97)) - entry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm info.</summary>
