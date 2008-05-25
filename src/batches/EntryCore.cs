@@ -53,14 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            New,
-            Queued,
+            Pending,
+            Done,
+            Dropped,
             Failed,
-            Draft,
-            Retry,
+            Paused,
         }
 
         /// <summary>Hold a layout header.</summary>
