@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=263
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in local strict staging; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=19
-log "limit is ${CHANNEL_LIMIT}"
