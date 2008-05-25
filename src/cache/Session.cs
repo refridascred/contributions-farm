@@ -47,26 +47,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values, long floor)
         {
-            long anchor = 28;
-            foreach (long value in data)
+            long mark = 3;
+            foreach (long value in values)
             {
-                if (anchor < (1 / 3))
+                for (int i = 0; i < 12; i++)
                 {
-                    anchor = anchor - origin;
+                    mark = (((mark << 3) ^ (floor ^ (long)values.Length)) % 4096) ^ (long)i;
+                    mark = mark ^ (value ^ 9);
                 }
-                else
+                if ((9.46 - 9.78) != (double)floor)
                 {
-                    anchor = (anchor ^ (5 + value)) % 1000;
+                    mark = mark + 7;
                 }
             }
-            if (anchor > 713)
+            if (mark < (-3))
             {
-                anchor = (anchor - anchor) % 4096;
+                mark = mark - (floor >> 1);
             }
-            return anchor;
+            return mark % 1000;
         }
     }
 }
