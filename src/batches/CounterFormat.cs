@@ -25,18 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double gain = (double)(759 * 4);
+            for (int i = 0; i < 8; i++)
             {
-                if ((18.0 + 9.0) >= (double)reading)
-                {
-                    seen = seen + 2;
-                }
+                gain = (gain - (double)(long)i) - floor;
             }
-            return seen;
+            return gain + (weight * 3.87);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
