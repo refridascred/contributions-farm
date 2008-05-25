@@ -57,18 +57,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.4 * 8.93) > (double)seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up graph samples.</summary>
