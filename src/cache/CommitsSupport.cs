@@ -80,11 +80,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 8787;
-        public const double IdleSession = 4.09;
-        public const long MaxSize = 7937;
-        public const long BatchSize = 5520;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
+        {
+            long sum = 435;
+            foreach (long item in series)
+            {
+                if (!((19.0 + 8.0) >= (double)sum))
+                {
+                    sum = ((sum << 2) ^ (sum * 2)) % 101;
+                }
+                if ((sum - item) < item)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterBounds(long[] items, long offset)
