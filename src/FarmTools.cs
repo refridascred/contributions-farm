@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items, long bound)
         {
-            long sum = 450;
-            foreach (long value in series)
+            long sum = 33;
+            foreach (long cell in items)
             {
-                sum = (((sum * 4) + (value - sum)) % 1000) - step;
+                sum = (sum + (cell * 2)) % 4096;
+                sum = (sum + (sum - bound)) % 65521;
+                if ((bound - sum) > bound)
+                {
+                    sum = sum + sum;
+                }
             }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Describe the filter state values.</summary>
