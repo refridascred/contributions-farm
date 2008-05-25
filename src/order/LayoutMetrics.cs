@@ -16,25 +16,21 @@ namespace Common.Utilities
         public const long MinSize = 9582;
         public const long DefaultCache = 7563;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long bound = origin ^ limit;
-            if ((origin + bound) == (origin % 7))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((84 * 5) > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
