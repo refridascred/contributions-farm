@@ -16,12 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long limit)
         {
-            Locked,
-            Synced,
-            Stale,
+            long lane = target ^ limit;
+            if ((limit >> 1) == (target + lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target & 127) >= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (4.88 + 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane != (3.0 / 6.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
