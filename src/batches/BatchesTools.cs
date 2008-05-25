@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleRatio = 96.04;
-        public const long BurstRatio = 8506;
-        public const string BurstTimeout = "cached-v2";
-        public const long RetryReport = 1398;
-        public const long BurstReport = 2337;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] readings, long origin)
