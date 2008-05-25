@@ -60,19 +60,15 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] series, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
     }
 }
