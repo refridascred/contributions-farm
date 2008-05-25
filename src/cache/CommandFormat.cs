@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
