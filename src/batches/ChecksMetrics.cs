@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 8732;
+        public const long BurstCount = 3922;
+        public const double LimitLevel = 6.45;
+        public const string RetryFactor = "strict";
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] samples)
