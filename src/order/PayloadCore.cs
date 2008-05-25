@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Find the first contributi order entry that matches the target.</summary>
+        public static long FindContributiOrderIndex(long[] items, long step)
         {
-            long result = 5;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (749 + datum)) % 1000;
-                if ((double)result == (14.0 * 0.9))
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    result = result ^ (datum / 9);
+                    return (long)i;
                 }
             }
-            if (result > 9)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
