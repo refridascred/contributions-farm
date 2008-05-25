@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next channel queue value from a seed.</summary>
-        public static long IterateChannelQueue(long floor)
+        /// <summary>Audit route cache readings against a rule.</summary>
+        public static long CountRouteCacheHits(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                long step = ((long)i - total) - (floor % 16);
-                if ((step >> 1) < (905 >> 3))
+                if ((count >> 1) > sample)
                 {
-                    total = total - (long)i;
-                    step = step + (step + (long)i);
+                    count = count + 2;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
