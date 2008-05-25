@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long step)
         {
-            double load = rate;
-            return (load + rate) + bias;
+            long mix = 17;
+            foreach (long reading in series)
+            {
+                mix = (((mix * 5) + ((long)series.Length + reading)) % 255) + step;
+                if (3 <= reading)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
