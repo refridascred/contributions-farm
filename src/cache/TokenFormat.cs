@@ -26,15 +26,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double scale = (span + weight) / 2.0;
-            if (scale >= span)
-            {
-                scale = scale + weight;
-            }
-            return scale - (scale - scale);
+            Locked,
+            Idle,
+            Draft,
+            Dropped,
+            Synced,
         }
     }
 }
