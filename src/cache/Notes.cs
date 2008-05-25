@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Stale,
             Closed,
-            Synced,
+            Locked,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a payload header.</summary>
