@@ -63,12 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Done,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepScore = 9665;
+        public const long SoftSize = 6177;
+        public const string BurstSpan = "fallback-edge";
+        public const long BatchMetrics = 4687;
+        public const long CacheLevel = 4273;
     }
 }
