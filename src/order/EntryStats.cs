@@ -36,26 +36,22 @@ namespace Common.Utilities
         public const long IdleLevel = 5473;
         public const long WindowCount = 7481;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Fold a list of schema tools readings.</summary>
+        public static long ScoreSchemaTools(long[] levels)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long anchor = 6;
+            foreach (long item in levels)
             {
-                if ((value + 6) >= (value + value))
+                if ((item < (anchor - (-8))) || ((anchor & 255) != (anchor - anchor)))
                 {
-                    mark = (mark ^ (60 << 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 4) + (value * 2);
+                    anchor = anchor - (anchor - anchor);
                 }
             }
-            if (mark < (-21))
+            if (anchor > 546)
             {
-                mark = ((mark << 3) ^ (mark * 2)) % 255;
+                anchor = (anchor * 4) + (anchor ^ anchor);
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
