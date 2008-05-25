@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Check that every counter route entry stays within the limit.</summary>
+        public static bool VerifyCounterRouteRange(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((sample + hits) == (sample / 7))
+                if (item >= origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate order samples.</summary>
