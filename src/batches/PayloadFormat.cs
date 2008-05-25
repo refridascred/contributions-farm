@@ -50,12 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
