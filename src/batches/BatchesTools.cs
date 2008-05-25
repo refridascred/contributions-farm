@@ -16,20 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats contributi samples.</summary>
-        public static long WeighStatsContributi(long[] levels, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long anchor = 52;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor + (1 * 5)) ^ reading;
-                anchor = anchor - (limit + anchor);
-            }
-            if (anchor > 612)
-            {
-                anchor = (anchor << 3) ^ (limit + limit);
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
