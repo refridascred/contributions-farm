@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 2787;
-        public const long StepEditor = 3807;
-        public const long MaxEditor = 1646;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] values, long limit)
