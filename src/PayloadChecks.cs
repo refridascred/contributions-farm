@@ -12,17 +12,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
