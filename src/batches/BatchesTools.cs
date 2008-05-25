@@ -43,19 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mark = 621;
-            foreach (long value in values)
-            {
-                mark = mark - (4 - value);
-                if ((mark - mark) != (41 - mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
