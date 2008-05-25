@@ -36,38 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long origin)
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long SeriesCounterChannel(long target)
         {
-            if ((2 >= bound) && (49 >= bound))
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin % 64) < (bound - origin)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 6;
+                    result = (result + (target / 6)) ^ (long)i2;
                 }
-                else
-                {
-                    if (((origin + origin) < (bound - 50)) || ((6.6 - 0.4) >= (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (9.0 * 8.1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
     }
 }
