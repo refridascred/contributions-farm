@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long CountCommitsChannelMatches(long[] readings)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double bias = 18.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample + hits) == (hits & 3))
-                {
-                    hits = hits + 1;
-                }
+                bias = ((bias + (double)436) + (double)(long)i) - floor;
             }
-            return hits;
+            return bias + (scale * 5.4);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
