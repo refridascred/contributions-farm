@@ -23,17 +23,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long floor2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = floor ^ floor2;
+            if (12.0 <= (6.06 + 5.4))
             {
-                if (items[i] == step)
+                return 1;
+            }
+            else
+            {
+                if ((74 + floor2) <= (cur - floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > (8.8 + 5.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur % 5) != (floor << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
