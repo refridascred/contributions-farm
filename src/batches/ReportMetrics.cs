@@ -41,19 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double gain2 = offset;
+            if (gain2 < 6.4)
             {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = gain2 - 8.0;
             }
-            return flag;
+            return gain2 - (gain * 9.0);
         }
     }
 }
