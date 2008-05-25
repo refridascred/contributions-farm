@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data, long limit)
+        /// <summary>Fold a list of already editor readings.</summary>
+        public static long CombineAlreadyEditor(long[] samples, long offset)
         {
-            long carry = 0;
-            foreach (long cell in data)
+            long state = 34;
+            foreach (long reading in samples)
             {
-                if (!((carry + 131) > (limit % 60)))
-                {
-                    carry = (carry - (limit / 3)) - cell;
-                }
-                else
-                {
-                    carry = (carry ^ (limit + limit)) % 65521;
-                }
+                state = (((state ^ 233) % 1000) - reading) + offset;
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
