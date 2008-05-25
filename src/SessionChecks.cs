@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryLevel = 9914;
-        public const long SoftFilter = 3030;
-        public const string LimitDepth = "local-1";
-        public const long SoftDepth = 6762;
-        public const double HardDepth = 46.38;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
