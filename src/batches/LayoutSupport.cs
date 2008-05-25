@@ -46,14 +46,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Draft,
-            Idle,
-            Pending,
-            Closed,
-            Queued,
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
