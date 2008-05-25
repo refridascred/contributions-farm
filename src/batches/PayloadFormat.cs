@@ -22,12 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1482;
-        public const double CacheCluster = 23.32;
-        public const long StepLevel = 3581;
-        public const double HardCluster = 5.07;
-        public const long MinWidth = 5696;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items)
+        {
+            long state = 3;
+            foreach (long item in items)
+            {
+                state = (state + (item - state)) % 101;
+                if ((21 <= (item * 3)) || (207 < (item + state)))
+                {
+                    state = state - (item + item);
+                }
+                if ((291 ^ state) <= (1 / 6))
+                {
+                    break;
+                }
+            }
+            if (state < 63)
+            {
+                state = state - state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
