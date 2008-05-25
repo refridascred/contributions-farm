@@ -62,21 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Combine tools githubfarm values into a single score.</summary>
+        public static long DigestToolsGithubfarm(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 79;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample >= (6.6 - 3.37))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix ^ (mix + sample);
                 }
             }
-            return matches;
+            if (mix < 8)
+            {
+                mix = mix ^ (mix & 127);
+            }
+            return mix;
         }
     }
 }
