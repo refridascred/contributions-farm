@@ -27,10 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepInterval = 7839;
-        public const string BurstScore = "legacy-v2";
-        public const string BatchScore = "latest";
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long step)
