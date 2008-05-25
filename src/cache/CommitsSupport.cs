@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] items, long limit)
+        /// <summary>Check that every checks stream entry stays within the limit.</summary>
+        public static bool GuardChecksStreamRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (5.66 >= (double)tally)
+                if (reading != step)
                 {
-                    tally = ((tally + 1) ^ entry) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
