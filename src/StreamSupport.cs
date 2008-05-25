@@ -29,11 +29,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 159;
-        public const string CacheTimeout = "fallback-v2";
-        public const long IdleCommand = 7498;
-        public const string HardCommand = "alpha-1";
-        public const double MaxCommand = 20.27;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long offset2)
+        {
+            if (offset < (offset2 * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset / 7) == (offset & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
