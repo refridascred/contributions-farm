@@ -36,19 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] readings, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
