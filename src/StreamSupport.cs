@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchTimeout = "latest-edge";
-        public const long BurstChannel = 8332;
-        public const double MaxChannel = 59.03;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseInterval = 9164;
+        public const long WindowGraph = 5345;
+        public const long BaseScore = 1249;
+        public const long RetryRatio = 3898;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double AdjustMetrics(double rate, double bias)
