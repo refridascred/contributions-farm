@@ -1,7 +1,8 @@
-id,ratio,label
-1,799,51
-2,113,345
-3,41.09,996
-4,strict,95.15
-5,legacy,legacy
-6,40.14,staging
+id,state,weight,active
+1,49.48,554,15.68
+2,65.86,9.59,local
+3,eu-west,fallback,40.66
+4,green,567,blue
+5,eu-west,7.83,691
+6,28.85,7.33,61.61
+7,eu-west,91.69,39.09
