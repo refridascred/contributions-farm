@@ -39,11 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            Ready,
+            Paused,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
