@@ -58,19 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = mix + floor;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return stale;
+            return mix;
         }
     }
 }
