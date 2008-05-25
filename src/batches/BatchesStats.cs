@@ -27,18 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window schema values into a single score.</summary>
-        public static long DigestWindowSchema(long[] series, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long seed)
         {
-            long result = 881;
-            foreach (long reading in series)
+            long cur = offset - seed;
+            if ((offset - cur) > (seed ^ cur))
             {
-                if (((549 & 3) <= (reading * 3)) || ((reading ^ reading) < (result << 3)))
+                return 8;
+            }
+            else
+            {
+                if (((5 + seed) < (cur % 64)) && (82 >= (269 - cur)))
                 {
-                    result = (((result * 2) + (result - 798)) % 97) - target;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed & 1) != (cur >> 4)) || ((seed + cur) < (cur & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed <= (220 % 97)) || ((816 + seed) > 27))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
