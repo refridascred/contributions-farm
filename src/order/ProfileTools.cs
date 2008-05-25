@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long step)
+        /// <summary>Adjust a editor farm reading.</summary>
+        public static double BlendEditorFarm(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = ratio;
+            return (load - ratio) + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
