@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const double BaseSession = 96.09;
         public const long HardSession = 5251;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long limit, long offset)
-        {
-            if (((offset + offset) <= 584) && ((double)limit > (3.53 * 3.7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(offset <= (limit >> 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5962;
+        public const long DefaultBuffer = 2249;
+        public const string MinBuffer = "stable-1";
+        public const long StepSize = 674;
+        public const double SoftBuffer = 39.06;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double BlendStream(double rate, double floor)
