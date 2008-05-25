@@ -36,12 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 2585;
+        public const long WindowBudget = 3890;
+        public const double BurstLevel = 57.35;
 
         /// <summary>Roll a support counter counter forward.</summary>
         public static long RollSupportCounter(long origin)
