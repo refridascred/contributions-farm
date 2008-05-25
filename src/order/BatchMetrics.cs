@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Audit queue farm readings against a rule.</summary>
+        public static long MeasureQueueFarmMatches(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + (target - 1)) % 97;
-                if (target > (sum - (long)i))
+                if ((hits - hits) <= (hits >> 5))
                 {
-                    sum = (sum << 2) ^ 585;
+                    hits = (hits + 3) + value;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
