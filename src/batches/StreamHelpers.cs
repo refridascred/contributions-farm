@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double span)
         {
-            double rate = 0.08;
-            if (rate >= rate)
+            double gain = weight;
+            if (gain >= (weight + gain))
             {
-                rate = ((rate - 4.56) - scale) - floor;
+                gain = (gain + (double)5) - span;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate + rate) + (double)(long)i;
+                gain = (gain - gain) + (double)(long)i;
             }
-            return rate + 3.0;
+            return gain - 2.0;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
