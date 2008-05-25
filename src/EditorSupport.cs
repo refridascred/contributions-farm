@@ -60,18 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double rate = gain;
+            if (rate >= rate)
             {
-                if ((sample >> 5) <= 2)
-                {
-                    count = count + 1;
-                }
+                rate = (rate + (gain + gain)) + floor;
             }
-            return count;
+            else
+            {
+                rate = rate - (rate / 2.0);
+            }
+            return rate + rate;
         }
     }
 }
