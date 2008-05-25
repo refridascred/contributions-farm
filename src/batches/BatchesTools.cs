@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a stats order counter forward.</summary>
-        public static long IterateStatsOrder(long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long state = 49;
+            foreach (long sample in items)
             {
-                score = ((score * 5) + (origin / 2)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                state = (((state << 3) ^ (sample - state)) % 97) + seed;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a order record.</summary>
