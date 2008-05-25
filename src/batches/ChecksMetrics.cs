@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 78.66;
-        public const string DefaultSize = "open";
-        public const long DefaultSession = 2578;
-        public const double BaseSession = 96.09;
-        public const long HardSession = 5251;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double offset)
+        {
+            double weight2 = offset;
+            if (weight2 >= (weight * 1.0))
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + offset;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double ratio, double span)
