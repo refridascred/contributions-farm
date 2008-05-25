@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long BaseDepth = 5513;
         public const long LimitTimeout = 3532;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] readings)
         {
-            Draft,
-            Done,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item >> 5) < item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate order session samples.</summary>
