@@ -29,19 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long edge = seed + seed2;
+            if (edge <= (seed % 97))
             {
-                if (reading != seed)
+                return 0;
+            }
+            else
+            {
+                if ((edge % 60) > (seed % 97))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + 539) > seed2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
