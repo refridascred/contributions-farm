@@ -1,5 +1,5 @@
 {
-  "checks_interval": "strict",
-  "burst_capacity_ms": 3964,
-  "batch_ratio": 20.05
+  "report_capacity": "eu-west",
+  "default_capacity_s": "open",
+  "compress": false
 }
