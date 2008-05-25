@@ -38,12 +38,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double bias)
-        {
-            double scale = bias;
-            return scale + (rate * 6.34);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 2272;
+        public const long RetryWidth = 6676;
+        public const long SoftPayload = 8692;
+        public const long BaseLevel = 3580;
+        public const long MaxPayload = 894;
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] levels)
