@@ -36,21 +36,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
