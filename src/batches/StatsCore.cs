@@ -65,10 +65,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 3676;
-        public const long BatchCount = 2008;
-        public const string MinSize = "fallback-edge";
-        public const long WindowBuffer = 5398;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
