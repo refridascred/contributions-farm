@@ -1,5 +1,7 @@
 {
-  "enabled": 32,
-  "compress": 5,
-  "soft_delay_s": [466, 310]
+  "warm_window_pct": 68.36,
+  "token_size": 250,
+  "token_ratio": false,
+  "compress": true,
+  "batch_threshold_ms": 60
 }
