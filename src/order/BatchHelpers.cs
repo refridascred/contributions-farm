@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long step, long origin)
-        {
-            long next = step - origin;
-            if ((double)step > (15.0 - 9.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next / 4) != (next / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (0 <= (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin < (next * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitTimeout = 1363;
+        public const long RetryRecord = 8709;
+        public const string WindowWidth = "stable";
+        public const long CacheRecord = 9087;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long limit, long target)
