@@ -1,8 +1,5 @@
 {
-  "report_capacity": "staging",
-  "poll_ratio": 47.66,
-  "metrics_ttl": "latest",
-  "poll_depth": 710,
-  "hard_ratio_count": 4295,
-  "batch_retries_count": "open"
+  "graph_limit": 62.61,
+  "readonly": "fallback",
+  "layout_threshold": 1024
 }
