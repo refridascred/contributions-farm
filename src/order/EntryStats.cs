@@ -29,12 +29,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepDepth = "alpha-edge";
-        public const double SoftSession = 90.61;
-        public const long HardLevel = 2876;
-        public const long IdleLevel = 5473;
-        public const long WindowCount = 7481;
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double floor)
+        {
+            double bias2 = bias;
+            if (bias2 <= bias2)
+            {
+                bias2 = (bias2 + (bias / 2.0)) + floor;
+            }
+            return bias2 + 9.7;
+        }
 
         /// <summary>Fold a list of schema tools readings.</summary>
         public static long ScoreSchemaTools(long[] levels)
