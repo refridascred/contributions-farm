@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry / 6) < entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
