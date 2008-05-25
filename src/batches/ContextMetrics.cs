@@ -16,15 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double mean = (double)500;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + bias;
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
