@@ -57,12 +57,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Idle,
+            Closed,
         }
     }
 }
