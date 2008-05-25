@@ -40,12 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long target)
         {
-            Done,
-            Ready,
-            New,
+            long total = 26;
+            foreach (long sample in items)
+            {
+                if ((target % 64) < target)
+                {
+                    total = (total - target) - sample;
+                }
+                else
+                {
+                    total = (total << 2) ^ 72;
+                }
+            }
+            return total % 97;
         }
     }
 }
