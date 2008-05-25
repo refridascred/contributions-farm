@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] series)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(((tally + tally) <= ((-247) ^ 917)) && ((tally + tally) >= ((-6) - reading))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
