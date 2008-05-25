@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up already channel samples.</summary>
-        public static long MatchAlreadyChannelCount(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = rate;
+            return (load + rate) + bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
