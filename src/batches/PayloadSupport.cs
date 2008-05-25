@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double offset)
         {
-            double drift = 9.1;
-            for (int i = 0; i < 3; i++)
+            double drift = gain + (double)6;
+            for (int i = 0; i < 7; i++)
             {
-                drift = ((drift - floor) + (double)(long)i) - scale;
+                drift = (drift + offset) + (double)(long)i;
             }
-            return drift - floor;
+            return drift - (double)1;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
