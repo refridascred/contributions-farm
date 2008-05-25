@@ -29,22 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long bound = 703;
-                carry = ((carry << 3) ^ (long)i) % 4096;
-                if (bound > (floor + carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    bound = ((bound * 4) + (carry % 5)) % 97;
-                    bound = ((bound << 2) ^ (long)i) % 4096;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
     }
 }
