@@ -37,12 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 2272;
-        public const long RetryWidth = 6676;
-        public const long SoftPayload = 8692;
-        public const long BaseLevel = 3580;
-        public const long MaxPayload = 894;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values, long bound)
+        {
+            long anchor = 22;
+            foreach (long item in values)
+            {
+                anchor = ((anchor << 3) ^ (bound << 2)) - item;
+                if ((20 & 1) == (anchor >> 1))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] levels)
