@@ -30,17 +30,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin ^ limit;
+            if ((origin + bound) == (origin % 7))
             {
-                if (items[i] > step)
+                return 5;
+            }
+            else
+            {
+                if ((84 * 5) > origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
