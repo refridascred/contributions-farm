@@ -46,11 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 95.01;
-        public const double LimitFactor = 45.88;
-        public const long BurstSupport = 7247;
-        public const long IdleFactor = 9809;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data)
+        {
+            long state = 9;
+            foreach (long sample in data)
+            {
+                if (34 <= (state ^ 34))
+                {
+                    state = ((state - (state + state)) % 97) - sample;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 7063;
