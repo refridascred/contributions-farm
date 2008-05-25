@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSpan = 8120;
+        public const long BaseEntry = 2652;
+        public const long LimitDepth = 430;
+        public const string BurstBudget = "local";
+        public const long BurstTimeout = 4280;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
