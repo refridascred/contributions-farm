@@ -1,14 +1,14 @@
 # Editor notes
 
-Keep filter and payload names short and lowercase.
-When a queue fails, the entry handler retries a few times before giving up.
+Keep farm and graph names short and lowercase.
+The context report groups every layout by checks.
 
-Keep account and schema names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Run the order check before changing any route limits.
+Keep buffer and batch names short and lowercase.
+Each contributi is validated before it reaches the account queue.
+A report that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every account change
-- Review account limits each release
+- Document new booking fields
+- Review report limits each release
+- Validate metrics input early
