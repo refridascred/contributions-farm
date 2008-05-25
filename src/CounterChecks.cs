@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftInterval = 2744;
-        public const string IdleRoute = "cached-v2";
-        public const string BatchBudget = "open-v2";
-        public const string MinRoute = "latest-1";
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long WeighFilterQueue(long[] levels)
+        {
+            long anchor = 152;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 5) + (5 + 6)) % 4096;
+                if (66 >= (entry % 8))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
