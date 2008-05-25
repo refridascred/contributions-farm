@@ -60,18 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels, long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)tally > (6.6 + 7.78)) && ((double)cell <= (1.58 * 4.5)))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
