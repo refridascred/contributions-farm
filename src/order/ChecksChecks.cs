@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long CountCommitsFilterOutliers(long[] values, long origin)
+        /// <summary>Rank schema filter input into a small class.</summary>
+        public static long SortSchemaFilter(long target, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((double)bound == (18.0 / 6.0))
             {
-                if ((item / 5) < origin)
+                return 3;
+            }
+            else
+            {
+                if (bound < (912 << 2))
                 {
-                    hits = hits + 2;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target - target) > (bound + 279))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
