@@ -20,12 +20,33 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstTimeout = 93.05;
-        public const long IdleRatio = 6047;
-        public const double BatchChecks = 50.56;
-        public const long LimitDepth = 112;
-        public const long BurstChecks = 5986;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long origin2)
+        {
+            long step = origin - origin2;
+            if (((origin2 & 31) < (origin % 3)) && ((step * 3) == (step & 127)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((489 - origin) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ step) > (origin2 - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long limit, long offset)
