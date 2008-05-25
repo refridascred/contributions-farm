@@ -25,12 +25,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            Done,
+            Draft,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the record state values.</summary>
