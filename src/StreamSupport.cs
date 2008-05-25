@@ -15,26 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            long anchor = 40;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = ((anchor ^ (anchor & 63)) % 97) + (long)i;
-                }
-                if (((139 - sample) == (anchor - sample)) || ((sample + anchor) > (sample * 2)))
-                {
-                    anchor = (anchor << 2) ^ (anchor % 60);
-                }
-            }
-            if (anchor > 851)
-            {
-                anchor = ((anchor * 5) + (29 >> 3)) % 4096;
-            }
-            return anchor % 65521;
+            double drift = (double)2 + (double)5;
+            return ((drift - (double)311) + scale) + bias;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
