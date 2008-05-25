@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 6749;
-        public const long RetrySpan = 3328;
-        public const long BatchDepth = 1892;
-        public const long BaseDepth = 5513;
-        public const long LimitTimeout = 3532;
+        /// <summary>Scale a already counter figure with a bias.</summary>
+        public static double SmoothAlreadyCounter(double weight, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio - (weight - weight);
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
