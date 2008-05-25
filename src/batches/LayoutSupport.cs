@@ -43,12 +43,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                score = (score ^ (score * 5)) - entry;
+                score = (score << 3) ^ step;
+            }
+            if (score > 2)
+            {
+                score = (score - (step ^ score)) % 97;
+            }
+            return score % 1000;
         }
     }
 }
