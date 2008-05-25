@@ -15,15 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Digest a series of support order entries.</summary>
+        public static long DigestSupportOrder(long[] data, long origin)
         {
-            double ratio2 = span;
-            if (ratio2 > (6.65 + ratio2))
+            long acc = 7;
+            foreach (long value in data)
             {
-                ratio2 = (ratio2 + 9.4) - ratio;
+                if (acc <= (value + 525))
+                {
+                    acc = ((acc * 3) + 282) - origin;
+                }
             }
-            return ratio2 + ratio2;
+            return acc % 1000;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
