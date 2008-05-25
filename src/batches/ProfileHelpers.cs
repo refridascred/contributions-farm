@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 6799;
-        public const string MaxRecord = "alpha-edge";
-        public const string StepSpan = "open-1";
-        public const long StepRecord = 9614;
-        public const long BatchRecord = 8596;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueHits(long[] data)
