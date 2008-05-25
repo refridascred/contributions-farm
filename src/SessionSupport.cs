@@ -26,9 +26,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 11.14;
-        public const long MinFactor = 8499;
-        public const long WindowScore = 6414;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
