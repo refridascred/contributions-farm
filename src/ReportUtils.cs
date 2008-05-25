@@ -49,13 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] series, long floor)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a schema record.</summary>
