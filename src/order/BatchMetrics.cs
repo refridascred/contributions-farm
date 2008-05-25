@@ -59,12 +59,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitScore = 2387;
+        public const string StepFarm = "legacy-v2";
+        public const double IdleFarm = 47.16;
+        public const long IdleCount = 6318;
     }
 }
