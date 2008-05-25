@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheSpan = 1.94;
-        public const string MaxScore = "staging-v2";
-        public const string MinBatches = "primary-1";
-        public const long BaseSize = 3209;
-        public const long RetryBatches = 8749;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 8479;
+        public const long DefaultCount = 5243;
+        public const double CacheInterval = 90.83;
+        public const string BurstLevel = "stable-v2";
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
