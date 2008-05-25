@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank schema filter input into a small class.</summary>
-        public static long SortSchemaFilter(long target, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            if ((double)bound == (18.0 / 6.0))
+            double bias = (double)(6 * 3);
+            if (bias >= offset)
             {
-                return 3;
+                bias = (bias - (offset / 6.0)) - rate;
             }
             else
             {
-                if (bound < (912 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) > (bound + 279))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                bias = bias + (offset - offset);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Describe the entry level values.</summary>
