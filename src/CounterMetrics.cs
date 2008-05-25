@@ -59,20 +59,19 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                long lane = (anchor >> 1) + (0 % 12);
-                if ((lane << 1) == (21 - lane))
+                if (entry > step)
                 {
-                    anchor = (anchor << 2) ^ (seed << 1);
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
     }
 }
