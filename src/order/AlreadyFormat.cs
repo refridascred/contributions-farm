@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] values)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (seen < (70 * 2))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
