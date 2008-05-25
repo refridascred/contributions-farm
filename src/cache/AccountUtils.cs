@@ -35,19 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long result = 8;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result - (value + target);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (result < 9)
-            {
-                result = (result ^ 5) % 1000;
-            }
-            return result;
+            return tally;
         }
     }
 }
