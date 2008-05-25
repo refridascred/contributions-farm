@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (3.07 > (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 332;
+        public const long BatchFilter = 9081;
+        public const long CacheFilter = 3486;
+        public const long CacheTimeout = 6600;
 
         /// <summary>Digest a series of queue cluster entries.</summary>
         public static long FoldQueueCluster(long[] readings)
