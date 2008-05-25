@@ -74,19 +74,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route layout readings against a bound.</summary>
-        public static bool GuardRouteLayoutBounds(long[] values, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= seed)
+                if ((double)(long)i != (7.48 - 9.7))
                 {
-                    flag = false;
+                    score = (score + target) % 1000;
+                    score = (score << 3) ^ (-2);
                     break;
                 }
+                score = ((score * 2) + (score * 2)) % 4096;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
