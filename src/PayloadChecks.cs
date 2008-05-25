@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] samples, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((seed < ((long)samples.Length >> 1)) || ((seed + datum) < (68 + seed))) && ((double)datum < 5.4))
+                if (sample != floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Roll a counter stats counter forward.</summary>
