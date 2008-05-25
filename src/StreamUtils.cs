@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit window contributi readings against a rule.</summary>
-        public static long MeasureWindowContributiOutliers(long[] samples, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches - matches) <= target)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
