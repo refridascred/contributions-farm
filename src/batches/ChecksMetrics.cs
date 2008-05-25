@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            double weight2 = offset;
-            if (weight2 >= (weight * 1.0))
+            long matches = 0;
+            foreach (long item in data)
             {
-                weight2 = weight2 - weight;
+                if (((double)(long)data.Length == (double)item) || (((matches + item) <= item) || ((-53) <= item)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight2 + offset;
+            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
