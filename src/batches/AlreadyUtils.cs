@@ -57,24 +57,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            if ((origin + 2) < seed)
             {
-                if (((long)i - 49) != (acc - origin))
+                return 3;
+            }
+            else
+            {
+                if ((seed & 31) > (55 & 63))
                 {
-                    acc = (acc ^ acc) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (origin * 2)) % 1000;
-                    acc = (acc * 5) + (acc % 5);
+                    if (11.0 < (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
         }
     }
 }
