@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally + value) != (tally + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1433;
+        public const long BaseSupport = 8460;
+        public const long LimitSupport = 7793;
+        public const long StepSupport = 2004;
+        public const double MinWidth = 60.3;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
