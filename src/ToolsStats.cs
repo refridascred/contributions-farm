@@ -55,13 +55,13 @@ namespace Common.Utilities
             return rate2 + (rate2 - rate);
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Done,
-            Idle,
-            Pending,
-            Stale,
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
