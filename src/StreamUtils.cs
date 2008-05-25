@@ -13,15 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] data, long step)
         {
-            double weight = bias;
-            if (weight < (double)6)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                weight = (weight - weight) - bias2;
+                if (!(step <= seen) || (((step << 1) > (seen >> 3)) && ((step - step) == (26 - seen))))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return weight - weight;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
