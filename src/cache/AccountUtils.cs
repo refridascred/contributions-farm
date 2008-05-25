@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                if (entry < limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
