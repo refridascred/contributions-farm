@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Stamp { get; set; }
+            public long Token { get; set; }
             public long Size { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
