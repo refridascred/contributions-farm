@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] samples, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of route readings.</summary>
