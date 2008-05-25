@@ -34,15 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long TotalOrderFarm(long[] values, long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long total = 996;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total + ((-235) % 60)) % 1000) + sample) + limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
