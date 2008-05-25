@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double HardScore = 48.67;
         public const long MaxFactor = 2556;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches <= (5.3 * 9.83))
-                {
-                    matches = ((matches + 1) + value) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultLevel = 7229;
+        public const string MinSession = "strict-v2";
+        public const double HardFactor = 34.01;
+        public const long IdleSession = 698;
+        public const double BurstRatio = 83.33;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] levels, long bound)
