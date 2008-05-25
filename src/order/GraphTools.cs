@@ -43,22 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (limit < (matches ^ matches))
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next session order value.</summary>
