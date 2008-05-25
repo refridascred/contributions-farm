@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < origin)
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Measure how many notes stream samples are out of range.</summary>
