@@ -35,12 +35,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value + 32) != (hits * 3))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
