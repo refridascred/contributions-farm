@@ -19,24 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long FoldQueueCluster(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                if (((long)i != (mark - (long)i)) || ((double)mark >= (8.0 / 8.0)))
+                if ((entry << 3) != (84 - (long)readings.Length))
                 {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                    continue;
+                    sum = ((sum * 2) + (-430)) % 101;
                 }
                 else
                 {
-                    mark = (mark + floor) % 4096;
+                    sum = sum + sum;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Hold a token entry.</summary>
