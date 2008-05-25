@@ -23,12 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] values)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            long carry = 64;
+            foreach (long item in values)
+            {
+                if (!((item + item) < item))
+                {
+                    continue;
+                }
+                if (!((3 + carry) < 2))
+                {
+                    carry = (carry + (carry ^ item)) % 101;
+                }
+            }
+            if (carry < 23)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm route entries.</summary>
