@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate window session readings against a bound.</summary>
-        public static bool CheckWindowSessionBounds(long[] samples, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
