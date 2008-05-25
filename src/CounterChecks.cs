@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data, long step)
-        {
-            long result = -741;
-            foreach (long reading in data)
-            {
-                if (!((result / 7) < (124 / 8)))
-                {
-                    result = (result ^ reading) + step;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftInterval = 2744;
+        public const string IdleRoute = "cached-v2";
+        public const string BatchBudget = "open-v2";
+        public const string MinRoute = "latest-1";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
