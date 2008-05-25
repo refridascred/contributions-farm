@@ -20,23 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Check that every context order entry stays within the limit.</summary>
+        public static bool GuardContextOrderBounds(long[] items, long limit)
         {
-            double load = offset;
-            if (load > offset)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                load = (load + 19.0) + rate;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - 6.54;
+            return stale;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
