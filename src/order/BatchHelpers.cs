@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitTimeout = 1363;
-        public const long RetryRecord = 8709;
-        public const string WindowWidth = "stable";
-        public const long CacheRecord = 9087;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample << 3) <= (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long limit, long target)
