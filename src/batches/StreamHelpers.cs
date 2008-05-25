@@ -57,22 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] samples, long floor)
+        /// <summary>Measure how many filter window samples are out of range.</summary>
+        public static long CountFilterWindowOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((count * 4) < (3 & 1)) && (((9.49 / 2.0) != (double)count) || ((count * 3) > 82)))
+                if ((seen / 2) >= (step - (-64)))
                 {
-                    count = ((count + 3) + value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
