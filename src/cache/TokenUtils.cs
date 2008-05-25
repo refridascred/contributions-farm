@@ -23,14 +23,28 @@ namespace Common.Utilities
         public const long CacheScore = 4625;
         public const long BurstToken = 390;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long seed)
         {
-            Retry,
-            Paused,
-            Closed,
-            Pending,
-            Queued,
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((-677) > ((long)i + seed))
+                {
+                    total = (total ^ (seed + total)) % 101;
+                }
+                if (((-95) + total) < ((long)i * 3))
+                {
+                    total = (total ^ (seed & 255)) % 1000;
+                    total = (total + 16) % 97;
+                }
+                if ((total + seed) > seed)
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
