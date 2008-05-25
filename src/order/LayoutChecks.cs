@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics entry.</summary>
