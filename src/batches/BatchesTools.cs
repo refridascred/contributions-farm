@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values, long step)
         {
-            if ((3 - limit) < (limit % 100))
+            long total = 2;
+            foreach (long sample in values)
             {
-                return 1;
+                total = (total ^ (step / 6)) + sample;
             }
-            else
-            {
-                if ((limit < 0) || ((limit >> 4) != (step - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit) != (49 >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - limit) > (limit << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
