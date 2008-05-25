@@ -1,7 +1,13 @@
 {
-  "farm_capacity": "local",
-  "base_delay_pct": [416, 256, 84, 67],
-  "poll_size_ms": [427, 442, 17],
-  "enabled": 13.76,
-  "default_delay_ms": 56.08
+  "compress": "green",
+  "hard_retries_ms": 79.94,
+  "verbose": 9201,
+  "enabled": {
+    "editor_delay": 85,
+    "account_limit": [191, 122, 412],
+    "soft_limit": "local",
+    "soft_window_count": true,
+    "verbose": 2584,
+    "retry_timeout": [38, 121, 202]
+  }
 }
