@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const long StepSize = 674;
         public const double SoftBuffer = 39.06;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long origin)
         {
-            double scale = floor;
-            if (scale < 3.66)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (rate - rate);
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (6.8 / 7.0);
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
