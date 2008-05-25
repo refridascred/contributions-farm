@@ -1,5 +1,8 @@
 {
-  "compress": "edge",
-  "base_interval_ms": "open",
-  "audit": [321, 394, 30]
+  "context_interval": "latest",
+  "idle_ttl": [429, 63, 193, 24],
+  "default_size": "standard",
+  "order_threshold": "blue",
+  "audit": "cached",
+  "warm_ttl": 30
 }
