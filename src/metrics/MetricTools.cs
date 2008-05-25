@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 35.48;
-        public const double DefaultMetrics = 27.61;
-        public const long BatchMetrics = 9336;
-        public const string HardMetrics = "alpha-edge";
-        public const long StepMetrics = 1223;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (tally <= (value << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
         public static long LocateSessionFilterIndex(long[] readings, long floor)
