@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] series)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(((tally + tally) <= ((-247) ^ 917)) && ((tally + tally) >= ((-6) - reading))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
