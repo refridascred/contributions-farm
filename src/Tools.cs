@@ -55,12 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double offset)
         {
-            Done,
-            Stale,
-            Idle,
+            double ratio = offset + offset;
+            if (ratio >= (double)92)
+            {
+                ratio = ratio - offset;
+            }
+            else
+            {
+                ratio = ratio + (scale * 4.1);
+            }
+            return ratio + (scale * 7.14);
         }
     }
 }
