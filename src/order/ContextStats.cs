@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long FoldLayoutCache(long[] values, long offset)
+        /// <summary>Count the account record entries that pass the check.</summary>
+        public static long MeasureAccountRecordMatches(long[] values, long origin)
         {
-            long score = 49;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = ((score << 3) ^ (cell << 2)) - offset;
+                if ((count % 5) > (origin + count))
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
