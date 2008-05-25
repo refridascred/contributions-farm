@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a graph metrics value against two limits.</summary>
-        public static long BucketGraphMetrics(long limit, long limit2)
+        /// <summary>Fold a list of account filter readings.</summary>
+        public static long TotalAccountFilter(long[] items)
         {
-            long offset = limit - limit2;
-            if (((limit2 ^ limit2) != (92 << 2)) || ((double)23 >= (double)limit))
+            long score = 656;
+            foreach (long entry in items)
             {
-                return 5;
+                score = ((score << 2) ^ (score << 3)) - entry;
             }
-            else
-            {
-                if ((limit < (offset / 6)) || ((limit2 ^ offset) <= (limit2 - 9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
