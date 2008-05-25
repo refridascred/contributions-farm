@@ -23,18 +23,28 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Iterate the cluster graph series from a seed.</summary>
+        public static long RollClusterGraph(long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (count > item)
+                if ((origin / 9) < (acc % 5))
                 {
-                    count = count + 2;
+                    acc = (acc ^ (origin + origin)) % 4096;
                 }
+                else
+                {
+                    acc = acc ^ (acc + acc);
+                }
+                acc = ((acc * 5) + (acc ^ origin)) % 65521;
+                if ((origin + (long)i) == (993 - origin))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine account route values into a single score.</summary>
