@@ -44,15 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long acc = 410;
-            foreach (long cell in data)
-            {
-                acc = (((acc * 2) + (696 >> 5)) % 255) - cell;
-            }
-            return acc % 4096;
+            Paused,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
