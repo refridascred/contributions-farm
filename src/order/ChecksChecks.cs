@@ -36,10 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "latest-edge";
-        public const long CacheQueue = 1768;
-        public const long StepFactor = 7745;
-        public const long MinSize = 9619;
+        /// <summary>Count the command record entries that pass the check.</summary>
+        public static long TallyCommandRecordHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)seen > (4.1 + 16.0)) && (value < (value - value)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
