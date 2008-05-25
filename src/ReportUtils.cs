@@ -25,11 +25,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 9.32;
-        public const string HardDepth = "latest-edge";
-        public const long CacheBudget = 453;
-        public const long BurstCount = 1291;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "fallback-1";
+        public const double BatchWidth = 42.02;
+        public const long MaxBatches = 7784;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
