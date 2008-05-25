@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((940 + cell) >= (cell / 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
