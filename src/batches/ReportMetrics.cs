@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Stale,
-            Idle,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 72.87;
+        public const double DefaultWidth = 70.14;
+        public const long MaxBatch = 4394;
+        public const long DefaultSize = 1540;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] samples, long seed)
