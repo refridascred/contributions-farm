@@ -30,32 +30,18 @@ namespace Common.Utilities
         public const double LimitAlready = 58.11;
         public const long HardInterval = 7449;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long limit, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long cur = limit + origin;
-            if ((origin + origin) <= 205)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6 + 928) < limit)
+                if ((hits << 3) != (hits ^ (-852)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.0 - 7.9) != (double)origin) || (origin < (cur + 88)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a window counter value against two limits.</summary>
