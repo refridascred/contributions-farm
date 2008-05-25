@@ -35,15 +35,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long step)
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
+            if ((step + 375) < step)
             {
-                load = ((load - (double)0) + (double)(long)i) - ratio;
+                return 0;
             }
-            return load + (2.34 + 9.89);
+            else
+            {
+                if (!((3 << 1) < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 / 2.0) == (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
