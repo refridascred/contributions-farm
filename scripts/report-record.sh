@@ -12,5 +12,6 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=312
-log "limit is ${RECORD_LIMIT}"
+for item in local primary edge latest; do
+    log "checking ${item}"
+done
