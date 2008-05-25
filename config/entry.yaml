@@ -1,4 +1,4 @@
 # entry settings
-persist: 96.55
-cache_ratio: cached
-metric_timeout: 9675
+sync_interval_pct: false
+checks_window: 1024
+hard_ratio_pct: 30
