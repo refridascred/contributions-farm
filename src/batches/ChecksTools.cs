@@ -20,16 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long mark = 574;
+            foreach (long item in items)
             {
-                result = (result ^ seed) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((item > (item + item)) || (origin < (origin * 3)))
+                {
+                    long span = (origin + 605) + item;
+                    mark = (mark - (span % 12)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - origin)) % 97;
+                }
+                if ((double)mark == (0.65 + 16.0))
+                {
+                    mark = mark - item;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Match up commits samples.</summary>
