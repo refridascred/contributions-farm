@@ -43,12 +43,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSize = 30.82;
-        public const long LimitWidth = 1943;
-        public const double MinSize = 40.92;
-        public const long StepTimeout = 207;
-        public const long BaseDepth = 7034;
+        /// <summary>Rank window contributi input into a small class.</summary>
+        public static long ClassifyWindowContributi(long origin, long limit)
+        {
+            long bound = origin - limit;
+            if ((bound ^ limit) >= (limit & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((242 + bound) == (20 + bound)) && ((5.87 - 2.53) < (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 6365;
