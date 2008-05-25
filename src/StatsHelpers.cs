@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long floor)
+        /// <summary>Count the cache record entries that pass the check.</summary>
+        public static long TallyCacheRecordHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                if (!((item + item) == (item & 3)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
