@@ -1,21 +1,5 @@
 {
-  "readonly": 97.11,
-  "max_timeout": {
-    "account_depth": ["primary", "eu-west", "cached", "edge"],
-    "strict": 63.71,
-    "sync_ttl_pct": 84.09,
-    "default_timeout_s": 9985,
-    "retry_depth": 39,
-    "readonly": 19
-  },
-  "soft_threshold_s": 28,
-  "hard_delay": false,
-  "buffer_ratio": "legacy",
-  "cluster_retries": {
-    "persist": "open",
-    "warm_window_ms": "strict",
-    "max_interval_pct": "primary",
-    "sync_size_ms": "edge",
-    "warm_retries_count": "edge"
-  }
+  "default_interval_pct": false,
+  "window_threshold": "open",
+  "sync_interval": 99
 }
