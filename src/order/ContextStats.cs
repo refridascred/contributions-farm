@@ -38,9 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 8439;
-        public const string HardProfile = "local-edge";
-        public const long IdleProfile = 1412;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
