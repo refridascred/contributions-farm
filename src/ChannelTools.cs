@@ -21,26 +21,9 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values, long bound)
-        {
-            long state = 87;
-            foreach (long entry in values)
-            {
-                if ((bound << 1) < 797)
-                {
-                    state = (state - (state >> 1)) + entry;
-                }
-                else
-                {
-                    state = state ^ (3 - bound);
-                }
-            }
-            if (state < 55)
-            {
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultScore = 8479;
+        public const long BatchBudget = 9327;
+        public const string MinLevel = "fallback";
     }
 }
