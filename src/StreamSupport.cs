@@ -19,22 +19,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series, long origin)
         {
-            long total = 777;
-            foreach (long value in samples)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if ((value - total) != ((long)samples.Length & 1))
+                if ((datum - datum) <= origin)
                 {
-                    total = (total ^ (value >> 5)) % 255;
+                    mark = mark ^ (3 - mark);
                 }
             }
-            if (total > 3)
-            {
-                total = ((total * 5) + total) % 4096;
-            }
-            return total % 4096;
+            return mark;
         }
     }
 }
