@@ -1,15 +1,14 @@
 # Layout notes
 
-Keep githubfarm and cluster names short and lowercase.
-Each stream is validated before it reaches the stats queue.
-Run the context check before changing any context limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the contributi handler retries a few times before giving up.
 
-Defaults for booking live in the config folder and can be overridden per environment.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep profile and checks names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate token input early
-- Prefer profile defaults
+- Prefer stream defaults
+- Log every layout change
+- Keep cache values small
