@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up filter report samples.</summary>
-        public static long OverlapFilterReportCount(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((95 <= (bound % 3)) || ((seed * 5) == (87 + seed)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (2.7 + 1.0))
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
