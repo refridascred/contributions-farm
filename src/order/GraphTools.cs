@@ -26,13 +26,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long FindGraphChannelIndex(long[] items, long origin)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
