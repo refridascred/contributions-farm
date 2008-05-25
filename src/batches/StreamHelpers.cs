@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] data, long bound)
+        /// <summary>Find the first report channel entry that matches the target.</summary>
+        public static long SeekReportChannelIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < bound)
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
