@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary staging; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=93
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=140
-log "limit is ${BUFFER_LIMIT}"
