@@ -36,32 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long span = origin ^ floor;
-            if (9.3 < (double)span)
+            long carry = 2;
+            foreach (long value in items)
             {
-                return 8;
+                carry = (carry ^ carry) + value;
             }
-            else
+            if (carry > 242)
             {
-                if ((7.0 * 0.7) == (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor < span) || ((double)span < (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = ((carry * 3) + (carry % 64)) % 65521;
             }
+            return carry % 65521;
         }
     }
 }
