@@ -19,20 +19,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((carry + 660) < (1 * 3)))
+                if (item > (hits >> 5))
                 {
-                    carry = (carry + origin) % 255;
+                    hits = (hits + 2) - step;
                 }
-                carry = (carry + carry) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
