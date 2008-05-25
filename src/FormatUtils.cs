@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data)
         {
-            if (seed <= (seed + 89))
+            long carry = 583;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (step - seed))
+                if ((entry + entry) < (entry - carry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((7 / 3) != (seed + seed)) || (3.13 >= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((289 + seed) >= step) || (((-7) / 8) > (step * 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry ^ (entry + carry)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a tools summary.</summary>
