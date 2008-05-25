@@ -1,12 +1,8 @@
 {
-  "entry_ttl": true,
-  "verbose": 48,
-  "poll_ttl": {
-    "entry_retries": 59.54,
-    "checks_ratio": 23,
-    "persist": false,
-    "retry_threshold": true,
-    "readonly": "edge"
-  },
-  "persist": 8612
+  "counter_delay": 68,
+  "format_ratio": 88,
+  "metric_threshold": "local",
+  "default_timeout": 89.55,
+  "soft_window_s": "legacy",
+  "warm_threshold_ms": true
 }
