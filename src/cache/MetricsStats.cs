@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long BurstChecks = 5118;
         public const long BurstBudget = 3679;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 2;
-            foreach (long item in readings)
-            {
-                score = (score << 2) ^ (score >> 5);
-                if ((item % 8) > score)
-                {
-                    score = score + (score & 31);
-                }
-            }
-            return score % 97;
+            Locked,
+            Queued,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
