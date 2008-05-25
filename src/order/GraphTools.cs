@@ -35,32 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a payload graph value against two limits.</summary>
-        public static long ClassifyPayloadGraph(long limit, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long edge = limit + offset;
-            if ((offset & 255) > (7 & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge >> 4) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Derive the next support cluster value from a seed.</summary>
