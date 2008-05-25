@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Done,
-            Idle,
-            Stale,
-            Locked,
-            Failed,
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of queue cluster entries.</summary>
