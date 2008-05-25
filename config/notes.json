@@ -1,12 +1,5 @@
 {
-  "max_ratio_count": {
-    "retry_window_count": "strict",
-    "retry_capacity": 6675,
-    "warm_retries_count": ["cached", "latest", "stable"],
-    "batch_ratio_ms": ["staging", "legacy"],
-    "report_depth": false,
-    "sync_ttl": [316, 382, 236]
-  },
-  "account_limit": 100,
-  "cache_depth_s": "strict"
+  "soft_threshold_pct": false,
+  "window_window": "fallback",
+  "report_ratio": "cached"
 }
