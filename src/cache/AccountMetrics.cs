@@ -50,11 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Look up the position of a report metric sample.</summary>
+        public static long LocateReportMetricIndex(long[] values, long seed)
         {
-            double rate = bias;
-            return (rate + (double)71) + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
