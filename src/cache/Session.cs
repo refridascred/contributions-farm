@@ -39,10 +39,40 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 9532;
-        public const string RetryToken = "legacy-v2";
-        public const string StepDepth = "standard";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long floor)
+        {
+            long cur = offset + floor;
+            if ((double)floor > (3.4 + 0.39))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 5) >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (offset << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (1.9 <= (double)cur)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes farm entries that pass the check.</summary>
         public static long CountNotesFarmGaps(long[] data, long step)
