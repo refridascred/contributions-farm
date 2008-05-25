@@ -35,25 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] series, long seed)
         {
-            long prev = seed ^ target;
-            if ((seed - seed) <= (prev ^ (-117)))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + seed) < (target & 255)) && ((4.92 + 8.05) >= (double)prev))
+                if (seed > sample)
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
