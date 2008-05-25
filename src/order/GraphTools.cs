@@ -49,12 +49,18 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the batch layout entries that pass the check.</summary>
+        public static long CountBatchLayoutOutliers(long[] items, long limit)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((limit < (37 / 9)) || ((cell * 4) >= (seen / 3))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
