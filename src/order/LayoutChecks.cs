@@ -38,10 +38,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinLevel = "alpha-edge";
-        public const long MinAccount = 5338;
-        public const double DefaultAccount = 76.83;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long step)
