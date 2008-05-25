@@ -80,11 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8689;
-        public const string DefaultDepth = "standard";
-        public const double RetrySize = 39.03;
-        public const double StepFormat = 74.49;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] samples)
