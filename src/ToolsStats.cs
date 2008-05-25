@@ -33,19 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((809 - seen) <= ((long)values.Length - 12))
-                {
-                    seen = ((seen + 1) ^ item) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 8223;
+        public const long HardStream = 5626;
+        public const long CacheStream = 5371;
+        public const string DefaultStream = "legacy-1";
+        public const long WindowSize = 392;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportLimits(long[] values, long limit)
