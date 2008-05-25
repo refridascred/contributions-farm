@@ -47,19 +47,18 @@ namespace Common.Utilities
             return load + (5.12 + offset);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] series, long target)
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long CountStreamContributiHits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item < target)
+                if ((2.74 + 9.4) <= (double)target)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
