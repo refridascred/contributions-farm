@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(1 + 225);
+            if (scale >= span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + 9.0;
             }
-            return count;
+            return scale - (rate - span);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
