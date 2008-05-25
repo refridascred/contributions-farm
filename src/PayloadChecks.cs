@@ -65,18 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((96 <= cell) && ((tally < (tally - tally)) && (cell < tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
