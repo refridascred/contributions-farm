@@ -26,12 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long seed)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
