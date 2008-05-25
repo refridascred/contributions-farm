@@ -24,10 +24,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 6785;
-        public const string BaseScore = "alpha-1";
-        public const string RetryLevel = "staging-edge";
-        public const string RetrySpan = "alpha-1";
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 2) + (862 ^ 642)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
