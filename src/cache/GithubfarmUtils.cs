@@ -18,24 +18,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double rate, double floor)
-        {
-            double drift = floor;
-            if (drift >= (7.0 / 3.0))
-            {
-                drift = (drift + (double)568) - rate;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (floor + 4.82)) + (double)(long)i;
-            }
-            return drift - (drift * 6.77);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 266;
+        public const double DefaultDepth = 34.36;
+        public const double CacheCounter = 67.9;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
