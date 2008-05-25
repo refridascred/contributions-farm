@@ -35,13 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] series, long target)
         {
-            Closed,
-            Locked,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count << 1) < (1 / 9))
+                {
+                    count = ((count + 1) + datum) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
