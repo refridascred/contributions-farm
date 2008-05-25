@@ -1,6 +1,16 @@
 {
-  "cluster_ttl": [147, 390, 41],
-  "idle_retries": false,
-  "retry_interval": "primary",
-  "audit": [186, 155, 281]
+  "strict": 4,
+  "verbose": ["strict", "blue", "fallback", "standard"],
+  "command_delay": {
+    "cache_limit_ms": {
+      "burst_limit_pct": true,
+      "channel_interval": "latest",
+      "max_capacity_s": [205, 95],
+      "burst_capacity_s": 42.59,
+      "poll_threshold_pct": 79.68
+    },
+    "hard_delay": [120, 354, 111],
+    "schema_limit": 30,
+    "report_capacity": 77
+  }
 }
