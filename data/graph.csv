@@ -1,6 +1,8 @@
-id,level,weight,label
-1,16,5.99,eu-west
-2,805,primary,803
-3,68.04,927,60
-4,green,430,32
-5,208,873,401
+id,count,rank
+1,45.45,cached
+2,508,31.21
+3,405,cached
+4,90.92,903
+5,stable,0.08
+6,722,423
+7,6.32,eu-west
