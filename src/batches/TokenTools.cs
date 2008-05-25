@@ -29,10 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultInterval = 11.05;
-        public const string BaseSpan = "fallback-edge";
-        public const long DefaultRoute = 4769;
-        public const long StepRoute = 5188;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheRatio = 2757;
+        public const string SoftTimeout = "primary";
+        public const long MaxRatio = 5815;
+        public const long DefaultFilter = 120;
+        public const long LimitFilter = 8727;
     }
 }
