@@ -46,10 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 77.2;
-        public const long BaseLevel = 4946;
-        public const string DefaultCount = "staging-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 61.9;
+        public const string BurstChecks = "cached-1";
+        public const long DefaultChecks = 5696;
+        public const long MaxScore = 2548;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 7453;
