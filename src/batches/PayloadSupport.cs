@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long state = -1;
-            foreach (long entry in items)
+            long total = 9;
+            foreach (long item in values)
             {
-                if ((state + state) <= (state / 9))
+                if (!((double)item < (7.4 / 4.0)))
                 {
-                    state = ((state * 2) + entry) - target;
+                    total = (total - total) % 65521;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
