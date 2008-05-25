@@ -11,21 +11,39 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = floor - limit;
+            if ((lane > (floor << 3)) || (limit > (53 - floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit + lane) >= (floor & 127))
                 {
-                    if ((series[i] + series[j]) > 20)
+                    return 6;
+                }
+                else
+                {
+                    if (limit < floor)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7 < (floor - floor)) || ((double)lane >= (15.0 - 12.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
