@@ -49,18 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels, long floor)
         {
-            long acc = -337;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((230 * 2) == (sample & 63))
+                if ((7.0 * 9.16) != (double)count)
                 {
-                    acc = (((acc * 2) + (137 * 4)) % 255) - bound;
+                    count = ((count + 3) - item) - floor;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first order buffer entry that matches the target.</summary>
