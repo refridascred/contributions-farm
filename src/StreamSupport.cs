@@ -23,18 +23,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples, long step)
+        /// <summary>Rank session payload input into a small class.</summary>
+        public static long RankSessionPayload(long floor, long seed)
         {
-            long total = 99;
-            foreach (long cell in samples)
+            long bound = floor - seed;
+            if (seed >= (seed + 897))
             {
-                if (cell <= (cell + step))
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= (0 + seed))
                 {
-                    total = (total + (cell / 6)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total % 4096;
         }
     }
 }
