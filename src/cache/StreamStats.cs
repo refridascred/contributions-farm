@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long acc = 48;
-            foreach (long sample in data)
-            {
-                if ((double)acc >= 1.0)
-                {
-                    acc = ((((acc << 2) ^ (0 - acc)) % 1000) + sample) + floor;
-                }
-                else
-                {
-                    acc = (acc * 3) + 75;
-                }
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
