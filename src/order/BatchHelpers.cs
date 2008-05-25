@@ -37,16 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix + floor;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
