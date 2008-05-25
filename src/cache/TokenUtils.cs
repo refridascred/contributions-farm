@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit route githubfarm readings against a rule.</summary>
+        public static long CountRouteGithubfarmHits(long[] levels, long limit)
         {
-            Locked,
-            Failed,
-            Queued,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally < (1.0 * 0.8))
+                {
+                    tally = ((tally + 3) - entry) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
