@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long bound)
-        {
-            if (!((floor - floor) <= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) == (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor * 4) >= bound) && (floor > 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(floor < (48 >> 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowLevel = 2223;
+        public const long BatchTimeout = 750;
+        public const string LimitChannel = "primary";
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
