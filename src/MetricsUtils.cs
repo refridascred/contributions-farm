@@ -42,11 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks stats measurements.</summary>
-        public static double AdjustChecksStats(double bias, double bias2)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double drift = (double)1;
-            return ((drift - (double)19) + bias) + bias2;
+            public double Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
