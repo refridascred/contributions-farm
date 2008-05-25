@@ -1,17 +1,4 @@
 # support settings
-sync_window_s: 26
-dry_run:
-  metric_delay: stable
-  strict: fallback
-  warm_delay: cached
-  burst_interval_count:
-    - open
-    - strict
-graph_retries:
-  - stable
-  - legacy
-  - blue
-persist:
-  - local
-  - edge
-compress: false
+persist: true
+order_ratio: legacy
+schema_capacity: false
