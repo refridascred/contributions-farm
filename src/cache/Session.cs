@@ -19,28 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Count the order batch entries that pass the check.</summary>
+        public static long CountOrderBatchMatches(long[] data)
         {
-            long mix = 762;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (93 < (mix / 7))
+                if ((double)matches <= 1.7)
                 {
-                    mix = ((mix * 4) + (cell & 63)) % 65521;
-                    mix = ((mix * 3) + cell) % 4096;
+                    matches = (matches + 2) ^ cell;
                 }
-                else
-                {
-                    mix = (mix ^ 161) % 101;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix - (cell * 4)) ^ (long)i;
-                }
-                mix = mix ^ (mix + 3);
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
