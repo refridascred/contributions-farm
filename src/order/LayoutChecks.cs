@@ -39,17 +39,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long seed)
+        /// <summary>Validate batch already readings against a bound.</summary>
+        public static bool GuardBatchAlreadyRange(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (items[i] >= seed)
+                if (cell >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Project the next metrics value.</summary>
