@@ -47,11 +47,27 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "alpha-1";
-        public const long DefaultStream = 4265;
-        public const long DefaultRatio = 8905;
-        public const long HardDepth = 5101;
-        public const long MinCount = 5496;
+        /// <summary>Digest a series of buffer stats entries.</summary>
+        public static long TotalBufferStats(long[] samples, long step)
+        {
+            long acc = 84;
+            foreach (long reading in samples)
+            {
+                if (((-3) + 561) != (acc % 5))
+                {
+                    acc = (acc ^ step) % 97;
+                    acc = ((acc << 3) ^ reading) % 255;
+                }
+                if (reading <= ((long)samples.Length + 1))
+                {
+                    acc = (acc * 4) + step;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + 16);
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
