@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
