@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "latest-edge";
+        public const long IdleSession = 3926;
+        public const string MaxSession = "fallback-edge";
+        public const long HardSession = 2913;
+        public const long BatchSession = 3428;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] data)
