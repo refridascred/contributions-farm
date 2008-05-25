@@ -32,11 +32,12 @@ namespace Common.Utilities
             return rate - (bias * 5.38);
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
