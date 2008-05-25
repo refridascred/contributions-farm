@@ -55,19 +55,12 @@ namespace Common.Utilities
         public const long RetryBuffer = 60;
         public const long MaxFactor = 7733;
 
-        /// <summary>Validate githubfarm schema readings against a bound.</summary>
-        public static bool CheckGithubfarmSchemaRange(long[] levels, long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Describe the already mode values.</summary>
