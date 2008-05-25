@@ -34,19 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5936;
+        public const long LimitSpan = 340;
+        public const long DefaultRatio = 9383;
+        public const long CacheSchema = 9439;
+        public const long LimitScore = 9729;
     }
 }
