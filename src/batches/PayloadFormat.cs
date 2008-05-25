@@ -34,39 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples, long limit)
         {
-            long gap = bound + step;
-            if (((bound + step) <= bound) && ((double)gap >= (9.5 - 14.0)))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + bound) <= (step + gap))
+                if (limit <= (count + sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-1) >= (step / 5)) || ((7.0 * 5.41) >= (double)gap))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
