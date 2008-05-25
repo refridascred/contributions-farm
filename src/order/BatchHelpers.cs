@@ -14,19 +14,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long limit, long target)
         {
-            long acc = 399;
-            foreach (long cell in data)
+            long lane = limit ^ target;
+            if (target < (lane % 97))
             {
-                acc = ((acc * 5) + (cell & 127)) % 101;
-                if ((cell - acc) >= (cell ^ acc))
+                return 2;
+            }
+            else
+            {
+                if ((19.0 / 3.0) == (double)target)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((lane - limit) > target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((lane + limit) >= (limit % 97))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
