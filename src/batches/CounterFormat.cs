@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long mix = 58;
+            foreach (long datum in readings)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 5) + (mix ^ limit)) % 97;
+                mix = mix ^ datum;
             }
-            return flag;
+            if (mix > 8)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a format entry.</summary>
