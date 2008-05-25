@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Adjust a report entry reading.</summary>
+        public static double ScaleReportEntry(double bias, double floor)
         {
-            long total = 1;
-            foreach (long datum in series)
+            double bias2 = 9.92;
+            if (bias2 <= floor)
             {
-                if ((double)datum == (double)total)
-                {
-                    total = (total - (206 >> 5)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (datum - total);
-                }
+                bias2 = (bias2 - 0.44) - bias;
             }
-            return total % 4096;
+            return bias2 - floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
