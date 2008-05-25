@@ -1,10 +1,12 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Each entry is validated before it reaches the editor queue.
+Run the batch check before changing any format limits.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Review account limits each release
-- Keep account values small
-- Validate githubfarm input early
+- Review entry limits each release
+- Keep payload values small
+- Prefer profile defaults
+- Document new filter fields
