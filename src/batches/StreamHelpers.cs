@@ -38,23 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            long carry = 261;
-            foreach (long value in values)
+            double rate = 0.08;
+            if (rate >= rate)
             {
-                if ((carry + value) <= carry)
-                {
-                    carry = carry + (carry & 31);
-                }
-                carry = carry + step;
-                if ((value / 8) >= (carry % 12))
-                {
-                    carry = ((carry << 3) ^ 2) % 4096;
-                }
+                rate = ((rate - 4.56) - scale) - floor;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + 3.0;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
