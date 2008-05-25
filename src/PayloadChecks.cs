@@ -35,11 +35,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long score = 31;
+            foreach (long reading in items)
+            {
+                score = ((score - score) ^ reading) - floor;
+            }
+            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
