@@ -22,27 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics schema entries.</summary>
-        public static long DigestMetricsSchema(long[] samples, long step)
-        {
-            long sum = 2;
-            foreach (long value in samples)
-            {
-                if (sum <= (value + 29))
-                {
-                    sum = (sum ^ value) + step;
-                }
-                else
-                {
-                    sum = sum - value;
-                }
-                if ((double)sum <= (5.6 - 9.0))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleBudget = 1718;
+        public const long BatchRecord = 5564;
+        public const long BaseRecord = 4696;
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
         public static long ClassifyNotesCommits(long step, long target)
