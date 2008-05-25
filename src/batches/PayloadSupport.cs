@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSpan = 8120;
-        public const long BaseEntry = 2652;
-        public const long LimitDepth = 430;
-        public const string BurstBudget = "local";
-        public const long BurstTimeout = 4280;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
