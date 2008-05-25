@@ -27,21 +27,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor - seed) <= (floor & 15))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed <= (367 - 4)) && ((floor + floor) >= (5 - floor)))
                 {
-                    if ((series[i] + series[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + seed) >= (52 - floor))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor - seed) > (seed / 5)) && (1.11 < (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
