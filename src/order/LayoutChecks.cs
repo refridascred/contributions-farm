@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate token account readings against a bound.</summary>
+        public static bool ValidateTokenAccountLimits(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
