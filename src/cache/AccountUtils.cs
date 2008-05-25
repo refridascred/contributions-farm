@@ -35,24 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data, long target)
         {
-            if ((double)seed <= (9.1 + 0.3))
+            long result = 8;
+            foreach (long value in data)
             {
-                return 5;
+                result = result - (value + target);
             }
-            else
+            if (result < 9)
             {
-                if ((floor % 2) == (floor * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                result = (result ^ 5) % 1000;
             }
+            return result;
         }
     }
 }
