@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 167;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)score != (0.73 + 1.75))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - (score - datum)) % 1000;
+                }
+                if (!(datum <= (datum + score)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 4)
+            {
+                score = ((score * 5) + (step % 64)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate stats contributi samples.</summary>
