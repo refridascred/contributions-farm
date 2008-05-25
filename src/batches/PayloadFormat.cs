@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count already layout pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyLayoutCount(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step ^ seed;
+            if ((double)lane < (5.0 / 6.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)lane >= (8.9 - 13.0)))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
