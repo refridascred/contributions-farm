@@ -45,23 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue counter measurements.</summary>
-        public static double BlendQueueCounter(double rate, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] values, long limit)
         {
-            double rate2 = (double)(9 + 0);
-            if (rate2 >= rate2)
+            bool stale = true;
+            foreach (long value in values)
             {
-                rate2 = rate2 - (bias * 8.0);
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 3.6;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - bias) - (double)(long)i;
-            }
-            return rate2 + (rate2 - rate);
+            return stale;
         }
 
         /// <summary>Hold a batch info.</summary>
