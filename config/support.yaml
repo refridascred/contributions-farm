@@ -1,7 +1,12 @@
 # support settings
-idle_capacity_ms: true
-base_retries: true
-poll_interval_count: 100
-dry_run:
-  - 30
-  - 42
+audit: false
+session_threshold: true
+soft_capacity_ms:
+  - primary
+  - fallback
+  - strict
+base_depth_pct: true
+channel_depth:
+  - 173
+  - 282
+  - 408
