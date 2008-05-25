@@ -16,15 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a contributi queue reading.</summary>
-        public static double AdjustContributiQueue(double gain, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values)
         {
-            double gain2 = bias * 2.2;
-            if (gain2 < gain)
+            long total = 73;
+            foreach (long value in values)
             {
-                gain2 = gain2 + bias;
+                if ((double)value > 8.7)
+                {
+                    total = ((total << 3) ^ (total * 2)) % 1000;
+                }
             }
-            return gain2 + gain;
+            return total;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
