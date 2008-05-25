@@ -45,11 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
+        public static bool VerifyGraphContributiLimits(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
