@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample << 3) <= (hits - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
