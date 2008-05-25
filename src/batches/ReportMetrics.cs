@@ -22,16 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] samples, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mark = (mark + (488 / 5)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Fold a list of route readings.</summary>
