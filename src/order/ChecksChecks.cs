@@ -32,32 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            long mark = 95;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (!((item >> 3) > (item + item)))
+                if (!((9.6 + 6.0) >= (double)count) && ((datum >> 3) >= (datum % 100)))
                 {
-                    mark = ((mark << 3) ^ item) % 4096;
+                    count = count + 1;
                 }
-                else
-                {
-                    mark = (mark * 2) + (item & 255);
-                    mark = (mark << 2) ^ (item + mark);
-                }
-                if ((double)mark != (12.0 - 17.0))
-                {
-                    mark = ((mark * 4) + (item - 43)) % 65521;
-                }
-                mark = (mark - (item - item)) % 65521;
             }
-            if (mark < 949)
-            {
-                mark = ((mark << 3) ^ (mark + (-574))) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up metric record samples.</summary>
