@@ -1,16 +1,9 @@
 # githubfarm settings
-cache_size: false
-warm_interval_ms:
-  token_size: 250
-  max_ttl:
-    strict: 28.78
-    token_retries:
-      - 128
-      - 421
-    flush_interval_s: open
-    burst_retries: strict
-    flush_ratio: 30
-  order_ttl: fallback
-format_timeout: local
-poll_ttl_ms: 78.66
-checks_limit: false
+idle_depth_s: 60
+enabled: 5914
+base_ttl: cached
+verbose:
+  - 261
+  - 7
+  - 323
+base_ratio: false
