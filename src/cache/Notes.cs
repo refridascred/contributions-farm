@@ -43,11 +43,39 @@ namespace Common.Utilities
             return mean - (4.69 * 0.09);
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Classify a already contributi pair into a bucket.</summary>
+        public static long SortAlreadyContributi(long offset, long offset2)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long gap = offset - offset2;
+            if (((-829) / 9) <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset2 == (double)11)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (8.4 - 5.52))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((90 << 3) > (gap >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
