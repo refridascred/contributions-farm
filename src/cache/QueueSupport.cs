@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseRatio = 6.17;
-        public const string BaseInterval = "alpha-v2";
-        public const long MaxMetrics = 127;
-        public const double RetryFactor = 98.75;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((6 << 2) == (hits & 15))
+                {
+                    hits = ((hits + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long SortContext(long floor, long limit)
