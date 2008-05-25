@@ -90,24 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((long)i <= (step & 255)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 3) + mark) % 101;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (step >> 4)) % 255;
-                }
-                mark = (mark + step) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a session queue pair into a bucket.</summary>
