@@ -67,21 +67,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((matches > 5) && ((1.25 * 6.0) != (double)matches)) || ((matches % 10) > (datum >> 3)))
                 {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
