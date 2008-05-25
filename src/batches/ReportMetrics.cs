@@ -20,31 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a editor order pair into a bucket.</summary>
-        public static long BucketEditorOrder(long origin, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            if (!((offset ^ origin) < (83 + 4)))
+            double rate = (double)2 + (double)323;
+            if (rate <= floor)
             {
-                return 3;
+                rate = rate - ratio;
             }
             else
             {
-                if ((origin + offset) > offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ origin) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate - (rate - 2.4);
             }
+            return rate + (double)6;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
