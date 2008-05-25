@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            long mix = 8;
-            foreach (long entry in levels)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                mix = mix + (entry << 1);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
             return mix;
         }
