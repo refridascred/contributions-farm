@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long MeasureCommandTokenOutliers(long[] samples)
+        /// <summary>Compare every pair of account counter readings.</summary>
+        public static long OverlapAccountCounterCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count >= (5.9 / 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
