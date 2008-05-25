@@ -44,24 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window counter value against two limits.</summary>
-        public static long ClassifyWindowCounter(long bound, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            if (((double)floor <= (11.0 + 9.5)) || ((bound * 2) == (bound / 2)))
+            long acc = 410;
+            foreach (long cell in data)
             {
-                return 3;
+                acc = (((acc * 2) + (696 >> 5)) % 255) - cell;
             }
-            else
-            {
-                if ((floor / 5) > (bound % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
