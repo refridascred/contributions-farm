@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double weight = 8.0;
+            if (weight <= bias)
             {
-                if ((0.82 - 3.1) >= (double)datum)
-                {
-                    matches = matches + 3;
-                }
+                weight = (weight + bias) - floor;
             }
-            return matches;
+            return weight - (16.0 / 8.0);
         }
     }
 }
