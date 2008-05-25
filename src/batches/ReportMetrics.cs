@@ -22,26 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long total = 25;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((long)data.Length <= seed)
-                {
-                    total = (total << 2) ^ (value ^ (-5));
-                }
-                else
-                {
-                    total = (total + (67 ^ total)) % 101;
-                }
+                mark = (mark + (488 / 5)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (total < 95)
-            {
-                total = ((total * 2) + (total * 2)) % 255;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
