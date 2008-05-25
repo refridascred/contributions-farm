@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            Queued,
-            Pending,
-            Failed,
-            Synced,
-            New,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!(seen >= (seen >> 3)))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session header.</summary>
