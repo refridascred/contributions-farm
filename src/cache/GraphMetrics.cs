@@ -25,33 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long limit)
-        {
-            long diff = offset - limit;
-            if ((double)diff > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.62 - 9.7) != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 % 64) >= (limit / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSpan = 3843;
+        public const long DefaultCommits = 3442;
+        public const long CacheCommits = 3773;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long DeriveCommits(long step)
