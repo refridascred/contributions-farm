@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            Active,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 6) < entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
