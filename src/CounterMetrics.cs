@@ -24,17 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if ((double)count <= (6.16 * 5.0))
                 {
-                    return (long)i;
+                    count = (count + 1) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
