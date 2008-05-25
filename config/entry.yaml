@@ -1,5 +1,19 @@
 # entry settings
-soft_limit_pct: 60
-hard_capacity: true
-min_limit: 51
-dry_run: legacy
+hard_interval: staging
+batch_size:
+  sync_timeout_count: 16.05
+  hard_limit: 76.58
+  session_capacity:
+    base_ratio_ms:
+      - 472
+      - 140
+      - 208
+      - 104
+    commits_ttl:
+      - standard
+      - open
+    base_threshold_ms: open
+    retry_window_count: false
+    dry_run: 4480
+poll_depth_s: 91.53
+poll_delay_pct: open
