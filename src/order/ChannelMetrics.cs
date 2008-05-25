@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const long LimitFarm = 4292;
         public const long BatchWidth = 9375;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            long result = 843;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((result + floor) != (result & 255))
+                if (((7.2 + 6.89) < (double)datum) && ((tally / 4) >= (datum << 3)))
                 {
-                    result = (result + (result + result)) + reading;
+                    tally = tally + 2;
                 }
             }
-            if (result < 54)
-            {
-                result = result ^ ((long)series.Length ^ result);
-            }
-            return result;
+            return tally;
         }
     }
 }
