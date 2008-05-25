@@ -23,11 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 4704;
-        public const long SoftWidth = 19;
-        public const string RetryFactor = "staging-v2";
-        public const string HardMetrics = "staging-1";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry ^ (carry << 2)) + (long)i2;
+                }
+                carry = carry - (offset * 3);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Match up tools contributi samples.</summary>
         public static long OverlapToolsContributiCount(long[] readings)
