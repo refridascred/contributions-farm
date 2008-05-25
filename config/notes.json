@@ -1,5 +1,5 @@
 {
-  "githubfarm_threshold": 90.9,
-  "soft_window_s": 75.31,
-  "audit": "blue"
+  "default_depth_s": "cached",
+  "flush_ttl_pct": [445, 250, 493],
+  "base_retries_s": false
 }
