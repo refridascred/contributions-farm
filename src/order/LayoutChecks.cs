@@ -74,36 +74,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long floor)
+        /// <summary>Classify a session queue pair into a bucket.</summary>
+        public static long SortSessionQueue(long seed, long limit)
         {
-            if ((offset + floor) >= (floor << 3))
+            if (((limit - limit) == (seed - 42)) && ((6.47 + 1.57) == (double)seed))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (!((floor % 3) <= offset))
+                if ((seed % 5) < seed)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (6.0 < (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (50 <= (floor & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
