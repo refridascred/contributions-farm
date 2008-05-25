@@ -32,19 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window token entry stays within the limit.</summary>
-        public static bool GuardWindowTokenLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSpan = 2655;
+        public const long SoftBuffer = 9003;
+        public const double MaxCount = 26.12;
+        public const long HardTimeout = 5965;
+        public const string LimitDepth = "local-v2";
     }
 }
