@@ -1,10 +1,8 @@
 {
-  "buffer_depth": 1750,
-  "window_size": {
-    "base_ratio_ms": "staging",
-    "profile_ttl": "blue",
-    "notes_timeout": [326, 207],
-    "stats_retries": [6, 226, 389]
-  },
-  "persist": "blue"
+  "persist": false,
+  "cache_threshold": [322, 91, 246],
+  "context_ratio": ["fallback", "cached", "open", "legacy"],
+  "tools_window": 39.8,
+  "report_timeout": "standard",
+  "dry_run": "green"
 }
