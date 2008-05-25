@@ -42,15 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series, long floor)
         {
-            long score = 31;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                score = ((score - score) ^ reading) - floor;
+                if (((double)item != (2.0 - 7.0)) && !(count < (item + item)))
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit stream commits readings against a rule.</summary>
