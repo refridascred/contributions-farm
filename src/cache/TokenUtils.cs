@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] series, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((cell % 64) > (floor - (-83))) || ((9.8 - 7.0) != (double)cell))
+                if (datum >= step)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
