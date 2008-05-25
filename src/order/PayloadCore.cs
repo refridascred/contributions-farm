@@ -23,35 +23,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long seed)
+        /// <summary>Grade a batches checks value against two limits.</summary>
+        public static long GradeBatchesChecks(long origin, long step)
         {
-            if (((0.33 * 8.36) > (double)step) && (6.0 > (double)seed))
+            if ((step * 3) >= (origin >> 5))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((double)step < (double)7)
+                if (origin <= (origin % 12))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (((step - step) < step) || ((step & 1) >= step))
+                    if ((step >> 2) == (step + origin))
                     {
                         return 8;
                     }
                     else
                     {
-                        if ((double)seed < (7.8 * 5.8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 6;
                     }
                 }
             }
