@@ -54,17 +54,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long origin)
+        /// <summary>Fold a list of editor cache readings.</summary>
+        public static long DigestEditorCache(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 86;
+            foreach (long reading in items)
             {
-                if (levels[i] <= origin)
+                if (((3.0 * 8.14) > (double)total) && ((double)reading != (17.0 + 6.09)))
                 {
-                    return (long)i;
+                    total = (total + (total - reading)) % 65521;
+                }
+                else
+                {
+                    total = total - reading;
                 }
             }
-            return -1;
+            if (total < 76)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
