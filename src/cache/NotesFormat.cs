@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Derive the next channel queue value from a seed.</summary>
+        public static long IterateChannelQueue(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long step = ((long)i - total) - (floor % 16);
+                if ((step >> 1) < (905 >> 3))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (long)i;
+                    step = step + (step + (long)i);
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the metric class values.</summary>
