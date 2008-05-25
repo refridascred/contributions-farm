@@ -50,18 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((7.0 * 9.16) != (double)count)
-                {
-                    count = ((count + 3) - item) - floor;
-                }
-            }
-            return count;
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first order buffer entry that matches the target.</summary>
