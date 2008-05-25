@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc + (offset / 4);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Roll a checks counter counter forward.</summary>
