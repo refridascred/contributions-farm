@@ -34,39 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token batch pair into a bucket.</summary>
-        public static long RankTokenBatch(long floor, long offset)
+        /// <summary>Measure how many payload graph samples are out of range.</summary>
+        public static long CountPayloadGraphOutliers(long[] readings, long target)
         {
-            long offset2 = floor - offset;
-            if ((offset / 9) > offset2)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (15.0 > (double)floor)
+                if (target >= (target - hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset != (3.34 + 6.49)) || ((offset + 4) < offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < offset2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every window token entry stays within the limit.</summary>
