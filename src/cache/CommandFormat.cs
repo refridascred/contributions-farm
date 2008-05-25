@@ -40,31 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream schema input into a small class.</summary>
-        public static long GradeStreamSchema(long floor, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            if ((double)floor <= (2.51 + 4.6))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor >= (1.7 - 17.0)) && ((161 ^ step) <= step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((-522) >= (floor + step))
+                    if ((levels[i] ^ levels[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
