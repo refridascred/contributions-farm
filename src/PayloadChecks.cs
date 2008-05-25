@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Check that every tools payload entry stays within the limit.</summary>
+        public static bool VerifyToolsPayloadBounds(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
