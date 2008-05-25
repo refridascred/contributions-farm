@@ -1,20 +1,9 @@
 # githubfarm settings
-flush_timeout:
-  retry_timeout_count:
-    poll_ttl_count: false
-    default_depth: 12
-    compress: 33.04
-    commits_ttl: legacy
-  base_delay: green
-  burst_depth_s: 79.75
-  contributi_interval:
-    max_threshold_s: 8961
-    retry_limit_pct:
-      - 158
-      - 424
-    token_window: 8927
-    poll_window_s: green
-  poll_delay: true
-  compress: 9687
-sync_retries_ms: latest
-strict: 96.08
+layout_ratio: open
+entry_ratio: false
+max_retries_ms: 41.24
+command_capacity:
+  - strict
+  - fallback
+  - legacy
+readonly: cached
