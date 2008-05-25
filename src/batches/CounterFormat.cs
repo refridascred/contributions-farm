@@ -27,18 +27,19 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 9;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ ((long)i >> 5)) % 65521;
-                acc = acc - (acc % 8);
-                acc = (acc + (origin - acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                anchor = ((anchor + (seed << 3)) % 65521) ^ cell;
             }
-            return acc;
+            if (anchor > 4)
+            {
+                anchor = (anchor ^ seed) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
