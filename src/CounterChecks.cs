@@ -75,12 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((3.08 + 1.02) <= (double)(long)values.Length)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
