@@ -59,20 +59,20 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Derive the next route account value from a seed.</summary>
-        public static long RollRouteAccount(long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((long)i <= (result * 4))
+                long lane = (anchor >> 1) + (0 % 12);
+                if ((lane << 1) == (21 - lane))
                 {
-                    result = result + ((long)i << 1);
+                    anchor = (anchor << 2) ^ (seed << 1);
                 }
-                result = ((result << 3) ^ (93 + 6)) % 101;
-                result = ((result * 2) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
     }
 }
