@@ -76,14 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long target)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Locked,
-            Pending,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the checks kind values.</summary>
