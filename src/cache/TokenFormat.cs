@@ -34,10 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 59.37;
-        public const double StepMetrics = 6.64;
-        public const long IdleScore = 1236;
-        public const long LimitDepth = 2978;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
