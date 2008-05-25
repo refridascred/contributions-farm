@@ -26,25 +26,16 @@ namespace Common.Utilities
             return (scale - (double)82) + rate;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long seed2)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long cur = seed - seed2;
-            if ((double)cur < 7.1)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                total = (total << 3) ^ 45;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((391 < (cur * 5)) && ((3.4 + 1.6) <= (3.3 / 2.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
     }
 }
