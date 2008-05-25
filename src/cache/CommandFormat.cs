@@ -26,12 +26,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long offset)
         {
-            New,
-            Synced,
-            Queued,
+            long lane = origin + offset;
+            if (!((lane << 1) >= offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((lane >= ((-7) - offset)) && ((6.0 - 5.0) >= (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a profile entry.</summary>
