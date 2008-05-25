@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchCount = "local-v2";
+        public const double RetrySession = 5.17;
+        public const long DefaultRatio = 8571;
+        public const double StepSession = 21.97;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] values, long limit)
