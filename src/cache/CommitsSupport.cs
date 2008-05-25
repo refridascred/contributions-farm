@@ -47,21 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
-        {
-            long score = 95;
-            foreach (long cell in values)
-            {
-                score = ((score << 2) ^ (score ^ 58)) % 101;
-                score = (score << 3) ^ (score + cell);
-            }
-            if (score > 999)
-            {
-                score = ((score << 3) ^ (6 ^ score)) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheTimeout = "local-edge";
+        public const long MinRatio = 4986;
+        public const string MinGithubfarm = "standard-v2";
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
