@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowSupport = 543;
         public const long StepSupport = 4885;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long bound)
         {
-            long anchor = 71;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((0.41 / 9.0) > (double)anchor)
+                if (reading > bound)
                 {
-                    anchor = (anchor << 2) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ (989 + anchor)) % 101;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Adjust a report reading.</summary>
