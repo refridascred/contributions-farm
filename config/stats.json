@@ -1,5 +1,7 @@
 {
-  "sync_window_ms": 250,
-  "default_depth": "local",
-  "flush_capacity_pct": 38
+  "warm_delay_ms": 60,
+  "counter_ratio": "edge",
+  "verbose": 250,
+  "batch_size": "staging",
+  "flush_capacity": "edge"
 }
