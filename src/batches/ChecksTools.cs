@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count < (count / 7))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many payload graph samples are out of range.</summary>
