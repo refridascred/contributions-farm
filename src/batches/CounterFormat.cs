@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            Stale,
-            Failed,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total - limit;
+                if ((total + (long)i) == (total + 3))
+                {
+                    total = (total + limit) % 101;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
