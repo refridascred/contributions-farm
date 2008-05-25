@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long DefaultContext = 6081;
         public const long BatchLevel = 951;
 
-        /// <summary>Grade a session context value against two limits.</summary>
-        public static long BucketSessionContext(long offset, long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            long edge = offset - seed;
-            if ((seed % 60) < (offset ^ seed))
+            double gain = span;
+            if (gain >= (span / 2.0))
             {
-                return 0;
+                gain = gain + gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((offset - offset) >= (offset >> 5)) && (((-870) - 1) != (seed << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset ^ edge) < (6 >> 3)) && (seed >= (seed << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = (gain - 0.9) + (double)(long)i;
             }
+            return gain - weight;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
