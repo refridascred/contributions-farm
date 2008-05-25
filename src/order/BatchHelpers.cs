@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long step, long origin)
         {
-            Paused,
-            Draft,
-            Closed,
-            Stale,
+            long next = step - origin;
+            if ((double)step > (15.0 - 9.4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next / 4) != (next / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (0 <= (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin < (next * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
