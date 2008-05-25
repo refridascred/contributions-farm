@@ -1,8 +1,9 @@
-id,level,weight,score,active
-1,blue,4.97,20.3,46.32
-2,24.27,8.05,legacy,edge
-3,primary,92.28,889,342
-4,574,latest,449,619
-5,528,321,primary,258
-6,924,285,21.85,2
-7,83.96,eu-west,blue,24.26
+id,state,label,score
+1,699,44.93,eu-west
+2,874,91.62,local
+3,legacy,eu-west,384
+4,99,317,eu-west
+5,72.88,28.07,eu-west
+6,241,primary,22.77
+7,89.64,67.83,97.41
+8,stable,885,213
