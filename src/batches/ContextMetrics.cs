@@ -32,22 +32,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine account route values into a single score.</summary>
-        public static long CombineAccountRoute(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] data)
         {
-            long anchor = 33;
+            long hits = 0;
             foreach (long value in data)
             {
-                if (anchor < (value << 1))
+                if ((16.0 + 6.4) < (double)value)
                 {
-                    anchor = ((anchor << 2) ^ (anchor >> 5)) % 97;
-                }
-                if (!((double)value <= (8.0 - 0.02)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
