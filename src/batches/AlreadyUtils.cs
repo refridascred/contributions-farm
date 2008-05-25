@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long HardFactor = 582;
         public const long StepGraph = 1921;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstTimeout = 51.02;
+        public const long RetryAlready = 5473;
+        public const long SoftAlready = 6168;
+        public const double BaseWidth = 91.87;
 
         /// <summary>Count the notes entry entries that pass the check.</summary>
         public static long TallyNotesEntryOutliers(long[] series, long bound)
