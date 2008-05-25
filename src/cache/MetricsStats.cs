@@ -61,15 +61,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Locked,
-            Queued,
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseScore = "legacy";
+        public const string HardCluster = "open-v2";
+        public const long IdleCluster = 4994;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
