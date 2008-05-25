@@ -23,30 +23,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a tools support value against two limits.</summary>
-        public static long SortToolsSupport(long origin, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long step)
         {
-            long offset = origin ^ limit;
-            if ((3.06 * 8.7) == (double)limit)
+            if ((13.0 + 15.0) <= (double)limit)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (origin > limit)
+                if ((limit << 1) > (step + step))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (!((double)0 <= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
