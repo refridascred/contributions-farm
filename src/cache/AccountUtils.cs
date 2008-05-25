@@ -27,22 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long FoldClusterEditor(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long sum = -680;
-            foreach (long datum in series)
+            long state = 98;
+            foreach (long sample in data)
             {
-                if ((double)3 >= (double)sum)
+                if (((state / 9) != (state / 4)) || ((state << 2) >= (state - 686)))
                 {
-                    sum = (sum ^ (sum << 3)) ^ datum;
+                    state = state - (state + sample);
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (430 % 12)) % 4096;
+                    state = (state << 3) ^ (sample - state);
                 }
             }
-            return sum;
+            return state;
         }
     }
 }
