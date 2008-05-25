@@ -39,15 +39,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a support counter counter forward.</summary>
-        public static long RollSupportCounter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 5980;
+        public const double StepBudget = 83.38;
+        public const double BatchSpan = 51.03;
     }
 }
