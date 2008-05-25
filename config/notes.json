@@ -1,5 +1,6 @@
 {
-  "default_depth_s": "cached",
-  "flush_ttl_pct": [445, 250, 493],
-  "base_retries_s": false
+  "enabled": 16.7,
+  "hard_retries_ms": "edge",
+  "account_interval": 60,
+  "soft_ttl_s": false
 }
