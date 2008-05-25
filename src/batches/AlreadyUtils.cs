@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a record already reading.</summary>
-        public static double BlendRecordAlready(double ratio, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double drift = span;
-            if (drift < (double)7)
-            {
-                drift = drift + (double)449;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)(-223)) + (double)(long)i;
-            }
-            return drift + ratio;
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
