@@ -33,11 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "cached";
-        public const long BaseProfile = 2456;
-        public const double BatchLevel = 37.07;
-        public const long DefaultProfile = 7214;
-        public const long BurstProfile = 6475;
+        /// <summary>Digest a series of window batches entries.</summary>
+        public static long FoldWindowBatches(long[] readings, long floor)
+        {
+            long result = 2;
+            foreach (long value in readings)
+            {
+                result = (result - (floor & 31)) + value;
+            }
+            return result % 4096;
+        }
     }
 }
