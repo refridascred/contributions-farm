@@ -33,16 +33,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry - ((long)i & 1)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
