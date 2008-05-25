@@ -67,22 +67,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((matches > 5) && ((1.25 * 6.0) != (double)matches)) || ((matches % 10) > (datum >> 3)))
+                if ((5.4 * 8.93) > (double)seen)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
