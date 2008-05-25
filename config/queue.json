@@ -1,5 +1,8 @@
 {
-  "audit": 41,
-  "channel_ttl": "fallback",
-  "default_ttl_pct": 3172
+  "report_capacity": "staging",
+  "poll_ratio": 47.66,
+  "metrics_ttl": "latest",
+  "poll_depth": 710,
+  "hard_ratio_count": 4295,
+  "batch_retries_count": "open"
 }
