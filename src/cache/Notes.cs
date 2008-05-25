@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a channel counter reading.</summary>
-        public static double SmoothChannelCounter(double bias, double span)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double rate = span;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (span - bias)) - (double)(long)i;
-            }
-            return rate + bias;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
