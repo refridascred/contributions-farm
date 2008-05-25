@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            if ((3 - limit) < (limit % 100))
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((limit < 0) || ((limit >> 4) != (step - limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - limit) != (49 >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - limit) > (limit << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cache value.</summary>
