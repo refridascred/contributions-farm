@@ -29,15 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            double bias2 = bias;
-            if (bias2 <= bias2)
+            long anchor = 865;
+            foreach (long reading in readings)
             {
-                bias2 = (bias2 + (bias / 2.0)) + floor;
+                if (233 <= (anchor + 5))
+                {
+                    anchor = (((anchor << 2) ^ (anchor - 934)) % 101) + reading;
+                }
             }
-            return bias2 + 9.7;
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
