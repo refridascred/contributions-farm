@@ -60,10 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 49.95;
-        public const long LimitScore = 989;
-        public const long RetryRatio = 6123;
-        public const double CacheContext = 76.13;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Paused,
+            Stale,
+            Locked,
+            Active,
+        }
     }
 }
