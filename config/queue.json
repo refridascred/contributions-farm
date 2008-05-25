@@ -1,19 +1,13 @@
 {
-  "retry_delay": "local",
-  "compress": {
-    "compress": 55.86,
-    "sync_ttl_count": "staging",
-    "readonly": 97.85,
-    "session_depth": "open",
-    "enabled": 75.57
+  "counter_ratio": "primary",
+  "max_depth_s": [260, 136, 446],
+  "min_interval_count": "staging",
+  "schema_retries": 65.98,
+  "flush_window": {
+    "batch_size_pct": 44.87,
+    "base_depth_pct": "local",
+    "burst_capacity_s": "stable",
+    "compress": 68
   },
-  "filter_retries": "legacy",
-  "cluster_interval": false,
-  "enabled": {
-    "dry_run": "standard",
-    "persist": ["eu-west", "fallback"],
-    "enabled": 30,
-    "report_capacity": 250,
-    "compress": false
-  }
+  "cache_ttl": 74.08
 }
