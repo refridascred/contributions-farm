@@ -1,6 +1,5 @@
 {
-  "cache_capacity": "eu-west",
-  "strict": 69.34,
-  "poll_limit_ms": "edge",
-  "flush_timeout_ms": 68.22
+  "stats_ratio": false,
+  "route_depth": true,
+  "window_interval": 30
 }
