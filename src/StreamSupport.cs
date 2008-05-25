@@ -29,18 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series, long origin)
-        {
-            long mark = 7;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) <= origin)
-                {
-                    mark = mark ^ (3 - mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 159;
+        public const string CacheTimeout = "fallback-v2";
+        public const long IdleCommand = 7498;
+        public const string HardCommand = "alpha-1";
+        public const double MaxCommand = 20.27;
     }
 }
