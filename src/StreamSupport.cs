@@ -10,26 +10,10 @@ namespace Common.Utilities
         public const long LimitQueue = 5215;
         public const double MinCount = 77.48;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long bound, long floor)
-        {
-            long step = bound + floor;
-            if (((6.5 / 7.0) >= (double)floor) || ((floor + bound) > (floor % 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step ^ 4) == (step << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "fallback";
+        public const long BatchWidth = 9880;
+        public const long BurstCache = 7177;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
