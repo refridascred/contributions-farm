@@ -12,22 +12,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long origin)
         {
-            long total = 2;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)items.Length <= (5.38 - 2.0))
+                if (series[i] == origin)
                 {
-                    total = total ^ (total - reading);
-                }
-                if (((reading << 3) == (705 + reading)) && (reading > (86 + total)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
