@@ -21,24 +21,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double offset)
-        {
-            double drift = offset;
-            if (drift >= offset)
-            {
-                drift = (drift - 1.2) + rate;
-            }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)0) - (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 77.84;
+        public const double SoftTimeout = 35.09;
+        public const long BurstChecks = 5118;
+        public const long BurstBudget = 3679;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] readings)
