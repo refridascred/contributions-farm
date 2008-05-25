@@ -63,15 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Derive the next support cluster value from a seed.</summary>
+        public static long IterateSupportCluster(long offset)
         {
-            long state = 539;
-            foreach (long item in data)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state ^ (item + 1)) % 65521;
+                total = (total ^ offset) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
