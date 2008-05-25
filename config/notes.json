@@ -1,9 +1,5 @@
 {
-  "readonly": "standard",
-  "strict": 68,
-  "burst_interval_count": {
-    "persist": 94.07,
-    "soft_timeout_s": 89.66,
-    "report_threshold": 38
-  }
+  "farm_size": "strict",
+  "already_ratio": "blue",
+  "flush_capacity": 9044
 }
