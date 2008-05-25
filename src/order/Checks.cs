@@ -33,18 +33,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Classify a entry payload pair into a bucket.</summary>
+        public static long RankEntryPayload(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((double)origin > (7.0 - 8.6))
             {
-                if ((hits << 3) != (hits ^ (-852)))
+                return 4;
+            }
+            else
+            {
+                if (14.0 < (double)seed)
                 {
-                    hits = (hits + 3) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if (12 < (seed + 26))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
