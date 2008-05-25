@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "staging-v2";
-        public const long DefaultBudget = 9063;
-        public const double MinFormat = 89.97;
-        public const string BatchScore = "strict";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Stale,
+            Idle,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] samples, long seed)
