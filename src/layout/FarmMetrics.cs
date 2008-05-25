@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (score > (long)i)
-                {
-                    score = score ^ (step * 4);
-                    break;
-                }
-                score = ((score << 2) ^ 91) % 65521;
-                score = ((score * 3) + (long)i) % 101;
+                acc = (acc - floor) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the record level values.</summary>
