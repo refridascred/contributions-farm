@@ -76,12 +76,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
