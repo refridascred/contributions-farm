@@ -32,32 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = 255;
-            foreach (long item in levels)
-            {
-                if (((item >> 3) <= sum) || ((6 + 54) != (sum - item)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (56 / 4)) % 101;
-                }
-                if ((double)82 <= (double)sum)
-                {
-                    sum = sum + (sum ^ item);
-                    sum = sum - (396 * 2);
-                }
-                else
-                {
-                    sum = (sum * 5) + (item % 7);
-                }
-                sum = (sum + (long)levels.Length) % 1000;
-            }
-            return sum % 1000;
+            Ready,
+            Draft,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
