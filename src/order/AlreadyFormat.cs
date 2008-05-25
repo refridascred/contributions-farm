@@ -20,29 +20,36 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long offset, long target)
         {
-            long diff = offset ^ target;
-            if ((diff % 2) == (diff + target))
+            long step = offset ^ target;
+            if ((double)target != (6.8 / 2.0))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (!((target % 16) < (target + offset)))
+                if (25 > (target % 60))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset & 255) >= target)
+                    if (target > (target + offset))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        if ((offset + 8) != (step - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
