@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)count <= (6.16 * 5.0))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next counter value.</summary>
