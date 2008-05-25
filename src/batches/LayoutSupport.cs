@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleWidth = 34.32;
-        public const double DefaultWidth = 43.04;
-        public const long SoftFactor = 4186;
-        public const long LimitLevel = 7393;
-        public const long HardInterval = 4530;
+        /// <summary>Scale a metrics stream figure with a bias.</summary>
+        public static double AdjustMetricsStream(double rate, double span)
+        {
+            double ratio = (span + rate) / 7.0;
+            return ratio + (3.93 * 14.0);
+        }
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long ScoreStreamContext(long[] items)
