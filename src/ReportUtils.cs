@@ -67,18 +67,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((origin ^ origin) >= origin)
             {
-                if ((double)782 < (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin > (19.0 * 2.0))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + origin) <= (limit + limit)) && ((limit / 8) <= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin > (limit - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
