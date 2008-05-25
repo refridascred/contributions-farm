@@ -54,15 +54,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the batches metrics series from a seed.</summary>
-        public static long DeriveBatchesMetrics(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
