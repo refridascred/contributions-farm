@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                long seen = floor;
+                if ((floor ^ sum) <= (seen * 5))
+                {
+                    sum = ((sum << 2) ^ seen) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
             return sum;
         }
