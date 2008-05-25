@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long LocateChannelEntryIndex(long[] readings, long origin)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
