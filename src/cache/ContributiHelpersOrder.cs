@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] series, long limit)
+        /// <summary>Check that every filter stats entry stays within the limit.</summary>
+        public static bool ValidateFilterStatsLimits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (sample < limit)
+                if (reading < step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
