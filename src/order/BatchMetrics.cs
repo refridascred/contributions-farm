@@ -44,14 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items, long offset)
         {
-            Pending,
-            Ready,
-            New,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally - tally) == (offset >> 1))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
