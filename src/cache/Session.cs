@@ -50,21 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up support token samples.</summary>
-        public static long OverlapSupportTokenCount(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > step)
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
