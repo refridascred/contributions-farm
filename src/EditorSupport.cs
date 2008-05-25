@@ -44,11 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
