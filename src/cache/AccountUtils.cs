@@ -33,24 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long target)
-        {
-            if ((target - 6) <= (target % 97))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < (floor - 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryWidth = "standard-1";
+        public const long IdleSpan = 8616;
+        public const double MinToken = 77.34;
+        public const double LimitToken = 32.16;
+        public const long BatchToken = 2977;
     }
 }
