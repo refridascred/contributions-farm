@@ -50,19 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] levels, long step)
         {
-            long mark = 80;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark ^ mark) % 255) + reading;
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 6)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
