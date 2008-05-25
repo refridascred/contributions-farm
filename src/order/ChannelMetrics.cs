@@ -38,18 +38,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] samples)
+        /// <summary>Count the contributi window entries that pass the check.</summary>
+        public static long AuditContributiWindowMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((19 ^ cell) > matches) && (((cell & 3) >= (matches % 16)) || (cell < (cell & 63))))
+                if ((hits & 255) <= ((long)data.Length / 2))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
