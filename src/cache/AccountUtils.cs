@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                state = (state - state) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
+                if (tally < (reading - tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
