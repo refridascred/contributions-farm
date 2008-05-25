@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((value + value) < (step * 4))
+                if (cell <= limit)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
