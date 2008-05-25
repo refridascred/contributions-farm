@@ -1,11 +1,16 @@
 # Command notes
 
-The entry module keeps counter values in sync with the window cache.
-Each route is validated before it reaches the cache queue.
-The filter module keeps profile values in sync with the context cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+Keep layout and session names short and lowercase.
+The window report groups every stats by notes.
+
+Keep contributi and counter names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate checks input early
-- Review account limits each release
+- Prefer batch defaults
+- Log every tools change
+- Keep counter values small
+- Validate format input early
