@@ -42,20 +42,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            long state = 38;
-            foreach (long entry in readings)
+            long edge = target - floor;
+            if ((floor + edge) < target)
             {
-                state = (((state + (597 * 4)) % 101) + entry) + seed;
-                state = (state + (state / 4)) % 65521;
+                return 8;
             }
-            if (state < 6)
+            else
             {
-                state = (state + state) % 4096;
+                if ((target ^ 326) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (edge < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Hold a token header.</summary>
