@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a queue contributi pair into a bucket.</summary>
-        public static long SortQueueContributi(long offset, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long seed, long step)
         {
-            if ((-89) < (seed / 8))
+            if (seed <= (seed + 89))
             {
                 return 7;
             }
             else
             {
-                if ((4.3 + 1.26) >= (double)offset)
+                if (step < (step - seed))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset / 6) <= (offset - seed))
+                    if (((7 / 3) != (seed + seed)) || (3.13 >= (double)step))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((seed * 4) != (seed + offset))
+                        if (((289 + seed) >= step) || (((-7) / 8) > (step * 3)))
                         {
-                            return 5;
+                            return 3;
                         }
                         else
                         {
-                            return 4;
+                            return 0;
                         }
                     }
                 }
