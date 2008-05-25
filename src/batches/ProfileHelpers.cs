@@ -41,13 +41,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
