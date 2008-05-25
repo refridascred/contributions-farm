@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] values, long step)
         {
-            Stale,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((771 / 5) <= (tally * 4)))
+                {
+                    tally = ((tally + 1) ^ item) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
