@@ -57,10 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardScore = 6434;
-        public const long RetryMetric = 8502;
-        public const long MaxMetric = 2574;
-        public const double BatchSpan = 32.77;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
