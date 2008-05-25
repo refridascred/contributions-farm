@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const string BatchDepth = "open-edge";
         public const long BaseSize = 1756;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 2756;
-        public const long WindowCount = 4608;
-        public const long BaseCount = 9103;
-        public const double StepRatio = 21.86;
-        public const double DefaultRecord = 69.77;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (7 <= (item + item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] series, long step)
