@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] values, long limit)
         {
-            long carry = 583;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((entry + entry) < (entry - carry))
+                if (datum <= limit)
                 {
-                    carry = (carry ^ (entry + carry)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a tools summary.</summary>
