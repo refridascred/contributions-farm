@@ -28,24 +28,19 @@ namespace Common.Utilities
         public const double SoftQueue = 31.44;
         public const long StepRatio = 8634;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] values, long limit)
         {
-            if ((offset - offset) != (offset << 3))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset - 98) > ((-2) / 6)) && ((offset % 12) >= (offset << 3)))
+                if (value <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
