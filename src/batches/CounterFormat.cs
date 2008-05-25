@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((hits >> 2) <= (value << 2)))
+                if ((10.0 * 0.6) > (double)matches)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
