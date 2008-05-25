@@ -47,21 +47,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 95;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 2) ^ (score ^ 58)) % 101;
+                score = (score << 3) ^ (score + cell);
             }
-            return matches;
+            if (score > 999)
+            {
+                score = ((score << 3) ^ (6 ^ score)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the already mode values.</summary>
