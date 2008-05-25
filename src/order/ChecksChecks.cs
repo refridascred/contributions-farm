@@ -34,12 +34,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "latest-edge";
+        public const long CacheQueue = 1768;
+        public const long StepFactor = 7745;
+        public const long MinSize = 9619;
     }
 }
