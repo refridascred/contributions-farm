@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftDepth = "legacy-1";
+        public const long BurstBuffer = 5524;
+        public const string MaxBuffer = "stable-edge";
+        public const string BatchDepth = "open-edge";
+        public const long BaseSize = 1756;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double LimitOrder = 18.38;
