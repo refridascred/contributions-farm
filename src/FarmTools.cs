@@ -33,22 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
         {
-            long result = 810;
-            foreach (long reading in values)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result + result) >= (204 & 7))
-                {
-                    result = ((result - ((long)values.Length ^ 65)) % 255) - reading;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (result > 5)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            return score;
         }
     }
 }
