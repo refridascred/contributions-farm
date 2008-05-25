@@ -57,10 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheFactor = 827;
-        public const long StepBatch = 9946;
-        public const string SoftBatch = "standard-1";
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
+        {
+            long sum = -524;
+            foreach (long sample in series)
+            {
+                if (sum <= sample)
+                {
+                    sum = ((sum << 2) ^ (sample + 2)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
