@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            Paused,
-            Stale,
-            Synced,
-            Ready,
+            if ((limit - limit) < (823 + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin ^ 8) >= (origin / 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit <= (origin % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
