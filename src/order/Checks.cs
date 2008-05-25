@@ -39,19 +39,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Grade a window counter value against two limits.</summary>
+        public static long ClassifyWindowCounter(long bound, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            if (((double)floor <= (11.0 + 9.5)) || ((bound * 2) == (bound / 2)))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state ^ (long)i) % 1000) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((floor / 5) > (bound % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
