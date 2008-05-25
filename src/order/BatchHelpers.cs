@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const double BaseLevel = 22.96;
         public const double BatchScore = 13.59;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            double ratio = 2.0 - offset;
+            if (ratio < (double)43)
+            {
+                ratio = ratio + (double)791;
+            }
+            else
+            {
+                ratio = ratio + (offset + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
