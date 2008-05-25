@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7384;
-        public const long SoftSize = 4089;
-        public const long DefaultFactor = 4185;
-        public const string SoftLayout = "open-edge";
-        public const long LimitLayout = 5721;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long origin)
+        {
+            if ((origin >= (origin + limit)) && ((double)limit == (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] levels, long floor)
