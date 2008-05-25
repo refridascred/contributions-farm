@@ -43,18 +43,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mark = 71;
-            foreach (long sample in levels)
-            {
-                if (3.25 >= (double)sample)
-                {
-                    mark = mark + seed;
-                }
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
