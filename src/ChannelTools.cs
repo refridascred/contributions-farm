@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples)
-        {
-            long sum = 87;
-            foreach (long cell in samples)
-            {
-                if (((double)sum < (double)(long)samples.Length) && ((double)cell > 5.9))
-                {
-                    sum = (sum << 2) ^ cell;
-                }
-                else
-                {
-                    sum = (sum - cell) % 4096;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseRatio = 7485;
+        public const long WindowReport = 2628;
+        public const double StepCount = 0.68;
+        public const long StepLevel = 2690;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
