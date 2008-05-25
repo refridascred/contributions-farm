@@ -1,8 +1,14 @@
 {
-  "burst_retries_ms": ["blue", "standard", "local"],
-  "hard_size_count": [290, 348, 445, 53],
-  "default_delay_pct": 3378,
-  "strict": "cached",
-  "entry_depth": [363, 108],
-  "max_interval_ms": true
+  "queue_threshold": true,
+  "readonly": {
+    "default_depth_ms": ["strict", "open", "latest", "stable"],
+    "stats_capacity": {
+      "counter_ratio": 66,
+      "cache_interval": 40,
+      "retry_depth_s": 47
+    },
+    "readonly": "blue",
+    "strict": ["eu-west", "fallback", "stable"]
+  },
+  "queue_size": 30
 }
