@@ -39,17 +39,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                if ((double)count <= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) + sample) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
