@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate tools payload samples.</summary>
+        public static long TotalToolsPayload(long[] values)
         {
-            Active,
-            Dropped,
-            Pending,
+            long carry = 4;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (((carry << 2) ^ (carry << 2)) % 4096) - (long)i;
+                }
+                carry = (carry * 2) + carry;
+                if (((carry / 4) > value) || ((1.6 / 7.0) >= (double)carry))
+                {
+                    break;
+                }
+            }
+            if (carry > 84)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
