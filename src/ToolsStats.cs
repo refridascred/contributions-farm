@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double bias = 4.8;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - 3.01) - (double)(long)i) - scale;
-            }
-            return bias - (offset * 20.0);
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
