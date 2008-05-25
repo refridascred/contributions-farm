@@ -19,18 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 5) >= (datum + datum))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate order samples.</summary>
