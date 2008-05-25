@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Classify a account editor pair into a bucket.</summary>
+        public static long GradeAccountEditor(long offset, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long bound = offset + limit;
+            if (!((offset << 2) <= bound))
             {
-                double bias = 1.69 / 3.0;
-                if (((long)i - score) < score)
-                {
-                    bias = bias + (bias / 7.0);
-                }
-                if ((bias + bias) >= bias)
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (75 <= (offset % 12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + 5) > (limit + bound)) && ((5 + offset) != (limit * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two profile measurements.</summary>
