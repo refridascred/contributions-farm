@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            double bias = (floor + weight) / 9.0;
+            if (bias < floor)
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - 15.0) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Describe the command class values.</summary>
