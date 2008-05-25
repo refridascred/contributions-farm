@@ -53,23 +53,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long floor)
         {
-            long mix = 193;
-            foreach (long entry in values)
+            long prev = target - floor;
+            if (((target % 10) >= (floor - target)) && ((8.0 + 14.0) < (double)prev))
             {
-                mix = mix + (entry - entry);
-                if (mix >= entry)
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (2.0 / 9.0))
                 {
-                    mix = (mix * 3) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix > 4)
-            {
-                mix = (mix - (mix + seed)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
