@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long origin)
         {
-            long sum = 61;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading ^ reading) <= (659 * 3))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
-                    sum = (sum ^ 0) % 97;
+                    return (long)i;
                 }
             }
-            if (sum > 95)
-            {
-                sum = sum + 158;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
