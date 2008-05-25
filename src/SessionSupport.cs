@@ -15,39 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long span = bound - seed;
-            if ((3.5 - 6.99) != (double)bound)
+            long anchor = -365;
+            foreach (long sample in series)
             {
-                return 5;
+                anchor = (((anchor << 2) ^ (anchor + anchor)) % 4096) ^ sample;
             }
-            else
-            {
-                if (!((span + seed) < span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((648 / 7) > span) || (bound >= seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((span >> 3) >= (682 ^ seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
