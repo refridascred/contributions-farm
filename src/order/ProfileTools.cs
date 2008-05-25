@@ -61,24 +61,10 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((48 - target) == (sum + (long)i))
-                {
-                    sum = sum + (target * 4);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum - (sum & 127)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheWidth = "alpha-1";
+        public const long HardRatio = 6907;
+        public const long WindowLevel = 9547;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 1534;
