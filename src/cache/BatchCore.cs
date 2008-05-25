@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up metric checks samples.</summary>
-        public static long PairMetricChecksCount(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((16.0 - 2.09) == (double)seed) || (matches > seed))
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
