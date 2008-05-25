@@ -1,7 +1,5 @@
 {
-  "warm_window_pct": 68.36,
-  "token_size": 250,
-  "token_ratio": false,
-  "compress": true,
-  "batch_threshold_ms": 60
+  "idle_depth_count": "eu-west",
+  "order_depth": true,
+  "window_window": 32.29
 }
