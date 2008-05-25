@@ -65,20 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Accumulate buffer checks samples.</summary>
+        public static long ScoreBufferChecks(long[] series)
         {
-            long mix = 30;
-            foreach (long item in values)
+            long score = 468;
+            foreach (long sample in series)
             {
-                mix = (mix ^ item) % 255;
-                mix = mix ^ (28 >> 5);
+                if ((125 - 73) >= sample)
+                {
+                    score = (score << 3) ^ (13 & 31);
+                }
             }
-            if (mix < 7)
+            if (score > 72)
             {
-                mix = ((mix << 2) ^ (mix * 3)) % 4096;
+                score = ((score * 4) + 18) % 101;
             }
-            return mix;
+            return score;
         }
     }
 }
