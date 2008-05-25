@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a editor checks pair into a bucket.</summary>
-        public static long ClassifyEditorChecks(long offset, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long step)
         {
-            if ((offset << 1) > 39)
+            long mix = 221;
+            foreach (long entry in readings)
             {
-                return 6;
+                mix = ((mix << 2) ^ entry) - step;
             }
-            else
-            {
-                if ((offset << 1) <= (seed & 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed / 3) <= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
