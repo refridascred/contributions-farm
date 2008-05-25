@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const double CacheInterval = 90.83;
         public const string BurstLevel = "stable-v2";
 
-        /// <summary>Compare every pair of buffer report readings.</summary>
-        public static long CompareBufferReportCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 61;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading ^ reading) <= (659 * 3))
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ 0) % 97;
                 }
             }
-            return hits;
+            if (sum > 95)
+            {
+                sum = sum + 158;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
