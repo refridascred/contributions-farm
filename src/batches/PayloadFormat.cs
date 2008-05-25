@@ -36,12 +36,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Locked,
-            Retry,
-            Failed,
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
