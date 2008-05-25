@@ -42,31 +42,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long seed2)
+        /// <summary>Accumulate contributi metrics samples.</summary>
+        public static long ScoreContributiMetrics(long[] items, long target)
         {
-            if (((18.0 * 19.0) > (7.3 / 7.0)) || ((seed2 & 127) >= seed2))
+            long mix = 5;
+            foreach (long datum in items)
             {
-                return 5;
+                if (((long)items.Length / 3) != (mix + datum))
+                {
+                    mix = mix + target;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix ^ ((-4) >> 2)) + (long)i;
+                }
+                mix = ((mix * 4) + mix) % 97;
             }
-            else
+            if (mix > 7)
             {
-                if (81 <= (seed >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - 13) >= (seed2 * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mix = (mix << 3) ^ mix;
             }
+            return mix;
         }
 
         /// <summary>Describe the payload mode values.</summary>
