@@ -74,24 +74,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i - result) > (origin >> 5))
-                {
-                    result = (result - (origin + result)) % 101;
-                    result = ((result * 2) + (origin << 3)) % 4096;
-                }
-                else
-                {
-                    result = (result + (result * 5)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
