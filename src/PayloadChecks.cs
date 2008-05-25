@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a counter stats counter forward.</summary>
-        public static long DeriveCounterStats(long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] series, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                acc = (acc + (offset - offset)) % 101;
-                acc = ((acc << 2) ^ ((long)i % 3)) % 65521;
-                if ((offset + acc) <= (acc + acc))
+                if (reading > floor)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
