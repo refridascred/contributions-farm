@@ -41,11 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 58.51;
-        public const double HardTimeout = 2.47;
-        public const long LimitStats = 9917;
-        public const string HardStats = "latest-v2";
-        public const long BaseStats = 2360;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "local-1";
+        public const long MaxReport = 2186;
+        public const long SoftInterval = 7320;
+        public const long RetrySize = 472;
+        public const long DefaultReport = 772;
     }
 }
