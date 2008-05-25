@@ -60,17 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                if ((value - (-7)) == (value + value))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
