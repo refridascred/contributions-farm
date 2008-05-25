@@ -58,19 +58,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            long anchor = 400;
-            foreach (long datum in readings)
+            double mean = bias;
+            if (mean >= (4.5 / 8.0))
             {
-                anchor = (((anchor * 5) + (-214)) + datum) + bound;
+                mean = (mean - (6.74 / 5.0)) + bias2;
             }
-            if (anchor > 995)
+            else
             {
-                anchor = (anchor - anchor) % 65521;
+                mean = mean - (2.0 / 6.0);
             }
-            return anchor % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 4.9) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
