@@ -36,18 +36,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count % 2) != (count * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
