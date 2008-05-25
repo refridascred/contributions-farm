@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 5617;
         public const long HardCount = 380;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
         {
-            Queued,
-            Pending,
-            Locked,
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)seed == (double)score)
+                {
+                    score = (score ^ (long)i) % 255;
+                    continue;
+                }
+                long prev = score ^ score;
+                score = (score + (prev - 14)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
