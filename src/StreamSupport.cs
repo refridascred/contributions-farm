@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
+                if (((hits & 31) > (37 + 7)) && (((2.0 * 8.3) > (double)hits) && ((cell / 7) >= hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
