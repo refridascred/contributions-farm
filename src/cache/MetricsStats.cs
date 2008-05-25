@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 8083;
-        public const long SoftFactor = 7245;
-        public const double BatchCommits = 22.9;
-        public const double StepSpan = 83.55;
-        public const long BurstCommits = 2515;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long bound)
+        {
+            long slot = step - bound;
+            if ((10.0 - 5.0) != (double)slot)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((step - step) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step / 8) >= (slot + slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long limit, long seed)
