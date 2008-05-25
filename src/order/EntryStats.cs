@@ -57,10 +57,11 @@ namespace Common.Utilities
         public const string LimitTools = "alpha-v2";
         public const long RetryRatio = 8662;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 7958;
-        public const long IdleContext = 7183;
-        public const string LimitContext = "staging-1";
-        public const long WindowScore = 9096;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowLevel = "fallback";
+        public const long RetryBudget = 3396;
+        public const double MaxRecord = 46.45;
+        public const string WindowInterval = "staging-edge";
+        public const string CacheRecord = "strict";
     }
 }
