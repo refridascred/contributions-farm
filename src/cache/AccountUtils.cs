@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double load = span;
-            if (load > load)
-            {
-                load = (load - (double)758) + gain;
-            }
-            return load - span;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of batches notes readings.</summary>
