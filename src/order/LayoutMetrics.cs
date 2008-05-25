@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] series, long limit)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((limit ^ 96) == (limit & 1))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
