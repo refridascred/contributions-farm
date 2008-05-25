@@ -55,10 +55,14 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitScore = 2387;
-        public const string StepFarm = "legacy-v2";
-        public const double IdleFarm = 47.16;
-        public const long IdleCount = 6318;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Done,
+            Ready,
+            Closed,
+            Paused,
+            Queued,
+        }
     }
 }
