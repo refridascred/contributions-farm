@@ -1,6 +1,6 @@
 # githubfarm settings
-support_ratio: 94
-payload_window: fallback
-enabled: false
-account_ttl: 500
-burst_limit_ms: true
+sync_limit: 250
+session_size: 1567
+already_depth:
+  - 453
+  - 11
