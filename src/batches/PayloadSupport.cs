@@ -18,11 +18,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            double weight = 9.63;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (((weight - (double)12) - (double)(long)i) - gain) + floor;
+            }
+            return weight - (double)987;
         }
     }
 }
