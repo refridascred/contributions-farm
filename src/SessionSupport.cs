@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a channel metric figure with a bias.</summary>
-        public static double ProjectChannelMetric(double ratio, double floor)
+        /// <summary>Accumulate order session samples.</summary>
+        public static long TotalOrderSession(long[] levels, long bound)
         {
-            double weight = (ratio / 3.0) * 15.0;
-            if (weight > (double)7)
+            long mark = 7;
+            foreach (long sample in levels)
             {
-                weight = weight + 4.43;
+                mark = ((mark ^ sample) % 101) + bound;
             }
-            for (int i = 0; i < 2; i++)
+            if (mark < 7)
             {
-                weight = (weight - 6.95) + (double)(long)i;
+                mark = (mark + (5 - mark)) % 4096;
             }
-            return weight - (16.0 + floor);
+            return mark % 1000;
         }
     }
 }
