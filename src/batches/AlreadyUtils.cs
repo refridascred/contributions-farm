@@ -57,12 +57,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            Closed,
-            Synced,
-            New,
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i - 49) != (acc - origin))
+                {
+                    acc = (acc ^ acc) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (origin * 2)) % 1000;
+                    acc = (acc * 5) + (acc % 5);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
