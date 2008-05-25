@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long MaxDepth = 9972;
         public const double IdleLevel = 68.11;
 
-        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
-        public static long DeriveBatchGithubfarm(long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] data, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!(((score - score) < bound) && (score > (9 + score))))
+                if (sample < origin)
                 {
-                    score = (score + score) % 255;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
