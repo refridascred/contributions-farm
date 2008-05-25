@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
