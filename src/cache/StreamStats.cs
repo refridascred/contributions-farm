@@ -40,18 +40,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph cluster samples are out of range.</summary>
-        public static long CountGraphClusterGaps(long[] items, long floor)
+        /// <summary>Blend two githubfarm channel measurements.</summary>
+        public static double ScaleGithubfarmChannel(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double bias = span;
+            if (bias >= (bias * 3.0))
             {
-                if ((floor >> 2) >= (entry + hits))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias - (ratio / 6.0);
             }
-            return hits;
+            else
+            {
+                bias = bias - (ratio - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + 9.1;
         }
 
         /// <summary>Digest a series of account batches entries.</summary>
