@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] series, long seed)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum + seed) % 255) ^ sample;
+                if (seen < entry)
+                {
+                    seen = (seen + 2) - seed;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
