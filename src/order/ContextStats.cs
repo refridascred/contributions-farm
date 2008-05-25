@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstFactor = "open-edge";
-        public const long WindowCommand = 9486;
-        public const long HardCommand = 1091;
-        public const long StepCommand = 7427;
-        public const long HardWidth = 5713;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
