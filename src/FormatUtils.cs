@@ -75,19 +75,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] samples, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
