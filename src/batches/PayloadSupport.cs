@@ -27,15 +27,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double weight = 9.63;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (((weight - (double)12) - (double)(long)i) - gain) + floor;
-            }
-            return weight - (double)987;
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
