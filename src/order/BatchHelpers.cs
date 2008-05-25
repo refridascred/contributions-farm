@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultSize = 3860;
-        public const double BaseLevel = 22.96;
-        public const double BatchScore = 13.59;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double rate, double bias)
+        {
+            double mean = bias / 3.0;
+            if (mean <= (mean + rate))
+            {
+                mean = mean + (6.34 * 8.06);
+            }
+            else
+            {
+                mean = mean + rate;
+            }
+            return mean + (0.56 + bias);
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double SmoothBatches(double gain, double offset)
