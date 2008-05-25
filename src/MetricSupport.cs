@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long offset)
+        /// <summary>Iterate the layout profile series from a seed.</summary>
+        public static long SeriesLayoutProfile(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
