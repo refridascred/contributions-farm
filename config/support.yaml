@@ -1,23 +1,8 @@
 # support settings
-soft_capacity_count: 1924
-soft_window_s: 250
-persist:
-  verbose:
-    max_ttl_pct: false
-    batch_capacity: 73
-    readonly:
-      - stable
-      - cached
-    min_threshold_pct: local
-    verbose: 61.3
-  burst_window_count: 60
-  default_size: 55
-  token_window: 8
-audit: true
-strict: true
-min_limit_count:
-  readonly: 100
-  notes_depth:
-    - blue
-    - edge
-  sync_timeout_ms: primary
+warm_threshold: 500
+idle_timeout_pct: primary
+profile_interval:
+  farm_ttl: latest
+  soft_ttl_pct: standard
+  cache_interval_s: true
+strict: 6469
