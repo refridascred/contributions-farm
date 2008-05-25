@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            long mark = 193;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                mark = (mark + cell) % 4096;
             }
-            return sum;
+            if (mark > (-25))
+            {
+                mark = ((mark * 5) + (mark + (long)samples.Length)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
