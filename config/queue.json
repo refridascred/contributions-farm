@@ -1,15 +1,19 @@
 {
-  "token_capacity": 87.49,
-  "soft_ttl": "legacy",
-  "burst_limit": "standard",
-  "counter_timeout": 4247,
-  "token_depth": {
-    "profile_timeout": "stable",
-    "cache_delay": 61.18,
-    "hard_size_count": "strict",
-    "buffer_delay": 3420,
-    "strict": ["fallback", "standard"],
-    "dry_run": "stable"
+  "retry_delay": "local",
+  "compress": {
+    "compress": 55.86,
+    "sync_ttl_count": "staging",
+    "readonly": 97.85,
+    "session_depth": "open",
+    "enabled": 75.57
   },
-  "strict": false
+  "filter_retries": "legacy",
+  "cluster_interval": false,
+  "enabled": {
+    "dry_run": "standard",
+    "persist": ["eu-west", "fallback"],
+    "enabled": 30,
+    "report_capacity": 250,
+    "compress": false
+  }
 }
