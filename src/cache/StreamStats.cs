@@ -55,19 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            long mix = 19;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mix = mix - (cell - mix);
+                if (matches < value)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mix > 628)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return matches;
         }
     }
 }
