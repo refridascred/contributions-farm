@@ -22,12 +22,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchScore = 8970;
+        public const long HardTimeout = 6787;
+        public const long WindowLevel = 1211;
+        public const double MaxTimeout = 96.04;
     }
 }
