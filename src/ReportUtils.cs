@@ -35,10 +35,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "fallback-1";
-        public const double BatchWidth = 42.02;
-        public const long MaxBatches = 7784;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
