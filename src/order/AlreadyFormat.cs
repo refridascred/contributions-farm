@@ -56,11 +56,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSize = "standard-v2";
-        public const long LimitTimeout = 3850;
-        public const string HardMetrics = "fallback-edge";
-        public const long WindowCount = 5926;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (count <= 614)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a format report reading.</summary>
         public static double AdjustFormatReport(double weight, double bias)
