@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSize = 143;
-        public const long WindowContext = 7224;
-        public const double HardLevel = 82.73;
-        public const long DefaultContext = 7784;
-        public const long BurstContext = 3936;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Locked,
+            Failed,
+            Queued,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
