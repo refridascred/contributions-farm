@@ -31,20 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric checks readings.</summary>
-        public static long WeighMetricChecks(long[] samples)
-        {
-            long acc = 70;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) > acc)
-                {
-                    acc = acc - 862;
-                }
-                acc = ((acc << 3) ^ (reading >> 4)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 18.38;
+        public const string IdleFactor = "strict-1";
+        public const long IdleSpan = 785;
+        public const long WindowOrder = 2996;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] series, long step)
