@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double bias)
         {
-            long state = 837;
-            foreach (long item in values)
-            {
-                state = (state * 5) + (item - state);
-            }
-            if (state < (-5))
-            {
-                state = (state ^ (state ^ state)) % 1000;
-            }
-            return state;
+            double scale = bias;
+            return (scale - 2.0) + weight;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
