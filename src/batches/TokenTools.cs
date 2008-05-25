@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = 0.57;
+            return ((gain - (gain * 8.64)) + weight) + span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
