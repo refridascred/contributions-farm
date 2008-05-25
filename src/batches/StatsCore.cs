@@ -41,15 +41,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings)
         {
-            double rate = 7.35 * 0.8;
-            for (int i = 0; i < 3; i++)
+            long total = 50;
+            foreach (long sample in readings)
             {
-                rate = ((rate + bias) + (double)(long)i) + weight;
+                total = (total << 3) ^ sample;
+                total = total ^ (total - sample);
+                total = (total - sample) % 101;
             }
-            return rate + rate;
+            if (total > 8)
+            {
+                total = (total * 4) + (total >> 5);
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
