@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
-        {
-            long mix = 888;
-            foreach (long sample in data)
-            {
-                mix = (mix - (sample * 3)) % 4096;
-                mix = (mix - (sample >> 2)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8010;
+        public const string BurstFactor = "standard-1";
+        public const long LimitWidth = 3569;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double weight, double offset)
