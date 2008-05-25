@@ -1,9 +1,10 @@
 # support settings
-audit: local
-schema_window: 250
-warm_interval: 55.57
-min_depth_s: fallback
-report_capacity:
-  - 324
-  - 464
-  - 74
+enabled: 100
+hard_window_pct: 35
+entry_threshold: true
+metric_depth:
+  - 30
+  - 212
+  - 365
+entry_ratio: false
+cache_capacity: 73
