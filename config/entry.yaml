@@ -1,8 +1,19 @@
 # entry settings
-cache_threshold:
-  - fallback
-  - primary
-enabled: false
-retry_size_count: stable
-flush_window_s: cached
-dry_run: 37.91
+compress: cached
+cache_capacity_s: 889
+warm_window_s: false
+hard_limit:
+  verbose: open
+  warm_interval: blue
+  audit:
+    verbose: latest
+    flush_limit: 49
+    default_capacity_pct: false
+    poll_retries: 500
+    hard_delay: 54.16
+    cache_ttl_ms: eu-west
+  commits_delay: 69
+hard_retries_pct:
+  - 105
+  - 335
+  - 51
