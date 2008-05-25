@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (values[i] < limit)
+                if (value > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
