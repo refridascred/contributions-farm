@@ -1,12 +1,7 @@
 {
-  "poll_threshold": [304, 173],
-  "burst_ratio": 67.59,
-  "verbose": 1042,
-  "idle_depth_s": {
-    "window_size": "legacy",
-    "hard_timeout_count": ["stable", "primary", "eu-west", "green"],
-    "min_capacity_pct": true,
-    "max_threshold_s": "green"
-  },
-  "flush_interval_count": 403
+  "channel_threshold": "legacy",
+  "payload_threshold": ["eu-west", "primary", "fallback"],
+  "report_threshold": 100,
+  "flush_retries_ms": ["edge", "fallback", "legacy", "eu-west"],
+  "min_threshold_s": ["local", "eu-west", "edge"]
 }
