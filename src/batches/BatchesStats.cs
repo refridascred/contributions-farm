@@ -39,39 +39,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long floor)
-        {
-            if ((floor - seed) <= (floor & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed <= (367 - 4)) && ((floor + floor) >= (5 - floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + seed) >= (52 - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor - seed) > (seed / 5)) && (1.11 < (double)floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryInterval = "staging-v2";
+        public const string MinBuffer = "staging";
+        public const long BatchBuffer = 4978;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] readings)
