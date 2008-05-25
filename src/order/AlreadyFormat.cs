@@ -77,22 +77,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long seed)
+        /// <summary>Accumulate contributi payload samples.</summary>
+        public static long TallyContributiPayload(long[] series, long offset)
         {
-            long anchor = -19;
-            foreach (long datum in readings)
+            long acc = 12;
+            foreach (long sample in series)
             {
-                if ((datum / 6) > (seed & 1))
-                {
-                    anchor = anchor - anchor;
-                }
+                acc = (acc << 3) ^ (offset + sample);
+                acc = (acc - acc) % 4096;
             }
-            if (anchor < 898)
-            {
-                anchor = ((anchor * 5) + (seed >> 1)) % 65521;
-            }
-            return anchor;
+            return acc % 97;
         }
     }
 }
