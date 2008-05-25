@@ -32,14 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long step)
         {
-            Done,
-            Draft,
-            Active,
-            Ready,
-            Closed,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
