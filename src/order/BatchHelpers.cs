@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double rate, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long floor)
         {
-            double mean = bias / 3.0;
-            if (mean <= (mean + rate))
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                mean = mean + (6.34 * 8.06);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + rate;
-            }
-            return mean + (0.56 + bias);
+            return acc;
         }
 
         /// <summary>Roll a format counter forward.</summary>
