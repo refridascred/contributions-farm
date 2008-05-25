@@ -1,5 +1,12 @@
 {
-  "stats_ratio": false,
-  "route_depth": true,
-  "window_interval": 30
+  "entry_ttl": true,
+  "verbose": 48,
+  "poll_ttl": {
+    "entry_retries": 59.54,
+    "checks_ratio": 23,
+    "persist": false,
+    "retry_threshold": true,
+    "readonly": "edge"
+  },
+  "persist": 8612
 }
