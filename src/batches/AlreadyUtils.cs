@@ -50,31 +50,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long seed)
+        /// <summary>Digest a series of route batch entries.</summary>
+        public static long WeighRouteBatch(long[] data)
         {
-            if ((origin + 2) < seed)
+            long carry = -1;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 31) > (55 & 63))
+                if ((datum + datum) <= datum)
                 {
-                    return 7;
+                    carry = (carry + (datum >> 2)) % 4096;
                 }
                 else
                 {
-                    if (11.0 < (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry << 3) ^ (1 + 67);
+                    carry = (carry << 2) ^ (550 - (-908));
+                }
+                carry = (carry << 3) ^ datum;
+                if (((datum - datum) >= (carry & 15)) || (datum >= (-964)))
+                {
+                    carry = carry - (carry + carry);
+                }
+                if ((4 - datum) > carry)
+                {
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
