@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many support batches samples are out of range.</summary>
-        public static long AuditSupportBatchesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheFactor = 6270;
+        public const string IdleProfile = "stable";
+        public const long BatchProfile = 4783;
+        public const string WindowProfile = "local-1";
+        public const string HardCount = "open";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseSpan = 215;
