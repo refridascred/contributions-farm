@@ -46,12 +46,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            Locked,
-            Done,
-            Closed,
+            double ratio = scale;
+            if (ratio > ratio)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - 1.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio - (floor - ratio);
         }
     }
 }
