@@ -47,27 +47,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values, long floor)
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long CountNotesFarmGaps(long[] data, long step)
         {
-            long mark = 3;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((seen >> 1) > (seen - step))
                 {
-                    mark = (((mark << 3) ^ (floor ^ (long)values.Length)) % 4096) ^ (long)i;
-                    mark = mark ^ (value ^ 9);
-                }
-                if ((9.46 - 9.78) != (double)floor)
-                {
-                    mark = mark + 7;
+                    seen = (seen + 3) - value;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = mark - (floor >> 1);
-            }
-            return mark % 1000;
+            return seen;
         }
     }
 }
