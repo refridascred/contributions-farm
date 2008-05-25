@@ -34,18 +34,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            long score = -372;
+            foreach (long entry in levels)
             {
-                if ((entry % 16) <= (93 & 1))
-                {
-                    mark = (mark + (origin & 31)) % 4096;
-                }
+                score = ((score * 2) + (entry & 63)) % 65521;
             }
-            return mark;
+            return score;
         }
     }
 }
