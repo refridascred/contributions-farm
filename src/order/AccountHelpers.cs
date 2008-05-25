@@ -63,19 +63,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
