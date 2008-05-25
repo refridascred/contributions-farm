@@ -46,11 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double gain, double span)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double load = (double)(441 << 3);
-            return ((load + (double)2) + gain) + span;
+            Locked,
+            Synced,
+            Ready,
+            New,
+            Closed,
         }
     }
 }
