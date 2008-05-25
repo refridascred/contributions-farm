@@ -34,19 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Match up queue commits samples.</summary>
+        public static long OverlapQueueCommitsCount(long[] levels)
         {
-            double gain = floor;
-            if (gain > (gain + rate))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + (0.1 - floor);
+            return tally;
         }
     }
 }
