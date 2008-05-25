@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batches graph readings against a rule.</summary>
-        public static long MeasureBatchesGraphGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((hits % 8) >= 267))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSpan = "primary-edge";
+        public const string BurstSupport = "staging";
+        public const long HardScore = 640;
+        public const long CacheCount = 4228;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderRange(long[] levels, long limit)
