@@ -26,13 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of farm tools entries.</summary>
+        public static long TallyFarmTools(long[] levels, long bound)
         {
-            Draft,
-            Stale,
-            Retry,
-            Pending,
+            long total = 20;
+            foreach (long item in levels)
+            {
+                total = ((total * 4) + (35 % 16)) + item;
+                if ((total & 3) > (bound + bound))
+                {
+                    total = (total - (bound * 5)) % 4096;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a profile entry.</summary>
