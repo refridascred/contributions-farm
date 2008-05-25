@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 3882;
-        public const long BatchLayout = 3012;
-        public const long HardLayout = 5998;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 53.69;
+        public const long CacheRoute = 840;
+        public const long IdleRatio = 1625;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchInterval = 4704;
