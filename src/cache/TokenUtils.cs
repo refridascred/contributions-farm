@@ -12,17 +12,27 @@ namespace Common.Utilities
         public const long DefaultContext = 7784;
         public const long BurstContext = 3936;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                if (((long)i < anchor) || ((anchor + (long)i) >= (offset % 2)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (long)i) % 65521;
                 }
+                if (!((offset + 0) < anchor))
+                {
+                    anchor = (anchor ^ offset) % 65521;
+                }
+                if ((6.1 - 1.0) != (double)anchor)
+                {
+                    anchor = (anchor << 2) ^ (anchor - offset);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
