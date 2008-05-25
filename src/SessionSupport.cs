@@ -30,11 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long offset)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
