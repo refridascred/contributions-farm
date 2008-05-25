@@ -47,27 +47,22 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Digest a series of buffer stats entries.</summary>
-        public static long TotalBufferStats(long[] samples, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] series, long target)
         {
-            long acc = 84;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((-3) + 561) != (acc % 5))
+                if ((701 - tally) <= (38 * 5))
                 {
-                    acc = (acc ^ step) % 97;
-                    acc = ((acc << 3) ^ reading) % 255;
-                }
-                if (reading <= ((long)samples.Length + 1))
-                {
-                    acc = (acc * 4) + step;
+                    tally = ((tally + 3) + value) + target;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ (acc + 16);
+                    tally = tally - 1;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
