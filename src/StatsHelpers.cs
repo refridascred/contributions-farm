@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Synced,
-            Paused,
-            Locked,
-            Closed,
-            Queued,
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
