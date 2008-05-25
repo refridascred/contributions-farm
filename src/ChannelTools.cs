@@ -23,19 +23,18 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Project the next checks stream value.</summary>
-        public static double AdjustChecksStream(double gain, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items, long step)
         {
-            double gain2 = 2.96;
-            if (gain2 >= (13.0 / 5.0))
+            long state = 205;
+            foreach (long value in items)
             {
-                gain2 = (gain2 + gain2) - span;
+                if (step > (state ^ step))
+                {
+                    state = ((state + (state * 3)) % 255) + value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (double)835) - (double)(long)i;
-            }
-            return gain2 - (gain - gain);
+            return state;
         }
     }
 }
