@@ -1,13 +1,17 @@
 # entry settings
-batch_limit_count: 99
-payload_size:
-  retry_threshold_ms: standard
-  cache_size: 51.8
-  readonly: 30.67
-  max_timeout_ms: latest
-soft_retries_count:
-  - edge
-  - green
-burst_retries_ms: 82.99
-counter_ttl: false
-persist: 60
+base_interval: 1024
+commits_limit: true
+idle_interval: 100
+record_ttl:
+  - 258
+  - 318
+  - 141
+report_interval:
+  hard_ttl_count: 50
+  batch_ratio_pct: false
+  warm_ratio_s:
+    - eu-west
+    - green
+    - stable
+  format_capacity: legacy
+enabled: 2.08
