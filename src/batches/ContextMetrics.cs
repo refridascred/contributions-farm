@@ -64,25 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] data, long step)
         {
-            long edge = floor + step;
-            if ((536 * 2) <= (edge + floor))
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 1) <= ((-1) + floor))
+                if (reading != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
