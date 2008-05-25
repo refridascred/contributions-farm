@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 2;
+            foreach (long reading in items)
             {
-                if ((values[i] == limit) && ((values[i] % 2) == 0))
+                if ((double)(long)items.Length <= (5.38 - 2.0))
                 {
-                    return (long)i;
+                    total = total ^ (total - reading);
+                }
+                if (((reading << 3) == (705 + reading)) && (reading > (86 + total)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
