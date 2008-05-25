@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Compare every pair of metric metrics readings.</summary>
-        public static long CompareMetricMetricsCount(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 20)
+                    if ((data[i] + data[j]) > 4)
                     {
                         hits = hits + 1;
                     }
