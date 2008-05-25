@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long MeasureCommandTokenOutliers(long[] samples)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)count >= (5.9 / 5.0))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
