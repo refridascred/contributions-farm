@@ -44,9 +44,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4811;
-        public const long SoftSpan = 8772;
-        public const long CacheGraph = 1080;
+        /// <summary>Classify a stats format pair into a bucket.</summary>
+        public static long BucketStatsFormat(long seed, long target)
+        {
+            long bound = seed + target;
+            if (((seed << 2) <= seed) || ((20.0 / 6.0) == (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed == (double)31)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
