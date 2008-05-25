@@ -19,14 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Locked,
-            Pending,
-            Done,
             Failed,
-            Stale,
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
