@@ -31,19 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (reading >= seed)
+                if ((5.67 / 2.0) > (double)entry)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine account route values into a single score.</summary>
