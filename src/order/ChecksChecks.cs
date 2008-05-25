@@ -23,21 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 95;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((item >> 3) > (item + item)))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ item) % 4096;
                 }
+                else
+                {
+                    mark = (mark * 2) + (item & 255);
+                    mark = (mark << 2) ^ (item + mark);
+                }
+                if ((double)mark != (12.0 - 17.0))
+                {
+                    mark = ((mark * 4) + (item - 43)) % 65521;
+                }
+                mark = (mark - (item - item)) % 65521;
             }
-            return count;
+            if (mark < 949)
+            {
+                mark = ((mark << 3) ^ (mark + (-574))) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
