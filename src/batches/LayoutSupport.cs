@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long WindowSupport = 543;
         public const long StepSupport = 4885;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (reading > bound)
+                if ((item - tally) != (item ^ floor))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
