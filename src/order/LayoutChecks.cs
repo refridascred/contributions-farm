@@ -41,17 +41,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] series, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (series[i] >= target)
+                if (!((matches ^ entry) != (offset * 5)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
