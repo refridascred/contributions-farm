@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series, long bound)
         {
-            long acc = 724;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = acc + (cell + cell);
-                acc = acc ^ cell;
-                if ((limit >> 2) >= (acc / 6))
+                if ((double)hits <= 8.8)
                 {
-                    acc = acc - (acc & 31);
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 7)) % 101;
+                    hits = ((hits + 3) ^ entry) + bound;
                 }
             }
-            if (acc > 5)
-            {
-                acc = (acc * 5) + (acc * 3);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
