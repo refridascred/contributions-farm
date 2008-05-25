@@ -34,12 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] readings)
         {
-            Locked,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally + value) != (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a format farm counter forward.</summary>
