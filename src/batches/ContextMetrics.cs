@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next entry value.</summary>
