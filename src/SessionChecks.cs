@@ -19,18 +19,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > (hits >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) - step;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
