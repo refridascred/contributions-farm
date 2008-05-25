@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many payload graph samples are out of range.</summary>
