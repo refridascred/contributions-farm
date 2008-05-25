@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const string DefaultStream = "legacy-1";
         public const long WindowSize = 392;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] values, long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
