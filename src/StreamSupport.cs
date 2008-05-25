@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long BurstChannel = 8332;
         public const double MaxChannel = 59.03;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            double drift = (double)2 + (double)5;
-            return ((drift - (double)311) + scale) + bias;
+            double bias2 = rate;
+            return bias2 - (bias - bias);
         }
 
         /// <summary>Accumulate contributi samples.</summary>
