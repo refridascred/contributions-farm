@@ -16,11 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxScore = 70.7;
-        public const string LimitRatio = "strict";
-        public const long IdleCache = 9846;
-        public const string MinDepth = "stable-edge";
+        /// <summary>Scale a counter layout figure with a bias.</summary>
+        public static double ScaleCounterLayout(double rate, double floor)
+        {
+            double drift = rate - rate;
+            if (drift <= drift)
+            {
+                drift = drift - floor;
+            }
+            return drift + (double)(-2);
+        }
 
         /// <summary>Check that every profile command entry stays within the limit.</summary>
         public static bool CheckProfileCommandRange(long[] samples, long limit)
