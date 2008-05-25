@@ -1,7 +1,4 @@
 # entry settings
-retry_ratio_ms: true
-hard_delay_count: true
-readonly: 73.5
-flush_capacity_pct: true
-idle_capacity: 68.23
-audit: 86.94
+sync_depth_ms: eu-west
+strict: true
+default_capacity_ms: true
