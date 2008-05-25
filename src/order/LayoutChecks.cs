@@ -66,19 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window buffer readings against a bound.</summary>
-        public static bool ValidateWindowBufferRange(long[] items, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double ratio = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio - (double)31) + (double)(long)i) - scale;
             }
-            return ok;
+            return ratio + ratio;
         }
 
         /// <summary>Rank session input into a small class.</summary>
