@@ -42,11 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
