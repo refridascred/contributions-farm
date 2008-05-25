@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] series, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 88;
-            foreach (long entry in series)
-            {
-                if (((70 & 255) < entry) || ((7 + entry) > (result + 10)))
-                {
-                    result = (result << 2) ^ (floor / 6);
-                }
-            }
-            if (result < 3)
-            {
-                result = (result * 3) + (2 * 2);
-            }
-            return result;
+            New,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the graph phase values.</summary>
