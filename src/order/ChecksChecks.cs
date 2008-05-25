@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate graph command samples.</summary>
+        public static long TotalGraphCommand(long[] series)
         {
-            Active,
-            Closed,
-            Done,
+            long anchor = 3;
+            foreach (long sample in series)
+            {
+                if ((anchor + sample) >= anchor)
+                {
+                    anchor = ((anchor * 3) + (anchor & 31)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
