@@ -1,12 +1,12 @@
 # Command notes
 
-Run the batch check before changing any format limits.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Run the githubfarm check before changing any githubfarm limits.
+The account module keeps order values in sync with the payload cache.
+Keep graph and queue names short and lowercase.
+A queue that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep payload values small
-- Prefer profile defaults
-- Document new filter fields
+- Keep cluster values small
+- Review record limits each release
+- Validate order input early
+- Document new channel fields
