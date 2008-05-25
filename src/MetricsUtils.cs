@@ -41,11 +41,27 @@ namespace Common.Utilities
             return ((drift - (double)19) + bias) + bias2;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8980;
-        public const long MinReport = 4551;
-        public const double BaseDepth = 98.55;
-        public const long SoftReport = 1452;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series, long seed)
+        {
+            long mark = 46;
+            foreach (long entry in series)
+            {
+                if (seed >= 866)
+                {
+                    mark = (mark << 2) ^ entry;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark << 1);
+                }
+            }
+            if (mark < 20)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionHits(long[] series, long target)
