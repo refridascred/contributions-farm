@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long lane = step ^ seed;
-            if ((double)lane < (5.0 / 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)lane >= (8.9 - 13.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
