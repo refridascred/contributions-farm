@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchTimeout = "open-v2";
-        public const string LimitBudget = "standard-1";
-        public const long WindowProfile = 6096;
-        public const double BurstSpan = 53.6;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BaseRatio = 86.88;
