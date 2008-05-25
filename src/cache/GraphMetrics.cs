@@ -56,15 +56,19 @@ namespace Common.Utilities
         public const long CacheFactor = 4442;
         public const long IdleRoute = 3103;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Validate cluster queue readings against a bound.</summary>
+        public static bool GuardClusterQueueBounds(long[] series, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
     }
 }
