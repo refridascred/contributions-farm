@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data, long step)
         {
-            long score = 548;
+            long result = -741;
             foreach (long reading in data)
             {
-                if (((limit % 100) == (reading + 188)) && (limit > score))
+                if (!((result / 7) < (124 / 8)))
                 {
-                    score = (score + (score * 3)) % 97;
+                    result = (result ^ reading) + step;
                 }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
