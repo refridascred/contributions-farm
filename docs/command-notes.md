@@ -1,12 +1,14 @@
 # Command notes
 
-The account module keeps order values in sync with the payload cache.
-Keep graph and queue names short and lowercase.
-A queue that stays idle for too long is moved to the route list.
+Run the stream check before changing any buffer limits.
+When a format fails, the entry handler retries a few times before giving up.
+
+The buffer module keeps window values in sync with the editor cache.
+A command that stays idle for too long is moved to the editor list.
+Run the context check before changing any batch limits.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review record limits each release
-- Validate order input early
-- Document new channel fields
+- Review buffer limits each release
+- Log every cache change
+- Document new already fields
