@@ -22,19 +22,13 @@ namespace Common.Utilities
         public const double SoftQueue = 31.44;
         public const long StepRatio = 8634;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] values, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
