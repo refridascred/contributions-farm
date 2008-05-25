@@ -27,21 +27,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Rank layout route input into a small class.</summary>
+        public static long GradeLayoutRoute(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset != (8.15 - 0.2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (9.45 - 7.71))
                 {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two checks stats measurements.</summary>
