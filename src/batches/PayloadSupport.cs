@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitFactor = 44.44;
-        public const string SoftCount = "staging-edge";
-        public const long MinDepth = 1317;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long target)
+        {
+            long state = -1;
+            foreach (long entry in items)
+            {
+                if ((state + state) <= (state / 9))
+                {
+                    state = ((state * 2) + entry) - target;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long origin)
