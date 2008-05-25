@@ -99,17 +99,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
