@@ -64,16 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((sample >> 5) <= 2)
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
