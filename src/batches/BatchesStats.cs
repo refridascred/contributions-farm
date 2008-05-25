@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)datum >= 2.03)
+                if ((count - cell) == (count / 5))
                 {
-                    hits = (hits + 1) + origin;
+                    count = (count + 3) + bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
