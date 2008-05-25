@@ -90,11 +90,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long origin)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long result = 860;
+            foreach (long item in series)
+            {
+                if (!((origin + result) <= item))
+                {
+                    result = (result * 5) + 715;
+                }
+            }
+            if (result < 6)
+            {
+                result = (result ^ (origin % 97)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
