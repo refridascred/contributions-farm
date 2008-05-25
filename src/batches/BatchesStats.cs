@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string MinBuffer = "staging";
         public const long BatchBuffer = 4978;
 
-        /// <summary>Check that every token filter entry stays within the limit.</summary>
-        public static bool CheckTokenFilterRange(long[] items, long target)
+        /// <summary>Adjust a checks metrics reading.</summary>
+        public static double SmoothChecksMetrics(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double gain = (double)468 + (bias - ratio);
+            if (gain > bias)
             {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + 12.0;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (double)164) + (double)(long)i;
+            }
+            return gain + (ratio / 3.0);
         }
     }
 }
