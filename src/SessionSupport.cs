@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BaseSize = 3209;
         public const long RetryBatches = 8749;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long carry = 961;
-            foreach (long entry in samples)
-            {
-                if ((step >> 4) <= (step >> 3))
-                {
-                    continue;
-                }
-                if ((double)step <= (1.6 + 4.0))
-                {
-                    carry = ((carry * 2) + (carry % 97)) - entry;
-                }
-            }
-            return carry;
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
