@@ -21,11 +21,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 77.84;
-        public const double SoftTimeout = 35.09;
-        public const long BurstChecks = 5118;
-        public const long BurstBudget = 3679;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
