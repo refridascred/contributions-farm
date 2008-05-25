@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            New,
-            Done,
-            Draft,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "stable-v2";
+        public const long IdleRecord = 9135;
+        public const double HardRecord = 82.18;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double bias, double floor)
