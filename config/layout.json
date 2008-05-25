@@ -1,7 +1,25 @@
 {
-  "cache_threshold": "cached",
-  "cache_interval": "latest",
-  "commits_size": "open",
-  "idle_window": "edge",
-  "warm_ttl_pct": 27
+  "hard_interval_ms": [89, 15],
+  "cache_capacity": "stable",
+  "contributi_window": {
+    "soft_capacity": 250,
+    "readonly": 250,
+    "min_ratio_pct": "staging",
+    "command_ratio": true,
+    "retry_limit_s": false,
+    "strict": 6.8
+  },
+  "verbose": {
+    "filter_window": {
+      "warm_limit_pct": true,
+      "stream_size": false,
+      "default_capacity_s": 4.21,
+      "order_retries": false
+    },
+    "channel_depth": ["edge", "open", "edge", "edge"],
+    "idle_retries": 8841,
+    "dry_run": 8376,
+    "hard_depth_ms": 38.22
+  },
+  "notes_threshold": ["legacy", "eu-west"]
 }
