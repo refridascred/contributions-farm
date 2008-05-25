@@ -37,11 +37,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a payload entry.</summary>
