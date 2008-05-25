@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 8954;
+        public const string WindowCount = "standard-edge";
+        public const string RetryRoute = "stable-v2";
+        public const long StepWidth = 2625;
+        public const long HardRoute = 2634;
     }
 }
