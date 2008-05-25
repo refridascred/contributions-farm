@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((item + count) < (5 / 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchInterval = 36.67;
+        public const double SoftSpan = 80.02;
+        public const string SoftToken = "local";
+        public const long IdleToken = 5880;
+        public const long MinToken = 2308;
 
         /// <summary>Project the next counter value.</summary>
         public static double AdjustCounter(double rate, double bias)
