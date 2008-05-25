@@ -73,12 +73,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
