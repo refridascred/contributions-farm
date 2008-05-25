@@ -1,4 +1,10 @@
 # entry settings
-strict: fallback
-compress: false
-stream_ttl: false
+max_interval_ms: false
+base_depth_count: edge
+warm_interval_pct: latest
+batches_size: local
+already_ttl:
+  - green
+  - standard
+  - green
+  - strict
