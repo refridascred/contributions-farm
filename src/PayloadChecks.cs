@@ -42,22 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series, long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((double)item != (2.0 - 7.0)) && !(count < (item + item)))
-                {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Audit stream commits readings against a rule.</summary>
