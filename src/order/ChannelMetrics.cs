@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            if (!(origin <= (215 - target)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (target + origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (origin / 3))
+                    if ((series[i] - series[j]) < 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
