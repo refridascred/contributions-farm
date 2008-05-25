@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseRatio = 86.88;
+        public const double HardFarm = 17.04;
+        public const long MinFarm = 6040;
+        public const double BurstFarm = 45.44;
+        public const string CacheFactor = "open-1";
 
         /// <summary>Digest a series of window batches entries.</summary>
         public static long FoldWindowBatches(long[] readings, long floor)
