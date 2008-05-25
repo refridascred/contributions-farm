@@ -1,5 +1,7 @@
 {
-  "enabled": ["primary", "open"],
-  "idle_timeout_s": 51.7,
-  "hard_delay_ms": 57
+  "default_capacity_s": 76,
+  "dry_run": "strict",
+  "stream_delay": true,
+  "strict": 59.53,
+  "checks_window": "staging"
 }
