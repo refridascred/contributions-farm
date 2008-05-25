@@ -19,12 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepCount = "fallback";
-        public const long BurstDepth = 9618;
-        public const string BaseRoute = "legacy";
-        public const long BurstInterval = 8262;
-        public const string BatchRoute = "latest-1";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long acc = 24;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((((acc * 5) + (acc % 64)) % 1000) - (long)i) - value;
+                }
+                if ((6.3 * 13.0) != (double)acc)
+                {
+                    acc = acc + (acc & 1);
+                }
+            }
+            if (acc > 24)
+            {
+                acc = acc ^ (0 - acc);
+            }
+            return acc;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] readings)
