@@ -72,19 +72,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double mean = 4.07;
-            if (mean > (double)529)
-            {
-                mean = (mean - mean) + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (span * 3.07)) + (double)(long)i;
-            }
-            return mean - (double)785;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
