@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            long score = 2;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = score ^ (entry & 3);
-                if ((entry & 127) >= (entry + entry))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = (score - (entry + score)) % 65521;
-                }
-                if (entry < (score + score))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (score < 89)
-            {
-                score = (score * 2) + (score * 3);
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the already status values.</summary>
