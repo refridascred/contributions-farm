@@ -1,11 +1,8 @@
 # githubfarm settings
-sync_ratio_count:
-  - staging
+entry_window: false
+editor_window: 8802
+batch_retries: fallback
+record_interval:
   - stable
+  - strict
   - legacy
-  - staging
-cache_size_ms: true
-soft_depth_count: 8976
-graph_retries: 71
-cache_threshold_s: 255
-entry_size: false
