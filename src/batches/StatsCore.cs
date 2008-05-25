@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double ratio, double offset)
-        {
-            double ratio2 = (double)60;
-            if (ratio2 <= offset)
-            {
-                ratio2 = (ratio2 + offset) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)66;
-            }
-            return ratio2 + (double)253;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitDepth = 4023;
+        public const long StepInterval = 5022;
+        public const string WindowSpan = "local-v2";
+        public const long BatchSize = 2336;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long seed)
