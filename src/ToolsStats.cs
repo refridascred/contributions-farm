@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Locked,
-            Stale,
-            Idle,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
