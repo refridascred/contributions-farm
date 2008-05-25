@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long CountChannelCommandMatches(long[] samples, long step)
+        /// <summary>Accumulate session contributi samples.</summary>
+        public static long TallySessionContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 472;
+            foreach (long reading in data)
             {
-                if (step >= (reading - reading))
+                state = (state + 237) % 4096;
+                if ((state + reading) < (reading ^ 260))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (state > 8)
+            {
+                state = state ^ (state ^ state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
