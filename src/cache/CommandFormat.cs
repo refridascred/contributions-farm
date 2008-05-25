@@ -64,12 +64,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long bound)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                long bound2 = (5 * 4) & 15;
+                if (((5.0 + 1.6) == (double)(long)i) && (((long)i + bound2) > (bound / 2)))
+                {
+                    bound2 = bound2 + (carry + carry);
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
