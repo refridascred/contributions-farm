@@ -1,11 +1,5 @@
 {
-  "strict": "primary",
-  "filter_limit": ["legacy", "stable"],
-  "filter_ttl": {
-    "flush_capacity_s": 91.34,
-    "burst_timeout_ms": ["cached", "cached", "stable"],
-    "sync_capacity": "blue",
-    "enabled": false
-  },
-  "enabled": 70.8
+  "default_interval_s": 28,
+  "compress": 5696,
+  "retry_interval_ms": "local"
 }
