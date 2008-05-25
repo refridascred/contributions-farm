@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Closed,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "primary-1";
+        public const long CacheFactor = 3189;
+        public const long IdleSize = 3305;
+        public const long BaseQueue = 3772;
+        public const long WindowQueue = 4108;
 
         /// <summary>Combine counter already values into a single score.</summary>
         public static long DigestCounterAlready(long[] items, long origin)
