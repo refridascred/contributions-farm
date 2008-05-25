@@ -29,21 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = floor;
+            if (scale < 3.66)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (rate - rate);
             }
-            return tally;
+            return scale - (6.8 / 7.0);
         }
 
         /// <summary>Grade a token value against two limits.</summary>
