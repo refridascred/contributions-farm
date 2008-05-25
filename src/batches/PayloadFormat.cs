@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const double HardCluster = 5.07;
         public const long MinWidth = 5696;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples, long limit)
+        /// <summary>Find the first batches report entry that matches the target.</summary>
+        public static long SeekBatchesReportIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit <= (count + sample))
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
