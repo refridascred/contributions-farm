@@ -45,23 +45,24 @@ namespace Common.Utilities
         public const double BaseChannel = 46.56;
         public const long CacheRatio = 2709;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long seed)
         {
-            double ratio = scale;
-            if (ratio > ratio)
+            if (((84 - limit) > seed) || ((seed + limit) >= seed))
             {
-                ratio = ratio + ratio;
+                return 7;
             }
             else
             {
-                ratio = ratio - 1.0;
+                if ((2 / 4) >= (seed & 15))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - (floor - ratio);
         }
     }
 }
