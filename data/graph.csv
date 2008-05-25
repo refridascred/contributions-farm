@@ -1,6 +1,10 @@
-id,label
-1,132
-2,611
-3,394
-4,blue
-5,161
+id,owner,weight
+1,808,standard
+2,318,762
+3,3,staging
+4,staging,761
+5,standard,227
+6,eu-west,96.75
+7,14.67,871
+8,staging,941
+9,189,68.93
