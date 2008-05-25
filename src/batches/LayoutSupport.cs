@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 8725;
-        public const long IdleLevel = 364;
-        public const long LimitStream = 4103;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double floor)
+        {
+            double weight = (double)33 * 6.87;
+            if (weight < ratio)
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight + (4.6 - ratio);
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 294;
