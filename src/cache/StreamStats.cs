@@ -28,18 +28,21 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] samples, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((15.0 * 9.64) >= (double)reading) && ((floor > (85 << 3)) && ((matches - floor) <= (matches >> 5))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of account batches entries.</summary>
