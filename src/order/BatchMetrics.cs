@@ -75,17 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
