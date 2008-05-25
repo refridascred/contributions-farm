@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 31.15;
-        public const long BaseWidth = 7335;
-        public const double DefaultStream = 65.16;
-        public const long HardSpan = 7221;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long bound)
+        {
+            if (!((floor - floor) <= bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) == (bound + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor * 4) >= bound) && (floor > 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(floor < (48 >> 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
