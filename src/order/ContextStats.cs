@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long target)
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long FoldLayoutCache(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 49;
+            foreach (long cell in values)
             {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ (cell << 2)) - offset;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
