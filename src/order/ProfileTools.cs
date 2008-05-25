@@ -68,13 +68,14 @@ namespace Common.Utilities
         public const long HardRatio = 6907;
         public const long WindowLevel = 9547;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Ready,
-            Idle,
-            Retry,
-            Synced,
+            Closed,
+            Locked,
+            Done,
+            Paused,
+            New,
         }
     }
 }
