@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 1)
+                    if ((samples[i] - samples[j]) != 13)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
