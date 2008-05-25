@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Use account settings to tune how often checks data is refreshed.
-A cluster that stays idle for too long is moved to the metric list.
-
-The already report groups every stream by route.
-The order module keeps token values in sync with the commits cache.
+The editor report groups every token by context.
+The graph report groups every batch by metric.
+When a format fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer batch defaults
-- Validate metric input early
+- Prefer route defaults
+- Review window limits each release
+- Document new editor fields
