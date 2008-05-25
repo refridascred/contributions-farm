@@ -60,22 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] samples, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((11.0 + 2.8) != (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a filter summary.</summary>
