@@ -1,7 +1,8 @@
 {
-  "min_window": 44.17,
-  "idle_window_ms": [425, 241, 450, 142],
-  "hard_limit_ms": ["primary", "legacy"],
-  "idle_timeout_ms": ["green", "standard", "cached", "local"],
-  "flush_limit_ms": "cached"
+  "sync_ttl_count": true,
+  "metric_retries": false,
+  "soft_window": 86.09,
+  "window_capacity": ["open", "local"],
+  "metric_threshold": 85,
+  "stats_capacity": "cached"
 }
