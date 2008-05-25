@@ -1,5 +1,4 @@
 # githubfarm settings
-dry_run: 89.63
-enabled: 30
-persist: 30
-stats_window: 5719
+min_threshold_ms: 94
+editor_window: 5002
+stats_ratio: 1024
