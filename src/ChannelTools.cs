@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long DigestWindowTools(long[] levels)
+        /// <summary>Match up layout filter samples.</summary>
+        public static long PairLayoutFilterCount(long[] items)
         {
-            long score = 2;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 3) ^ 4) - cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next checks stream value.</summary>
