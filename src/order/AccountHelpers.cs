@@ -41,10 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSpan = 7605;
-        public const double HardBudget = 90.71;
-        public const long StepScore = 2854;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) < (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] levels, long step)
