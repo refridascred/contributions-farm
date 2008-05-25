@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster stats samples are out of range.</summary>
-        public static long TallyClusterStatsHits(long[] readings, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches == (13.0 + 4.3))
-                {
-                    matches = ((matches + 2) + datum) + bound;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
