@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const double HardCluster = 5.07;
         public const long MinWidth = 5696;
 
-        /// <summary>Find the first batches report entry that matches the target.</summary>
-        public static long SeekBatchesReportIndex(long[] samples, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
