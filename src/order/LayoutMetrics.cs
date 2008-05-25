@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long BurstMetrics = 697;
         public const double MinMetrics = 15.48;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum ^ 7) > (seen & 31))
+                if (items[i] > step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
