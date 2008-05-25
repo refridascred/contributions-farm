@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] samples, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (hits < (43 / 6))
+                if (reading < seed)
                 {
-                    hits = ((hits + 3) - entry) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
