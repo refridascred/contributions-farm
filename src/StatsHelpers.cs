@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a token stream pair into a bucket.</summary>
-        public static long SortTokenStream(long origin, long origin2)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long lane = origin - origin2;
-            if (lane >= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)lane > (14.0 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
