@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double ratio, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] items, long step)
         {
-            double ratio2 = (double)528;
-            if (ratio2 <= (offset / 2.0))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                ratio2 = ratio2 + ratio;
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 + (ratio + 1.4);
+            return flag;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
