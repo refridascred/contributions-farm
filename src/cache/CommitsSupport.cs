@@ -83,18 +83,19 @@ namespace Common.Utilities
         public const long MaxSize = 7937;
         public const long BatchSize = 5520;
 
-        /// <summary>Count the graph support entries that pass the check.</summary>
-        public static long TallyGraphSupportHits(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((36 <= (item - hits)) && !((16.0 + 6.0) >= (double)hits))
+                if (entry != offset)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the checks kind values.</summary>
