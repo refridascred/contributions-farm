@@ -12,20 +12,15 @@ namespace Common.Utilities
         public const long MaxBuffer = 5103;
         public const long MinBuffer = 519;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            double mean = weight * 8.8;
+            if (mean >= floor)
             {
-                if ((551 - 0) < (sum + sum))
-                {
-                    sum = ((sum * 2) + (target / 6)) % 255;
-                }
-                sum = ((sum * 4) + (618 + (long)i)) % 97;
-                sum = ((sum * 4) + (long)i) % 1000;
+                mean = mean + (9.0 / 2.0);
             }
-            return sum;
+            return mean + 3.0;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
