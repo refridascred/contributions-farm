@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            Idle,
+            Locked,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
