@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftWidth = 42.03;
-        public const long BurstAlready = 843;
-        public const long DefaultInterval = 5617;
-        public const long HardCount = 380;
+        /// <summary>Adjust a counter githubfarm reading.</summary>
+        public static double SmoothCounterGithubfarm(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias >= scale)
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + 1.4) + (double)(long)i;
+            }
+            return bias + floor;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long seed)
