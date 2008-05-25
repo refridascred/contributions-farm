@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            double gain = 0.57;
-            return ((gain - (gain * 8.64)) + weight) + span;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally - sample) >= (sample * 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
