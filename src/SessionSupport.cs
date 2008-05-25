@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Active,
-            Stale,
-            Queued,
-            Locked,
             Paused,
+            Ready,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of report readings.</summary>
