@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Audit stats tools readings against a rule.</summary>
+        public static long TallyStatsToolsGaps(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((double)matches >= 19.0)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
