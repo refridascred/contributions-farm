@@ -1,9 +1,20 @@
 # githubfarm settings
-layout_ratio: open
-entry_ratio: false
-max_retries_ms: 41.24
-command_capacity:
-  - strict
-  - fallback
-  - legacy
-readonly: cached
+audit:
+  base_interval_pct: primary
+  idle_timeout_s:
+    - staging
+    - fallback
+    - green
+    - open
+  idle_size: primary
+  base_capacity: 1831
+  min_capacity_ms:
+    report_retries:
+      - eu-west
+      - standard
+    enabled: 82.03
+    profile_window: 29.16
+dry_run: stable
+min_delay_count: 90.84
+githubfarm_ratio: 3219
+max_retries: true
