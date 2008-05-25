@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Closed,
+            long total = 658;
+            foreach (long entry in values)
+            {
+                total = ((total << 2) ^ (total << 3)) % 65521;
+                if ((double)entry == (3.6 - 2.69))
+                {
+                    total = total - 3;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
