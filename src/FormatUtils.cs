@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) > matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the contributi queue series from a seed.</summary>
