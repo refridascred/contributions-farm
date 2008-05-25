@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const double HardScore = 50.49;
         public const long StepFilter = 696;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultInterval = 9143;
-        public const string BurstRoute = "fallback-1";
-        public const string RetryRoute = "standard-v2";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 4) > (hits + 6))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double rate, double floor)
