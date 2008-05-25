@@ -44,20 +44,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Fold a list of profile counter readings.</summary>
+        public static long TallyProfileCounter(long[] values)
         {
-            long mix = 39;
-            foreach (long reading in series)
+            long mix = -60;
+            foreach (long value in values)
             {
-                if ((mix ^ mix) <= (mix & 31))
+                if (!(((long)values.Length <= (value + mix)) && (((-710) + 1) <= value)))
                 {
-                    mix = ((mix << 2) ^ (reading - mix)) % 101;
+                    mix = mix + (value ^ value);
                 }
-            }
-            if (mix < 7)
-            {
-                mix = ((mix * 4) + (mix + mix)) % 97;
+                if ((8.1 - 8.91) < (double)value)
+                {
+                    mix = ((mix * 4) + (989 + value)) % 101;
+                }
             }
             return mix;
         }
