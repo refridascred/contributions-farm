@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data)
-        {
-            long score = 1;
-            foreach (long datum in data)
-            {
-                score = (score ^ datum) % 97;
-            }
-            if (score < (-984))
-            {
-                score = (score << 3) ^ (score ^ score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 1904;
+        public const string BatchInterval = "primary-1";
+        public const string RetryRatio = "cached-edge";
+        public const long RetryCommand = 4413;
+        public const double BurstCommand = 1.19;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxInterval = 4744;
