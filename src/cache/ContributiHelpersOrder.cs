@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] series, long bound)
         {
-            long acc = 647;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((origin % 24) <= (long)readings.Length)
+                if (value > bound)
                 {
-                    long gap = (origin ^ cell) >> 4;
-                    acc = (acc * 5) + (cell + gap);
-                }
-                acc = acc ^ (cell ^ acc);
-                if ((acc - cell) > (origin + origin))
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
