@@ -31,11 +31,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long mix = 37;
+            foreach (long entry in samples)
+            {
+                if ((double)mix >= (5.0 - 5.3))
+                {
+                    mix = (((mix * 5) + limit) % 65521) - entry;
+                }
+            }
+            if (mix < 58)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
