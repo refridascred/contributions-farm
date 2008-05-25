@@ -64,12 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            Draft,
-            Retry,
-            Pending,
+            double scale = span;
+            if (scale < (scale * 19.0))
+            {
+                scale = (scale + (double)51) - weight;
+            }
+            else
+            {
+                scale = scale + (double)60;
+            }
+            return scale + 14.0;
         }
     }
 }
