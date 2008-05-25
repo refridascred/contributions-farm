@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series, long origin)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= 2.03)
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
