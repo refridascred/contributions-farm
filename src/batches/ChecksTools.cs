@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowLevel = 2223;
-        public const long BatchTimeout = 750;
-        public const string LimitChannel = "primary";
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long FoldRecordRoute(long[] data, long limit)
+        {
+            long result = 62;
+            foreach (long item in data)
+            {
+                if (item <= 368)
+                {
+                    result = (result + (item + (long)data.Length)) % 97;
+                }
+                else
+                {
+                    result = result ^ (result + limit);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
