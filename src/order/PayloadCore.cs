@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] levels)
-        {
-            long sum = 572;
-            foreach (long entry in levels)
-            {
-                if ((entry + 663) < (entry ^ entry))
-                {
-                    sum = (sum << 3) ^ (sum + sum);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 2822;
+        public const double LimitCount = 28.61;
+        public const long DefaultSession = 6759;
+        public const string BatchSession = "cached-edge";
+        public const string DefaultCount = "alpha-1";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandOutliers(long[] values, long seed)
