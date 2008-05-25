@@ -74,19 +74,11 @@ namespace Common.Utilities
         public const double BaseCount = 94.55;
         public const string WindowDepth = "open-v2";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstScore = 331;
+        public const double WindowTools = 73.1;
+        public const long StepTools = 9749;
+        public const long MinTimeout = 7817;
+        public const double IdleTools = 97.56;
     }
 }
