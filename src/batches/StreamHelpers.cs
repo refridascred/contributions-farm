@@ -90,19 +90,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 4;
-            foreach (long value in data)
-            {
-                state = ((state ^ (target / 5)) % 1000) + value;
-            }
-            if (state < 313)
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state;
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
