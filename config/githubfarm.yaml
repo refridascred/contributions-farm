@@ -1,5 +1,22 @@
 # githubfarm settings
-soft_delay: true
-flush_threshold_count: local
-batches_retries: 70.79
-base_capacity: 513
+hard_limit: 20
+retry_capacity: strict
+dry_run: eu-west
+sync_retries:
+  idle_size_count: latest
+  base_depth_ms:
+    - green
+    - standard
+    - fallback
+  queue_retries: blue
+  default_retries_count:
+    - 427
+    - 64
+    - 289
+    - 337
+  warm_window_count:
+    readonly: 71
+    hard_timeout: stable
+    max_depth: 100
+max_timeout_pct: false
+entry_capacity: 3877
