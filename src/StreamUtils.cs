@@ -13,19 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((0.93 - 10.0) == (double)item)
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3121;
+        public const string HardBudget = "strict";
+        public const double CacheBudget = 50.07;
+        public const long HardPayload = 4440;
+        public const long SoftPayload = 6456;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BurstTimeout = 93.05;
