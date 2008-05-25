@@ -13,21 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)step != (9.8 - 5.96))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
