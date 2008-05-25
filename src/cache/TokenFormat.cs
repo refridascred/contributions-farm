@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit checks graph readings against a rule.</summary>
-        public static long CountChecksGraphGaps(long[] readings, long seed)
+        /// <summary>Count the account session entries that pass the check.</summary>
+        public static long AuditAccountSessionMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)item == (6.35 - 0.6)) && ((14.0 / 7.0) > (double)seed))
+                if (((count - datum) >= ((long)samples.Length / 3)) || (((double)count >= (19.0 + 18.0)) || (9 <= (datum & 1))))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
