@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSpan = 9380;
-        public const long HardFactor = 582;
-        public const long StepGraph = 1921;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (9.0 >= (double)floor)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstTimeout = 51.02;
