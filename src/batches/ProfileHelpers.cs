@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long StepRecord = 9614;
         public const long BatchRecord = 8596;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits % 60) > 6)
                 {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
             return hits;
