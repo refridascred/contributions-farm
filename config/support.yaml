@@ -1,11 +1,22 @@
 # support settings
-base_delay_pct: green
-burst_threshold_count: 6.83
-idle_delay_count: 95.92
-base_ratio_pct:
-  - 222
-  - 74
-  - 390
-  - 112
-retry_capacity_s: open
-verbose: 51
+session_retries:
+  min_depth_count: 37.41
+  min_capacity_ms:
+    warm_retries: 83.45
+    max_interval: 4460
+    idle_retries_s: eu-west
+    channel_limit:
+      - 9
+      - 232
+      - 328
+      - 2
+  profile_capacity: stable
+entry_depth: cached
+flush_capacity_pct: 1024
+readonly:
+  verbose: edge
+  stream_timeout: 3107
+  hard_timeout_ms: 31.47
+  window_threshold: 1024
+base_retries_pct: blue
+flush_depth_pct: latest
