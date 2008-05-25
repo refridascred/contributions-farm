@@ -42,27 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi metrics samples.</summary>
-        public static long ScoreContributiMetrics(long[] items, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long reading in samples)
             {
-                if (((long)items.Length / 3) != (mix + datum))
+                if (((double)acc == (7.9 + 9.0)) || (317 >= (876 + step)))
                 {
-                    mix = mix + target;
+                    acc = (((acc << 3) ^ 2) % 65521) ^ reading;
                 }
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix ^ ((-4) >> 2)) + (long)i;
-                }
-                mix = ((mix * 4) + mix) % 97;
             }
-            if (mix > 7)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
