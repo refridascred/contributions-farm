@@ -28,17 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long step)
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long AuditContextRouteGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (readings[i] <= step)
+                if ((2.84 * 7.93) < (double)value)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
