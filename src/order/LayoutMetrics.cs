@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            if (!(offset < (offset + bound)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 1) <= (bound % 5))
+                if ((940 + cell) >= (cell / 7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
