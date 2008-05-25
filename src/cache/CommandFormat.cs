@@ -28,32 +28,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long step)
-        {
-            if (((step - limit) < limit) || ((step * 4) >= (93 + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7 + limit) >= (-13))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit << 2) < (774 << 1)) && ((limit - 7) != (53 & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleRatio = "standard-1";
+        public const long DefaultChannel = 9994;
+        public const double BaseChannel = 46.56;
+        public const long CacheRatio = 2709;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double scale, double floor)
