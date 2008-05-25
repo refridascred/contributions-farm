@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a farm order reading by value.</summary>
-        public static long FindFarmOrderIndex(long[] values, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor;
+            if (bias > (rate - 0.42))
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)3;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (rate * 15.0)) + (double)(long)i;
+            }
+            return bias - 20.0;
         }
 
         /// <summary>Define session limits and defaults.</summary>
