@@ -15,10 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 75.17;
-        public const long LimitFarm = 4292;
-        public const long BatchWidth = 9375;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Synced,
+            Active,
+            Closed,
+            Pending,
+            New,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 6785;
