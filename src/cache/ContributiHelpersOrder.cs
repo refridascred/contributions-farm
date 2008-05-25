@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long IdleRecord = 9135;
         public const double HardRecord = 82.18;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double floor)
-        {
-            double weight = bias;
-            if (weight > (bias / 4.0))
-            {
-                weight = (weight + (double)9) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight + 9.0)) + (double)(long)i;
-            }
-            return weight - (double)(-348);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 45.01;
+        public const long CacheMetric = 7847;
+        public const long BatchLevel = 5213;
 
         /// <summary>Check that every filter stats entry stays within the limit.</summary>
         public static bool ValidateFilterStatsLimits(long[] items, long step)
