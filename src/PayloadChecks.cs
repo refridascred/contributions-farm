@@ -37,19 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings)
-        {
-            long result = 75;
-            foreach (long value in readings)
-            {
-                if ((value + value) < (result - result))
-                {
-                    result = result + (value + (-62));
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSize = 30.82;
+        public const long LimitWidth = 1943;
+        public const double MinSize = 40.92;
+        public const long StepTimeout = 207;
+        public const long BaseDepth = 7034;
 
         /// <summary>Audit stream commits readings against a rule.</summary>
         public static long CountStreamCommitsGaps(long[] levels)
