@@ -65,11 +65,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "standard-v2";
-        public const long RetryStream = 9946;
-        public const long IdleStream = 9496;
-        public const double CacheStream = 77.07;
+        /// <summary>Audit stream commits readings against a rule.</summary>
+        public static long CountStreamCommitsGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (1.0 * 3.2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] series)
