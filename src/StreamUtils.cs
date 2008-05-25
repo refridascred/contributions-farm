@@ -92,18 +92,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (19 - 8))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 289;
+        public const string BaseFactor = "legacy";
+        public const long IdleScore = 559;
+        public const string HardMetrics = "fallback-1";
     }
 }
