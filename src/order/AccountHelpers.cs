@@ -59,19 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph counter readings against a bound.</summary>
-        public static bool GuardGraphCounterRange(long[] items, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mark = 534;
+            foreach (long reading in samples)
             {
-                if (entry > seed)
+                if ((6.0 - 9.1) >= (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 4) + mark) ^ reading;
+                }
+                else
+                {
+                    mark = (mark * 5) + ((long)samples.Length & 31);
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
