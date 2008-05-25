@@ -23,31 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batches checks value against two limits.</summary>
-        public static long GradeBatchesChecks(long origin, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((step * 3) >= (origin >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin % 12))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >> 2) == (step + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
