@@ -46,19 +46,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
-        public static bool VerifyGraphContributiLimits(long[] items, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long target, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if (((origin / 9) >= target) && ((origin & 127) > (origin & 31)))
             {
-                if (reading != origin)
+                return 4;
+            }
+            else
+            {
+                if ((origin << 2) > (target << 3))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target <= (8.81 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the tools entry series from a seed.</summary>
