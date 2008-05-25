@@ -63,14 +63,11 @@ namespace Common.Utilities
         public const double DefaultMetric = 24.41;
         public const double DefaultCount = 87.98;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            Done,
-            Pending,
-            New,
-            Draft,
-            Retry,
+            double rate = 9.0;
+            return rate + (offset - gain);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
