@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate order session samples.</summary>
-        public static long TotalOrderSession(long[] levels, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long bound)
         {
-            long mark = 7;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                mark = ((mark ^ sample) % 101) + bound;
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark < 7)
-            {
-                mark = (mark + (5 - mark)) % 4096;
-            }
-            return mark % 1000;
+            return stale;
         }
     }
 }
