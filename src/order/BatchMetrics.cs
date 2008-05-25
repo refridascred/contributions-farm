@@ -73,14 +73,13 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Done,
-            Ready,
             Closed,
-            Paused,
-            Queued,
+            Locked,
+            Draft,
+            Dropped,
         }
     }
 }
