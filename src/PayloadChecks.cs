@@ -65,14 +65,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Draft,
-            Failed,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "standard-v2";
+        public const long RetryStream = 9946;
+        public const long IdleStream = 9496;
+        public const double CacheStream = 77.07;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] series)
