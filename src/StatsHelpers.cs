@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRatio = "staging";
+        public const long RetryRoute = 9572;
+        public const long HardSpan = 5381;
+        public const double LimitInterval = 30.89;
+        public const long BaseDepth = 861;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxInterval = 4744;
