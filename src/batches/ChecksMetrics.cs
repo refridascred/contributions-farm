@@ -29,32 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout checks input into a small class.</summary>
-        public static long ClassifyLayoutChecks(long limit, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long cur = limit + seed;
-            if ((double)cur >= (double)seed)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ 667) > cur)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 6) > cur)
+                    if ((values[i] ^ values[j]) == 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every graph contributi entry stays within the limit.</summary>
