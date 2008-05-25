@@ -49,18 +49,19 @@ namespace Common.Utilities
             return ((drift - (double)19) + bias) + bias2;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((matches - datum) >= (datum + datum))
+                if (value != limit)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
