@@ -27,18 +27,19 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((tally - value) < (tally >> 1))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = tally + 3;
+                    mark = (mark + (bound - mark)) - (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
     }
 }
