@@ -65,36 +65,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long seed)
+        /// <summary>Rank profile report input into a small class.</summary>
+        public static long RankProfileReport(long offset, long seed)
         {
-            long span = offset - seed;
-            if (((seed % 12) < (180 + 1)) && ((double)seed < (6.55 + 8.9)))
+            if (((seed + seed) == (offset % 5)) || ((seed * 2) < (2 % 2)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((offset >= (seed + seed)) || ((span & 15) <= offset))
+                if ((offset * 2) <= (241 * 4))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset - seed) >= span)
+                    if (!((2.9 / 8.0) < (double)seed))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if (span >= (span >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
