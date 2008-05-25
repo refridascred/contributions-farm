@@ -12,12 +12,27 @@ namespace Common.Utilities
         public const double StepSpan = 83.55;
         public const long BurstCommits = 2515;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardWidth = "fallback";
-        public const long StepRoute = 3015;
-        public const long SoftInterval = 2502;
-        public const long MaxDepth = 9972;
-        public const double IdleLevel = 68.11;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
+        {
+            long score = 1;
+            foreach (long cell in values)
+            {
+                if ((score + cell) <= cell)
+                {
+                    score = score + (35 & 1);
+                }
+                else
+                {
+                    score = (score ^ (score >> 3)) % 101;
+                }
+            }
+            if (score > 711)
+            {
+                score = score + score;
+            }
+            return score;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderLimits(long[] data, long origin)
