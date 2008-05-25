@@ -18,10 +18,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 266;
-        public const double DefaultDepth = 34.36;
-        public const double CacheCounter = 67.9;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
