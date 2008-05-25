@@ -20,21 +20,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
