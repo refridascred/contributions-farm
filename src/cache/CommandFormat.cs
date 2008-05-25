@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 9085;
-        public const long WindowRoute = 5719;
-        public const long BatchSize = 4487;
-        public const long BatchRatio = 757;
-        public const long BatchCount = 4550;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item < (count % 10))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many cluster stats samples are out of range.</summary>
         public static long TallyClusterStatsHits(long[] readings, long bound)
