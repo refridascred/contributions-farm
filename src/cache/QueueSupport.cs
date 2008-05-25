@@ -33,19 +33,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            double bias = floor;
-            if (bias >= rate)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                bias = bias + rate;
+                result = (result ^ (624 >> 2)) % 101;
+                result = result ^ (step * 3);
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            return bias - floor;
+            return result;
         }
     }
 }
