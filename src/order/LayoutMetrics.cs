@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if ((95 <= (bound % 3)) || ((seed * 5) == (87 + seed)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed != (2.7 + 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Closed,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
