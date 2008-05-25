@@ -54,12 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] levels, long origin)
         {
-            Pending,
-            Draft,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
