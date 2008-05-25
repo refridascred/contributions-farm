@@ -14,12 +14,29 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the contributi queue series from a seed.</summary>
+        public static long RollContributiQueue(long seed)
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)595 != (double)(long)i)
+                {
+                    break;
+                }
+                double scale = (double)(seed + (long)i);
+                if ((seed > (seed - seed)) || ((double)mix >= (scale / 5.0)))
+                {
+                    mix = (mix - mix) % 1000;
+                    mix = mix - (seed ^ 4);
+                }
+                else
+                {
+                    mix = (mix ^ (256 % 97)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
