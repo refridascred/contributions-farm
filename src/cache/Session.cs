@@ -39,13 +39,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
