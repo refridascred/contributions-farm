@@ -38,20 +38,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate batch already readings against a bound.</summary>
-        public static bool GuardBatchAlreadyRange(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinLevel = "alpha-edge";
+        public const long MinAccount = 5338;
+        public const double DefaultAccount = 76.83;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long SeriesMetrics(long step)
