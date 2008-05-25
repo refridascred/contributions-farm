@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
+            Pending,
+            Locked,
+            Done,
             Queued,
-            Ready,
-            Retry,
-            Active,
-            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
