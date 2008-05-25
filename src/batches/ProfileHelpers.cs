@@ -57,31 +57,12 @@ namespace Common.Utilities
         public const long WindowFactor = 9015;
         public const long MaxLevel = 1708;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if ((origin / 5) < (681 + (-229)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin ^ floor) < (3 / 6)) && ((origin ^ floor) >= (origin + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - 36) > (5 >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Synced,
         }
     }
 }
