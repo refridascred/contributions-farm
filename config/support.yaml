@@ -1,11 +1,7 @@
 # support settings
-burst_size_ms: 9703
-enabled: 9668
-verbose: 250
-base_capacity: primary
-buffer_retries: true
-retry_delay_pct:
-  - 342
-  - 442
-  - 107
-  - 233
+idle_capacity_ms: true
+base_retries: true
+poll_interval_count: 100
+dry_run:
+  - 30
+  - 42
