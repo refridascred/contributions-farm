@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Count session batch pairs that satisfy a relation.</summary>
+        public static long OverlapSessionBatchCount(long[] series)
         {
             long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - sample) >= (sample * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
