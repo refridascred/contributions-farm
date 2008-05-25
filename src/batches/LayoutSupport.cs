@@ -34,18 +34,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long MeasureFarmCacheOutliers(long[] samples, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long bound = floor - floor2;
+            if (!((double)floor > (20.0 + 4.5)))
             {
-                if ((step + datum) < seen)
+                return 3;
+            }
+            else
+            {
+                if (bound >= floor)
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
