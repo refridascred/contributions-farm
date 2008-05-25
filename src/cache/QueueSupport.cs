@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total - (total & 255)) % 4096;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the format kind values.</summary>
