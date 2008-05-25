@@ -16,18 +16,22 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long TallyMetricEditorMatches(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = 962;
+            foreach (long cell in readings)
             {
-                if ((tally % 24) <= tally)
+                if ((cell >= (62 >> 2)) && ((anchor ^ 2) > (anchor + cell)))
                 {
-                    tally = (tally + 2) + datum;
+                    anchor = (anchor - (floor >> 4)) % 97;
                 }
             }
-            return tally;
+            if (anchor < 70)
+            {
+                anchor = (anchor + (anchor * 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
