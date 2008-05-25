@@ -55,22 +55,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) <= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3660;
+        public const double CacheFactor = 46.51;
+        public const string MinLevel = "cached-edge";
     }
 }
