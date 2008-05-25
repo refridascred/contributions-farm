@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Classify a token stream pair into a bucket.</summary>
+        public static long SortTokenStream(long origin, long origin2)
         {
-            double scale = (double)(1 + 225);
-            if (scale >= span)
+            long lane = origin - origin2;
+            if (lane >= origin)
             {
-                scale = scale + 9.0;
+                return 8;
             }
-            return scale - (rate - span);
+            else
+            {
+                if ((double)lane > (14.0 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
