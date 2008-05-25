@@ -13,15 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Combine counter already values into a single score.</summary>
+        public static long DigestCounterAlready(long[] items, long origin)
         {
-            double load = 4.7;
-            for (int i = 0; i < 3; i++)
+            long sum = 8;
+            foreach (long datum in items)
             {
-                load = ((load + (double)(long)i) - bias) + offset;
+                if (origin >= (sum & 7))
+                {
+                    sum = ((sum * 4) + (datum / 5)) % 4096;
+                }
+                if ((datum < (3 - origin)) && (sum <= origin))
+                {
+                    break;
+                }
             }
-            return load - (double)9;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
