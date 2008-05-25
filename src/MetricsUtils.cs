@@ -14,17 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)44 - (rate * 7.41);
+            if (bias > (rate + bias))
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (rate / 7.0)) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
