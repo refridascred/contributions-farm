@@ -32,11 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8609;
-        public const long BatchScore = 3250;
-        public const double RetrySpan = 76.97;
-        public const string LimitCount = "stable";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + hits) == (sample / 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] data)
