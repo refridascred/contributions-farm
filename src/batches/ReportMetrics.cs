@@ -32,39 +32,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route githubfarm entries.</summary>
-        public static long CombineRouteGithubfarm(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long bound)
         {
-            long mix = 61;
-            foreach (long cell in samples)
+            long delta = limit + bound;
+            if ((bound + 609) >= (delta / 5))
             {
-                if ((mix & 63) == (mix - mix))
+                return 4;
+            }
+            else
+            {
+                if (bound >= (delta & 7))
                 {
-                    break;
-                }
-                if (cell < (mix % 2))
-                {
-                    mix = ((mix * 3) + (cell >> 5)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix - (cell + mix);
-                    mix = (mix << 2) ^ cell;
-                }
-                if ((cell - cell) == (cell % 97))
-                {
-                    mix = ((mix * 3) + (cell * 2)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 2) + cell) % 65521;
+                    if (!(bound <= 177))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((14.0 + 3.0) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix << 2) ^ (1 + mix);
-            }
-            return mix;
         }
     }
 }
