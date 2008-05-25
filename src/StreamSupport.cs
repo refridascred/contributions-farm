@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels, long offset)
         {
-            double load = (weight - weight) * 1.8;
-            if (load > span)
+            long mark = 699;
+            foreach (long reading in levels)
             {
-                load = load - (double)493;
+                if ((73 + offset) >= (offset & 63))
+                {
+                    mark = (mark + (offset * 5)) ^ reading;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + (1.0 / 2.0);
+            return mark;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
