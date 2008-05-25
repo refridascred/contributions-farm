@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const double BurstFarm = 45.44;
         public const string CacheFactor = "open-1";
 
-        /// <summary>Digest a series of window batches entries.</summary>
-        public static long FoldWindowBatches(long[] readings, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long floor)
         {
-            long result = 2;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - (floor & 31)) + value;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
