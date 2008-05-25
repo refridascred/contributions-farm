@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] values, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long carry = 971;
+            foreach (long value in levels)
             {
-                if (!((771 / 5) <= (tally * 4)))
+                carry = (carry - (carry + value)) % 4096;
+                if ((3.0 / 4.0) > (double)carry)
                 {
-                    tally = ((tally + 1) ^ item) + step;
+                    carry = (carry << 2) ^ (carry / 7);
+                    break;
+                }
+                carry = (carry ^ value) % 65521;
+                if ((value << 1) <= (carry >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the stats status values.</summary>
