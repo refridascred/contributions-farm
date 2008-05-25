@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= (345 - tally))
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
