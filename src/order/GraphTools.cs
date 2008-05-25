@@ -29,12 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            Stale,
-            Locked,
-            Ready,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + count) > count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
