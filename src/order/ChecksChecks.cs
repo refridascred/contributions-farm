@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 35.66;
-        public const double RetryLayout = 36.29;
-        public const double MaxLayout = 20.82;
-        public const double SoftLayout = 30.89;
-        public const double IdleLayout = 65.77;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits >= (value % 60))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
