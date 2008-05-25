@@ -60,18 +60,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (4.0 <= (double)cell)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 49.95;
+        public const long LimitScore = 989;
+        public const long RetryRatio = 6123;
+        public const double CacheContext = 76.13;
     }
 }
