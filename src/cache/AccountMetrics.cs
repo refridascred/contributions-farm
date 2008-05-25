@@ -44,16 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            double rate = bias;
+            if (rate < (double)81)
             {
-                mark = (mark - 471) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                rate = (rate + rate) - gain;
             }
-            return mark;
+            return rate - (bias / 9.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
