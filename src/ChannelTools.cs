@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate report order readings against a bound.</summary>
+        public static bool CheckReportOrderBounds(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Done,
-            Queued,
-            Idle,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
