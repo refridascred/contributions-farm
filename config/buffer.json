@@ -1,14 +1,7 @@
 {
-  "record_timeout": 30,
-  "burst_interval_count": {
-    "batch_timeout": false,
-    "sync_ratio_pct": "latest",
-    "schema_window": {
-      "window_depth": "latest",
-      "max_limit_ms": "fallback",
-      "dry_run": 96.14
-    },
-    "compress": true
-  },
-  "soft_size_pct": 46
+  "dry_run": 100,
+  "checks_threshold": "fallback",
+  "format_threshold": 49.49,
+  "max_ratio_count": "strict",
+  "warm_ratio_s": false
 }
