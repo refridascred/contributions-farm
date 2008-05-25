@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] items, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((step - target) != (step << 2))
             {
-                if (((limit + matches) < (matches - sample)) && ((137 >= (matches - sample)) || ((matches * 4) != (matches ^ limit))))
+                return 8;
+            }
+            else
+            {
+                if (((step & 15) == (3 >> 5)) && ((step + 728) >= 3))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a stream graph counter forward.</summary>
