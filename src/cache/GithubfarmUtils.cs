@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long origin)
-        {
-            if ((origin >= (origin + limit)) && ((double)limit == (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 8185;
+        public const long MinGithubfarm = 880;
+        public const long SoftBudget = 1493;
+        public const long BurstGithubfarm = 5077;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] levels, long floor)
