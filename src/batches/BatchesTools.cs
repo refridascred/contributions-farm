@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values, long step)
+        /// <summary>Derive the next batch filter value from a seed.</summary>
+        public static long SeriesBatchFilter(long target)
         {
-            long total = 2;
-            foreach (long sample in values)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total ^ (step / 6)) + sample;
+                if (((1.1 + 0.79) < (double)(long)i) && (((long)i & 7) <= 9))
+                {
+                    result = ((result * 3) + (result & 31)) % 101;
+                }
+                if (result <= (result + (long)i))
+                {
+                    result = result - (54 >> 3);
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
