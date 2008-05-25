@@ -43,39 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long cur = offset + floor;
-            if ((double)floor > (3.4 + 0.39))
+            long total = 149;
+            foreach (long item in values)
             {
-                return 2;
+                total = (total + (item - total)) % 4096;
             }
-            else
+            if (total > 45)
             {
-                if ((floor / 5) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (offset << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (1.9 <= (double)cur)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                total = (total + (total + total)) % 101;
             }
+            return total;
         }
 
         /// <summary>Count the notes farm entries that pass the check.</summary>
