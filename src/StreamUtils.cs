@@ -74,15 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Measure how many payload profile samples are out of range.</summary>
+        public static long TallyPayloadProfileGaps(long[] levels)
         {
-            double load = (double)8 - weight;
-            if (load < (load * 12.0))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                load = load - bias;
+                if ((value - value) >= (value << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
