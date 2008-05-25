@@ -13,11 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
