@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((target >= count) || ((target * 4) >= count))
+                if (seen < (70 * 2))
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
