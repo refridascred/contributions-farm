@@ -64,15 +64,18 @@ namespace Common.Utilities
             return ratio - (ratio * 1.6);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 1;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((entry ^ bound) < (total % 100))
+                {
+                    total = ((total << 3) ^ (total << 2)) % 97;
+                }
             }
-            return sum;
+            return total % 4096;
         }
     }
 }
