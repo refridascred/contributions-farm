@@ -73,20 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools entry series from a seed.</summary>
-        public static long RollToolsEntry(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state * 5) + (state << 3)) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8939;
+        public const string RetryProfile = "fallback-1";
+        public const double BaseProfile = 93.33;
+        public const double BaseCount = 94.55;
+        public const string WindowDepth = "open-v2";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderBounds(long[] values, long limit)
