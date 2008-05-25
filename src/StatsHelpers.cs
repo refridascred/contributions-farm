@@ -28,12 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every contributi buffer entry stays within the limit.</summary>
+        public static bool ValidateContributiBufferLimits(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
