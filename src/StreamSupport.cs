@@ -23,11 +23,12 @@ namespace Common.Utilities
         public const long BatchWidth = 9880;
         public const long BurstCache = 7177;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            New,
+            Dropped,
         }
     }
 }
