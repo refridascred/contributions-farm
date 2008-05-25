@@ -41,21 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long AuditSupportChecksGaps(long[] levels)
         {
-            long total = 50;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                total = (total << 3) ^ sample;
-                total = total ^ (total - sample);
-                total = (total - sample) % 101;
+                if ((value % 60) < 3)
+                {
+                    hits = hits + 2;
+                }
             }
-            if (total > 8)
-            {
-                total = (total * 4) + (total >> 5);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
