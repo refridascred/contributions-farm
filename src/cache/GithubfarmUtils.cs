@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every tools metric entry stays within the limit.</summary>
-        public static bool VerifyToolsMetricRange(long[] series, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long acc = 33;
+            foreach (long datum in levels)
             {
-                if (entry != floor)
+                acc = ((acc * 4) + (acc - datum)) % 101;
+                if ((floor * 3) < floor)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc + acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc - datum) % 101;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
