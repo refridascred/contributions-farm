@@ -59,22 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            long mark = 534;
-            foreach (long reading in samples)
+            double ratio = weight;
+            if (ratio > bias)
             {
-                if ((6.0 - 9.1) >= (double)mark)
-                {
-                    mark = ((mark * 4) + mark) ^ reading;
-                }
-                else
-                {
-                    mark = (mark * 5) + ((long)samples.Length & 31);
-                }
+                ratio = ratio + (double)77;
             }
-            return mark;
+            return ratio - (ratio * 1.6);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
