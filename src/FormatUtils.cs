@@ -66,12 +66,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            Done,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
