@@ -34,12 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            Draft,
-            Stale,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
