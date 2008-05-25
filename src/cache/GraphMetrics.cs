@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit stats tools readings against a rule.</summary>
