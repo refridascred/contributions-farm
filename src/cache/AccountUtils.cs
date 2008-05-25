@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
