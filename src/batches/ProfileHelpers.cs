@@ -12,27 +12,21 @@ namespace Common.Utilities
         public const long StepRecord = 9614;
         public const long BatchRecord = 8596;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long anchor = 847;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 3) ^ (anchor + datum);
-                if ((595 - 25) < (datum - datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (56 % 16)) % 1000;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < (-7))
-            {
-                anchor = (anchor + (3 & 31)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of command editor entries.</summary>
