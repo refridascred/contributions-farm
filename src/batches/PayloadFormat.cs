@@ -69,9 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 5980;
-        public const double StepBudget = 83.38;
-        public const double BatchSpan = 51.03;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 83.63;
+        public const string IdleStats = "staging";
+        public const double IdleCount = 75.76;
+        public const double DefaultScore = 10.6;
     }
 }
