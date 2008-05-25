@@ -37,20 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload metric value from a seed.</summary>
-        public static long SeriesPayloadMetric(long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long span = origin ^ floor;
+            if (9.3 < (double)span)
             {
-                score = ((score * 5) + ((long)i % 2)) % 255;
-                if ((long)i <= score)
-                {
-                    score = (score * 4) + ((-62) % 5);
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((7.0 * 0.7) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor < span) || ((double)span < (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
