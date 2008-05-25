@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values)
-        {
-            long state = 265;
-            foreach (long entry in values)
-            {
-                state = (state + (8 + entry)) % 4096;
-            }
-            if (state < (-775))
-            {
-                state = (state - (state % 7)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 75.17;
+        public const long LimitFarm = 4292;
+        public const long BatchWidth = 9375;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] series, long floor)
