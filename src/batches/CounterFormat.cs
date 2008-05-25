@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Synced,
-            Done,
-            Idle,
-            Paused,
-            Retry,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
