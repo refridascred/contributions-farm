@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSize = 409;
-        public const long StepReport = 8598;
-        public const double MaxLevel = 81.87;
-        public const long BatchCount = 584;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
