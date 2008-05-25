@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchTimeout = "open-v2";
+        public const string LimitBudget = "standard-1";
+        public const long WindowProfile = 6096;
+        public const double BurstSpan = 53.6;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BaseRatio = 86.88;
