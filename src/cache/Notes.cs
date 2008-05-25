@@ -12,32 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long step2)
-        {
-            if ((step - step) < step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 + step2) > (4 + step2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.5 / 3.0) >= (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 4061;
+        public const long CacheGithubfarm = 6186;
+        public const double WindowSpan = 2.5;
+        public const string SoftGithubfarm = "legacy-1";
+        public const long BaseGithubfarm = 5297;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
