@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long floor)
+        /// <summary>Compare every pair of entry support readings.</summary>
+        public static long OverlapEntrySupportCount(long[] data)
         {
-            if ((double)origin <= (double)floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin % 5) < 42) || (origin >= (origin ^ 91)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.9 - 7.63) != (double)origin)
+                    if ((data[i] + data[j]) > 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor < (5.0 * 9.7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next command value.</summary>
