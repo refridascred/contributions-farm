@@ -60,31 +60,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings, long step)
+        /// <summary>Match up metric record samples.</summary>
+        public static long CompareMetricRecordCount(long[] series)
         {
-            long score = -48;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score <= (6.18 * 0.26))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 2) ^ (reading - reading)) % 97;
-                    score = (score + ((-192) % 2)) % 4096;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    score = ((score << 3) ^ ((long)i - 87)) % 65521;
-                }
-                if ((double)step <= (19.0 / 8.0))
-                {
-                    score = ((score * 5) + score) % 1000;
-                }
-                if (((reading % 3) <= step) || ((reading ^ reading) <= (score ^ reading)))
-                {
-                    break;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return count;
         }
     }
 }
