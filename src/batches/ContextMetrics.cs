@@ -31,13 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] series, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long seed)
         {
             bool ready = true;
-            foreach (long sample in series)
+            foreach (long reading in values)
             {
-                if (sample > floor)
+                if (reading >= seed)
                 {
                     ready = false;
                     break;
