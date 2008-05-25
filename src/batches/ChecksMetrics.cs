@@ -63,12 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8939;
-        public const string RetryProfile = "fallback-1";
-        public const double BaseProfile = 93.33;
-        public const double BaseCount = 94.55;
-        public const string WindowDepth = "open-v2";
+        /// <summary>Roll a schema batches counter forward.</summary>
+        public static long RollSchemaBatches(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((17 - 7) > (target - acc)) || ((6.6 / 2.0) == (double)(long)i))
+                {
+                    acc = (acc + (acc + acc)) % 97;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstScore = 331;
