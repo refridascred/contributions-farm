@@ -46,16 +46,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double gain, double span)
-        {
-            double mean = gain;
-            if (mean <= (double)15)
-            {
-                mean = (mean - mean) - span;
-            }
-            return mean - (gain / 7.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 77.2;
+        public const long BaseLevel = 4946;
+        public const string DefaultCount = "staging-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 7453;
