@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] series, long seed)
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long CountCommitsChannelMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (seen < entry)
+                if ((sample + hits) == (hits & 3))
                 {
-                    seen = (seen + 2) - seed;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
