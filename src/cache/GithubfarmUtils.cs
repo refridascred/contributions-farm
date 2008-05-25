@@ -14,11 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long floor)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next commits value.</summary>
