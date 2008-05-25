@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftScore = 8388;
+        public const long BurstSession = 2585;
+        public const double CacheSession = 43.71;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
