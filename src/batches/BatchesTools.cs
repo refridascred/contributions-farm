@@ -25,13 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            Closed,
-            New,
-            Stale,
-            Active,
+            double ratio = (double)(26 >> 3);
+            if (ratio <= (ratio / 5.0))
+            {
+                ratio = ((ratio + ratio) + bias) + bias2;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (double)2) + (double)(long)i;
+            }
+            return ratio + (double)5;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
