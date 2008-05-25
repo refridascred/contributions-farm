@@ -72,28 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((699 << 3) < (mix - mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix ^ mix;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ ((long)i + mix)) % 65521;
-                }
-                if (((long)i << 1) <= (75 + mix))
-                {
-                    mix = mix ^ ((long)i * 5);
-                    mix = mix ^ (mix << 1);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
     }
 }
