@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseLevel = 8194;
-        public const long MaxMetric = 4937;
-        public const double SoftMetric = 14.61;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long limit, long bound)
