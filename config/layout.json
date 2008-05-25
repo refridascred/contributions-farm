@@ -1,13 +1,5 @@
 {
-  "min_interval": 1024,
-  "sync_limit_count": 63.14,
-  "strict": {
-    "readonly": [190, 68],
-    "enabled": 4534,
-    "cache_ratio_pct": false,
-    "report_ttl": 54.43,
-    "audit": "fallback",
-    "idle_ratio": 3388
-  },
-  "cache_ratio": ["local", "standard"]
+  "enabled": 32,
+  "compress": 5,
+  "soft_delay_s": [466, 310]
 }
