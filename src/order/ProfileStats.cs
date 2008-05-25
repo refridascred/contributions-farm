@@ -47,12 +47,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3364;
-        public const long RetryTools = 9707;
-        public const long StepLevel = 3002;
-        public const long LimitSize = 8185;
-        public const long MaxLevel = 1314;
+        /// <summary>Grade a tools support value against two limits.</summary>
+        public static long SortToolsSupport(long origin, long limit)
+        {
+            long offset = origin ^ limit;
+            if ((3.06 * 8.7) == (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin > limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)0 <= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the notes token series from a seed.</summary>
         public static long RollNotesToken(long floor)
