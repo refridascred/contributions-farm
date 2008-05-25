@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxInterval = 2629;
-        public const double BatchTimeout = 74.29;
-        public const long HardDepth = 6378;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long seed, long floor)
