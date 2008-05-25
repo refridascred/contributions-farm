@@ -39,11 +39,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryFactor = 49.83;
-        public const long SoftMetrics = 6976;
-        public const double MaxMetrics = 0.3;
-        public const double BatchWidth = 19.89;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double gain, double floor)
