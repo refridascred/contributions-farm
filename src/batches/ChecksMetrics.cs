@@ -61,15 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Iterate the tools entry series from a seed.</summary>
+        public static long RollToolsEntry(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state * 5) + (state << 3)) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
