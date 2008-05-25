@@ -89,11 +89,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = (double)37 + 7.4;
-            return (rate + span) + ratio;
+            Synced,
+            Done,
+            Retry,
+            Closed,
         }
     }
 }
