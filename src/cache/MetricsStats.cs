@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 12;
+            foreach (long value in data)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                state = (((state * 5) + (origin * 2)) % 4096) + value;
+                if (!((state - 1) < (97 & 3)))
+                {
+                    state = (state - state) % 65521;
+                }
             }
-            return sum;
+            if (state < 77)
+            {
+                state = (state - 839) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate filter samples.</summary>
