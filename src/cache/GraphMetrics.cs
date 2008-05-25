@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!(((long)i & 63) >= (carry & 127)))
+                {
+                    carry = carry + (84 + carry);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
