@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchInterval = 36.67;
-        public const double SoftSpan = 80.02;
-        public const string SoftToken = "local";
-        public const long IdleToken = 5880;
-        public const long MinToken = 2308;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double AdjustCounter(double rate, double bias)
