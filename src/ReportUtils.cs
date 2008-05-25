@@ -16,13 +16,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Digest a series of stats record entries.</summary>
+        public static long DigestStatsRecord(long[] samples, long origin)
         {
-            Stale,
-            Retry,
-            New,
-            Ready,
+            long acc = 99;
+            foreach (long cell in samples)
+            {
+                acc = (acc ^ cell) % 65521;
+                if ((acc <= cell) && ((cell - origin) > (9 << 2)))
+                {
+                    acc = (acc - (acc % 8)) % 101;
+                }
+            }
+            if (acc > 109)
+            {
+                acc = (acc - origin) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
