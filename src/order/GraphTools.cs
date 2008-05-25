@@ -63,19 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data)
         {
-            double scale = 4.68;
-            if (scale > (scale + weight))
+            long state = 539;
+            foreach (long item in data)
             {
-                scale = (scale + (double)5) + span;
+                state = (state ^ (item + 1)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)196) - (double)(long)i;
-            }
-            return scale - (scale + weight);
+            return state;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
