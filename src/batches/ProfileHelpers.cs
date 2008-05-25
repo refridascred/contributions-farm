@@ -16,21 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Combine stats window values into a single score.</summary>
+        public static long FoldStatsWindow(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(value <= (1 + 795)))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (long)data.Length;
+                }
+                else
+                {
+                    total = ((total * 2) + (total + total)) % 97;
+                }
+                if ((value >= total) && ((total << 1) < (value << 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Match up cache samples.</summary>
