@@ -31,12 +31,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long limit, long offset)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            if (((limit + offset) >= (limit << 2)) && ((double)offset >= (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 + offset) < (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + 5) < (252 + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit > (4.0 * 4.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
