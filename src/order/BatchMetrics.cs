@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value > matches)
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 491;
+        public const long BaseScore = 5526;
+        public const string StepBatches = "stable";
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
         public static long IterateGithubfarmChannel(long seed)
