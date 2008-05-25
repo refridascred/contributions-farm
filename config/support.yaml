@@ -1,8 +1,6 @@
 # support settings
-warm_threshold: 500
-idle_timeout_pct: primary
-profile_interval:
-  farm_ttl: latest
-  soft_ttl_pct: standard
-  cache_interval_s: true
-strict: 6469
+audit: edge
+cache_limit_pct: legacy
+account_threshold: 88.12
+hard_limit: false
+flush_depth_count: 3353
