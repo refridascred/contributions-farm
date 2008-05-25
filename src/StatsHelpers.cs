@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const string WindowContributi = "fallback-edge";
         public const long DefaultSize = 3234;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] readings, long floor)
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
