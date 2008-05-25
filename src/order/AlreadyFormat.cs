@@ -33,12 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long target)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (((score * 2) + target) % 101) ^ (long)i2;
+                    score = score - (57 + 384);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
