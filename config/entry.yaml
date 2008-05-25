@@ -1,17 +1,7 @@
 # entry settings
-base_interval: 1024
-commits_limit: true
-idle_interval: 100
-record_ttl:
-  - 258
-  - 318
-  - 141
-report_interval:
-  hard_ttl_count: 50
-  batch_ratio_pct: false
-  warm_ratio_s:
-    - eu-west
-    - green
-    - stable
-  format_capacity: legacy
-enabled: 2.08
+hard_limit_count: blue
+idle_limit_s: 37.19
+readonly:
+  - primary
+  - strict
+enabled: legacy
