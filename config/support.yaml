@@ -1,5 +1,7 @@
 # support settings
-route_interval: staging
-default_capacity: strict
-default_timeout_pct: true
-burst_window: 2284
+strict: true
+metric_interval: 48.97
+max_timeout_count:
+  - green
+  - blue
+dry_run: 46
