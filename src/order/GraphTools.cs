@@ -43,16 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next support cluster value from a seed.</summary>
-        public static long IterateSupportCluster(long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = (total ^ offset) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                if (limit < (matches ^ matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next session order value.</summary>
