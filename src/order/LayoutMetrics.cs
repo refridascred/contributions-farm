@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepWidth = 5336;
-        public const long BatchContributi = 4855;
-        public const long RetryContributi = 1334;
-        public const string DefaultCount = "standard-edge";
-        public const double SoftWidth = 56.15;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Active,
+            Queued,
+            Dropped,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double gain, double span)
