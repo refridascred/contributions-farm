@@ -35,11 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 5720;
-        public const long BaseContributi = 5462;
-        public const double LimitContributi = 45.07;
-        public const long DefaultSpan = 8761;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Synced,
+            Done,
+            Queued,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] values)
