@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            Paused,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
