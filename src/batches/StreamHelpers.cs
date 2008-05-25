@@ -23,30 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor channel pair into a bucket.</summary>
-        public static long BucketEditorChannel(long floor, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            long step = floor + target;
-            if ((5.36 + 8.3) > (double)step)
+            if ((floor - floor) > floor)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)floor <= (8.05 / 3.0))
+                if ((double)floor == (7.64 * 8.09))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((target % 64) < 5)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 4;
                 }
             }
         }
