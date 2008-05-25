@@ -25,14 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of metrics schema entries.</summary>
+        public static long DigestMetricsSchema(long[] samples, long step)
         {
-            Synced,
-            Locked,
-            New,
-            Done,
-            Draft,
+            long sum = 2;
+            foreach (long value in samples)
+            {
+                if (sum <= (value + 29))
+                {
+                    sum = (sum ^ value) + step;
+                }
+                else
+                {
+                    sum = sum - value;
+                }
+                if ((double)sum <= (5.6 - 9.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
