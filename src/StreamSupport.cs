@@ -45,22 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] items, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (29 <= ((-450) ^ (long)items.Length))
+                if ((7 > target) && ((double)target < (4.2 * 20.0)))
                 {
-                    hits = ((hits + 1) ^ cell) + target;
+                    carry = (carry - (target & 7)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry << 2) ^ (long)i;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
