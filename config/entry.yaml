@@ -1,16 +1,13 @@
 # entry settings
-warm_interval_s: true
-sync_ttl_ms: 6388
-min_timeout_pct:
-  - 158
-  - 253
-  - 214
-enabled:
-  hard_retries_pct: 14.4
-  flush_ttl: 1024
-  enabled:
-    poll_limit_count: staging
-    account_window: 98
-    soft_ttl_s: open
-    burst_delay_count: 6465
-    flush_ttl_count: 20
+base_ttl_pct: 90.02
+hard_retries_pct: 12
+metrics_timeout:
+  warm_threshold_s: 4024
+  githubfarm_limit: strict
+  poll_limit: 93.47
+  compress: 7.97
+retry_ratio_pct:
+  - standard
+  - latest
+  - staging
+  - eu-west
