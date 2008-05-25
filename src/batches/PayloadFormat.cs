@@ -34,11 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long floor)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long slot = limit + floor;
+            if ((limit + slot) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 / 2.0) > (double)slot)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
