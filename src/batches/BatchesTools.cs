@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)value < 6.09)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleRatio = 96.04;
+        public const long BurstRatio = 8506;
+        public const string BurstTimeout = "cached-v2";
+        public const long RetryReport = 1398;
+        public const long BurstReport = 2337;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] readings, long origin)
