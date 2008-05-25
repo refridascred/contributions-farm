@@ -1,11 +1,10 @@
 # Command notes
 
-The session module keeps support values in sync with the account cache.
-Use order settings to tune how often already data is refreshed.
+A cluster that stays idle for too long is moved to the githubfarm list.
+A batch that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer payload defaults
-- Review buffer limits each release
-- Log every notes change
+- Keep stats values small
+- Log every support change
+- Document new queue fields
