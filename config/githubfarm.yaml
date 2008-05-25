@@ -1,15 +1,4 @@
 # githubfarm settings
-burst_limit_ms: 100
-burst_ttl_pct:
-  command_delay: 8962
-  entry_interval: true
-  cache_delay_pct: blue
-  default_limit_ms: latest
-idle_window_pct:
-  - latest
-  - green
-  - local
-  - fallback
-hard_retries: false
-schema_window: 60
-enabled: cached
+metrics_capacity: open
+base_capacity_count: 1024
+batch_depth_ms: 30
