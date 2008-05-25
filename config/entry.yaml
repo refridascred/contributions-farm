@@ -1,24 +1,21 @@
 # entry settings
-burst_size: fallback
-dry_run: 3424
-editor_window: strict
-editor_interval:
-  - 374
-  - 194
-  - 316
-base_interval_count:
-  persist:
-    - fallback
-    - strict
-    - legacy
-    - eu-west
-  verbose: false
-  batch_depth_pct: true
-  burst_ratio_s: 55.35
-  retry_ttl_ms:
-    - cached
-    - primary
-    - green
-stats_size:
-  - 439
-  - 278
+cluster_window:
+  - 10
+  - 421
+  - 267
+  - 207
+flush_ratio_pct: primary
+base_retries_pct: latest
+compress: 6207
+persist:
+  cache_capacity_pct: true
+  dry_run: 1024
+  compress:
+    cache_depth: 14
+    entry_size:
+      - 358
+      - 76
+      - 156
+    already_size: 48.65
+    metrics_size: true
+sync_ratio_s: 58
