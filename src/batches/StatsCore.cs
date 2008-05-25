@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ratio2 + (double)253;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                result = (result - ((long)i >> 2)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a cache profile sample.</summary>
