@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor context figure with a bias.</summary>
-        public static double ProjectEditorContext(double gain, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            double gain2 = floor + floor;
-            if (gain2 >= (double)85)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                gain2 = (gain2 - floor) + gain;
+                if ((tally ^ reading) >= (6 ^ reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + (7.1 * 5.3)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
