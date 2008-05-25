@@ -49,12 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
