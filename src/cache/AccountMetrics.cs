@@ -87,27 +87,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long result = 602;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result > (760 + item)) || ((result >> 3) != (item ^ target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + (item + target)) % 101;
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result << 2) ^ (item + target)) % 65521) ^ (long)i;
-                }
-                result = (result ^ target) % 255;
             }
-            if (result > 982)
-            {
-                result = (result * 3) + (869 - (-669));
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
