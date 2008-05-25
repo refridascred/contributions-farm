@@ -23,31 +23,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long seed)
         {
-            if ((step + 375) < step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((3 << 1) < floor))
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 / 2.0) == (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
