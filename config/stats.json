@@ -1,7 +1,8 @@
 {
-  "commits_interval": 3953,
-  "record_delay": 27.68,
-  "context_depth": 30,
-  "burst_ratio": "staging",
-  "verbose": 500
+  "idle_limit_s": "green",
+  "default_ratio_count": 6918,
+  "checks_capacity": "eu-west",
+  "idle_threshold_s": 30,
+  "warm_threshold": "cached",
+  "buffer_ttl": ["fallback", "legacy", "strict", "latest"]
 }
