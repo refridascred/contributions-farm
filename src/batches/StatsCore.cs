@@ -22,19 +22,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every counter route entry stays within the limit.</summary>
-        public static bool VerifyCounterRouteRange(long[] series, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (item >= origin)
+                if (!(matches > (limit + limit)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
