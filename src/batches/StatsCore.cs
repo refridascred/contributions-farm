@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitDepth = 4023;
-        public const long StepInterval = 5022;
-        public const string WindowSpan = "local-v2";
-        public const long BatchSize = 2336;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Locked,
+            Dropped,
+            Active,
+            Pending,
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
