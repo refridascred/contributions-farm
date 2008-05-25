@@ -1,8 +1,13 @@
 {
-  "batches_delay": 90.91,
-  "sync_size": ["standard", "edge"],
-  "idle_ttl": [272, 405, 43, 104],
-  "min_retries_s": 5735,
-  "idle_size": "cached",
-  "soft_interval": "staging"
+  "min_size_ms": 3444,
+  "metric_limit": {
+    "flush_window": [58, 44, 400, 150],
+    "audit": 100,
+    "window_interval": 1574,
+    "max_window_s": "open",
+    "hard_size": false
+  },
+  "soft_threshold": "edge",
+  "min_threshold_ms": ["green", "stable", "green", "standard"],
+  "min_capacity": 50.34
 }
