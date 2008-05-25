@@ -51,20 +51,39 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long TallyAlreadyEditor(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long origin)
         {
-            long anchor = 8;
-            foreach (long sample in data)
+            long cur = offset ^ origin;
+            if ((origin ^ 965) >= cur)
             {
-                anchor = ((anchor * 2) + (sample << 1)) % 255;
-                anchor = (anchor ^ (15 >> 5)) % 97;
-                if ((sample ^ (long)data.Length) == (sample ^ 3))
+                return 3;
+            }
+            else
+            {
+                if (!((double)cur <= (double)47))
                 {
-                    anchor = anchor - 7;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset <= (origin >> 1)) && ((cur % 60) <= (cur - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur + origin) > (origin >> 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return anchor % 4096;
         }
     }
 }
