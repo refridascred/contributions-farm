@@ -43,26 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank window contributi input into a small class.</summary>
-        public static long ClassifyWindowContributi(long origin, long limit)
-        {
-            long bound = origin - limit;
-            if ((bound ^ limit) >= (limit & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((242 + bound) == (20 + bound)) && ((5.87 - 2.53) < (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 81.94;
+        public const long WindowMetric = 4611;
+        public const long HardBudget = 1277;
+        public const double DefaultMetric = 24.41;
+        public const double DefaultCount = 87.98;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 6365;
