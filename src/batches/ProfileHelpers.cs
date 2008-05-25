@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long mark = 193;
-            foreach (long cell in samples)
-            {
-                mark = (mark + cell) % 4096;
-            }
-            if (mark > (-25))
-            {
-                mark = ((mark * 5) + (mark + (long)samples.Length)) % 65521;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
