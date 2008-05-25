@@ -1,12 +1,11 @@
 # Command notes
 
-When a commits fails, the order handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the profile handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep record values small
-- Log every support change
-- Prefer order defaults
+- Validate route input early
+- Review token limits each release
+- Document new payload fields
+- Prefer metrics defaults
