@@ -65,12 +65,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultLevel = 4814;
-        public const long DefaultWidth = 3001;
-        public const string CacheCommits = "standard";
-        public const long BatchCommits = 3191;
-        public const long BaseInterval = 1404;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
