@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Locked,
+            Ready,
+            Pending,
             New,
-            Dropped,
+            Retry,
             Failed,
         }
 
