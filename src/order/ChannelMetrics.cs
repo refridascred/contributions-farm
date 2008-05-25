@@ -35,18 +35,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] samples, long floor)
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + 32) != (hits * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + floor;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
