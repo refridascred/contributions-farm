@@ -63,15 +63,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long carry = 99;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + item) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return tally;
         }
     }
 }
