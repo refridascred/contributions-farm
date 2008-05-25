@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mean + (rate + 6.99);
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Adjust a contributi queue reading.</summary>
+        public static double AdjustContributiQueue(double gain, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            double gain2 = bias * 2.2;
+            if (gain2 < gain)
             {
-                total = (total ^ (17 & 127)) % 65521;
-                total = ((total << 2) ^ (limit - total)) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                gain2 = gain2 + bias;
             }
-            return total;
+            return gain2 + gain;
         }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
