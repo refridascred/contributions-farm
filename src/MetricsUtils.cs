@@ -57,19 +57,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] items, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the stats phase values.</summary>
