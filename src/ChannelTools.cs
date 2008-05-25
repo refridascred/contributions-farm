@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "staging-v2";
+        public const long BaseTimeout = 2987;
+        public const long MaxMetrics = 1644;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double weight, double offset)
