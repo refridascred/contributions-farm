@@ -27,11 +27,18 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 6814;
-        public const long BurstPayload = 6437;
-        public const long MinPayload = 7124;
-        public const string StepTimeout = "standard-edge";
-        public const long BasePayload = 1583;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((step & 15) <= (tally << 2))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
