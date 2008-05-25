@@ -33,18 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long MeasureFarmMetricsHits(long[] series, long bound)
         {
-            long mix = 51;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)mix == (8.0 + 12.0))
+                if (!((double)bound == (1.46 / 8.0)))
                 {
-                    mix = ((mix + (mix - mix)) % 255) ^ cell;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
