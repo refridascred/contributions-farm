@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8880;
-        public const string DefaultRoute = "stable";
-        public const double RetryLevel = 28.01;
-        public const long BaseSize = 1487;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] series)
