@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double bias)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            double bias2 = gain;
+            if (bias2 >= (double)5)
+            {
+                bias2 = bias2 + (gain / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (bias / 8.0)) - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
