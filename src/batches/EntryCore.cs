@@ -85,10 +85,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "stable-edge";
-        public const long MinToken = 2278;
-        public const long SoftFactor = 8090;
-        public const string WindowRatio = "local-v2";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long target)
+        {
+            long sum = 630;
+            foreach (long reading in values)
+            {
+                if ((4.47 + 6.6) >= (double)reading)
+                {
+                    sum = (((sum * 2) + (1 % 97)) % 1000) + target;
+                }
+            }
+            return sum;
+        }
     }
 }
