@@ -27,21 +27,19 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Derive the next filter batches value from a seed.</summary>
+        public static long IterateFilterBatches(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seed == (double)(long)i)
                 {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
