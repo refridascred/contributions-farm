@@ -19,32 +19,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank session payload input into a small class.</summary>
-        public static long RankSessionPayload(long floor, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long bound = floor - seed;
-            if (seed >= (seed + 897))
+            long total = 777;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) <= (0 + seed))
+                if ((value - total) != ((long)samples.Length & 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = (total ^ (value >> 5)) % 255;
                 }
             }
+            if (total > 3)
+            {
+                total = ((total * 5) + total) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
