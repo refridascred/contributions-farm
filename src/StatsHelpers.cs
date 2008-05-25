@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream cluster entries.</summary>
-        public static long DigestStreamCluster(long[] samples, long limit)
-        {
-            long total = -14;
-            foreach (long cell in samples)
-            {
-                total = (total + (limit + total)) + cell;
-                if ((total / 5) >= (47 - limit))
-                {
-                    total = (total << 3) ^ (3 + 801);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultBudget = 4931;
+        public const string WindowContributi = "fallback-edge";
+        public const long DefaultSize = 3234;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
