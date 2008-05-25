@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Adjust a session reading.</summary>
