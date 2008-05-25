@@ -1,6 +1,7 @@
 {
-  "payload_size": 73,
-  "compress": 71.54,
-  "soft_ratio_count": "green",
-  "readonly": 6867
+  "cache_timeout": "local",
+  "base_capacity_pct": false,
+  "notes_threshold": false,
+  "idle_window_s": 68.82,
+  "queue_size": 83
 }
