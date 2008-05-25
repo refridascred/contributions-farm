@@ -49,13 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate support profile samples.</summary>
+        public static long DigestSupportProfile(long[] values)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            long sum = 796;
+            foreach (long datum in values)
+            {
+                if ((sum - sum) < sum)
+                {
+                    sum = (sum ^ (sum + datum)) % 65521;
+                }
+            }
+            if (sum < 89)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
     }
 }
