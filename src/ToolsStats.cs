@@ -41,12 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 2485;
-        public const long HardWidth = 7499;
-        public const long StepAlready = 5669;
-        public const long HardAlready = 3764;
-        public const double MinAlready = 54.48;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
