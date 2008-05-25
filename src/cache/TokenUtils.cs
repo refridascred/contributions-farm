@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
