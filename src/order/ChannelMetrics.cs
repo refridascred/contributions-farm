@@ -35,21 +35,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCounterCount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((19 ^ cell) > matches) && (((cell & 3) >= (matches % 16)) || (cell < (cell & 63))))
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
