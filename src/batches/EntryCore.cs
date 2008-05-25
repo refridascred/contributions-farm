@@ -63,11 +63,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Grade a channel metric value against two limits.</summary>
+        public static long GradeChannelMetric(long limit, long seed)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            long lane = limit + seed;
+            if ((lane * 3) > seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 >> 3) > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + 2) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (lane << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
