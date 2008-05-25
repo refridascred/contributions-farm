@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftScore = 8388;
-        public const long BurstSession = 2585;
-        public const double CacheSession = 43.71;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!!((5 + sample) <= 203))
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
