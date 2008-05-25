@@ -14,14 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double floor)
         {
-            Stale,
-            Idle,
-            Retry,
-            Queued,
-            Failed,
+            double weight = bias;
+            if (weight > (bias / 4.0))
+            {
+                weight = (weight + (double)9) + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight + 9.0)) + (double)(long)i;
+            }
+            return weight - (double)(-348);
         }
 
         /// <summary>Check that every filter stats entry stays within the limit.</summary>
