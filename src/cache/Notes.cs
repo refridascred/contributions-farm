@@ -31,20 +31,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double offset)
-        {
-            double mean = offset;
-            if (mean > (mean / 8.0))
-            {
-                mean = (mean + mean) + scale;
-            }
-            else
-            {
-                mean = mean + (double)497;
-            }
-            return mean - (4.69 * 0.09);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultInterval = 8983;
+        public const double MaxBudget = 80.32;
+        public const double MinNotes = 35.54;
 
         /// <summary>Count the batch payload entries that pass the check.</summary>
         public static long MeasureBatchPayloadHits(long[] samples, long seed)
