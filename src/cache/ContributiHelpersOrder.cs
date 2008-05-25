@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] levels, long bound)
         {
-            long lane = floor - limit;
-            if ((lane > (floor << 3)) || (limit > (53 - floor)))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + lane) >= (floor & 127))
+                if (value < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7 < (floor - floor)) || ((double)lane >= (15.0 - 12.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
