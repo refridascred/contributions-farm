@@ -1,19 +1,9 @@
 # entry settings
-hard_interval: staging
-batch_size:
-  sync_timeout_count: 16.05
-  hard_limit: 76.58
-  session_capacity:
-    base_ratio_ms:
-      - 472
-      - 140
-      - 208
-      - 104
-    commits_ttl:
-      - standard
-      - open
-    base_threshold_ms: open
-    retry_window_count: false
-    dry_run: 4480
-poll_depth_s: 91.53
-poll_delay_pct: open
+persist: 1.46
+metric_delay: 94
+hard_depth_pct: stable
+channel_timeout:
+  - 64
+  - 34
+  - 474
+  - 256
