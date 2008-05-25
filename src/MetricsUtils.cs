@@ -47,15 +47,11 @@ namespace Common.Utilities
         public const double BaseDepth = 98.55;
         public const long SoftReport = 1452;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "alpha-1";
+        public const long DefaultStream = 4265;
+        public const long DefaultRatio = 8905;
+        public const long HardDepth = 5101;
+        public const long MinCount = 5496;
     }
 }
