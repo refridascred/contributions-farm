@@ -44,12 +44,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long mix = 39;
+            foreach (long reading in series)
+            {
+                if ((mix ^ mix) <= (mix & 31))
+                {
+                    mix = ((mix << 2) ^ (reading - mix)) % 101;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
