@@ -1,22 +1,14 @@
 {
-  "audit": "green",
-  "queue_threshold": {
-    "counter_interval": "strict",
-    "verbose": 55.38,
-    "min_depth_s": {
-      "stream_threshold": ["staging", "open"],
-      "persist": false,
-      "entry_ttl": 100
+  "soft_limit_ms": 82.39,
+  "verbose": {
+    "idle_threshold_count": "legacy",
+    "support_depth": {
+      "dry_run": false,
+      "flush_size_pct": 60,
+      "max_threshold": true,
+      "audit": 15.71
     },
-    "schema_retries": {
-      "cluster_retries": "standard",
-      "session_delay": 100,
-      "flush_retries_s": 6297,
-      "hard_delay_count": 9728
-    },
-    "payload_limit": 3447,
-    "sync_ratio_pct": 53.09
+    "warm_size_s": "stable"
   },
-  "retry_ratio_pct": 6973,
-  "cache_delay": 35
+  "min_threshold": "standard"
 }
