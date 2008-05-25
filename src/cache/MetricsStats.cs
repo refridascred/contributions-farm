@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const double StepSpan = 83.55;
         public const long BurstCommits = 2515;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = 1;
-            foreach (long cell in values)
-            {
-                if ((score + cell) <= cell)
-                {
-                    score = score + (35 & 1);
-                }
-                else
-                {
-                    score = (score ^ (score >> 3)) % 101;
-                }
-            }
-            if (score > 711)
-            {
-                score = score + score;
-            }
-            return score;
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
