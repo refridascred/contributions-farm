@@ -20,13 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a editor order pair into a bucket.</summary>
+        public static long BucketEditorOrder(long origin, long offset)
         {
-            Draft,
-            Retry,
-            Done,
-            New,
+            if (!((offset ^ origin) < (83 + 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + offset) > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
