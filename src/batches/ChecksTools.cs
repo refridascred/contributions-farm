@@ -34,19 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session route reading.</summary>
-        public static double ProjectSessionRoute(double weight, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data)
         {
-            double drift = 11.0;
-            if (drift < floor)
+            long total = 151;
+            foreach (long sample in data)
             {
-                drift = (drift + (double)868) + weight;
+                total = ((total << 3) ^ total) % 1000;
+                if (((sample & 63) == (sample / 3)) && ((total << 3) > (sample + total)))
+                {
+                    break;
+                }
             }
-            else
+            if (total < 47)
             {
-                drift = drift - 0.02;
+                total = (total ^ (total >> 1)) % 65521;
             }
-            return drift + (floor - 9.15);
+            return total;
         }
 
         /// <summary>Check that every window token entry stays within the limit.</summary>
