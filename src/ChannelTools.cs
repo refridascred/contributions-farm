@@ -23,15 +23,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = 0;
-            foreach (long value in series)
-            {
-                sum = (((sum * 2) + (sum << 3)) % 97) - value;
-            }
-            return sum;
+            Active,
+            Synced,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
