@@ -19,10 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 71.02;
-        public const string StepAccount = "standard";
-        public const long RetryDepth = 5787;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i != (mark - (long)i)) || ((double)mark >= (8.0 / 8.0)))
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + floor) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
