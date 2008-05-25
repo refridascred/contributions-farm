@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchCount = "local-v2";
-        public const double RetrySession = 5.17;
-        public const long DefaultRatio = 8571;
-        public const double StepSession = 21.97;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long offset, long limit)
