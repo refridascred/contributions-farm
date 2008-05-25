@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Draft,
-            Stale,
-            Synced,
-            Ready,
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
