@@ -12,18 +12,26 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = 4;
+            foreach (long datum in samples)
             {
-                if ((((reading + reading) <= (reading / 2)) || ((tally ^ reading) < (reading << 3))) && ((reading % 60) < (reading << 2)))
+                if (datum < state)
                 {
-                    tally = tally + 2;
+                    state = state - state;
+                }
+                if (((state + (long)samples.Length) != (datum ^ state)) || ((1.0 - 0.03) <= (double)state))
+                {
+                    state = (state - (state + state)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 3) + (state / 8)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Adjust a report reading.</summary>
