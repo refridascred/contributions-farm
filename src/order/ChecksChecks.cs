@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
