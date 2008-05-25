@@ -32,10 +32,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 8495;
         public const long WindowSession = 3832;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheWidth = "alpha-1";
-        public const long HardRatio = 6907;
-        public const long WindowLevel = 9547;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count % 2) != (count * 2))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double gain, double span)
