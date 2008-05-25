@@ -40,11 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 2237;
-        public const double RetrySize = 90.16;
-        public const double HardNotes = 79.7;
-        public const double CacheNotes = 24.63;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 7453;
