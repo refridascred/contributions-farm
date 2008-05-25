@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report entry reading.</summary>
-        public static double ScaleReportEntry(double bias, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] readings, long origin)
         {
-            double bias2 = 9.92;
-            if (bias2 <= floor)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 - 0.44) - bias;
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - floor;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
