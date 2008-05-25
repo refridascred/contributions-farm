@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] series, long step)
         {
-            long result = 7;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                result = (((result * 2) + 925) % 1000) ^ entry;
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result > 4)
-            {
-                result = (result ^ (4 & 15)) % 255;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
