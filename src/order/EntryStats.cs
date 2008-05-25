@@ -42,22 +42,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema tools readings.</summary>
-        public static long ScoreSchemaTools(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings, long seed)
         {
-            long anchor = 6;
-            foreach (long item in levels)
+            long state = 38;
+            foreach (long entry in readings)
             {
-                if ((item < (anchor - (-8))) || ((anchor & 255) != (anchor - anchor)))
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
+                state = (((state + (597 * 4)) % 101) + entry) + seed;
+                state = (state + (state / 4)) % 65521;
             }
-            if (anchor > 546)
+            if (state < 6)
             {
-                anchor = (anchor * 4) + (anchor ^ anchor);
+                state = (state + state) % 4096;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Hold a token header.</summary>
