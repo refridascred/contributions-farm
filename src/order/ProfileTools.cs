@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const long MinWidth = 6540;
         public const long RetrySupport = 3943;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftBudget = 7554;
-        public const string IdleBudget = "legacy";
-        public const long StepSession = 2000;
-        public const long DefaultSpan = 8495;
-        public const long WindowSession = 3832;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long target)
+        {
+            long carry = 7;
+            foreach (long cell in items)
+            {
+                if ((2.0 + 1.6) > (double)carry)
+                {
+                    carry = ((carry << 2) ^ (0 ^ carry)) + cell;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + target)) % 4096;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueOutliers(long[] values)
