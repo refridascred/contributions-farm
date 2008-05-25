@@ -1,9 +1,11 @@
 {
-  "max_ratio_ms": ["primary", "cached", "latest"],
-  "readonly": {
-    "idle_limit_ms": "latest",
-    "max_ratio_s": 1024,
-    "burst_interval_s": 64.13
+  "warm_interval_count": {
+    "metric_capacity": true,
+    "notes_timeout": "blue",
+    "idle_capacity_ms": "stable"
   },
-  "commits_limit": 58.17
+  "sync_timeout_pct": "eu-west",
+  "warm_depth": false,
+  "batches_size": 5449,
+  "idle_retries": "standard"
 }
