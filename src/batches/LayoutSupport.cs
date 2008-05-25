@@ -37,11 +37,19 @@ namespace Common.Utilities
             return load + (5.12 + offset);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 8930;
-        public const long MaxOrder = 6912;
-        public const long WindowDepth = 7555;
-        public const long IdleDepth = 1117;
-        public const long RetryOrder = 6449;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
