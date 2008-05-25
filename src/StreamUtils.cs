@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Compare every pair of metric metrics readings.</summary>
+        public static long CompareMetricMetricsCount(long[] samples)
         {
-            Done,
-            Ready,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
