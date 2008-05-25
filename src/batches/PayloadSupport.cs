@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 8;
+            foreach (long entry in levels)
             {
-                if ((tally % 24) > (item << 1))
-                {
-                    tally = tally + 1;
-                }
+                mix = mix + (entry << 1);
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
