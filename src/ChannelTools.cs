@@ -23,14 +23,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Active,
-            Synced,
-            Queued,
-            Paused,
-            Failed,
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
