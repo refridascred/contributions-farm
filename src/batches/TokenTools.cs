@@ -29,12 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Pending,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultInterval = 11.05;
+        public const string BaseSpan = "fallback-edge";
+        public const long DefaultRoute = 4769;
+        public const long StepRoute = 5188;
     }
 }
