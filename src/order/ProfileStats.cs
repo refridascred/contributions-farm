@@ -61,21 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((17.0 - 6.9) >= (double)anchor)
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor + (anchor ^ anchor)) % 1000) + cell;
                 }
             }
-            return seen;
+            if (anchor < 93)
+            {
+                anchor = (anchor + (841 % 64)) % 255;
+            }
+            return anchor;
         }
     }
 }
