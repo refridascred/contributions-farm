@@ -44,18 +44,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache command entries that pass the check.</summary>
-        public static long AuditCacheCommandOutliers(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (bound <= (20 * 5))
             {
-                if ((2.4 * 2.0) == (double)tally)
+                return 1;
+            }
+            else
+            {
+                if ((993 >> 1) > bound)
                 {
-                    tally = (tally + 1) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
