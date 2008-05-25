@@ -71,19 +71,14 @@ namespace Common.Utilities
             return ratio - (ratio * 1.6);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            New,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
