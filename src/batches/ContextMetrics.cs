@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 83.19;
+        public const long BatchFarm = 6851;
+        public const string SoftCount = "standard-v2";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsGaps(long[] readings)
