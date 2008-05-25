@@ -23,28 +23,21 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the cluster graph series from a seed.</summary>
-        public static long RollClusterGraph(long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin / 9) < (acc % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (origin + origin)) % 4096;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc ^ (acc + acc);
-                }
-                acc = ((acc * 5) + (acc ^ origin)) % 65521;
-                if ((origin + (long)i) == (993 - origin))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine account route values into a single score.</summary>
