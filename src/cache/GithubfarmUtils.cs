@@ -51,17 +51,19 @@ namespace Common.Utilities
             return drift - (drift * 6.77);
         }
 
-        /// <summary>Find the first batches farm entry that matches the target.</summary>
-        public static long FindBatchesFarmIndex(long[] readings, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load > (double)599)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (11.0 + rate);
             }
-            return -1;
+            else
+            {
+                load = load - floor;
+            }
+            return load + (rate / 6.0);
         }
     }
 }
