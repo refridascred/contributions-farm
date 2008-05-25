@@ -1,7 +1,6 @@
 {
-  "profile_window": ["staging", "edge", "staging", "primary"],
-  "burst_depth_ms": false,
-  "dry_run": false,
-  "soft_threshold": 4775,
-  "strict": "cached"
+  "sync_retries_ms": 58,
+  "idle_size_pct": "staging",
+  "dry_run": 3630,
+  "schema_size": "eu-west"
 }
