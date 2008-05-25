@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BatchLayout = 3012;
         public const long HardLayout = 5998;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix - ((long)i / 4)) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 4704;
+        public const long SoftWidth = 19;
+        public const string RetryFactor = "staging-v2";
+        public const string HardMetrics = "staging-1";
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
