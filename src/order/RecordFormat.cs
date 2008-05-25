@@ -25,17 +25,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] values, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (origin + state)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
