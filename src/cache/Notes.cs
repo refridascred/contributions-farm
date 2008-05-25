@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double HardScore = 48.67;
         public const long MaxFactor = 2556;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultLevel = 7229;
-        public const string MinSession = "strict-v2";
-        public const double HardFactor = 34.01;
-        public const long IdleSession = 698;
-        public const double BurstRatio = 83.33;
+        /// <summary>Compare every pair of layout report readings.</summary>
+        public static long OverlapLayoutReportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double scale, double offset)
