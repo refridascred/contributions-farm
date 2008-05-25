@@ -49,12 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values)
         {
-            Idle,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - cell) == (cell + 56))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
