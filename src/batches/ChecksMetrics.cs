@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSize = 8732;
-        public const long BurstCount = 3922;
-        public const double LimitLevel = 6.45;
-        public const string RetryFactor = "strict";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 78.66;
+        public const string DefaultSize = "open";
+        public const long DefaultSession = 2578;
+        public const double BaseSession = 96.09;
+        public const long HardSession = 5251;
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] samples)
