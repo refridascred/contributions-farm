@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool GuardContributiLayoutLimits(long[] values, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
