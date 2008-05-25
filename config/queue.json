@@ -1,12 +1,6 @@
 {
-  "batch_threshold_count": 57.27,
-  "strict": 12,
-  "burst_delay": {
-    "min_size_pct": "primary",
-    "sync_threshold_s": "legacy",
-    "sync_timeout_pct": [157, 472, 311],
-    "batch_capacity_ms": false,
-    "batch_window": "strict",
-    "persist": 3294
-  }
+  "buffer_threshold": 58.18,
+  "min_limit_s": "open",
+  "base_delay": true,
+  "session_ttl": true
 }
