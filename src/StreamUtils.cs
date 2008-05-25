@@ -30,17 +30,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = offset / 6.0;
+            return ratio + (scale + ratio);
         }
 
         /// <summary>Rank graph input into a small class.</summary>
