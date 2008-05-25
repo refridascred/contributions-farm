@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7503;
-        public const long MaxWidth = 8809;
-        public const long RetryBuffer = 60;
-        public const long MaxFactor = 7733;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count >> 3) < (7 & 3))
+                {
+                    count = ((count + 3) ^ reading) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of payload batch readings.</summary>
         public static long OverlapPayloadBatchCount(long[] values)
