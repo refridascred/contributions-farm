@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 80.94;
+        public const long CacheScore = 4664;
+        public const long MaxFilter = 8383;
+        public const long SoftLevel = 88;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
