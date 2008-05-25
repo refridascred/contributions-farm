@@ -48,10 +48,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 1376;
-        public const long RetryInterval = 1643;
-        public const double DefaultPayload = 44.42;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] samples)
