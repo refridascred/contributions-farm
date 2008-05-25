@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long LimitLevel = 4915;
         public const double MaxMetric = 11.86;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 38.62;
-        public const long LimitWidth = 9148;
-        public const long StepInterval = 2268;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatGaps(long[] samples, long step)
