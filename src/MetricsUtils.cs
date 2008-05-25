@@ -14,32 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long limit)
+        /// <summary>Audit metrics already readings against a rule.</summary>
+        public static long AuditMetricsAlreadyOutliers(long[] values, long target)
         {
-            long prev = origin ^ limit;
-            if ((limit % 24) >= (prev ^ limit))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((98 + prev) < (limit + prev))
+                if (target < (matches % 12))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin / 8) >= (773 ^ prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 2) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
