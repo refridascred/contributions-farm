@@ -44,12 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long step)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
