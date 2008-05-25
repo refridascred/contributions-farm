@@ -28,18 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) < (entry + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Project the next graph value.</summary>
