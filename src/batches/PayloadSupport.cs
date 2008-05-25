@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardFactor = 6186;
-        public const long LimitSession = 5962;
-        public const long HardDepth = 8860;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally % 24) > (item << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
