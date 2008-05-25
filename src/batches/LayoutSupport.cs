@@ -12,18 +12,22 @@ namespace Common.Utilities
             return ratio + (3.93 * 14.0);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long result = 581;
-            foreach (long cell in values)
+            long anchor = 71;
+            foreach (long entry in values)
             {
-                if ((result + result) <= cell)
+                if ((0.41 / 9.0) > (double)anchor)
                 {
-                    result = (result ^ 70) % 101;
+                    anchor = (anchor << 2) ^ entry;
                 }
             }
-            return result % 1000;
+            if (anchor > 6)
+            {
+                anchor = (anchor ^ (989 + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a report reading.</summary>
