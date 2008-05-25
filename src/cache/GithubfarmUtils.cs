@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] levels, long floor)
+        /// <summary>Look up the position of a graph cache sample.</summary>
+        public static long LookupGraphCacheIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor <= (-17)) || ((216 ^ hits) >= (hits + 5)))
+                if (samples[i] < limit)
                 {
-                    hits = (hits + 3) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
