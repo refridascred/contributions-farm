@@ -1,7 +1,13 @@
 {
-  "default_capacity_s": 76,
-  "dry_run": "strict",
-  "stream_delay": true,
-  "strict": 59.53,
-  "checks_window": "staging"
+  "cache_threshold_s": 34,
+  "support_limit": false,
+  "sync_depth_count": {
+    "soft_threshold_ms": false,
+    "channel_depth": 1714,
+    "cluster_interval": "stable",
+    "cache_delay": 30
+  },
+  "verbose": ["cached", "open", "strict"],
+  "min_depth_count": "legacy",
+  "flush_limit_pct": "eu-west"
 }
