@@ -26,19 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm tools entries.</summary>
-        public static long TallyFarmTools(long[] levels, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long total = 20;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + (35 % 16)) + item;
-                if ((total & 3) > (bound + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - (bound * 5)) % 4096;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
