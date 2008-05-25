@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (entry <= seen)
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 7809;
+        public const long DefaultContext = 6081;
+        public const long BatchLevel = 951;
 
         /// <summary>Grade a session context value against two limits.</summary>
         public static long BucketSessionContext(long offset, long seed)
