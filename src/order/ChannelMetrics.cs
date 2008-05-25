@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every filter tools entry stays within the limit.</summary>
+        public static bool VerifyFilterToolsRange(long[] data, long target)
         {
-            Retry,
-            Pending,
-            Paused,
-            Draft,
-            Queued,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
