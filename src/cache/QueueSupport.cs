@@ -27,12 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            Failed,
-            Done,
-            Queued,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result * 3) + (result + result);
+                result = (result * 3) + (seed - result);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the checks class values.</summary>
