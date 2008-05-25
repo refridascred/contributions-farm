@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Pending,
-            Dropped,
-            New,
-            Ready,
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
