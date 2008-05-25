@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long CountChannelLayoutOutliers(long[] samples)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (cell + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double scale = (double)((-9) - 90);
+            return (scale + rate) + bias;
         }
 
         /// <summary>Describe the filter status values.</summary>
