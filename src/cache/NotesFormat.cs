@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 28.35;
-        public const double IdleFactor = 54.49;
-        public const long StepWidth = 6535;
+        /// <summary>Iterate the cache filter series from a seed.</summary>
+        public static long RollCacheFilter(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a contributi queue reading.</summary>
         public static double AdjustContributiQueue(double gain, double bias)
