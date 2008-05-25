@@ -1,20 +1,9 @@
 {
-  "poll_limit": ["primary", "stable", "open"],
-  "token_delay": 77,
-  "route_delay": true,
-  "counter_limit": {
-    "soft_limit": "local",
-    "flush_limit": 60,
-    "channel_retries": 83,
-    "stream_window": 33.32,
-    "retry_interval_s": 86,
-    "batch_window": {
-      "persist": "local",
-      "contributi_size": "standard",
-      "warm_capacity_ms": "stable",
-      "default_capacity_s": 7.73,
-      "dry_run": 7592
-    }
+  "max_ratio_ms": ["primary", "cached", "latest"],
+  "readonly": {
+    "idle_limit_ms": "latest",
+    "max_ratio_s": 1024,
+    "burst_interval_s": 64.13
   },
-  "retry_window": 56.38
+  "commits_limit": 58.17
 }
