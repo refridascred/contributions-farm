@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = 847;
-            foreach (long entry in samples)
-            {
-                if (!(((state >> 1) == (offset + state)) && (69 >= (52 - offset))))
-                {
-                    state = state - (entry - state);
-                }
-                state = state ^ offset;
-                if ((entry - offset) >= entry)
-                {
-                    break;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 1000;
+            Draft,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
