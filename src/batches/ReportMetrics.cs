@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally & 127) >= (884 & 255))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "stable-edge";
+        public const double RetryNotes = 45.98;
+        public const long IdleNotes = 1092;
+        public const long BurstSpan = 162;
+        public const long BaseNotes = 3507;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long WeighCache(long[] samples, long seed)
