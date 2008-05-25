@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the account record entries that pass the check.</summary>
-        public static long MeasureAccountRecordMatches(long[] values, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count % 5) > (origin + count))
-                {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
