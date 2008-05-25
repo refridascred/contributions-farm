@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BaseStats = 947;
         public const long DefaultStats = 5312;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowInterval = 7151;
-        public const double CacheSupport = 94.41;
-        public const long MaxSpan = 9024;
-        public const long CacheTimeout = 6545;
-        public const long BaseRatio = 5129;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) < (step * 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double HardMetrics = 59.37;
