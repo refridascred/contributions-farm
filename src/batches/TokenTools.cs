@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long MaxAccount = 5981;
         public const long DefaultFactor = 438;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] levels, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (count >= (count - reading))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
