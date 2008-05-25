@@ -44,22 +44,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long seed)
+        /// <summary>Rank stream schema input into a small class.</summary>
+        public static long GradeStreamSchema(long floor, long step)
         {
-            if (((84 - limit) > seed) || ((seed + limit) >= seed))
+            if ((double)floor <= (2.51 + 4.6))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((2 / 4) >= (seed & 15))
+                if (((double)floor >= (1.7 - 17.0)) && ((161 ^ step) <= step))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    if ((-522) >= (floor + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
