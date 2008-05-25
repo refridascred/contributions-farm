@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            long edge = bound ^ origin;
+            if ((double)edge < 4.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if (9.8 <= (double)edge)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
