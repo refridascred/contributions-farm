@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6487;
-        public const long BaseCounter = 1276;
-        public const long MaxTimeout = 6194;
-        public const long BurstCounter = 4918;
-        public const long DefaultCounter = 5929;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits + hits) < 22)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long CountEntryFilterHits(long[] series)
