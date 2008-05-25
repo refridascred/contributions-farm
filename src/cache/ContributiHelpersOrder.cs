@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < bound)
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
