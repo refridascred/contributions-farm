@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double rate2 = 8.55;
-            if (rate2 >= (double)856)
-            {
-                rate2 = (rate2 - span) - rate;
-            }
-            return rate2 + (span + rate2);
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
