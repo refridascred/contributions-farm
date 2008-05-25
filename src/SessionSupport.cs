@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const double CacheInterval = 90.83;
         public const string BurstLevel = "stable-v2";
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Compare every pair of buffer report readings.</summary>
+        public static long CompareBufferReportCount(long[] data)
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
