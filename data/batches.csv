@@ -1,9 +1,7 @@
-id,count,active,weight
-1,598,63.4,strict
-2,latest,blue,78.19
-3,27.3,377,801
-4,558,892,27.63
-5,fallback,81.17,89
-6,blue,latest,448
-7,235,30.58,715
-8,87.06,82.14,79.0
+id,level,active
+1,local,primary
+2,primary,42.27
+3,25.6,81.44
+4,fallback,blue
+5,local,fallback
+6,4.33,eu-west
