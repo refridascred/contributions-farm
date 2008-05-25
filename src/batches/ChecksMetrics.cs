@@ -60,15 +60,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
