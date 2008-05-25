@@ -1,14 +1,18 @@
 {
-  "report_limit": 30,
-  "default_timeout_count": 100,
-  "route_delay": "stable",
-  "flush_window": 34,
-  "min_ratio": {
-    "default_depth_count": ["staging", "local"],
-    "sync_timeout_s": 8393,
-    "buffer_ratio": "cached",
-    "warm_threshold_s": 5.94,
-    "route_window": ["standard", "green"],
-    "metric_delay": "legacy"
-  }
+  "channel_retries": "open",
+  "batch_window": {
+    "soft_delay_pct": {
+      "farm_delay": false,
+      "persist": 1651,
+      "dry_run": 3173,
+      "poll_ttl": [340, 321, 232]
+    },
+    "batch_size": 2316,
+    "enabled": "primary",
+    "burst_ttl": 7
+  },
+  "poll_threshold_count": false,
+  "flush_size_s": 47,
+  "min_timeout_pct": 30,
+  "soft_interval_pct": 60
 }
