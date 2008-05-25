@@ -42,19 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long bound)
+        /// <summary>Grade a format profile value against two limits.</summary>
+        public static long RankFormatProfile(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long gap = floor - offset;
+            if (!((7 << 2) != (gap - 8)))
             {
-                if (item <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((offset <= (711 + gap)) && ((double)floor != (4.0 + 4.98)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
