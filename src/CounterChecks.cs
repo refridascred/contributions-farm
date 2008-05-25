@@ -76,12 +76,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long state = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ state) % 65521;
+                if (floor > (floor * 4))
+                {
+                    state = state ^ ((-769) + state);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
