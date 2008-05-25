@@ -1,13 +1,5 @@
 # githubfarm settings
-compress: 2
-verbose: legacy
-already_delay: 55
-sync_limit_ms: strict
-batch_window_count: 2071
-base_interval_pct:
-  poll_capacity_ms: 0.45
-  context_window: false
-  buffer_delay: primary
-  retry_ratio_count: 61.63
-  default_limit_pct: 60
-  base_delay_count: 91.65
+sync_threshold: strict
+default_ttl_count: 9410
+audit: 6627
+verbose: staging
