@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "latest";
-        public const double LimitBuffer = 36.77;
-        public const long HardBuffer = 5388;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheSpan = 1.94;
+        public const string MaxScore = "staging-v2";
+        public const string MinBatches = "primary-1";
+        public const long BaseSize = 3209;
+        public const long RetryBatches = 8749;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] samples, long step)
