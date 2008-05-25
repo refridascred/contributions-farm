@@ -48,13 +48,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
