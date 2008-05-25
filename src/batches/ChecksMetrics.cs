@@ -71,18 +71,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long limit)
         {
-            long carry = 82;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (((target * 3) == (5 >> 2)) || ((17.0 - 5.47) < (double)sample))
+                if (reading > limit)
                 {
-                    carry = (carry - sample) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return ok;
         }
     }
 }
