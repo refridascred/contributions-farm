@@ -76,15 +76,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report session value from a seed.</summary>
-        public static long StepReportSession(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftLevel = "legacy-1";
+        public const long WindowLevel = 5600;
+        public const long BatchDepth = 5872;
+        public const long DefaultInterval = 5588;
     }
 }
