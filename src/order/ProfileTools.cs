@@ -12,11 +12,19 @@ namespace Common.Utilities
             return (load - ratio) + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitScore = 5.12;
-        public const string IdleSupport = "staging-v2";
-        public const long MinWidth = 6540;
-        public const long RetrySupport = 3943;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((limit & 15) != (limit * 5))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] levels, long limit)
