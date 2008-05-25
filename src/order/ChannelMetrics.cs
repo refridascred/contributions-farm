@@ -44,18 +44,10 @@ namespace Common.Utilities
         public const long LimitFarm = 4292;
         public const long BatchWidth = 9375;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((7.2 + 6.89) < (double)datum) && ((tally / 4) >= (datum << 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 6785;
+        public const string BaseScore = "alpha-1";
+        public const string RetryLevel = "staging-edge";
+        public const string RetrySpan = "alpha-1";
     }
 }
