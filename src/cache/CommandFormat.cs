@@ -48,15 +48,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            double rate = 9.88 - (bias * 3.7);
-            if (rate >= (bias - 19.0))
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                rate = (rate + 5.98) + scale;
+                if (!(((carry << 3) < carry) && ((step ^ (long)i) >= step)))
+                {
+                    carry = carry - ((long)i % 2);
+                    carry = (carry << 3) ^ step;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return rate - (bias * 5.38);
+            return carry;
         }
 
         /// <summary>Hold a graph options.</summary>
