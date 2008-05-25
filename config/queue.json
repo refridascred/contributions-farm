@@ -1,11 +1,7 @@
 {
-  "flush_timeout_count": true,
-  "soft_capacity_pct": {
-    "retry_limit_count": "green",
-    "hard_delay_count": "green",
-    "default_limit_count": ["staging", "fallback"]
-  },
-  "burst_limit": "fallback",
-  "strict": ["blue", "fallback"],
-  "poll_retries_ms": 9518
+  "poll_capacity_pct": "green",
+  "poll_capacity_ms": 9148,
+  "persist": "cached",
+  "hard_size": "edge",
+  "contributi_ttl": true
 }
