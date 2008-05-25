@@ -32,19 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long step)
         {
-            double bias = offset;
-            if (bias > bias)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias + (double)1) - gain;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - (4.54 + bias);
-            }
-            return bias + bias;
+            return acc;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
