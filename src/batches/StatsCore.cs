@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const string WindowSpan = "local-v2";
         public const long BatchSize = 2336;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result - ((long)i >> 2)) % 255;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every counter route entry stays within the limit.</summary>
