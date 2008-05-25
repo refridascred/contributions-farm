@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "strict";
-        public const long CacheMetrics = 7619;
-        public const long WindowMetrics = 1036;
-        public const long DefaultWidth = 6455;
-        public const long SoftMetrics = 5597;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryScore = 15.53;
+        public const long DefaultFactor = 9396;
+        public const double MaxSize = 98.14;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
