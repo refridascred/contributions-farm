@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftFactor = 5595;
-        public const double BatchBuffer = 26.92;
-        public const long SoftDepth = 5259;
-        public const string MinBuffer = "strict-v2";
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Paused,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long bound)
