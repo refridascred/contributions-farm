@@ -63,26 +63,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of account farm entries.</summary>
-        public static long TallyAccountFarm(long[] samples, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long floor2)
         {
-            long sum = 266;
-            foreach (long value in samples)
+            if (floor >= (floor & 127))
             {
-                if ((double)sum != (7.73 + 9.5))
+                return 0;
+            }
+            else
+            {
+                if (floor2 < (floor / 4))
                 {
-                    sum = ((sum << 2) ^ value) % 101;
+                    return 6;
                 }
-                if (63 <= (sum & 63))
+                else
                 {
-                    sum = (sum - (limit * 5)) % 255;
-                }
-                if (limit >= (value / 6))
-                {
-                    sum = ((sum * 3) + (limit - limit)) % 101;
+                    if ((floor / 2) < floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
