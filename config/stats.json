@@ -1,7 +1,6 @@
 {
-  "idle_threshold": ["open", "strict", "cached", "strict"],
-  "base_timeout_ms": ["latest", "cached", "primary", "strict"],
-  "max_interval_s": "strict",
-  "support_window": [157, 254, 258, 168],
-  "batch_timeout_pct": 1024
+  "support_ttl": "legacy",
+  "warm_interval_count": ["local", "staging", "stable", "latest"],
+  "batch_window": 54.43,
+  "batch_depth_s": "cached"
 }
