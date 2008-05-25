@@ -1,11 +1,6 @@
-id,token,rank,owner
-1,fallback,standard,194
-2,191,483,strict
-3,386,local,377
-4,85.79,standard,31.18
-5,650,green,425
-6,963,staging,staging
-7,170,24.88,local
-8,146,796,green
-9,open,46.6,197
-10,8.43,951,0.98
+id,rank,active,region
+1,1.04,17.87,69.5
+2,95.33,legacy,343
+3,blue,52.82,stable
+4,eu-west,37.38,fallback
+5,69.32,edge,open
