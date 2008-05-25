@@ -1,8 +1,14 @@
 {
-  "idle_delay_pct": 87,
-  "audit": 14.66,
-  "readonly": 75,
-  "verbose": 70,
-  "warm_size": ["staging", "stable"],
-  "queue_window": "cached"
+  "dry_run": 68.69,
+  "warm_capacity_count": {
+    "persist": 58.9,
+    "strict": "green",
+    "verbose": {
+      "sync_delay_pct": "primary",
+      "layout_interval": 250,
+      "max_depth_ms": true,
+      "idle_timeout_pct": "fallback"
+    }
+  },
+  "session_depth": ["cached", "primary"]
 }
