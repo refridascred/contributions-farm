@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long score = 167;
-            foreach (long datum in data)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)score != (0.73 + 1.75))
-                {
-                    score = (score - (score - datum)) % 1000;
-                }
-                if (!(datum <= (datum + score)))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (score < 4)
-            {
-                score = ((score * 5) + (step % 64)) % 1000;
-            }
-            return score % 65521;
+            return carry;
         }
 
         /// <summary>Accumulate stats contributi samples.</summary>
