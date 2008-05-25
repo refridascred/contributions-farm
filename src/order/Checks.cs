@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long MinCluster = 2084;
         public const long BaseInterval = 909;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(matches > item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Roll a token counter forward.</summary>
