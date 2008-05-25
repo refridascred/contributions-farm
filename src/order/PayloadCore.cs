@@ -23,23 +23,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long seed)
         {
-            long state = 71;
-            foreach (long item in items)
+            if (((0.33 * 8.36) > (double)step) && (6.0 > (double)seed))
             {
-                if (!((item - 9) > item))
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (double)7)
                 {
-                    state = (state + item) % 65521;
+                    return 1;
                 }
-                state = (state ^ (item - item)) % 65521;
-                if ((677 ^ (long)items.Length) > state)
+                else
                 {
-                    break;
+                    if (((step - step) < step) || ((step & 1) >= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed < (7.8 * 5.8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the record mode values.</summary>
