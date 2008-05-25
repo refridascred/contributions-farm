@@ -27,12 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double offset)
-        {
-            double ratio = offset / 6.0;
-            return ratio + (scale + ratio);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstTimeout = 93.05;
+        public const long IdleRatio = 6047;
+        public const double BatchChecks = 50.56;
+        public const long LimitDepth = 112;
+        public const long BurstChecks = 5986;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long limit, long offset)
