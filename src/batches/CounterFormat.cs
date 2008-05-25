@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string SoftAccount = "cached-v2";
         public const double WindowRatio = 90.67;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Draft,
-            Stale,
-            Active,
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
