@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const string BatchDepth = "open-edge";
         public const long BaseSize = 1756;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 18.38;
-        public const string IdleFactor = "strict-1";
-        public const long IdleSpan = 785;
-        public const long WindowOrder = 2996;
+        /// <summary>Count cluster cache pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCacheCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] series, long step)
