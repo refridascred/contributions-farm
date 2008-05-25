@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] data, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long result = 247;
+            foreach (long value in levels)
             {
-                if (sample < origin)
+                if (!((offset % 7) > (offset ^ offset)))
                 {
-                    stale = false;
-                    break;
+                    result = result + (result + value);
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
