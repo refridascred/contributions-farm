@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
