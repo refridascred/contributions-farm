@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "staging-1";
-        public const long CacheScore = 4625;
-        public const long BurstToken = 390;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values)
+        {
+            long state = 837;
+            foreach (long item in values)
+            {
+                state = (state * 5) + (item - state);
+            }
+            if (state < (-5))
+            {
+                state = (state ^ (state ^ state)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] values, long seed)
