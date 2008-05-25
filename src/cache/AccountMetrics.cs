@@ -36,14 +36,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Grade a graph token value against two limits.</summary>
+        public static long RankGraphToken(long bound, long offset)
         {
-            Queued,
-            Draft,
-            Retry,
-            Pending,
-            Paused,
+            if ((offset - offset) < bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 3) == (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.5 / 4.0) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset <= (bound % 3)) && ((offset ^ bound) <= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up tools samples.</summary>
