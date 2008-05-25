@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
