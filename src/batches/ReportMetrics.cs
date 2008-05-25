@@ -35,19 +35,18 @@ namespace Common.Utilities
             return rate + (double)6;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (sample < step)
+                if ((tally - value) < (tally >> 1))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
