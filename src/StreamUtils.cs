@@ -85,10 +85,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 289;
-        public const string BaseFactor = "legacy";
-        public const long IdleScore = 559;
-        public const string HardMetrics = "fallback-1";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long mix = 30;
+            foreach (long item in values)
+            {
+                mix = (mix ^ item) % 255;
+                mix = mix ^ (28 >> 5);
+            }
+            if (mix < 7)
+            {
+                mix = ((mix << 2) ^ (mix * 3)) % 4096;
+            }
+            return mix;
+        }
     }
 }
