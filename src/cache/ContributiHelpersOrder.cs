@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long SoftInterval = 4393;
         public const string IdleSize = "staging-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryLevel = 8697;
-        public const long DefaultFactor = 36;
-        public const double BurstAccount = 23.65;
-        public const string MaxCount = "latest-edge";
-        public const string CacheScore = "stable-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6487;
+        public const long BaseCounter = 1276;
+        public const long MaxTimeout = 6194;
+        public const long BurstCounter = 4918;
+        public const long DefaultCounter = 5929;
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long CountEntryFilterHits(long[] series)
