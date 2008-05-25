@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowTimeout = "legacy";
-        public const long SoftQueue = 3151;
-        public const long LimitQueue = 726;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Ready,
+            Locked,
+            New,
+            Closed,
+        }
 
         /// <summary>Rank layout route input into a small class.</summary>
         public static long GradeLayoutRoute(long floor, long offset)
