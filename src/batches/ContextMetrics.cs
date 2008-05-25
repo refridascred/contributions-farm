@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
