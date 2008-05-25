@@ -50,10 +50,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseScore = "legacy";
-        public const string HardCluster = "open-v2";
-        public const long IdleCluster = 4994;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
