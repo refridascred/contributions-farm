@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Fold a list of buffer report readings.</summary>
+        public static long TallyBufferReport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 527;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mark & 15) > reading) || ((mark / 4) >= reading))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + mark) % 97;
                 }
             }
-            return seen;
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ (mark ^ 59)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
