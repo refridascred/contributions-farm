@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double floor)
-        {
-            double scale = (floor - floor) - floor;
-            return (scale - (double)82) + rate;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitFactor = 44.44;
+        public const string SoftCount = "staging-edge";
+        public const long MinDepth = 1317;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long SeriesGraph(long origin)
