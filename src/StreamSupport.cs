@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 6455;
         public const long SoftMetrics = 5597;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long carry = 12;
-            foreach (long datum in items)
-            {
-                carry = carry ^ (datum + carry);
-            }
-            return carry;
+            Active,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Rank session payload input into a small class.</summary>
