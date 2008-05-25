@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = floor ^ floor2;
+            if ((floor2 & 255) <= (floor % 3))
             {
-                if (data[i] <= step)
+                return 5;
+            }
+            else
+            {
+                if ((3 <= (floor * 2)) || ((floor2 * 4) != (floor2 >> 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (16.0 <= (double)prev)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.0 + 18.0) != (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
