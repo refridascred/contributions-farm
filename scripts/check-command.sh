@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in legacy cached stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,9 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy green open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=167
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
