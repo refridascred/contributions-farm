@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] samples, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry + entry) < entry)
+                sum = ((sum * 4) + (target - 1)) % 97;
+                if (target > (sum - (long)i))
                 {
-                    count = (count + 2) - floor;
+                    sum = (sum << 2) ^ 585;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
