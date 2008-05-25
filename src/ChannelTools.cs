@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] data, long step)
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long DigestWindowTools(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long score = 2;
+            foreach (long cell in levels)
             {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score << 3) ^ 4) - cell;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Project the next checks stream value.</summary>
