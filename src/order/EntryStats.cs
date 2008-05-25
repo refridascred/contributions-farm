@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double ratio = weight;
-            if (ratio < (offset + weight))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (offset * 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (10.0 - offset);
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
