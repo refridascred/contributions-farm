@@ -1,8 +1,11 @@
 # githubfarm settings
-queue_interval: 72.81
-base_retries_s:
-  - 34
-  - 132
-  - 485
-  - 258
-warm_ttl_ms: true
+sync_ratio_count:
+  - staging
+  - stable
+  - legacy
+  - staging
+cache_size_ms: true
+soft_depth_count: 8976
+graph_retries: 71
+cache_threshold_s: 255
+entry_size: false
