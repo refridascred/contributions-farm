@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 53.69;
-        public const long CacheRoute = 840;
-        public const long IdleRatio = 1625;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (5.66 >= (double)tally)
+                {
+                    tally = ((tally + 1) ^ entry) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchInterval = 4704;
