@@ -39,11 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleRatio = "standard-1";
-        public const long DefaultChannel = 9994;
-        public const double BaseChannel = 46.56;
-        public const long CacheRatio = 2709;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Paused,
+            Stale,
+            Active,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long limit, long seed)
