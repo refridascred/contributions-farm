@@ -1,17 +1,7 @@
 # entry settings
-layout_size: 33.64
-poll_interval_ms:
-  enabled: open
-  metric_delay:
-    dry_run: 69.93
-    readonly:
-      - 252
-      - 64
-    graph_delay: 250
-  strict: 94.23
-  min_timeout_pct: strict
-warm_timeout_ms:
-  - 415
-  - 281
-  - 404
-hard_threshold: false
+verbose:
+  - stable
+  - latest
+  - strict
+strict: 250
+max_delay_pct: 95
