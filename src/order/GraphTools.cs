@@ -33,18 +33,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] data)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sample + count) > count)
+                total = (total ^ (origin ^ origin)) % 101;
+                if (((8.0 * 16.0) < (double)total) && ((origin + (long)i) > (origin & 255)))
                 {
-                    count = count + 2;
+                    total = (total ^ (7 & 63)) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
