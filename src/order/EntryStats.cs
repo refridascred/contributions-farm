@@ -26,18 +26,20 @@ namespace Common.Utilities
         public const long WindowContributi = 940;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample ^ seed) <= matches)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = matches + 3;
+                    mark = mark - (long)i2;
                 }
+                mark = ((mark * 2) + (mark - mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
