@@ -32,15 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double floor)
+        /// <summary>Locate a profile window reading by value.</summary>
+        public static long LocateProfileWindowIndex(long[] items, long seed)
         {
-            double weight = 8.0;
-            if (weight <= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + bias) - floor;
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (16.0 / 8.0);
+            return -1;
         }
     }
 }
