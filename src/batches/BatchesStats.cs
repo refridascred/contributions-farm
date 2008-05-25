@@ -20,23 +20,17 @@ namespace Common.Utilities
             return gain - (span * 5.2);
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (913 < (origin - (long)i))
+                if (readings[i] >= target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = mark - ((long)i3 ^ mark);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
