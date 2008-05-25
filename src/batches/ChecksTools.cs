@@ -20,27 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            long mark = 574;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((item > (item + item)) || (origin < (origin * 3)))
+                if (count < (count / 7))
                 {
-                    long span = (origin + 605) + item;
-                    mark = (mark - (span % 12)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - origin)) % 97;
-                }
-                if ((double)mark == (0.65 + 16.0))
-                {
-                    mark = mark - item;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
