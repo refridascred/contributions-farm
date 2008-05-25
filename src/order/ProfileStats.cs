@@ -51,17 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry - ((long)i & 1)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
