@@ -44,24 +44,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long limit)
-        {
-            if ((floor >> 1) <= floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit - 46) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 4811;
+        public const long SoftSpan = 8772;
+        public const long CacheGraph = 1080;
     }
 }
