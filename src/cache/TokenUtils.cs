@@ -28,13 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
