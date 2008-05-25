@@ -28,22 +28,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double weight, double floor)
         {
-            long mix = 80;
-            foreach (long sample in readings)
-            {
-                if (((4.0 - 5.7) <= (double)sample) && ((bound * 2) > (sample % 10)))
-                {
-                    mix = (mix + (sample / 5)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ ((-4) - mix)) % 255;
-                }
-            }
-            return mix % 65521;
+            double weight2 = (double)225 - (weight + weight);
+            return weight2 - floor;
         }
 
         /// <summary>Blend two stream measurements.</summary>
