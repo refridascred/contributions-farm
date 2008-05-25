@@ -42,11 +42,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Roll a format farm counter forward.</summary>
+        public static long SeriesFormatFarm(long limit)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state ^ ((long)i - state);
+                state = state - (limit * 3);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
