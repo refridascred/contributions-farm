@@ -64,19 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] data, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
