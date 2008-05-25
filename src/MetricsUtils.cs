@@ -14,22 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] series, long bound)
         {
-            long anchor = -75;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((1.0 / 2.0) > (double)anchor))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    anchor = anchor - (datum + datum);
+                    return (long)i;
                 }
             }
-            if (anchor > 16)
-            {
-                anchor = anchor - (anchor / 6);
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
