@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a graph channel sample.</summary>
