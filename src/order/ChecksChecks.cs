@@ -26,10 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 4289;
-        public const long MaxFactor = 3246;
-        public const long SoftCommits = 8139;
-        public const string BatchCommits = "standard-edge";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
