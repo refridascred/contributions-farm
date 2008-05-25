@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const long HardSize = 2098;
         public const double StepBatches = 25.88;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            bool found = true;
-            foreach (long value in series)
+            double bias = weight;
+            if (bias > (floor - 5.7))
             {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (bias - bias);
             }
-            return found;
+            else
+            {
+                bias = bias + (floor + floor);
+            }
+            return bias - floor;
         }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
