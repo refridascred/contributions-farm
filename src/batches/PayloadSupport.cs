@@ -32,18 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long total = 9;
-            foreach (long item in values)
-            {
-                if (!((double)item < (7.4 / 4.0)))
-                {
-                    total = (total - total) % 65521;
-                }
-            }
-            return total;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
