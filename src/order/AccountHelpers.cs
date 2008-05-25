@@ -23,13 +23,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((551 - 0) < (sum + sum))
+                {
+                    sum = ((sum * 2) + (target / 6)) % 255;
+                }
+                sum = ((sum * 4) + (618 + (long)i)) % 97;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
