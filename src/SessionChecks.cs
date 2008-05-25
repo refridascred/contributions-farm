@@ -29,11 +29,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
