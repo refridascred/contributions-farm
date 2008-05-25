@@ -40,10 +40,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSize = 8604;
-        public const double BaseWidth = 39.69;
-        public const long LimitCluster = 3349;
-        public const long BaseCluster = 1076;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits / 8) >= (datum >> 4))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
