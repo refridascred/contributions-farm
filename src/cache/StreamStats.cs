@@ -13,25 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
+        public static long CountMetricGithubfarmGaps(long[] series, long step)
         {
-            long mix = 844;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mix = mix + (datum * 4);
-                if (((datum + datum) >= (datum >> 2)) && ((6.0 * 5.9) == (double)mix))
+                if ((double)matches != (double)step)
                 {
-                    mix = (mix + datum) % 255;
-                    mix = mix ^ datum;
+                    matches = (matches + 3) + item;
                 }
-                else
-                {
-                    mix = mix + ((long)data.Length - datum);
-                }
-                mix = ((mix * 5) + datum) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
