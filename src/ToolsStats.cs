@@ -60,13 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] series, long origin)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
