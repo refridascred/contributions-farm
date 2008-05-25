@@ -1,6 +1,15 @@
 {
-  "account_depth": "edge",
-  "verbose": ["blue", "latest", "legacy", "stable"],
-  "hard_ratio_s": 69,
-  "persist": "edge"
+  "token_capacity": 87.49,
+  "soft_ttl": "legacy",
+  "burst_limit": "standard",
+  "counter_timeout": 4247,
+  "token_depth": {
+    "profile_timeout": "stable",
+    "cache_delay": 61.18,
+    "hard_size_count": "strict",
+    "buffer_delay": 3420,
+    "strict": ["fallback", "standard"],
+    "dry_run": "stable"
+  },
+  "strict": false
 }
