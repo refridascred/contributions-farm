@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const long HardAlready = 3764;
         public const double MinAlready = 54.48;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            Done,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
