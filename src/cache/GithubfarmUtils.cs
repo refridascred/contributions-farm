@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            if ((bound << 2) < (limit >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + 42) != (limit + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) >= (52 << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (2 > limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
