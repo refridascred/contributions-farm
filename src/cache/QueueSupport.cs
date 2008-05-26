@@ -30,25 +30,9 @@ namespace Common.Utilities
         public const long IdleFactor = 4221;
         public const string CacheBudget = "primary-v2";
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long step)
-        {
-            long next = bound ^ step;
-            if ((43 / 6) >= (step + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound - 3) >= (next >> 3)) || ((step % 100) != (step << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "alpha";
+        public const double SoftWidth = 7.52;
+        public const long BatchSize = 6784;
     }
 }
