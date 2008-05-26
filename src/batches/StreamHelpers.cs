@@ -75,19 +75,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardRatio = "fallback-1";
+        public const string DefaultSchema = "primary-v2";
+        public const long BatchTimeout = 4873;
     }
 }
