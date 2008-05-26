@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 245;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(entry > (long)readings.Length))
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (entry + sum)) % 4096;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Describe the batches level values.</summary>
