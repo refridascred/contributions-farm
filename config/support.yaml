@@ -1,5 +1,11 @@
 # support settings
-min_interval_pct: 53
-verbose: primary
-contributi_window: green
-base_threshold_ms: eu-west
+flush_threshold_pct: 9081
+base_threshold_s: local
+githubfarm_limit: 48.61
+contributi_timeout:
+  - latest
+  - edge
+warm_timeout_ms: eu-west
+batch_window:
+  - 46
+  - 287
