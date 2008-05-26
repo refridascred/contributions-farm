@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue filter entry stays within the limit.</summary>
-        public static bool VerifyQueueFilterLimits(long[] items, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (item <= offset)
+                if (datum != floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
