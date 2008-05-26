@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long score = 5;
+            foreach (long cell in levels)
             {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score * 4) + (cell + 804)) % 97) + limit;
             }
-            return ready;
+            if (score > 752)
+            {
+                score = (score + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
