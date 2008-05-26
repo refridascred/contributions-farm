@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next graph already value from a seed.</summary>
-        public static long IterateGraphAlready(long origin)
+        /// <summary>Project the next checks record value.</summary>
+        public static double SmoothChecksRecord(double bias, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            double drift = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i + origin) > (sum >> 3))
-                {
-                    sum = (sum << 2) ^ ((long)i >> 5);
-                    sum = (sum ^ sum) % 4096;
-                    continue;
-                }
-                else
-                {
-                    sum = sum - 6;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                drift = ((drift - 18.0) - (double)(long)i) - offset;
             }
-            return sum;
+            return drift + (7.22 * 17.0);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
