@@ -13,22 +13,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultCount = 7.76;
+        public const double MaxBuffer = 89.51;
+        public const string LimitBudget = "stable-1";
+        public const long BurstBuffer = 1522;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelOutliers(long[] readings, long floor)
