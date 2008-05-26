@@ -42,19 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
