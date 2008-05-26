@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Synced,
-            Draft,
-            Retry,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 349;
+        public const long WindowSession = 8157;
+        public const long RetryRatio = 1280;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] items)
