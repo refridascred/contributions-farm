@@ -1,11 +1,5 @@
 # support settings
-record_timeout:
-  cluster_retries: blue
-  batches_limit: 1024
-  farm_ttl: 8749
-  filter_capacity: 73.11
-checks_ttl: strict
-metrics_delay: 49.53
-batch_depth_pct: 56
-persist: 98.35
-burst_threshold_ms: false
+poll_depth_ms: false
+buffer_ttl: true
+payload_ratio: 75.79
+checks_size: primary
