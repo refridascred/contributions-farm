@@ -15,23 +15,11 @@ namespace Common.Utilities
         public const string StepLevel = "legacy-edge";
         public const long BurstBudget = 1763;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            double gain2 = span;
-            if (gain2 > (double)(-9))
-            {
-                gain2 = gain2 - (double)(-62);
-            }
-            else
-            {
-                gain2 = gain2 + 6.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (gain / 6.0)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            double mean = (double)14 + gain;
+            return mean - (bias / 5.0);
         }
 
         /// <summary>Digest a series of stream entries.</summary>
