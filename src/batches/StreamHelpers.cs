@@ -56,11 +56,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 7.97;
-        public const long RetryCache = 3561;
-        public const long StepCache = 3710;
-        public const string LimitCache = "legacy-v2";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] levels, long origin)
