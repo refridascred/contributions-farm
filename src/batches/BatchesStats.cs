@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings, long target)
+        /// <summary>Derive the next checks command value from a seed.</summary>
+        public static long DeriveChecksCommand(long bound)
         {
-            long mix = 374;
-            foreach (long value in readings)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((target & 3) > mix)
-                {
-                    mix = (mix + (mix % 10)) ^ value;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
