@@ -74,13 +74,39 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 11.66;
         public const long MaxDepth = 6138;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long step)
         {
-            Idle,
-            Retry,
-            Ready,
-            Done,
+            long step2 = seed ^ step;
+            if ((step2 * 5) > (step & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 ^ step) != (seed / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0.5 * 8.0) != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
