@@ -19,24 +19,12 @@ namespace Common.Utilities
             return ((mean - mean) + rate) + floor;
         }
 
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long GradeCommandNotes(long bound, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if (((bound & 15) > seed) && (bound <= (bound - bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound % 8) > (24 * 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
