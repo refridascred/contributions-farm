@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            long sum = 5;
-            foreach (long reading in series)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum + sum) + reading;
+                if ((double)state >= 9.6)
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
