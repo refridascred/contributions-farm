@@ -32,11 +32,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxWidth = "staging-edge";
-        public const string SoftCommand = "latest";
-        public const long WindowCommand = 49;
-        public const long BaseScore = 7083;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinRecord = 1551;
