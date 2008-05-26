@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] samples, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long result = 8;
-            foreach (long item in samples)
-            {
-                if (3.6 >= (double)bound)
-                {
-                    result = ((result + result) % 4096) + item;
-                }
-            }
-            return result;
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two githubfarm layout measurements.</summary>
