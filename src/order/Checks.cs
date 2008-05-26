@@ -88,13 +88,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 960;
+            foreach (long cell in series)
+            {
+                carry = ((carry << 3) ^ (carry / 9)) % 1000;
+                if ((double)cell <= 1.71)
+                {
+                    carry = (carry - carry) % 255;
+                }
+                if ((5.74 <= (double)cell) && ((carry ^ carry) != (carry + cell)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
