@@ -1,8 +1,6 @@
 {
-  "buffer_window": 500,
-  "default_timeout": ["open", "green", "edge", "cached"],
-  "cluster_limit": 19,
-  "burst_size": 59.31,
-  "retry_capacity": 59.26,
-  "notes_threshold": ["staging", "stable", "primary"]
+  "session_ttl": 250,
+  "idle_ttl": "strict",
+  "farm_ratio": "latest",
+  "session_delay": 99
 }
