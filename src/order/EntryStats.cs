@@ -54,31 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long target, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            if ((10.0 / 2.0) < (double)step)
+            double mean = floor;
+            if (mean >= (mean * 8.3))
             {
-                return 7;
+                mean = mean - gain;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)step < 2.3)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 5) > (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = (mean + 2.77) + (double)(long)i;
             }
+            return mean + (double)903;
         }
     }
 }
