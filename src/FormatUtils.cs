@@ -27,22 +27,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long origin)
         {
-            long acc = 60;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell + 7) != (acc ^ 715)) && ((cell + 972) > acc))
+                if (data[i] == origin)
                 {
-                    acc = (acc + cell) % 255;
+                    return (long)i;
                 }
             }
-            if (acc < 420)
-            {
-                acc = acc + (acc & 15);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
