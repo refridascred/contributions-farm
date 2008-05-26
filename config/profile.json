@@ -1,6 +1,7 @@
 {
-  "record_capacity": 5014,
-  "min_capacity_count": false,
-  "soft_ttl_count": 9742,
-  "base_ttl": 100
+  "compress": "edge",
+  "retry_depth_ms": "latest",
+  "poll_capacity": true,
+  "default_limit_count": 41,
+  "poll_threshold_ms": ["cached", "staging"]
 }
