@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up metric session samples.</summary>
-        public static long PairMetricSessionCount(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Fold a list of order readings.</summary>
