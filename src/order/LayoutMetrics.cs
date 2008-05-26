@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Locked,
-            Paused,
-            Synced,
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
