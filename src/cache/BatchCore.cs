@@ -34,13 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long origin)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Locked,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
