@@ -28,22 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            long anchor = 273;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)item <= (double)831)
+                if (((2.0 * 2.4) <= (double)tally) || ((0 * 2) < (reading - tally)))
                 {
-                    anchor = (anchor + item) - seed;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor - item);
+                    tally = tally + 2;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a cache options.</summary>
