@@ -41,10 +41,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 4650;
-        public const long CacheAccount = 9191;
-        public const double BurstFactor = 37.02;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count > (double)bound)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next counter commits value.</summary>
         public static double AdjustCounterCommits(double bias, double offset)
