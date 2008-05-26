@@ -68,13 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
