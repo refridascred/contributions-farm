@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Locate a entry buffer reading by value.</summary>
+        public static long SeekEntryBufferIndex(long[] readings, long seed)
         {
-            Pending,
-            Locked,
-            Synced,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support cache samples are out of range.</summary>
