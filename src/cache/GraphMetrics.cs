@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long bound)
         {
-            double ratio2 = 8.0 + (double)90;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                ratio2 = (((ratio2 - 6.18) + (double)(long)i) + ratio) + bias;
+                if ((((6.17 * 12.0) <= (double)count) || ((2.2 + 3.0) > (double)bound)) || ((double)entry == (double)bound))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio2 - ratio2;
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
