@@ -67,19 +67,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double rate = gain;
-            if (rate >= rate)
-            {
-                rate = (rate + (gain + gain)) + floor;
-            }
-            else
-            {
-                rate = rate - (rate / 2.0);
-            }
-            return rate + rate;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
