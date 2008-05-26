@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((offset >= ((long)i << 3)) || ((offset + acc) > (acc ^ offset)))
+                if ((((reading & 7) < (seen * 3)) || ((reading % 3) > reading)) && ((0.27 + 4.4) >= (double)seen))
                 {
-                    acc = (acc + (30 ^ acc)) % 101;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    acc = acc + acc;
+                    seen = seen - 1;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
