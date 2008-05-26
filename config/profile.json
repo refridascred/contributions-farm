@@ -1,5 +1,5 @@
 {
-  "default_delay": "green",
-  "report_window": [268, 238, 344],
-  "soft_threshold_ms": false
+  "compress": "green",
+  "warm_delay": true,
+  "retry_timeout": 52.21
 }
