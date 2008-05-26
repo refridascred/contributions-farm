@@ -19,13 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4348;
+        public const long IdleQueue = 545;
+        public const long HardQueue = 7076;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double weight, double span)
