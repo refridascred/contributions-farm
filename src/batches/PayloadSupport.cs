@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            long acc = 70;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                acc = (acc ^ (offset + acc)) + sample;
+                if ((tally * 2) != (datum ^ datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
