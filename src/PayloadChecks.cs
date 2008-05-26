@@ -56,18 +56,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch route entries.</summary>
-        public static long FoldBatchRoute(long[] levels, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long state = 8;
-            foreach (long value in levels)
-            {
-                if ((limit / 8) >= (state + value))
-                {
-                    state = (state + (value - state)) % 65521;
-                }
-            }
-            return state;
+            Paused,
+            Queued,
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
