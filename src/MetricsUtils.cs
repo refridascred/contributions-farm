@@ -44,19 +44,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] levels, long seed)
+        /// <summary>Scale a githubfarm filter figure with a bias.</summary>
+        public static double ScaleGithubfarmFilter(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double rate2 = (double)589 * 7.4;
+            if (rate2 > rate)
             {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = (rate2 + rate2) - offset;
             }
-            return flag;
+            return rate2 - (double)3;
         }
     }
 }
