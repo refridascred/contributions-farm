@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge fallback staging; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=332
+log "limit is ${BUFFER_LIMIT}"
+
+for item in strict staging primary; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
