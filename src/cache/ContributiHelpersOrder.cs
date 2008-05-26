@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long TallySessionCommitsGaps(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((2.0 - 4.0) == (double)item)
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
