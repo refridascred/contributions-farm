@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 989;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor + reading) % 255;
+                if (!((floor + anchor) < 3))
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
+                }
+                if (!((6 & 7) >= (7 - reading)))
+                {
+                    anchor = ((anchor << 2) ^ (reading % 10)) % 65521;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a batches options.</summary>
