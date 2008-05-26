@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long carry = 23;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry ^ 441) >= carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry - carry) % 1000) ^ sample;
-                }
-                else
-                {
-                    carry = (carry + carry) % 1000;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Iterate the contributi order series from a seed.</summary>
