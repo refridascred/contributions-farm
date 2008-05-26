@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 705;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total * 5) + (step << 2)) % 255;
+                if (((step - total) == (685 + item)) && ((item * 2) <= (total % 10)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (120 & 63);
                 }
             }
-            return tally;
+            if (total < 3)
+            {
+                total = ((total * 5) + (791 + step)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
