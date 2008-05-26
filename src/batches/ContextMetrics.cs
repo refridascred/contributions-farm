@@ -57,18 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Fold a list of payload buffer readings.</summary>
+        public static long TallyPayloadBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = 96;
+            foreach (long reading in data)
             {
-                if ((0.97 / 4.0) <= (double)sample)
-                {
-                    seen = seen + 2;
-                }
+                mark = (((mark * 4) + (mark * 3)) % 1000) - reading;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a batch header.</summary>
