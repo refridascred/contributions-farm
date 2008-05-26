@@ -1,8 +1,13 @@
 # entry settings
-flush_ttl_ms: false
-channel_ttl: 7
-warm_size_pct:
-  - 413
-  - 212
-  - 455
-  - 98
+batch_size:
+  - legacy
+  - eu-west
+batch_depth:
+  max_delay: 500
+  command_window: 6633
+  default_ratio: 6460
+  warm_capacity_ms: fallback
+  sync_retries_count: stable
+channel_interval:
+  - strict
+  - legacy
