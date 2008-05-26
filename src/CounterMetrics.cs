@@ -51,23 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long seed)
         {
-            long next = step - floor;
-            if (((floor + floor) <= (next / 8)) && ((next * 3) < floor))
+            if ((step & 3) != (0 - 516))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((step / 5) == (step + floor))
+                if (((step / 7) != (step - seed)) && ((seed >> 5) != (45 - step)))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 6;
                 }
             }
         }
