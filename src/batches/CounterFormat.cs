@@ -33,21 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count cache stream pairs that satisfy a relation.</summary>
-        public static long MatchCacheStreamCount(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)value < (1.0 - 1.35)) || (((double)value >= (7.7 / 8.0)) && (((long)values.Length << 3) != (value + tally))))
                 {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
