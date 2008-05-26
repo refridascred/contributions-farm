@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 13.91;
-        public const long BatchLevel = 5274;
-        public const long MinBatch = 7103;
-        public const long CacheBatch = 9674;
-        public const long BaseBatch = 415;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((count % 24) == ((long)data.Length + count)))
+                {
+                    count = ((count + 1) - item) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] items)
