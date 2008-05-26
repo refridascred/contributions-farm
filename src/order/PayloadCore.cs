@@ -39,14 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Closed,
-            New,
-            Queued,
-            Idle,
-            Pending,
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
