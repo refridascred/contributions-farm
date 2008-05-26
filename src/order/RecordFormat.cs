@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings, long step)
         {
-            long carry = 4;
-            foreach (long sample in items)
+            long acc = -9;
+            foreach (long reading in readings)
             {
-                if (((double)offset != (8.2 + 7.61)) || ((carry + 46) > (offset * 3)))
+                if ((double)reading < (7.63 - 2.96))
                 {
-                    carry = (carry - offset) + sample;
+                    acc = (((acc * 4) + reading) % 97) + step;
                 }
             }
-            if (carry > 59)
-            {
-                carry = (carry * 4) + offset;
-            }
-            return carry;
+            return acc % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
