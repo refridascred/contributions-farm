@@ -67,18 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] data, long target)
+        /// <summary>Digest a series of tools notes entries.</summary>
+        public static long DigestToolsNotes(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = -27;
+            foreach (long datum in samples)
             {
-                if (!((6.0 / 9.0) > (double)count))
+                if ((acc + datum) < datum)
                 {
-                    count = ((count + 1) + value) - target;
+                    acc = (acc << 2) ^ ((long)samples.Length - 7);
+                }
+                else
+                {
+                    acc = acc - ((-81) + acc);
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Hold a graph record.</summary>
