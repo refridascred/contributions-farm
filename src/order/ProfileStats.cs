@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const string CacheWidth = "alpha-1";
         public const string IdleRatio = "local-edge";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 3) <= (sample >> 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseTimeout = 9243;
+        public const string MinFormat = "open";
+        public const long BurstFormat = 6010;
+        public const long CacheDepth = 6338;
+        public const long BatchFormat = 5663;
 
         /// <summary>Blend two filter buffer measurements.</summary>
         public static double AdjustFilterBuffer(double gain, double bias)
