@@ -25,9 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "alpha";
-        public const double SoftWidth = 7.52;
-        public const long BatchSize = 6784;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long target)
+        {
+            if ((35 + target) >= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((offset >> 2) >= (offset ^ target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 1) != (target + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((240 / 2) == (target << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
