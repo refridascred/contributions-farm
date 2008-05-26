@@ -61,17 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (samples[i] == offset)
+                if (((11.0 - 4.27) < (1.4 / 7.0)) && ((seen < item) && (item <= (51 ^ (-25)))))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
