@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long diff = bound ^ origin;
+            if ((bound / 2) >= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + diff) <= (diff - diff))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff + bound) > (origin + diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound * 3) != (0 << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route editor entries.</summary>
