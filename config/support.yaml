@@ -1,4 +1,25 @@
 # support settings
-flush_ttl_ms: false
-min_size: 500
-stats_ratio: false
+compress: true
+layout_retries:
+  base_threshold: 5805
+  default_limit_count:
+    - stable
+    - staging
+    - strict
+  readonly: 7459
+  burst_size_ms:
+    - 109
+    - 491
+    - 261
+    - 195
+  warm_depth: legacy
+  already_timeout:
+    - eu-west
+    - blue
+    - legacy
+    - eu-west
+burst_ttl_ms:
+  - cached
+  - primary
+hard_capacity_s: edge
+batch_depth_s: 27.87
