@@ -87,15 +87,15 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Roll a metric checks counter forward.</summary>
-        public static long IterateMetricChecks(long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
     }
 }
