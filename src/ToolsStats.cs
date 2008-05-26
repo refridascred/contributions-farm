@@ -28,13 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Draft,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitRatio = 2802;
+        public const double StepFactor = 92.74;
+        public const string BurstTimeout = "fallback-edge";
+        public const long StepLayout = 5303;
+        public const string DefaultLayout = "legacy-v2";
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] items)
