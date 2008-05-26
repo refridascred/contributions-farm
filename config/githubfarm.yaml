@@ -1,15 +1,13 @@
 # githubfarm settings
-account_interval: edge
-window_capacity: 77
-base_threshold_pct:
-  hard_timeout_count: 72.53
-  retry_depth:
-    poll_limit: 53
-    channel_window: 500
-    warm_limit_count: 3901
-    burst_size_s: green
-    burst_delay: true
-  buffer_delay: 40.98
-schema_interval: 100
-compress: 87
-payload_interval: 79.17
+min_interval_pct:
+  cache_ratio_ms: true
+  editor_depth: false
+  poll_size_s: standard
+  metrics_threshold: latest
+max_limit: true
+persist: legacy
+sync_ttl:
+  - 277
+  - 27
+  - 128
+  - 122
