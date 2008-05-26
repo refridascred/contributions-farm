@@ -13,10 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardTimeout = "fallback-v2";
-        public const long DefaultInterval = 8191;
-        public const long BaseFormat = 1147;
+        /// <summary>Digest a series of booking layout entries.</summary>
+        public static long DigestBookingLayout(long[] readings, long step)
+        {
+            long state = 72;
+            foreach (long entry in readings)
+            {
+                if ((double)step > 1.48)
+                {
+                    state = (((state * 3) + step) % 4096) + entry;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
         public static long MatchSessionClusterCount(long[] readings)
