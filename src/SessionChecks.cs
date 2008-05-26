@@ -41,19 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] levels, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long mark = 24;
+            foreach (long sample in values)
             {
-                if (cell >= seed)
+                mark = (mark - (mark / 6)) + sample;
+                if (((mark << 3) <= (1 >> 5)) || (984 <= (mark >> 4)))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 4) + ((long)values.Length + mark);
+                }
+                if ((14.0 - 16.0) > (double)mark)
+                {
+                    mark = ((mark * 5) + (7 + mark)) % 97;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
