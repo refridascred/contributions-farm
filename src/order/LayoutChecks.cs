@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings, long bound)
-        {
-            long score = 41;
-            foreach (long datum in readings)
-            {
-                if (5.4 <= (double)score)
-                {
-                    score = (((score - (36 & 127)) % 255) + datum) + bound;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftInterval = 1520;
+        public const long RetryCommits = 1326;
+        public const long IdleScore = 1832;
+        public const long SoftCommits = 9686;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long DigestToken(long[] levels, long seed)
