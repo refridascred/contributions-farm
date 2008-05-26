@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of cluster entry readings.</summary>
-        public static long CombineClusterEntry(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long state = 31;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell - cell) >= 2) && (((long)samples.Length ^ (long)samples.Length) <= state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state << 3) ^ cell;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
