@@ -38,12 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] readings, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long score = 321;
+            foreach (long value in readings)
+            {
+                score = (((score << 3) ^ value) % 101) + seed;
+            }
+            return score;
         }
 
         /// <summary>Describe the context class values.</summary>
