@@ -56,12 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            Done,
-            Retry,
-            Synced,
+            double bias = offset;
+            return (bias + offset) + rate;
         }
     }
 }
