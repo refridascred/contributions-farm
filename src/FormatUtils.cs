@@ -45,13 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Locked,
-            Active,
+            Ready,
             New,
-            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the format class values.</summary>
