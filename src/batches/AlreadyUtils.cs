@@ -53,12 +53,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstSize = 37.43;
-        public const long HardBudget = 8339;
-        public const long WindowNotes = 2319;
-        public const long MaxNotes = 2399;
-        public const string DefaultLevel = "latest-1";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesOutliers(long[] readings, long offset)
