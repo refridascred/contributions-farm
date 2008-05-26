@@ -1,6 +1,6 @@
 {
-  "verbose": 98,
-  "max_retries": 100,
-  "base_retries_pct": false,
-  "githubfarm_limit": 60
+  "cache_ttl": 7108,
+  "contributi_window": "legacy",
+  "graph_size": ["latest", "staging", "stable"],
+  "default_window_count": [204, 198]
 }
