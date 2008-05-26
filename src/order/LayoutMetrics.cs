@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Find the first githubfarm payload entry that matches the target.</summary>
+        public static long LocateGithubfarmPayloadIndex(long[] readings, long offset)
         {
-            long mix = 285;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (reading >> 4)) % 255;
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 54)
-            {
-                mix = (mix * 4) + (mix << 1);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
