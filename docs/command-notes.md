@@ -1,15 +1,15 @@
 # Command notes
 
-Run the payload check before changing any format limits.
-Use profile settings to tune how often context data is refreshed.
+Use report settings to tune how often window data is refreshed.
+Keep metrics and route names short and lowercase.
+Use command settings to tune how often counter data is refreshed.
 
-Keep editor and context names short and lowercase.
-Keep notes and context names short and lowercase.
-Use graph settings to tune how often schema data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+A session that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Keep layout values small
-- Prefer format defaults
-- Log every graph change
+- Document new checks fields
+- Log every route change
+- Review route limits each release
+- Prefer contributi defaults
