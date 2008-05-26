@@ -41,23 +41,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = 461;
-            foreach (long reading in data)
-            {
-                if ((reading + mark) > (mark ^ mark))
-                {
-                    mark = ((mark * 5) + (reading & 255)) % 101;
-                }
-                mark = ((mark * 5) + reading) % 97;
-                if ((48 - mark) == (mark / 8))
-                {
-                    mark = (mark ^ (reading + mark)) % 1000;
-                }
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
