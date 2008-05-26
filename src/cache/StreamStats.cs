@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Derive the next commits metric value from a seed.</summary>
+        public static long DeriveCommitsMetric(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (limit / 2)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
