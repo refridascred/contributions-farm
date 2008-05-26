@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((bound % 12) <= (931 << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound <= (18.0 - 1.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (1.27 * 5.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
