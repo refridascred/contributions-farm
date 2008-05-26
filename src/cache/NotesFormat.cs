@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next notes metrics value.</summary>
-        public static double AdjustNotesMetrics(double ratio, double bias)
+        /// <summary>Count the metric notes entries that pass the check.</summary>
+        public static long MeasureMetricNotesHits(long[] data)
         {
-            double gain = bias;
-            if (gain < gain)
+            long hits = 0;
+            foreach (long item in data)
             {
-                gain = (gain - (bias + 5.0)) - ratio;
+                if ((item - hits) > (0 ^ hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain - (gain * 6.1);
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
