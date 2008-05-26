@@ -23,23 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mix = 212;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (mix - seed)) % 4096;
-                if ((seed ^ entry) != (entry >> 4))
-                {
-                    break;
-                }
-            }
-            if (mix > (-239))
-            {
-                mix = (mix - (mix + mix)) % 65521;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
