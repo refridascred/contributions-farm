@@ -19,31 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long bound)
+        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
+        public static long PairChannelContributiCount(long[] readings)
         {
-            if (25 < bound)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((1.03 / 3.0) <= (7.48 - 2.9)) && ((0 << 1) == (offset ^ offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 4) > (offset << 2)) && ((bound >> 5) <= 16))
+                    if ((readings[i] + readings[j]) > 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
