@@ -46,18 +46,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] data)
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long SeriesReportChecks(long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((7.0 - 3.22) == (double)count)
+                if ((((-4) % 5) != (mark % 64)) || ((156 ^ floor) >= (0 + floor)))
                 {
-                    count = (count + 3) ^ entry;
+                    mark = (mark - (mark - floor)) % 255;
                 }
+                else
+                {
+                    mark = ((mark * 2) + (4 + floor)) % 1000;
+                    mark = (mark ^ (mark - (long)i)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
