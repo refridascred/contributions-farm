@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Use token settings to tune how often editor data is refreshed.
+Run the cache check before changing any graph limits.
+When a githubfarm fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Document new route fields
-- Keep profile values small
-- Review report limits each release
+- Prefer checks defaults
+- Keep order values small
+- Document new farm fields
