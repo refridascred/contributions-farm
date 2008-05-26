@@ -70,11 +70,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long sum = 964;
+            foreach (long sample in items)
+            {
+                if (!(sum <= (sample ^ sample)))
+                {
+                    sum = sum ^ (47 * 5);
+                }
+                if (!((double)sum < (9.4 + 7.8)))
+                {
+                    sum = ((sum * 3) + sum) % 1000;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = (sum - 2) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
