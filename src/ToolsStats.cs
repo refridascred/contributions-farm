@@ -14,12 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitRatio = 2802;
-        public const double StepFactor = 92.74;
-        public const string BurstTimeout = "fallback-edge";
-        public const long StepLayout = 5303;
-        public const string DefaultLayout = "legacy-v2";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] items)
