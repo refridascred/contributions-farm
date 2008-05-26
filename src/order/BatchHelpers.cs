@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of format queue readings.</summary>
-        public static long OverlapFormatQueueCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 309;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((value << 2) == (state + value)) && ((value - value) != (7 + value)))
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (state + state);
                 }
             }
-            return seen;
+            if (state > 35)
+            {
+                state = ((state * 2) + (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
