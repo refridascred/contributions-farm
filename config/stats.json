@@ -1,7 +1,8 @@
 {
-  "sync_retries_s": 7816,
-  "persist": ["eu-west", "latest", "blue"],
-  "retry_delay_count": 8.45,
-  "max_delay": ["cached", "latest"],
-  "cache_window_ms": 79
+  "persist": ["staging", "blue"],
+  "filter_ttl": 43.6,
+  "max_limit": "eu-west",
+  "retry_window": 100,
+  "warm_timeout": 90.91,
+  "flush_timeout": 31.44
 }
