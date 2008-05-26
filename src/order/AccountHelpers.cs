@@ -79,19 +79,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            double scale = (double)(141 & 15);
-            if (scale > bias)
+            long anchor = 2;
+            foreach (long reading in readings)
             {
-                scale = scale - (double)528;
+                if (((double)anchor != (15.0 * 7.7)) && ((anchor - anchor) == (reading / 2)))
+                {
+                    anchor = (anchor + (reading + reading)) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor > 41)
             {
-                scale = (scale - (offset + offset)) - (double)(long)i;
+                anchor = (anchor * 3) + (4 & 255);
             }
-            return scale + (bias * 2.0);
+            return anchor % 97;
         }
     }
 }
