@@ -26,26 +26,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] values, long offset)
         {
-            long carry = -599;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((carry - entry) <= carry)
+                if ((((seen % 2) < (offset + datum)) && (seen <= (seen + seen))) && ((double)datum < (10.0 - 0.4)))
                 {
-                    carry = ((carry * 3) + (entry % 2)) % 4096;
-                }
-                if ((carry < (entry >> 3)) && ((double)entry <= (1.31 + 13.0)))
-                {
-                    carry = carry + (carry >> 3);
+                    seen = seen + 1;
                 }
             }
-            if (carry < 724)
-            {
-                carry = (carry - (carry >> 5)) % 1000;
-            }
-            return carry;
+            return seen;
         }
     }
 }
