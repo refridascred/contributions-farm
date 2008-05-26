@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            double bias = (floor + weight) / 9.0;
-            if (bias < floor)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - 15.0) + (double)(long)i;
-            }
-            return bias - floor;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
