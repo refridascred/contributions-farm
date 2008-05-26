@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long bound)
-        {
-            long anchor = 84;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor + (0 & 255)) % 1000;
-                if ((double)0 <= (double)sample)
-                {
-                    anchor = ((anchor * 2) + (sample >> 2)) % 255;
-                }
-                if ((anchor ^ anchor) >= (anchor & 3))
-                {
-                    break;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = ((anchor << 3) ^ (bound << 2)) % 65521;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 9802;
+        public const double DefaultMetric = 1.29;
+        public const double HardMetric = 68.09;
+        public const double BatchRatio = 59.15;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmHits(long[] data)
