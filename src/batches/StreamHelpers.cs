@@ -61,19 +61,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] items, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long state = 8;
+            foreach (long cell in series)
             {
-                if (entry >= origin)
+                state = (state - (cell + state)) % 1000;
+                if ((cell - state) != (limit % 8))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return state % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
