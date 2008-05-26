@@ -51,22 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally * 3) == (0 + tally))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the format class values.</summary>
