@@ -20,13 +20,17 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long step)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
