@@ -1,6 +1,16 @@
 {
-  "contributi_ratio": 500,
-  "report_capacity": 9983,
-  "retry_size": 60,
-  "retry_window_pct": "fallback"
+  "verbose": 60,
+  "batches_timeout": false,
+  "retry_capacity_pct": {
+    "poll_capacity_s": 74.22,
+    "order_retries": "stable",
+    "min_size_s": "open",
+    "batch_ratio": {
+      "poll_threshold_ms": 87.08,
+      "readonly": [269, 300],
+      "idle_ratio_count": true,
+      "cluster_timeout": true
+    },
+    "poll_limit_s": "cached"
+  }
 }
