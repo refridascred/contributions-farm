@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const double WindowContext = 64.67;
         public const double MaxContext = 97.2;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 83.72;
-        public const long BatchBudget = 2387;
-        public const long RetryGraph = 6615;
-        public const long DefaultGraph = 9689;
-        public const long WindowDepth = 609;
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long AuditNotesReportGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally * 3) > tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
