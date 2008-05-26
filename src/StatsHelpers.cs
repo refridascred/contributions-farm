@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long sum = 46;
-            foreach (long reading in samples)
-            {
-                sum = ((sum + sum) % 4096) ^ reading;
-                if ((floor > (floor - sum)) && (sum < (-611)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
