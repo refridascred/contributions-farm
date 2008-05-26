@@ -24,10 +24,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 2784;
-        public const long BatchDepth = 8004;
-        public const string IdleSize = "open-1";
+        /// <summary>Classify a order report pair into a bucket.</summary>
+        public static long ClassifyOrderReport(long seed, long offset)
+        {
+            if (offset > (offset ^ seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (1.42 + 1.2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long DigestStream(long[] items, long origin)
