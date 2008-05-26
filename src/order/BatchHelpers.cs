@@ -22,13 +22,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseTimeout = "open-v2";
+        public const long HardReport = 2111;
+        public const long BurstReport = 8856;
     }
 }
