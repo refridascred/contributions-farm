@@ -23,11 +23,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "fallback-edge";
-        public const long SoftFactor = 1241;
-        public const double BatchTools = 35.56;
-        public const long WindowTools = 7059;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
