@@ -14,15 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series, long target)
         {
-            long carry = 822;
+            long matches = 0;
             foreach (long value in series)
             {
-                carry = ((carry * 4) + (carry << 2)) + value;
+                if ((target & 63) < (target / 9))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
