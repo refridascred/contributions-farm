@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long step2 = step - bound;
-            if ((step2 % 64) == (bound + 71))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound > (bound & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step2 <= (5.42 * 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
