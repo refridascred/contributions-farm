@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const double BatchSpan = 53.98;
         public const long BurstSchema = 9540;
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double offset)
-        {
-            double bias = rate;
-            if (bias < (bias - offset))
-            {
-                bias = bias - 9.4;
-            }
-            return bias - (rate - 1.89);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftFactor = "fallback-1";
+        public const long StepChecks = 4792;
+        public const long WindowLevel = 7113;
+        public const long DefaultChecks = 9108;
+        public const long LimitScore = 6435;
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
         public static long CountEntryCommitsHits(long[] samples)
