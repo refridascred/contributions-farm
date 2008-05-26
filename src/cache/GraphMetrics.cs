@@ -17,12 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 3587;
-        public const string BatchLevel = "alpha";
-        public const long StepTimeout = 6340;
-        public const long CacheTimeout = 677;
-        public const long BaseRatio = 8211;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double gain, double bias)
