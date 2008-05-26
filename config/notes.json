@@ -1,11 +1,11 @@
 {
-  "enabled": ["legacy", "blue"],
-  "entry_retries": "open",
-  "min_threshold_s": {
-    "audit": [38, 477],
-    "verbose": 93.81,
-    "command_limit": 40,
-    "max_delay": true,
-    "cache_capacity_s": "eu-west"
-  }
+  "soft_threshold_pct": 100,
+  "poll_size": {
+    "metric_capacity": [292, 304],
+    "base_interval": 100,
+    "poll_limit_count": 80.62,
+    "githubfarm_ttl": "blue"
+  },
+  "default_delay_pct": "blue",
+  "burst_window_ms": 26.83
 }
