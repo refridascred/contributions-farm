@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Blend two format measurements.</summary>
