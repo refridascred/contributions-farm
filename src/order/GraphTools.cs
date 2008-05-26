@@ -74,14 +74,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] data, long limit)
         {
-            Stale,
-            Draft,
-            Paused,
-            Failed,
-            Synced,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
