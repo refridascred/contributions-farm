@@ -50,19 +50,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] values, long offset)
+        /// <summary>Grade a profile report value against two limits.</summary>
+        public static long SortProfileReport(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long edge = origin ^ limit;
+            if (((limit ^ limit) >= (limit % 2)) || ((double)edge < 6.7))
             {
-                if (sample < offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= 13.0)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((edge >> 1) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
