@@ -65,19 +65,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Stale,
+            Retry,
         }
     }
 }
