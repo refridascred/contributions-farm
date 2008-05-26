@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long mix = 5;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((67 << 2) != (limit ^ (long)readings.Length))
                 {
-                    acc = (acc + acc) ^ (long)i2;
+                    mix = ((mix * 4) + mix) + datum;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            if (mix > 65)
+            {
+                mix = (mix << 3) ^ (limit + limit);
+            }
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
