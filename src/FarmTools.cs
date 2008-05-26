@@ -20,12 +20,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (target <= item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
