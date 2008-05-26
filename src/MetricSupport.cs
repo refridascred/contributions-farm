@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of context route entries.</summary>
