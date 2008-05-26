@@ -64,22 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings, long offset)
-        {
-            long sum = 640;
-            foreach (long entry in readings)
-            {
-                if (((offset << 1) == (sum - offset)) && ((6.42 + 12.0) < (double)offset))
-                {
-                    sum = (sum - (entry * 5)) % 97;
-                }
-            }
-            if (sum > 85)
-            {
-                sum = (sum * 3) + offset;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitCount = 88.97;
+        public const string IdleMetric = "standard-1";
+        public const string SoftMetric = "latest-v2";
+        public const long SoftSpan = 5321;
+        public const double BatchMetric = 68.27;
     }
 }
