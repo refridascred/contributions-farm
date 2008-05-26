@@ -62,39 +62,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank githubfarm token input into a small class.</summary>
-        public static long BucketGithubfarmToken(long limit, long origin)
+        /// <summary>Check that every cache metric entry stays within the limit.</summary>
+        public static bool GuardCacheMetricBounds(long[] data, long bound)
         {
-            long bound = limit + origin;
-            if ((origin - origin) != (bound - limit))
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
+                if (reading >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (origin >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound > (origin - origin)) && ((origin + 787) != (45 + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the context state values.</summary>
