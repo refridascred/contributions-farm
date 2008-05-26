@@ -26,11 +26,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 6031;
-        public const string SoftInterval = "standard-edge";
-        public const long StepLayout = 9998;
-        public const long HardSize = 6746;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] levels, long offset)
