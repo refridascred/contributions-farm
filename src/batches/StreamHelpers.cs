@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i > result)
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    result = (result << 3) ^ ((long)i % 97);
-                    result = (result ^ (target * 2)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result + target) % 97;
-                }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
