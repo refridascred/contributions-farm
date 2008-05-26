@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long limit)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool GuardChecksReportBounds(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (item < limit)
+                if (entry < step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the entry kind values.</summary>
