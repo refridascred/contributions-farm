@@ -26,13 +26,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a tools buffer sample.</summary>
+        public static long LocateToolsBufferIndex(long[] items, long offset)
         {
-            Ready,
-            New,
-            Queued,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
