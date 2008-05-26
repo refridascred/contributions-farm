@@ -1,10 +1,6 @@
 {
-  "hard_threshold_ms": 1,
-  "poll_timeout_count": {
-    "sync_limit_pct": 92.54,
-    "counter_ratio": true,
-    "base_delay_ms": true
-  },
-  "enabled": 60,
-  "dry_run": "strict"
+  "checks_delay": 33.72,
+  "min_size_count": [85, 190, 236, 359],
+  "counter_window": 11,
+  "min_limit_count": "stable"
 }
