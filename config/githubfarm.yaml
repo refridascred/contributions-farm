@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_capacity_ms: 500
-max_delay_pct: 69.29
-idle_delay_ms:
-  - legacy
-  - fallback
-  - strict
+poll_depth_ms: eu-west
+contributi_limit: blue
+base_size_s: blue
