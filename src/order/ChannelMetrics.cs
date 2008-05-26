@@ -49,19 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long SeriesCounterChannel(long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long mark = 461;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((reading + mark) > (mark ^ mark))
                 {
-                    result = (result + (target / 6)) ^ (long)i2;
+                    mark = ((mark * 5) + (reading & 255)) % 101;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                mark = ((mark * 5) + reading) % 97;
+                if ((48 - mark) == (mark / 8))
+                {
+                    mark = (mark ^ (reading + mark)) % 1000;
+                }
             }
-            return result;
+            return mark;
         }
     }
 }
