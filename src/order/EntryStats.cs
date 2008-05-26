@@ -20,11 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardSize = 70.83;
-        public const double LimitGraph = 80.53;
-        public const double CacheGraph = 76.22;
-        public const long DefaultGraph = 6950;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Pending,
+            Synced,
+            Paused,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Adjust a account contributi reading.</summary>
         public static double SmoothAccountContributi(double weight, double bias)
