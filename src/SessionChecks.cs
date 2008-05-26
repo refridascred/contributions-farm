@@ -52,15 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Count format layout pairs that satisfy a relation.</summary>
+        public static long MatchFormatLayoutCount(long[] readings)
         {
-            double ratio = offset;
-            if (ratio >= bias)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - (offset + ratio);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return count;
         }
     }
 }
