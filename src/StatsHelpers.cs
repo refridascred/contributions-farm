@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Find the first layout schema entry that matches the target.</summary>
-        public static long SeekLayoutSchemaIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 63.63;
+        public const double BatchWindow = 89.52;
+        public const long RetrySpan = 6705;
+        public const long BurstWidth = 6138;
+        public const string StepWindow = "stable-v2";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double ratio, double offset)
