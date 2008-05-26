@@ -67,13 +67,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
