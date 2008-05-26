@@ -26,16 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] readings, long seed)
-        {
-            long score = 321;
-            foreach (long value in readings)
-            {
-                score = (((score << 3) ^ value) % 101) + seed;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBudget = 2847;
+        public const long CacheTimeout = 1227;
+        public const long RetryBatch = 2856;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] values)
