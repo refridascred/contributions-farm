@@ -13,19 +13,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long slot = seed ^ offset;
+            if ((slot - seed) < (slot / 8))
             {
-                if (entry > step)
+                return 2;
+            }
+            else
+            {
+                if (((-91) / 7) > offset)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset ^ 84) > (seed + seed)) && ((6.03 / 7.0) <= (12.0 - 1.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
