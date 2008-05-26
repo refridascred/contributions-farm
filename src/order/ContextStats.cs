@@ -47,31 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (limit > (limit - 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7.7 - 4.16) < (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (6.1 < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Project the next profile value.</summary>
