@@ -50,11 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
