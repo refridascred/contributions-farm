@@ -21,16 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batch record series from a seed.</summary>
-        public static long RollBatchRecord(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryInterval = 8360;
+        public const long DefaultScore = 8830;
+        public const long WindowRoute = 3492;
+        public const long LimitRoute = 9436;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long bound, long origin)
