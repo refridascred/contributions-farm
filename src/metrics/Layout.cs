@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] values, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((target / 2) > hits)
+                if ((22 >= count) && ((entry * 4) >= (count & 255)))
                 {
-                    hits = (hits + 2) ^ reading;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate githubfarm schema readings against a bound.</summary>
