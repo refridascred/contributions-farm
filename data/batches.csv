@@ -1,7 +1,8 @@
-id,weight,state
-1,latest,473
-2,238,52.0
-3,257,306
-4,latest,blue
-5,77.01,primary
-6,stable,235
+id,weight,count,ratio
+1,960,78.54,413
+2,legacy,11.34,66.15
+3,80.63,518,standard
+4,fallback,standard,primary
+5,160,31,34.26
+6,42.6,local,572
+7,13.62,568,edge
