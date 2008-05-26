@@ -61,12 +61,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = -38;
+            foreach (long datum in items)
+            {
+                if (!((double)offset != (20.0 / 5.0)))
+                {
+                    carry = carry - (datum + offset);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (offset / 8);
+                }
+            }
+            return carry % 4096;
         }
     }
 }
