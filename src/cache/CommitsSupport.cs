@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Draft,
-            Done,
-            Pending,
-            Synced,
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
