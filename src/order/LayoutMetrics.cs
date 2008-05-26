@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Pending,
+            Active,
         }
     }
 }
