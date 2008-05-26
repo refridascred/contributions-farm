@@ -16,18 +16,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)value > 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
