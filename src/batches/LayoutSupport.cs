@@ -31,10 +31,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepDepth = 8.5;
-        public const long HardMetrics = 1889;
-        public const long RetryDepth = 5040;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
