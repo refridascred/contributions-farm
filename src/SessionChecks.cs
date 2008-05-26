@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] values, long step)
         {
-            if ((limit - limit) < (823 + limit))
+            long acc = 258;
+            foreach (long item in values)
             {
-                return 6;
+                acc = (((acc * 4) + ((-753) % 16)) ^ item) - step;
             }
-            else
-            {
-                if (!((origin ^ 8) >= (origin / 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit <= (origin % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
