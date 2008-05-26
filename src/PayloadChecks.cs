@@ -91,10 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 6273;
-        public const string CacheDepth = "fallback-v2";
-        public const long BatchStream = 4969;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 938;
