@@ -23,13 +23,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the contributi order series from a seed.</summary>
+        public static long IterateContributiOrder(long origin)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix - (6 & 15);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream phase values.</summary>
