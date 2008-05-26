@@ -61,12 +61,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
+        public static long MatchGraphMetricsCount(long[] series)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
