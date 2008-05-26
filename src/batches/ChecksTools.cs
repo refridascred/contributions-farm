@@ -25,14 +25,32 @@ namespace Common.Utilities
         public const long HardDepth = 9936;
         public const string WindowRatio = "primary";
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Rank graph stream input into a small class.</summary>
+        public static long GradeGraphStream(long limit, long seed)
         {
-            Locked,
-            Active,
-            Idle,
-            Draft,
-            New,
+            long lane = limit ^ seed;
+            if ((double)seed < 10.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) < lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit ^ 3) >= (lane / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
