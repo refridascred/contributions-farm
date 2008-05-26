@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((long)values.Length == (seen - limit))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
