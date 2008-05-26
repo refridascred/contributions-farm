@@ -39,18 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] samples, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!(((tally / 4) > (37 + seed)) || (19 <= tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
