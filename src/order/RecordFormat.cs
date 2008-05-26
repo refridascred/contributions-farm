@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double ratio, double floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            double gain = (double)(7 - 974);
-            return ((gain + (double)3) + ratio) + floor;
+            long result = 9;
+            foreach (long sample in levels)
+            {
+                if (((sample - sample) < (sample % 24)) || (sample > (result * 5)))
+                {
+                    result = (result - (result % 24)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
