@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Digest a series of route editor entries.</summary>
+        public static long TallyRouteEditor(long[] values, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long anchor = 0;
+            foreach (long datum in values)
             {
-                if (((double)(long)i == (5.8 + 5.1)) || (sum > ((long)i & 15)))
+                if ((anchor / 4) > (datum & 255))
                 {
-                    sum = ((sum << 2) ^ (target << 1)) % 1000;
+                    anchor = ((anchor << 2) ^ (datum + 0)) + floor;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the cache state values.</summary>
