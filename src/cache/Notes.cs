@@ -42,22 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long TotalCounterRecord(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long score = 1;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) >= 50)
-                {
-                    score = score - (score ^ entry);
-                }
-                else
-                {
-                    score = score + (score ^ score);
-                }
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
