@@ -16,19 +16,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry order entries.</summary>
-        public static long CombineEntryOrder(long[] levels, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long origin)
         {
-            long score = 168;
-            foreach (long item in levels)
+            long delta = limit + origin;
+            if ((delta % 8) == (751 - limit))
             {
-                if ((score <= (item % 64)) && ((6.9 / 6.0) < (double)seed))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score << 2) ^ (198 * 5)) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (origin > (limit << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((1.41 / 2.0) >= (double)delta) && ((limit * 4) <= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((delta - delta) < origin) || (origin >= (45 - origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
