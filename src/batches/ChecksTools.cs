@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (seen / 9))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
