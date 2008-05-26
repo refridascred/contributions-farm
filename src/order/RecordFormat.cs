@@ -46,18 +46,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = 804;
+            foreach (long entry in data)
             {
-                if ((reading ^ reading) == (reading - reading))
+                if ((acc ^ entry) < (acc >> 5))
                 {
-                    matches = matches + 1;
+                    acc = (acc * 3) + (entry + entry);
                 }
             }
-            return matches;
+            if (acc > 245)
+            {
+                acc = ((acc * 2) + (seed / 5)) % 65521;
+            }
+            return acc;
         }
     }
 }
