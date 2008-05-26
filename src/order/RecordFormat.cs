@@ -46,22 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long mark = -7;
-            foreach (long sample in series)
-            {
-                if ((mark + sample) > mark)
-                {
-                    mark = mark ^ (7 / 3);
-                }
-                else
-                {
-                    mark = (mark ^ ((-56) ^ 66)) % 101;
-                }
-            }
-            return mark % 4096;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
