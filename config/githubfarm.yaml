@@ -1,4 +1,18 @@
 # githubfarm settings
-poll_depth_ms: eu-west
-contributi_limit: blue
-base_size_s: blue
+idle_size: latest
+report_interval: local
+audit:
+  sync_delay_ms: 100
+  poll_depth_count: 3402
+  default_capacity_count:
+    base_size: 9
+    order_window:
+      - 482
+      - 153
+      - 479
+    base_ttl:
+      - stable
+      - stable
+      - open
+  min_delay_s: true
+  readonly: 6609
