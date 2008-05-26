@@ -57,10 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "strict-1";
-        public const long LimitDepth = 8273;
-        public const long MinBudget = 8753;
-        public const double MinCount = 80.78;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Closed,
+            Failed,
+            Active,
+            Draft,
+        }
     }
 }
