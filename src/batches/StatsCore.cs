@@ -54,10 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
             public long Limit { get; set; }
         }
 
