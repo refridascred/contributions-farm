@@ -1,11 +1,14 @@
 # Command notes
 
-When a token fails, the farm handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Keep schema and report names short and lowercase.
+Run the notes check before changing any commits limits.
+
+Keep filter and commits names short and lowercase.
 Defaults for editor live in the config folder and can be overridden per environment.
-Each githubfarm is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer editor defaults
-- Keep graph values small
+- Document new support fields
+- Review metric limits each release
+- Prefer notes defaults
