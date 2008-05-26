@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a report githubfarm pair into a bucket.</summary>
-        public static long RankReportGithubfarm(long seed, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] values, long limit)
         {
-            if ((seed & 3) > bound)
+            bool found = true;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 3) <= 895)
+                if (value < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + 4) > (1 % 12)) || ((seed - seed) >= bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.3 / 3.0) == (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a tools buffer sample.</summary>
