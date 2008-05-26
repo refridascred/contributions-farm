@@ -67,16 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream graph counter forward.</summary>
-        public static long SeriesStreamGraph(long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state << 3) ^ state;
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
