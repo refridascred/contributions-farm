@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up order buffer samples.</summary>
-        public static long MatchOrderBufferCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitLevel = 69.71;
+        public const long MinRecord = 4571;
+        public const long BurstRecord = 7146;
 
         /// <summary>Project the next profile editor value.</summary>
         public static double SmoothProfileEditor(double gain, double offset)
