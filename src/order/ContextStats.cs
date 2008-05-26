@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double rate, double floor)
-        {
-            double drift = 8.2 * 0.8;
-            if (drift <= (double)7)
-            {
-                drift = (drift + (floor + 4.4)) - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (double)713;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstDepth = 87.2;
+        public const string LimitTimeout = "fallback-v2";
+        public const long IdleCount = 2585;
 
         /// <summary>Fold a list of counter notes readings.</summary>
         public static long DigestCounterNotes(long[] readings, long target)
