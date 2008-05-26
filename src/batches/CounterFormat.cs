@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Draft,
-            New,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxFactor = "primary-1";
+        public const long DefaultDepth = 4503;
+        public const long BaseSpan = 7489;
+        public const long MaxMetrics = 7683;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] data)
