@@ -16,39 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            long delta = limit + origin;
-            if ((delta % 8) == (751 - limit))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin > (limit << 2))
+                if ((13.0 - 9.0) < (0.4 / 3.0))
                 {
-                    return 4;
+                    hits = (hits + 3) ^ entry;
                 }
                 else
                 {
-                    if (((1.41 / 2.0) >= (double)delta) && ((limit * 4) <= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((delta - delta) < origin) || (origin >= (45 - origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
