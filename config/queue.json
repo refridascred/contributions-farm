@@ -1,10 +1,15 @@
 {
-  "soft_ttl": true,
-  "strict": "legacy",
-  "counter_retries": {
-    "entry_depth": "latest",
-    "soft_size_ms": 100,
-    "sync_limit": 93.69
-  },
-  "cache_depth": 70
+  "buffer_timeout": "cached",
+  "enabled": "latest",
+  "warm_ttl_pct": true,
+  "idle_depth": 6.5,
+  "support_limit": {
+    "batch_window": "eu-west",
+    "notes_timeout": "primary",
+    "retry_ttl": {
+      "flush_delay_pct": 4355,
+      "contributi_capacity": 5589,
+      "max_ratio_pct": 250
+    }
+  }
 }
