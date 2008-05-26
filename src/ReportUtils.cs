@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Retry,
-            Ready,
-            New,
-            Done,
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
