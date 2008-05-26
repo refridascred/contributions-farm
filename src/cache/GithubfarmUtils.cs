@@ -62,22 +62,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = 347;
+            foreach (long item in series)
             {
-                if ((double)seed > (1.0 / 9.0))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((((anchor << 2) ^ (52 / 2)) % 101) + item) + step;
             }
-            return matches;
+            return anchor;
         }
     }
 }
