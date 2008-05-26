@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long limit)
+        /// <summary>Combine record contributi values into a single score.</summary>
+        public static long TotalRecordContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = 748;
+            foreach (long sample in readings)
             {
-                if (((limit * 3) > cell) || ((double)cell <= 0.3))
-                {
-                    tally = tally + 2;
-                }
+                state = ((state - (state + state)) % 65521) ^ sample;
             }
-            return tally;
+            if (state < 6)
+            {
+                state = (state ^ (state >> 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
