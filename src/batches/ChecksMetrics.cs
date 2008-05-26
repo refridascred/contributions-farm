@@ -36,17 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] samples, long floor)
+        /// <summary>Scale a channel metric figure with a bias.</summary>
+        public static double AdjustChannelMetric(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - gain;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (double)39) + (double)(long)i;
+            }
+            return bias2 + (bias2 - 1.13);
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
