@@ -1,7 +1,5 @@
 # support settings
-max_window_s: 4266
-stream_delay: 58.61
-idle_interval_count: false
-base_interval_pct: green
-max_window_count: legacy
-audit: 30
+audit: cached
+cache_delay: false
+batch_interval_count: green
+cluster_depth: true
