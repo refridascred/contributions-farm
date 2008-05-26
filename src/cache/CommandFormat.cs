@@ -63,24 +63,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long TotalCommandQueue(long[] readings, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long step)
         {
-            long total = 14;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - (offset * 5)) % 4096;
-                total = (total * 5) + (total + total);
-                if ((offset <= (total * 2)) || ((sample + total) <= (sample / 7)))
+                if (items[i] >= step)
                 {
-                    total = total + (6 - sample);
-                }
-                else
-                {
-                    total = (total - (offset ^ 490)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
