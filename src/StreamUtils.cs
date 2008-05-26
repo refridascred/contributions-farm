@@ -20,23 +20,11 @@ namespace Common.Utilities
         public const long HardPayload = 4440;
         public const long SoftPayload = 6456;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double scale = 9.5;
-            if (scale >= 16.0)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (weight - scale)) + (double)(long)i;
-            }
-            return scale + (1.0 + floor);
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
