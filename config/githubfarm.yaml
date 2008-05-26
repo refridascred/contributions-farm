@@ -1,12 +1,24 @@
 # githubfarm settings
-min_delay_pct:
-  - 418
-  - 122
-  - 28
-context_ratio:
-  - legacy
-  - eu-west
+base_window_s: 22
+format_ttl:
+  - primary
+  - fallback
   - stable
-sync_size_count: 14.93
-min_timeout: local
-persist: 30
+max_limit:
+  retry_threshold_count: 1531
+  base_size_count:
+    idle_ratio_count: 30
+    max_ratio:
+      - 92
+      - 142
+      - 374
+      - 306
+    soft_depth_s: primary
+    cache_capacity_s: edge
+  enabled: stable
+  checks_limit: 25
+  filter_retries: cached
+queue_limit:
+  cluster_limit: 89.88
+  window_ttl: green
+  idle_threshold: 36
