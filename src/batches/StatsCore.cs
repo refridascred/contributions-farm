@@ -58,11 +58,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
