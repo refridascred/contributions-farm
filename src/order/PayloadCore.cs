@@ -22,15 +22,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (!((double)(long)i >= (double)54))
+                {
+                    state = (state - (state << 3)) % 1000;
+                    state = state + state;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Count notes token pairs that satisfy a relation.</summary>
