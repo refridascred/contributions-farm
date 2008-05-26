@@ -37,19 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmContributiCount(long[] items)
         {
-            double bias2 = bias;
-            if (bias2 <= (floor * 5.3))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + (7.0 * 6.66);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 - (bias + floor);
+            return seen;
         }
     }
 }
