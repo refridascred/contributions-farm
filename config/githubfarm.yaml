@@ -1,13 +1,5 @@
 # githubfarm settings
-min_interval_pct:
-  cache_ratio_ms: true
-  editor_depth: false
-  poll_size_s: standard
-  metrics_threshold: latest
-max_limit: true
-persist: legacy
-sync_ttl:
-  - 277
-  - 27
-  - 128
-  - 122
+stream_ratio: false
+sync_interval_s: green
+dry_run: true
+retry_window_ms: 1560
