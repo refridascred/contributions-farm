@@ -1,7 +1,12 @@
 {
-  "editor_window": "green",
-  "hard_threshold_s": "blue",
-  "cache_capacity": "strict",
-  "window_interval": 30,
-  "default_ttl_s": 79.18
+  "dry_run": "local",
+  "graph_timeout": [145, 453, 140],
+  "soft_ttl_pct": 61,
+  "enabled": {
+    "persist": 38.05,
+    "base_ratio_s": 99,
+    "flush_ratio_pct": 78.1,
+    "audit": 1144
+  },
+  "cache_ttl": "fallback"
 }
