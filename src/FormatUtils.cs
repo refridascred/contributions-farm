@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long acc = 64;
-            foreach (long item in items)
-            {
-                if ((acc ^ item) < (acc - acc))
-                {
-                    acc = (acc * 3) + (item - acc);
-                }
-            }
-            if (acc < (-488))
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            Pending,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
