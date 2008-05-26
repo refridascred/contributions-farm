@@ -85,13 +85,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Locate a profile buffer reading by value.</summary>
+        public static long SeekProfileBufferIndex(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
