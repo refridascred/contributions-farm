@@ -1,9 +1,10 @@
 # entry settings
-retry_timeout_s: true
-filter_retries: false
-stream_ttl: 0.17
-base_retries:
-  - 72
-  - 316
-  - 468
-  - 215
+persist: true
+dry_run: 94.47
+soft_window_ms: 8581
+flush_ttl_ms:
+  - 480
+  - 125
+  - 106
+support_depth: 42
+buffer_capacity: blue
