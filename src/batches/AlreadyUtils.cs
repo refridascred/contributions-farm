@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const long SoftAlready = 6168;
         public const double BaseWidth = 91.87;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                score = score + ((long)i * 4);
-                score = score ^ (seed * 3);
-                score = ((score * 2) + (long)i) % 1000;
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
