@@ -28,19 +28,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every filter stats entry stays within the limit.</summary>
-        public static bool ValidateFilterStatsLimits(long[] items, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Active,
+            Done,
+            Failed,
+            Draft,
         }
     }
 }
