@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long limit)
+        /// <summary>Validate cluster cache readings against a bound.</summary>
+        public static bool VerifyClusterCacheLimits(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (series[i] > limit)
+                if (entry > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a profile info.</summary>
