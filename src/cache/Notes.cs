@@ -37,18 +37,12 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Count the batch payload entries that pass the check.</summary>
-        public static long MeasureBatchPayloadHits(long[] samples, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (value < (seed + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
