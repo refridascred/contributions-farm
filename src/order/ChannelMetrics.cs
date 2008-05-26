@@ -28,18 +28,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((2.0 * 2.4) <= (double)tally) || ((0 * 2) < (reading - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
