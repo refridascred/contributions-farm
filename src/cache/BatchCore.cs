@@ -40,12 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 1416;
+        public const string LimitOrder = "open-edge";
+        public const string IdleCount = "strict-edge";
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
