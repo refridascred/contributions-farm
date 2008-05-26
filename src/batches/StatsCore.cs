@@ -67,11 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchDepth = 9782;
-        public const long MinInterval = 5616;
-        public const long LimitQueue = 2378;
-        public const long BatchSize = 437;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Idle,
+            Draft,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
