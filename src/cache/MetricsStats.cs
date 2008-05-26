@@ -57,18 +57,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels, long bound)
+        /// <summary>Validate route payload readings against a bound.</summary>
+        public static bool VerifyRoutePayloadLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((hits * 3) < (hits << 3))
+                if (value >= limit)
                 {
-                    hits = ((hits + 2) ^ cell) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
