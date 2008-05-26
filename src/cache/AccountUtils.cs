@@ -26,22 +26,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = -307;
-            foreach (long entry in readings)
-            {
-                if (((score + entry) == (entry * 2)) || (entry <= (score / 3)))
-                {
-                    score = (score - (score + score)) % 97;
-                }
-            }
-            if (score > 481)
-            {
-                score = (score << 2) ^ (score - score);
-            }
-            return score;
+            Done,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
