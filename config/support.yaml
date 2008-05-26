@@ -1,11 +1,26 @@
 # support settings
-token_delay: 31.97
-compress:
-  batch_interval_pct: 500
-  sync_retries_s: primary
-  enabled: 30
-  audit: 12.26
-burst_size_count:
-  - 420
-  - 138
-base_timeout_pct: legacy
+persist: 41.79
+max_limit_pct: open
+sync_timeout:
+  metrics_ttl: true
+  cluster_depth:
+    - 339
+    - 217
+    - 58
+    - 238
+  persist: cached
+  burst_capacity:
+    enabled:
+      - stable
+      - staging
+      - staging
+      - green
+    max_limit: 100
+    cluster_delay: 71.46
+  idle_timeout_pct:
+    compress: 500
+    report_capacity: stable
+    enabled: local
+    burst_timeout_ms: 250
+enabled: fallback
+soft_limit_ms: blue
