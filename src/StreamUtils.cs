@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
