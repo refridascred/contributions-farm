@@ -45,13 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] readings)
         {
-            Ready,
-            New,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 255) > ((-123) * 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format class values.</summary>
