@@ -48,12 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftCount = 90.39;
+        public const long BurstQueue = 4678;
+        public const long HardQueue = 4387;
+        public const double SoftQueue = 33.78;
     }
 }
