@@ -14,19 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series, long origin)
         {
-            double bias = (double)44 - (rate * 7.41);
-            if (bias > (rate + bias))
+            long sum = 9;
+            foreach (long reading in series)
             {
-                bias = (bias - bias) - floor;
+                sum = ((sum ^ (56 + reading)) % 97) + origin;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (rate / 7.0)) + (double)(long)i;
-            }
-            return bias + rate;
+            return sum;
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
