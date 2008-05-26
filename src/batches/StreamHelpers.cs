@@ -38,23 +38,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many metrics report samples are out of range.</summary>
-        public static long CountMetricsReportOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits < (hits ^ hits))
-                {
-                    hits = ((hits + 2) - datum) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 7.97;
+        public const long RetryCache = 3561;
+        public const long StepCache = 3710;
+        public const string LimitCache = "legacy-v2";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] levels, long origin)
