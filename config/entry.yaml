@@ -1,6 +1,11 @@
 # entry settings
-compress: 30
-retry_limit_ms: 2244
-cache_timeout_s:
-  - standard
-  - staging
+queue_capacity: 812
+sync_capacity_pct: 60
+sync_ratio_s:
+  - 42
+  - 289
+batch_retries_s:
+  - 2
+  - 416
+  - 10
+schema_depth: 91.18
