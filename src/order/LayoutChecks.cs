@@ -66,12 +66,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            Done,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
