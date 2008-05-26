@@ -23,22 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepFactor = 405;
+        public const string BaseSupport = "local-1";
+        public const double LimitDepth = 84.59;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
