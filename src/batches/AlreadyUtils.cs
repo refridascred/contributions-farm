@@ -16,19 +16,10 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(sample >= (sample + sample)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowSize = "cached-v2";
+        public const long MinEditor = 7222;
+        public const long IdleFactor = 3421;
 
         /// <summary>Match up window buffer samples.</summary>
         public static long CompareWindowBufferCount(long[] samples)
