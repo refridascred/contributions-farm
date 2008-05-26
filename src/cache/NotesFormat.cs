@@ -23,15 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            double mean = (double)0 - (gain / 5.0);
-            if (mean < 1.44)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (gain * 15.0)) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (double)799;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
