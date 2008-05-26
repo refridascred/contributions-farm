@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Blend two metrics support measurements.</summary>
+        public static double AdjustMetricsSupport(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load > (double)6)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + (load * 8.0);
             }
-            return count;
+            return load - (bias - ratio);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
