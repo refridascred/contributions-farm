@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long target)
         {
-            Closed,
-            Synced,
-            Draft,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor << 3) ^ target;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph channel sample.</summary>
