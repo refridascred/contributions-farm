@@ -1,6 +1,8 @@
 # githubfarm settings
-base_threshold_s: false
-cache_size_pct: 86.88
-report_interval:
-  - 230
-  - 302
+max_window:
+  - 196
+  - 444
+  - 246
+  - 372
+tools_ratio: primary
+base_depth_s: false
