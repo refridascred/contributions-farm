@@ -13,12 +13,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3121;
-        public const string HardBudget = "strict";
-        public const double CacheBudget = 50.07;
-        public const long HardPayload = 4440;
-        public const long SoftPayload = 6456;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long offset2)
+        {
+            if (!((double)offset != (double)599))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset2 << 2) == (offset2 & 15)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
