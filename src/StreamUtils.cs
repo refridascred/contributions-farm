@@ -28,18 +28,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] samples, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((target / 8) < datum)
+                result = result + result;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = matches + 2;
+                    result = ((result - (target << 1)) % 101) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
