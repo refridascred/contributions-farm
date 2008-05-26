@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stats token value from a seed.</summary>
-        public static long DeriveStatsToken(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result - offset;
-                result = ((result << 3) ^ (result + (-3))) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 2687;
+        public const double BatchBudget = 30.32;
+        public const string MinBatches = "legacy-1";
+        public const long DefaultBatches = 3798;
+        public const long BaseBudget = 8101;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] items, long target)
