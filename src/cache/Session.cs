@@ -23,21 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count > 885) && ((cell / 4) != (count / 4)))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
