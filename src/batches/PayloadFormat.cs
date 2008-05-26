@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const string LimitScore = "standard";
         public const double DefaultEditor = 38.6;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Paused,
-            Ready,
-            Stale,
-            Dropped,
-            New,
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
