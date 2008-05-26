@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long RetryLayout = 3160;
         public const long CacheCount = 7287;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < offset)
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
