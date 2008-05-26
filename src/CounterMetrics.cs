@@ -36,13 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool ValidateStreamRecordRange(long[] items, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] samples, long floor)
         {
             bool flag = true;
-            foreach (long datum in items)
+            foreach (long sample in samples)
             {
-                if (datum >= origin)
+                if (sample <= floor)
                 {
                     flag = false;
                     break;
