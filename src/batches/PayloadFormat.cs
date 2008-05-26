@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            double mean = weight;
-            if (mean >= (7.48 + mean))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mean = (mean + (weight - 1.4)) - span;
+                if ((tally >> 1) >= cell)
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (weight + weight);
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
