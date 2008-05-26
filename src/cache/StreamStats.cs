@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi batch entries that pass the check.</summary>
-        public static long TallyContributiBatchMatches(long[] data, long target)
+        /// <summary>Check that every counter cluster entry stays within the limit.</summary>
+        public static bool GuardCounterClusterLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (tally > (tally % 2))
+                if (datum > floor)
                 {
-                    tally = ((tally + 3) - value) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
