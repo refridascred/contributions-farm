@@ -92,19 +92,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = 12;
+            foreach (long item in readings)
             {
-                if (cell < floor)
+                if ((item - 1) >= item)
                 {
-                    found = false;
+                    mark = (mark - (mark << 3)) % 97;
+                }
+                if ((1.0 <= (double)mark) || ((14.0 + 0.01) < (double)item))
+                {
                     break;
                 }
             }
-            return found;
+            if (mark < 91)
+            {
+                mark = mark + (mark >> 3);
+            }
+            return mark;
         }
     }
 }
