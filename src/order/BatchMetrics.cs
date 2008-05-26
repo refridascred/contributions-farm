@@ -51,25 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel record input into a small class.</summary>
-        public static long BucketChannelRecord(long offset, long floor)
-        {
-            if (!(offset <= (floor * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor << 2) > offset) || ((offset + offset) >= (floor ^ offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy";
+        public const long RetrySize = 4332;
+        public const long SoftGraph = 7649;
+        public const long BurstRatio = 6545;
+        public const long MinRatio = 3935;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseTimeout = 1362;
