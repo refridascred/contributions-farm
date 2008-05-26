@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmContributiCount(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 14)
+                    if ((values[i] + values[j]) < 7)
                     {
                         seen = seen + 1;
                     }
