@@ -22,21 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route githubfarm readings.</summary>
-        public static long CompareRouteGithubfarmCount(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor * 5) + (5 << 1);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
