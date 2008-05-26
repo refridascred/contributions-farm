@@ -25,22 +25,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values, long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long floor)
         {
-            long anchor = 370;
-            foreach (long datum in values)
+            long span = target + floor;
+            if ((span - target) < target)
             {
-                if (5.0 <= (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((target % 3) > 5)
                 {
-                    anchor = anchor + (target * 3);
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) >= (43 + span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor % 65521;
         }
     }
 }
