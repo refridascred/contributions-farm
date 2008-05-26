@@ -14,22 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = 90;
+            foreach (long sample in items)
             {
-                if (4.0 <= (double)count)
+                if ((631 * 4) > (sum * 4))
                 {
-                    count = ((count + 2) + entry) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = sum + (sum + sample);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a route snapshot.</summary>
