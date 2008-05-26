@@ -1,9 +1,14 @@
 # entry settings
-burst_delay: 250
-batch_threshold: 92
-persist:
-  - staging
-  - open
-retry_window: fallback
-cache_interval_pct: 2555
-dry_run: 100
+batch_size_pct:
+  retry_delay:
+    - standard
+    - standard
+  max_delay_s: 5.44
+  max_capacity_ms: cached
+  soft_capacity_count: blue
+  audit: green
+  verbose: 95.8
+batch_ttl: cached
+idle_interval:
+  - primary
+  - cached
