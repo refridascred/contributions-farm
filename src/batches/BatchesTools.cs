@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Locate a session token reading by value.</summary>
+        public static long FindSessionTokenIndex(long[] items, long bound)
         {
-            double ratio = span * 5.2;
-            if (ratio <= ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (scale / 4.0);
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 3.3) - (double)(long)i;
-            }
-            return ratio + 2.03;
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
