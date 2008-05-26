@@ -1,12 +1,15 @@
 {
-  "base_threshold": {
-    "readonly": 64.32,
-    "cache_ratio": 1024,
-    "hard_size_count": "standard",
-    "warm_delay_pct": 48,
-    "idle_capacity": "strict"
+  "flush_size": {
+    "sync_ttl": "local",
+    "audit": 72.84,
+    "cache_threshold_ms": {
+      "audit": "strict",
+      "farm_depth": "staging",
+      "report_timeout": 20
+    },
+    "verbose": 500
   },
-  "booking_window": 69,
-  "burst_ratio": 5604,
-  "flush_timeout_s": 7201
+  "schema_size": "open",
+  "sync_retries": 1024,
+  "min_size_s": "cached"
 }
