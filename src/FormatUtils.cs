@@ -45,22 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((value - (-7)) == (value + value))
+                if ((tally * 3) == (0 + tally))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) ^ sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
