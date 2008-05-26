@@ -65,18 +65,9 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long TallyStatsContextMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((412 >> 3) >= (352 ^ offset)) || (((offset >> 5) <= (3 + cell)) && ((cell - seen) == (seen + 0))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxTimeout = 5730;
+        public const string LimitLevel = "legacy-v2";
+        public const string BatchContext = "legacy-1";
     }
 }
