@@ -23,12 +23,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Match up entry layout samples.</summary>
+        public static long CompareEntryLayoutCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of support record entries.</summary>
