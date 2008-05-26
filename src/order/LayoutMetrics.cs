@@ -20,17 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 823;
+            foreach (long item in values)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ item;
+                result = ((result << 3) ^ (target << 2)) % 101;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of route entries.</summary>
