@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long step, long origin)
         {
-            long anchor = -8;
-            foreach (long cell in items)
+            long span = step - origin;
+            if (span < (step % 3))
             {
-                if (anchor <= (534 & 3))
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= 2.78)
                 {
-                    anchor = anchor + (anchor - 0);
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (anchor + cell)) % 97;
+                    if ((origin >> 5) == (span & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)span == (1.8 + 2.1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor - (7 + anchor)) % 255;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
