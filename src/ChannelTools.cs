@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] readings, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((item ^ bound) < count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
