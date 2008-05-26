@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const long MinEditor = 7222;
         public const long IdleFactor = 3421;
 
-        /// <summary>Match up window buffer samples.</summary>
-        public static long CompareWindowBufferCount(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (floor <= entry)
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
