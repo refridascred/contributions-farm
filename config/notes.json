@@ -1,19 +1,7 @@
 {
-  "poll_ttl_s": 500,
-  "soft_window": {
-    "poll_interval_ms": 46,
-    "default_window_ms": true,
-    "flush_ttl_s": 52,
-    "compress": {
-      "channel_retries": false,
-      "min_window_s": false,
-      "persist": 93,
-      "default_capacity_pct": 23,
-      "session_limit": "open",
-      "report_depth": true
-    }
-  },
-  "route_capacity": ["strict", "fallback", "staging", "latest"],
-  "warm_limit": "stable",
-  "base_ratio_ms": true
+  "editor_window": "green",
+  "hard_threshold_s": "blue",
+  "cache_capacity": "strict",
+  "window_interval": 30,
+  "default_ttl_s": 79.18
 }
