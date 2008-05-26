@@ -10,17 +10,17 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const long HardWidth = 5818;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (total + (long)i)) % 97;
+                total = total ^ (target + 435);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
