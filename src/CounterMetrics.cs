@@ -18,22 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long seed)
+        /// <summary>Validate graph stats readings against a bound.</summary>
+        public static bool ValidateGraphStatsRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((double)tally <= 2.2)
+                if (sample > step)
                 {
-                    tally = ((tally + 2) + sample) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
