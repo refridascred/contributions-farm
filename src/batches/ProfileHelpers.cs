@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] values)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((double)sample > (7.79 + 5.74)) || (((seen * 4) >= (sample - sample)) && ((7 ^ sample) < (sample * 4))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine stats window values into a single score.</summary>
