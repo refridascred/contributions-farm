@@ -1,17 +1,9 @@
 # support settings
-sync_window: 71
-poll_delay_s: 29.58
-retry_ratio:
-  default_limit_pct: true
-  poll_window_ms: legacy
-  compress: cached
-  hard_window_count: true
-  flush_retries_s:
-    - legacy
-    - strict
-    - primary
-    - strict
-hard_depth: 5702
-strict:
-  - latest
-  - edge
+flush_retries_pct: 89.45
+sync_capacity_s: edge
+batch_ttl_pct: 3346
+base_ratio_pct:
+  - 15
+  - 127
+verbose: true
+batch_size: 8053
