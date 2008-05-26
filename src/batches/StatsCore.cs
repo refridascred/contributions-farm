@@ -35,22 +35,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Find the first order metrics entry that matches the target.</summary>
+        public static long FindOrderMetricsIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((114 % 97) != (seen << 2))
+                if (items[i] >= target)
                 {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
