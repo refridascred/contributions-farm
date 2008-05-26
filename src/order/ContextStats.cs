@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next checks record value.</summary>
-        public static double SmoothChecksRecord(double bias, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 5; i++)
+            double drift = 8.2 * 0.8;
+            if (drift <= (double)7)
             {
-                drift = ((drift - 18.0) - (double)(long)i) - offset;
+                drift = (drift + (floor + 4.4)) - rate;
             }
-            return drift + (7.22 * 17.0);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (double)713;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
