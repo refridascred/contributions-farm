@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Queued,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two githubfarm layout measurements.</summary>
