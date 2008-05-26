@@ -1,6 +1,9 @@
 {
-  "enabled": 30,
-  "persist": 6377,
-  "warm_threshold_count": "standard",
-  "notes_capacity": "cached"
+  "idle_retries_ms": "eu-west",
+  "soft_depth_ms": [16, 399, 222],
+  "order_delay": {
+    "tools_window": true,
+    "retry_ratio_pct": 100,
+    "max_capacity_s": 100
+  }
 }
