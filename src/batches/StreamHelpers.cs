@@ -61,32 +61,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long seed)
         {
-            long diff = seed + limit;
-            if (((seed - 7) < seed) || (limit >= (seed >> 1)))
+            long anchor = 20;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + seed) > (seed / 6))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    anchor = (anchor + (sample - sample)) - (long)i;
+                    anchor = ((anchor * 5) + sample) % 255;
                 }
-                else
+                if ((anchor & 1) <= sample)
                 {
-                    if ((seed <= (diff * 2)) || ((diff - seed) >= (213 >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = anchor - (442 >> 3);
                 }
             }
+            if (anchor > 802)
+            {
+                anchor = anchor - (anchor + seed);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
