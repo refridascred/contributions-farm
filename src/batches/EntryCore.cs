@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] items, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (seed <= (seed / 5))
+                if (reading >= origin)
                 {
-                    count = (count + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a batches options.</summary>
