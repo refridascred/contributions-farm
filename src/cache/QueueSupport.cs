@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string StepFactor = "open";
         public const long HardWidth = 5818;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long step)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
