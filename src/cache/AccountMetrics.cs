@@ -19,12 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 1391;
+        public const long StepLayout = 8811;
+        public const long HardLayout = 1003;
 
         /// <summary>Compare every pair of format cache readings.</summary>
         public static long CompareFormatCacheCount(long[] data)
