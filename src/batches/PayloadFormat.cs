@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string LimitScore = "standard";
         public const double DefaultEditor = 38.6;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 340;
+            foreach (long entry in items)
+            {
+                acc = (acc * 4) + entry;
+            }
+            if (acc < (-23))
+            {
+                acc = acc - floor;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
