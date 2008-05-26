@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardSpan = 96.81;
+        public const long BaseBuffer = 8045;
+        public const string WindowBuffer = "legacy-edge";
+        public const long LimitTimeout = 4780;
+        public const long HardBuffer = 9364;
 
         /// <summary>Audit tools cluster readings against a rule.</summary>
         public static long MeasureToolsClusterGaps(long[] readings, long limit)
