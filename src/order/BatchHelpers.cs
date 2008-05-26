@@ -39,32 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long floor2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long next = floor + floor2;
-            if (floor2 <= next)
-            {
-                return 1;
-            }
-            else
-            {
-                if (next > (4 + next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next ^ floor2) >= (-8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
