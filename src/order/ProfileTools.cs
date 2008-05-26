@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 3;
+            foreach (long reading in samples)
             {
-                acc = (acc * 4) + (bound % 16);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (!((19.0 + 4.7) >= (double)state))
+                {
+                    state = ((state * 2) + (state + reading)) % 65521;
+                }
+                state = (state * 4) + (state - reading);
             }
-            return acc;
+            if (state < 2)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
