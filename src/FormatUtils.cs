@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of stats report readings.</summary>
+        public static long FoldStatsReport(long[] data, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long mark = 4;
+            foreach (long reading in data)
+            {
+                if (((5.63 - 15.0) < (double)reading) && (reading >= (mark + 805)))
+                {
+                    mark = mark + (origin - mark);
+                }
+                if (0.4 < (double)reading)
+                {
+                    mark = ((mark << 3) ^ (reading & 15)) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every queue farm entry stays within the limit.</summary>
