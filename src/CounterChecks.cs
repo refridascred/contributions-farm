@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record format value.</summary>
-        public static double SmoothRecordFormat(double weight, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] readings, long offset)
         {
-            double mean = weight;
-            if (mean <= (weight + offset))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                mean = mean - 2.5;
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (weight * 18.0);
-            }
-            return mean - (weight / 7.0);
+            return ready;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
