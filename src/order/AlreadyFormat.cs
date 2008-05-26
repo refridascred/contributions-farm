@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] data, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((item << 2) != (item & 127))
+                if (7.92 <= (double)matches)
                 {
-                    hits = (hits + 1) + origin;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of stats record entries.</summary>
