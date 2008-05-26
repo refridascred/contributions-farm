@@ -24,11 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (0.7 >= (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
