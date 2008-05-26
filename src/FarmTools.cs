@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            New,
-            Queued,
-            Ready,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
