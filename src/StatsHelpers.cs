@@ -42,12 +42,20 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 63.63;
-        public const double BatchWindow = 89.52;
-        public const long RetrySpan = 6705;
-        public const long BurstWidth = 6138;
-        public const string StepWindow = "stable-v2";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double ratio, double offset)
