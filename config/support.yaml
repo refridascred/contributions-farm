@@ -1,48 +1,16 @@
 # support settings
-record_window:
-  max_size:
-    - 267
-    - 340
-    - 316
-    - 392
-  metrics_delay: local
-  poll_ratio_ms:
-    - strict
-    - cached
-    - latest
-    - primary
-farm_retries: 47.71
-stats_retries:
-  - 431
-  - 115
-  - 51
-retry_window:
-  warm_interval: 49
-  burst_timeout_pct: fallback
-  batches_threshold: local
-  min_delay_s:
-    session_depth: 41.16
-    enabled: 3159
-    readonly: 29
-    hard_ratio_s:
-      - fallback
-      - blue
-    compress:
-      - latest
-      - primary
-      - staging
-    retry_capacity: edge
-notes_retries:
-  contributi_delay: 84
-  enabled: 92
-  retry_retries_s:
-    flush_ratio:
-      - 447
-      - 160
-      - 72
-    base_ratio: stable
-    idle_timeout_count: 82.64
-    batches_ttl:
-      - edge
-      - latest
-      - primary
+default_limit_count:
+  burst_delay_count: standard
+  token_size:
+    - green
+    - open
+    - eu-west
+  max_timeout: 34.65
+  poll_depth_ms: false
+stream_limit:
+  base_delay_count: local
+  hard_ttl_s: 4889
+  cache_timeout_pct: standard
+  hard_ttl: stable
+hard_size_pct: 1024
+layout_interval: 1024
