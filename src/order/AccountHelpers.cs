@@ -63,21 +63,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ entry) % 4096;
             }
-            return tally;
+            if (mark > 448)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
     }
 }
