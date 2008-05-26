@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 2712;
-        public const string SoftSize = "strict-edge";
-        public const double LimitRatio = 81.51;
-        public const long WindowRatio = 1011;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] levels)
