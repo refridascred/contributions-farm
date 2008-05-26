@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a already stream reading by value.</summary>
-        public static long LocateAlreadyStreamIndex(long[] levels, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < origin)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
