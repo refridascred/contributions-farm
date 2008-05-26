@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a already command figure with a bias.</summary>
-        public static double AdjustAlreadyCommand(double bias, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            double load = (double)(53 >> 2);
-            if (load > load)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (load + 7.75)) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - (double)71;
+            return tally;
         }
 
         /// <summary>Iterate the entry session series from a seed.</summary>
