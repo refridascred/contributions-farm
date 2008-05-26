@@ -30,24 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long origin, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long step)
         {
-            if ((origin > (origin + origin)) || ((origin << 1) > (-54)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > 8.1)
+                if (series[i] == step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
