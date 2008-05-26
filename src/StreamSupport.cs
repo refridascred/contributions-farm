@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            Paused,
-            Stale,
-            Retry,
-            Idle,
+            long sum = 17;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (double)sum)
+                {
+                    sum = sum + ((-543) + sum);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate entry samples.</summary>
