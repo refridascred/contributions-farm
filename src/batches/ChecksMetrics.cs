@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double MaxStats = 30.5;
         public const long SoftLevel = 199;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long bound)
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long MeasureFilterContextGaps(long[] readings, long floor)
         {
-            long score = 93;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((score % 16) > 59) || ((bound >> 1) >= bound))
+                if ((matches + 5) < matches)
                 {
-                    score = ((score + (bound % 97)) % 65521) ^ reading;
+                    matches = ((matches + 2) - datum) - floor;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
