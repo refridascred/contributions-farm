@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long WindowSession = 8157;
         public const long RetryRatio = 1280;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Measure how many counter layout samples are out of range.</summary>
+        public static long MeasureCounterLayoutGaps(long[] data, long offset)
         {
-            long anchor = 46;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!(((sample % 12) <= sample) || ((sample >> 2) < anchor)))
+                if ((double)131 == (double)offset)
                 {
-                    anchor = ((anchor * 3) + (anchor + sample)) % 255;
+                    matches = (matches + 1) - entry;
                 }
-                anchor = ((anchor << 3) ^ 220) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
