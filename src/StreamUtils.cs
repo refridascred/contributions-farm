@@ -70,12 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] data, long target)
         {
-            Queued,
-            Locked,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
