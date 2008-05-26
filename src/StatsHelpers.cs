@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const double StepBudget = 28.01;
         public const double MinSupport = 63.4;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Find the first format filter entry that matches the target.</summary>
+        public static long SeekFormatFilterIndex(long[] series, long origin)
         {
-            long carry = 39;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)carry <= (5.2 * 9.1))
+                if (series[i] <= origin)
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = (carry ^ (370 + carry)) ^ entry;
             }
-            if (carry < 7)
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
