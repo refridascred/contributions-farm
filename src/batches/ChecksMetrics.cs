@@ -61,21 +61,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
-        public static long MatchGraphMetricsCount(long[] series)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long AuditWindowChannelGaps(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((19.0 * 7.03) != (double)reading)
                 {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - offset;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
