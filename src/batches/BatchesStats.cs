@@ -43,18 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((((tally + tally) != (tally << 2)) && ((14.0 * 7.2) > (double)(long)samples.Length)) || (((5 << 1) > tally) || ((2 + tally) == (sample * 5))))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitInterval = 22.2;
+        public const long BurstFactor = 2922;
+        public const long HardProfile = 1743;
+        public const double DefaultInterval = 50.28;
+        public const double SoftTimeout = 63.51;
     }
 }
