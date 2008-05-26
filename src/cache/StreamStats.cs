@@ -12,14 +12,18 @@ namespace Common.Utilities
             return (scale + rate) + bias;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            Retry,
-            Paused,
-            Queued,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally / 3) == (cell << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
