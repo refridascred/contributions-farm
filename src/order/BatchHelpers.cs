@@ -36,11 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "open-edge";
-        public const string DefaultReport = "latest";
-        public const long BurstWidth = 5891;
-        public const long BatchReport = 151;
-        public const double CacheTimeout = 25.2;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 6434;
+        public const long SoftLevel = 6349;
+        public const double LimitInterval = 84.85;
     }
 }
