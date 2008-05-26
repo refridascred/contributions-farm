@@ -31,12 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy";
-        public const long RetrySize = 4332;
-        public const long SoftGraph = 7649;
-        public const long BurstRatio = 6545;
-        public const long MinRatio = 3935;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
