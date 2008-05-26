@@ -97,22 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long state = -72;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading >= (4.0 * 8.1)))
-                {
-                    state = (state ^ (0 - reading)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (reading ^ (-3));
-                }
-            }
-            return state;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate profile account readings against a bound.</summary>
