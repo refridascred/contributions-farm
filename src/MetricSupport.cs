@@ -40,39 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long floor2)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long cur = floor ^ floor2;
-            if (12.0 <= (6.06 + 5.4))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((74 + floor2) <= (cur - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > (8.8 + 5.6))
+                    if ((items[i] ^ items[j]) != 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur % 5) != (floor << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a payload reading.</summary>
