@@ -41,13 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] levels, long seed)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
