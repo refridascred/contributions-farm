@@ -79,13 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Queued,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
