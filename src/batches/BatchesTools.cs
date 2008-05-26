@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] readings, long floor)
         {
-            long state = 49;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state << 3) ^ (sample - state)) % 97) + seed;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
