@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Check that every format layout entry stays within the limit.</summary>
+        public static bool ValidateFormatLayoutLimits(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
