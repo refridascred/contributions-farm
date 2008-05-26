@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long step)
+        /// <summary>Audit contributi stream readings against a rule.</summary>
+        public static long TallyContributiStreamGaps(long[] series)
         {
-            if ((58 >= (step >> 1)) && ((origin >> 2) <= (origin - origin)))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin / 6) >= (9 + step)))
+                if ((3.06 / 8.0) >= (double)value)
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((7.81 > (double)step) || ((step - origin) <= (step % 60)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
