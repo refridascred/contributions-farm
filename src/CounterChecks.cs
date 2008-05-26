@@ -60,12 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseSize = "standard-edge";
-        public const double MaxBudget = 55.0;
-        public const string HardGithubfarm = "latest-1";
-        public const double DefaultGithubfarm = 11.66;
-        public const long MaxDepth = 6138;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc - (long)i;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long step)
