@@ -21,9 +21,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 517;
-        public const string HardCommits = "legacy-1";
-        public const long BaseCommits = 8110;
+        public const long DefaultSize = 4957;
+        public const string SoftFactor = "stable";
+        public const long HardDepth = 9936;
+        public const string WindowRatio = "primary";
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
