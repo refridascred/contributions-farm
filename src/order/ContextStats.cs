@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] samples, long step)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((644 % 60) != (403 ^ step))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
