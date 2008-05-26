@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine channel profile values into a single score.</summary>
+        public static long ScoreChannelProfile(long[] items)
         {
-            Paused,
-            Done,
-            Idle,
+            long state = 9;
+            foreach (long entry in items)
+            {
+                if (((entry >> 4) >= (entry * 2)) || ((state - entry) <= (entry + 635)))
+                {
+                    state = ((state * 2) + (state >> 3)) % 65521;
+                }
+            }
+            if (state > 931)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of booking layout entries.</summary>
