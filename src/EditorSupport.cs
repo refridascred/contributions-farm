@@ -24,18 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            long total = 8;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((total <= reading) && (total < (reading + 43)))
+                if ((double)cell > (11.0 + 14.0))
                 {
-                    total = (total ^ (reading * 2)) % 97;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
