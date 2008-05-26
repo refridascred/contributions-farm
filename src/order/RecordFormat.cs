@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 56.48;
-        public const double CacheGithubfarm = 27.83;
-        public const double StepSize = 44.68;
-        public const long DefaultGithubfarm = 834;
-        public const long CacheCount = 6386;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitSpan = 8403;
