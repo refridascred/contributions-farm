@@ -1,8 +1,5 @@
 {
-  "max_timeout_pct": true,
-  "graph_timeout": false,
-  "retry_delay": 59,
-  "idle_timeout_count": 7638,
-  "retry_capacity_pct": "cached",
-  "base_limit_s": ["local", "eu-west", "staging", "edge"]
+  "idle_limit": true,
+  "dry_run": false,
+  "flush_ratio_ms": 5.9
 }
