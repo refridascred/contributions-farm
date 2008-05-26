@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] readings, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((0 + (-3)) >= (target / 9))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
