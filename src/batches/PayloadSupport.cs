@@ -16,15 +16,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = -67;
-            foreach (long entry in series)
-            {
-                acc = ((acc << 3) ^ 715) - entry;
-            }
-            return acc % 97;
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
