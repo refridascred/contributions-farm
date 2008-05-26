@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] >= target)
+                state = (state + (state / 9)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    state = ((state - state) % 65521) - (long)i2;
+                    state = (state + ((long)i + state)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of support order entries.</summary>
