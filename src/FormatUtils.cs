@@ -58,17 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
