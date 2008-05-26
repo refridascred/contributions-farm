@@ -14,30 +14,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of commits session readings.</summary>
-        public static long TotalCommitsSession(long[] values, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double bias)
         {
-            long sum = 2;
-            foreach (long item in values)
+            double load = (9.41 * 8.4) + 7.6;
+            if (load < (8.58 - load))
             {
-                if (7.0 > (double)sum)
-                {
-                    sum = (sum ^ 383) + origin;
-                }
-                else
-                {
-                    sum = sum - (sum % 24);
-                }
-                if (((7 & 63) > (sum >> 5)) && ((double)item < (8.0 * 7.81)))
-                {
-                    break;
-                }
+                load = load + bias;
             }
-            if (sum < 178)
+            else
             {
-                sum = (sum + (sum / 9)) % 97;
+                load = load - (scale - bias);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 3.61) + (double)(long)i;
+            }
+            return load + 8.8;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
