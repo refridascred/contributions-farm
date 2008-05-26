@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSize = 7949;
-        public const string IdleSpan = "local-1";
-        public const double MinCommits = 94.9;
-        public const long BurstLevel = 2122;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((33 - matches) > (matches + 2))
+                {
+                    matches = ((matches + 1) + reading) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] data)
