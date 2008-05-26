@@ -31,13 +31,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long target)
         {
-            Done,
-            Queued,
-            Locked,
-            Active,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
