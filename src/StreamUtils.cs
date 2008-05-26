@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
