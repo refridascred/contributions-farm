@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metrics farm samples.</summary>
-        public static long CombineMetricsFarm(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mark = 31;
-            foreach (long datum in items)
-            {
-                if (!(mark >= (mark % 97)))
-                {
-                    mark = (((mark << 3) ^ mark) % 65521) ^ datum;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
+            Idle,
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
