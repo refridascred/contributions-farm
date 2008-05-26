@@ -12,36 +12,29 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long target)
         {
-            long lane = seed ^ offset;
-            if (((lane + 2) != (seed ^ offset)) && ((offset << 3) > offset))
+            long offset = floor - target;
+            if (floor >= (6 >> 4))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (!((6.2 - 8.2) < (double)offset))
+                if ((double)floor >= (double)offset)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (offset > (lane + offset))
+                    if (offset <= floor)
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if ((offset - lane) == (offset + lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 2;
                     }
                 }
             }
