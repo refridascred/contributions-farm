@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two report support measurements.</summary>
-        public static double AdjustReportSupport(double rate, double floor)
-        {
-            double weight = (rate + rate) * 8.8;
-            if (weight > (rate + 10.0))
-            {
-                weight = weight - (double)(-917);
-            }
-            return weight - (floor - weight);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepRatio = 9209;
+        public const long BurstProfile = 1876;
+        public const long DefaultProfile = 7302;
+        public const string WindowLevel = "legacy";
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] data, long seed)
