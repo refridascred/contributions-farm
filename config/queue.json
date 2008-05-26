@@ -1,5 +1,16 @@
 {
-  "poll_interval": "standard",
-  "min_timeout_pct": 250,
-  "cache_depth": "latest"
+  "min_delay": 25,
+  "min_timeout": [443, 316, 472],
+  "persist": {
+    "record_window": 86,
+    "persist": 60,
+    "already_ratio": "stable",
+    "strict": {
+      "soft_retries_ms": 2.13,
+      "hard_ratio": "local",
+      "batches_threshold": 60
+    },
+    "layout_ttl": 60
+  },
+  "warm_threshold_count": 60
 }
