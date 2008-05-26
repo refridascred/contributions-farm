@@ -45,13 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate metrics format readings against a bound.</summary>
+        public static bool CheckMetricsFormatBounds(long[] samples, long bound)
         {
-            Paused,
-            Queued,
-            Active,
-            Idle,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
