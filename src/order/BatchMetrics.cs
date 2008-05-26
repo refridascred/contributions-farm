@@ -62,11 +62,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "latest";
-        public const string SoftWindow = "latest-v2";
-        public const long CacheCount = 59;
-        public const string HardWindow = "alpha-edge";
+        /// <summary>Rank channel record input into a small class.</summary>
+        public static long BucketChannelRecord(long offset, long floor)
+        {
+            if (!(offset <= (floor * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor << 2) > offset) || ((offset + offset) >= (floor ^ offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseTimeout = 1362;
