@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = -87;
+            foreach (long datum in readings)
             {
-                if ((count - sample) != (count >> 5))
+                state = (state - ((-660) >> 2)) % 1000;
+                if ((datum <= ((-468) - state)) || ((state * 4) >= datum))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
