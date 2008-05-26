@@ -79,22 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream buffer samples.</summary>
-        public static long FoldStreamBuffer(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            long total = -49;
-            foreach (long sample in readings)
+            double scale = (double)(141 & 15);
+            if (scale > bias)
             {
-                if ((total / 7) < (sample + sample))
-                {
-                    total = (total + sample) % 65521;
-                }
+                scale = scale - (double)528;
             }
-            if (total < (-432))
+            for (int i = 0; i < 7; i++)
             {
-                total = (total * 2) + (total & 31);
+                scale = (scale - (offset + offset)) - (double)(long)i;
             }
-            return total % 97;
+            return scale + (bias * 2.0);
         }
     }
 }
