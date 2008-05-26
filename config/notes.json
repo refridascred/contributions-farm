@@ -1,5 +1,9 @@
 {
-  "default_retries_ms": true,
-  "filter_ttl": 60,
-  "max_size_s": "primary"
+  "flush_size_count": ["fallback", "strict", "cached"],
+  "channel_window": ["latest", "standard"],
+  "burst_window_pct": {
+    "audit": "primary",
+    "warm_limit_s": [50, 154, 373, 28],
+    "default_threshold": 5983
+  }
 }
