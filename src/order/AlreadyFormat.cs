@@ -33,28 +33,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
-        public static long GradeGithubfarmPayload(long step, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long offset)
         {
-            if ((double)step >= 5.6)
+            if ((4.0 - 11.0) < (double)target)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((step ^ step) >= step)
+                if ((double)offset == (4.0 + 1.03))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((step % 5) < (353 & 255))
+                    if (!(target <= (203 + offset)))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)offset >= 7.88)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
