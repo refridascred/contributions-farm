@@ -53,19 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] series, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (item != limit)
+                if (cell >= limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the layout phase values.</summary>
