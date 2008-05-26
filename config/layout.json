@@ -1,12 +1,6 @@
 {
-  "persist": [463, 466, 381],
-  "batch_threshold": 905,
-  "report_limit": ["open", "edge", "local"],
-  "default_depth_s": {
-    "soft_size_count": 250,
-    "sync_delay_ms": false,
-    "min_size_count": true,
-    "token_delay": true,
-    "payload_window": 98.87
-  }
+  "schema_limit": 67.99,
+  "window_interval": false,
+  "githubfarm_window": "blue",
+  "stream_ratio": 536
 }
