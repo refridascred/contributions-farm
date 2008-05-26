@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Blend two report support measurements.</summary>
+        public static double AdjustReportSupport(double rate, double floor)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            double weight = (rate + rate) * 8.8;
+            if (weight > (rate + 10.0))
+            {
+                weight = weight - (double)(-917);
+            }
+            return weight - (floor - weight);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
