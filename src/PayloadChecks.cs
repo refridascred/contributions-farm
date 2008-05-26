@@ -96,19 +96,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate profile account readings against a bound.</summary>
-        public static bool GuardProfileAccountLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepWidth = "cached-1";
+        public const long CacheGraph = 5220;
+        public const long IdleGraph = 637;
     }
 }
