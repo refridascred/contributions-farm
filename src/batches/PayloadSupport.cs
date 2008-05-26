@@ -13,15 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            double drift = gain + (double)6;
-            for (int i = 0; i < 7; i++)
+            long carry = 9;
+            foreach (long reading in samples)
             {
-                drift = (drift + offset) + (double)(long)i;
+                carry = (carry * 4) + (reading >> 2);
             }
-            return drift - (double)1;
+            return carry % 97;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
