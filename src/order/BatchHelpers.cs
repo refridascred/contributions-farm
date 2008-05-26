@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long DigestAccountSupport(long[] items, long offset)
+        /// <summary>Audit tools cluster readings against a rule.</summary>
+        public static long MeasureToolsClusterGaps(long[] readings, long limit)
         {
-            long anchor = 40;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((offset % 5) < (offset - anchor))
+                if ((datum & 15) <= (datum + limit))
                 {
-                    anchor = (((anchor * 2) + (anchor + anchor)) % 65521) - sample;
+                    count = count + 3;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
