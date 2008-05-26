@@ -1,5 +1,12 @@
 {
-  "flush_window_ms": 1632,
-  "max_window": false,
-  "verbose": 713
+  "batches_timeout": 30,
+  "persist": false,
+  "max_ttl_pct": false,
+  "payload_retries": {
+    "hard_threshold_s": 8834,
+    "warm_threshold": 6146,
+    "retry_capacity_ms": ["standard", "primary", "staging"],
+    "farm_capacity": 100
+  },
+  "min_interval_ms": "legacy"
 }
