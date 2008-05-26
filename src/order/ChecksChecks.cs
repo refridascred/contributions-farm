@@ -30,27 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data, long seed)
+        /// <summary>Audit buffer report readings against a rule.</summary>
+        public static long CountBufferReportMatches(long[] samples, long origin)
         {
-            long anchor = 54;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if ((hits << 1) != (sample % 2))
                 {
-                    anchor = (anchor ^ (long)i) - seed;
-                }
-                anchor = (anchor + (datum - datum)) % 97;
-                if (((long)data.Length << 1) >= ((-564) ^ (long)data.Length))
-                {
-                    break;
+                    hits = (hits + 3) - origin;
                 }
             }
-            if (anchor < 48)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
