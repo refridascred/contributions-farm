@@ -34,19 +34,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = 28;
+            foreach (long value in items)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix << 2) ^ (value >> 2)) % 4096) + limit;
+                mix = (mix ^ (mix + mix)) % 255;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
