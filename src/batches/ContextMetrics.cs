@@ -58,12 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate already buffer readings against a bound.</summary>
+        public static bool VerifyAlreadyBufferBounds(long[] values, long offset)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
