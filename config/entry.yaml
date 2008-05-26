@@ -1,8 +1,9 @@
 # entry settings
-sync_retries_pct: open
-persist: true
-idle_window_pct:
-  - legacy
-  - primary
-  - stable
-enabled: 62.75
+retry_timeout_s: true
+filter_retries: false
+stream_ttl: 0.17
+base_retries:
+  - 72
+  - 316
+  - 468
+  - 215
