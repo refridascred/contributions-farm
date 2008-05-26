@@ -1,9 +1,4 @@
 # entry settings
-verbose:
-  - green
-  - staging
-idle_retries: strict
-flush_delay_pct: 9708
-dry_run:
-  - cached
-  - open
+warm_size: 6.14
+batch_threshold: false
+max_size_s: 21.91
