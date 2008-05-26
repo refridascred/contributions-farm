@@ -1,7 +1,6 @@
 {
-  "cache_ratio_count": 100,
-  "already_interval": [386, 87],
-  "poll_ratio_pct": 82.51,
-  "compress": "fallback",
-  "audit": 90.65
+  "readonly": ["legacy", "cached", "strict", "local"],
+  "idle_ratio": 7.79,
+  "compress": "cached",
+  "batch_threshold": 8177
 }
