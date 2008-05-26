@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a queue profile pair into a bucket.</summary>
-        public static long ClassifyQueueProfile(long floor, long seed)
+        /// <summary>Digest a series of filter support entries.</summary>
+        public static long DigestFilterSupport(long[] levels, long limit)
         {
-            if (((4 % 7) > (seed + 58)) && (seed < (seed ^ floor)))
+            long sum = -539;
+            foreach (long datum in levels)
             {
-                return 1;
+                sum = (sum - (datum + sum)) % 4096;
             }
-            else
+            if (sum < 9)
             {
-                if (38 >= (floor - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                sum = ((sum << 3) ^ (limit * 4)) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
