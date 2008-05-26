@@ -25,18 +25,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long slot = seed - target;
+            if ((4.46 - 19.0) != (double)slot)
             {
-                if (((sample > (matches % 8)) && ((double)matches >= (1.8 / 3.0))) && !((offset - matches) <= offset))
+                return 0;
+            }
+            else
+            {
+                if (((seed - seed) != (slot & 63)) && ((seed + 22) == (376 ^ seed)))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (6 < (target * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + target) >= slot)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
