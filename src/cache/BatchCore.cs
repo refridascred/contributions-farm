@@ -22,17 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first window contributi entry that matches the target.</summary>
-        public static long LocateWindowContributiIndex(long[] items, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                if (cell > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
