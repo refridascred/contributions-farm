@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next graph already value from a seed.</summary>
+        public static long IterateGraphAlready(long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i + origin) > (sum >> 3))
+                {
+                    sum = (sum << 2) ^ ((long)i >> 5);
+                    sum = (sum ^ sum) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = sum - 6;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
