@@ -1,8 +1,8 @@
-id,active,score,owner
-1,590,stable,latest
-2,63.39,21.26,341
-3,130,green,967
-4,583,68.08,93.38
-5,424,stable,190
-6,369,555,184
-7,74.51,22.29,825
+id,owner,count
+1,local,blue
+2,232,21.6
+3,960,strict
+4,426,legacy
+5,68.59,fallback
+6,stable,36.73
+7,cached,667
