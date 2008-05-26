@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            long carry = 669;
-            foreach (long datum in data)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)datum == (9.62 / 3.0))
+                if ((mark << 1) != (mark * 5))
                 {
-                    carry = ((carry * 5) + (datum - datum)) % 101;
+                    mark = (mark * 4) + (floor >> 5);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
