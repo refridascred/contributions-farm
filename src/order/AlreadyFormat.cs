@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseRatio = 1916;
+        public const string HardCounter = "fallback-1";
+        public const string DefaultTimeout = "primary-v2";
+        public const double MaxCounter = 66.23;
+        public const string BurstCounter = "staging-edge";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsMatches(long[] values)
