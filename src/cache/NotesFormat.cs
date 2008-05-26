@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != target)
                 {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the farm mode values.</summary>
