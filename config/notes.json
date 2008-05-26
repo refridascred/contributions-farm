@@ -1,12 +1,10 @@
 {
-  "dry_run": "local",
-  "graph_timeout": [145, 453, 140],
-  "soft_ttl_pct": 61,
-  "enabled": {
-    "persist": 38.05,
-    "base_ratio_s": 99,
-    "flush_ratio_pct": 78.1,
-    "audit": 1144
+  "hard_threshold_ms": 1,
+  "poll_timeout_count": {
+    "sync_limit_pct": 92.54,
+    "counter_ratio": true,
+    "base_delay_ms": true
   },
-  "cache_ttl": "fallback"
+  "enabled": 60,
+  "dry_run": "strict"
 }
