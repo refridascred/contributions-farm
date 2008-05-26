@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a filter order figure with a bias.</summary>
+        public static double SmoothFilterOrder(double gain, double bias)
         {
-            Done,
-            Synced,
-            Ready,
+            double gain2 = gain;
+            if (gain2 >= gain2)
+            {
+                gain2 = (gain2 + (double)127) + bias;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
