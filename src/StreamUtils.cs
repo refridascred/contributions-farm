@@ -52,19 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long result = 1;
-            foreach (long sample in readings)
-            {
-                result = ((result * 2) + floor) ^ sample;
-            }
-            if (result > 8)
-            {
-                result = (result + (result - floor)) % 101;
-            }
-            return result % 1000;
+            Pending,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
