@@ -1,12 +1,15 @@
 # githubfarm settings
-compress:
-  - 138
-  - 30
-  - 484
-flush_limit:
-  profile_depth: 30
-  persist: false
-  burst_threshold_pct: blue
-strict: eu-west
-idle_depth_pct: false
-base_ttl: 1024
+persist: 3765
+flush_threshold: green
+already_size:
+  compress:
+    - 408
+    - 302
+    - 281
+    - 145
+  commits_window: 535
+  hard_limit_s:
+    - 142
+    - 250
+  verbose: false
+  hard_ttl: 33
