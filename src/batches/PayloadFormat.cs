@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] readings, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double mean = weight;
+            if (mean >= (7.48 + mean))
             {
-                if ((entry << 3) <= (24 >> 4))
-                {
-                    matches = (matches + 3) + floor;
-                }
+                mean = (mean + (weight - 1.4)) - span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (weight + weight);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
