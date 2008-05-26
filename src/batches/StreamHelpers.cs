@@ -28,12 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Failed,
-            Stale,
+            Closed,
             New,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the commits phase values.</summary>
