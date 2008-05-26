@@ -1,5 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "commits_timeout": "strict",
-  "cache_timeout_s": true
+  "min_timeout_s": "stable",
+  "base_depth_count": 34.11,
+  "audit": "fallback",
+  "profile_interval": [74, 110, 457],
+  "enabled": [146, 105, 180]
 }
