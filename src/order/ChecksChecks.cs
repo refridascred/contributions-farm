@@ -31,19 +31,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            New,
+            Idle,
+            Paused,
+            Locked,
         }
     }
 }
