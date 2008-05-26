@@ -30,32 +30,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double ratio, double floor)
         {
-            long lane = seed ^ limit;
-            if ((double)limit >= (4.37 + 8.1))
+            double rate = (floor + ratio) + (double)410;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                rate = (rate + 4.13) + (double)(long)i;
             }
-            else
-            {
-                if (403 > lane)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane ^ limit) < (seed ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate + ratio;
         }
     }
 }
