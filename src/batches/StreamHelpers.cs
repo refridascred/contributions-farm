@@ -81,16 +81,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a graph filter counter forward.</summary>
-        public static long SeriesGraphFilter(long seed)
+        /// <summary>Validate order schema readings against a bound.</summary>
+        public static bool GuardOrderSchemaBounds(long[] series, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                mark = ((mark << 2) ^ 540) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
