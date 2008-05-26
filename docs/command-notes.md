@@ -1,10 +1,15 @@
 # Command notes
 
-Use githubfarm settings to tune how often command data is refreshed.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Keep farm and editor names short and lowercase.
+Run the profile check before changing any filter limits.
+Run the schema check before changing any layout limits.
+
+The route report groups every graph by graph.
+Use checks settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Log every token change
-- Keep already values small
-- Prefer layout defaults
+- Validate batch input early
+- Review contributi limits each release
+- Document new session fields
+- Prefer stats defaults
