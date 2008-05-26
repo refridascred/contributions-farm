@@ -1,17 +1,10 @@
 # entry settings
-base_threshold:
-  poll_size:
-    soft_ratio_pct: 1024
-    warm_threshold: edge
-    buffer_size: 68.07
-    soft_timeout_ms:
-      - strict
-      - local
-    channel_ratio: 30
-  command_capacity: false
-  warm_size_ms: false
-  audit: 54
-  entry_threshold: 66
-audit: 6485
-max_ttl: true
-default_limit: local
+poll_retries:
+  - stable
+  - standard
+  - edge
+  - edge
+flush_retries: 250
+default_ratio_pct: standard
+readonly: 30
+warm_threshold_pct: 4317
