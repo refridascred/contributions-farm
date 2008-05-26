@@ -23,12 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels, long seed)
         {
-            Dropped,
-            Active,
-            Retry,
+            long mix = 212;
+            foreach (long entry in levels)
+            {
+                mix = (mix - (mix - seed)) % 4096;
+                if ((seed ^ entry) != (entry >> 4))
+                {
+                    break;
+                }
+            }
+            if (mix > (-239))
+            {
+                mix = (mix - (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
