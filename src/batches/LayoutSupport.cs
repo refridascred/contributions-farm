@@ -30,18 +30,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Match up batches channel samples.</summary>
+        public static long MatchBatchesChannelCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.01 - 15.0) > (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + value;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two account metrics measurements.</summary>
