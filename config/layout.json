@@ -1,8 +1,17 @@
 {
-  "strict": "open",
-  "format_depth": 79.39,
-  "verbose": 44.43,
-  "context_size": 500,
-  "min_capacity": [448, 109, 55, 5],
-  "cache_size_ms": [404, 258]
+  "max_limit_count": false,
+  "stream_interval": true,
+  "strict": {
+    "verbose": [382, 132],
+    "warm_interval": {
+      "burst_retries_pct": 82,
+      "poll_delay_s": "green",
+      "schema_ratio": 36.52,
+      "idle_limit_s": ["staging", "cached", "fallback"],
+      "dry_run": "local",
+      "warm_window_pct": 95.68
+    },
+    "default_capacity_ms": 71.66,
+    "flush_ratio_s": "edge"
+  }
 }
