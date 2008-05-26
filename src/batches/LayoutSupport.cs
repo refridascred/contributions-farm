@@ -14,11 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double scale = offset;
-            return (scale - scale) + rate;
+            Closed,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the entry kind values.</summary>
