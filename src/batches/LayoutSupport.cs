@@ -14,13 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every farm notes entry stays within the limit.</summary>
+        public static bool ValidateFarmNotesRange(long[] samples, long step)
         {
-            Closed,
-            Paused,
-            Ready,
-            Pending,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the entry kind values.</summary>
