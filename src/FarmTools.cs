@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] values, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item < (item ^ bound)) || ((bound ^ (-22)) <= (bound + item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Project the next metric value.</summary>
