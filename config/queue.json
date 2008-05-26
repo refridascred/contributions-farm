@@ -1,25 +1,7 @@
 {
-  "metric_limit": "strict",
-  "verbose": 818,
-  "enabled": {
-    "persist": 24,
-    "audit": {
-      "flush_retries_pct": "eu-west",
-      "flush_timeout": "fallback",
-      "min_limit_s": "staging",
-      "hard_delay": false
-    },
-    "stream_capacity": 3,
-    "min_timeout_pct": 100
-  },
-  "filter_limit": 21.94,
-  "min_retries_pct": ["cached", "staging", "staging"],
-  "max_limit_count": {
-    "format_capacity": 74,
-    "poll_window_s": 1024,
-    "batch_ttl_s": false,
-    "persist": 2477,
-    "soft_delay_pct": 12.52,
-    "idle_capacity_ms": false
-  }
+  "metric_limit": "stable",
+  "route_ttl": "staging",
+  "strict": ["standard", "cached", "strict"],
+  "batch_threshold_s": true,
+  "poll_interval_count": 2007
 }
