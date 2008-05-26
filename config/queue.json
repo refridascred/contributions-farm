@@ -1,9 +1,6 @@
 {
-  "entry_capacity": 2.08,
-  "dry_run": {
-    "flush_limit": [459, 230, 158],
-    "idle_capacity": "stable",
-    "buffer_limit": 3204
-  },
-  "default_retries": 85
+  "token_capacity": "green",
+  "poll_delay_count": 73,
+  "soft_depth_count": "edge",
+  "min_size_pct": [53, 295, 448]
 }
