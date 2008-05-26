@@ -1,18 +1,12 @@
 # githubfarm settings
-idle_size: latest
-report_interval: local
-audit:
-  sync_delay_ms: 100
-  poll_depth_count: 3402
-  default_capacity_count:
-    base_size: 9
-    order_window:
-      - 482
-      - 153
-      - 479
-    base_ttl:
-      - stable
-      - stable
-      - open
-  min_delay_s: true
-  readonly: 6609
+min_delay_pct:
+  - 418
+  - 122
+  - 28
+context_ratio:
+  - legacy
+  - eu-west
+  - stable
+sync_size_count: 14.93
+min_timeout: local
+persist: 30
