@@ -54,23 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)(long)i != (7.48 - 9.7))
-                {
-                    score = (score + target) % 1000;
-                    score = (score << 3) ^ (-2);
-                    break;
-                }
-                score = ((score * 2) + (score * 2)) % 4096;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 39.02;
+        public const double MaxTimeout = 3.91;
+        public const long SoftScore = 7055;
+        public const long BaseGithubfarm = 5757;
+        public const long CacheSize = 428;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] items, long limit)
