@@ -71,9 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardRatio = "fallback-1";
-        public const string DefaultSchema = "primary-v2";
-        public const long BatchTimeout = 4873;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((25 + bound) >= (bound - seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
     }
 }
