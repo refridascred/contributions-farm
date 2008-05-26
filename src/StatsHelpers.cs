@@ -31,13 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate checks metrics samples.</summary>
+        public static long FoldChecksMetrics(long[] series)
         {
-            Locked,
-            Done,
-            Closed,
-            Synced,
+            long carry = 45;
+            foreach (long entry in series)
+            {
+                if (!((576 + carry) == (427 & 15)))
+                {
+                    carry = carry + (carry - carry);
+                }
+                if ((double)entry >= (7.0 * 12.0))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
