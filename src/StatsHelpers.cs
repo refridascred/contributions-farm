@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryCommand = 4413;
         public const double BurstCommand = 1.19;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] samples, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((1.8 / 9.0) != (double)reading) && ((hits << 1) <= (floor ^ reading)))
+                if ((reading + reading) < (count + reading))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cache state values.</summary>
