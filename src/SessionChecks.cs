@@ -43,12 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Ready,
             Active,
-            Done,
+            Failed,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
