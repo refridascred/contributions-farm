@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long SoftAccount = 6990;
         public const long DefaultAccount = 3438;
 
-        /// <summary>Adjust a entry stats reading.</summary>
-        public static double BlendEntryStats(double gain, double bias)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double scale = (5.0 * 5.0) * 14.0;
-            if (scale <= bias)
-            {
-                scale = scale - (gain + 11.0);
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + scale;
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine window record values into a single score.</summary>
