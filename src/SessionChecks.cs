@@ -46,22 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values, long limit)
         {
-            long mix = 37;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)mix >= (5.0 - 5.3))
+                if ((long)values.Length == (seen - limit))
                 {
-                    mix = (((mix * 5) + limit) % 65521) - entry;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            if (mix < 58)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count format layout pairs that satisfy a relation.</summary>
