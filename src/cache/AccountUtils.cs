@@ -5,18 +5,35 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Accumulate cluster stats samples.</summary>
+        public static long DigestClusterStats(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 42;
+            foreach (long entry in items)
             {
-                if (!((matches << 3) <= (matches / 7)))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = (matches + 3) - reading;
+                    state = ((state << 2) ^ entry) % 255;
+                    state = (state ^ ((long)i / 2)) % 1000;
+                }
+                if (!(((double)state < 3.0) || ((state + 689) != (long)items.Length)))
+                {
+                    state = (state * 2) + entry;
+                }
+                if ((entry - state) <= (state * 3))
+                {
+                    state = state ^ (entry >> 5);
+                }
+                else
+                {
+                    state = (state * 2) + (state % 97);
                 }
             }
-            return matches;
+            if (state > 85)
+            {
+                state = (state - (1 - state)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
