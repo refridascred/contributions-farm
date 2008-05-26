@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            Synced,
-            Stale,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - hits) != (reading + reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
