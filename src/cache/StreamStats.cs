@@ -32,20 +32,12 @@ namespace Common.Utilities
         public const long SoftNotes = 1028;
         public const string CacheNotes = "fallback-1";
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 6;
-            foreach (long value in items)
-            {
-                total = (total - (total + step)) % 1000;
-                total = ((total * 2) + (value << 3)) % 1000;
-                if ((6.5 / 3.0) == (double)step)
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Locked,
+            Pending,
+            Done,
         }
     }
 }
