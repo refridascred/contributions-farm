@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor << 3) ^ target;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Ready,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
