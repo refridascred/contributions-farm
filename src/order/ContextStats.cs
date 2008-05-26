@@ -34,31 +34,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long seed)
+        /// <summary>Blend two record batches measurements.</summary>
+        public static double ScaleRecordBatches(double scale, double bias)
         {
-            if (seed > (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (origin <= (3 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8 <= (761 + seed)) && ((origin & 63) < (seed + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double gain = bias;
+            return (gain - (gain + 7.59)) + scale;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
