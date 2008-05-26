@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double DefaultMetrics = 96.4;
         public const long CacheInterval = 2789;
 
-        /// <summary>Check that every cluster batches entry stays within the limit.</summary>
-        public static bool CheckClusterBatchesLimits(long[] readings, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (sample != origin)
+                if ((((196 + 75) >= (tally - 2)) || ((tally - tally) > (entry - entry))) || ((entry & 127) > entry))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
