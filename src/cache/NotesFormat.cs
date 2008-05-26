@@ -20,32 +20,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] items)
         {
-            long bound = step - seed;
-            if ((7.9 + 15.0) <= (double)step)
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= bound)
+                if ((((long)items.Length == (reading ^ reading)) && ((double)count == (5.2 - 14.0))) || (reading >= (reading - (long)items.Length)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + bound) > (11 * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
