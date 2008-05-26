@@ -55,13 +55,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Retry,
+            Done,
             Dropped,
-            Failed,
-            Stale,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
