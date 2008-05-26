@@ -60,21 +60,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count format layout pairs that satisfy a relation.</summary>
-        public static long MatchFormatLayoutCount(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = seed ^ target;
+            if (!(bound >= (seed & 3)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) < seed)
                 {
-                    if ((readings[i] - readings[j]) > 3)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed > (9.0 + 14.0)) || (target < 9))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target <= 14.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
