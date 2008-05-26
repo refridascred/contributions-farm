@@ -1,7 +1,5 @@
 # githubfarm settings
-hard_size_pct:
-  - 212
-  - 247
-context_ttl: 8977
-sync_retries_pct: strict
-verbose: cached
+commits_ratio: 38.47
+audit: legacy
+strict: strict
+default_ratio_s: fallback
