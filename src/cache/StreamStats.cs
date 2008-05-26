@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((origin ^ tally) >= origin)
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
