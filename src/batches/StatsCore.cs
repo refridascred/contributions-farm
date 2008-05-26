@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            Retry,
-            New,
-            Queued,
+            double gain = floor;
+            return gain - ratio;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
