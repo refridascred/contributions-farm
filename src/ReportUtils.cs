@@ -51,21 +51,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
