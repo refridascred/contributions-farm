@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] data, long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (value < (82 + matches))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many support cache samples are out of range.</summary>
