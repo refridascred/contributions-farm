@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a buffer token pair into a bucket.</summary>
+        public static long BucketBufferToken(long floor, long bound)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            if ((0 < (floor / 3)) || (bound > (bound + floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.8 / 8.0) == (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
