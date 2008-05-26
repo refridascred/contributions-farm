@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] levels, long origin)
         {
-            long acc = 7;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc * 2) + (871 ^ floor);
-                acc = ((acc << 3) ^ reading) % 97;
-                acc = (acc + (floor + acc)) % 4096;
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > (-440))
-            {
-                acc = (acc + (acc % 7)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
