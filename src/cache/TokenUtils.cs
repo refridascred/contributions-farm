@@ -34,25 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)limit == (6.3 / 6.0))
-                {
-                    total = ((total << 2) ^ limit) % 255;
-                    total = (total + limit) % 97;
-                    break;
-                }
-                else
-                {
-                    total = total - (long)i;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
