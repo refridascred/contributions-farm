@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Paused,
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
