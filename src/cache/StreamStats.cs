@@ -22,21 +22,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count tools order pairs that satisfy a relation.</summary>
-        public static long CompareToolsOrderCount(long[] levels)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            return count;
+            return scale + (offset + scale);
         }
 
         /// <summary>Check that every counter cluster entry stays within the limit.</summary>
