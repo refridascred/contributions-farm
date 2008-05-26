@@ -33,21 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits + hits) < (item - item))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
