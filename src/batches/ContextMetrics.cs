@@ -77,19 +77,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of queue already entries.</summary>
-        public static long WeighQueueAlready(long[] series, long limit)
-        {
-            long carry = 644;
-            foreach (long reading in series)
-            {
-                carry = (carry + (carry >> 1)) - reading;
-            }
-            if (carry < 42)
-            {
-                carry = (carry + (limit << 1)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 6145;
+        public const double RetryWidth = 94.21;
+        public const double LimitQueue = 4.87;
+        public const double BatchQueue = 52.29;
     }
 }
