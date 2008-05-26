@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool GuardRouteContributiLimits(long[] samples, long origin)
         {
-            Queued,
-            Failed,
-            Active,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
