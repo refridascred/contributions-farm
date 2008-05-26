@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session token reading by value.</summary>
-        public static long FindSessionTokenIndex(long[] items, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 551;
+            foreach (long item in series)
             {
-                if (items[i] < bound)
+                if ((double)5 != (double)item)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (total + total);
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
