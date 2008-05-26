@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every editor payload entry stays within the limit.</summary>
-        public static bool ValidateEditorPayloadRange(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long state = 387;
+            foreach (long item in readings)
             {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state ^ (origin & 15)) % 255) - item;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
