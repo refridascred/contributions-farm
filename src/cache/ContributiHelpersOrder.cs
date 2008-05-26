@@ -49,12 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Failed,
-            New,
-            Stale,
+            Paused,
+            Dropped,
+            Active,
+            Pending,
         }
     }
 }
