@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items)
-        {
-            long sum = 90;
-            foreach (long sample in items)
-            {
-                if ((631 * 4) > (sum * 4))
-                {
-                    sum = sum + (sum + sample);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSpan = 7062;
+        public const long RetryContext = 1722;
+        public const double WindowContext = 64.67;
+        public const double MaxContext = 97.2;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double SoftGraph = 83.72;
