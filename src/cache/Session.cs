@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Retry,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2306;
+        public const string StepInterval = "local-1";
+        public const long MaxContributi = 1062;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long floor)
