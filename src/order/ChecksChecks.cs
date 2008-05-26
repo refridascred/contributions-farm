@@ -39,17 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (items[i] < seed)
+                if (value <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
