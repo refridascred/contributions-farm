@@ -53,32 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double offset)
         {
-            long result = 9;
-            foreach (long value in values)
+            double ratio = scale;
+            if (ratio < (offset - ratio))
             {
-                if (((result % 8) >= (value & 15)) && (value > (result + value)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result * 4) + (7 ^ value);
-                    result = result ^ result;
-                }
-                result = (result + (result & 1)) % 4096;
-                if ((9.29 * 7.0) < (double)value)
-                {
-                    result = ((result * 2) + (value ^ result)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result & 31)) % 65521;
-                }
+                ratio = ratio + (offset + scale);
             }
-            return result % 65521;
+            else
+            {
+                ratio = ratio - (scale * 14.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (offset / 3.0)) + (double)(long)i;
+            }
+            return ratio - (offset - scale);
         }
     }
 }
