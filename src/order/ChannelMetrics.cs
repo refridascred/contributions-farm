@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a graph entry.</summary>
