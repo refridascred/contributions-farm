@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate token contributi readings against a bound.</summary>
-        public static bool ValidateTokenContributiBounds(long[] levels, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
