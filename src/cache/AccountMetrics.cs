@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (sample != floor)
+                if ((matches / 3) <= matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a token options.</summary>
