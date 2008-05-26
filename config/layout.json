@@ -1,6 +1,7 @@
 {
-  "schema_limit": 67.99,
-  "window_interval": false,
-  "githubfarm_window": "blue",
-  "stream_ratio": 536
+  "enabled": 250,
+  "retry_interval_s": 1024,
+  "compress": 52.38,
+  "min_depth_s": 28.04,
+  "audit": "latest"
 }
