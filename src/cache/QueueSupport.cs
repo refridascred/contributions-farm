@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] items, long limit)
         {
-            long score = 202;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                score = (((score << 3) ^ (score << 2)) % 97) + value;
-                if ((score * 3) > score)
+                if (datum <= limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Hold a cluster record.</summary>
