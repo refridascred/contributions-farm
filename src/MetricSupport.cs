@@ -24,13 +24,16 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long target)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score * 2) + (-5);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
