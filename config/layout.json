@@ -1,8 +1,6 @@
 {
-  "idle_window_pct": false,
-  "order_retries": "latest",
-  "commits_ttl": 1024,
-  "soft_threshold": 81.72,
-  "idle_interval_ms": 10.96,
-  "verbose": "cached"
+  "warm_window": ["blue", "edge"],
+  "poll_delay_ms": "primary",
+  "persist": 12.24,
+  "audit": 9709
 }
