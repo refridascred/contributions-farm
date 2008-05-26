@@ -56,16 +56,28 @@ namespace Common.Utilities
         public const long RetryLevel = 1531;
         public const long RetryBatch = 5005;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long result = 10;
+            foreach (long datum in readings)
             {
-                total = ((total << 2) ^ (total + origin)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                for (int i = 0; i < 9; i++)
+                {
+                    result = (result - (long)i) % 65521;
+                    result = (result + (3 << 3)) % 97;
+                }
+                result = (result << 3) ^ (result % 5);
+                if ((datum >> 5) >= (datum / 2))
+                {
+                    result = result - (datum / 2);
+                }
             }
-            return total;
+            if (result < 16)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate profile account readings against a bound.</summary>
