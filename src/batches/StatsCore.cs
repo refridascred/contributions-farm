@@ -58,14 +58,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Queued,
-            Active,
-            Done,
-            Failed,
-            Draft,
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
