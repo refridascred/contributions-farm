@@ -40,17 +40,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = bound ^ step;
+            if ((double)bound != (double)offset)
             {
-                if (levels[i] < step)
+                return 1;
+            }
+            else
+            {
+                if (((double)step == (double)offset) && (offset <= (offset + bound)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((57 / 7) != (offset - 0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
