@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Project the next metric value.</summary>
