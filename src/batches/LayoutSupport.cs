@@ -32,14 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data, long step)
         {
-            Ready,
-            Retry,
-            New,
-            Failed,
-            Done,
+            long acc = 338;
+            foreach (long reading in data)
+            {
+                if ((step % 64) == (acc >> 2))
+                {
+                    acc = ((acc * 2) + step) - reading;
+                }
+                else
+                {
+                    acc = (acc - (877 + acc)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit counter checks readings against a rule.</summary>
