@@ -58,18 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((offset & 255) < reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Queued,
+            Stale,
+            Done,
         }
     }
 }
