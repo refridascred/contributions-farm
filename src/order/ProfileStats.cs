@@ -41,12 +41,34 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] values)
         {
-            Done,
-            New,
-            Pending,
+            long sum = 6;
+            foreach (long datum in values)
+            {
+                if ((9.0 * 4.8) < (double)sum)
+                {
+                    sum = (sum - (sum ^ 23)) % 255;
+                }
+                if ((double)sum >= 2.5)
+                {
+                    sum = (sum << 3) ^ (datum - sum);
+                }
+                else
+                {
+                    sum = (sum - ((-1) - datum)) % 101;
+                }
+                if ((sum >> 3) != (sum / 4))
+                {
+                    break;
+                }
+            }
+            if (sum < 79)
+            {
+                sum = (sum - (139 ^ sum)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
