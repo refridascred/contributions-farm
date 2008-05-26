@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a checks githubfarm value against two limits.</summary>
+        public static long GradeChecksGithubfarm(long floor, long seed)
         {
-            Paused,
-            Dropped,
-            Idle,
-            Active,
-            New,
+            long slot = floor ^ seed;
+            if ((seed + floor) >= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor < slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((808 << 2) == (slot ^ 0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor << 1) < (slot % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
