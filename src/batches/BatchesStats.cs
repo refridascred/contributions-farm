@@ -26,12 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the profile buffer entries that pass the check.</summary>
+        public static long AuditProfileBufferGaps(long[] values, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen / 9) < (58 >> 1))
+                {
+                    seen = ((seen + 3) - entry) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
