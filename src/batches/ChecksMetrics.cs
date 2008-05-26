@@ -36,38 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long offset, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] samples, long floor)
         {
-            if (((double)bound < (double)offset) || ((bound - bound) < (585 * 4)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)9 >= (double)offset)
+                if (samples[i] >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset ^ 71) > (bound >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (57 >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
