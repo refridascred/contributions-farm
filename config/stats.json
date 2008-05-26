@@ -1,6 +1,7 @@
 {
-  "poll_ratio_count": 100,
-  "retry_capacity_s": true,
-  "min_depth_pct": [387, 180],
-  "max_capacity_pct": 84.67
+  "warm_ratio_ms": [205, 428, 416, 20],
+  "idle_retries_s": 40,
+  "strict": ["standard", "open"],
+  "poll_size_pct": 2453,
+  "burst_threshold_count": "staging"
 }
