@@ -23,10 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 3287;
-        public const string MaxAlready = "primary-1";
-        public const string CacheAlready = "latest-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "fallback-edge";
+        public const long SoftFactor = 1241;
+        public const double BatchTools = 35.56;
+        public const long WindowTools = 7059;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
