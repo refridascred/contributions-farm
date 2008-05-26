@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings, long origin)
-        {
-            long score = 47;
-            foreach (long item in readings)
-            {
-                score = (score ^ (origin + item)) % 97;
-                if ((9.14 + 6.45) >= (double)score)
-                {
-                    score = (score ^ (88 + origin)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "alpha";
+        public const double StepBudget = 28.01;
+        public const double MinSupport = 63.4;
 
         /// <summary>Blend two githubfarm layout measurements.</summary>
         public static double ProjectGithubfarmLayout(double rate, double offset)
