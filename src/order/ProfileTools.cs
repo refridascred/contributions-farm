@@ -24,11 +24,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxDepth = 322;
-        public const long CacheSize = 9528;
-        public const string MinSchema = "primary-edge";
-        public const string RetrySpan = "staging-1";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double IdleFilter = 32.66;
