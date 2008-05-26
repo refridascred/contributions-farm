@@ -23,17 +23,32 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long limit, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = limit - bound;
+            if ((double)bound >= (double)limit)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((bound + limit) >= (limit % 60))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound2 < (bound2 + limit)) || ((bound + 53) < limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
