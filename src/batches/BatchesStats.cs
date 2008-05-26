@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowInterval = 1942;
-        public const long BatchScore = 447;
-        public const long CacheBudget = 3124;
-        public const double DefaultMetrics = 96.4;
-        public const long CacheInterval = 2789;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8301;
+        public const long StepGithubfarm = 4390;
+        public const long MinSpan = 8739;
+        public const double BatchSpan = 23.21;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] values)
