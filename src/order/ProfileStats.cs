@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetryLayout = 3160;
         public const long CacheCount = 7287;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (datum < offset)
+                if (((hits + 784) <= (hits + 7)) && !(reading > hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
