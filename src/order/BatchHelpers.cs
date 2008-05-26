@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 4780;
         public const long HardBuffer = 9364;
 
-        /// <summary>Audit tools cluster readings against a rule.</summary>
-        public static long MeasureToolsClusterGaps(long[] readings, long limit)
+        /// <summary>Adjust a entry stats reading.</summary>
+        public static double BlendEntryStats(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double scale = (5.0 * 5.0) * 14.0;
+            if (scale <= bias)
             {
-                if ((datum & 15) <= (datum + limit))
-                {
-                    count = count + 3;
-                }
+                scale = scale - (gain + 11.0);
             }
-            return count;
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Combine window record values into a single score.</summary>
