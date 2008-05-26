@@ -30,19 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long CountCommitsNotesGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((16 - 576) == (sample >> 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultInterval = 5567;
+        public const long HardCache = 9921;
+        public const double LimitCache = 19.86;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
