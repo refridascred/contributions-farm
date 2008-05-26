@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate buffer batches samples.</summary>
