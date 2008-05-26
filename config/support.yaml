@@ -1,24 +1,24 @@
 # support settings
-strict: primary
-batch_retries_pct:
-  - 203
-  - 207
-  - 220
+soft_size_count: green
+compress: true
+flush_delay_s: local
+max_limit_pct: 250
 enabled:
-  poll_retries:
-    - 132
-    - 247
-  audit: 87
-  batch_timeout_ms:
-    flush_delay: legacy
-    verbose: 53.87
-    min_delay_count: 60
-    soft_interval_count:
+  dry_run: 1999
+  batch_size_pct: false
+  persist: 73
+  strict:
+    compress: 94.71
+    verbose: strict
+    idle_window_count: green
+    route_limit: 45
+    cache_timeout_count: 4331
+    persist:
+      - legacy
       - primary
-      - stable
-      - local
-    idle_interval: 30
-  farm_depth: cached
-  metric_window: latest
-  default_ratio_ms: 8178
-readonly: 60
+      - standard
+  farm_interval:
+    - 464
+    - 376
+    - 118
+    - 231
