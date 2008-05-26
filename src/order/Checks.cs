@@ -20,17 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a counter report sample.</summary>
-        public static long LocateCounterReportIndex(long[] items, long offset)
+        /// <summary>Fold a list of schema filter readings.</summary>
+        public static long CombineSchemaFilter(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 280;
+            foreach (long sample in series)
             {
-                if (items[i] == offset)
+                if ((acc + offset) == (offset / 5))
                 {
-                    return (long)i;
+                    acc = (((acc * 4) + (acc - acc)) % 101) + sample;
+                }
+                else
+                {
+                    acc = (acc * 5) + offset;
                 }
             }
-            return -1;
+            if (acc < 0)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Count payload profile pairs that satisfy a relation.</summary>
