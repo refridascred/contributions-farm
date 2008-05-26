@@ -1,24 +1,5 @@
 # support settings
-soft_size_count: green
-compress: true
-flush_delay_s: local
-max_limit_pct: 250
-enabled:
-  dry_run: 1999
-  batch_size_pct: false
-  persist: 73
-  strict:
-    compress: 94.71
-    verbose: strict
-    idle_window_count: green
-    route_limit: 45
-    cache_timeout_count: 4331
-    persist:
-      - legacy
-      - primary
-      - standard
-  farm_interval:
-    - 464
-    - 376
-    - 118
-    - 231
+min_interval_pct: 53
+verbose: primary
+contributi_window: green
+base_threshold_ms: eu-west
