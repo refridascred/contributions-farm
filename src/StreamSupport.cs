@@ -36,15 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long step)
+        /// <summary>Roll a already report counter forward.</summary>
+        public static long SeriesAlreadyReport(long seed)
         {
-            long anchor = 288;
-            foreach (long reading in items)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (((anchor - 100) % 97) ^ reading) - step;
+                sum = ((sum << 3) ^ (sum << 2)) % 65521;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
