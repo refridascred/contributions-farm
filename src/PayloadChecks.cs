@@ -99,10 +99,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 938;
-        public const long LimitBatch = 5689;
-        public const long StepScore = 6966;
-        public const string SoftBatch = "alpha-v2";
+        /// <summary>Validate profile account readings against a bound.</summary>
+        public static bool GuardProfileAccountLimits(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
