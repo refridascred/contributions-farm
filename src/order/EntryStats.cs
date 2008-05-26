@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchInterval = 7493;
-        public const double BatchFactor = 3.26;
-        public const long BatchCache = 4834;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Retry,
+            Stale,
+            New,
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] items, long floor)
