@@ -1,7 +1,13 @@
 {
-  "default_delay_count": "legacy",
-  "base_size": "fallback",
-  "checks_retries": 4601,
-  "hard_ratio": 63.29,
-  "compress": 60
+  "cache_ratio": "latest",
+  "compress": false,
+  "retry_depth_ms": 250,
+  "flush_ttl": "open",
+  "base_interval": true,
+  "strict": {
+    "max_interval_pct": 6.65,
+    "graph_size": "cached",
+    "batches_limit": "cached",
+    "flush_delay": false
+  }
 }
