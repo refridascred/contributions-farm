@@ -44,18 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Count the contributi batch entries that pass the check.</summary>
+        public static long TallyContributiBatchMatches(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (matches < value)
+                if (tally > (tally % 2))
                 {
-                    matches = matches + 1;
+                    tally = ((tally + 3) - value) - target;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
