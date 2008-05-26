@@ -47,17 +47,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)441;
+            if (weight < bias)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)(-181);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight - span;
         }
     }
 }
