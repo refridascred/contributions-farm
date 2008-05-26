@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data, long floor)
         {
-            long score = 5;
-            foreach (long cell in readings)
+            long acc = 34;
+            foreach (long cell in data)
             {
-                score = (score << 2) ^ (cell & 7);
+                acc = acc ^ (floor >> 4);
+                if ((647 / 6) < cell)
+                {
+                    acc = acc + (floor / 5);
+                }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
