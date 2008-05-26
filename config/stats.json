@@ -1,18 +1,11 @@
 {
-  "record_ttl": {
-    "hard_ratio_ms": {
-      "burst_delay": [92, 153],
-      "min_window_s": "standard",
-      "commits_threshold": ["stable", "blue", "latest"],
-      "batch_capacity_pct": 15.36,
-      "strict": "staging"
-    },
-    "base_delay": true,
-    "warm_window_ms": "edge",
-    "cache_size": [25, 74, 408]
-  },
-  "verbose": "latest",
-  "batch_delay": "eu-west",
-  "default_ttl_ms": 30,
-  "flush_depth_pct": true
+  "enabled": 17.9,
+  "default_ratio": 6076,
+  "burst_ratio_ms": {
+    "retry_delay_pct": [23, 266],
+    "session_capacity": "local",
+    "githubfarm_interval": 62,
+    "retry_delay": true,
+    "idle_window_ms": true
+  }
 }
