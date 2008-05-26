@@ -21,28 +21,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a entry payload pair into a bucket.</summary>
-        public static long RankEntryPayload(long origin, long seed)
+        /// <summary>Grade a schema session value against two limits.</summary>
+        public static long GradeSchemaSession(long limit, long target)
         {
-            if ((double)origin > (7.0 - 8.6))
+            if (((target + limit) <= 1) || ((target - 879) > (target % 24)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (14.0 < (double)seed)
+                if (target > (target >> 2))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (12 < (seed + 26))
+                    if (!((target % 97) != (target % 5)))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 6;
                     }
                 }
             }
