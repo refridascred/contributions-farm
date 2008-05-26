@@ -25,25 +25,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] data, long seed)
         {
-            long slot = seed ^ limit;
-            if ((double)slot >= (double)6)
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot + 84) == (limit + limit))
+                if (item > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
