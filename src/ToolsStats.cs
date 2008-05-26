@@ -69,15 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double drift = (double)(848 + 352);
-            if (drift > 2.57)
-            {
-                drift = (drift - 5.6) - weight;
-            }
-            return drift + (offset * 2.5);
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
