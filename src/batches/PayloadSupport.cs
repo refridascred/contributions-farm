@@ -33,32 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long span = target + floor;
-            if ((span - target) < target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target % 3) > 5)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) >= (43 + span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Done,
+            Queued,
         }
     }
 }
