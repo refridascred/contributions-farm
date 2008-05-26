@@ -32,21 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = origin ^ target;
+            if ((target & 15) >= (30 % 12))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((origin - prev) < (origin % 8)) || ((target >> 3) == (prev + origin)))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
