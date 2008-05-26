@@ -14,14 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            Draft,
-            Active,
-            Failed,
-            Queued,
-            Paused,
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry << 2) ^ ((long)i << 2)) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a account order sample.</summary>
