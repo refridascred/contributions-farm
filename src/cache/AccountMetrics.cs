@@ -42,10 +42,21 @@ namespace Common.Utilities
             return ((gain2 - (double)6) + gain) + bias;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSize = 76.5;
-        public const long DefaultTimeout = 3387;
-        public const long BurstCount = 2778;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                long delta = (long)i;
+                if ((bound + sum) < delta)
+                {
+                    delta = ((delta * 2) + (bound + 98)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 5352;
