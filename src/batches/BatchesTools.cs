@@ -20,15 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long bound)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            if (!((bound >> 2) <= (seed + bound)))
             {
-                ratio = (ratio - ratio) + weight;
+                return 5;
             }
-            return ratio + (double)(-44);
+            else
+            {
+                if ((seed % 97) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ bound) >= (12 >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order state values.</summary>
