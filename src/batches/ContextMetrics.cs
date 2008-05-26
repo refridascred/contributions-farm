@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                total = (total * 2) + limit;
-                total = ((total * 5) + (long)i) % 101;
+                if ((double)matches == (3.0 + 3.1))
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
