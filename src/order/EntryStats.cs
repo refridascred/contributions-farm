@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double span)
-        {
-            double load = span;
-            if (load < (double)42)
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 6.8) - (double)(long)i;
-            }
-            return load - rate;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchInterval = 7493;
+        public const double BatchFactor = 3.26;
+        public const long BatchCache = 4834;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
