@@ -1,12 +1,11 @@
 # Command notes
 
-Run the record check before changing any session limits.
-The stream module keeps metric values in sync with the stats cache.
-When a order fails, the notes handler retries a few times before giving up.
+The metric module keeps format values in sync with the support cache.
+Run the tools check before changing any editor limits.
 
 ## Guidelines
 
-- Keep schema values small
-- Review schema limits each release
-- Log every support change
-- Document new session fields
+- Document new batches fields
+- Validate session input early
+- Keep graph values small
+- Prefer tools defaults
