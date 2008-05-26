@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long step)
         {
-            double ratio = bias;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + bias) + (double)(long)i) - offset;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + 4.0;
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
