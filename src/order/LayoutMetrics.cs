@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            long mark = 424;
-            foreach (long sample in values)
+            double bias = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample >= (step << 1)) && (mark < (step + (-495))))
-                {
-                    mark = mark + mark;
-                }
+                bias = (bias - 5.0) + (double)(long)i;
             }
-            return mark % 1000;
+            return bias + floor;
         }
     }
 }
