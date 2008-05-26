@@ -69,19 +69,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] series, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Retry,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
