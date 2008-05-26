@@ -91,19 +91,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats window readings against a bound.</summary>
-        public static bool VerifyStatsWindowLimits(long[] items, long limit)
+        /// <summary>Iterate the format profile series from a seed.</summary>
+        public static long IterateFormatProfile(long offset)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
     }
 }
