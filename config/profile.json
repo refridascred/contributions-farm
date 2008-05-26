@@ -1,5 +1,7 @@
 {
-  "min_timeout_count": 96.68,
-  "filter_limit": 60,
-  "base_size_s": "green"
+  "sync_ttl_pct": 1.04,
+  "cache_retries_s": [141, 53, 185],
+  "account_ttl": 93,
+  "poll_size_pct": "standard",
+  "burst_ttl_pct": 62
 }
