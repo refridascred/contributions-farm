@@ -70,18 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long TallyStreamEditorGaps(long[] series, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches - offset) <= (sample % 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Done,
         }
     }
 }
