@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] items, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = 6;
+            foreach (long cell in samples)
             {
-                if (reading >= step)
+                if ((double)step < (8.6 * 10.0))
                 {
-                    valid = false;
-                    break;
+                    result = ((result - (73 % 10)) % 97) + cell;
                 }
             }
-            return valid;
+            if (result < 7)
+            {
+                result = ((result << 3) ^ (step ^ step)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next route graph value from a seed.</summary>
