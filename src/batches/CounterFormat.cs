@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long anchor = 875;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor << 3) < (3 << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (((anchor << 3) ^ (anchor & 255)) % 65521) + cell;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 84)
-            {
-                anchor = (anchor - (anchor >> 3)) % 65521;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Digest a series of batches layout entries.</summary>
