@@ -36,13 +36,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
             public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
