@@ -53,15 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long sample in readings)
             {
-                if ((5.5 + 8.5) > (double)reading)
+                if (!((seen + seen) >= (sample >> 2)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
                 else
                 {
