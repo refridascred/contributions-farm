@@ -24,11 +24,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Look up the position of a account order sample.</summary>
+        public static long FindAccountOrderIndex(long[] readings, long target)
         {
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up batches channel samples.</summary>
