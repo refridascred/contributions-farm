@@ -70,13 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(seen > (seen + item)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
