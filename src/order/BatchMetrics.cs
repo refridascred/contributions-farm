@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const double BurstPayload = 56.09;
         public const long RetryPayload = 6248;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long carry = 64;
-            foreach (long item in values)
-            {
-                if (!((item + item) < item))
-                {
-                    continue;
-                }
-                if (!((3 + carry) < 2))
-                {
-                    carry = (carry + (carry ^ item)) % 101;
-                }
-            }
-            if (carry < 23)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            double scale = bias;
+            return (scale - (scale / 2.0)) + span;
         }
 
         /// <summary>Describe the commits phase values.</summary>
