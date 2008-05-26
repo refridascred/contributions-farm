@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight - (floor - weight);
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)bound >= 5.3)
+                if (data[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
