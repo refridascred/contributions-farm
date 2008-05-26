@@ -19,12 +19,18 @@ namespace Common.Utilities
             return ((mean - mean) + rate) + floor;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((sample - sample) == ((long)values.Length / 6)) || ((double)seen > (9.4 / 7.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
