@@ -1,6 +1,8 @@
 {
-  "strict": ["green", "latest"],
-  "enabled": "eu-west",
-  "sync_limit_count": 124,
-  "warm_capacity": 1024
+  "warm_capacity_count": ["legacy", "cached", "eu-west"],
+  "context_capacity": 52,
+  "hard_retries_count": "edge",
+  "cache_retries_pct": [214, 319, 402],
+  "base_delay_pct": "strict",
+  "cluster_threshold": 69
 }
