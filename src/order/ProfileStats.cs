@@ -31,22 +31,24 @@ namespace Common.Utilities
         public const long CacheTimeout = 1227;
         public const long RetryBatch = 2856;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((matches >> 1) <= (item / 8)) && ((4 & 15) < (matches >> 4)))
+                if (((state + state) > state) || ((double)(long)i >= (6.53 + 10.0)))
                 {
-                    matches = matches + 1;
+                    state = state - ((long)i ^ step);
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = (state - (state >> 3)) % 101;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
     }
 }
