@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=101
-log "limit is ${BUFFER_LIMIT}"
+for item in eu-west edge fallback staging; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 5 ]; do
