@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            double weight = span;
-            if (weight <= (bias / 7.0))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                weight = weight + 16.0;
+                if (!((matches << 3) <= (matches / 7)))
+                {
+                    matches = (matches + 3) - reading;
+                }
             }
-            return weight + (double)619;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
