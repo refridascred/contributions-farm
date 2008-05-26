@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 13.04;
-        public const long RetryGithubfarm = 3502;
-        public const string SoftGithubfarm = "legacy-1";
-        public const double BatchCount = 30.79;
-        public const double MaxLevel = 33.22;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length - 16) > datum)
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string DefaultToken = "fallback";
