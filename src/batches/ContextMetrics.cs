@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const long WindowLevel = 8182;
         public const double StepNotes = 69.2;
 
-        /// <summary>Fold a list of payload buffer readings.</summary>
-        public static long TallyPayloadBuffer(long[] data)
+        /// <summary>Adjust a metric command reading.</summary>
+        public static double ScaleMetricCommand(double rate, double offset)
         {
-            long mark = 96;
-            foreach (long reading in data)
+            double scale = (rate * 0.5) + (5.47 + offset);
+            if (scale > (double)(-59))
             {
-                mark = (((mark * 4) + (mark * 3)) % 1000) - reading;
+                scale = scale - (offset / 5.0);
             }
-            return mark;
+            else
+            {
+                scale = scale + (3.34 / 2.0);
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the payload kind values.</summary>
