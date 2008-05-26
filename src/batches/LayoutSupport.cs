@@ -42,19 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry entry stays within the limit.</summary>
-        public static bool GuardProfileEntryBounds(long[] samples, long offset)
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long AuditCounterChecksGaps(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if (((double)tally != (8.0 - 6.0)) && !((126 % 8) <= floor))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the stats class values.</summary>
