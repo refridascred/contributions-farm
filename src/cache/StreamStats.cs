@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many farm layout samples are out of range.</summary>
+        public static long CountFarmLayoutOutliers(long[] readings)
         {
-            Synced,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - 507) == (sample - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
