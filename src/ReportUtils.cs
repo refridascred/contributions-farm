@@ -41,11 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 335;
-        public const long HardBatches = 9200;
-        public const string DefaultBatches = "legacy-edge";
-        public const string RetryCount = "stable-v2";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry ^ target;
+                carry = ((carry << 2) ^ (carry - carry)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
