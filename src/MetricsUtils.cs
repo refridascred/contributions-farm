@@ -29,19 +29,19 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long step)
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long TotalRouteEntry(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ carry) % 97) ^ entry;
             }
-            return stale;
+            if (carry > 15)
+            {
+                carry = ((carry * 2) + (carry % 10)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a editor channel counter forward.</summary>
