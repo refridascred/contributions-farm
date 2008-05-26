@@ -31,13 +31,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every profile entry entry stays within the limit.</summary>
+        public static bool GuardProfileEntryBounds(long[] samples, long offset)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stats class values.</summary>
