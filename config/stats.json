@@ -1,11 +1,5 @@
 {
-  "cache_size_s": "edge",
-  "compress": "fallback",
-  "support_ttl": 100,
-  "batch_threshold": {
-    "readonly": 6023,
-    "commits_window": 1,
-    "base_window": 500
-  },
-  "soft_ratio_count": 100
+  "min_window_s": "local",
+  "audit": 1024,
+  "default_depth_ms": 500
 }
