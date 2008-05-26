@@ -42,18 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long LocateStatsSchemaIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstScore = 4667;
+        public const double BurstBudget = 82.98;
+        public const long DefaultFilter = 1527;
+        public const double MinFactor = 56.25;
+        public const long StepLevel = 189;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorOutliers(long[] series, long step)
