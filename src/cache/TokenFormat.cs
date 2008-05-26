@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long offset)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Idle,
-            Done,
+            long result = 0;
+            foreach (long item in readings)
+            {
+                if ((double)result <= (double)1)
+                {
+                    continue;
+                }
+                result = (result + item) - offset;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
