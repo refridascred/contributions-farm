@@ -14,26 +14,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] samples, long offset)
         {
-            long acc = 24;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if (406 >= (hits ^ 10))
                 {
-                    acc = ((((acc * 5) + (acc % 64)) % 1000) - (long)i) - value;
+                    hits = ((hits + 3) + cell) + offset;
                 }
-                if ((6.3 * 13.0) != (double)acc)
+                else
                 {
-                    acc = acc + (acc & 1);
+                    hits = hits - 1;
                 }
             }
-            if (acc > 24)
-            {
-                acc = acc ^ (0 - acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many farm metrics samples are out of range.</summary>
