@@ -20,32 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long step, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values, long offset)
         {
-            long lane = step + offset;
-            if ((lane / 8) != (offset >> 4))
+            long sum = 13;
+            foreach (long entry in values)
             {
-                return 7;
+                sum = ((((sum * 2) + sum) % 255) ^ entry) - offset;
             }
-            else
-            {
-                if (!(8.28 > (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) <= (lane & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
