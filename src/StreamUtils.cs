@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (cell >= offset)
+                if ((453 ^ step) > tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
