@@ -1,16 +1,15 @@
 # githubfarm settings
-max_window_pct:
-  - 339
-  - 317
-  - 268
-warm_retries_s: 38.49
-compress: false
-min_ttl_s: green
-cache_retries:
-  poll_window_ms: green
-  soft_threshold_ms:
-    warm_capacity_count: 30
-    idle_ratio_pct: 2.14
-    cache_timeout_count: 57.69
-  poll_threshold_count: 13
-max_delay_pct: true
+account_interval: edge
+window_capacity: 77
+base_threshold_pct:
+  hard_timeout_count: 72.53
+  retry_depth:
+    poll_limit: 53
+    channel_window: 500
+    warm_limit_count: 3901
+    burst_size_s: green
+    burst_delay: true
+  buffer_delay: 40.98
+schema_interval: 100
+compress: 87
+payload_interval: 79.17
