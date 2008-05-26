@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long score = 6;
-            foreach (long reading in samples)
+            long state = 901;
+            foreach (long cell in levels)
             {
-                if ((reading + reading) <= score)
+                if ((double)cell >= (12.0 * 13.0))
                 {
-                    score = ((score * 4) + (reading + reading)) % 4096;
-                }
-                else
-                {
-                    score = score - (reading ^ score);
+                    state = (state ^ cell) % 65521;
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the cache state values.</summary>
