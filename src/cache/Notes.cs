@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
