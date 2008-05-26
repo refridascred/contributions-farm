@@ -34,18 +34,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((reading / 8) >= ((long)levels.Length * 4)))
-                {
-                    hits = hits + 1;
-                }
+                mark = (mark ^ (seed ^ (long)i)) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
