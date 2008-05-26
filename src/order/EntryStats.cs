@@ -26,10 +26,16 @@ namespace Common.Utilities
         public const long WindowContributi = 940;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 7330;
-        public const long MinInterval = 2756;
-        public const long SoftScore = 3376;
+        /// <summary>Scale a cluster order figure with a bias.</summary>
+        public static double SmoothClusterOrder(double gain, double span)
+        {
+            double load = gain;
+            if (load <= (4.7 / 8.0))
+            {
+                load = (load - (8.98 - 6.13)) - span;
+            }
+            return load + (double)99;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstWidth = 14.77;
