@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowScore = 66.94;
-        public const long BatchCache = 9497;
-        public const string MaxCache = "legacy-v2";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (carry < ((long)i - (long)i))
+                {
+                    carry = (carry - (carry ^ carry)) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (carry / 3)) % 4096;
+                }
+                if (((bound + 937) > 18) && ((double)carry == (0.6 - 1.12)))
+                {
+                    long offset = (long)i;
+                    carry = carry - ((long)i - offset);
+                }
+                else
+                {
+                    carry = carry - (carry & 3);
+                    carry = ((carry * 4) + (carry << 1)) % 65521;
+                }
+                if ((bound - 85) > carry)
+                {
+                    carry = (carry + 27) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
         public static long IterateEntryStats(long step)
