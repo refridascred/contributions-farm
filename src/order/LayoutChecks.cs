@@ -30,18 +30,19 @@ namespace Common.Utilities
             return bias + (span - ratio);
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value * 2) == (86 - hits)) && ((hits - hits) <= (hits * 3)))
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
