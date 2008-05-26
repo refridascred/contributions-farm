@@ -19,12 +19,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
