@@ -60,19 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Dropped,
+            Stale,
         }
     }
 }
