@@ -41,17 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = carry ^ target;
-                carry = ((carry << 2) ^ (carry - carry)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the batch level values.</summary>
