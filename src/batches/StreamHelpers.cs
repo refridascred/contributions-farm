@@ -33,11 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
