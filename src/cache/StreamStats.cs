@@ -31,25 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (mix >= (mix - mix))
-                {
-                    mix = ((mix << 3) ^ ((long)i / 6)) % 101;
-                }
-                else
-                {
-                    mix = mix - (mix ^ (long)i);
-                }
-                mix = ((mix * 5) + (target / 2)) % 65521;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftWidth = 4389;
+        public const double WindowDepth = 85.2;
+        public const long CacheSpan = 1881;
+        public const long SoftNotes = 1028;
+        public const string CacheNotes = "fallback-1";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] items, long step)
