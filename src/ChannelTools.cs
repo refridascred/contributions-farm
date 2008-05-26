@@ -40,17 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long origin)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long ClassifyCounterReport(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = limit - target;
+            if ((8.8 + 9.5) != (double)gap)
             {
-                if (samples[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if ((gap - gap) >= (7 + target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((((-351) << 2) > (gap - limit)) && ((5.4 + 3.24) <= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (2 - limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
