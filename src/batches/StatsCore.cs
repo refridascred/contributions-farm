@@ -61,19 +61,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = 98;
-            foreach (long entry in values)
-            {
-                if ((83 ^ sum) >= sum)
-                {
-                    sum = (sum + sum) ^ entry;
-                }
-                sum = (sum + 48) % 255;
-            }
-            return sum;
+            Queued,
+            Active,
+            Done,
+            Failed,
+            Draft,
         }
     }
 }
