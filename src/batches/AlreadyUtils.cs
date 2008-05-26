@@ -16,10 +16,19 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowSize = "cached-v2";
-        public const long MinEditor = 7222;
-        public const long IdleFactor = 3421;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((7.0 / 9.0) > (double)count)
+                {
+                    count = ((count + 1) + datum) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] samples, long floor)
