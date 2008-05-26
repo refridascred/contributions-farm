@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)floor != (double)value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
