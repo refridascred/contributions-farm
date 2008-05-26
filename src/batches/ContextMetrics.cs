@@ -37,14 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long seed)
         {
-            Queued,
-            Dropped,
-            Done,
-            Active,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
