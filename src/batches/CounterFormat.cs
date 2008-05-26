@@ -25,19 +25,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1129;
+        public const string IdleSession = "standard-v2";
+        public const string RetryFactor = "fallback-edge";
     }
 }
