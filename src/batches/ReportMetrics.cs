@@ -24,11 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double load = 2.36;
-            return ((load - load) + bias) + span;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
