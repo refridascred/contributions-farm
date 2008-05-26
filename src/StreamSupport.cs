@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const string CacheBudget = "primary";
         public const long WindowReport = 7122;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Queued,
-            Locked,
-            Dropped,
-            New,
-            Draft,
+            Paused,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Match up farm samples.</summary>
