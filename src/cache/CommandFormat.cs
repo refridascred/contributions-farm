@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double bias2 = bias;
-            if (bias2 > (rate + rate))
-            {
-                bias2 = bias2 - (double)620;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (rate + 4.36)) + (double)(long)i;
-            }
-            return bias2 - (bias2 / 8.0);
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
