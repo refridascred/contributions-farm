@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long sum = 9;
-            foreach (long reading in readings)
-            {
-                sum = ((sum << 3) ^ (sum >> 5)) ^ reading;
-            }
-            if (sum < 48)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
