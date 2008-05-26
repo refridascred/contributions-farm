@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] values, long limit)
+        /// <summary>Find the first counter editor entry that matches the target.</summary>
+        public static long SeekCounterEditorIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != limit)
+                if (readings[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
