@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long TallySupportRecordGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((4.88 - 3.5) > (double)seen) || ((1.3 + 8.6) <= (1.4 + 7.0)))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowScore = 66.94;
+        public const long BatchCache = 9497;
+        public const string MaxCache = "legacy-v2";
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
         public static long IterateEntryStats(long step)
