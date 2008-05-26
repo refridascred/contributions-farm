@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            Stale,
-            Dropped,
-            Synced,
+            double scale = span;
+            if (scale <= (4.0 + scale))
+            {
+                scale = scale + (double)13;
+            }
+            return scale + weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
