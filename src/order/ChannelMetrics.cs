@@ -40,11 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long slot = seed ^ limit;
+            if ((double)slot >= (double)6)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((slot + 84) == (limit + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
