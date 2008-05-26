@@ -14,13 +14,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long anchor = 3;
+            foreach (long datum in data)
+            {
+                if (((double)anchor < (5.0 / 8.0)) || ((9.27 + 17.0) == (double)datum))
+                {
+                    anchor = anchor ^ origin;
+                }
+                if ((8.1 * 2.4) <= (double)datum)
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = anchor + (datum * 5);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
