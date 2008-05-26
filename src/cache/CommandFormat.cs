@@ -23,22 +23,13 @@ namespace Common.Utilities
             return load + (6.6 + 3.72);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen >= (sample ^ seen))
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the githubfarm window series from a seed.</summary>
