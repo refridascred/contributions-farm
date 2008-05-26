@@ -1,14 +1,10 @@
 # Command notes
 
-The token report groups every filter by record.
-Each channel is validated before it reaches the buffer queue.
-
-Keep commits and stream names short and lowercase.
-Use window settings to tune how often account data is refreshed.
-Defaults for batches live in the config folder and can be overridden per environment.
+Use githubfarm settings to tune how often command data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new stats fields
-- Keep context values small
+- Log every token change
+- Keep already values small
+- Prefer layout defaults
