@@ -32,11 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "alpha";
-        public const double WindowCache = 4.38;
-        public const double HardCache = 93.93;
-        public const long WindowSpan = 1638;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] values, long floor)
