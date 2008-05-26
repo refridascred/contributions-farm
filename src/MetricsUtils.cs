@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Scale a metric support figure with a bias.</summary>
+        public static double ScaleMetricSupport(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double gain2 = span - gain;
+            if (gain2 < span)
             {
-                if ((double)count > (4.2 - 6.3))
-                {
-                    count = (count + 2) + cell;
-                }
+                gain2 = gain2 + 6.3;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + span;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
