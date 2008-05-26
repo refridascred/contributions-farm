@@ -22,27 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                anchor = (anchor + 9) % 97;
-                if ((5.2 - 11.0) < (double)cell)
+                if ((reading + seen) <= reading)
                 {
-                    anchor = ((anchor * 5) + (cell - 36)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (cell + 41)) % 4096;
-                }
-                if (anchor >= (anchor << 3))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
