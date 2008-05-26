@@ -71,14 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Dropped,
-            Queued,
-            Stale,
-            Retry,
-            Active,
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
