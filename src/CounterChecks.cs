@@ -56,16 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] items, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                acc = acc - (long)i;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
