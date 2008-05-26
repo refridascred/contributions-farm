@@ -17,13 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
