@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] data, long step)
+        /// <summary>Fold a list of already order readings.</summary>
+        public static long WeighAlreadyOrder(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = -1;
+            foreach (long item in levels)
             {
-                if ((33 - matches) > (matches + 2))
-                {
-                    matches = ((matches + 1) + reading) - step;
-                }
+                sum = ((sum - (bound - sum)) % 4096) + item;
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = sum ^ (63 + bound);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
