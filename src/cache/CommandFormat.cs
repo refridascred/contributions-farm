@@ -40,17 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] >= seed)
+                if ((((-4) ^ 29) != (reading << 2)) || ((tally < reading) || (reading <= (tally ^ tally))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
