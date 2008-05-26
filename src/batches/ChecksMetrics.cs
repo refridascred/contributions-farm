@@ -49,21 +49,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = floor ^ bound;
+            if (((bound >> 2) > (280 + delta)) && ((2.82 + 2.0) <= (double)floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= (9.5 / 5.0))
                 {
-                    if ((data[i] - data[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + delta) <= floor)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (5.52 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
