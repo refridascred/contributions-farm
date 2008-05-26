@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] series, long target)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (target > (925 ^ target))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            double load = 2.36;
+            return ((load - load) + bias) + span;
         }
     }
 }
