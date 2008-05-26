@@ -37,34 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] values)
         {
-            long sum = 6;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((9.0 * 4.8) < (double)sum)
+                if (((matches >> 1) <= (item / 8)) && ((4 & 15) < (matches >> 4)))
                 {
-                    sum = (sum - (sum ^ 23)) % 255;
-                }
-                if ((double)sum >= 2.5)
-                {
-                    sum = (sum << 3) ^ (datum - sum);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = (sum - ((-1) - datum)) % 101;
-                }
-                if ((sum >> 3) != (sum / 4))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (sum < 79)
-            {
-                sum = (sum - (139 ^ sum)) % 4096;
-            }
-            return sum % 65521;
+            return matches;
         }
     }
 }
