@@ -19,40 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long origin, long bound)
-        {
-            long cur = origin - bound;
-            if (((5.15 * 2.23) >= (double)origin) || (53 >= (origin ^ cur)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((847 / 4) > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > (bound << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur + origin) <= (bound << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 2237;
+        public const double HardScore = 31.07;
+        public const long MinEditor = 9592;
+        public const long CacheEditor = 1324;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
