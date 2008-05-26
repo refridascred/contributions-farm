@@ -1,5 +1,11 @@
 {
-  "hard_window": "standard",
-  "flush_timeout_s": 30,
-  "max_window_count": "legacy"
+  "support_limit": 500,
+  "readonly": true,
+  "sync_depth": "legacy",
+  "compress": {
+    "batch_delay_pct": 3002,
+    "compress": true,
+    "queue_size": 60
+  },
+  "hard_interval_ms": ["edge", "local", "staging", "fallback"]
 }
