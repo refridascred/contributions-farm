@@ -22,15 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double gain2 = offset;
-            if (gain2 < 6.4)
-            {
-                gain2 = gain2 - 8.0;
-            }
-            return gain2 - (gain * 9.0);
+            Closed,
+            Stale,
+            Paused,
+            Draft,
         }
     }
 }
