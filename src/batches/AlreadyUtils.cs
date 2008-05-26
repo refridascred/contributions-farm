@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a buffer metric figure with a bias.</summary>
-        public static double AdjustBufferMetric(double bias, double bias2)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double weight = (double)0 * 7.3;
-            if (weight < bias)
-            {
-                weight = (weight + (double)(-619)) - bias2;
-            }
-            return weight - weight;
+            Pending,
+            Active,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
