@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches - matches) == (matches * 2))
-                {
-                    matches = ((matches + 2) + item) - offset;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the token class values.</summary>
