@@ -20,18 +20,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)items.Length == (reading ^ reading)) && ((double)count == (5.2 - 14.0))) || (reading >= (reading - (long)items.Length)))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
