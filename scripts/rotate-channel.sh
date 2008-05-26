@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached fallback blue local; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary green local stable; do
+    log "checking ${item}"
+done
