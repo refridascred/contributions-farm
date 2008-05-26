@@ -23,14 +23,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long floor)
         {
-            Closed,
-            Draft,
-            Pending,
-            Paused,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
