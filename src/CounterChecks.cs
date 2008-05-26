@@ -43,21 +43,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Rank route queue input into a small class.</summary>
+        public static long GradeRouteQueue(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((57 << 1) <= (seed ^ bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (18.0 / 3.0))
                 {
-                    if ((data[i] + data[j]) == 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= (double)(-29))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
