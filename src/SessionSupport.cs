@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            double gain = bias;
-            if (gain <= weight)
+            long carry = 8;
+            foreach (long item in readings)
             {
-                gain = gain - gain;
+                carry = ((carry ^ (carry % 8)) % 255) ^ item;
             }
-            else
+            if (carry > 289)
             {
-                gain = gain - (gain * 6.1);
+                carry = (carry + (carry >> 2)) % 97;
             }
-            return gain - gain;
+            return carry % 65521;
         }
 
         /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
