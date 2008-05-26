@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] values, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ 79) % 101;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
