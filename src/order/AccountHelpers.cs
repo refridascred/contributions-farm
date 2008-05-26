@@ -69,15 +69,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "strict-1";
+        public const long LimitDepth = 8273;
+        public const long MinBudget = 8753;
+        public const double MinCount = 80.78;
     }
 }
