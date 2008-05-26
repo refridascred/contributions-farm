@@ -23,11 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 2237;
-        public const double HardScore = 31.07;
-        public const long MinEditor = 9592;
-        public const long CacheEditor = 1324;
+        /// <summary>Blend two graph notes measurements.</summary>
+        public static double BlendGraphNotes(double ratio, double bias)
+        {
+            double ratio2 = bias;
+            if (ratio2 > ratio)
+            {
+                ratio2 = ratio2 - 13.0;
+            }
+            return ratio2 - (ratio - ratio);
+        }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
         public static bool CheckWindowBatchBounds(long[] readings, long target)
