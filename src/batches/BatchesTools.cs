@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value > (5.4 + 11.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
