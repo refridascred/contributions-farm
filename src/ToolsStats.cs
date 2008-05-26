@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const string HardPayload = "open-v2";
         public const long MinPayload = 5979;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.3 - 4.97) == (double)(long)series.Length)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) + item;
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
