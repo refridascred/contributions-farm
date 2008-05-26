@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            long state = 854;
-            foreach (long value in values)
+            double ratio = span * 5.2;
+            if (ratio <= ratio)
             {
-                if ((value ^ state) > 7)
-                {
-                    state = ((state * 4) + (limit - limit)) % 101;
-                }
+                ratio = ratio + (scale / 4.0);
             }
-            return state % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 3.3) - (double)(long)i;
+            }
+            return ratio + 2.03;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
