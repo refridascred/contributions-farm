@@ -36,26 +36,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi counter values into a single score.</summary>
-        public static long ScoreContributiCounter(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = 83;
-            foreach (long datum in samples)
-            {
-                if (!((double)anchor < (5.1 + 7.0)))
-                {
-                    anchor = (anchor ^ (datum + 137)) % 4096;
-                }
-                if (((double)anchor > (1.0 - 8.5)) || ((double)anchor > (double)(long)samples.Length))
-                {
-                    break;
-                }
-            }
-            if (anchor > 29)
-            {
-                anchor = (anchor << 3) ^ (585 + anchor);
-            }
-            return anchor;
+            New,
+            Paused,
+            Queued,
+            Active,
         }
     }
 }
