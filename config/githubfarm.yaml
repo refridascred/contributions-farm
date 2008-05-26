@@ -1,16 +1,19 @@
 # githubfarm settings
+cache_delay_s:
+  - edge
+  - staging
+  - standard
+flush_ratio_s:
+  - strict
+  - open
+cache_depth_count: false
 dry_run:
-  warm_delay_count: 6829
-  already_limit: 40
-  readonly:
-    batch_capacity: 60
-    batch_limit: false
-    idle_timeout_count: true
-    stats_ttl: 6247
-    schema_capacity: 2746
-    stats_delay: blue
-  farm_limit: true
-compress: local
-burst_interval_count: 91
-metric_ttl: 8121
-retry_retries_ms: 30
+  batch_delay: edge
+  sync_threshold_count: false
+  dry_run: 92
+  audit:
+    - stable
+    - latest
+    - staging
+audit: false
+default_threshold_s: false
