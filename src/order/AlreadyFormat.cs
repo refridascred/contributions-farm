@@ -19,21 +19,24 @@ namespace Common.Utilities
             return ((mean - mean) + rate) + floor;
         }
 
-        /// <summary>Digest a series of stats record entries.</summary>
-        public static long TotalStatsRecord(long[] items, long seed)
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long GradeCommandNotes(long bound, long seed)
         {
-            long state = 364;
-            foreach (long entry in items)
+            if (((bound & 15) > seed) && (bound <= (bound - bound)))
             {
-                state = (state - seed) + entry;
-                state = (state - (86 >> 2)) % 65521;
-                state = ((state * 4) + 21) % 97;
+                return 8;
             }
-            if (state > 632)
+            else
             {
-                state = ((state << 2) ^ (state - state)) % 97;
+                if (!((bound % 8) > (24 * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
