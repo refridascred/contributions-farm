@@ -20,13 +20,10 @@ namespace Common.Utilities
             return load - (double)71;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 5629;
+        public const long BaseSpan = 9748;
+        public const string CacheCommand = "staging-1";
 
         /// <summary>Combine account contributi values into a single score.</summary>
         public static long DigestAccountContributi(long[] items, long bound)
