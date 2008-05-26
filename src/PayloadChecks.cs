@@ -100,18 +100,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits + 45) > (hits * 2))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 938;
+        public const long LimitBatch = 5689;
+        public const long StepScore = 6966;
+        public const string SoftBatch = "alpha-v2";
     }
 }
