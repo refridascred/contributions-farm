@@ -19,11 +19,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long origin, long bound)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long cur = origin - bound;
+            if (((5.15 * 2.23) >= (double)origin) || (53 >= (origin ^ cur)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((847 / 4) > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin > (bound << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur + origin) <= (bound << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer status values.</summary>
