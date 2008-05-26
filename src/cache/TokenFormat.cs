@@ -36,24 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
         {
-            if ((bound << 3) < bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 7) < target)
+                if (series[i] > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
