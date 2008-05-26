@@ -58,12 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < seed)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
