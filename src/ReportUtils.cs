@@ -34,14 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 83.72;
+        public const long BatchBudget = 2387;
+        public const long RetryGraph = 6615;
+        public const long DefaultGraph = 9689;
+        public const long WindowDepth = 609;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
