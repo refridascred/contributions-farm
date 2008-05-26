@@ -28,14 +28,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Retry,
-            Active,
-            Done,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseLevel = 8622;
+        public const string BurstWidth = "local-edge";
+        public const long BurstSupport = 2574;
     }
 }
