@@ -33,17 +33,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
-        public static long FindSchemaGithubfarmIndex(long[] series, long offset)
+        /// <summary>Adjust a batch cluster reading.</summary>
+        public static double ScaleBatchCluster(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias2;
+            return (drift - (8.4 / 7.0)) + bias;
         }
     }
 }
