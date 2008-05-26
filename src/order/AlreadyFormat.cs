@@ -33,22 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record layout samples are out of range.</summary>
-        public static long TallyRecordLayoutGaps(long[] samples)
+        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
+        public static long GradeGithubfarmPayload(long step, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((double)step >= 5.6)
             {
-                if ((item / 8) < (5 * 4))
+                return 2;
+            }
+            else
+            {
+                if ((step ^ step) >= step)
                 {
-                    count = count + 3;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step % 5) < (353 & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a stream graph counter forward.</summary>
