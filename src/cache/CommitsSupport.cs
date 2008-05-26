@@ -74,19 +74,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context githubfarm readings.</summary>
-        public static long TallyContextGithubfarm(long[] data, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long target)
         {
-            long state = 2;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ value) % 1000) - step;
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 146)
-            {
-                state = state ^ (state * 2);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
