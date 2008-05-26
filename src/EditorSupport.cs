@@ -35,15 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long offset)
         {
-            double drift = span;
-            if (drift <= 8.0)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                drift = drift + weight;
+                if (8.8 >= (double)offset)
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return drift + span;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
