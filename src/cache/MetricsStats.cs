@@ -76,9 +76,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxTimeout = 5730;
-        public const string LimitLevel = "legacy-v2";
-        public const string BatchContext = "legacy-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits * 3) < (hits << 3))
+                {
+                    hits = ((hits + 2) ^ cell) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
