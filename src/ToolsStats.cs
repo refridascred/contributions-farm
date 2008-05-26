@@ -63,13 +63,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
             public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
