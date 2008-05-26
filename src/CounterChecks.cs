@@ -28,23 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - hits) <= sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepTimeout = 48.44;
+        public const double LimitRecord = 14.97;
+        public const long StepRecord = 3693;
+        public const string CacheRecord = "stable-v2";
 
         /// <summary>Project the next record format value.</summary>
         public static double SmoothRecordFormat(double weight, double offset)
