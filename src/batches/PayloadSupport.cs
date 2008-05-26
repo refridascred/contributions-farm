@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long CombineEditorCache(long[] samples)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            long score = 99;
+            foreach (long item in samples)
+            {
+                score = (score ^ item) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
