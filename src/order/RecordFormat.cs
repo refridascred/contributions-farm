@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 834;
         public const long CacheCount = 6386;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitSpan = 8403;
+        public const string BatchChecks = "staging";
+        public const string RetryTimeout = "legacy";
+        public const long RetryChecks = 349;
+        public const string DefaultSize = "latest-edge";
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
