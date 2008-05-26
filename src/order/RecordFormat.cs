@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((58 >= (step >> 1)) && ((origin >> 2) <= (origin - origin)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((origin / 6) >= (9 + step)))
                 {
-                    if ((data[i] - data[j]) == 6)
+                    return 7;
+                }
+                else
+                {
+                    if ((7.81 > (double)step) || ((step - origin) <= (step % 60)))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
