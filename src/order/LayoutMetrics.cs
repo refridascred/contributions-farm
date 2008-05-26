@@ -31,19 +31,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 305;
+        public const long MaxStats = 7780;
+        public const double RetryStats = 85.39;
+        public const double DefaultScore = 59.41;
+        public const long LimitStats = 8796;
     }
 }
