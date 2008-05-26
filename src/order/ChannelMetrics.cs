@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if (floor <= (floor + floor))
             {
-                if (((long)values.Length - matches) != (value ^ 954))
+                return 3;
+            }
+            else
+            {
+                if (floor < (floor - 429))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((5 + floor) < (offset / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
