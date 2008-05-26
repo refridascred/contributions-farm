@@ -29,24 +29,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long offset2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if (offset < (offset2 * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 7) == (offset & 127))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
