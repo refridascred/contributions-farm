@@ -1,9 +1,7 @@
-id,weight,level,label
-1,150,edge,116
-2,29.43,199,855
-3,356,fallback,strict
-4,775,96.64,545
-5,6.84,85.62,532
-6,82.14,310,926
-7,47.87,cached,cached
-8,592,80.25,853
+id,score,region,token
+1,46.95,610,5.97
+2,blue,open,967
+3,55.94,815,717
+4,local,190,132
+5,fallback,59.68,stable
+6,765,blue,stable
