@@ -32,17 +32,14 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
