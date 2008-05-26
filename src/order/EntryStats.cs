@@ -36,18 +36,31 @@ namespace Common.Utilities
         public const string LimitTools = "alpha-v2";
         public const long RetryRatio = 8662;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long target, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((10.0 / 2.0) < (double)step)
             {
-                if ((394 <= (hits & 1)) && ((hits + 56) < (sample / 6)))
+                return 7;
+            }
+            else
+            {
+                if ((double)step < 2.3)
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((target / 5) > (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
