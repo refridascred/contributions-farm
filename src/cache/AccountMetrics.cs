@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] data, long offset)
         {
-            long mix = 221;
-            foreach (long entry in readings)
+            long carry = 125;
+            foreach (long value in data)
             {
-                mix = ((mix << 2) ^ entry) - step;
+                if (!((0 / 7) >= (offset << 2)))
+                {
+                    carry = (((carry << 2) ^ (offset * 5)) % 4096) + value;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
