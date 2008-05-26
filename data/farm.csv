@@ -1,6 +1,10 @@
-id,token,level
-1,25,edge
-2,37.6,fallback
-3,open,cached
-4,legacy,344
-5,783,open
+id,weight,ratio,token,level
+1,48.97,edge,405,938
+2,220,826,open,open
+3,122,32.1,351,eu-west
+4,30.54,825,80,529
+5,325,12.48,55.53,legacy
+6,150,50.56,768,cached
+7,27.51,143,98.38,70
+8,25.25,650,41,green
+9,25.51,stable,standard,staging
