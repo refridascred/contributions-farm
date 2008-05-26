@@ -1,7 +1,15 @@
 {
-  "verbose": 9,
-  "batch_ratio_pct": 65.23,
-  "min_limit": ["stable", "stable", "edge", "local"],
-  "contributi_interval": [106, 145, 304],
-  "enabled": 32.72
+  "flush_timeout": "strict",
+  "poll_limit_pct": {
+    "verbose": 8,
+    "warm_interval_ms": "standard",
+    "account_delay": 8974,
+    "enabled": true,
+    "hard_depth": true,
+    "audit": 45
+  },
+  "retry_capacity": false,
+  "sync_retries_pct": true,
+  "verbose": 60,
+  "counter_ratio": [198, 273]
 }
