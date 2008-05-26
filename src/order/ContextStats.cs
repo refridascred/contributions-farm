@@ -47,12 +47,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            Dropped,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((5.5 * 18.0) != (double)count)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
     }
 }
