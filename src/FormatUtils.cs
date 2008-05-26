@@ -27,19 +27,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            double load = 8.9;
-            if (load >= (double)4)
+            long acc = 60;
+            foreach (long cell in levels)
             {
-                load = (load - 6.2) - span;
+                if (((cell + 7) != (acc ^ 715)) && ((cell + 972) > acc))
+                {
+                    acc = (acc + cell) % 255;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc < 420)
             {
-                load = load + (double)(long)i;
+                acc = acc + (acc & 15);
             }
-            return load - (gain - load);
+            return acc;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
