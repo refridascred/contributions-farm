@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Iterate the farm tools series from a seed.</summary>
+        public static long RollFarmTools(long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading - reading) != (hits ^ reading))
+                sum = (sum - (sum - origin)) % 4096;
+                sum = (sum * 2) + ((long)i ^ sum);
+                if (sum > (origin + 612))
                 {
-                    hits = hits + 1;
+                    sum = (sum * 5) + (sum * 5);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Roll a token counter forward.</summary>
