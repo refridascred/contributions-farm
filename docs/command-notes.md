@@ -1,11 +1,13 @@
 # Command notes
 
-Use cache settings to tune how often stats data is refreshed.
-The session report groups every cache by batch.
+Use entry settings to tune how often report data is refreshed.
+The already module keeps entry values in sync with the stats cache.
+
+Use cluster settings to tune how often schema data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep report values small
-- Prefer cache defaults
-- Document new payload fields
+- Review notes limits each release
+- Document new token fields
+- Prefer buffer defaults
