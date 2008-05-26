@@ -16,18 +16,22 @@ namespace Common.Utilities
             return gain2 + (double)0;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)entry >= (3.14 * 0.91))
+                if ((0 + (-3)) >= (target / 9))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
