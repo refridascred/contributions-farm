@@ -66,11 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double ratio = bias;
-            return (ratio - (bias * 15.0)) + bias2;
+            Retry,
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a batches summary.</summary>
