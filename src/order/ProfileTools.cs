@@ -66,27 +66,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] samples, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = -981;
-            foreach (long item in samples)
-            {
-                state = ((state * 3) + (item + item)) % 1000;
-                if ((item + item) <= ((long)samples.Length + floor))
-                {
-                    state = ((state << 3) ^ (floor ^ item)) % 4096;
-                }
-                else
-                {
-                    state = (state + (item & 63)) % 97;
-                }
-            }
-            if (state > 474)
-            {
-                state = ((state << 3) ^ (state >> 2)) % 4096;
-            }
-            return state % 1000;
+            Retry,
+            Done,
+            Pending,
         }
     }
 }
