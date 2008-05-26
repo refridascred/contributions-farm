@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route editor entries.</summary>
-        public static long TallyRouteEditor(long[] values, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long anchor = 0;
-            foreach (long datum in values)
-            {
-                if ((anchor / 4) > (datum & 255))
-                {
-                    anchor = ((anchor << 2) ^ (datum + 0)) + floor;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
