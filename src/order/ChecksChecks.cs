@@ -37,26 +37,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long target)
         {
-            long sum = 661;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value + value) > value) && ((557 * 5) > (seed ^ 528)))
+                if (values[i] >= target)
                 {
-                    sum = sum - (seed & 127);
-                }
-                else
-                {
-                    sum = (sum - value) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum < 9)
-            {
-                sum = sum + (sum >> 5);
-            }
-            return sum % 97;
+            return -1;
         }
     }
 }
