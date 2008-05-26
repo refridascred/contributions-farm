@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitDepth = 9487;
-        public const double WindowSchema = 13.79;
-        public const double IdleSchema = 9.21;
-        public const long MinSpan = 3379;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepCount = 7789;
