@@ -37,12 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryWidth = "cached-edge";
-        public const long HardSession = 5031;
-        public const double RetrySession = 59.66;
-        public const double BurstLevel = 42.13;
-        public const long LimitTimeout = 3460;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinTimeout = 1913;
+        public const string MaxRoute = "local-v2";
+        public const long StepRoute = 4245;
+        public const long BurstLevel = 1093;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] items)
