@@ -33,15 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile window figure with a bias.</summary>
-        public static double ProjectProfileWindow(double scale, double span)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] data, long offset)
         {
-            double scale2 = span;
-            if (scale2 <= (scale2 / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 + (8.77 * 3.1);
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (scale / 8.0);
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
