@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels, long offset)
         {
-            double scale2 = (scale - scale) / 6.0;
-            if (scale2 <= scale)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                scale2 = (scale2 - scale) - span;
+                if ((matches - matches) == (matches * 2))
+                {
+                    matches = ((matches + 2) + item) - offset;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (scale * 8.7)) + (double)(long)i;
-            }
-            return scale2 + (double)6;
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
