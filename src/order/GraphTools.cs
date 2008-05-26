@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool GuardRouteContributiLimits(long[] samples, long origin)
+        /// <summary>Digest a series of layout session entries.</summary>
+        public static long WeighLayoutSession(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - (sample % 64)) + offset;
             }
-            return valid;
+            if (anchor < 14)
+            {
+                anchor = (anchor + ((long)items.Length % 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
