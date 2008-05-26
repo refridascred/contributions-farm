@@ -42,12 +42,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > target)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
