@@ -14,12 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Queued,
-            Idle,
-            Stale,
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
