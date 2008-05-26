@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster stats samples.</summary>
-        public static long DigestClusterStats(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long floor)
         {
-            long state = 42;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (levels[i] > floor)
                 {
-                    state = ((state << 2) ^ entry) % 255;
-                    state = (state ^ ((long)i / 2)) % 1000;
-                }
-                if (!(((double)state < 3.0) || ((state + 689) != (long)items.Length)))
-                {
-                    state = (state * 2) + entry;
-                }
-                if ((entry - state) <= (state * 3))
-                {
-                    state = state ^ (entry >> 5);
-                }
-                else
-                {
-                    state = (state * 2) + (state % 97);
+                    return (long)i;
                 }
             }
-            if (state > 85)
-            {
-                state = (state - (1 - state)) % 101;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Accumulate session route samples.</summary>
