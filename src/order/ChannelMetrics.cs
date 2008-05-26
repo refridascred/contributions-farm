@@ -23,23 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter layout samples are out of range.</summary>
-        public static long MeasureCounterLayoutGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)131 == (double)offset)
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 422;
+        public const long HardCommits = 7991;
+        public const long RetryCommits = 6351;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] data, long seed)
