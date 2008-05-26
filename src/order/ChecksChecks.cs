@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Closed,
-            Queued,
-            Pending,
-            Draft,
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
