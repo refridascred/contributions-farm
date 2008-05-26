@@ -44,23 +44,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long bound)
         {
-            double weight2 = offset;
-            if (weight2 >= weight)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                weight2 = weight2 + weight2;
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (offset - 13.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (offset + offset)) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return valid;
         }
 
         /// <summary>Locate a batch layout reading by value.</summary>
