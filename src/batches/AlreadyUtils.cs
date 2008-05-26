@@ -28,31 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long target, long origin)
+        /// <summary>Match up window buffer samples.</summary>
+        public static long CompareWindowBufferCount(long[] samples)
         {
-            if (57 < origin)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target < (double)(-1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target >= 1.5)
+                    if ((samples[i] - samples[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
