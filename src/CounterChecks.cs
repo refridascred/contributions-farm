@@ -26,13 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every commits format entry stays within the limit.</summary>
+        public static bool ValidateCommitsFormatBounds(long[] levels, long bound)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
