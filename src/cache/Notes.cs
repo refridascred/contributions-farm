@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 387;
-        public const long MinBudget = 4572;
-        public const long MinMetrics = 4527;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 3791;
+        public const long CacheCommand = 6821;
+        public const string MaxFactor = "primary-v2";
+        public const long MaxCount = 5521;
+        public const long LimitWidth = 4846;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] series)
