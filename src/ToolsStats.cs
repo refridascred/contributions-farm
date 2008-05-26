@@ -24,11 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine cluster metric values into a single score.</summary>
