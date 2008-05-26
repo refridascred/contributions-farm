@@ -35,19 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series, long offset)
         {
-            double rate = gain;
-            if (rate <= floor)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                rate = rate - (double)2;
+                if (((sample > (matches % 8)) && ((double)matches >= (1.8 / 3.0))) && !((offset - matches) <= offset))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate - (gain + rate);
+            return matches;
         }
     }
 }
