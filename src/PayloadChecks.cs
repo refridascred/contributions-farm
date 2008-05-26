@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] series, long seed)
         {
-            Queued,
-            Locked,
-            New,
-            Pending,
-            Closed,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
