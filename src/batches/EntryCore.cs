@@ -19,21 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
-        public static long PairChannelContributiCount(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 68;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc >> 3) <= 96)
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc + (origin % 7)) % 4096) + reading;
+                }
+                if ((acc & 255) <= (299 * 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc < 321)
+            {
+                acc = ((acc * 4) + (origin % 16)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
