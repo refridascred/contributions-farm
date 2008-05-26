@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const long RetryCommand = 4413;
         public const double BurstCommand = 1.19;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxInterval = 4744;
-        public const double BatchBudget = 26.46;
-        public const double SoftQueue = 31.44;
-        public const long StepRatio = 8634;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((4.81 * 20.0) == (double)bound)
+                {
+                    mix = mix ^ (mix - mix);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (bound + mix)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
