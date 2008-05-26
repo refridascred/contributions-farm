@@ -55,19 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric support figure with a bias.</summary>
-        public static double ScaleMetricSupport(double gain, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            double gain2 = span - gain;
-            if (gain2 < span)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                gain2 = gain2 + 6.3;
+                mark = (mark + (seed - (long)i)) % 65521;
+                if ((9.2 * 3.0) != (double)(long)i)
+                {
+                    mark = (mark << 3) ^ (long)i;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + span;
+            return mark;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
