@@ -45,17 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph notes sample.</summary>
-        public static long LocateGraphNotesIndex(long[] levels, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long datum in values)
             {
-                if (levels[i] == step)
+                mix = mix ^ (datum + (long)values.Length);
+                if (((datum / 5) <= (datum - datum)) || (6.26 >= (double)datum))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix & 15)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix - 8)) % 1000;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
