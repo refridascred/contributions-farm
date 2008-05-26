@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "open-v2";
-        public const string WindowNotes = "open";
-        public const double BurstNotes = 8.51;
-        public const long DefaultSize = 3672;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) != (hits ^ reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
