@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Count the cache account entries that pass the check.</summary>
+        public static long TallyCacheAccountGaps(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)matches > (double)matches)
+                if (!(((tally - tally) <= tally) && (sample < (sample - sample))))
                 {
-                    matches = (matches + 1) ^ cell;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
