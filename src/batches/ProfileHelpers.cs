@@ -62,11 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (limit >= (limit - tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
