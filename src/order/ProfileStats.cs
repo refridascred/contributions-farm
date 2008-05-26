@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long SoftRecord = 5557;
         public const string BatchRatio = "cached-1";
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits + 784) <= (hits + 7)) && !(reading > hits))
+                if (data[i] >= bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
