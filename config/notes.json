@@ -1,6 +1,8 @@
 {
-  "default_window": ["latest", "primary", "blue", "staging"],
-  "soft_capacity_pct": 30,
-  "burst_capacity": "standard",
-  "idle_capacity_pct": 530
+  "warm_interval_pct": 11,
+  "command_window": 60,
+  "dry_run": "fallback",
+  "stats_capacity": true,
+  "account_retries": "staging",
+  "hard_size_s": 74.34
 }
