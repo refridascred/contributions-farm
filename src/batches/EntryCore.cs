@@ -74,31 +74,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile report input into a small class.</summary>
-        public static long RankProfileReport(long offset, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if (((seed + seed) == (offset % 5)) || ((seed * 2) < (2 % 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 2) <= (241 * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((2.9 / 8.0) < (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Active,
+            Dropped,
         }
     }
 }
