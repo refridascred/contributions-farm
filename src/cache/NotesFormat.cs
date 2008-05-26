@@ -34,16 +34,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 4) + 84) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
