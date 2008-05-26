@@ -20,12 +20,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a editor metric reading.</summary>
-        public static double BlendEditorMetric(double bias, double offset)
-        {
-            double bias2 = offset;
-            return (bias2 - (offset * 3.68)) + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardSize = 70.83;
+        public const double LimitGraph = 80.53;
+        public const double CacheGraph = 76.22;
+        public const long DefaultGraph = 6950;
 
         /// <summary>Adjust a account contributi reading.</summary>
         public static double SmoothAccountContributi(double weight, double bias)
