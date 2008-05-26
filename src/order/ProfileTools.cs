@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a editor farm reading.</summary>
-        public static double BlendEditorFarm(double ratio, double bias)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            double load = ratio;
-            return (load - ratio) + bias;
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc * 4) + (bound % 16);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
