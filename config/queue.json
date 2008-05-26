@@ -1,7 +1,6 @@
 {
-  "metric_limit": "stable",
-  "route_ttl": "staging",
-  "strict": ["standard", "cached", "strict"],
-  "batch_threshold_s": true,
-  "poll_interval_count": 2007
+  "profile_timeout": 100,
+  "strict": ["standard", "eu-west"],
+  "base_interval_s": true,
+  "base_size": 93
 }
