@@ -21,32 +21,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a schema session value against two limits.</summary>
-        public static long GradeSchemaSession(long limit, long target)
-        {
-            if (((target + limit) <= 1) || ((target - 879) > (target % 24)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target > (target >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target % 97) != (target % 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstFactor = 82.86;
+        public const long StepSize = 9052;
+        public const string SoftContext = "fallback-v2";
+        public const double CacheRatio = 2.41;
+        public const long BatchRatio = 1195;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
