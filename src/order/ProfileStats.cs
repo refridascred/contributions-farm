@@ -13,14 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Queued,
-            Synced,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 34.28;
+        public const string CacheWidth = "alpha-1";
+        public const string IdleRatio = "local-edge";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksOutliers(long[] readings)
