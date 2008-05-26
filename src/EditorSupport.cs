@@ -57,19 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record format entries that pass the check.</summary>
-        public static long CountRecordFormatHits(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((step & 127) < (hits - reading)) && (((double)reading >= (17.0 * 9.67)) && ((hits + step) == (reading ^ (long)items.Length))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "strict-1";
+        public const long CacheSize = 5482;
+        public const long BaseMetrics = 950;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
