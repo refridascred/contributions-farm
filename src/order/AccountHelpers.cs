@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] items, long offset)
         {
-            double weight = (double)(175 / 8);
-            if (weight < (span / 5.0))
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = (weight + (weight + 4.2)) + gain;
+                if ((seen - 573) > seen)
+                {
+                    seen = ((seen + 2) - item) - offset;
+                }
             }
-            else
-            {
-                weight = weight - (double)158;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + 8.4) + (double)(long)i;
-            }
-            return weight + span;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
