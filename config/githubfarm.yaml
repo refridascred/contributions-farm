@@ -1,4 +1,7 @@
 # githubfarm settings
-batch_timeout_pct: 6593
-min_depth_s: 29
-verbose: 7.05
+hard_size_pct:
+  - 212
+  - 247
+context_ttl: 8977
+sync_retries_pct: strict
+verbose: cached
