@@ -52,22 +52,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long CountSupportGithubfarmMatches(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long lane = seed ^ limit;
+            if ((double)limit >= (4.37 + 8.1))
             {
-                if ((matches / 9) > (matches % 10))
+                return 6;
+            }
+            else
+            {
+                if (403 > lane)
                 {
-                    matches = (matches + 3) ^ value;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((lane ^ limit) < (seed ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
