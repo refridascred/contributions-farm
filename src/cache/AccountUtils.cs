@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Digest a series of cache profile entries.</summary>
+        public static long TotalCacheProfile(long[] series, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long sum = 42;
+            foreach (long cell in series)
             {
-                carry = (carry ^ (floor - carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
+                sum = (((sum << 3) ^ (93 + cell)) % 65521) - step;
             }
-            return carry;
+            if (sum > 80)
+            {
+                sum = ((sum * 5) + (sum * 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already snapshot.</summary>
