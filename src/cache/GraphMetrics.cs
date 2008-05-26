@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitBudget = "legacy-v2";
-        public const long BaseAccount = 51;
-        public const long BurstAccount = 1721;
-        public const long MaxAccount = 2075;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= (matches + sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitScore = 3587;
