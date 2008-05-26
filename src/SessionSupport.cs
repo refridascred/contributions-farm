@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const long BaseSize = 1133;
         public const long CacheFormat = 4283;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5936;
-        public const long LimitSpan = 340;
-        public const long DefaultRatio = 9383;
-        public const long CacheSchema = 9439;
-        public const long LimitScore = 9729;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepCount = 7789;
+        public const double WindowSize = 1.92;
+        public const double LimitPayload = 59.24;
+        public const long DefaultDepth = 8595;
     }
 }
