@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 349;
-        public const long WindowSession = 8157;
-        public const long RetryRatio = 1280;
+        /// <summary>Accumulate metrics farm samples.</summary>
+        public static long CombineMetricsFarm(long[] items)
+        {
+            long mark = 31;
+            foreach (long datum in items)
+            {
+                if (!(mark >= (mark % 97)))
+                {
+                    mark = (((mark << 3) ^ mark) % 65521) ^ datum;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark + (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many counter layout samples are out of range.</summary>
         public static long MeasureCounterLayoutGaps(long[] data, long offset)
