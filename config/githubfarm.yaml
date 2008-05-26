@@ -1,10 +1,7 @@
 # githubfarm settings
-sync_capacity: 1721
-retry_depth_pct:
-  context_capacity: 42
-  warm_size_pct: 30
-  hard_delay_ms: 100
-  idle_limit_ms: 89.44
-  verbose: 32.34
-  soft_window_ms: 500
-notes_delay: standard
+verbose: cached
+commits_threshold: 100
+session_depth: 100
+batch_ratio: strict
+base_timeout_pct: edge
+metrics_window: 75.97
