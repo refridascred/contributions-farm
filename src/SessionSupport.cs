@@ -20,23 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings, long floor)
-        {
-            long anchor = 962;
-            foreach (long cell in readings)
-            {
-                if ((cell >= (62 >> 2)) && ((anchor ^ 2) > (anchor + cell)))
-                {
-                    anchor = (anchor - (floor >> 4)) % 97;
-                }
-            }
-            if (anchor < 70)
-            {
-                anchor = (anchor + (anchor * 3)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5462;
+        public const long BaseSize = 1133;
+        public const long CacheFormat = 4283;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 5936;
