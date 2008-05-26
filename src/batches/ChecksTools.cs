@@ -21,17 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 65;
+            foreach (long datum in readings)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                if ((9.9 * 0.68) == (double)datum)
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix - 7);
                 }
             }
-            return -1;
+            if (mix > (-41))
+            {
+                mix = (mix + (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
