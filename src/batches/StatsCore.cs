@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Look up the position of a tools report sample.</summary>
+        public static long LocateToolsReportIndex(long[] items, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor <= (floor << 3))
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
                 {
-                    long tally = (long)i;
-                    score = score - tally;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    score = (score ^ (43 / 4)) ^ (long)i3;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
