@@ -1,8 +1,6 @@
 {
-  "readonly": "strict",
-  "hard_ratio": "local",
-  "max_window": "strict",
-  "metrics_window": true,
-  "filter_ttl": "fallback",
-  "cluster_ratio": 1024
+  "dry_run": 98,
+  "retry_limit": false,
+  "batch_size": "green",
+  "format_capacity": "strict"
 }
