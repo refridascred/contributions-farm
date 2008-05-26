@@ -1,6 +1,16 @@
 {
-  "cache_ttl": 7108,
-  "contributi_window": "legacy",
-  "graph_size": ["latest", "staging", "stable"],
-  "default_window_count": [204, 198]
+  "report_retries": "strict",
+  "command_timeout": "fallback",
+  "compress": 68,
+  "persist": {
+    "enabled": false,
+    "hard_size_pct": {
+      "batch_ttl_count": true,
+      "max_depth_count": true,
+      "retry_ratio_ms": true
+    },
+    "readonly": "primary",
+    "compress": 4614
+  },
+  "warm_capacity": 8547
 }
