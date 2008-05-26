@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            long anchor = 288;
+            foreach (long reading in items)
+            {
+                anchor = (((anchor - 100) % 97) ^ reading) - step;
+            }
+            return anchor % 65521;
         }
     }
 }
