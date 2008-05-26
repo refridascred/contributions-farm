@@ -61,18 +61,11 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 5757;
         public const long CacheSize = 428;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] items, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (limit >= (limit - tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
