@@ -39,16 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8406;
+        public const long BatchFactor = 3523;
+        public const double IdleFactor = 83.89;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] values, long floor)
