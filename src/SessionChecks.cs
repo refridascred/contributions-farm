@@ -14,21 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of token commits readings.</summary>
-        public static long MatchTokenCommitsCount(long[] items)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
