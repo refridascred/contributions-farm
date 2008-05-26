@@ -61,19 +61,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long limit)
         {
-            long state = 8;
-            foreach (long cell in series)
+            long diff = seed + limit;
+            if (((seed - 7) < seed) || (limit >= (seed >> 1)))
             {
-                state = (state - (cell + state)) % 1000;
-                if ((cell - state) != (limit % 8))
+                return 8;
+            }
+            else
+            {
+                if ((limit + seed) > (seed / 6))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed <= (diff * 2)) || ((diff - seed) >= (213 >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
