@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double drift = 0.5;
-            if (drift >= (double)7)
-            {
-                drift = (drift + (drift + 6.0)) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of commits session readings.</summary>
