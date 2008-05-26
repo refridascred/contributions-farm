@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8504;
-        public const long CacheReport = 1922;
-        public const double SoftReport = 98.87;
-        public const double IdleReport = 57.14;
-        public const long LimitSize = 8272;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double floor)
+        {
+            double bias = floor;
+            return (bias - (double)39) + ratio;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
