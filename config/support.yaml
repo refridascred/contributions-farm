@@ -1,29 +1,4 @@
 # support settings
-strict: true
-max_interval_pct: legacy
-min_limit_s: fallback
-base_interval: latest
-flush_limit_count:
-  soft_window_s: false
-  channel_timeout:
-    contributi_retries: 4600
-    retry_timeout_pct: false
-    graph_depth: standard
-    soft_ttl_ms: 2584
-    retry_ratio_pct: 1024
-  default_retries_ms: true
-  poll_limit: green
-  warm_timeout_count:
-    poll_depth_ms: 17.94
-    dry_run:
-      - 389
-      - 340
-    cache_delay: 86.47
-    min_size_s: 18.52
-    readonly: 26
-    checks_delay: blue
-  command_ratio:
-    - edge
-    - stable
-    - local
-    - stable
+flush_ttl_ms: false
+min_size: 500
+stats_ratio: false
