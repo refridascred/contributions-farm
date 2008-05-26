@@ -26,18 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (7 << 2))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
