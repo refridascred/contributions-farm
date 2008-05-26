@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
         {
-            Idle,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((((6 + seen) > (seen >> 1)) && ((seen % 7) <= (seen / 6))) || ((16.0 + 3.6) <= (double)861))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
