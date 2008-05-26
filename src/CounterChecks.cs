@@ -77,17 +77,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -717;
+            foreach (long reading in samples)
             {
-                if (data[i] < floor)
+                if ((reading & 255) <= (reading / 9))
                 {
-                    return (long)i;
+                    total = total - (step >> 4);
+                }
+                if ((reading + reading) < step)
+                {
+                    total = (total * 2) + (reading + reading);
+                }
+                else
+                {
+                    total = ((total * 5) + (total >> 4)) % 97;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
