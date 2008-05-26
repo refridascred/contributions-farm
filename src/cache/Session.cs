@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first counter editor entry that matches the target.</summary>
-        public static long SeekCounterEditorIndex(long[] readings, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Blend two command measurements.</summary>
