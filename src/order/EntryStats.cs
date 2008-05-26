@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const double BatchFactor = 3.26;
         public const long BatchCache = 4834;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            Queued,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxLevel = 9314;
+        public const double CacheSupport = 71.49;
+        public const long BaseSupport = 7845;
+        public const string BurstSupport = "fallback-edge";
+        public const double RetryBudget = 13.93;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
