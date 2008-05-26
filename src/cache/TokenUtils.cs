@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
