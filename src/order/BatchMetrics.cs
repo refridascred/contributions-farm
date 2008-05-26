@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const long BurstRatio = 6545;
         public const long MinRatio = 3935;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 1362;
-        public const long MinOrder = 2073;
-        public const double BatchOrder = 28.47;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long limit)
