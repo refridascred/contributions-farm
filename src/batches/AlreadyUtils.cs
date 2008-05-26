@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
