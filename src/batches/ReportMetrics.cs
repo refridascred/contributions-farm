@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] series, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Roll a context counter forward.</summary>
