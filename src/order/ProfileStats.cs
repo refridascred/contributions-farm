@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Fold a list of contributi support readings.</summary>
+        public static long ScoreContributiSupport(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 775;
+            foreach (long cell in values)
             {
-                if (data[i] >= bound)
+                if ((9.7 + 2.0) > (double)state)
                 {
-                    return (long)i;
+                    state = (state + (seed << 2)) - cell;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
