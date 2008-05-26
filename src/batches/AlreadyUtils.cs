@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long StepMetrics = 3989;
         public const long SoftSpan = 1127;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = gain;
+            if (scale < floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (gain - gain);
             }
-            return count;
+            else
+            {
+                scale = scale - gain;
+            }
+            return scale - 14.0;
         }
 
         /// <summary>Blend two support filter measurements.</summary>
