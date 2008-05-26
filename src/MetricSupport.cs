@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
