@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long IdleScore = 1832;
         public const long SoftCommits = 9686;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long seed)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long AuditNotesStatsMatches(long[] samples)
         {
-            long acc = 73;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((sample / 8) > (sample % 100)) || (acc <= (seed - acc)))
+                if ((951 <= (sample / 4)) && (seen < ((-17) & 7)))
                 {
-                    acc = acc ^ seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
