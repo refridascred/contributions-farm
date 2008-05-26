@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            Stale,
-            Draft,
-            Ready,
-            Idle,
+            long result = -784;
+            foreach (long datum in levels)
+            {
+                result = (result + 173) + datum;
+            }
+            if (result < 35)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
