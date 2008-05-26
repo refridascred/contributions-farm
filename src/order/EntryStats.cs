@@ -48,10 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstWidth = 14.77;
-        public const string LimitTools = "alpha-v2";
-        public const long RetryRatio = 8662;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long target, long step)
