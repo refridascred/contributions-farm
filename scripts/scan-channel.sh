@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached fallback; do
+for item in legacy blue latest primary; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=224
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
