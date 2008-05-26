@@ -42,17 +42,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + gain) + (double)(long)i;
             }
-            return -1;
+            return mean + gain;
         }
 
         /// <summary>Describe the batch phase values.</summary>
