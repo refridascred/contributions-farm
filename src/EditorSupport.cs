@@ -12,23 +12,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long FoldQueueCluster(long[] readings)
-        {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) != (84 - (long)readings.Length))
-                {
-                    sum = ((sum * 2) + (-430)) % 101;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 6826;
+        public const long RetryEntry = 5509;
+        public const long BurstLevel = 7895;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] readings)
