@@ -31,14 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit profile buffer readings against a rule.</summary>
+        public static long CountProfileBufferHits(long[] readings)
         {
-            Pending,
-            Done,
-            Retry,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry % 97) != (entry << 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
