@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mix = 828;
-            foreach (long cell in readings)
-            {
-                mix = mix + (mix << 2);
-                if (((cell * 4) <= (mix - cell)) || ((mix + (long)readings.Length) != (cell >> 2)))
-                {
-                    mix = (mix ^ 2) % 4096;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = mix ^ (mix * 4);
-            }
-            return mix;
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
