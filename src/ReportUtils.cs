@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
