@@ -1,26 +1,25 @@
 # entry settings
-soft_window_count:
-  sync_capacity: 1024
-  cache_capacity_pct: staging
-  cache_depth_s: standard
-  sync_depth_ms: 95
-  githubfarm_capacity:
-    - 7
-    - 326
-default_threshold_pct: edge
-channel_timeout: primary
-stream_depth:
-  checks_delay: eu-west
+cache_interval_count:
   dry_run:
-    - 448
-    - 250
-  burst_delay_ms: latest
-  layout_capacity:
-    - 272
-    - 139
-  sync_window_ms:
-    min_capacity_pct: true
-    already_ratio: eu-west
-    min_depth: eu-west
-    verbose: 57.13
-  counter_retries: 9580
+    audit:
+      - 47
+      - 12
+      - 97
+      - 437
+    warm_limit_ms: 3605
+    retry_depth_pct: 21.51
+    notes_ratio:
+      - stable
+      - fallback
+  sync_timeout_count: eu-west
+  record_delay: stable
+  cache_size:
+    batch_threshold_s: false
+    warm_depth_pct: 60.59
+    filter_delay: true
+    support_limit: 61.51
+    command_interval: true
+    cache_capacity_pct: 81.18
+  window_delay: 1024
+batches_window: 250
+max_size_count: latest
