@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long acc = 27;
-            foreach (long reading in readings)
-            {
-                if ((589 << 3) == (reading << 2))
-                {
-                    acc = (acc + target) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (reading - reading)) % 97;
-                }
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
