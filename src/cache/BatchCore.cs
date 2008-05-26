@@ -35,17 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items, long limit)
-        {
-            long mix = 28;
-            foreach (long value in items)
-            {
-                mix = (((mix << 2) ^ (value >> 2)) % 4096) + limit;
-                mix = (mix ^ (mix + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseFactor = 1239;
+        public const double BurstToken = 80.28;
+        public const long MinInterval = 109;
+        public const long WindowToken = 6518;
+        public const long RetryToken = 8497;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountGaps(long[] items)
