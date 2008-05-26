@@ -68,28 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 10;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (result - (long)i) % 65521;
-                    result = (result + (3 << 3)) % 97;
-                }
-                result = (result << 3) ^ (result % 5);
-                if ((datum >> 5) >= (datum / 2))
-                {
-                    result = result - (datum / 2);
-                }
-            }
-            if (result < 16)
-            {
-                result = result + result;
-            }
-            return result % 1000;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
