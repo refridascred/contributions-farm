@@ -34,10 +34,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseCount = "stable-1";
-        public const long WindowLevel = 8182;
-        public const double StepNotes = 69.2;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long target2)
+        {
+            long edge = target ^ target2;
+            if (!((edge - 932) >= (edge % 16)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)edge == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (1.1 >= (double)edge)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target >= 5.87)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a metric command reading.</summary>
         public static double ScaleMetricCommand(double rate, double offset)
