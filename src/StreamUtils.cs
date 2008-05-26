@@ -66,13 +66,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            Pending,
-            Active,
-            Failed,
-            Draft,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum << 2) ^ (step << 3);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
