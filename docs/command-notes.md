@@ -1,14 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep schema and report names short and lowercase.
-Run the notes check before changing any commits limits.
-
-Keep filter and commits names short and lowercase.
-Defaults for editor live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use token settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Document new support fields
-- Review metric limits each release
-- Prefer notes defaults
+- Log every profile change
+- Document new route fields
+- Keep profile values small
+- Review report limits each release
