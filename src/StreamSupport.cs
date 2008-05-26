@@ -21,21 +21,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -599;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry - entry) <= carry)
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 3) + (entry % 2)) % 4096;
+                }
+                if ((carry < (entry >> 3)) && ((double)entry <= (1.31 + 13.0)))
+                {
+                    carry = carry + (carry >> 3);
                 }
             }
-            return tally;
+            if (carry < 724)
+            {
+                carry = (carry - (carry >> 5)) % 1000;
+            }
+            return carry;
         }
     }
 }
