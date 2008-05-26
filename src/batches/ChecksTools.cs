@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples, long floor)
+        /// <summary>Look up the position of a checks already sample.</summary>
+        public static long LocateChecksAlreadyIndex(long[] samples, long step)
         {
-            long mix = 524;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - (floor - mix)) ^ sample;
-                mix = (mix << 2) ^ (mix / 5);
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix - (floor << 1)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
