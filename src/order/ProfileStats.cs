@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstWidth = 60.72;
-        public const long BurstSpan = 7815;
-        public const long BatchRecord = 9732;
-        public const long SoftRecord = 5557;
-        public const string BatchRatio = "cached-1";
+        /// <summary>Locate a commits payload reading by value.</summary>
+        public static long LookupCommitsPayloadIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] data, long bound)
