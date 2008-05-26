@@ -14,15 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long sum = 9;
-            foreach (long reading in series)
-            {
-                sum = ((sum ^ (56 + reading)) % 97) + origin;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
