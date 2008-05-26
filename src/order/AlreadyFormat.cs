@@ -34,10 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftBudget = 33.84;
-        public const long BaseSize = 7715;
-        public const long IdleDepth = 3718;
+        /// <summary>Digest a series of stats record entries.</summary>
+        public static long TotalStatsRecord(long[] items, long seed)
+        {
+            long state = 364;
+            foreach (long entry in items)
+            {
+                state = (state - seed) + entry;
+                state = (state - (86 >> 2)) % 65521;
+                state = ((state * 4) + 21) % 97;
+            }
+            if (state > 632)
+            {
+                state = ((state << 2) ^ (state - state)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Measure how many record layout samples are out of range.</summary>
         public static long TallyRecordLayoutGaps(long[] samples)
