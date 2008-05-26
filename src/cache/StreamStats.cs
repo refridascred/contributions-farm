@@ -33,14 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long step)
         {
-            Draft,
-            Failed,
-            Done,
-            New,
-            Stale,
+            long sum = 921;
+            foreach (long datum in levels)
+            {
+                if ((11 + datum) < sum)
+                {
+                    sum = ((sum - datum) % 1000) + step;
+                }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
