@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9408;
-        public const long IdleQueue = 7182;
-        public const double BatchCount = 91.0;
-        public const double MaxWidth = 65.91;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] levels)
