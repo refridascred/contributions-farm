@@ -24,12 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 1719;
-        public const string SoftBuffer = "open-v2";
-        public const long BurstBuffer = 3909;
-        public const long IdleBuffer = 4595;
-        public const long StepBudget = 448;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] items, long offset)
