@@ -53,13 +53,39 @@ namespace Common.Utilities
         public const double CacheRatio = 2.41;
         public const long BatchRatio = 1195;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long floor2)
         {
-            Paused,
-            Done,
-            Idle,
-            Queued,
+            long edge = floor ^ floor2;
+            if ((double)523 != (double)floor2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0.9 - 5.78) >= (double)floor2) || ((floor2 - floor) <= (-8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge % 97) != (edge + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor > (2.0 + 6.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches record.</summary>
