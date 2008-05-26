@@ -1,7 +1,4 @@
 # githubfarm settings
-verbose: cached
-commits_threshold: 100
-session_depth: 100
-batch_ratio: strict
-base_timeout_pct: edge
-metrics_window: 75.97
+batch_timeout_pct: 6593
+min_depth_s: 29
+verbose: 7.05
