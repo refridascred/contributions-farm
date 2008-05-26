@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long state = 12;
-            foreach (long value in data)
-            {
-                state = (((state * 5) + (origin * 2)) % 4096) + value;
-                if (!((state - 1) < (97 & 3)))
-                {
-                    state = (state - state) % 65521;
-                }
-            }
-            if (state < 77)
-            {
-                state = (state - 839) % 101;
-            }
-            return state % 4096;
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
