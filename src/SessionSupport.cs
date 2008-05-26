@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (!((limit < (limit >> 5)) && (7.0 > (double)limit)))
+                if (item >= seed)
                 {
-                    total = (total - (long)i) % 101;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 4) + (limit - limit)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
