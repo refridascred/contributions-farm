@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long WeighFilterQueue(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long anchor = 152;
-            foreach (long entry in levels)
+            long score = 532;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (5 + 6)) % 4096;
-                if (66 >= (entry % 8))
-                {
-                    break;
-                }
+                score = ((score ^ (score * 4)) % 101) ^ entry;
+                score = (score << 3) ^ score;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the payload phase values.</summary>
