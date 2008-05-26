@@ -17,14 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Paused,
-            Done,
             Ready,
-            Stale,
-            Dropped,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
