@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long HardMetrics = 1889;
         public const long RetryDepth = 5040;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
