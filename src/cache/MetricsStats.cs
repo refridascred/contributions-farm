@@ -77,15 +77,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long TallyStatsContextMatches(long[] readings, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!((412 >> 3) >= (352 ^ offset)) || (((offset >> 5) <= (3 + cell)) && ((cell - seen) == (seen + 0))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
