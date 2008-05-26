@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((((reading & 7) < (seen * 3)) || ((reading % 3) > reading)) && ((0.27 + 4.4) >= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Roll a context counter forward.</summary>
