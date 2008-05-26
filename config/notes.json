@@ -1,5 +1,6 @@
 {
-  "profile_limit": 100,
-  "idle_threshold_pct": ["standard", "local", "primary"],
-  "flush_timeout_pct": "cached"
+  "default_window": ["latest", "primary", "blue", "staging"],
+  "soft_capacity_pct": 30,
+  "burst_capacity": "standard",
+  "idle_capacity_pct": 530
 }
