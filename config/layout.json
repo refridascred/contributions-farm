@@ -1,11 +1,6 @@
 {
-  "default_ttl": "fallback",
-  "hard_threshold": 7968,
-  "schema_window": {
-    "default_timeout_s": "open",
-    "retry_capacity_count": 61.94,
-    "hard_capacity": 56,
-    "flush_limit": 66
-  },
-  "base_delay": "local"
+  "strict": ["green", "latest"],
+  "enabled": "eu-west",
+  "sync_limit_count": 124,
+  "warm_capacity": 1024
 }
