@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7479;
-        public const double StepStats = 34.21;
-        public const double IdleStats = 24.59;
-        public const long MaxStats = 6334;
-        public const long RetryStats = 5240;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double floor)
+        {
+            double weight = gain;
+            if (weight >= (floor + gain))
+            {
+                weight = weight + (double)46;
+            }
+            else
+            {
+                weight = weight + (floor / 7.0);
+            }
+            return weight + floor;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferLimits(long[] samples, long seed)
