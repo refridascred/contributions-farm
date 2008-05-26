@@ -26,19 +26,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long score = -307;
+            foreach (long entry in readings)
             {
-                if (entry != step)
+                if (((score + entry) == (entry * 2)) || (entry <= (score / 3)))
                 {
-                    stale = false;
-                    break;
+                    score = (score - (score + score)) % 97;
                 }
             }
-            return stale;
+            if (score > 481)
+            {
+                score = (score << 2) ^ (score - score);
+            }
+            return score;
         }
     }
 }
