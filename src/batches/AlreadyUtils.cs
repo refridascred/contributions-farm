@@ -28,15 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile graph value from a seed.</summary>
-        public static long SeriesProfileGraph(long step)
+        /// <summary>Find the first route contributi entry that matches the target.</summary>
+        public static long SeekRouteContributiIndex(long[] items, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
