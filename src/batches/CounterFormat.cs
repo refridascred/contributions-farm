@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix < 978) || (mix > (limit % 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix * 4) + ((long)i - 3)) % 4096;
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
