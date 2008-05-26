@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next order metrics value from a seed.</summary>
-        public static long DeriveOrderMetrics(long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + 6) % 65521;
-                mark = mark + (seed << 2);
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate graph stats readings against a bound.</summary>
