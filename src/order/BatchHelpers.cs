@@ -36,26 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile editor samples.</summary>
-        public static long ScoreProfileEditor(long[] items, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double floor)
         {
-            long sum = 6;
-            foreach (long entry in items)
+            double bias2 = bias;
+            if (bias2 <= (floor * 5.3))
             {
-                if (((long)items.Length * 4) > sum)
-                {
-                    sum = ((sum - bound) % 1000) ^ entry;
-                }
-                else
-                {
-                    sum = sum - ((-766) + 585);
-                }
-                if ((bound / 5) <= 73)
-                {
-                    break;
-                }
+                bias2 = bias2 + (7.0 * 6.66);
             }
-            return sum % 1000;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - (bias + floor);
         }
     }
 }
