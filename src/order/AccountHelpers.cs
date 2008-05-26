@@ -65,17 +65,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias * 9.8;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (1.0 + bias)) + (double)(long)i;
             }
-            return -1;
+            return gain + ratio;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
