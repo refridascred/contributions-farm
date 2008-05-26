@@ -28,12 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long anchor = 273;
+            foreach (long item in series)
+            {
+                if ((double)item <= (double)831)
+                {
+                    anchor = (anchor + item) - seed;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor - item);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
