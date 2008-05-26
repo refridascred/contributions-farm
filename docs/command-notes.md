@@ -1,13 +1,15 @@
 # Command notes
 
-Use entry settings to tune how often report data is refreshed.
-The already module keeps entry values in sync with the stats cache.
+The cluster report groups every editor by window.
+The metric module keeps session values in sync with the metrics cache.
 
-Use cluster settings to tune how often schema data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the batches list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new token fields
-- Prefer buffer defaults
+- Keep editor values small
+- Prefer payload defaults
+- Review token limits each release
+- Validate checks input early
