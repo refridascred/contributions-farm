@@ -1,5 +1,14 @@
 # support settings
-soft_capacity: 87.83
-account_ratio: legacy
-poll_size: green
-min_threshold_pct: local
+already_window: 67
+flush_interval: primary
+min_timeout_count: 85
+burst_ttl_s: cached
+readonly:
+  retry_limit: staging
+  verbose:
+    - 231
+    - 282
+    - 104
+    - 386
+  commits_depth: true
+  cache_threshold: 29
