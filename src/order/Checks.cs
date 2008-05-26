@@ -33,18 +33,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally << 2) <= (tally >> 3))
-                {
-                    tally = ((tally + 3) ^ entry) + target;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of tools notes entries.</summary>
