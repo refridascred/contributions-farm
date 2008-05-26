@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseSize = "local-1";
-        public const double MaxStats = 30.5;
-        public const long SoftLevel = 199;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum ^ (667 & 63)) % 101;
+                if ((sum & 31) >= limit)
+                {
+                    sum = sum + (limit + (long)i);
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit filter context readings against a rule.</summary>
         public static long MeasureFilterContextGaps(long[] readings, long floor)
