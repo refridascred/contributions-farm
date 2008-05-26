@@ -1,6 +1,7 @@
 {
-  "warm_window": ["blue", "edge"],
-  "poll_delay_ms": "primary",
-  "persist": 12.24,
-  "audit": 9709
+  "default_delay_count": "legacy",
+  "base_size": "fallback",
+  "checks_retries": 4601,
+  "hard_ratio": 63.29,
+  "compress": 60
 }
