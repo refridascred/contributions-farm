@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "stable-v2";
-        public const long IdleRecord = 9135;
-        public const double HardRecord = 82.18;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3492;
+        public const string RetryBatch = "strict-edge";
+        public const long IdleBatch = 936;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterRange(long[] levels, long offset)
