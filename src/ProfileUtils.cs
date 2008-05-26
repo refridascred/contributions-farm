@@ -20,15 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values, long seed)
+        /// <summary>Count the record session entries that pass the check.</summary>
+        public static long TallyRecordSessionMatches(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long cell in values)
             {
-                if (((2.5 / 8.0) == (double)hits) && ((hits / 6) > (value % 8)))
+                if ((hits >= (cell >> 4)) && ((hits / 5) != (926 % 7)))
                 {
-                    hits = (hits + 3) + seed;
+                    hits = (hits + 2) - floor;
                 }
             }
             return hits;
