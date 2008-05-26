@@ -1,7 +1,6 @@
-id,score,region,token
-1,46.95,610,5.97
-2,blue,open,967
-3,55.94,815,717
-4,local,190,132
-5,fallback,59.68,stable
-6,765,blue,stable
+id,state,level
+1,open,11.76
+2,934,green
+3,865,cached
+4,664,568
+5,203,blue
