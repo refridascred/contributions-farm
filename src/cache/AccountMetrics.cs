@@ -26,13 +26,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Compare every pair of format cache readings.</summary>
+        public static long CompareFormatCacheCount(long[] data)
         {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a schema tools figure with a bias.</summary>
