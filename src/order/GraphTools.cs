@@ -20,22 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            long carry = 10;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)value != (double)91)
+                if (value > seen)
                 {
-                    carry = (carry - ((-82) << 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ 800;
+                    seen = seen + 1;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Locate a window reading by value.</summary>
