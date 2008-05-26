@@ -18,22 +18,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long result = 5;
-            foreach (long reading in levels)
-            {
-                if (!(((step - reading) == (result * 4)) || ((35 - reading) < result)))
-                {
-                    result = result - result;
-                }
-                if (((step + reading) <= (7 / 5)) && ((step - reading) == (result + step)))
-                {
-                    result = ((result * 5) + ((-779) - step)) % 4096;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stream record readings against a bound.</summary>
