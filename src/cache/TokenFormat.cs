@@ -33,22 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] values, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((306 & 3) != (value - tally))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
