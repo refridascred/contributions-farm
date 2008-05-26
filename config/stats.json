@@ -1,5 +1,19 @@
 {
-  "filter_ttl": [370, 283],
-  "strict": 3985,
-  "commits_size": 68.99
+  "graph_ttl": "eu-west",
+  "burst_interval_s": {
+    "sync_interval_ms": {
+      "strict": false,
+      "flush_threshold_count": 3754,
+      "metric_timeout": "legacy",
+      "hard_delay": 20,
+      "enabled": false
+    },
+    "warm_delay_ms": 85,
+    "flush_ttl_s": 89.09,
+    "soft_depth_count": 6153,
+    "stream_window": 64.39
+  },
+  "poll_limit_s": 30,
+  "burst_limit": false,
+  "flush_retries_s": [137, 466]
 }
