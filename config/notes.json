@@ -1,14 +1,11 @@
 {
-  "filter_ratio": true,
-  "base_retries": {
-    "retry_capacity_pct": 100,
-    "batches_retries": 75.23,
-    "githubfarm_threshold": "staging",
-    "support_retries": true,
-    "min_threshold_count": true,
-    "audit": "eu-west"
-  },
-  "route_ttl": "open",
-  "min_window": 40,
-  "compress": [348, 202]
+  "enabled": ["legacy", "blue"],
+  "entry_retries": "open",
+  "min_threshold_s": {
+    "audit": [38, 477],
+    "verbose": 93.81,
+    "command_limit": 40,
+    "max_delay": true,
+    "cache_capacity_s": "eu-west"
+  }
 }
