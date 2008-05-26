@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 5632;
-        public const string MaxProfile = "stable-1";
-        public const string HardCount = "primary-v2";
-        public const double BatchProfile = 39.1;
-        public const double IdleWidth = 68.71;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Paused,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] items)
