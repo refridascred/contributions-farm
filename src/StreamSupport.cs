@@ -22,19 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] values, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long state = 8;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (state - 38)) - item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state < 859)
-            {
-                state = (state - seed) % 101;
-            }
-            return state;
+            return tally;
         }
     }
 }
