@@ -1,17 +1,16 @@
 # support settings
-warm_threshold_ms: false
-compress: 41.34
-max_threshold_count: 6264
-idle_retries_s:
-  audit:
-    - 272
-    - 54
-    - 169
-    - 458
-  batch_interval_s:
-    - 25
-    - 95
-  min_delay: 63.7
-  window_retries: blue
-  compress: 30
-channel_ratio: 30
+persist:
+  - eu-west
+  - edge
+  - strict
+poll_ttl: staging
+dry_run:
+  enabled: 1024
+  route_capacity: primary
+  batch_capacity_s: 74
+  burst_capacity_ms: 30
+  sync_retries_pct: eu-west
+  max_capacity: true
+readonly: 60
+editor_window: 87
+max_depth_s: true
