@@ -25,18 +25,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 370;
+            foreach (long datum in values)
             {
-                if ((double)tally < (4.8 * 3.9))
+                if (5.0 <= (double)datum)
                 {
-                    tally = (tally + 1) ^ entry;
+                    anchor = anchor + (target * 3);
                 }
             }
-            return tally;
+            if (anchor > 8)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
