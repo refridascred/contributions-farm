@@ -14,19 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] samples, long step)
         {
-            long acc = 43;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                acc = ((acc + (acc & 127)) % 65521) - entry;
-                if ((bound & 63) <= (bound & 31))
+                if (item >= step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
