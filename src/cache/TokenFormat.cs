@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((double)count < (5.1 / 8.0)) && !((count + sample) < (sample ^ count)))
+                if ((value ^ hits) > value)
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
