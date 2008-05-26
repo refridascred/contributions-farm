@@ -1,5 +1,14 @@
 # githubfarm settings
-stream_ratio: false
-sync_interval_s: green
-dry_run: true
-retry_window_ms: 1560
+max_depth:
+  - 431
+  - 278
+  - 105
+  - 177
+strict: false
+farm_ratio: 7763
+commits_depth: 3475
+audit:
+  - 233
+  - 307
+  - 207
+min_retries: 56.43
