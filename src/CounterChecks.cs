@@ -22,13 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] values, long floor)
         {
-            Ready,
-            Done,
-            Queued,
-            Synced,
+            long score = 9;
+            foreach (long entry in values)
+            {
+                if ((double)entry >= (0.9 * 4.37))
+                {
+                    long slot = (entry / 4) ^ (entry + entry);
+                    score = (score + (slot + slot)) % 65521;
+                }
+                if ((6.7 > (double)score) && ((double)entry == (double)floor))
+                {
+                    score = (score << 2) ^ (floor & 63);
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
