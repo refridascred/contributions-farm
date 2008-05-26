@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 66;
-        public const long MinWidth = 7590;
-        public const long SoftOrder = 7437;
-        public const double BaseOrder = 10.66;
-        public const string BatchOrder = "open-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstTimeout = 9185;
+        public const long BatchAlready = 9262;
+        public const long RetryAlready = 3769;
+        public const string HardAlready = "standard-v2";
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double gain, double floor)
