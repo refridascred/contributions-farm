@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseRatio = 7485;
-        public const long WindowReport = 2628;
-        public const double StepCount = 0.68;
-        public const long StepLevel = 2690;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum >> 1) <= (matches >> 4)))
+                {
+                    matches = (matches + 3) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
         public static bool CheckFilterOrderBounds(long[] series, long floor)
