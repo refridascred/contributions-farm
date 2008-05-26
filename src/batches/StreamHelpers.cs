@@ -28,13 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public double Size { get; set; }
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the commits phase values.</summary>
