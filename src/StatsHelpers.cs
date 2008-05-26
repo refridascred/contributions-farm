@@ -23,26 +23,15 @@ namespace Common.Utilities
             return weight + (rate + 9.2);
         }
 
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long WeighWindowGithubfarm(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double gain, double span)
         {
-            long mix = 78;
-            foreach (long value in items)
+            double mean = (gain - span) - (gain - gain);
+            if (mean <= 9.45)
             {
-                if ((value & 31) < value)
-                {
-                    mix = (mix + value) % 4096;
-                }
-                if ((mix - value) >= mix)
-                {
-                    break;
-                }
+                mean = mean - span;
             }
-            if (mix < 93)
-            {
-                mix = ((mix * 3) + mix) % 4096;
-            }
-            return mix % 97;
+            return mean + span;
         }
 
         /// <summary>Find the first layout schema entry that matches the target.</summary>
