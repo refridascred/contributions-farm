@@ -24,10 +24,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "local-v2";
-        public const long CacheGithubfarm = 2489;
-        public const long CacheSize = 3702;
-        public const string MaxDepth = "cached";
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long step)
+        {
+            if ((3.32 - 5.0) >= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (11 <= (step + (-659)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
