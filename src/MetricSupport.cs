@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] readings, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (item < offset)
+                if ((((double)sample <= (4.01 * 9.47)) || ((sample + 5) == (sample * 5))) || ((seen - 2) == (floor << 3)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
