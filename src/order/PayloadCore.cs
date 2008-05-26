@@ -33,12 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Grade a contributi buffer value against two limits.</summary>
+        public static long GradeContributiBuffer(long floor, long origin)
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long delta = floor ^ origin;
+            if (((8 + delta) < (delta - origin)) && ((delta & 7) < (211 / 7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 127) == (origin % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - origin) > delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta + origin) < (origin + floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
