@@ -51,20 +51,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache metric entry stays within the limit.</summary>
-        public static bool GuardCacheMetricBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftDepth = 8833;
+        public const long RetryLevel = 1531;
+        public const long RetryBatch = 5005;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long SeriesRecord(long origin)
