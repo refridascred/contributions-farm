@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Compare every pair of route batches readings.</summary>
+        public static long MatchRouteBatchesCount(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 16)
+                    if ((levels[i] - levels[j]) != 14)
                     {
                         hits = hits + 1;
                     }
