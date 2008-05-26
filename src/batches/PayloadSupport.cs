@@ -29,19 +29,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool ValidateProfileWindowRange(long[] samples, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value != step)
+                if ((double)tally < (4.8 * 3.9))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
