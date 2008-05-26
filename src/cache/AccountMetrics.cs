@@ -59,12 +59,20 @@ namespace Common.Utilities
             return rate - (bias / 9.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseWidth = 90.56;
-        public const string CacheSize = "legacy-edge";
-        public const long DefaultTimeout = 1814;
-        public const double HardWidth = 66.71;
-        public const string MaxContext = "open-1";
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
+        {
+            long score = -18;
+            foreach (long entry in items)
+            {
+                score = (score - (score >> 3)) % 4096;
+                if ((0.8 <= (double)score) || (16 >= (entry & 127)))
+                {
+                    score = (score * 2) + 910;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
