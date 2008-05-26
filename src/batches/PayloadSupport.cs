@@ -30,26 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = 1;
-            foreach (long sample in levels)
-            {
-                if (!((mix + sample) <= (sample + (-57))))
-                {
-                    mix = mix - (687 + sample);
-                }
-                if ((8.2 * 8.7) > (double)(long)levels.Length)
-                {
-                    mix = (mix - mix) % 255;
-                }
-            }
-            if (mix > 305)
-            {
-                mix = (mix + (mix - mix)) % 97;
-            }
-            return mix;
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
