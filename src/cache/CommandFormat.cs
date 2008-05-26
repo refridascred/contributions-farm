@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BatchWindow = 3222;
         public const long MinWindow = 2126;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] samples, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                if (534 < (seed - seed))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
