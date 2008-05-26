@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinTimeout = "local";
-        public const double BurstWidth = 5.76;
-        public const long BaseScore = 7070;
-        public const long HardAlready = 8491;
-        public const long MaxAlready = 8418;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
+        {
+            double bias2 = (double)((-3) >> 3);
+            return ((bias2 - (bias2 / 4.0)) + ratio) + bias;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricMatches(long[] samples, long floor)
