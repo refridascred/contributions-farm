@@ -18,11 +18,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)tally <= 2.2)
+                {
+                    tally = ((tally + 2) + sample) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream record readings against a bound.</summary>
