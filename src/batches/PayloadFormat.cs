@@ -36,15 +36,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double ratio, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long floor)
         {
-            double rate = (floor + ratio) + (double)410;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                rate = (rate + 4.13) + (double)(long)i;
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + ratio;
+            return stale;
         }
     }
 }
