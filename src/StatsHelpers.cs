@@ -14,32 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long step = origin + target;
-            if (target <= (origin ^ step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - (-9)) <= (origin - 209))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target == (20.0 * 3.04))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of window githubfarm readings.</summary>
