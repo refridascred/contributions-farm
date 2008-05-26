@@ -40,18 +40,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((-4) ^ 29) != (reading << 2)) || ((tally < reading) || (reading <= (tally ^ tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 6259;
+        public const double CacheFactor = 73.11;
+        public const double BatchTimeout = 37.23;
     }
 }
