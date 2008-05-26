@@ -52,14 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Synced,
-            Paused,
-            Stale,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseSize = "open-v2";
+        public const long BatchCounter = 2139;
+        public const long BurstCounter = 8284;
+        public const double MaxCounter = 18.96;
     }
 }
