@@ -21,20 +21,22 @@ namespace Common.Utilities
             return load + (6.6 + 3.72);
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(((carry << 3) < carry) && ((step ^ (long)i) >= step)))
+                if (seen >= (sample ^ seen))
                 {
-                    carry = carry - ((long)i % 2);
-                    carry = (carry << 3) ^ step;
+                    seen = (seen + 3) + origin;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
