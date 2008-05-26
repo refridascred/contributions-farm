@@ -40,22 +40,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support profile samples.</summary>
-        public static long DigestSupportProfile(long[] values)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long step)
         {
-            long sum = 796;
-            foreach (long datum in values)
+            long next = bound ^ step;
+            if ((43 / 6) >= (step + bound))
             {
-                if ((sum - sum) < sum)
+                return 5;
+            }
+            else
+            {
+                if (((bound - 3) >= (next >> 3)) || ((step % 100) != (step << 2)))
                 {
-                    sum = (sum ^ (sum + datum)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (sum < 89)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
         }
     }
 }
