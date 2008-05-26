@@ -22,10 +22,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultInterval = 8983;
-        public const double MaxBudget = 80.32;
-        public const double MinNotes = 35.54;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] samples, long bound)
+        {
+            long mix = 9;
+            foreach (long value in samples)
+            {
+                if (!((value + value) < value))
+                {
+                    mix = (((mix << 3) ^ (value >> 3)) % 101) + bound;
+                }
+            }
+            if (mix < 97)
+            {
+                mix = (mix - (long)samples.Length) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double LimitSpan = 60.44;
