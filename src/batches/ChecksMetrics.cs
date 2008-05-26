@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double offset)
-        {
-            double bias2 = bias;
-            if (bias2 > bias)
-            {
-                bias2 = bias2 - (2.99 * 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - offset) - (double)(long)i;
-            }
-            return bias2 + (4.5 + 2.27);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseSize = "local-1";
+        public const double MaxStats = 30.5;
+        public const long SoftLevel = 199;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowSize = 7286;
