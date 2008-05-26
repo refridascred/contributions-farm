@@ -73,18 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample % 8) == (hits & 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
