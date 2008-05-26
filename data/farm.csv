@@ -1,6 +1,8 @@
-id,label,ratio
-1,780,459
-2,211,53.78
-3,94.2,56.16
-4,496,latest
-5,371,legacy
+id,score,owner,region
+1,cached,fallback,primary
+2,859,63.92,2.38
+3,699,490,773
+4,37.26,local,67.0
+5,884,406,25.09
+6,240,46,18.23
+7,local,blue,10.69
