@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a checks already sample.</summary>
-        public static long LocateChecksAlreadyIndex(long[] samples, long step)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool CheckFormatCacheRange(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] < step)
+                if (reading < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the batches state values.</summary>
