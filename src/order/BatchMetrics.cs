@@ -73,16 +73,13 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + (total % 24)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
