@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long floor2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long prev = floor ^ floor2;
-            if ((floor2 & 255) <= (floor % 3))
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((3 <= (floor * 2)) || ((floor2 * 4) != (floor2 >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (16.0 <= (double)prev)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.0 + 18.0) != (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a token entry.</summary>
