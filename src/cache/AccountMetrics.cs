@@ -41,11 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema tools figure with a bias.</summary>
-        public static double ScaleSchemaTools(double gain, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double gain2 = (double)(59 & 31);
-            return ((gain2 - (double)6) + gain) + bias;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
