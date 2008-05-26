@@ -1,24 +1,5 @@
 {
-  "idle_ttl_pct": {
-    "session_capacity": [216, 151, 74],
-    "session_ttl": "legacy",
-    "readonly": {
-      "default_ratio_pct": 2095,
-      "record_delay": [12, 242, 367],
-      "context_ratio": 4171,
-      "retry_retries_count": 49,
-      "retry_ttl_ms": ["strict", "primary", "latest", "local"],
-      "verbose": "latest"
-    }
-  },
-  "max_depth_count": 100,
-  "default_capacity": [313, 185, 223],
-  "idle_capacity_s": 5303,
-  "base_size_pct": {
-    "idle_delay_ms": [70, 473, 295],
-    "verbose": "latest",
-    "commits_ratio": 2685,
-    "notes_delay": "primary"
-  },
-  "batch_window_ms": true
+  "compress": 35.55,
+  "commits_delay": "eu-west",
+  "command_capacity": "primary"
 }
