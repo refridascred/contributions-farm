@@ -1,5 +1,9 @@
 {
-  "retry_capacity_s": [416, 128],
-  "burst_delay": 68,
-  "persist": 6694
+  "audit": {
+    "metric_ratio": 74.37,
+    "batch_window": "latest",
+    "idle_threshold": [13, 22]
+  },
+  "notes_threshold": 15,
+  "max_limit": true
 }
