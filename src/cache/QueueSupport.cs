@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a format route sample.</summary>
-        public static long LookupFormatRouteIndex(long[] series, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset < (offset << 1)) && ((5.1 - 8.9) > (double)limit))
             {
-                if (series[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if (((offset - limit) > (offset - offset)) && (limit >= (offset >> 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
