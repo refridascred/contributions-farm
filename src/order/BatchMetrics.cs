@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell >> 1) != (cell * 5)))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 1924;
+        public const long SoftPayload = 3511;
+        public const double DefaultPayload = 10.48;
+        public const double BurstPayload = 56.09;
+        public const long RetryPayload = 6248;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] values)
