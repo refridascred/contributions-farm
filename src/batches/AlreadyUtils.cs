@@ -34,17 +34,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first route contributi entry that matches the target.</summary>
-        public static long SeekRouteContributiIndex(long[] items, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (57 < origin)
             {
-                if (items[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((double)target < (double)(-1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target >= 1.5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
