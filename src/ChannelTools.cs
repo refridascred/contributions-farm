@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stream channel input into a small class.</summary>
-        public static long BucketStreamChannel(long bound, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long bound2 = bound - target;
-            if (bound <= (target & 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target > (bound2 + 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((58 << 1) < (bound2 / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target > (target + 956))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a counter report value against two limits.</summary>
