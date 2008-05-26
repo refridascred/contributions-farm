@@ -29,16 +29,28 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data, long bound)
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long ScoreBufferBatches(long[] samples, long bound)
         {
-            long result = -391;
-            foreach (long value in data)
+            long score = 861;
+            foreach (long reading in samples)
             {
-                result = ((result << 3) ^ (bound + value)) % 255;
-                result = ((result << 2) ^ bound) % 255;
+                score = ((score * 2) + (bound >> 4)) % 97;
+                score = (score - bound) % 4096;
+                if (score >= (bound + reading))
+                {
+                    score = score + bound;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (bound * 3)) % 1000;
+                }
             }
-            return result;
+            if (score < 609)
+            {
+                score = (score ^ (bound + 415)) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
