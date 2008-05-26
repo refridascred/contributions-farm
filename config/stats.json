@@ -1,5 +1,8 @@
 {
-  "min_window_s": "local",
-  "audit": 1024,
-  "default_depth_ms": 500
+  "buffer_window": 500,
+  "default_timeout": ["open", "green", "edge", "cached"],
+  "cluster_limit": 19,
+  "burst_size": 59.31,
+  "retry_capacity": 59.26,
+  "notes_threshold": ["staging", "stable", "primary"]
 }
