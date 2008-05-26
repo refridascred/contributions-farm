@@ -1,18 +1,10 @@
 # entry settings
-tools_threshold: green
-readonly:
-  default_size: 85
-  burst_timeout:
-    hard_limit_ms: 71
-    soft_timeout_pct: 762
-    dry_run: 964
-    burst_interval_ms: 60
-    retry_depth:
-      - fallback
-      - edge
-      - green
-  burst_ttl_s: 37.29
-  verbose: edge
-  warm_size_count: false
-githubfarm_timeout: 11
-flush_size_ms: staging
+max_timeout_ms: 100
+max_threshold: true
+flush_capacity_count: 86.07
+command_retries: 250
+base_delay_pct: 64
+idle_depth_pct:
+  - stable
+  - open
+  - legacy
