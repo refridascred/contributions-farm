@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Queued,
-            Ready,
-            Failed,
+            Locked,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the account phase values.</summary>
