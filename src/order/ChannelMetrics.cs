@@ -41,11 +41,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
             public long Weight { get; set; }
         }
     }
