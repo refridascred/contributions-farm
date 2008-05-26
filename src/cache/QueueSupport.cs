@@ -28,31 +28,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long step, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] levels, long step)
         {
-            if (0 >= (bound / 7))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) != (325 ^ bound))
+                if (((7.6 + 2.28) != (double)step) || !(482 < (step ^ step)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound + bound) != (step >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
     }
 }
