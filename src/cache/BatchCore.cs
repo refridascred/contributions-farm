@@ -65,38 +65,18 @@ namespace Common.Utilities
             return ratio + (13.0 / 6.0);
         }
 
-        /// <summary>Rank stats command input into a small class.</summary>
-        public static long BucketStatsCommand(long seed, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            if (!((double)seed < (7.31 - 4.96)))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((707 / 3) >= (seed ^ seed))
+                if (!(((double)item >= (5.7 / 8.0)) || ((item << 2) < (989 % 12))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (seed - 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 4) < (7 ^ 72))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
