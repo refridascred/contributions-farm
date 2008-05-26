@@ -28,10 +28,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepCount = 7789;
-        public const double WindowSize = 1.92;
-        public const double LimitPayload = 59.24;
-        public const long DefaultDepth = 8595;
+        /// <summary>Find the first schema githubfarm entry that matches the target.</summary>
+        public static long FindSchemaGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
