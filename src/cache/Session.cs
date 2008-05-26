@@ -28,12 +28,13 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 1549;
-        public const double MinContext = 32.7;
-        public const long MaxLevel = 2547;
-        public const string CacheSize = "fallback-edge";
-        public const double HardContext = 2.91;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 9453;
