@@ -37,13 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Closed,
-            Active,
-            Ready,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
