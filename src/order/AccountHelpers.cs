@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            long total = -98;
-            foreach (long datum in samples)
+            double weight = (double)(175 / 8);
+            if (weight < (span / 5.0))
             {
-                if (((-86) * 3) > (seed / 6))
-                {
-                    total = (total - 8) + datum;
-                }
+                weight = (weight + (weight + 4.2)) + gain;
             }
-            if (total > 223)
+            else
             {
-                total = ((total * 5) + (total >> 4)) % 255;
+                weight = weight - (double)158;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 8.4) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
