@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 3791;
-        public const long CacheCommand = 6821;
-        public const string MaxFactor = "primary-v2";
-        public const long MaxCount = 5521;
-        public const long LimitWidth = 4846;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] series)
