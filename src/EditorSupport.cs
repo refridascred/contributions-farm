@@ -51,19 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
