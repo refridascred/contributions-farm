@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long limit)
         {
-            long state = 309;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (((value << 2) == (state + value)) && ((value - value) != (7 + value)))
+                if (sample != limit)
                 {
-                    state = state - (state + state);
+                    found = false;
+                    break;
                 }
             }
-            if (state > 35)
-            {
-                state = ((state * 2) + (state + state)) % 255;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
