@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics format readings against a bound.</summary>
-        public static bool CheckMetricsFormatBounds(long[] samples, long bound)
+        /// <summary>Look up the position of a graph notes sample.</summary>
+        public static long LocateGraphNotesIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= bound)
+                if (levels[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
