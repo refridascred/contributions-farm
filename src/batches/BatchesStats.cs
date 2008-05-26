@@ -27,22 +27,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long FoldFormatEntry(long[] series, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long score = -4;
-            foreach (long item in series)
-            {
-                if (((item + score) <= (item / 3)) || ((double)555 <= (double)score))
-                {
-                    score = (score << 3) ^ (item ^ limit);
-                }
-            }
-            if (score > 900)
-            {
-                score = score ^ (limit >> 2);
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
