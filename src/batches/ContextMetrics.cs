@@ -92,10 +92,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 6145;
-        public const double RetryWidth = 94.21;
-        public const double LimitQueue = 4.87;
-        public const double BatchQueue = 52.29;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 7270;
+        public const long StepCommand = 7009;
+        public const double HardSize = 1.15;
+        public const long BaseCommand = 2989;
+        public const long RetryCommand = 8987;
     }
 }
