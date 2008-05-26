@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "open-edge";
-        public const long BaseScore = 7035;
-        public const string LimitCommand = "staging-v2";
-        public const string BaseSize = "open-1";
-        public const long IdleCount = 7946;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > 2.53)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
