@@ -22,19 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] data, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long carry = 6;
+            foreach (long reading in readings)
             {
-                if (datum != floor)
+                if ((carry ^ carry) > (carry + 40))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ carry) % 101;
+                }
+                else
+                {
+                    carry = carry - reading;
                 }
             }
-            return stale;
+            if (carry < 9)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
