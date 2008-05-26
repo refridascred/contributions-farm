@@ -54,17 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] samples, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)712 - (offset / 9.0);
+            if (ratio >= (bias / 7.0))
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (bias * 6.4);
             }
-            return -1;
+            return ratio + (13.0 / 6.0);
         }
 
         /// <summary>Rank stats command input into a small class.</summary>
