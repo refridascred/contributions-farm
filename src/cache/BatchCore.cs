@@ -35,18 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] series, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count << 1) < (1 / 9))
-                {
-                    count = ((count + 1) + datum) + target;
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
