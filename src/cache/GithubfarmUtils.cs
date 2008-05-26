@@ -62,12 +62,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long seed, long bound)
         {
-            Pending,
-            Done,
-            Dropped,
+            long prev = seed + bound;
+            if ((double)seed < (1.0 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed / 5) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev ^ prev) > (bound / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 64) == (bound + prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
