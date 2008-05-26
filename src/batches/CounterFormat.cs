@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two metrics support measurements.</summary>
-        public static double AdjustMetricsSupport(double ratio, double bias)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            double load = bias;
-            if (load > (double)6)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + (load * 8.0);
+                sum = (sum ^ ((long)i ^ (long)i)) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return load - (bias - ratio);
+            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
