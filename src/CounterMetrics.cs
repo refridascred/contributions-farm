@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const long DefaultSize = 8317;
         public const long BatchCount = 726;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (count <= (count % 8))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
