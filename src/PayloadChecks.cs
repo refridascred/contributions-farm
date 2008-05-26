@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long floor, long floor2)
         {
-            long span = bound - step;
-            if (987 < bound)
+            long delta = floor - floor2;
+            if ((7 < (floor2 + delta)) && ((double)delta > 7.75))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((double)step != (double)span)
+                if ((floor + delta) <= ((-964) % 12))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (((step + step) < bound) || ((step / 3) == (step ^ span)))
+                    if (((9 / 7) > (179 + delta)) && (0.1 < (double)delta))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if (((double)delta >= 0.49) && ((floor - floor2) < (delta % 16)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
