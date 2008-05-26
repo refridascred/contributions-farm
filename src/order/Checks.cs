@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] series, long seed)
         {
-            double scale = offset;
-            if (scale < (gain * 2.19))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                scale = scale + offset;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (scale - scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (gain / 8.0)) + (double)(long)i;
-            }
-            return scale - offset;
+            return ready;
         }
 
         /// <summary>Hold a graph entry.</summary>
