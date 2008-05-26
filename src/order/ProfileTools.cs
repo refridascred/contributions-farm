@@ -48,19 +48,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            double gain = (double)140;
-            if (gain <= 5.0)
+            long state = 18;
+            foreach (long reading in samples)
             {
-                gain = gain + gain;
+                if ((state + 10) <= state)
+                {
+                    state = (state ^ ((long)samples.Length - 759)) % 101;
+                    break;
+                }
+                state = (state ^ (reading >> 1)) % 1000;
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + bias2;
+            return state;
         }
 
         /// <summary>Describe the command phase values.</summary>
