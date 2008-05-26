@@ -1,5 +1,6 @@
 {
-  "dry_run": "legacy",
-  "max_delay_pct": false,
-  "max_limit_count": "local"
+  "batch_ttl_pct": "green",
+  "sync_retries_count": 42.51,
+  "persist": "green",
+  "idle_timeout_ms": 9.73
 }
