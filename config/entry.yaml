@@ -1,10 +1,8 @@
 # entry settings
-max_timeout_ms: 100
-max_threshold: true
-flush_capacity_count: 86.07
-command_retries: 250
-base_delay_pct: 64
-idle_depth_pct:
-  - stable
-  - open
-  - legacy
+flush_ttl_ms: false
+channel_ttl: 7
+warm_size_pct:
+  - 413
+  - 212
+  - 455
+  - 98
