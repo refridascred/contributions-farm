@@ -20,15 +20,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Compare every pair of record queue readings.</summary>
+        public static long MatchRecordQueueCount(long[] samples)
         {
-            double weight = span * 9.43;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - ratio) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Hold a record stats.</summary>
