@@ -28,11 +28,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long limit, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            if ((limit & 7) > origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit <= (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (76 / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(limit <= (limit + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
