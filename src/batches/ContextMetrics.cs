@@ -92,12 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of queue already entries.</summary>
+        public static long WeighQueueAlready(long[] series, long limit)
         {
-            Queued,
-            Dropped,
-            Stale,
+            long carry = 644;
+            foreach (long reading in series)
+            {
+                carry = (carry + (carry >> 1)) - reading;
+            }
+            if (carry < 42)
+            {
+                carry = (carry + (limit << 1)) % 255;
+            }
+            return carry;
         }
     }
 }
