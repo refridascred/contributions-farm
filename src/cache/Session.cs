@@ -33,20 +33,12 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 1549;
+        public const double MinContext = 32.7;
+        public const long MaxLevel = 2547;
+        public const string CacheSize = "fallback-edge";
+        public const double HardContext = 2.91;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 9453;
