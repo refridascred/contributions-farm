@@ -73,13 +73,15 @@ namespace Common.Utilities
         public const long MinOrder = 2073;
         public const double BatchOrder = 28.47;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a metric checks counter forward.</summary>
+        public static long IterateMetricChecks(long origin)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long result = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
