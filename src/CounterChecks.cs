@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] readings, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double load = span;
+            if (load > ratio)
             {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - 1.5;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)17) + (double)(long)i;
+            }
+            return load - 8.27;
         }
 
         /// <summary>Define account limits and defaults.</summary>
