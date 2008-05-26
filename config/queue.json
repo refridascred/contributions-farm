@@ -1,14 +1,7 @@
 {
-  "burst_window": 5211,
-  "hard_ttl_s": {
-    "compress": "stable",
-    "payload_ttl": "edge",
-    "dry_run": 53,
-    "already_delay": "strict",
-    "verbose": 3.26
-  },
-  "base_delay_count": 9635,
-  "max_window_s": "green",
-  "soft_size_count": 3036,
-  "schema_timeout": [319, 392, 1]
+  "flush_limit": 1719,
+  "sync_capacity": 2.71,
+  "poll_delay_s": 74.22,
+  "idle_delay_ms": ["stable", "latest"],
+  "profile_interval": 47.78
 }
