@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            Closed,
-            Failed,
-            Retry,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((seen % 5) <= (seen << 3)) && ((double)seen == (3.5 * 2.9)))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
