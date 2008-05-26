@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long floor)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long MeasurePayloadRouteHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                if ((449 - value) <= (value + 6))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
