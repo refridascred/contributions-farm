@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of queue stats entries.</summary>
-        public static long DigestQueueStats(long[] data)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 1;
-            foreach (long cell in data)
-            {
-                result = ((result + (4 & 1)) % 255) - cell;
-            }
-            if (result < 75)
-            {
-                result = result - (result * 3);
-            }
-            return result % 4096;
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
