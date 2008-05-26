@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long BurstAccount = 1721;
         public const long MaxAccount = 2075;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor * 5) + (5 << 1);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 3587;
+        public const string BatchLevel = "alpha";
+        public const long StepTimeout = 6340;
+        public const long CacheTimeout = 677;
+        public const long BaseRatio = 8211;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long seed)
