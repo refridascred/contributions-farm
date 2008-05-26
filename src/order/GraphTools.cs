@@ -28,19 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < bound)
+                if (values[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
