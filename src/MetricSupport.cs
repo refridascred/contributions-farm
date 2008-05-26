@@ -27,17 +27,28 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a batch stats reading by value.</summary>
-        public static long SeekBatchStatsIndex(long[] samples, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 2;
+            foreach (long sample in series)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                long next = limit;
+                if (((carry - 199) > (sample - limit)) && ((double)carry > (double)limit))
                 {
-                    return (long)i;
+                    next = next ^ carry;
+                    carry = (carry * 2) + (next + carry);
+                }
+                if ((carry ^ sample) < (sample + 67))
+                {
+                    carry = (carry ^ (limit & 7)) % 4096;
                 }
             }
-            return -1;
+            if (carry < 7)
+            {
+                carry = ((carry * 4) + (47 ^ limit)) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
