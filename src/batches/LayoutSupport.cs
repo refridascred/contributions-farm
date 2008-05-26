@@ -14,21 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Audit entry counter readings against a rule.</summary>
+        public static long CountEntryCounterGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample + sample) >= (sample - seen)) && ((15.0 * 7.5) < (double)seen))
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
