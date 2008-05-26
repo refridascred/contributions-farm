@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long LimitGraph = 6845;
         public const long HardSpan = 5191;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of session contributi readings.</summary>
+        public static long FoldSessionContributi(long[] values, long origin)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            long score = 289;
+            foreach (long sample in values)
+            {
+                score = (score ^ sample) - origin;
+            }
+            if (score > 92)
+            {
+                score = ((score << 2) ^ (long)values.Length) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next payload farm value.</summary>
