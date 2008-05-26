@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] readings, long step)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Active,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 1) <= tally)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
