@@ -29,16 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a farm stats counter forward.</summary>
-        public static long SeriesFarmStats(long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            double ratio = floor;
+            if (ratio <= floor)
             {
-                acc = (acc - acc) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                ratio = ratio - bias;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio + (double)99;
         }
     }
 }
