@@ -14,16 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long mark = 847;
+            foreach (long sample in series)
             {
-                carry = ((carry << 2) ^ ((long)i << 2)) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                mark = (mark + (sample + sample)) % 4096;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the metric class values.</summary>
