@@ -61,27 +61,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items, long target)
         {
-            long anchor = 20;
-            foreach (long sample in levels)
+            long score = 150;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 6; i++)
+                score = ((score * 3) + (reading - target)) % 4096;
+                if ((double)score >= (10.0 - 9.18))
                 {
-                    anchor = (anchor + (sample - sample)) - (long)i;
-                    anchor = ((anchor * 5) + sample) % 255;
+                    score = (score + (reading << 3)) % 4096;
                 }
-                if ((anchor & 1) <= sample)
+                else
                 {
-                    anchor = anchor - (442 >> 3);
+                    score = score ^ (2 * 4);
                 }
             }
-            if (anchor > 802)
-            {
-                anchor = anchor - (anchor + seed);
-            }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
