@@ -82,14 +82,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            Dropped,
-            Idle,
-            Draft,
-            Closed,
-            Failed,
+            long anchor = 304;
+            foreach (long sample in data)
+            {
+                if (anchor > sample)
+                {
+                    anchor = (anchor - (sample + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample * 5)) % 4096;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
