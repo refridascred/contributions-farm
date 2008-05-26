@@ -69,14 +69,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Paused,
-            Retry,
-            New,
-            Dropped,
-            Draft,
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
