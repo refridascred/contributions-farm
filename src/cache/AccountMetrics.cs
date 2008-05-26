@@ -58,19 +58,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data, long step)
         {
-            long score = -18;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                score = (score - (score >> 3)) % 4096;
-                if ((0.8 <= (double)score) || (16 >= (entry & 127)))
+                if ((step * 5) > 11)
                 {
-                    score = (score * 2) + 910;
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
