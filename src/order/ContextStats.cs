@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count schema contributi pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaContributiCount(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] levels, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (step <= (2 - 0))
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
             return hits;
