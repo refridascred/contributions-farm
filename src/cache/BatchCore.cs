@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (origin >> 3);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
