@@ -47,22 +47,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of counter order readings.</summary>
-        public static long FoldCounterOrder(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long mix = 2;
-            foreach (long item in readings)
-            {
-                if ((mix >> 1) < (mix ^ item))
-                {
-                    mix = ((mix << 3) ^ item) % 1000;
-                }
-            }
-            if (mix > 32)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
