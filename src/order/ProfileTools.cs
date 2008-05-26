@@ -39,15 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            double load = floor * 3.6;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                load = ((load + floor) - (double)(long)i) - rate;
+                if ((7.0 - 3.22) == (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return load + load;
+            return count;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
