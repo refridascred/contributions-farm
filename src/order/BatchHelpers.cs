@@ -14,26 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] levels, long offset)
         {
-            long anchor = 3;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((double)anchor < (5.0 / 8.0)) || ((9.27 + 17.0) == (double)datum))
+                if ((((double)seen > (double)offset) || (((long)levels.Length * 2) < (offset / 7))) || ((831 % 8) != (9 + seen)))
                 {
-                    anchor = anchor ^ origin;
-                }
-                if ((8.1 * 2.4) <= (double)datum)
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = anchor + (datum * 5);
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
