@@ -1,34 +1,9 @@
 # support settings
-max_size_count:
-  metric_limit: 250
-  sync_threshold: standard
-  editor_threshold: 41.41
-  payload_interval: 56.9
-  idle_limit_s: strict
-layout_timeout:
-  idle_size_s:
-    readonly: 100
-    max_depth_s: 15.02
-    strict: stable
-  retry_ratio:
-    - 28
-    - 53
-    - 193
-    - 3
-  strict: true
-  flush_depth_count: false
-  flush_capacity: 10.34
-  min_ttl_s:
-    - 45
-    - 89
-burst_size_s: stable
-batch_limit_s: edge
-metrics_limit: 2930
-max_depth_count:
-  flush_window_ms:
-    - 93
-    - 202
-    - 221
-  stats_size: 500
-  idle_depth_ms: legacy
-  max_interval_ms: true
+min_retries_s:
+  compress: stable
+  hard_capacity_pct: 33.68
+  readonly: legacy
+  retry_depth_count: 250
+  base_interval: stable
+audit: 8144
+hard_ttl_ms: 60.23
