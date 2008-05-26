@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches / 3) <= matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
