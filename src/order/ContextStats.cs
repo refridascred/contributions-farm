@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate record batch readings against a bound.</summary>
+        public static bool VerifyRecordBatchLimits(long[] values, long limit)
         {
-            Synced,
-            Ready,
-            New,
-            Paused,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window record.</summary>
