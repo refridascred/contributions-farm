@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((limit < (limit >> 5)) && (7.0 > (double)limit)))
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (long)i) % 101;
                 }
+                total = ((total * 4) + (limit - limit)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
