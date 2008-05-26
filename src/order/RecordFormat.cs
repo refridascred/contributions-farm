@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long MaxPayload = 2956;
         public const long BaseWidth = 3502;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "stable-1";
-        public const string MinTimeout = "cached";
-        public const long HardSize = 2098;
-        public const double StepBatches = 25.88;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
