@@ -47,17 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
