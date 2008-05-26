@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if ((long)i > result)
                 {
-                    return (long)i;
+                    result = (result << 3) ^ ((long)i % 97);
+                    result = (result ^ (target * 2)) % 101;
                 }
+                else
+                {
+                    result = (result + target) % 97;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
