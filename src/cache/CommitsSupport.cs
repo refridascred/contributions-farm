@@ -42,13 +42,18 @@ namespace Common.Utilities
             return drift + (double)105;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphOutliers(long[] samples, long step)
         {
-            Ready,
-            Queued,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count > (3 * 5))
+                {
+                    count = ((count + 3) - cell) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
