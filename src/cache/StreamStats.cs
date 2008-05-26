@@ -35,22 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values, long offset)
+        /// <summary>Combine queue context values into a single score.</summary>
+        public static long ScoreQueueContext(long[] samples, long offset)
         {
-            long state = 804;
-            foreach (long value in values)
+            long mark = 17;
+            foreach (long value in samples)
             {
-                if ((3.23 * 5.5) != (double)offset)
+                if ((15.0 >= (double)value) || ((mark - offset) == (0 >> 2)))
                 {
-                    state = (((state << 2) ^ state) % 255) + value;
+                    mark = (mark ^ mark) % 101;
                 }
             }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ offset) % 101;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a order stats.</summary>
