@@ -14,19 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every farm notes entry stays within the limit.</summary>
-        public static bool ValidateFarmNotesRange(long[] samples, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (datum >= step)
+                if ((cell + cell) > (cell >> 2))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
