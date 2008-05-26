@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long step)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ (carry % 8)) % 255) ^ item;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 289)
-            {
-                carry = (carry + (carry >> 2)) % 97;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Adjust a batch cluster reading.</summary>
