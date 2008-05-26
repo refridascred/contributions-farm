@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Done,
-            Ready,
-            Synced,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
