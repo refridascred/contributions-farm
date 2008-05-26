@@ -44,19 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter commits value.</summary>
-        public static double AdjustCounterCommits(double bias, double offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] values, long target)
         {
-            double load = offset * 5.6;
-            if (load > (load + 19.0))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                load = load + bias;
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load + (double)541;
+            return valid;
         }
     }
 }
