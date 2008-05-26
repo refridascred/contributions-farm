@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long state = 854;
+            foreach (long value in values)
             {
-                if ((double)value > (5.4 + 11.0))
+                if ((value ^ state) > 7)
                 {
-                    hits = hits + 3;
+                    state = ((state * 4) + (limit - limit)) % 101;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
