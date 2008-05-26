@@ -56,22 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] items, long target)
+        /// <summary>Digest a series of batch route entries.</summary>
+        public static long FoldBatchRoute(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = 8;
+            foreach (long value in levels)
             {
-                if ((value ^ 18) != (value / 6))
+                if ((limit / 8) >= (state + value))
                 {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state + (value - state)) % 65521;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
