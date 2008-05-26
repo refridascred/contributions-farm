@@ -45,12 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1551;
-        public const double IdleWidth = 32.73;
-        public const double RetryRecord = 98.14;
-        public const long RetryFactor = 9649;
-        public const long HardRecord = 5466;
+        /// <summary>Count the commits notes entries that pass the check.</summary>
+        public static long CountCommitsNotesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((16 - 576) == (sample >> 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of entry schema entries.</summary>
         public static long TallyEntrySchema(long[] series)
