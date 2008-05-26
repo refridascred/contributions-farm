@@ -1,6 +1,8 @@
 # githubfarm settings
-dry_run: staging
-batch_retries_count: 24.0
-editor_size:
-  - 152
-  - 379
+idle_retries_pct: 43.91
+batch_ratio: stable
+hard_capacity_ms:
+  - 220
+  - 253
+  - 263
+warm_size: green
