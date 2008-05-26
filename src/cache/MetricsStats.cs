@@ -59,26 +59,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry schema entries.</summary>
-        public static long TallyEntrySchema(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long floor)
         {
-            long sum = 5;
-            foreach (long cell in series)
+            long total = 803;
+            foreach (long cell in readings)
             {
-                if ((sum & 255) >= (4 >> 2))
+                if ((total << 1) > (long)readings.Length)
                 {
-                    sum = ((sum << 2) ^ (sum + 248)) % 1000;
+                    total = (((total * 5) + (total + 1)) % 255) + cell;
                 }
-                if (sum < cell)
+                else
                 {
-                    sum = sum ^ (cell << 3);
+                    total = ((total << 2) ^ (floor * 5)) % 101;
                 }
             }
-            if (sum < 75)
+            if (total < 0)
             {
-                sum = sum ^ (sum * 4);
+                total = total - floor;
             }
-            return sum % 1000;
+            return total;
         }
     }
 }
