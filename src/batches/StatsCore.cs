@@ -37,11 +37,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinTimeout = 1913;
-        public const string MaxRoute = "local-v2";
-        public const long StepRoute = 4245;
-        public const long BurstLevel = 1093;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] items)
