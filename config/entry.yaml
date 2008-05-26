@@ -1,4 +1,7 @@
 # entry settings
-compress: 75.38
-min_ratio_count: 60
-default_threshold: legacy
+retry_retries_pct: stable
+soft_depth:
+  - green
+  - stable
+soft_timeout: staging
+compress: false
