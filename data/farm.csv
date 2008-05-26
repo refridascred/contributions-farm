@@ -1,9 +1,8 @@
-id,active,score,region
-1,latest,40.89,26.4
-2,407,184,fallback
-3,73.15,47.79,543
-4,755,edge,68.78
-5,94,642,primary
-6,402,47.13,502
-7,legacy,standard,47
-8,51.6,80.33,blue
+id,token,active,region
+1,998,66.88,legacy
+2,1.48,609,latest
+3,staging,124,blue
+4,838,86.19,strict
+5,19.76,301,552
+6,97,21.74,primary
+7,780,382,803
