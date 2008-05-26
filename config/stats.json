@@ -1,12 +1,5 @@
 {
-  "support_interval": "legacy",
-  "soft_size": {
-    "burst_capacity": 0.58,
-    "sync_retries": 5387,
-    "commits_delay": "primary",
-    "contributi_ratio": ["cached", "stable", "fallback"],
-    "sync_timeout": 16,
-    "soft_interval_ms": 83
-  },
-  "readonly": [477, 95]
+  "filter_ttl": [370, 283],
+  "strict": 3985,
+  "commits_size": 68.99
 }
