@@ -47,15 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account metrics measurements.</summary>
-        public static double SmoothAccountMetrics(double ratio, double bias)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            double ratio2 = (double)(4 ^ 694);
-            for (int i = 0; i < 9; i++)
+            double bias2 = bias;
+            if (bias2 <= (double)90)
             {
-                ratio2 = ((ratio2 + (double)178) - (double)(long)i) + bias;
+                bias2 = (bias2 + 0.9) - ratio;
             }
-            return ratio2 - (ratio2 - ratio);
+            return bias2 - bias;
         }
     }
 }
