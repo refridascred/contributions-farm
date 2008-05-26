@@ -28,20 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result + result;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    result = ((result - (target << 1)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
