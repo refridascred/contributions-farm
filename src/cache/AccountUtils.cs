@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const double BatchCount = 30.79;
         public const double MaxLevel = 33.22;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((floor >> 3) >= tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "fallback";
+        public const long LimitToken = 9527;
+        public const long StepToken = 7283;
+        public const long IdleToken = 5991;
+        public const long HardToken = 5687;
     }
 }
