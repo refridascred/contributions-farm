@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of filter contributi readings.</summary>
-        public static long CombineFilterContributi(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            long result = 10;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((result + sample) < (result % 10))
+                if ((double)hits >= (14.0 / 9.0))
                 {
-                    result = ((result << 3) ^ (long)data.Length) % 101;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
