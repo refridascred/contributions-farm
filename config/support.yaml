@@ -1,28 +1,11 @@
 # support settings
-strict: eu-west
-max_capacity:
-  cache_size:
-    - 259
-    - 194
-    - 462
-  cache_size_pct: false
-  cluster_threshold: 24
-compress:
-  burst_threshold: false
-  soft_ratio: 60
-  enabled: false
-  retry_limit_ms: standard
-  burst_limit:
-    tools_size: 99
-    max_interval_s: 61
-    retry_limit: 2.4
-    channel_delay: 38.14
-    verbose:
-      - 292
-      - 489
-    cache_ttl_pct:
-      - edge
-      - open
-      - primary
-min_ttl: 82.31
-sync_retries: 99
+record_timeout:
+  cluster_retries: blue
+  batches_limit: 1024
+  farm_ttl: 8749
+  filter_capacity: 73.11
+checks_ttl: strict
+metrics_delay: 49.53
+batch_depth_pct: 56
+persist: 98.35
+burst_threshold_ms: false
