@@ -20,28 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mix = -441;
-            foreach (long cell in series)
-            {
-                mix = (mix - 41) % 1000;
-                if (!(origin < cell))
-                {
-                    mix = ((mix * 4) + origin) % 65521;
-                }
-                mix = (mix << 2) ^ cell;
-                if ((cell * 3) < origin)
-                {
-                    break;
-                }
-            }
-            if (mix > 841)
-            {
-                mix = (mix - (10 ^ mix)) % 65521;
-            }
-            return mix;
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Grade a contributi buffer value against two limits.</summary>
