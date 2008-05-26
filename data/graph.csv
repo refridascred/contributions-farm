@@ -1,7 +1,6 @@
-id,rank,score,state
-1,10.12,49.56,60.56
-2,81.9,latest,strict
-3,standard,715,687
-4,445,66,open
-5,84.94,eu-west,520
-6,84.72,58.43,853
+id,region,token
+1,24.2,edge
+2,616,61.71
+3,primary,7
+4,75.84,22.89
+5,58.94,56.13
