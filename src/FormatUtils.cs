@@ -61,23 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 255) > ((-123) * 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxDepth = 4148;
+        public const long BaseDepth = 836;
+        public const long SoftStats = 599;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
