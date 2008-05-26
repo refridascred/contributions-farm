@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a stats graph reading by value.</summary>
-        public static long LookupStatsGraphIndex(long[] levels, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias;
+            if (ratio >= (double)27)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio * 6.9);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (gain + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio * 11.0)) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Hold a batch summary.</summary>
