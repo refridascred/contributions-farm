@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] levels, long step)
         {
-            long state = 5;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (19.0 >= (double)item)
+                if (count >= (value - 517))
                 {
-                    state = state + 7;
+                    count = (count + 3) + step;
                 }
             }
-            if (state > 462)
-            {
-                state = (state + (bound / 5)) % 255;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
