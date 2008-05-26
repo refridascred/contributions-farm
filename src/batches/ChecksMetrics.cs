@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the route batches entries that pass the check.</summary>
-        public static long CountRouteBatchesMatches(long[] levels, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)levels.Length < (entry % 64)) && ((seed << 3) < (seed - 512)))
+                if (series[i] >= target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of support order entries.</summary>
