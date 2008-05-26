@@ -25,9 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1129;
-        public const string IdleSession = "standard-v2";
-        public const string RetryFactor = "fallback-edge";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
+        {
+            long sum = 35;
+            foreach (long item in values)
+            {
+                if (item <= sum)
+                {
+                    sum = (sum + (item >> 5)) % 97;
+                }
+                if (((38 + item) > ((long)values.Length & 7)) || (sum > (sum % 3)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
