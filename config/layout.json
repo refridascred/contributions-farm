@@ -1,11 +1,12 @@
 {
-  "min_timeout": "edge",
-  "base_delay_pct": 6082,
-  "base_ttl_count": "blue",
-  "flush_ttl_ms": {
-    "retry_timeout": 100,
-    "dry_run": false,
-    "max_interval_s": 29,
-    "metric_depth": 16.74
+  "persist": [463, 466, 381],
+  "batch_threshold": 905,
+  "report_limit": ["open", "edge", "local"],
+  "default_depth_s": {
+    "soft_size_count": 250,
+    "sync_delay_ms": false,
+    "min_size_count": true,
+    "token_delay": true,
+    "payload_window": 98.87
   }
 }
