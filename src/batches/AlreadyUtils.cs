@@ -13,19 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (reading != bound)
+                if (!(sample >= (sample + sample)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up window buffer samples.</summary>
