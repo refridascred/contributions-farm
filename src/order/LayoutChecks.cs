@@ -48,17 +48,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 777;
+            foreach (long entry in series)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ entry) % 4096;
+                state = state ^ bound;
             }
-            return -1;
+            if (state < 267)
+            {
+                state = (state - (state * 5)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a already snapshot.</summary>
