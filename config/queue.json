@@ -1,8 +1,12 @@
 {
+  "default_delay": 17.91,
+  "base_capacity_s": 72,
+  "retry_ratio_s": 83.45,
   "dry_run": true,
-  "default_limit_ms": 60,
-  "payload_interval": "green",
-  "soft_ttl": 37.28,
-  "sync_interval_ms": false,
-  "verbose": 31
+  "warm_timeout": {
+    "poll_limit": false,
+    "stats_retries": ["open", "eu-west", "blue", "fallback"],
+    "metrics_interval": 1024,
+    "checks_retries": 91.61
+  }
 }
