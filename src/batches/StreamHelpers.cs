@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Locked,
-            Closed,
-            Stale,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
