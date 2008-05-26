@@ -1,7 +1,7 @@
 {
-  "base_interval_ms": 1283,
-  "token_retries": "edge",
-  "window_size": true,
-  "idle_size_count": 5104,
-  "idle_retries_count": 22.87
+  "verbose": 9,
+  "batch_ratio_pct": 65.23,
+  "min_limit": ["stable", "stable", "edge", "local"],
+  "contributi_interval": [106, 145, 304],
+  "enabled": 32.72
 }
