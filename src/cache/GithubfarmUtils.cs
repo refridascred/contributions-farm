@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] data, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
