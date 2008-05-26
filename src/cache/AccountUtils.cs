@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading & 15) <= 1) || ((offset - offset) < reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate session route samples.</summary>
