@@ -16,15 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Synced,
-            Paused,
-            Done,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxDepth = 25.19;
+        public const double StepFarm = 93.28;
+        public const long SoftFarm = 2850;
+        public const long WindowTimeout = 6632;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] data)
