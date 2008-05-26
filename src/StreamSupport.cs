@@ -33,11 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double rate = (7.2 + floor) / 5.0;
-            return (rate + (rate * 6.3)) + bias;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
