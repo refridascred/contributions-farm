@@ -34,18 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache account entries that pass the check.</summary>
-        public static long TallyCacheAccountGaps(long[] levels, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(((tally - tally) <= tally) && (sample < (sample - sample))))
+                result = result - (long)i;
+                if ((40 & 3) > bound)
                 {
-                    tally = (tally + 2) - floor;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
