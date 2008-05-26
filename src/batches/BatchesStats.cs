@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] levels, long offset)
         {
-            double mean = bias / 3.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mean = ((mean - (10.0 * 0.39)) + (double)(long)i) + offset;
+                if ((double)sample <= (0.35 * 1.77))
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Derive the next checks command value from a seed.</summary>
