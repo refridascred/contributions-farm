@@ -64,11 +64,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long seed2)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long diff = seed ^ seed2;
+            if ((seed2 >= 26) && ((6.71 * 2.1) <= (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(diff <= seed2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 ^ seed2) >= (seed2 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1 >= diff) && ((seed2 - seed2) >= (507 + seed2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
