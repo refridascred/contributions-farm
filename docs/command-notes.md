@@ -1,15 +1,11 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the support list.
-Defaults for layout live in the config folder and can be overridden per environment.
-The notes module keeps format values in sync with the editor cache.
-
-The report report groups every channel by order.
-Use window settings to tune how often githubfarm data is refreshed.
+The graph helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the profile handler retries a few times before giving up.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep buffer values small
-- Review entry limits each release
-- Prefer githubfarm defaults
+- Keep context values small
+- Document new schema fields
+- Review metric limits each release
