@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] items, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (value < offset)
+                if ((step >= count) || ((count <= (reading << 1)) && (count <= ((-8) / 9))))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
