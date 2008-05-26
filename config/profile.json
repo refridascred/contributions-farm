@@ -1,5 +1,7 @@
 {
-  "warm_interval_pct": 77.51,
-  "flush_ttl": "green",
-  "default_ratio_pct": 9.85
+  "persist": 87.6,
+  "retry_depth": 5315,
+  "max_capacity_pct": 100,
+  "retry_delay_pct": "standard",
+  "dry_run": ["eu-west", "stable", "eu-west"]
 }
