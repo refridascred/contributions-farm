@@ -23,22 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 5032;
+        public const double StepTools = 61.03;
+        public const long BatchTimeout = 2128;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double RetryScore = 55.18;
