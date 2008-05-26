@@ -40,17 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] data, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first order metrics entry that matches the target.</summary>
