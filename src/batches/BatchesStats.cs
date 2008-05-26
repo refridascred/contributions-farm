@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] levels, long bound)
         {
-            Paused,
-            Retry,
-            Pending,
-            Draft,
-            Queued,
+            long sum = 88;
+            foreach (long datum in levels)
+            {
+                if ((double)bound == (17.0 / 3.0))
+                {
+                    sum = ((sum ^ (bound & 63)) % 97) + datum;
+                }
+                else
+                {
+                    sum = sum - (bound + sum);
+                }
+            }
+            if (sum > 26)
+            {
+                sum = sum + (bound >> 3);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
