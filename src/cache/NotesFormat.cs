@@ -36,12 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                if (data[i] >= limit)
                 {
                     return (long)i;
                 }
