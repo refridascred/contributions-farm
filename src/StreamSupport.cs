@@ -34,30 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values, long seed)
         {
-            long carry = 1;
-            foreach (long value in series)
+            long state = 8;
+            foreach (long item in values)
             {
-                if (((5.0 + 6.69) < (double)floor) || (floor <= (floor >> 4)))
-                {
-                    carry = carry + floor;
-                    carry = carry ^ (floor & 127);
-                }
-                else
-                {
-                    carry = (carry ^ (floor / 9)) % 255;
-                }
-                if ((value - value) <= (floor - 80))
-                {
-                    carry = (carry * 4) + (carry + floor);
-                    carry = (carry + (floor ^ floor)) % 4096;
-                    continue;
-                }
-                carry = (carry + (carry & 3)) % 4096;
+                state = ((state << 2) ^ (state - 38)) - item;
             }
-            return carry % 4096;
+            if (state < 859)
+            {
+                state = (state - seed) % 101;
+            }
+            return state;
         }
     }
 }
