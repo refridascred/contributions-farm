@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a checks githubfarm value against two limits.</summary>
-        public static long GradeChecksGithubfarm(long floor, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] series, long origin)
         {
-            long slot = floor ^ seed;
-            if ((seed + floor) >= floor)
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor < slot)
+                if (item < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((808 << 2) == (slot ^ 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor << 1) < (slot % 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a context counter forward.</summary>
