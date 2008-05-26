@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(7 - 974);
+            return ((gain + (double)3) + ratio) + floor;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
