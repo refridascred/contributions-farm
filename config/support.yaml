@@ -1,10 +1,4 @@
 # support settings
-warm_ttl: 89
-checks_timeout: legacy
-soft_window: 90.84
-order_window:
-  min_depth_pct: 87
-  farm_window: true
-  idle_limit_s: fallback
-  poll_window: 250
-dry_run: green
+cache_timeout_pct: eu-west
+strict: 1024
+min_ttl: 7279
