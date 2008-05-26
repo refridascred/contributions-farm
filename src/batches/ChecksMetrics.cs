@@ -71,12 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up report samples.</summary>
