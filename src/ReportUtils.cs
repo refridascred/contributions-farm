@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 4622;
-        public const string MinInterval = "primary-v2";
-        public const double HardAccount = 93.28;
-        public const double RetryCount = 61.08;
-        public const string BatchScore = "fallback-1";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (4.0 <= (double)count)
+                {
+                    count = ((count + 2) + entry) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
