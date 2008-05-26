@@ -22,16 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] series, long offset)
         {
-            long sum = 695;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                sum = (sum + (sample - limit)) % 101;
-                sum = sum + (sample >> 4);
+                if (9.0 >= (double)offset)
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
