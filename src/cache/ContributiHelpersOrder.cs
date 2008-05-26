@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long acc = -4;
-            foreach (long item in levels)
+            long total = 765;
+            foreach (long datum in data)
             {
-                if ((item / 5) >= acc)
+                if ((102 <= (datum + datum)) || ((total + total) <= (datum * 5)))
                 {
-                    acc = ((acc << 3) ^ 5) + seed;
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (total ^ 765);
+                    total = total ^ (datum >> 3);
+                }
+                if (((9.0 * 9.85) < (double)total) && ((total + datum) <= (3 - datum)))
+                {
+                    total = ((total << 2) ^ ((long)data.Length - total)) % 255;
+                }
+                else
+                {
+                    total = (total + (total << 1)) % 97;
                 }
             }
-            if (acc > 431)
-            {
-                acc = (acc - (acc * 4)) % 65521;
-            }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Match up entry layout samples.</summary>
