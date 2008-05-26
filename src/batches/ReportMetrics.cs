@@ -29,19 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats payload readings against a bound.</summary>
-        public static bool ValidateStatsPayloadBounds(long[] data, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
