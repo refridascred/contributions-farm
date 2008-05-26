@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Closed,
-            Stale,
+            Pending,
             Paused,
+            Ready,
         }
 
         /// <summary>Project the next counter value.</summary>
