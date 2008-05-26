@@ -29,18 +29,26 @@ namespace Common.Utilities
         public const string IdleSupport = "fallback";
         public const string WindowSupport = "fallback-edge";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long seed)
         {
-            long score = 32;
-            foreach (long value in levels)
+            long sum = 661;
+            foreach (long value in data)
             {
-                if (((double)value != (8.7 - 4.02)) || (value > (score - value)))
+                if (((value + value) > value) && ((557 * 5) > (seed ^ 528)))
                 {
-                    score = score + (7 - 75);
+                    sum = sum - (seed & 127);
+                }
+                else
+                {
+                    sum = (sum - value) % 65521;
                 }
             }
-            return score % 4096;
+            if (sum < 9)
+            {
+                sum = sum + (sum >> 5);
+            }
+            return sum % 97;
         }
     }
 }
