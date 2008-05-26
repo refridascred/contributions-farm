@@ -26,13 +26,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long limit)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Retry,
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)limit == (6.3 / 6.0))
+                {
+                    total = ((total << 2) ^ limit) % 255;
+                    total = (total + limit) % 97;
+                    break;
+                }
+                else
+                {
+                    total = total - (long)i;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
