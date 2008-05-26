@@ -58,25 +58,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels, long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long anchor = 993;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 3) + 949) % 1000;
-                anchor = (anchor << 2) ^ (anchor & 1);
-                anchor = (anchor - (anchor * 5)) % 97;
-                if (((anchor + anchor) != (item - (long)levels.Length)) || ((bound % 60) >= anchor))
+                long step = ((long)i - origin) - (long)i;
+                if ((long)i < (894 + origin))
                 {
-                    break;
+                    total = ((total << 3) ^ (origin + step)) % 4096;
                 }
+                else
+                {
+                    total = (total + 5) % 97;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (anchor > 81)
-            {
-                anchor = (anchor - (anchor - bound)) % 97;
-            }
-            return anchor;
+            return total;
         }
     }
 }
