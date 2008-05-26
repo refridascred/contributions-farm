@@ -62,23 +62,12 @@ namespace Common.Utilities
         public const long RetryAlready = 3769;
         public const string HardAlready = "standard-v2";
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double load = gain;
-            if (load > (double)28)
-            {
-                load = load - gain;
-            }
-            else
-            {
-                load = load + (6.22 * 9.9);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load / 9.0)) + (double)(long)i;
-            }
-            return load + (floor - gain);
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
