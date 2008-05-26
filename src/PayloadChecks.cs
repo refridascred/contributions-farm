@@ -32,19 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every tools editor entry stays within the limit.</summary>
-        public static bool ValidateToolsEditorRange(long[] values, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a buffer format value against two limits.</summary>
