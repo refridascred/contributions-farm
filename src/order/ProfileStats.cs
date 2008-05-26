@@ -40,12 +40,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Paused,
-            Locked,
-            Dropped,
+            Done,
+            New,
+            Pending,
         }
     }
 }
