@@ -1,7 +1,9 @@
-id,count
-1,802
-2,994
-3,217
-4,33.56
-5,cached
-6,40.52
+id,count,active,weight
+1,142,391,864
+2,640,local,blue
+3,398,standard,36.66
+4,941,primary,710
+5,450,501,local
+6,standard,499,legacy
+7,996,fallback,stable
+8,13.05,571,eu-west
