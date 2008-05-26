@@ -20,11 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels, long offset)
         {
-            double bias2 = (double)((-3) >> 3);
-            return ((bias2 - (bias2 / 4.0)) + ratio) + bias;
+            long state = 712;
+            foreach (long cell in levels)
+            {
+                state = state ^ (offset >> 1);
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state + (offset / 2)) % 4096) + (long)i;
+                }
+                if ((state * 3) <= (890 - cell))
+                {
+                    state = ((state * 3) + 5) % 101;
+                }
+                if ((double)cell <= (6.4 + 7.41))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
