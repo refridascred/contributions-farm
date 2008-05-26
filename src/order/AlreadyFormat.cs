@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long IdleChannel = 2334;
         public const string BatchSpan = "strict-1";
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches - cell) >= cell)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
