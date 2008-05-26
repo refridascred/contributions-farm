@@ -60,39 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long seed, long target)
-        {
-            long bound = seed ^ target;
-            if (!(bound >= (seed & 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) < seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed > (9.0 + 14.0)) || (target < 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target <= 14.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstCount = "local-v2";
+        public const long SoftTimeout = 2262;
+        public const double RetryEntry = 54.17;
+        public const long BaseTimeout = 2477;
+        public const long HardEntry = 7163;
     }
 }
