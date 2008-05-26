@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            double bias = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)state >= 9.6)
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                bias = (bias + offset) + (double)(long)i;
             }
-            return state;
+            return bias + 19.0;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
