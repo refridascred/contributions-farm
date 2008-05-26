@@ -1,5 +1,7 @@
 {
-  "burst_size": "primary",
-  "metrics_timeout": [205, 65, 167, 264],
-  "warm_delay_count": 39.14
+  "sync_retries_s": 7816,
+  "persist": ["eu-west", "latest", "blue"],
+  "retry_delay_count": 8.45,
+  "max_delay": ["cached", "latest"],
+  "cache_window_ms": 79
 }
