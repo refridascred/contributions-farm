@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Fold a list of filter contributi readings.</summary>
+        public static long CombineFilterContributi(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long result = 10;
+            foreach (long sample in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((result + sample) < (result % 10))
+                {
+                    result = ((result << 3) ^ (long)data.Length) % 101;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a token entry.</summary>
