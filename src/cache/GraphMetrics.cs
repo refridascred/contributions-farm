@@ -46,19 +46,11 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Validate cluster queue readings against a bound.</summary>
-        public static bool GuardClusterQueueBounds(long[] series, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
