@@ -39,11 +39,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 32.66;
-        public const double MinRatio = 43.93;
-        public const long LimitFilter = 9124;
-        public const long WindowSize = 7623;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepSize = 5499;
+        public const long LimitTimeout = 7739;
+        public const long LimitDepth = 2190;
+        public const double BatchFarm = 8.76;
+        public const long BaseSpan = 9931;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] series, long origin)
