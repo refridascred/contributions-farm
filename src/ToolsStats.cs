@@ -36,14 +36,18 @@ namespace Common.Utilities
         public const string HardPayload = "open-v2";
         public const long MinPayload = 5979;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((2.3 - 4.97) == (double)(long)series.Length)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes entry.</summary>
