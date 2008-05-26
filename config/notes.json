@@ -1,9 +1,17 @@
 {
-  "flush_size_count": ["fallback", "strict", "cached"],
-  "channel_window": ["latest", "standard"],
-  "burst_window_pct": {
-    "audit": "primary",
-    "warm_limit_s": [50, 154, 373, 28],
-    "default_threshold": 5983
-  }
+  "hard_timeout_s": "fallback",
+  "min_capacity": {
+    "cache_window": "local",
+    "graph_size": "legacy",
+    "base_retries_ms": "open",
+    "base_window_ms": "latest",
+    "payload_delay": {
+      "channel_limit": "standard",
+      "context_limit": 247,
+      "retry_interval": [497, 227, 400],
+      "compress": "cached",
+      "stats_limit": "primary"
+    }
+  },
+  "profile_limit": 82.18
 }
