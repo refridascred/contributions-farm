@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count << 3) == (item % 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
