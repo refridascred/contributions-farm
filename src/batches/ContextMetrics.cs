@@ -60,11 +60,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long step)
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
