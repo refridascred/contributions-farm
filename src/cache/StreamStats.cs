@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] items, long offset)
         {
-            double scale = (double)((-9) - 90);
-            return (scale + rate) + bias;
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 4) != (offset + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
