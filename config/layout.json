@@ -1,8 +1,8 @@
 {
-  "readonly": 95,
-  "counter_interval": 67.12,
-  "record_ratio": 61,
-  "poll_delay_pct": true,
-  "metric_delay": true,
-  "verbose": false
+  "default_capacity_count": true,
+  "batch_interval": 74,
+  "batch_capacity": 75.24,
+  "soft_capacity": 6.98,
+  "profile_ttl": "strict",
+  "soft_delay": true
 }
