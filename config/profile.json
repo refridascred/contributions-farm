@@ -1,8 +1,8 @@
 {
-  "record_depth": "blue",
-  "burst_interval_s": "latest",
-  "already_capacity": "green",
-  "readonly": 70.01,
-  "cache_ttl_pct": "cached",
-  "cluster_threshold": 8
+  "enabled": "standard",
+  "persist": "latest",
+  "queue_retries": 6722,
+  "burst_retries": true,
+  "poll_limit_s": 17.77,
+  "compress": 100
 }
