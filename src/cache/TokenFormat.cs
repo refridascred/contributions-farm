@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] values, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)tally > (19.0 / 2.0))
-                {
-                    tally = ((tally + 2) + cell) - limit;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Ready,
         }
     }
 }
