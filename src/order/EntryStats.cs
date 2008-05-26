@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            Idle,
-            Retry,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(((-6) + 4) > (hits + 8)))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
