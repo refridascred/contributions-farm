@@ -39,9 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 1206;
-        public const long IdleSize = 5665;
-        public const double RetrySpan = 43.74;
+        /// <summary>Validate stats payload readings against a bound.</summary>
+        public static bool ValidateStatsPayloadBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
