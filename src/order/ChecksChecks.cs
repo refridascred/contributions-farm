@@ -28,14 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long seed)
         {
-            Draft,
-            New,
-            Idle,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((seed + 92) <= matches)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
