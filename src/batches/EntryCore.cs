@@ -12,14 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            Locked,
-            Ready,
-            Done,
-            Paused,
-            Idle,
+            long state = 443;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length >= (561 << 1)) && (state > (state / 2)))
+                {
+                    state = (state * 3) + (cell * 3);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
