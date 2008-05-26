@@ -43,19 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile queue series from a seed.</summary>
-        public static long DeriveProfileQueue(long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)floor < (6.0 / 9.0))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - floor)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Paused,
+            Synced,
+            Locked,
         }
     }
 }
