@@ -1,11 +1,12 @@
 # Command notes
 
-The entry report groups every entry by route.
-The context helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The route module keeps stats values in sync with the tools cache.
+Run the token check before changing any support limits.
+When a commits fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Document new payload fields
-- Log every command change
+- Validate batch input early
+- Log every payload change
+- Prefer context defaults
+- Keep queue values small
