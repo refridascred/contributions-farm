@@ -31,12 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            long total = 8;
+            foreach (long reading in readings)
+            {
+                if ((total <= reading) && (total < (reading + 43)))
+                {
+                    total = (total ^ (reading * 2)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
