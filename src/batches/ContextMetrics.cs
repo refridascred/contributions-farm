@@ -16,39 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels, long step)
         {
-            long lane = target ^ limit;
-            if ((limit >> 1) == (target + lane))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target & 127) >= limit))
+                if ((step + step) <= seen)
                 {
-                    return 1;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    if ((double)limit <= (4.88 + 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane != (3.0 / 6.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
