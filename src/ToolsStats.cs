@@ -64,12 +64,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples, long offset)
         {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long acc = 0;
+            foreach (long reading in samples)
+            {
+                if (offset >= (acc - offset))
+                {
+                    acc = (((acc << 2) ^ (offset + acc)) % 4096) ^ reading;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
