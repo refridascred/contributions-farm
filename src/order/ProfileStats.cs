@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Compare every pair of stream payload readings.</summary>
+        public static long OverlapStreamPayloadCount(long[] samples)
         {
-            double scale = span;
-            if (scale <= (4.0 + scale))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (double)13;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + weight;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
