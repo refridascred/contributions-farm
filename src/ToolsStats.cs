@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] series, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
