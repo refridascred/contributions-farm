@@ -1,13 +1,6 @@
 {
-  "flush_ratio": {
-    "persist": [175, 370, 348],
-    "queue_delay": 2.42,
-    "cluster_limit": "cached",
-    "commits_depth": "cached"
-  },
-  "warm_retries_ms": 115,
-  "counter_capacity": "strict",
-  "strict": 47.64,
-  "default_threshold_s": 1024,
-  "min_limit_pct": 26.81
+  "audit": "blue",
+  "enabled": [52, 229],
+  "burst_timeout_count": "fallback",
+  "poll_capacity_count": 500
 }
