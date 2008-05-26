@@ -33,21 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count notes token pairs that satisfy a relation.</summary>
-        public static long OverlapNotesTokenCount(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (ratio + 2.6) - (ratio * 9.0);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = (ratio2 + (ratio + bias)) + (double)(long)i;
             }
-            return matches;
+            return ratio2 + (ratio - ratio);
         }
     }
 }
