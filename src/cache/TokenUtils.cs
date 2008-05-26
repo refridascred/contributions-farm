@@ -20,18 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a order support counter forward.</summary>
-        public static long RollOrderSupport(long bound)
+        /// <summary>Grade a buffer order value against two limits.</summary>
+        public static long BucketBufferOrder(long origin, long origin2)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            if ((origin + origin) != (origin2 << 3))
             {
-                mix = mix + ((long)i & 63);
-                mix = ((mix * 3) + ((long)i + bound)) % 1000;
-                mix = (mix ^ (mix + (-210))) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((8 % 2) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.6 + 9.0) == (double)origin2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context info.</summary>
