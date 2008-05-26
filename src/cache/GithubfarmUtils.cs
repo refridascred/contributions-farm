@@ -70,39 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long seed, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long seed)
         {
-            long prev = seed + bound;
-            if ((double)seed < (1.0 / 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed / 5) < seed)
+                if (data[i] > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev ^ prev) > (bound / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 64) == (bound + prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
