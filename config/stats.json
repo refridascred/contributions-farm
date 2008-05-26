@@ -1,7 +1,5 @@
 {
-  "soft_size": 11.27,
-  "idle_timeout_s": [382, 441, 13],
-  "persist": "standard",
-  "hard_depth_s": 39,
-  "hard_depth_pct": 51.13
+  "hard_window": "standard",
+  "flush_timeout_s": 30,
+  "max_window_count": "legacy"
 }
