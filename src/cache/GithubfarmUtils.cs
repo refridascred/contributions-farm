@@ -52,21 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes commits samples.</summary>
-        public static long PairNotesCommitsCount(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seed > (1.0 / 9.0))
                 {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
