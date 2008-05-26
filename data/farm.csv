@@ -1,9 +1,8 @@
-id,count
-1,local
-2,eu-west
-3,679
-4,standard
-5,360
-6,open
-7,edge
-8,87.85
+id,owner,count,state,active
+1,local,52.18,75.83,21.29
+2,178,408,956,stable
+3,367,52.07,standard,standard
+4,875,41.64,450,standard
+5,16.71,green,75.72,90.28
+6,621,16.01,90.91,standard
+7,19.48,73.88,legacy,85
