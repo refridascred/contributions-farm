@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
