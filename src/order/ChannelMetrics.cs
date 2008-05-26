@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Mode { get; set; }
             public long Label { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
