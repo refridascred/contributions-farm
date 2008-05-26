@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double StepCount = 0.68;
         public const long StepLevel = 2690;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
