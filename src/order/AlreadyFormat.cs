@@ -57,19 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long seed)
+        /// <summary>Roll a stream graph counter forward.</summary>
+        public static long SeriesStreamGraph(long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state << 3) ^ state;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return stale;
+            return state;
         }
     }
 }
