@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            Active,
-            Pending,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
