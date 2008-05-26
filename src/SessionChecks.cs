@@ -69,19 +69,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate checks commits readings against a bound.</summary>
-        public static bool VerifyChecksCommitsLimits(long[] readings, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double ratio = offset;
+            if (ratio >= bias)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (offset + ratio);
             }
-            return stale;
+            return ratio - ratio;
         }
     }
 }
