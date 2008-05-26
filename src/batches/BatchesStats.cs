@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double DefaultMetrics = 96.4;
         public const long CacheInterval = 2789;
 
-        /// <summary>Derive the next checks command value from a seed.</summary>
-        public static long DeriveChecksCommand(long bound)
+        /// <summary>Check that every cluster batches entry stays within the limit.</summary>
+        public static bool CheckClusterBatchesLimits(long[] readings, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a commits entry.</summary>
