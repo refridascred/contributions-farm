@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((item + matches) > item)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
