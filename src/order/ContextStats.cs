@@ -36,32 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long offset = bound ^ step;
-            if ((double)bound != (double)offset)
+            long anchor = 7;
+            foreach (long sample in levels)
             {
-                return 1;
+                anchor = (anchor + (sample << 3)) % 4096;
             }
-            else
-            {
-                if (((double)step == (double)offset) && (offset <= (offset + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((57 / 7) != (offset - 0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
