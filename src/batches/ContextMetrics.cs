@@ -17,26 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long carry = 6;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry ^ carry) > (carry + 40))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = carry - reading;
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
