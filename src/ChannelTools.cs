@@ -26,18 +26,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples)
+        /// <summary>Measure how many metric farm samples are out of range.</summary>
+        public static long CountMetricFarmOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!!((datum * 5) != (datum + (long)samples.Length)))
+                if (((long)readings.Length + cell) > (matches + bound))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
