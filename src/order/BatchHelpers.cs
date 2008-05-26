@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            long mix = 887;
-            foreach (long value in items)
+            if ((bound % 12) <= (931 << 3))
             {
-                if ((double)value != (1.8 - 8.1))
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound <= (18.0 - 1.0)))
                 {
-                    mix = (mix - (2 & 15)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix >> 3)) % 255;
+                    if ((double)bound >= (1.27 * 5.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix - (mix - 360)) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Roll a format counter forward.</summary>
