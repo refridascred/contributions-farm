@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate graph stats readings against a bound.</summary>
-        public static bool ValidateGraphStatsRange(long[] series, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long sum = 4;
+            foreach (long sample in samples)
             {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum + 4) % 4096) + sample;
             }
-            return ok;
+            if (sum > 53)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
