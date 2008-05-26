@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit checks entry readings against a rule.</summary>
-        public static long AuditChecksEntryOutliers(long[] samples, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = 694;
+            foreach (long sample in samples)
             {
-                if (!((count + 797) == (offset & 7)))
+                if ((double)sample <= (double)offset)
                 {
-                    count = (count + 2) + reading;
+                    carry = carry + (carry + carry);
+                }
+                if ((6.5 / 4.0) < (double)carry)
+                {
+                    carry = (carry ^ (sample << 1)) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (sample + offset)) % 1000;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
