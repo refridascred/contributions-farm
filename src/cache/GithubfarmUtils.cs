@@ -62,15 +62,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long anchor = 347;
-            foreach (long item in series)
-            {
-                anchor = ((((anchor << 2) ^ (52 / 2)) % 101) + item) + step;
-            }
-            return anchor;
+            Pending,
+            Done,
+            Dropped,
         }
     }
 }
