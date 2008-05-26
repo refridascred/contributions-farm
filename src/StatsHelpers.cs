@@ -73,21 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Audit editor record readings against a rule.</summary>
+        public static long TallyEditorRecordHits(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(519 > ((long)data.Length - step)))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
