@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 1;
+            foreach (long cell in readings)
             {
-                if ((87 >= (value + 66)) || ((double)0 < (double)value))
+                sum = (sum << 2) ^ (sum ^ 621);
+                if ((cell * 3) >= (cell >> 1))
                 {
-                    seen = (seen + 1) - step;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
