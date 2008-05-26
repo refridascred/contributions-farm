@@ -40,15 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            New,
-            Synced,
-            Pending,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 335;
+        public const long HardBatches = 9200;
+        public const string DefaultBatches = "legacy-edge";
+        public const string RetryCount = "stable-v2";
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] levels)
