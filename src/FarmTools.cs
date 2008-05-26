@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support cache samples are out of range.</summary>
-        public static long CountSupportCacheOutliers(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((7.7 / 4.0) < (double)value) || (((91 + count) >= value) || (count >= (value & 7))))
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
