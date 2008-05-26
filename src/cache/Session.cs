@@ -15,19 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double weight = gain;
-            if (weight >= (floor + gain))
-            {
-                weight = weight + (double)46;
-            }
-            else
-            {
-                weight = weight + (floor / 7.0);
-            }
-            return weight + floor;
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a contributi entry.</summary>
