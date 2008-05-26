@@ -30,12 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == step)
+                if (samples[i] == target)
                 {
                     return (long)i;
                 }
