@@ -1,7 +1,11 @@
 # entry settings
-retry_retries_pct: stable
-soft_depth:
-  - green
-  - stable
-soft_timeout: staging
-compress: false
+sync_delay:
+  - 225
+  - 180
+burst_window_count: 95.2
+account_depth:
+  - local
+  - open
+readonly: 9
+strict: 78.06
+cache_ratio_ms: 500
