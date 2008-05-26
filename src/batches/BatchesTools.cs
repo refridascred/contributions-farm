@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long target)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
