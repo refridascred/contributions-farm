@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Find the first session profile entry that matches the target.</summary>
+        public static long LookupSessionProfileIndex(long[] data, long origin)
         {
-            long score = 532;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score ^ (score * 4)) % 101) ^ entry;
-                score = (score << 3) ^ score;
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
