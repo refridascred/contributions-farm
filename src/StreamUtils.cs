@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
