@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long anchor = 81;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor << 2) ^ (anchor >> 1)) % 97) - item;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (939 << 1)) % 97;
-            }
-            return anchor % 97;
+            Draft,
+            Failed,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
