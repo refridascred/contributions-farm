@@ -37,21 +37,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 320;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin - total) >= (origin * 3))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ (total * 2)) - reading;
                 }
             }
-            return matches;
+            if (total < 975)
+            {
+                total = (total + (origin & 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
