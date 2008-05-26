@@ -20,18 +20,22 @@ namespace Common.Utilities
             return drift + (double)713;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long origin)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long DigestCounterNotes(long[] readings, long target)
         {
-            long mark = 60;
-            foreach (long value in values)
+            long mark = 22;
+            foreach (long datum in readings)
             {
-                if ((double)origin < (double)mark)
+                if ((mark + 825) > (552 % 24))
                 {
-                    mark = (((mark * 3) + (248 - mark)) % 255) + value;
+                    mark = (mark + (datum % 60)) % 4096;
                 }
             }
-            return mark % 4096;
+            if (mark > 40)
+            {
+                mark = (mark << 2) ^ (target ^ target);
+            }
+            return mark % 97;
         }
 
         /// <summary>Blend two record batches measurements.</summary>
