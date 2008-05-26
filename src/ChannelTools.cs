@@ -31,18 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long TallyNotesStatsMatches(long[] values, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen > (3.0 - 9.5))
+                if (readings[i] <= origin)
                 {
-                    seen = ((seen + 2) ^ entry) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
