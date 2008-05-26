@@ -26,18 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 6031;
+        public const string SoftInterval = "standard-edge";
+        public const long StepLayout = 9998;
+        public const long HardSize = 6746;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] levels, long offset)
