@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every queue farm entry stays within the limit.</summary>
-        public static bool VerifyQueueFarmLimits(long[] samples, long offset)
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long CountFilterGraphMatches(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (entry < offset)
+                if ((0.3 - 6.82) >= (double)reading)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + floor;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
