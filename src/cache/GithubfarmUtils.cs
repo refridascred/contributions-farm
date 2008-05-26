@@ -52,10 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseSize = "open-v2";
-        public const long BatchCounter = 2139;
-        public const long BurstCounter = 8284;
-        public const double MaxCounter = 18.96;
+        /// <summary>Match up notes commits samples.</summary>
+        public static long PairNotesCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
