@@ -32,20 +32,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxWidth = "staging-edge";
+        public const string SoftCommand = "latest";
+        public const long WindowCommand = 49;
+        public const long BaseScore = 7083;
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double bias, double bias2)
