@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
