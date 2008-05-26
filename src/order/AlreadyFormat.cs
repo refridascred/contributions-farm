@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 8963;
+        public const double HardOrder = 25.47;
+        public const string RetryOrder = "legacy-edge";
+        public const long SoftOrder = 6410;
+        public const long LimitOrder = 6774;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandGaps(long[] data, long origin)
