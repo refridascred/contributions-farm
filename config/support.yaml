@@ -1,4 +1,20 @@
 # support settings
-warm_timeout_count: 21.53
-editor_retries: 31
-base_window_ms: 1151
+warm_timeout:
+  hard_capacity: staging
+  warm_capacity: eu-west
+  retry_retries: 19.46
+  burst_ttl_ms: primary
+  command_retries: staging
+  cache_ratio_s: 60
+checks_interval:
+  strict:
+    - standard
+    - local
+    - cached
+    - standard
+  readonly: 2452
+  min_capacity: 75
+  counter_retries: 8636
+min_capacity: 30
+batch_window: true
+retry_capacity_ms: legacy
