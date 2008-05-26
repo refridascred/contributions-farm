@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] items, long target)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long TallyNotesStatsMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (cell != target)
+                if ((double)seen > (3.0 - 9.5))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) ^ entry) + floor;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
