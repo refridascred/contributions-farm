@@ -44,26 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            long score = 996;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if ((entry % 10) != (seen & 1))
                 {
-                    score = (((score << 3) ^ value) % 255) ^ (long)i;
-                }
-                if ((9.0 / 4.0) != (double)score)
-                {
-                    score = score - ((long)readings.Length & 31);
+                    seen = seen + 2;
                 }
             }
-            if (score > 3)
-            {
-                score = ((score << 3) ^ (origin - 62)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
