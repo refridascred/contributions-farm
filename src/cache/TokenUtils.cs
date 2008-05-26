@@ -24,31 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a buffer order value against two limits.</summary>
-        public static long BucketBufferOrder(long origin, long origin2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series)
         {
-            if ((origin + origin) != (origin2 << 3))
+            long carry = 822;
+            foreach (long value in series)
             {
-                return 2;
+                carry = ((carry * 4) + (carry << 2)) + value;
             }
-            else
-            {
-                if ((8 % 2) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.6 + 9.0) == (double)origin2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
