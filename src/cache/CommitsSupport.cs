@@ -41,18 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools contributi samples.</summary>
-        public static long OverlapToolsContributiCount(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] samples, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((tally / 4) > (37 + seed)) || (19 <= tally)))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
