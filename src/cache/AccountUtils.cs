@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double span)
         {
-            long mark = -7;
-            foreach (long reading in items)
+            double weight = span;
+            if (weight <= (bias / 7.0))
             {
-                if (3.5 >= (double)mark)
-                {
-                    mark = ((mark - (mark % 5)) % 4096) - reading;
-                }
+                weight = weight + 16.0;
             }
-            if (mark > 6)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return weight + (double)619;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
