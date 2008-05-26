@@ -1,6 +1,5 @@
 {
-  "base_ratio_count": true,
-  "cache_ratio": "blue",
-  "hard_delay_ms": [135, 14, 151, 399],
-  "support_window": "primary"
+  "notes_ratio": [277, 108, 294, 120],
+  "cache_ttl": false,
+  "idle_threshold_s": 500
 }
