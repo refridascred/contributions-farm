@@ -63,13 +63,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Idle,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepBudget = "staging-edge";
+        public const string MinFilter = "strict-v2";
+        public const long MinBudget = 5794;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] readings)
