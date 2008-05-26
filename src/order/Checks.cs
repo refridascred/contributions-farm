@@ -33,25 +33,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a checks batch value against two limits.</summary>
-        public static long ClassifyChecksBatch(long floor, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels, long target)
         {
-            long step = floor + target;
-            if (((floor % 2) != (step >> 3)) && ((17 + 69) > (floor >> 1)))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor > (floor >> 4)) || (696 < (903 - floor)))
+                if ((tally << 2) <= (tally >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    tally = ((tally + 3) ^ entry) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of tools notes entries.</summary>
