@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const double StepBudget = 28.01;
         public const double MinSupport = 63.4;
 
-        /// <summary>Blend two githubfarm layout measurements.</summary>
-        public static double ProjectGithubfarmLayout(double rate, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            double weight = (3.0 + offset) / 8.0;
-            if (weight < offset)
+            long carry = 39;
+            foreach (long entry in levels)
             {
-                weight = weight - 7.62;
+                if ((double)carry <= (5.2 * 9.1))
+                {
+                    continue;
+                }
+                carry = (carry ^ (370 + carry)) ^ entry;
             }
-            return weight + (rate + 9.2);
+            if (carry < 7)
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
