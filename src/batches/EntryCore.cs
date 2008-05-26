@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate session contributi samples.</summary>
-        public static long TallySessionContributi(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples, long floor)
         {
-            long state = 472;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = (state + 237) % 4096;
-                if ((state + reading) < (reading ^ 260))
+                if ((matches ^ value) == (floor << 1))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (state > 8)
-            {
-                state = state ^ (state ^ state);
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
