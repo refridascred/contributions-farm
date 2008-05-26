@@ -1,5 +1,24 @@
 # entry settings
-sync_timeout: 16.73
-base_ratio_ms: 6.83
-retry_threshold_s: 7544
-retry_delay_s: latest
+hard_capacity:
+  already_timeout: 36
+  poll_retries_ms: strict
+  hard_window_ms: 2395
+  default_limit_count: 99
+  contributi_capacity: 7632
+  flush_size_count: 60
+format_delay:
+  - 97
+  - 367
+  - 496
+min_depth_ms: 6412
+hard_timeout_pct: 6823
+metric_timeout:
+  idle_window_ms: 38
+  idle_threshold_pct: false
+  warm_delay_pct: edge
+  commits_size:
+    - 88
+    - 57
+    - 241
+    - 241
+counter_size: green
