@@ -61,12 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == origin)
+                if (samples[i] == offset)
                 {
                     return (long)i;
                 }
