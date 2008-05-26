@@ -47,13 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Fold a list of counter order readings.</summary>
+        public static long FoldCounterOrder(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long mix = 2;
+            foreach (long item in readings)
+            {
+                if ((mix >> 1) < (mix ^ item))
+                {
+                    mix = ((mix << 3) ^ item) % 1000;
+                }
+            }
+            if (mix > 32)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix;
         }
     }
 }
