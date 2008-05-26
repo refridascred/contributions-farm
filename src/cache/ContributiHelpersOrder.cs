@@ -49,22 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support record entries.</summary>
-        public static long DigestSupportRecord(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 413;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (score ^ (score & 1)) + (long)i;
-                }
-                if (!(7.65 > (double)value))
-                {
-                    score = (score ^ (value + value)) % 65521;
-                }
-            }
-            return score % 4096;
+            Failed,
+            New,
+            Stale,
         }
     }
 }
