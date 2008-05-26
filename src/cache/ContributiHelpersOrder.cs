@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
