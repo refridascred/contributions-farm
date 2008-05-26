@@ -27,19 +27,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every contributi buffer entry stays within the limit.</summary>
-        public static bool ValidateContributiBufferLimits(long[] data, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double weight2 = offset;
+            if (weight2 >= weight)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = weight2 + weight2;
             }
-            return flag;
+            else
+            {
+                weight2 = weight2 - (offset - 13.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (offset + offset)) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Locate a batch layout reading by value.</summary>
