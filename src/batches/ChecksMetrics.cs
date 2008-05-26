@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state + (state / 9)) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state - state) % 65521) - (long)i2;
-                    state = (state + ((long)i + state)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of support order entries.</summary>
