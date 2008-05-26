@@ -38,11 +38,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two record batches measurements.</summary>
-        public static double ScaleRecordBatches(double scale, double bias)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double gain = bias;
-            return (gain - (gain + 7.59)) + scale;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
