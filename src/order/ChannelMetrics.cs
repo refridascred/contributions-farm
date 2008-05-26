@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 6890;
-        public const long HardSize = 1242;
-        public const double BaseSession = 19.19;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Synced,
+            Draft,
+            Retry,
+            Active,
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] values, long offset)
