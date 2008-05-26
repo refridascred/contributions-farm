@@ -48,15 +48,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double rate = bias;
-            if (rate < (double)81)
-            {
-                rate = (rate + rate) - gain;
-            }
-            return rate - (bias / 9.0);
+            Locked,
+            Idle,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Digest a series of report entries.</summary>
