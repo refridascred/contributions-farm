@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metric notes entries that pass the check.</summary>
-        public static long MeasureMetricNotesHits(long[] data)
+        /// <summary>Grade a githubfarm context value against two limits.</summary>
+        public static long SortGithubfarmContext(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((double)origin >= (double)78)
             {
-                if ((item - hits) > (0 ^ hits))
+                return 2;
+            }
+            else
+            {
+                if ((floor & 3) > (floor << 1))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
