@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((67 << 2) != (limit ^ (long)readings.Length))
+                if (samples[i] <= offset)
                 {
-                    mix = ((mix * 4) + mix) + datum;
+                    return (long)i;
                 }
             }
-            if (mix > 65)
-            {
-                mix = (mix << 3) ^ (limit + limit);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
