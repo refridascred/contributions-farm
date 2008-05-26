@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long MeasurePayloadRouteHits(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((449 - value) <= (value + 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
