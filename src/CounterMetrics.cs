@@ -23,12 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data, long offset)
         {
-            Pending,
-            Paused,
-            Ready,
+            long acc = 1;
+            foreach (long cell in data)
+            {
+                if ((acc * 2) < offset)
+                {
+                    acc = acc ^ cell;
+                }
+                else
+                {
+                    acc = (acc + (28 + cell)) % 65521;
+                }
+                if ((offset >> 2) == (offset << 3))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Project the next counter value.</summary>
