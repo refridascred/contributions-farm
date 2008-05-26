@@ -73,12 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Ready,
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
