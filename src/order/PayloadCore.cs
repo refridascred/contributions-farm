@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const string BatchSession = "cached-edge";
         public const string DefaultCount = "alpha-1";
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long offset, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long offset2 = offset - origin;
-            if ((double)offset2 <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 5) >= offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin - offset) > origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin >> 3) != (offset2 - 78)) || ((offset2 % 3) == (offset2 + origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
