@@ -45,19 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm route entries.</summary>
-        public static long ScoreGithubfarmRoute(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = 8;
-            foreach (long datum in items)
-            {
-                carry = ((carry + 840) % 4096) + datum;
-            }
-            if (carry < 4)
-            {
-                carry = (carry ^ (carry + carry)) % 1000;
-            }
-            return carry % 4096;
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
