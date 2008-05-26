@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            Locked,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the graph level values.</summary>
