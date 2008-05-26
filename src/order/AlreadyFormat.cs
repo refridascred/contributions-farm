@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] samples, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (entry > floor)
+                if (datum <= target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
