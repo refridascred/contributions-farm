@@ -1,8 +1,6 @@
 {
-  "warm_interval_pct": 11,
-  "command_window": 60,
-  "dry_run": "fallback",
-  "stats_capacity": true,
-  "account_retries": "staging",
-  "hard_size_s": 74.34
+  "contributi_ratio": 500,
+  "report_capacity": 9983,
+  "retry_size": 60,
+  "retry_window_pct": "fallback"
 }
