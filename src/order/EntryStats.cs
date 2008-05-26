@@ -30,26 +30,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of commits report readings.</summary>
-        public static long CombineCommitsReport(long[] levels, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long total = 2;
-            foreach (long entry in levels)
-            {
-                if ((double)(long)levels.Length == (8.3 - 9.0))
-                {
-                    continue;
-                }
-                if (((total + entry) < 4) || ((4.0 * 8.2) == (double)total))
-                {
-                    total = (total + entry) % 1000;
-                }
-            }
-            if (total < 5)
-            {
-                total = ((total << 2) ^ (limit + 6)) % 97;
-            }
-            return total;
+            Idle,
+            Queued,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
