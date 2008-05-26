@@ -29,14 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            Pending,
-            Synced,
-            Paused,
-            Dropped,
-            Idle,
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state << 2) ^ (long)i) % 97;
+                state = (state - (offset >> 1)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a account contributi reading.</summary>
