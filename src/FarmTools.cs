@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (value < bound)
+                if ((item < (item ^ bound)) || ((bound ^ (-22)) <= (bound + item)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
