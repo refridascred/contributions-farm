@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            double load = 3.0;
+            if (load <= load)
+            {
+                load = (load - load) - ratio;
+            }
+            return load + span;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
