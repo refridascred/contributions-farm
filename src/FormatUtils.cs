@@ -38,17 +38,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] == origin)
+                if ((6.3 + 17.0) != (double)floor)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
