@@ -54,18 +54,14 @@ namespace Common.Utilities
         public const double MinSupport = 39.16;
         public const long SoftSupport = 573;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)hits > (2.69 * 3.66))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            Stale,
+            Draft,
+            Paused,
+            Failed,
+            Synced,
         }
     }
 }
