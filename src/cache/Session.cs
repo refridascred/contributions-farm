@@ -50,18 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph format entries that pass the check.</summary>
-        public static long MeasureGraphFormatOutliers(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (!((11 + value) <= (seen % 100)))
+                if (sample < offset)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
