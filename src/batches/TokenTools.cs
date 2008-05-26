@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long origin)
         {
-            Synced,
-            Active,
-            Ready,
-            Failed,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
