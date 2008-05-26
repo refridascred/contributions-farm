@@ -27,19 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] samples, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.3 + 17.0) != (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
