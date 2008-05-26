@@ -1,9 +1,17 @@
 # support settings
-min_retries_s:
-  compress: stable
-  hard_capacity_pct: 33.68
-  readonly: legacy
-  retry_depth_count: 250
-  base_interval: stable
-audit: 8144
-hard_ttl_ms: 60.23
+sync_window: 71
+poll_delay_s: 29.58
+retry_ratio:
+  default_limit_pct: true
+  poll_window_ms: legacy
+  compress: cached
+  hard_window_count: true
+  flush_retries_s:
+    - legacy
+    - strict
+    - primary
+    - strict
+hard_depth: 5702
+strict:
+  - latest
+  - edge
