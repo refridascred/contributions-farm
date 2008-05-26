@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 10.28;
+        public const string BurstCount = "local-v2";
+        public const long HardSchema = 4801;
+        public const double BurstSchema = 89.81;
+        public const long WindowCount = 6240;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long SortBuffer(long step, long origin)
