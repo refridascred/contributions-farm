@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinTimeout = "staging";
-        public const long RetryRatio = 4427;
-        public const long HardLayout = 2713;
-        public const long RetryLayout = 3160;
-        public const long CacheCount = 7287;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstWidth = 60.72;
+        public const long BurstSpan = 7815;
+        public const long BatchRecord = 9732;
+        public const long SoftRecord = 5557;
+        public const string BatchRatio = "cached-1";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesOutliers(long[] levels)
