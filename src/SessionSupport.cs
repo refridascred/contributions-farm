@@ -20,10 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5462;
-        public const long BaseSize = 1133;
-        public const long CacheFormat = 4283;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((763 & 31) <= ((-3) + seed))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepCount = 7789;
