@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long floor)
-        {
-            long anchor = 989;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor + reading) % 255;
-                if (!((floor + anchor) < 3))
-                {
-                    break;
-                }
-                if (!((6 & 7) >= (7 - reading)))
-                {
-                    anchor = ((anchor << 2) ^ (reading % 10)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 5010;
+        public const long MaxToken = 4619;
+        public const string BaseSize = "open-1";
+        public const double CacheScore = 63.8;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
