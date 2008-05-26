@@ -22,26 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Count tools order pairs that satisfy a relation.</summary>
+        public static long CompareToolsOrderCount(long[] levels)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(sum < (sample / 6)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum - (sum << 3);
-                }
-                else
-                {
-                    sum = (sum + sample) % 255;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum - (sum + sum)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every counter cluster entry stays within the limit.</summary>
