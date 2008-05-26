@@ -22,19 +22,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine record contributi values into a single score.</summary>
-        public static long TotalRecordContributi(long[] readings)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long step)
         {
-            long state = 748;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (state + state)) % 65521) ^ sample;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 6)
-            {
-                state = (state ^ (state >> 4)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
