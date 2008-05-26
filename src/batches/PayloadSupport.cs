@@ -16,13 +16,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            Queued,
-            Pending,
-            Failed,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
