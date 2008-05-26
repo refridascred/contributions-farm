@@ -44,19 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter cluster entry stays within the limit.</summary>
-        public static bool GuardCounterClusterLimits(long[] samples, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
