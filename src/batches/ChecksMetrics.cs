@@ -21,9 +21,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 9071;
-        public const string BatchCommits = "fallback-v2";
-        public const double MaxScore = 6.55;
+        public const long WindowSize = 7286;
+        public const string StepLevel = "legacy-edge";
+        public const long BurstBudget = 1763;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double gain, double span)
