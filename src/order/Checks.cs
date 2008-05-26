@@ -46,12 +46,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstFactor = 82.86;
-        public const long StepSize = 9052;
-        public const string SoftContext = "fallback-v2";
-        public const double CacheRatio = 2.41;
-        public const long BatchRatio = 1195;
+        /// <summary>Grade a checks batch value against two limits.</summary>
+        public static long ClassifyChecksBatch(long floor, long target)
+        {
+            long step = floor + target;
+            if (((floor % 2) != (step >> 3)) && ((17 + 69) > (floor >> 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor > (floor >> 4)) || (696 < (903 - floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionMatches(long[] data)
