@@ -32,13 +32,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Closed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryWidth = 2763;
+        public const double IdleRatio = 20.01;
+        public const double BaseInterval = 88.83;
+        public const double IdleBuffer = 16.72;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] series, long origin)
