@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 5029;
-        public const long BaseSchema = 4965;
-        public const long RetrySize = 6893;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
