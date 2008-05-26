@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long limit)
+        /// <summary>Validate already checks readings against a bound.</summary>
+        public static bool GuardAlreadyChecksRange(long[] items, long step)
         {
-            if ((offset < (offset << 1)) && ((5.1 - 8.9) > (double)limit))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset - limit) > (offset - offset)) && (limit >= (offset >> 3)))
+                if (datum <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
