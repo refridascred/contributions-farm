@@ -13,25 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long next = offset - limit;
-            if ((9.45 * 0.81) <= (double)next)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((limit * 3) <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
