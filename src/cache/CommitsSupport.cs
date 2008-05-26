@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long lane = (floor & 127) + anchor;
-                anchor = anchor + lane;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
