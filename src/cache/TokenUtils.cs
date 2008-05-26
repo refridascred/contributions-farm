@@ -20,19 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits <= (8.98 * 20.0))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstDepth = 604;
+        public const long RetryBudget = 7409;
+        public const double SoftCluster = 1.22;
+        public const double BatchLevel = 74.07;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
