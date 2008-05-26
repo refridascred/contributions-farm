@@ -41,12 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= step)
+                if (items[i] >= seed)
                 {
                     return (long)i;
                 }
