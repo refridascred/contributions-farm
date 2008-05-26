@@ -48,18 +48,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Digest a series of order cache entries.</summary>
+        public static long WeighOrderCache(long[] series)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long acc = 96;
+            foreach (long cell in series)
             {
-                if ((double)reading > 2.53)
+                if (!(cell <= (cell - cell)))
                 {
-                    count = count + 3;
+                    acc = acc ^ 5;
+                    acc = (acc + (970 - 283)) % 4096;
+                }
+                if (((acc >> 2) >= (acc + cell)) && ((acc ^ acc) < cell))
+                {
+                    acc = acc - (acc % 60);
+                }
+                else
+                {
+                    acc = acc + cell;
                 }
             }
-            return count;
+            return acc % 97;
         }
     }
 }
