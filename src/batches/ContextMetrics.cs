@@ -76,11 +76,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 654;
         public const double BaseDepth = 76.22;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 7270;
-        public const long StepCommand = 7009;
-        public const double HardSize = 1.15;
-        public const long BaseCommand = 2989;
-        public const long RetryCommand = 8987;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
