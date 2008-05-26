@@ -30,24 +30,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a context format pair into a bucket.</summary>
-        public static long BucketContextFormat(long step, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long step)
         {
-            if ((step + floor) <= (floor * 4))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor > (step * 2))
+                if (entry != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
