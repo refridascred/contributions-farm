@@ -1,19 +1,6 @@
 {
-  "min_interval_ms": true,
-  "idle_limit_ms": 4.3,
-  "warm_window": {
-    "dry_run": 84.84,
-    "sync_ttl": {
-      "contributi_timeout": false,
-      "readonly": 98,
-      "flush_window": [112, 47, 376],
-      "idle_timeout_ms": 6.5
-    },
-    "default_capacity_ms": [363, 284],
-    "metrics_limit": 500,
-    "graph_delay": false,
-    "profile_limit": true
-  },
-  "batch_depth_pct": "primary",
-  "notes_ttl": 30
+  "command_capacity": true,
+  "max_depth_s": 54,
+  "context_ttl": false,
+  "base_ratio_pct": 7757
 }
