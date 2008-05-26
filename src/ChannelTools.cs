@@ -40,34 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long sum = 15;
-            foreach (long cell in values)
+            long carry = 669;
+            foreach (long datum in data)
             {
-                if (2.0 > (double)seed)
+                if ((double)datum == (9.62 / 3.0))
                 {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum >> 2)) % 97;
-                }
-                if ((9.0 - 9.41) != (double)cell)
-                {
-                    sum = (sum + (sum / 3)) % 97;
-                }
-                if ((18.0 / 2.0) > (double)seed)
-                {
-                    sum = (sum ^ (96 + cell)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum * 3)) % 4096;
+                    carry = ((carry * 5) + (datum - datum)) % 101;
                 }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Fold a list of token readings.</summary>
