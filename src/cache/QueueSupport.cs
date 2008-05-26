@@ -25,38 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long target)
-        {
-            if ((35 + target) >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((offset >> 2) >= (offset ^ target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 1) != (target + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((240 / 2) == (target << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 5459;
+        public const string WindowStream = "cached-v2";
+        public const long BurstTimeout = 6268;
+        public const string MaxScore = "alpha";
+        public const string MinStream = "latest-1";
     }
 }
