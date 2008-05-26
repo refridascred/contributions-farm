@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] samples, long offset)
         {
-            long result = 6;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)step < (8.6 * 10.0))
+                if ((offset + seen) > (offset * 5))
                 {
-                    result = ((result - (73 % 10)) % 97) + cell;
+                    seen = (seen + 3) + reading;
                 }
             }
-            if (result < 7)
-            {
-                result = ((result << 3) ^ (step ^ step)) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
