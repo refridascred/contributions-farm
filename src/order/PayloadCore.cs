@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] values, long limit)
+        /// <summary>Rank metrics channel input into a small class.</summary>
+        public static long GradeMetricsChannel(long bound, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            if ((origin <= (bound & 7)) || (bound <= (origin + bound)))
             {
-                if (value < limit)
+                return 2;
+            }
+            else
+            {
+                if (0.3 >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - 658) < ((-42) + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin != (9.7 * 8.2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the editor class values.</summary>
