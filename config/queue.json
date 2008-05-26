@@ -1,7 +1,8 @@
 {
-  "min_timeout_s": "stable",
-  "base_depth_count": 34.11,
-  "audit": "fallback",
-  "profile_interval": [74, 110, 457],
-  "enabled": [146, 105, 180]
+  "dry_run": "fallback",
+  "githubfarm_timeout": 6310,
+  "flush_retries_ms": "staging",
+  "warm_depth": "eu-west",
+  "warm_threshold_ms": "standard",
+  "audit": "blue"
 }
