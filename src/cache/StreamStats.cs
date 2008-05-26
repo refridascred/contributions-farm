@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples, long origin)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((origin ^ tally) >= origin)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
