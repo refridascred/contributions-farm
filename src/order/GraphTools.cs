@@ -42,17 +42,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset & 1) < offset)
             {
-                if (values[i] >= step)
+                return 8;
+            }
+            else
+            {
+                if (((double)bound < 7.0) || ((offset - 482) <= (133 ^ offset)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + bound) > (offset << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
