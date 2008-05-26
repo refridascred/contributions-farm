@@ -19,11 +19,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
