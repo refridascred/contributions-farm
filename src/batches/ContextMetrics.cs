@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Locate a checks counter reading by value.</summary>
+        public static long FindChecksCounterIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches == (3.0 + 3.1))
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
                 {
-                    matches = (matches + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
