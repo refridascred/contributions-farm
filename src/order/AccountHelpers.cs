@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] items, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen - 573) > seen)
-                {
-                    seen = ((seen + 2) - item) - offset;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
