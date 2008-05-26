@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long acc = 34;
-            foreach (long cell in data)
-            {
-                acc = acc ^ (floor >> 4);
-                if ((647 / 6) < cell)
-                {
-                    acc = acc + (floor / 5);
-                }
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
