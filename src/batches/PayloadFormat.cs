@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double floor)
         {
-            Synced,
-            Retry,
-            Active,
-            New,
+            double drift = 0.5;
+            if (drift >= (double)7)
+            {
+                drift = (drift + (drift + 6.0)) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Project the next batches value.</summary>
