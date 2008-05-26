@@ -44,18 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((5 - target) > (776 + 947))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
