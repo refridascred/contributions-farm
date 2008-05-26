@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            Idle,
-            New,
-            Ready,
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry ^ (floor - carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a already snapshot.</summary>
