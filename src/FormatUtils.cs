@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 64;
+            foreach (long item in items)
+            {
+                if ((acc ^ item) < (acc - acc))
+                {
+                    acc = (acc * 3) + (item - acc);
+                }
+            }
+            if (acc < (-488))
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
