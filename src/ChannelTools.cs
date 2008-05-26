@@ -29,39 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long target)
         {
-            long delta = offset ^ step;
-            if (!((19.0 * 3.0) <= (double)step))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta - delta) <= (offset - 153))
+                if (cell != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((46 ^ delta) == (6 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset <= (offset * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
