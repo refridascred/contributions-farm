@@ -27,12 +27,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long step, long bound)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            if (0 >= (bound / 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - step) != (325 ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound + bound) != (step >> 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
