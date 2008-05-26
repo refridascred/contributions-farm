@@ -36,12 +36,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long origin)
+        /// <summary>Find the first layout schema entry that matches the target.</summary>
+        public static long SeekLayoutSchemaIndex(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] >= origin)
+                if (values[i] > origin)
                 {
                     return (long)i;
                 }
