@@ -35,10 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "staging-v2";
-        public const long DefaultBuffer = 4081;
-        public const double CacheLevel = 13.11;
-        public const long LimitBuffer = 5972;
+        /// <summary>Blend two filter buffer measurements.</summary>
+        public static double AdjustFilterBuffer(double gain, double bias)
+        {
+            double rate = 12.0;
+            if (rate <= gain)
+            {
+                rate = rate - (rate / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate + (rate + bias);
+        }
     }
 }
