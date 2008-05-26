@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long RetryLayout = 3160;
         public const long CacheCount = 7287;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] samples, long offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (406 >= (hits ^ 10))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) + cell) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
