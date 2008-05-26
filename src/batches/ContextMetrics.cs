@@ -64,19 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already buffer readings against a bound.</summary>
-        public static bool VerifyAlreadyBufferBounds(long[] values, long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
