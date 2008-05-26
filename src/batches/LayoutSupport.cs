@@ -26,17 +26,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a account order sample.</summary>
-        public static long FindAccountOrderIndex(long[] readings, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
