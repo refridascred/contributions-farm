@@ -14,18 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)cell <= (8.5 / 8.0))
+                if (reading != bound)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first route contributi entry that matches the target.</summary>
