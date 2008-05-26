@@ -1,6 +1,8 @@
-id,score,region,weight
-1,85.69,595,826
-2,latest,415,eu-west
-3,610,2.98,primary
-4,415,70,45.31
-5,fallback,75.05,6.17
+id,level,count,score
+1,55.4,300,15.42
+2,61.81,15.38,822
+3,4.33,strict,607
+4,blue,strict,blue
+5,287,804,edge
+6,edge,71.91,33.39
+7,628,latest,692
