@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long floor)
         {
-            long result = 353;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (3.9 >= (double)result)
+                if ((carry + floor) <= (carry + (long)i))
                 {
-                    result = result - (result - result);
+                    carry = (carry - (1 + carry)) % 97;
                 }
-                result = result ^ (reading - reading);
+                if (carry < (long)i)
+                {
+                    carry = (carry + (floor + carry)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Grade a buffer order value against two limits.</summary>
