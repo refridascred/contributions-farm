@@ -32,11 +32,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstRatio = 28.29;
-        public const long WindowLevel = 6951;
-        public const double LimitInterval = 69.78;
-        public const long HardToken = 3406;
-        public const long MaxToken = 7074;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
