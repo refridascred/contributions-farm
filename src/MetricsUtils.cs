@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long slot = step ^ seed;
+            if (((double)step == (9.9 - 5.8)) && ((50 / 6) < (seed - step)))
             {
-                if (item != seed)
+                return 2;
+            }
+            else
+            {
+                if ((slot % 3) >= (slot << 2))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step + slot) == (slot >> 3)) && ((6.0 * 2.85) <= (double)slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
