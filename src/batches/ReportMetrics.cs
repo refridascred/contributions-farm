@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] series, long target)
         {
-            Idle,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (target > (925 ^ target))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
     }
 }
