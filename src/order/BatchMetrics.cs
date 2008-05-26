@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long bound)
-        {
-            long next = target - bound;
-            if (((1.23 / 8.0) <= (double)target) || (next <= (next + bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target >= 824)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultScore = 1969;
+        public const long WindowLayout = 6022;
+        public const string MinLayout = "primary-1";
+        public const long BatchLevel = 4608;
+        public const long CacheFactor = 7110;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] items, long target)
