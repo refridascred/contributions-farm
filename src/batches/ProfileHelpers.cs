@@ -32,14 +32,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            Paused,
-            Locked,
-            Failed,
-            Ready,
-            Draft,
+            double load = weight;
+            return (load - 9.7) + floor;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
