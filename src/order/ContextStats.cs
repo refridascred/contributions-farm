@@ -26,12 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 9110;
-        public const long BaseDepth = 5931;
-        public const double IdleLayout = 57.32;
-        public const double RetryScore = 61.44;
-        public const long WindowCount = 4454;
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long TallyCommitsFilterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits / 2) > (entry >> 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
