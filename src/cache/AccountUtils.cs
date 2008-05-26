@@ -13,18 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings, long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                if ((carry & 3) == (carry ^ carry))
-                {
-                    carry = (carry ^ (cell >> 3)) + step;
-                }
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
