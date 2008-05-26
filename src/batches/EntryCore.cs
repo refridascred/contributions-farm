@@ -69,13 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate stats window readings against a bound.</summary>
+        public static bool VerifyStatsWindowLimits(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Active,
-            Dropped,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
