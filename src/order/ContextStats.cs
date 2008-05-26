@@ -26,33 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long target)
-        {
-            long offset = floor - target;
-            if (floor >= (6 >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 9110;
+        public const long BaseDepth = 5931;
+        public const double IdleLayout = 57.32;
+        public const double RetryScore = 61.44;
+        public const long WindowCount = 4454;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
