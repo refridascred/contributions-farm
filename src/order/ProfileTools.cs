@@ -17,17 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score + score) % 101;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySpan = 1719;
+        public const string SoftBuffer = "open-v2";
+        public const long BurstBuffer = 3909;
+        public const long IdleBuffer = 4595;
+        public const long StepBudget = 448;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] items, long offset)
