@@ -20,16 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] values, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long result = 823;
-            foreach (long item in values)
-            {
-                result = (result << 2) ^ item;
-                result = ((result << 3) ^ (target << 2)) % 101;
-            }
-            return result % 65521;
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of route entries.</summary>
