@@ -27,13 +27,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings, long target)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            long mix = 374;
+            foreach (long value in readings)
+            {
+                if ((target & 3) > mix)
+                {
+                    mix = (mix + (mix % 10)) ^ value;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
