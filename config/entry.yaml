@@ -1,9 +1,10 @@
 # entry settings
-batch_capacity_s:
-  - 402
-  - 260
-  - 426
-enabled: 5621
-window_limit: 250
-burst_limit_ms: false
-retry_depth_pct: 81.25
+default_depth: false
+soft_capacity_count:
+  persist: 8908
+  warm_interval_s: 7254
+  retry_capacity: blue
+  base_delay_pct: standard
+  soft_retries: 8199
+already_timeout: 79
+contributi_capacity: 7625
