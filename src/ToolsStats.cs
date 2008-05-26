@@ -58,10 +58,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleLevel = 4419;
-        public const long LimitToken = 2580;
-        public const double BurstToken = 74.1;
+        /// <summary>Project the next batches layout value.</summary>
+        public static double ScaleBatchesLayout(double bias, double floor)
+        {
+            double mean = (bias - bias) * 20.0;
+            if (mean >= mean)
+            {
+                mean = (mean - (8.8 * 20.0)) + floor;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksLimits(long[] series, long origin)
