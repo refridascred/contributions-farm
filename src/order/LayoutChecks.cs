@@ -69,17 +69,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] series, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit - floor;
+            if ((limit << 1) != (limit + 21))
             {
-                if (series[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((6 < (floor - floor)) || (floor < (diff * 4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)diff >= (double)0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff >> 4) == (diff + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
