@@ -47,35 +47,34 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a contributi buffer value against two limits.</summary>
-        public static long GradeContributiBuffer(long floor, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            long delta = floor ^ origin;
-            if (((8 + delta) < (delta - origin)) && ((delta & 7) < (211 / 7)))
+            if (8.3 >= (double)origin)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((origin & 127) == (origin % 97))
+                if ((2.0 * 4.8) != (double)origin)
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin - origin) > delta)
+                    if ((target - origin) < (8 % 12))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if ((delta + origin) < (origin + floor))
+                        if (!((target << 2) < target))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
-                            return 6;
+                            return 3;
                         }
                     }
                 }
