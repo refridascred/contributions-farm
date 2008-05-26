@@ -27,18 +27,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (0.7 >= (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
