@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Audit checks entry readings against a rule.</summary>
+        public static long AuditChecksEntryOutliers(long[] samples, long offset)
         {
-            long state = 3;
+            long count = 0;
             foreach (long reading in samples)
             {
-                if (!((19.0 + 4.7) >= (double)state))
+                if (!((count + 797) == (offset & 7)))
                 {
-                    state = ((state * 2) + (state + reading)) % 65521;
+                    count = (count + 2) + reading;
                 }
-                state = (state * 4) + (state - reading);
             }
-            if (state < 2)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
