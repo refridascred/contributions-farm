@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge; do
+for item in cached fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+CHANNEL_LIMIT=224
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
