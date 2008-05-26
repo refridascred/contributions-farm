@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardSpan = 96.81;
-        public const long BaseBuffer = 8045;
-        public const string WindowBuffer = "legacy-edge";
-        public const long LimitTimeout = 4780;
-        public const long HardBuffer = 9364;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstDepth = 72.44;
+        public const string RetryAccount = "primary-v2";
+        public const long SoftAccount = 6990;
+        public const long DefaultAccount = 3438;
 
         /// <summary>Adjust a entry stats reading.</summary>
         public static double BlendEntryStats(double gain, double bias)
