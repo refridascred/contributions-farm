@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheScore = 3704;
+        public const double StepTimeout = 46.99;
+        public const long HardGithubfarm = 5887;
+        public const double BurstDepth = 22.6;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] samples)
