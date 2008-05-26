@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Stale,
             Queued,
-            Done,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
