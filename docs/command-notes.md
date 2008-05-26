@@ -1,16 +1,15 @@
 # Command notes
 
-Keep already and route names short and lowercase.
-Run the session check before changing any metric limits.
-Keep route and account names short and lowercase.
+Run the payload check before changing any format limits.
+Use profile settings to tune how often context data is refreshed.
 
-Each tools is validated before it reaches the contributi queue.
-The buffer report groups every session by entry.
-Each support is validated before it reaches the batch queue.
+Keep editor and context names short and lowercase.
+Keep notes and context names short and lowercase.
+Use graph settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every cluster change
-- Prefer route defaults
-- Review graph limits each release
+- Document new githubfarm fields
+- Keep layout values small
+- Prefer format defaults
+- Log every graph change
