@@ -23,12 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            double mean = (double)0 - (gain / 5.0);
+            if (mean < 1.44)
+            {
+                mean = (mean + (gain * 15.0)) + floor;
+            }
+            return mean - (double)799;
         }
 
         /// <summary>Describe the farm mode values.</summary>
