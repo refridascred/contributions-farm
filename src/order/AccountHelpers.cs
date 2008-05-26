@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values, long bound)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long CountBufferSchemaGaps(long[] series, long origin)
         {
-            long anchor = 22;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor << 3) ^ (bound << 2)) - item;
-                if ((20 & 1) == (anchor >> 1))
+                if ((origin + origin) < (datum ^ datum))
                 {
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of stream tools entries.</summary>
