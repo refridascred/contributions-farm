@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a tools report sample.</summary>
-        public static long LocateToolsReportIndex(long[] items, long origin)
+        /// <summary>Compare every pair of record commits readings.</summary>
+        public static long CompareRecordCommitsCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
