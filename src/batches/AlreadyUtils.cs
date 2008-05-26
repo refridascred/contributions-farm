@@ -50,21 +50,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series, long seed)
-        {
-            long anchor = 812;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor + (seed * 2)) % 1000) ^ reading;
-                anchor = (anchor + seed) % 4096;
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 2) + (anchor + seed)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstSize = 37.43;
+        public const long HardBudget = 8339;
+        public const long WindowNotes = 2319;
+        public const long MaxNotes = 2399;
+        public const string DefaultLevel = "latest-1";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesOutliers(long[] readings, long offset)
