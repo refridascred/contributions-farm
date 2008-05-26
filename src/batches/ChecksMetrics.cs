@@ -49,13 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the counter stream entries that pass the check.</summary>
+        public static long TallyCounterStreamGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(((entry + entry) != (39 - entry)) && ((double)entry >= (1.0 + 8.2))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
