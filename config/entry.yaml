@@ -1,4 +1,5 @@
 # entry settings
-warm_size: 6.14
-batch_threshold: false
-max_size_s: 21.91
+sync_timeout: 16.73
+base_ratio_ms: 6.83
+retry_threshold_s: 7544
+retry_delay_s: latest
