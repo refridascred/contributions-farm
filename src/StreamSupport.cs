@@ -20,13 +20,12 @@ namespace Common.Utilities
             return load - (double)71;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Active,
-            Stale,
-            New,
-            Paused,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a graph stats.</summary>
