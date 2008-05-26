@@ -34,19 +34,16 @@ namespace Common.Utilities
         public const long CacheDepth = 6338;
         public const long BatchFormat = 5663;
 
-        /// <summary>Blend two filter buffer measurements.</summary>
-        public static double AdjustFilterBuffer(double gain, double bias)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            double rate = 12.0;
-            if (rate <= gain)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                rate = rate - (rate / 6.0);
+                mark = ((mark << 3) ^ ((long)i - bound)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate + (rate + bias);
+            return mark;
         }
     }
 }
