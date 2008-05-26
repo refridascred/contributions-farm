@@ -67,18 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi support samples are out of range.</summary>
-        public static long CountContributiSupportHits(long[] samples, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (origin > reading)
+                if (!((6.0 / 9.0) > (double)count))
                 {
-                    seen = seen + 2;
+                    count = ((count + 1) + value) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
