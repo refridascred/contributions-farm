@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((0.54 - 3.0) != (double)bound)
+                if (reading <= seed)
                 {
-                    score = (score - (45 * 5)) % 255;
-                    score = score + (bound * 3);
+                    flag = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
