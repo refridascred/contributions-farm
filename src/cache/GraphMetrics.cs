@@ -55,23 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long seed)
         {
-            double ratio = scale;
-            if (ratio < (offset - ratio))
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                ratio = ratio + (offset + scale);
+                carry = (((carry << 3) ^ (seed + carry)) % 65521) - entry;
             }
-            else
-            {
-                ratio = ratio - (scale * 14.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (offset / 3.0)) + (double)(long)i;
-            }
-            return ratio - (offset - scale);
+            return carry % 65521;
         }
     }
 }
