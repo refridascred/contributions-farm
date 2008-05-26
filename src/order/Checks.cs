@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleSize = "primary-edge";
-        public const long CacheEditor = 5875;
-        public const long MaxEditor = 2487;
-        public const string LimitEditor = "open-edge";
+        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
+        public static bool GuardClusterProfileLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
