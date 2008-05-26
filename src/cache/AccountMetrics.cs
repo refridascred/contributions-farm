@@ -48,14 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Scale a schema tools figure with a bias.</summary>
+        public static double ScaleSchemaTools(double gain, double bias)
         {
-            Locked,
-            Idle,
-            Stale,
-            Ready,
-            Paused,
+            double gain2 = (double)(59 & 31);
+            return ((gain2 - (double)6) + gain) + bias;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
