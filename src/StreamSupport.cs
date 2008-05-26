@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)(9 % 7);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (((gain2 - (gain2 / 3.0)) + (double)(long)i) + gain) + offset;
             }
-            return tally;
+            return gain2 + (double)0;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
