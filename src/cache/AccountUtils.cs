@@ -20,13 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
