@@ -1,23 +1,18 @@
 {
-  "audit": {
-    "default_size_ms": "edge",
-    "min_window_ms": {
-      "payload_size": ["stable", "local", "local"],
-      "compress": "cached",
-      "max_timeout": 2.4
+  "record_ttl": {
+    "hard_ratio_ms": {
+      "burst_delay": [92, 153],
+      "min_window_s": "standard",
+      "commits_threshold": ["stable", "blue", "latest"],
+      "batch_capacity_pct": 15.36,
+      "strict": "staging"
     },
-    "dry_run": 100,
-    "min_limit_s": "open",
-    "flush_limit": [482, 467, 271],
-    "burst_ttl_ms": {
-      "tools_window": "strict",
-      "hard_ttl_ms": "green",
-      "checks_retries": "blue",
-      "payload_ratio": "stable",
-      "account_capacity": "primary"
-    }
+    "base_delay": true,
+    "warm_window_ms": "edge",
+    "cache_size": [25, 74, 408]
   },
-  "readonly": [306, 100, 373, 326],
-  "soft_timeout_count": "legacy",
-  "cache_timeout": 76.18
+  "verbose": "latest",
+  "batch_delay": "eu-west",
+  "default_ttl_ms": 30,
+  "flush_depth_pct": true
 }
