@@ -52,15 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double bias)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            double gain = bias * 9.8;
-            for (int i = 0; i < 7; i++)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain - (1.0 + bias)) + (double)(long)i;
+                if (((long)i + offset) > (score << 2))
+                {
+                    score = ((score << 2) ^ (score % 7)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return gain + ratio;
+            return score;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
