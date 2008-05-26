@@ -31,22 +31,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(163 >= reading) && ((790 ^ reading) != (matches % 5)))
+                if (mix >= (mix - mix))
                 {
-                    matches = matches + 2;
+                    mix = ((mix << 3) ^ ((long)i / 6)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = mix - (mix ^ (long)i);
                 }
+                mix = ((mix * 5) + (target / 2)) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
