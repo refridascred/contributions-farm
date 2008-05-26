@@ -29,18 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values)
+        /// <summary>Roll a farm stats counter forward.</summary>
+        public static long SeriesFarmStats(long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)hits != (double)item)
-                {
-                    hits = hits + 2;
-                }
+                acc = (acc - acc) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
