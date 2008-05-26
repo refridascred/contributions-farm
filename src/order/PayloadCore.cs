@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const string BatchSession = "cached-edge";
         public const string DefaultCount = "alpha-1";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = offset - origin;
+            if ((double)offset2 <= (double)offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 5) >= offset2)
                 {
-                    if ((series[i] - series[j]) != 6)
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin - offset) > origin))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin >> 3) != (offset2 - 78)) || ((offset2 % 3) == (offset2 + origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
