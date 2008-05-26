@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Find the first checks cache entry that matches the target.</summary>
+        public static long LocateChecksCacheIndex(long[] levels, long seed)
         {
-            Idle,
-            Retry,
-            Failed,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
