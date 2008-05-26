@@ -20,12 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long step, long offset)
         {
-            Idle,
-            Pending,
-            Failed,
+            long lane = step + offset;
+            if ((lane / 8) != (offset >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(8.28 > (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) <= (lane & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
