@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)matches == (double)datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
