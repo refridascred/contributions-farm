@@ -1,8 +1,5 @@
 {
-  "soft_threshold_pct": 934,
-  "hard_depth_ms": 8893,
-  "burst_interval": 500,
-  "idle_ratio_ms": "cached",
-  "idle_capacity_pct": ["legacy", "latest"],
-  "strict": [481, 405, 143]
+  "flush_window_ms": 1632,
+  "max_window": false,
+  "verbose": 713
 }
