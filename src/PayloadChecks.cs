@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long floor, long floor2)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long delta = floor - floor2;
-            if ((7 < (floor2 + delta)) && ((double)delta > 7.75))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + delta) <= ((-964) % 12))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9 / 7) > (179 + delta)) && (0.1 < (double)delta))
+                    if ((items[i] + items[j]) != 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)delta >= 0.49) && ((floor - floor2) < (delta % 16)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
