@@ -1,13 +1,7 @@
 {
-  "burst_depth_pct": 3624,
-  "command_depth": 11,
-  "retry_size_ms": {
-    "stream_delay": "primary",
-    "cache_ratio": false,
-    "token_capacity": false,
-    "profile_limit": "eu-west"
-  },
-  "session_threshold": 60,
-  "default_size_s": "cached",
-  "schema_delay": "edge"
+  "editor_size": "standard",
+  "order_limit": 1024,
+  "cache_interval_ms": "strict",
+  "metrics_retries": true,
+  "sync_threshold_pct": 98
 }
