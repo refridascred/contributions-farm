@@ -33,18 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits + hits) < (item - item))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
