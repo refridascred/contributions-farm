@@ -1,8 +1,5 @@
 {
-  "persist": ["staging", "blue"],
-  "filter_ttl": 43.6,
-  "max_limit": "eu-west",
-  "retry_window": 100,
-  "warm_timeout": 90.91,
-  "flush_timeout": 31.44
+  "farm_ratio": 7959,
+  "dry_run": true,
+  "enabled": "latest"
 }
