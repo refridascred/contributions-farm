@@ -78,18 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm schema readings against a rule.</summary>
-        public static long TallyGithubfarmSchemaMatches(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally - datum) != (datum + (long)readings.Length)) && ((double)tally < 9.4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
