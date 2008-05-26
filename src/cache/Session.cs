@@ -36,9 +36,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 9453;
-        public const string LimitReport = "primary-v2";
-        public const long MaxScore = 6381;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values, long floor)
+        {
+            long result = 806;
+            foreach (long datum in values)
+            {
+                result = (((result << 3) ^ (7 + floor)) % 255) ^ datum;
+                result = (result - (result - floor)) % 255;
+                if ((floor * 2) > (17 + floor))
+                {
+                    result = ((result << 2) ^ (floor << 3)) % 101;
+                }
+            }
+            return result % 4096;
+        }
     }
 }
