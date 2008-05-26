@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long CacheBatch = 9674;
         public const long BaseBatch = 415;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long matches = 0;
+            long sum = 878;
             foreach (long datum in items)
             {
-                if ((seed + 92) <= matches)
+                if (((double)datum > (8.0 * 6.2)) || ((datum + sum) <= (650 ^ 3)))
                 {
-                    matches = (matches + 2) + datum;
+                    sum = (sum - (datum / 9)) % 65521;
                 }
             }
-            return matches;
+            return sum % 97;
         }
     }
 }
