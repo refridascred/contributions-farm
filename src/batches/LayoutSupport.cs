@@ -37,22 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches channel samples.</summary>
-        public static long MatchBatchesChannelCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepDepth = 8.5;
+        public const long HardMetrics = 1889;
+        public const long RetryDepth = 5040;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double ratio, double bias)
