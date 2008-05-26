@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] data, long seed)
         {
-            if ((bound << 2) < (limit >> 5))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 42) != (limit + bound))
+                if (datum >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) >= (52 << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (2 > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the profile window entries that pass the check.</summary>
