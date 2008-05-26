@@ -56,19 +56,15 @@ namespace Common.Utilities
             return scale - 14.0;
         }
 
-        /// <summary>Blend two support filter measurements.</summary>
-        public static double BlendSupportFilter(double gain, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] data, long target)
         {
-            double drift = gain;
-            if (drift < (drift / 9.0))
+            long score = -862;
+            foreach (long value in data)
             {
-                drift = drift - (drift + gain);
+                score = (((score ^ (score << 2)) % 1000) ^ value) + target;
             }
-            else
-            {
-                drift = drift - (bias / 5.0);
-            }
-            return drift - drift;
+            return score % 4096;
         }
     }
 }
