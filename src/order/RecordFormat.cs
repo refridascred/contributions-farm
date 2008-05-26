@@ -45,27 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm commits counter forward.</summary>
-        public static long RollGithubfarmCommits(long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((bound + 1) == (bound % 100))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score - (bound + score);
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    score = ((score << 2) ^ bound) + (long)i3;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
