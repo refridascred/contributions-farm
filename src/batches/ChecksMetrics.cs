@@ -78,13 +78,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Done,
-            New,
-            Idle,
-            Stale,
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count graph metrics pairs that satisfy a relation.</summary>
