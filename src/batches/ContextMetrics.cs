@@ -34,22 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] samples, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) <= (7 % 7))
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
