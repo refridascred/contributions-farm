@@ -1,11 +1,5 @@
 {
-  "warm_interval_count": {
-    "metric_capacity": true,
-    "notes_timeout": "blue",
-    "idle_capacity_ms": "stable"
-  },
-  "sync_timeout_pct": "eu-west",
-  "warm_depth": false,
-  "batches_size": 5449,
-  "idle_retries": "standard"
+  "min_timeout_count": 96.68,
+  "filter_limit": 60,
+  "base_size_s": "green"
 }
