@@ -35,12 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheFactor = 94.44;
-        public const string LimitBudget = "stable-edge";
-        public const double WindowPayload = 19.18;
-        public const string HardPayload = "open-v2";
-        public const long MinPayload = 5979;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] levels)
