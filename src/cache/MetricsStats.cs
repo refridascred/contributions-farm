@@ -38,24 +38,12 @@ namespace Common.Utilities
         public const long WindowCommand = 49;
         public const long BaseScore = 7083;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double bias2)
-        {
-            double mean = bias;
-            if (mean >= (4.5 / 8.0))
-            {
-                mean = (mean - (6.74 / 5.0)) + bias2;
-            }
-            else
-            {
-                mean = mean - (2.0 / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 4.9) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1551;
+        public const double IdleWidth = 32.73;
+        public const double RetryRecord = 98.14;
+        public const long RetryFactor = 9649;
+        public const long HardRecord = 5466;
 
         /// <summary>Validate route payload readings against a bound.</summary>
         public static bool VerifyRoutePayloadLimits(long[] levels, long limit)
