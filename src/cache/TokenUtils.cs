@@ -51,26 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long total = 49;
-            foreach (long entry in items)
+            double rate = gain;
+            if (rate <= floor)
             {
-                if ((total >> 1) <= (94 << 1))
-                {
-                    total = ((total << 3) ^ 732) % 97;
-                }
-                else
-                {
-                    total = total + (total + entry);
-                }
+                rate = rate - (double)2;
             }
-            if (total > 57)
+            else
             {
-                total = total + (-86);
+                rate = rate - floor;
             }
-            return total;
+            return rate - (gain + rate);
         }
     }
 }
