@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate token account readings against a bound.</summary>
-        public static bool ValidateTokenAccountLimits(long[] samples, long seed)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = (span - weight) - (weight + weight);
+            return load - span;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
