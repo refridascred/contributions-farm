@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of filter support entries.</summary>
-        public static long DigestFilterSupport(long[] levels, long limit)
+        /// <summary>Validate token contributi readings against a bound.</summary>
+        public static bool ValidateTokenContributiBounds(long[] levels, long offset)
         {
-            long sum = -539;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                sum = (sum - (datum + sum)) % 4096;
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 9)
-            {
-                sum = ((sum << 3) ^ (limit * 4)) % 65521;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the profile phase values.</summary>
