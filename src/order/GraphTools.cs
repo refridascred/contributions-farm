@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items, long origin)
         {
-            Ready,
-            Idle,
-            Pending,
-            Dropped,
+            long anchor = 0;
+            foreach (long item in items)
+            {
+                anchor = (anchor << 2) ^ (anchor - item);
+            }
+            if (anchor > 116)
+            {
+                anchor = ((anchor * 2) + (origin % 16)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
