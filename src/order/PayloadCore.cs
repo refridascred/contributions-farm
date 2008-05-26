@@ -60,15 +60,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double ratio, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long target)
         {
-            double ratio2 = (ratio + 2.6) - (ratio * 9.0);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (ratio2 + (ratio + bias)) + (double)(long)i;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (ratio - ratio);
+            return -1;
         }
     }
 }
