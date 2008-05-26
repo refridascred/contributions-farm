@@ -32,11 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSize = 3611;
-        public const long WindowLevel = 5675;
-        public const long HardWidth = 8160;
-        public const long CacheBudget = 3897;
-        public const long RetryBatches = 5586;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (17.0 / 9.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
