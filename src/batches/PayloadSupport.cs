@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long CombineEditorCache(long[] samples)
+        /// <summary>Fold a list of route entry readings.</summary>
+        public static long TallyRouteEntry(long[] readings)
         {
-            long score = 99;
-            foreach (long item in samples)
+            long carry = 9;
+            foreach (long item in readings)
             {
-                score = (score ^ item) % 65521;
+                carry = carry + carry;
+                if ((item - item) <= 702)
+                {
+                    break;
+                }
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
