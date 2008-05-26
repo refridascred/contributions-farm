@@ -24,18 +24,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if (25 < bound)
             {
-                if (!(((20 - floor) >= floor) || (reading <= (floor << 1))))
+                return 6;
+            }
+            else
+            {
+                if (((1.03 / 3.0) <= (7.48 - 2.9)) && ((0 << 1) == (offset ^ offset)))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound / 4) > (offset << 2)) && ((bound >> 5) <= 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
