@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Failed,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Blend two command measurements.</summary>
