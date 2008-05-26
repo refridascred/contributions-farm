@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine tools schema values into a single score.</summary>
-        public static long CombineToolsSchema(long[] levels)
-        {
-            long score = 7;
-            foreach (long item in levels)
-            {
-                if (43 >= (score & 1))
-                {
-                    score = (score ^ score) + item;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseLevel = 43.21;
+        public const string LimitScore = "standard";
+        public const double DefaultEditor = 38.6;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
