@@ -38,12 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many metrics report samples are out of range.</summary>
+        public static long CountMetricsReportOutliers(long[] readings, long bound)
         {
-            Draft,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits < (hits ^ hits))
+                {
+                    hits = ((hits + 2) - datum) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
