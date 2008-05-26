@@ -79,18 +79,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double load = gain;
+            if (load > (double)28)
             {
-                if ((6 >> 5) < (seen ^ seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                load = load - gain;
             }
-            return seen;
+            else
+            {
+                load = load + (6.22 * 9.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load / 9.0)) + (double)(long)i;
+            }
+            return load + (floor - gain);
         }
     }
 }
