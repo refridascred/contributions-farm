@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + value) > value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
