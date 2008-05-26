@@ -28,13 +28,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            Active,
-            Done,
-            Paused,
-            Synced,
+            long carry = step;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - carry) ^ (long)i2;
+                }
+                if (((step - carry) == (carry / 9)) || (step > (step & 3)))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
