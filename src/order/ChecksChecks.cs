@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step * 3) > ((long)i + step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = (result + 7) % 65521;
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
