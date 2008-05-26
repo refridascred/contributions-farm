@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long RetryChecks = 349;
         public const string DefaultSize = "latest-edge";
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
