@@ -68,16 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token payload values into a single score.</summary>
-        public static long CombineTokenPayload(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long limit)
         {
-            long state = 983;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                state = (state - (reading / 4)) % 101;
-                state = (state + state) % 255;
+                if ((limit ^ item) <= item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
