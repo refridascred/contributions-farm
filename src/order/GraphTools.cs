@@ -20,32 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            long prev = offset + target;
-            if (28 < (offset >> 3))
+            long carry = 10;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + 33) >= (6 & 1))
+                if ((double)value != (double)91)
                 {
-                    return 4;
+                    carry = (carry - ((-82) << 3)) % 101;
                 }
                 else
                 {
-                    if ((923 >> 1) != (prev >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = (carry << 2) ^ 800;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Locate a window reading by value.</summary>
