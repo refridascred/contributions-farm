@@ -1,7 +1,5 @@
 {
-  "persist": 87.6,
-  "retry_depth": 5315,
-  "max_capacity_pct": 100,
-  "retry_delay_pct": "standard",
-  "dry_run": ["eu-west", "stable", "eu-west"]
+  "buffer_capacity": 8603,
+  "compress": [444, 420, 169],
+  "persist": "latest"
 }
