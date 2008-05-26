@@ -76,11 +76,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 8622;
-        public const long RetryTools = 584;
-        public const string SoftTools = "fallback-edge";
-        public const long MinRatio = 5372;
-        public const long IdleTools = 1233;
+        /// <summary>Grade a entry commits value against two limits.</summary>
+        public static long GradeEntryCommits(long step, long limit)
+        {
+            if (((step - 358) >= limit) && ((double)limit <= (7.6 * 4.7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.9 / 6.0) == (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
