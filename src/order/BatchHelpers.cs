@@ -28,9 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseTimeout = "open-v2";
-        public const long HardReport = 2111;
-        public const long BurstReport = 8856;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
