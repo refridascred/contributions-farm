@@ -1,25 +1,13 @@
 # support settings
-compress: true
-layout_retries:
-  base_threshold: 5805
-  default_limit_count:
-    - stable
-    - staging
-    - strict
-  readonly: 7459
-  burst_size_ms:
-    - 109
-    - 491
-    - 261
-    - 195
-  warm_depth: legacy
-  already_timeout:
-    - eu-west
-    - blue
-    - legacy
-    - eu-west
-burst_ttl_ms:
-  - cached
-  - primary
-hard_capacity_s: edge
-batch_depth_s: 27.87
+retry_depth_ms: 50
+burst_ratio_count: 60
+retry_capacity_s: legacy
+dry_run:
+  enabled: eu-west
+  compress:
+    readonly: eu-west
+    enabled: true
+    hard_capacity_s: eu-west
+    dry_run: 100
+  base_timeout_s: stable
+graph_ttl: primary
