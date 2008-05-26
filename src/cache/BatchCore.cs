@@ -40,10 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 1416;
-        public const string LimitOrder = "open-edge";
-        public const string IdleCount = "strict-edge";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
+        {
+            long score = 6;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) <= score)
+                {
+                    score = ((score * 4) + (reading + reading)) % 4096;
+                }
+                else
+                {
+                    score = score - (reading ^ score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
