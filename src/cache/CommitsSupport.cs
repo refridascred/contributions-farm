@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank report metric input into a small class.</summary>
+        public static long SortReportMetric(long floor, long bound)
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            if (0.8 > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((79 + bound) >= (bound - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
