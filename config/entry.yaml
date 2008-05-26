@@ -1,4 +1,8 @@
 # entry settings
-tools_retries: fallback
-base_interval: false
-strict: local
+sync_retries_pct: open
+persist: true
+idle_window_pct:
+  - legacy
+  - primary
+  - stable
+enabled: 62.75
