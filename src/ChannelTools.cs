@@ -26,22 +26,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric farm samples are out of range.</summary>
-        public static long CountMetricFarmOutliers(long[] readings, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)readings.Length + cell) > (matches + bound))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
