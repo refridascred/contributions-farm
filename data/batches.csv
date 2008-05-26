@@ -1,8 +1,8 @@
-id,token,count,score,ratio
-1,599,497,480,33.46
-2,258,stable,green,352
-3,178,8.94,62.23,staging
-4,322,open,439,open
-5,97.71,local,eu-west,426
-6,strict,edge,98.23,132
-7,44.87,edge,130,55
+id,weight,label,active,ratio
+1,25.55,687,31.83,45.44
+2,28.72,601,fallback,825
+3,318,75.18,stable,956
+4,standard,366,green,777
+5,192,323,edge,open
+6,staging,529,49.36,blue
+7,980,822,48.58,blue
