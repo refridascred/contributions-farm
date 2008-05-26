@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 1904;
-        public const string BatchInterval = "primary-1";
-        public const string RetryRatio = "cached-edge";
-        public const long RetryCommand = 4413;
-        public const double BurstCommand = 1.19;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheOutliers(long[] readings)
