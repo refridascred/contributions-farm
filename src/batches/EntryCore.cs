@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long state = 443;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)data.Length >= (561 << 1)) && (state > (state / 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state * 3) + (cell * 3);
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
