@@ -20,17 +20,15 @@ namespace Common.Utilities
             return load - (double)71;
         }
 
-        /// <summary>Look up the position of a support metric sample.</summary>
-        public static long LocateSupportMetricIndex(long[] data, long bound)
+        /// <summary>Iterate the entry session series from a seed.</summary>
+        public static long RollEntrySession(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine account contributi values into a single score.</summary>
