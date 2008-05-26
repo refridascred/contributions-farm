@@ -1,8 +1,5 @@
 {
-  "channel_ttl": 2.99,
-  "verbose": "staging",
-  "default_ttl_s": 3368,
-  "already_ttl": 24,
-  "cache_ttl": "cached",
-  "poll_capacity_ms": 30
+  "checks_ttl": "green",
+  "readonly": 100,
+  "base_timeout_count": 2182
 }
