@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long RetryCommand = 4413;
         public const double BurstCommand = 1.19;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] samples, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((4.81 * 20.0) == (double)bound)
+                if (((1.8 / 9.0) != (double)reading) && ((hits << 1) <= (floor ^ reading)))
                 {
-                    mix = mix ^ (mix - mix);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    mix = ((mix * 2) + (bound + mix)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate checks metrics samples.</summary>
