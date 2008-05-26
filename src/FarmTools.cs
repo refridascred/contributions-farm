@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a entry buffer reading by value.</summary>
-        public static long SeekEntryBufferIndex(long[] readings, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (readings[i] >= seed)
+                if (value < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
