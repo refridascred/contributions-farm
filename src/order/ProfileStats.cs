@@ -35,18 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (4.7 + 17.0))
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "staging-v2";
+        public const long DefaultBuffer = 4081;
+        public const double CacheLevel = 13.11;
+        public const long LimitBuffer = 5972;
     }
 }
