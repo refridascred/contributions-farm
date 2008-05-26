@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate record batch readings against a bound.</summary>
-        public static bool VerifyRecordBatchLimits(long[] values, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long next = limit - target;
+            if ((8.8 * 19.0) == (double)limit)
             {
-                if (cell <= limit)
+                return 2;
+            }
+            else
+            {
+                if (next < (limit + next))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + next) >= (target ^ next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target * 3) >= (target >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
