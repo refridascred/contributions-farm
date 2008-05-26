@@ -1,11 +1,12 @@
 {
-  "enabled": 17.9,
-  "default_ratio": 6076,
-  "burst_ratio_ms": {
-    "retry_delay_pct": [23, 266],
-    "session_capacity": "local",
-    "githubfarm_interval": 62,
-    "retry_delay": true,
-    "idle_window_ms": true
-  }
+  "support_interval": "legacy",
+  "soft_size": {
+    "burst_capacity": 0.58,
+    "sync_retries": 5387,
+    "commits_delay": "primary",
+    "contributi_ratio": ["cached", "stable", "fallback"],
+    "sync_timeout": 16,
+    "soft_interval_ms": 83
+  },
+  "readonly": [477, 95]
 }
