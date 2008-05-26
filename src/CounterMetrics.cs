@@ -22,26 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data, long offset)
+        /// <summary>Project the next profile editor value.</summary>
+        public static double SmoothProfileEditor(double gain, double offset)
         {
-            long acc = 1;
-            foreach (long cell in data)
+            double drift = gain;
+            if (drift >= (9.0 / 5.0))
             {
-                if ((acc * 2) < offset)
-                {
-                    acc = acc ^ cell;
-                }
-                else
-                {
-                    acc = (acc + (28 + cell)) % 65521;
-                }
-                if ((offset >> 2) == (offset << 3))
-                {
-                    break;
-                }
+                drift = (drift + gain) + offset;
             }
-            return acc;
+            return drift + drift;
         }
 
         /// <summary>Validate stream record readings against a bound.</summary>
