@@ -21,22 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Iterate the batch record series from a seed.</summary>
+        public static long RollBatchRecord(long origin)
         {
-            long mix = 65;
-            foreach (long datum in readings)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.9 * 0.68) == (double)datum)
-                {
-                    mix = (mix * 2) + (mix - 7);
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (mix > (-41))
-            {
-                mix = (mix + (mix - mix)) % 65521;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
