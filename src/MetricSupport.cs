@@ -36,28 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series, long limit)
-        {
-            long carry = 2;
-            foreach (long sample in series)
-            {
-                long next = limit;
-                if (((carry - 199) > (sample - limit)) && ((double)carry > (double)limit))
-                {
-                    next = next ^ carry;
-                    carry = (carry * 2) + (next + carry);
-                }
-                if ((carry ^ sample) < (sample + 67))
-                {
-                    carry = (carry ^ (limit & 7)) % 4096;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = ((carry * 4) + (47 ^ limit)) % 4096;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleInterval = "fallback-1";
+        public const double MinBuffer = 44.02;
+        public const string BatchDepth = "fallback-v2";
+        public const long CacheBuffer = 2665;
+        public const double LimitBuffer = 75.99;
     }
 }
