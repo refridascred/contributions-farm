@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] data, long floor)
         {
-            New,
-            Ready,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - 812) == (hits + floor))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
