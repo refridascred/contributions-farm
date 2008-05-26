@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Retry,
-            Active,
-            Paused,
-            Synced,
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
