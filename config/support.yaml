@@ -1,12 +1,21 @@
 # support settings
-strict: true
-audit: 4.37
-retry_depth_s:
-  - green
-  - strict
-idle_size:
-  - 46
-  - 321
-  - 466
-  - 130
-hard_depth_count: 3595
+enabled: primary
+dry_run: 250
+batch_retries_s:
+  batch_capacity:
+    order_threshold: 89
+    enabled: legacy
+    notes_depth: false
+    account_timeout: 90.33
+  counter_limit: cached
+  retry_interval_pct: 23.47
+  warm_retries_s: 73.26
+  readonly: 38
+flush_ttl: false
+audit: green
+min_depth_pct:
+  retry_capacity: true
+  retry_threshold: 30
+  default_interval_pct: latest
+  max_interval_count: 9919
+  strict: 500
