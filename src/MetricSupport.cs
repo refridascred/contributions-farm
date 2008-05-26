@@ -21,11 +21,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 2614;
-        public const long DefaultInterval = 8327;
-        public const long MinWidth = 8800;
-        public const double MaxFarm = 0.06;
-        public const long BaseFarm = 9540;
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long RankStreamEditor(long origin, long offset)
+        {
+            long cur = origin ^ offset;
+            if ((offset & 31) >= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)cur > (17.0 + 3.66))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset <= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset * 2) != (cur + cur))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
