@@ -35,19 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long state = 804;
+            foreach (long value in values)
             {
-                if (item <= floor)
+                if ((3.23 * 5.5) != (double)offset)
                 {
-                    ok = false;
-                    break;
+                    state = (((state << 2) ^ state) % 255) + value;
                 }
             }
-            return ok;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ offset) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a order stats.</summary>
