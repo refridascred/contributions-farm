@@ -1,6 +1,13 @@
 {
-  "checks_delay": 33.72,
-  "min_size_count": [85, 190, 236, 359],
-  "counter_window": 11,
-  "min_limit_count": "stable"
+  "flush_ratio": {
+    "persist": [175, 370, 348],
+    "queue_delay": 2.42,
+    "cluster_limit": "cached",
+    "commits_depth": "cached"
+  },
+  "warm_retries_ms": 115,
+  "counter_capacity": "strict",
+  "strict": 47.64,
+  "default_threshold_s": 1024,
+  "min_limit_pct": 26.81
 }
