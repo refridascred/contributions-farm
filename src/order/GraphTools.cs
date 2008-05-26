@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const long SoftSpan = 875;
         public const long MinBudget = 9915;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            double weight = floor;
-            if (weight < scale)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                weight = weight - scale;
+                if ((double)hits > (2.69 * 3.66))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (weight + weight);
+            return hits;
         }
     }
 }
