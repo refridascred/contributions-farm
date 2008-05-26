@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value ^ hits) > value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
