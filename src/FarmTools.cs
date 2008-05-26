@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of queue stats entries.</summary>
+        public static long DigestQueueStats(long[] data)
         {
-            Retry,
-            Draft,
-            Ready,
-            Paused,
-            Queued,
+            long result = 1;
+            foreach (long cell in data)
+            {
+                result = ((result + (4 & 1)) % 255) - cell;
+            }
+            if (result < 75)
+            {
+                result = result - (result * 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next metric value.</summary>
