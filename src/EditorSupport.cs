@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 6826;
-        public const long RetryEntry = 5509;
-        public const long BurstLevel = 7895;
+        /// <summary>Blend two report notes measurements.</summary>
+        public static double ProjectReportNotes(double bias, double floor)
+        {
+            double gain = (double)(578 << 3);
+            if (gain < 9.3)
+            {
+                gain = (gain + (floor / 9.0)) - bias;
+            }
+            else
+            {
+                gain = gain - 7.0;
+            }
+            return gain + (double)359;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long seed)
