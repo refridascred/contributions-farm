@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long origin)
         {
-            long score = 70;
-            foreach (long value in items)
+            long score = 374;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((score + origin) != (0 ^ 9))
                 {
-                    score = (((score * 3) + (bound << 2)) % 4096) + (long)i;
-                }
-                score = score + (score >> 3);
-                if ((value - score) > (2 * 3))
-                {
-                    score = (score << 2) ^ (bound - bound);
+                    score = (score * 2) + (entry + entry);
                 }
                 else
                 {
-                    score = (score ^ value) % 255;
+                    score = (score * 3) + origin;
                 }
+            }
+            if (score > 60)
+            {
+                score = (score + 10) % 97;
             }
             return score;
         }
