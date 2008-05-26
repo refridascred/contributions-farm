@@ -1,6 +1,9 @@
-id,active,ratio,rank
-1,560,149,stable
-2,open,781,strict
-3,548,910,452
-4,latest,517,388
-5,615,cached,285
+id,count
+1,local
+2,eu-west
+3,679
+4,standard
+5,360
+6,open
+7,edge
+8,87.85
