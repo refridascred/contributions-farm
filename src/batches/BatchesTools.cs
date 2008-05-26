@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate cluster cache readings against a bound.</summary>
-        public static bool VerifyClusterCacheLimits(long[] values, long target)
+        /// <summary>Match up editor notes samples.</summary>
+        public static long MatchEditorNotesCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
