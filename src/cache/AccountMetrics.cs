@@ -76,13 +76,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Idle,
-            Retry,
-            Closed,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5352;
+        public const double SoftFactor = 87.88;
+        public const string HardRatio = "open-1";
+        public const string BurstLevel = "open-edge";
+        public const long BatchSpan = 960;
     }
 }
