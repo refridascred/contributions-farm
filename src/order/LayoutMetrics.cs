@@ -17,21 +17,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)32 == (double)hits))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
