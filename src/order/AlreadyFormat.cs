@@ -52,15 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            double ratio = bias;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                ratio = ((ratio + bias) + (double)(long)i) - offset;
             }
-            return sum;
+            return ratio + 4.0;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
