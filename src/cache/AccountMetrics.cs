@@ -68,13 +68,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double bias)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Closed,
+            double ratio2 = bias;
+            return (ratio2 + ratio2) + ratio;
         }
     }
 }
