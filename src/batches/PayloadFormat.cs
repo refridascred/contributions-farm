@@ -20,17 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 18;
+            foreach (long item in levels)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (7 - 0)) ^ item;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
