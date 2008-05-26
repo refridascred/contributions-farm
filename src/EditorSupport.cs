@@ -24,22 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((double)seed < 3.0)
             {
-                if ((double)cell > (11.0 + 14.0))
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) >= seed)
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step - seed) != (step - 54))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step % 16) >= (seed * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
