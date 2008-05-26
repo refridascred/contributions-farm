@@ -35,19 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats metric counter forward.</summary>
-        public static long RollStatsMetric(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((offset + (long)i) >= (long)i))
+                if (!(163 >= reading) && ((790 ^ reading) != (matches % 5)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
