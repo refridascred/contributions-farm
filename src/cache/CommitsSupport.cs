@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((2.0 + 11.0) <= (double)entry) || ((offset + entry) == (entry + 59)))
+                if ((hits - reading) <= (415 - reading))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
