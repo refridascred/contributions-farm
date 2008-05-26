@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings, long origin)
         {
-            Paused,
-            Queued,
-            Ready,
-            Stale,
-            Idle,
+            long score = 47;
+            foreach (long item in readings)
+            {
+                score = (score ^ (origin + item)) % 97;
+                if ((9.14 + 6.45) >= (double)score)
+                {
+                    score = (score ^ (88 + origin)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Blend two githubfarm layout measurements.</summary>
