@@ -33,20 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardTimeout = "staging-v2";
+        public const long DefaultSize = 8317;
+        public const long BatchCount = 726;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderOutliers(long[] items)
