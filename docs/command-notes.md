@@ -1,10 +1,11 @@
 # Command notes
 
-The farm report groups every format by record.
-Use graph settings to tune how often schema data is refreshed.
+The metrics report groups every support by order.
+Use batch settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate channel input early
-- Log every payload change
+- Prefer cluster defaults
+- Keep entry values small
+- Review order limits each release
+- Document new entry fields
