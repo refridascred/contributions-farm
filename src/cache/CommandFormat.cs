@@ -49,21 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Iterate the githubfarm window series from a seed.</summary>
+        public static long IterateGithubfarmWindow(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc - (acc + acc)) % 65521;
+                acc = acc - acc;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
