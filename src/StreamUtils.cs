@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (reading >= step)
+                if (cell >= offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
