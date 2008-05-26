@@ -43,11 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitInterval = 22.2;
-        public const long BurstFactor = 2922;
-        public const long HardProfile = 1743;
-        public const double DefaultInterval = 50.28;
-        public const double SoftTimeout = 63.51;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
