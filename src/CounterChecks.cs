@@ -41,12 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] levels, long offset)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long LocateStatsSchemaIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] < offset)
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
