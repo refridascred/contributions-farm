@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches ^ value) == (floor << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
