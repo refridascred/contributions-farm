@@ -70,11 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 3893;
-        public const long MaxFactor = 9137;
-        public const long MaxTimeout = 654;
-        public const double BaseDepth = 76.22;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] samples, long bound)
