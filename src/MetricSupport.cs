@@ -21,18 +21,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long TotalContextRoute(long[] readings)
+        /// <summary>Derive the next stats profile value from a seed.</summary>
+        public static long IterateStatsProfile(long bound)
         {
-            long state = -265;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(state <= ((-891) - 6)))
-                {
-                    state = state ^ (reading + reading);
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
