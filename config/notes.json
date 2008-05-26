@@ -1,6 +1,6 @@
 {
-  "graph_depth": true,
-  "verbose": 30,
-  "retry_window_count": 53.77,
-  "warm_threshold_s": "blue"
+  "default_window": true,
+  "poll_ratio_s": 33,
+  "session_timeout": [130, 257, 288, 433],
+  "min_window": ["open", "eu-west", "blue", "latest"]
 }
