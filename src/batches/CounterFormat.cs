@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long state = 889;
-            foreach (long item in series)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(state >= (5 - 3)))
+                if ((mix < 978) || (mix > (limit % 7)))
                 {
-                    state = state - item;
+                    mix = ((mix * 4) + ((long)i - 3)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Describe the profile kind values.</summary>
