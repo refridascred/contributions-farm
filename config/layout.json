@@ -1,8 +1,8 @@
 {
-  "default_capacity_count": true,
-  "batch_interval": 74,
-  "batch_capacity": 75.24,
-  "soft_capacity": 6.98,
-  "profile_ttl": "strict",
-  "soft_delay": true
+  "strict": "open",
+  "format_depth": 79.39,
+  "verbose": 44.43,
+  "context_size": 500,
+  "min_capacity": [448, 109, 55, 5],
+  "cache_size_ms": [404, 258]
 }
