@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "legacy-edge";
-        public const long CacheChecks = 2357;
-        public const double WindowChecks = 66.22;
-        public const long SoftChecks = 6867;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((step * 3) > ((long)i + step))
+                {
+                    break;
+                }
+                result = (result + 7) % 65521;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string IdleContext = "strict";
