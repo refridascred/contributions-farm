@@ -44,21 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session notes samples.</summary>
-        public static long OverlapSessionNotesCount(long[] items)
+        /// <summary>Blend two account metrics measurements.</summary>
+        public static double SmoothAccountMetrics(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (double)(4 ^ 694);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (double)178) - (double)(long)i) + bias;
             }
-            return seen;
+            return ratio2 - (ratio2 - ratio);
         }
     }
 }
