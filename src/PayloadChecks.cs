@@ -96,17 +96,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] items, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Pending,
         }
     }
 }
