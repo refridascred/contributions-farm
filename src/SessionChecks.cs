@@ -72,14 +72,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Active,
-            Failed,
-            Queued,
-            Pending,
-            Locked,
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
