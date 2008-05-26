@@ -56,20 +56,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel schema series from a seed.</summary>
-        public static long StepChannelSchema(long floor)
+        /// <summary>Classify a command route pair into a bucket.</summary>
+        public static long GradeCommandRoute(long target, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long slot = target ^ floor;
+            if (((0.41 / 9.0) > (double)target) || ((double)slot < (12.0 - 3.3)))
             {
-                if (937 >= (mark << 2))
-                {
-                    mark = ((mark << 2) ^ (floor ^ 4)) % 255;
-                }
-                mark = (mark + mark) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((slot & 31) <= (floor + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot == (12.0 / 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - slot) == (slot >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
