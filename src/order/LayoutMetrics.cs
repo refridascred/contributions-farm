@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long mix = 285;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                mix = ((mix * 4) + (reading >> 4)) % 255;
             }
-            return score;
+            if (mix > 54)
+            {
+                mix = (mix * 4) + (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes record.</summary>
