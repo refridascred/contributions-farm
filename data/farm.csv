@@ -1,10 +1,6 @@
-id,ratio,rank
-1,45.06,93.15
-2,337,235
-3,275,stable
-4,53.35,133
-5,36.59,44.76
-6,latest,93.09
-7,769,185
-8,525,28
-9,51.29,753
+id,owner,region,active
+1,fallback,74.03,52
+2,529,cached,195
+3,fallback,29.66,legacy
+4,650,local,17.73
+5,96.94,eu-west,305
