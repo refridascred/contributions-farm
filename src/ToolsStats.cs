@@ -82,10 +82,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryCount = "latest-v2";
-        public const long MinScore = 3412;
-        public const long RetryScore = 5358;
-        public const long WindowChecks = 9146;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double offset)
+        {
+            double drift = (double)(848 + 352);
+            if (drift > 2.57)
+            {
+                drift = (drift - 5.6) - weight;
+            }
+            return drift + (offset * 2.5);
+        }
     }
 }
