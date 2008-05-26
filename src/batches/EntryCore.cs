@@ -63,11 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstTimeout = 9185;
-        public const long BatchAlready = 9262;
-        public const long RetryAlready = 3769;
-        public const string HardAlready = "standard-v2";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
