@@ -1,10 +1,18 @@
 # entry settings
-default_depth: false
-soft_capacity_count:
-  persist: 8908
-  warm_interval_s: 7254
-  retry_capacity: blue
-  base_delay_pct: standard
-  soft_retries: 8199
-already_timeout: 79
-contributi_capacity: 7625
+tools_threshold: green
+readonly:
+  default_size: 85
+  burst_timeout:
+    hard_limit_ms: 71
+    soft_timeout_pct: 762
+    dry_run: 964
+    burst_interval_ms: 60
+    retry_depth:
+      - fallback
+      - edge
+      - green
+  burst_ttl_s: 37.29
+  verbose: edge
+  warm_size_count: false
+githubfarm_timeout: 11
+flush_size_ms: staging
