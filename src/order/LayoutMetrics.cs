@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a profile cache value against two limits.</summary>
-        public static long GradeProfileCache(long origin, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] data, long floor)
         {
-            long diff = origin + limit;
-            if ((double)origin < (6.64 + 9.9))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((114 / 5) > diff)
+                if (datum <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit >= 2.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((4.23 / 4.0) >= (double)limit) && ((limit - diff) <= (limit << 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
