@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long offset)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long score = 54;
+            foreach (long value in series)
+            {
+                score = (((score + 639) % 97) - value) - offset;
+            }
+            return score;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
