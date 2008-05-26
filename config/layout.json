@@ -1,9 +1,17 @@
 {
-  "verbose": {
-    "idle_interval": ["cached", "staging", "primary"],
-    "soft_capacity": "strict",
-    "poll_capacity_pct": 18.05
+  "base_depth": 2549,
+  "persist": 96.64,
+  "profile_retries": {
+    "flush_interval_s": ["blue", "open", "stable"],
+    "enabled": "staging",
+    "cache_delay_count": {
+      "enabled": 36.53,
+      "graph_window": 60,
+      "cache_ratio": 8052
+    },
+    "cache_ratio": 66.76,
+    "stats_timeout": 67
   },
-  "poll_timeout": 12.58,
-  "default_timeout_pct": [191, 383, 80]
+  "base_retries_pct": 1024,
+  "burst_window_pct": 1610
 }
