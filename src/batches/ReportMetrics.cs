@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first checks cache entry that matches the target.</summary>
-        public static long LocateChecksCacheIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "local-edge";
+        public const string HardInterval = "latest-v2";
+        public const double MinLayout = 62.16;
+        public const long BatchWidth = 1660;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] samples, long offset)
