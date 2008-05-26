@@ -51,10 +51,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftDepth = 8833;
-        public const long RetryLevel = 1531;
-        public const long RetryBatch = 5005;
+        /// <summary>Grade a buffer format value against two limits.</summary>
+        public static long SortBufferFormat(long bound, long floor)
+        {
+            long prev = bound ^ floor;
+            if (bound <= (bound + prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev >> 4) >= prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] readings)
