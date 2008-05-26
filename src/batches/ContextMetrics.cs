@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] levels, long step)
+        /// <summary>Check that every queue filter entry stays within the limit.</summary>
+        public static bool VerifyQueueFilterLimits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((step + step) <= seen)
+                if (item <= offset)
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the graph class values.</summary>
