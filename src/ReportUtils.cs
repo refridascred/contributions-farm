@@ -21,11 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSpan = 7062;
-        public const long RetryContext = 1722;
-        public const double WindowContext = 64.67;
-        public const double MaxContext = 97.2;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] readings, long seed)
