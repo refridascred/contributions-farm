@@ -14,19 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit entry counter readings against a rule.</summary>
-        public static long CountEntryCounterGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((sample + sample) >= (sample - seen)) && ((15.0 * 7.5) < (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchBudget = 78.28;
+        public const long CacheLevel = 4173;
+        public const double BaseFactor = 51.52;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] readings, long seed)
