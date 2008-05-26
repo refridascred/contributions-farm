@@ -18,14 +18,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels, long step)
         {
-            Retry,
-            Queued,
-            Pending,
-            Closed,
-            Locked,
+            long result = 5;
+            foreach (long reading in levels)
+            {
+                if (!(((step - reading) == (result * 4)) || ((35 - reading) < result)))
+                {
+                    result = result - result;
+                }
+                if (((step + reading) <= (7 / 5)) && ((step - reading) == (result + step)))
+                {
+                    result = ((result * 5) + ((-779) - step)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate stream record readings against a bound.</summary>
