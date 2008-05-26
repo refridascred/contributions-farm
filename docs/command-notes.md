@@ -1,15 +1,12 @@
 # Command notes
 
-Keep farm and editor names short and lowercase.
-Run the profile check before changing any filter limits.
-Run the schema check before changing any layout limits.
-
-The route report groups every graph by graph.
-Use checks settings to tune how often stream data is refreshed.
+Run the record check before changing any session limits.
+The stream module keeps metric values in sync with the stats cache.
+When a order fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batch input early
-- Review contributi limits each release
+- Keep schema values small
+- Review schema limits each release
+- Log every support change
 - Document new session fields
-- Prefer stats defaults
