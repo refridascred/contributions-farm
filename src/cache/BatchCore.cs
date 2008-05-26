@@ -45,22 +45,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values, long step)
+        /// <summary>Rank stats command input into a small class.</summary>
+        public static long BucketStatsCommand(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (!((double)seed < (7.31 - 4.96)))
             {
-                if (item >= (seen >> 4))
+                return 8;
+            }
+            else
+            {
+                if ((707 / 3) >= (seed ^ seed))
                 {
-                    seen = (seen + 2) + step;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (seed <= (seed - 9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 4) < (7 ^ 72))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
