@@ -21,20 +21,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)(long)i >= (double)54))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    state = (state - (state << 3)) % 1000;
-                    state = state + state;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count notes token pairs that satisfy a relation.</summary>
