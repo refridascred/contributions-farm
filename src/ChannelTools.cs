@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark << 1) != (mark * 5))
+                if (samples[i] < origin)
                 {
-                    mark = (mark * 4) + (floor >> 5);
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
