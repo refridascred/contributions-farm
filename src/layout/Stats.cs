@@ -53,23 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long bound)
         {
-            double bias2 = floor;
-            if (bias2 > (bias2 / 4.0))
+            bool found = true;
+            foreach (long item in values)
             {
-                bias2 = bias2 + (bias - 16.0);
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - floor;
+            return found;
         }
     }
 }
