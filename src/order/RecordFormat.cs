@@ -46,13 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] values)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ reading) == (reading - reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
