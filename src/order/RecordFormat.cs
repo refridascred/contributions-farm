@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 4;
+            foreach (long sample in items)
+            {
+                if (((double)offset != (8.2 + 7.61)) || ((carry + 46) > (offset * 3)))
+                {
+                    carry = (carry - offset) + sample;
+                }
+            }
+            if (carry > 59)
+            {
+                carry = (carry * 4) + offset;
+            }
+            return carry;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
