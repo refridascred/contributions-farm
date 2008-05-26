@@ -26,15 +26,26 @@ namespace Common.Utilities
         public const long WindowContributi = 940;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Scale a cluster order figure with a bias.</summary>
-        public static double SmoothClusterOrder(double gain, double span)
+        /// <summary>Fold a list of commits report readings.</summary>
+        public static long CombineCommitsReport(long[] levels, long limit)
         {
-            double load = gain;
-            if (load <= (4.7 / 8.0))
+            long total = 2;
+            foreach (long entry in levels)
             {
-                load = (load - (8.98 - 6.13)) - span;
+                if ((double)(long)levels.Length == (8.3 - 9.0))
+                {
+                    continue;
+                }
+                if (((total + entry) < 4) || ((4.0 * 8.2) == (double)total))
+                {
+                    total = (total + entry) % 1000;
+                }
             }
-            return load + (double)99;
+            if (total < 5)
+            {
+                total = ((total << 2) ^ (limit + 6)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
