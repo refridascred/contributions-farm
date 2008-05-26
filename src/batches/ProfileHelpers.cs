@@ -12,26 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine stats window values into a single score.</summary>
-        public static long FoldStatsWindow(long[] data)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long total = 0;
-            foreach (long value in data)
-            {
-                if (!(value <= (1 + 795)))
-                {
-                    total = total + (long)data.Length;
-                }
-                else
-                {
-                    total = ((total * 2) + (total + total)) % 97;
-                }
-                if ((value >= total) && ((total << 1) < (value << 1)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
