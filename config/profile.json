@@ -1,5 +1,8 @@
 {
-  "buffer_capacity": 8603,
-  "compress": [444, 420, 169],
-  "persist": "latest"
+  "dry_run": "legacy",
+  "flush_ratio_count": [92, 447, 14, 62],
+  "flush_interval_s": 100,
+  "compress": ["legacy", "stable"],
+  "commits_interval": "green",
+  "retry_limit_s": [458, 360, 205, 422]
 }
