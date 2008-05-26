@@ -30,14 +30,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Adjust a editor metric reading.</summary>
+        public static double BlendEditorMetric(double bias, double offset)
         {
-            Idle,
-            Queued,
-            Failed,
-            Closed,
-            New,
+            double bias2 = offset;
+            return (bias2 - (offset * 3.68)) + bias;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
