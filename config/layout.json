@@ -1,9 +1,11 @@
 {
-  "audit": {
-    "metric_ratio": 74.37,
-    "batch_window": "latest",
-    "idle_threshold": [13, 22]
-  },
-  "notes_threshold": 15,
-  "max_limit": true
+  "min_timeout": "edge",
+  "base_delay_pct": 6082,
+  "base_ttl_count": "blue",
+  "flush_ttl_ms": {
+    "retry_timeout": 100,
+    "dry_run": false,
+    "max_interval_s": 29,
+    "metric_depth": 16.74
+  }
 }
