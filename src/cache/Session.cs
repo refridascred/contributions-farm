@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2306;
-        public const string StepInterval = "local-1";
-        public const long MaxContributi = 1062;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Pending,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long floor)
