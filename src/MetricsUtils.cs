@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 51;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (carry << 3) ^ ((long)i + 3);
+                }
+                if ((item << 3) < carry)
+                {
+                    carry = (carry - (carry >> 4)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
