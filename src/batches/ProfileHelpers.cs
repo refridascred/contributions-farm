@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long MeasureBufferStatsOutliers(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long carry = 23;
+            foreach (long sample in samples)
             {
-                if ((double)seen != (1.94 * 4.15))
+                if ((carry ^ 441) >= carry)
                 {
-                    seen = (seen + 3) - reading;
+                    carry = ((carry - carry) % 1000) ^ sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry + carry) % 1000;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
