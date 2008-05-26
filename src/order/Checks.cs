@@ -42,21 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count payload profile pairs that satisfy a relation.</summary>
-        public static long ComparePayloadProfileCount(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Digest a series of tools notes entries.</summary>
