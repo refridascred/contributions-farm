@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] series, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            bool found = true;
-            foreach (long item in series)
+            long anchor = 7;
+            foreach (long sample in levels)
             {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor * 4) + sample;
+                anchor = (anchor ^ (sample >> 5)) % 101;
             }
-            return found;
+            if (anchor < 27)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
