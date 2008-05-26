@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Rank stream channel input into a small class.</summary>
+        public static long BucketStreamChannel(long bound, long target)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long bound2 = bound - target;
+            if (bound <= (target & 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target > (bound2 + 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((58 << 1) < (bound2 / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target > (target + 956))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
