@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((763 & 31) <= ((-3) + seed))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitDepth = 9487;
+        public const double WindowSchema = 13.79;
+        public const double IdleSchema = 9.21;
+        public const long MinSpan = 3379;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepCount = 7789;
