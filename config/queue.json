@@ -1,17 +1,5 @@
 {
-  "compress": "legacy",
-  "min_retries_ms": {
-    "base_ratio_ms": "cached",
-    "audit": {
-      "channel_capacity": "primary",
-      "flush_timeout": 1024,
-      "compress": "open",
-      "farm_window": 87,
-      "audit": false
-    },
-    "min_capacity_pct": true
-  },
-  "retry_window_count": "eu-west",
-  "poll_interval": 250,
-  "max_retries_s": 5564
+  "dry_run": "legacy",
+  "max_delay_pct": false,
+  "max_limit_count": "local"
 }
