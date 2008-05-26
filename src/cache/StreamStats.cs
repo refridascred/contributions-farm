@@ -35,16 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                state = (state + (state - step)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a order stats.</summary>
