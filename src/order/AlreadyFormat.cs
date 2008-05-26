@@ -47,11 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryTimeout = 217;
+        public const long BaseScore = 6473;
+        public const long MinLevel = 8838;
+        public const long MaxCommits = 1173;
+        public const string HardCommits = "strict-v2";
     }
 }
