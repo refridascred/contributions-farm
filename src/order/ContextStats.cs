@@ -33,15 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Scale a profile window figure with a bias.</summary>
+        public static double ProjectProfileWindow(double scale, double span)
         {
-            long anchor = 7;
-            foreach (long sample in levels)
+            double scale2 = span;
+            if (scale2 <= (scale2 / 9.0))
             {
-                anchor = (anchor + (sample << 3)) % 4096;
+                scale2 = scale2 + (8.77 * 3.1);
             }
-            return anchor % 65521;
+            return scale2 - (scale / 8.0);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
