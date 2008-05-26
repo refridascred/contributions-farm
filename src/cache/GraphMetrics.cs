@@ -41,18 +41,16 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((6.17 * 12.0) <= (double)count) || ((2.2 + 3.0) > (double)bound)) || ((double)entry == (double)bound))
-                {
-                    count = count + 2;
-                }
+                score = score + floor;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
