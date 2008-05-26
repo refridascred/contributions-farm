@@ -40,10 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 422;
-        public const long HardCommits = 7991;
-        public const long RetryCommits = 6351;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] data, long seed)
