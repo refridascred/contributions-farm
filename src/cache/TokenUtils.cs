@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((carry + floor) <= (carry + (long)i))
-                {
-                    carry = (carry - (1 + carry)) % 97;
-                }
-                if (carry < (long)i)
-                {
-                    carry = (carry + (floor + carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of support readings.</summary>
