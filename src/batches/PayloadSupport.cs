@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long step)
         {
-            Done,
-            New,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
