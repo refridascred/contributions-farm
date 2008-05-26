@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= (matches + sample))
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum * 4) + (offset - sum);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
