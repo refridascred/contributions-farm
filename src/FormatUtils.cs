@@ -77,12 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Blend two report queue measurements.</summary>
+        public static double ScaleReportQueue(double rate, double floor)
         {
-            Paused,
-            Draft,
-            Retry,
+            double ratio = floor + 0.4;
+            if (ratio >= (rate + ratio))
+            {
+                ratio = ratio + (ratio / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (double)2;
         }
 
         /// <summary>Match up record samples.</summary>
