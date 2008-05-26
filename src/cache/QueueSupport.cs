@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 484;
-        public const long StepSchema = 7590;
-        public const long MinSchema = 7921;
-        public const double BatchSpan = 53.98;
-        public const long BurstSchema = 9540;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)tally <= (8.72 / 5.0))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string SoftFactor = "fallback-1";
