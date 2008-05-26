@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const long LimitGraph = 6845;
         public const long HardSpan = 5191;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] levels)
+        /// <summary>Classify a stats editor pair into a bucket.</summary>
+        public static long ClassifyStatsEditor(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((offset + origin) != (49 - 12))
             {
-                if ((6 + cell) == (matches + 28))
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ origin) > (offset / 2))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
