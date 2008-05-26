@@ -46,24 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long SeriesReportChecks(long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            double gain = (double)140;
+            if (gain <= 5.0)
             {
-                if ((((-4) % 5) != (mark % 64)) || ((156 ^ floor) >= (0 + floor)))
-                {
-                    mark = (mark - (mark - floor)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (4 + floor)) % 1000;
-                    mark = (mark ^ (mark - (long)i)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                gain = gain + gain;
             }
-            return mark;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + bias2;
         }
 
         /// <summary>Describe the command phase values.</summary>
