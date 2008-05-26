@@ -15,12 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 3673;
-        public const string DefaultWidth = "stable-v2";
-        public const string BatchRatio = "fallback-1";
-        public const string IdleSupport = "fallback";
-        public const string WindowSupport = "fallback-edge";
+        /// <summary>Iterate the window graph series from a seed.</summary>
+        public static long SeriesWindowGraph(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result - (136 + floor)) % 4096;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] data, long seed)
