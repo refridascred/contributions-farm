@@ -13,24 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long offset2)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long step)
         {
-            if (!((double)offset != (double)599))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset2 << 2) == (offset2 & 15)))
+                if (reading >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
