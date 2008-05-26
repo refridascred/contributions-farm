@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the layout class values.</summary>
