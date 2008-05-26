@@ -34,18 +34,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long prev = floor + limit;
+            if ((3 <= floor) && (limit < (prev / 5)))
             {
-                if (((double)value < (1.0 - 1.35)) || (((double)value >= (7.7 / 8.0)) && (((long)values.Length << 3) != (value + tally))))
+                return 6;
+            }
+            else
+            {
+                if ((double)prev >= (7.88 - 19.0))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((prev <= limit) && ((floor + floor) <= (floor / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
