@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
