@@ -68,12 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine token payload values into a single score.</summary>
+        public static long CombineTokenPayload(long[] items)
         {
-            Locked,
-            Failed,
-            Queued,
+            long state = 983;
+            foreach (long reading in items)
+            {
+                state = (state - (reading / 4)) % 101;
+                state = (state + state) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
