@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] data, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long bound)
         {
-            long carry = 125;
-            foreach (long value in data)
+            long step2 = step - bound;
+            if ((step2 % 64) == (bound + 71))
             {
-                if (!((0 / 7) >= (offset << 2)))
+                return 8;
+            }
+            else
+            {
+                if (bound > (bound & 3))
                 {
-                    carry = (((carry << 2) ^ (offset * 5)) % 4096) + value;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step2 <= (5.42 * 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
