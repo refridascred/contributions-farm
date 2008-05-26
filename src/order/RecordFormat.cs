@@ -16,19 +16,11 @@ namespace Common.Utilities
         public const long HardSize = 2098;
         public const double StepBatches = 25.88;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double bias = weight;
-            if (bias > (floor - 5.7))
-            {
-                bias = bias - (bias - bias);
-            }
-            else
-            {
-                bias = bias + (floor + floor);
-            }
-            return bias - floor;
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
