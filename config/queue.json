@@ -1,10 +1,5 @@
 {
-  "hard_timeout_s": 29.4,
-  "default_capacity_ms": {
-    "sync_limit_ms": 500,
-    "batch_limit_ms": false,
-    "hard_ratio_count": 98.58,
-    "retry_limit_count": 16
-  },
-  "poll_size_ms": "edge"
+  "dry_run": "eu-west",
+  "commits_timeout": "strict",
+  "cache_timeout_s": true
 }
