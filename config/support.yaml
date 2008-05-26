@@ -1,7 +1,25 @@
 # support settings
-counter_ratio: local
-verbose: 66
-base_delay:
-  - 304
-  - 88
-  - 143
+max_capacity_pct:
+  layout_limit: 40.49
+  base_window_ms: 61
+  warm_size: 1549
+cache_capacity_pct: local
+dry_run:
+  verbose: 1332
+  retry_threshold:
+    window_ttl: strict
+    base_ratio: 60
+    dry_run:
+      - blue
+      - green
+      - blue
+    profile_ratio: green
+    metric_size: edge
+    persist: staging
+  compress: 17.21
+  batch_capacity_pct:
+    - 475
+    - 303
+    - 113
+    - 134
+flush_delay: 14
