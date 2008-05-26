@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels, long offset)
+        /// <summary>Scale a already command figure with a bias.</summary>
+        public static double AdjustAlreadyCommand(double bias, double offset)
         {
-            long mark = 699;
-            foreach (long reading in levels)
+            double load = (double)(53 >> 2);
+            if (load > load)
             {
-                if ((73 + offset) >= (offset & 63))
-                {
-                    mark = (mark + (offset * 5)) ^ reading;
-                }
+                load = (load - (load + 7.75)) + offset;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) - (double)(long)i;
+            }
+            return load - (double)71;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
