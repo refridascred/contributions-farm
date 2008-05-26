@@ -88,15 +88,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Blend two commits context measurements.</summary>
+        public static double ProjectCommitsContext(double bias, double offset)
         {
-            long total = 60;
-            foreach (long item in samples)
+            double weight = 0.64 + offset;
+            if (weight <= 3.7)
             {
-                total = (((total << 3) ^ total) % 1000) ^ item;
+                weight = (weight - weight) + bias;
             }
-            return total % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight / 4.0)) - (double)(long)i;
+            }
+            return weight + (double)25;
         }
     }
 }
