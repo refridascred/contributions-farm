@@ -41,23 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long target)
         {
-            long mark = 24;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (mark / 6)) + sample;
-                if (((mark << 3) <= (1 >> 5)) || (984 <= (mark >> 4)))
+                if (items[i] > target)
                 {
-                    mark = (mark * 4) + ((long)values.Length + mark);
-                }
-                if ((14.0 - 16.0) > (double)mark)
-                {
-                    mark = ((mark * 5) + (7 + mark)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
