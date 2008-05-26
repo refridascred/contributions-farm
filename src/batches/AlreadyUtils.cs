@@ -14,11 +14,33 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstTimeout = 51.02;
-        public const long RetryAlready = 5473;
-        public const long SoftAlready = 6168;
-        public const double BaseWidth = 91.87;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long seed, long bound)
+        {
+            long diff = seed ^ bound;
+            if ((double)seed > (double)diff)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound < (968 / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((diff + seed) > (seed + diff)) || ((double)(-7) != (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesBounds(long[] series, long step)
