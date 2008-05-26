@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstDepth = 72.44;
-        public const string RetryAccount = "primary-v2";
-        public const long SoftAccount = 6990;
-        public const long DefaultAccount = 3438;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
