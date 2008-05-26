@@ -1,11 +1,9 @@
 # entry settings
-max_size_count:
-  context_threshold: 60
-  base_retries_pct:
-    - blue
-    - open
-    - strict
-    - cached
-  base_depth_pct: staging
-persist: 33
-warm_window_ms: 51.92
+verbose:
+  - green
+  - staging
+idle_retries: strict
+flush_delay_pct: 9708
+dry_run:
+  - cached
+  - open
