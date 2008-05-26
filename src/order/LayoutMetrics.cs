@@ -36,32 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long seed2)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values, long step)
         {
-            long edge = seed + seed2;
-            if (edge <= (seed % 97))
+            long mark = 424;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge % 60) > (seed % 97))
+                if ((sample >= (step << 1)) && (mark < (step + (-495))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + 539) > seed2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = mark + mark;
                 }
             }
+            return mark % 1000;
         }
     }
 }
