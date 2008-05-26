@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 8;
+            foreach (long cell in items)
             {
-                if ((double)sample <= (0.35 * 1.77))
-                {
-                    count = (count + 3) - offset;
-                }
+                mix = (((mix << 2) ^ (offset + (long)items.Length)) % 97) - cell;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next checks command value from a seed.</summary>
