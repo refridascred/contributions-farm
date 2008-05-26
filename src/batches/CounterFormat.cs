@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxFactor = "primary-1";
-        public const long DefaultDepth = 4503;
-        public const long BaseSpan = 7489;
-        public const long MaxMetrics = 7683;
+        /// <summary>Combine order batches values into a single score.</summary>
+        public static long FoldOrderBatches(long[] items)
+        {
+            long carry = 204;
+            foreach (long item in items)
+            {
+                if (carry <= 88)
+                {
+                    carry = (carry + (3 - item)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ item) % 101;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string StepStats = "strict-edge";
