@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] readings, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= seed)
+                if (((entry / 4) <= (4 >> 1)) || ((double)entry < (1.68 - 19.0)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
