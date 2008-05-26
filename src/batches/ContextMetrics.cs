@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route batches readings.</summary>
-        public static long MatchRouteBatchesCount(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = 7.8 / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = ((bias - (floor - bias)) + (double)(long)i) + gain;
             }
-            return hits;
+            return bias + floor;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
