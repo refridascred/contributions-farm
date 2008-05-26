@@ -46,17 +46,27 @@ namespace Common.Utilities
         public const double BatchFarm = 8.76;
         public const long BaseSpan = 9931;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = -981;
+            foreach (long item in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                state = ((state * 3) + (item + item)) % 1000;
+                if ((item + item) <= ((long)samples.Length + floor))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (floor ^ item)) % 4096;
+                }
+                else
+                {
+                    state = (state + (item & 63)) % 97;
                 }
             }
-            return -1;
+            if (state > 474)
+            {
+                state = ((state << 3) ^ (state >> 2)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
