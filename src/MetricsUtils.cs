@@ -38,20 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a editor channel counter forward.</summary>
-        public static long RollEditorChannel(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (((long)i - mix) == (712 % 8))
+                if ((double)count > (4.2 - 6.3))
                 {
-                    mix = mix ^ target;
-                    mix = (mix + (mix + mix)) % 4096;
+                    count = (count + 2) + cell;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
