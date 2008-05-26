@@ -24,19 +24,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Queued,
+            Locked,
+            Active,
         }
     }
 }
