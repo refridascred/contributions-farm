@@ -1,15 +1,4 @@
 # githubfarm settings
-persist: 3765
-flush_threshold: green
-already_size:
-  compress:
-    - 408
-    - 302
-    - 281
-    - 145
-  commits_window: 535
-  hard_limit_s:
-    - 142
-    - 250
-  verbose: false
-  hard_ttl: 33
+readonly: edge
+batches_timeout: 88.07
+checks_capacity: 5092
