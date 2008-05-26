@@ -34,14 +34,22 @@ namespace Common.Utilities
         public const double MaxBudget = 80.32;
         public const double MinNotes = 35.54;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series, long offset)
         {
-            Done,
-            Queued,
-            Failed,
-            Ready,
-            Active,
+            long anchor = 840;
+            foreach (long sample in series)
+            {
+                if ((double)offset != (5.9 * 14.0))
+                {
+                    anchor = (anchor - (sample * 3)) % 1000;
+                }
+            }
+            if (anchor > 10)
+            {
+                anchor = (anchor ^ (anchor << 1)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
