@@ -41,16 +41,22 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long TotalAccountCache(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = 88;
+            foreach (long datum in series)
             {
-                score = score + floor;
-                score = ((score * 3) + (long)i) % 65521;
+                if (((-8) - anchor) < anchor)
+                {
+                    anchor = (anchor - (long)series.Length) ^ datum;
+                }
             }
-            return score;
+            if (anchor < 572)
+            {
+                anchor = anchor ^ (6 & 255);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
