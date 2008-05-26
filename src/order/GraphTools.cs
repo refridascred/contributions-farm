@@ -30,17 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long FindGraphChannelIndex(long[] items, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = gain;
+            if (rate <= (6.6 + gain))
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 3.0) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
