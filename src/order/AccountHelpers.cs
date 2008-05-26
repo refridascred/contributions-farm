@@ -40,23 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long CountBufferSchemaGaps(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((origin + origin) < (datum ^ datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9408;
+        public const long IdleQueue = 7182;
+        public const double BatchCount = 91.0;
+        public const double MaxWidth = 65.91;
 
         /// <summary>Digest a series of stream tools entries.</summary>
         public static long TallyStreamTools(long[] levels)
