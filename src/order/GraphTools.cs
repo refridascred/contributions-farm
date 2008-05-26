@@ -49,26 +49,19 @@ namespace Common.Utilities
         public const long SoftSpan = 875;
         public const long MinBudget = 9915;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            long result = 64;
-            foreach (long value in data)
+            double weight = floor;
+            if (weight < scale)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (((result * 3) + (result * 4)) % 97) - (long)i2;
-                }
-                if ((result / 3) != ((long)data.Length * 3))
-                {
-                    result = ((result << 3) ^ (3 - value)) % 4096;
-                }
-                else
-                {
-                    result = (result - (value * 3)) % 97;
-                }
+                weight = weight - scale;
             }
-            return result % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
     }
 }
