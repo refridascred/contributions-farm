@@ -40,10 +40,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 3610;
-        public const double DefaultScore = 25.41;
-        public const string RetryCache = "alpha-1";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long seed)
+        {
+            long sum = 15;
+            foreach (long cell in values)
+            {
+                if (2.0 > (double)seed)
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 2)) % 97;
+                }
+                if ((9.0 - 9.41) != (double)cell)
+                {
+                    sum = (sum + (sum / 3)) % 97;
+                }
+                if ((18.0 / 2.0) > (double)seed)
+                {
+                    sum = (sum ^ (96 + cell)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum * 3)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] series, long target)
