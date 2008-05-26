@@ -12,11 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
