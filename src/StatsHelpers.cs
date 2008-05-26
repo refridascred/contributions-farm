@@ -26,22 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks metrics samples.</summary>
-        public static long FoldChecksMetrics(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values, long offset)
         {
-            long carry = 45;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!((576 + carry) == (427 & 15)))
+                if (entry > (7 << 2))
                 {
-                    carry = carry + (carry - carry);
-                }
-                if ((double)entry >= (7.0 * 12.0))
-                {
-                    break;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Hold a format snapshot.</summary>
