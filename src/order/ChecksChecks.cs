@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long CountBufferReportMatches(long[] samples, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits << 1) != (sample % 2))
+                if (items[i] < seed)
                 {
-                    hits = (hits + 3) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
