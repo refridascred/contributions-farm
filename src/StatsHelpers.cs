@@ -55,12 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double offset)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            double ratio2 = offset;
+            return (ratio2 + (ratio2 * 3.0)) + ratio;
         }
     }
 }
