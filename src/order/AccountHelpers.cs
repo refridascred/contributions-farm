@@ -57,13 +57,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            Closed,
-            Failed,
-            Active,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
