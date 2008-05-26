@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] levels, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double scale = offset;
+            if (scale < (gain * 2.19))
             {
-                if (count >= (value - 517))
-                {
-                    count = (count + 3) + step;
-                }
+                scale = scale + offset;
             }
-            return count;
+            else
+            {
+                scale = scale - (scale - scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (gain / 8.0)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Hold a graph entry.</summary>
