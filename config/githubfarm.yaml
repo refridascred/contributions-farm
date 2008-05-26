@@ -1,11 +1,12 @@
 # githubfarm settings
-burst_limit: staging
-context_window:
-  sync_window_pct: 64.74
-  max_delay_ms: legacy
-  channel_interval:
-    - 228
-    - 268
-  editor_limit: 83
-commits_window: 44.43
-flush_ratio_s: strict
+compress:
+  - 138
+  - 30
+  - 484
+flush_limit:
+  profile_depth: 30
+  persist: false
+  burst_threshold_pct: blue
+strict: eu-west
+idle_depth_pct: false
+base_ttl: 1024
