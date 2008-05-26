@@ -39,21 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Measure how many support cache samples are out of range.</summary>
+        public static long CountSupportCacheOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((7.7 / 4.0) < (double)value) || (((91 + count) >= value) || (count >= (value & 7))))
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a command route pair into a bucket.</summary>
