@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long MinEditor = 9592;
         public const long CacheEditor = 1324;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool CheckWindowBatchBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((((double)sample < (double)(long)readings.Length) && ((seen + sample) > seen)) || ((sample + (long)readings.Length) < (sample / 8)))
+                if (reading > target)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
