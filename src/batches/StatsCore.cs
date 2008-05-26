@@ -61,13 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Idle,
-            Draft,
-            Pending,
-            Retry,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
