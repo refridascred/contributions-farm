@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (item >= origin)
+                if ((0.54 - 3.0) != (double)bound)
                 {
-                    flag = false;
-                    break;
+                    score = (score - (45 * 5)) % 255;
+                    score = score + (bound * 3);
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
