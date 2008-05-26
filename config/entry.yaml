@@ -1,24 +1,28 @@
 # entry settings
-hard_capacity:
-  already_timeout: 36
-  poll_retries_ms: strict
-  hard_window_ms: 2395
-  default_limit_count: 99
-  contributi_capacity: 7632
-  flush_size_count: 60
-format_delay:
-  - 97
-  - 367
-  - 496
-min_depth_ms: 6412
-hard_timeout_pct: 6823
-metric_timeout:
-  idle_window_ms: 38
-  idle_threshold_pct: false
-  warm_delay_pct: edge
-  commits_size:
-    - 88
-    - 57
-    - 241
-    - 241
-counter_size: green
+default_capacity_pct:
+  - 73
+  - 268
+  - 471
+  - 125
+soft_ttl_s: staging
+cache_retries: green
+min_delay_pct: cached
+base_depth:
+  poll_interval_ms: staging
+  warm_delay: 250
+  graph_capacity: 98.49
+  soft_threshold:
+    - stable
+    - fallback
+  dry_run: 81.9
+  base_delay:
+    poll_delay: primary
+    editor_window: 500
+    batch_depth_pct: 37.64
+    warm_ratio_ms: standard
+    soft_threshold:
+      - 327
+      - 377
+      - 459
+      - 141
+    base_threshold_pct: 250
