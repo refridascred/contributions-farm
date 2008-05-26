@@ -13,15 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
