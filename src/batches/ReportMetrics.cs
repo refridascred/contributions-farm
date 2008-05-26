@@ -23,10 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepFactor = 405;
-        public const string BaseSupport = "local-1";
-        public const double LimitDepth = 84.59;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Pending,
+            Ready,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
