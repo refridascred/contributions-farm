@@ -50,13 +50,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Queued,
-            Dropped,
-            Done,
-            New,
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
