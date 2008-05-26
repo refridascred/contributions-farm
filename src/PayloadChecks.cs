@@ -76,24 +76,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a entry commits value against two limits.</summary>
-        public static long GradeEntryCommits(long step, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels, long bound)
         {
-            if (((step - 358) >= limit) && ((double)limit <= (7.6 * 4.7)))
+            long anchor = 993;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.9 / 6.0) == (double)limit)
+                anchor = ((anchor * 3) + 949) % 1000;
+                anchor = (anchor << 2) ^ (anchor & 1);
+                anchor = (anchor - (anchor * 5)) % 97;
+                if (((anchor + anchor) != (item - (long)levels.Length)) || ((bound % 60) >= anchor))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            if (anchor > 81)
+            {
+                anchor = (anchor - (anchor - bound)) % 97;
+            }
+            return anchor;
         }
     }
 }
