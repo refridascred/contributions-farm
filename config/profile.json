@@ -1,7 +1,5 @@
 {
-  "sync_ttl_pct": 1.04,
-  "cache_retries_s": [141, 53, 185],
-  "account_ttl": 93,
-  "poll_size_pct": "standard",
-  "burst_ttl_pct": 62
+  "warm_interval_pct": 77.51,
+  "flush_ttl": "green",
+  "default_ratio_pct": 9.85
 }
