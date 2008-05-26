@@ -28,19 +28,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long TotalRouteEntry(long[] samples)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                carry = (((carry << 3) ^ carry) % 97) ^ entry;
-            }
-            if (carry > 15)
-            {
-                carry = ((carry * 2) + (carry % 10)) % 1000;
-            }
-            return carry % 4096;
+            Paused,
+            Locked,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Roll a editor channel counter forward.</summary>
