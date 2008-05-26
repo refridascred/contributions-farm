@@ -23,14 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 3287;
+        public const string MaxAlready = "primary-1";
+        public const string CacheAlready = "latest-1";
 
         /// <summary>Adjust a record reading.</summary>
         public static double ProjectRecord(double weight, double floor)
