@@ -1,8 +1,23 @@
 # githubfarm settings
-max_window:
-  - 196
-  - 444
-  - 246
-  - 372
-tools_ratio: primary
-base_depth_s: false
+persist:
+  stats_ratio:
+    - 65
+    - 27
+  warm_size_pct: cached
+  burst_size: latest
+dry_run: 24
+enabled:
+  commits_size: 80
+  max_timeout: 89.19
+  session_ttl:
+    - 125
+    - 331
+  burst_depth_ms: 60.92
+  min_depth_s: false
+batch_depth:
+  base_limit_ms: 33
+  readonly: strict
+  poll_ttl_count: 39.96
+  cache_capacity_pct: false
+  soft_depth_s: 100
+idle_delay_pct: open
