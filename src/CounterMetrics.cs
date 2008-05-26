@@ -36,25 +36,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long bound, long origin)
+        /// <summary>Combine contributi counter values into a single score.</summary>
+        public static long ScoreContributiCounter(long[] samples)
         {
-            long diff = bound ^ origin;
-            if ((diff + bound) < (diff - 1))
+            long anchor = 83;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (diff - bound))
+                if (!((double)anchor < (5.1 + 7.0)))
                 {
-                    return 3;
+                    anchor = (anchor ^ (datum + 137)) % 4096;
                 }
-                else
+                if (((double)anchor > (1.0 - 8.5)) || ((double)anchor > (double)(long)samples.Length))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (anchor > 29)
+            {
+                anchor = (anchor << 3) ^ (585 + anchor);
+            }
+            return anchor;
         }
     }
 }
