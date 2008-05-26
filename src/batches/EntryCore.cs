@@ -22,26 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = 68;
-            foreach (long reading in series)
-            {
-                if ((acc >> 3) <= 96)
-                {
-                    acc = ((acc + (origin % 7)) % 4096) + reading;
-                }
-                if ((acc & 255) <= (299 * 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 321)
-            {
-                acc = ((acc * 4) + (origin % 16)) % 97;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
