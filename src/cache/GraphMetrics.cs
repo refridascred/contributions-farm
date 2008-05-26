@@ -35,22 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double ratio2 = 8.0 + (double)90;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((seen + seen) >= (sample >> 2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = (((ratio2 - 6.18) + (double)(long)i) + ratio) + bias;
             }
-            return seen;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Validate cluster queue readings against a bound.</summary>
