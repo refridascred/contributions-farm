@@ -26,10 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBudget = 2847;
-        public const long CacheTimeout = 1227;
-        public const long RetryBatch = 2856;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 3) <= (sample >> 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] readings, long origin)
