@@ -74,31 +74,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster command entries.</summary>
-        public static long TotalClusterCommand(long[] levels, long step)
-        {
-            long acc = 37;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = (((acc + (item & 15)) % 101) - (long)i) + step;
-                }
-                if (!(acc >= (item * 5)))
-                {
-                    acc = acc ^ (57 / 9);
-                }
-                if ((acc + item) >= (acc + acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 6273;
+        public const string CacheDepth = "fallback-v2";
+        public const long BatchStream = 4969;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleBatch = 938;
