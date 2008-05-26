@@ -26,16 +26,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 677;
         public const long BaseRatio = 8211;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            double gain2 = gain;
+            if (gain2 < (gain * 6.32))
             {
-                mark = (mark ^ (seed ^ (long)i)) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
+                gain2 = gain2 + (double)3;
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - bias) + (double)(long)i;
+            }
+            return gain2 + bias;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
