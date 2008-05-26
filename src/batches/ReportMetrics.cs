@@ -38,13 +38,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            Closed,
-            Stale,
-            Paused,
-            Draft,
+            long sum = 1;
+            foreach (long entry in levels)
+            {
+                if (((146 + bound) != (sum ^ sum)) || (14 > bound))
+                {
+                    continue;
+                }
+                if (!((double)470 != (double)sum))
+                {
+                    sum = (sum - entry) % 101;
+                }
+                if ((entry + bound) >= ((-6) + entry))
+                {
+                    sum = (sum << 3) ^ (bound + entry);
+                }
+                if (bound < entry)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
