@@ -63,21 +63,15 @@ namespace Common.Utilities
             return ratio + 4.0;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = ratio;
+            if (mean >= 20.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + offset;
             }
-            return tally;
+            return mean - 2.0;
         }
     }
 }
