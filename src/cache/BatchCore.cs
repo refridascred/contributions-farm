@@ -22,19 +22,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] levels, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long sum = 695;
+            foreach (long sample in items)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum + (sample - limit)) % 101;
+                sum = sum + (sample >> 4);
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
