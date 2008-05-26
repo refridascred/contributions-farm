@@ -27,18 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] series, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = -67;
+            foreach (long entry in series)
             {
-                if (limit < (tally ^ sample))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc << 3) ^ 715) - entry;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
