@@ -52,11 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            Done,
+            Failed,
+            Closed,
+            Ready,
+            Synced,
         }
     }
 }
