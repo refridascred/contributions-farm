@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 2822;
-        public const double LimitCount = 28.61;
-        public const long DefaultSession = 6759;
-        public const string BatchSession = "cached-edge";
-        public const string DefaultCount = "alpha-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
