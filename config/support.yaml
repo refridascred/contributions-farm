@@ -1,7 +1,5 @@
 # support settings
-filter_window: 95.92
-burst_delay_count: 68.39
-already_ttl: strict
-metrics_limit: staging
-default_retries_pct: true
-batch_timeout_s: 23.92
+soft_capacity: 87.83
+account_ratio: legacy
+poll_size: green
+min_threshold_pct: local
