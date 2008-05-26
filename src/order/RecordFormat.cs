@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            long result = 42;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((34 + sample) > sample) || ((1.0 + 5.7) < (double)result))
+                if (samples[i] > origin)
                 {
-                    result = ((result * 3) + (sample * 4)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
