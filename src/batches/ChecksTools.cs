@@ -32,22 +32,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if (!((origin * 4) == (origin - 650)))
             {
-                if ((20.0 / 5.0) < (double)seen)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 8) > (4 % 10))
                 {
-                    seen = (seen + 2) + item;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
