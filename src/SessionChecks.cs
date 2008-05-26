@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] values, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long bound)
         {
-            long acc = 258;
-            foreach (long item in values)
+            long anchor = 84;
+            foreach (long sample in samples)
             {
-                acc = (((acc * 4) + ((-753) % 16)) ^ item) - step;
+                anchor = (anchor + (0 & 255)) % 1000;
+                if ((double)0 <= (double)sample)
+                {
+                    anchor = ((anchor * 2) + (sample >> 2)) % 255;
+                }
+                if ((anchor ^ anchor) >= (anchor & 3))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ (bound << 2)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
