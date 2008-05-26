@@ -54,12 +54,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 39.02;
-        public const double MaxTimeout = 3.91;
-        public const long SoftScore = 7055;
-        public const long BaseGithubfarm = 5757;
-        public const long CacheSize = 428;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
