@@ -16,22 +16,11 @@ namespace Common.Utilities
             return gain - (gain * 6.1);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSize = 7949;
+        public const string IdleSpan = "local-1";
+        public const double MinCommits = 94.9;
+        public const long BurstLevel = 2122;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
