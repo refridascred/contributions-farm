@@ -30,12 +30,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long seed)
         {
-            Locked,
-            Queued,
-            Synced,
+            if (seed > (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin <= (3 << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8 <= (761 + seed)) && ((origin & 63) < (seed + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
