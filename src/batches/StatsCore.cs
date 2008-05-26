@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinSize = "cached-1";
-        public const long HardCommand = 3248;
-        public const long LimitScore = 2706;
-        public const double LimitCommand = 51.44;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinWidth = "legacy-v2";
+        public const long CacheFactor = 1094;
+        public const long StepSize = 8244;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] readings, long bound)
