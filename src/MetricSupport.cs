@@ -25,11 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleInterval = "fallback-1";
-        public const double MinBuffer = 44.02;
-        public const string BatchDepth = "fallback-v2";
-        public const long CacheBuffer = 2665;
-        public const double LimitBuffer = 75.99;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
