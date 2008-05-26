@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 74.48;
+        public const long MinAccount = 7969;
+        public const double LimitSize = 31.97;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TotalGraph(long[] samples, long seed)
