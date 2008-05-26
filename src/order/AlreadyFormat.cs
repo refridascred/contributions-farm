@@ -51,11 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryTimeout = 217;
-        public const long BaseScore = 6473;
-        public const long MinLevel = 8838;
-        public const long MaxCommits = 1173;
-        public const string HardCommits = "strict-v2";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
