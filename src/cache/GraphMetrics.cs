@@ -55,14 +55,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values)
         {
-            Done,
-            Failed,
-            Closed,
-            Ready,
-            Synced,
+            long result = 9;
+            foreach (long value in values)
+            {
+                if (((result % 8) >= (value & 15)) && (value > (result + value)))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = (result * 4) + (7 ^ value);
+                    result = result ^ result;
+                }
+                result = (result + (result & 1)) % 4096;
+                if ((9.29 * 7.0) < (double)value)
+                {
+                    result = ((result * 2) + (value ^ result)) % 4096;
+                }
+                else
+                {
+                    result = (result - (result & 31)) % 65521;
+                }
+            }
+            return result % 65521;
         }
     }
 }
