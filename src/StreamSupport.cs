@@ -31,21 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long DigestAccountContributi(long[] items, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 173;
-            foreach (long sample in items)
-            {
-                sum = ((sum << 3) ^ (bound - sum)) - sample;
-                sum = (sum + sum) % 1000;
-                sum = sum + 0;
-            }
-            if (sum > 8)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
+            Pending,
+            Done,
+            Retry,
+            New,
+            Locked,
         }
     }
 }
