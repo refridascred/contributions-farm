@@ -39,30 +39,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long bound)
-        {
-            long sum = 1;
-            foreach (long entry in levels)
-            {
-                if (((146 + bound) != (sum ^ sum)) || (14 > bound))
-                {
-                    continue;
-                }
-                if (!((double)470 != (double)sum))
-                {
-                    sum = (sum - entry) % 101;
-                }
-                if ((entry + bound) >= ((-6) + entry))
-                {
-                    sum = (sum << 3) ^ (bound + entry);
-                }
-                if (bound < entry)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 1206;
+        public const long IdleSize = 5665;
+        public const double RetrySpan = 43.74;
     }
 }
