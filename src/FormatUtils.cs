@@ -80,19 +80,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two commits context measurements.</summary>
-        public static double ProjectCommitsContext(double bias, double offset)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double weight = 0.64 + offset;
-            if (weight <= 3.7)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - weight) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight / 4.0)) - (double)(long)i;
-            }
-            return weight + (double)25;
+            return count;
         }
     }
 }
