@@ -17,12 +17,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            long acc = -8;
+            foreach (long entry in readings)
+            {
+                if (entry < (entry & 255))
+                {
+                    acc = (acc + (entry + floor)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
