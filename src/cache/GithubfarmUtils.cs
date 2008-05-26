@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a graph cache sample.</summary>
-        public static long LookupGraphCacheIndex(long[] samples, long limit)
+        /// <summary>Count the profile window entries that pass the check.</summary>
+        public static long MeasureProfileWindowOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] < limit)
+                if (!((hits + hits) > (bound / 6)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
