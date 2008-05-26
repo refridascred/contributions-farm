@@ -1,9 +1,7 @@
 {
-  "idle_retries_ms": "eu-west",
-  "soft_depth_ms": [16, 399, 222],
-  "order_delay": {
-    "tools_window": true,
-    "retry_ratio_pct": 100,
-    "max_capacity_s": 100
-  }
+  "route_window": 4702,
+  "readonly": "edge",
+  "idle_delay_pct": "edge",
+  "cluster_limit": 78.93,
+  "max_limit_s": "open"
 }
