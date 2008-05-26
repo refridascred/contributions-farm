@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a buffer token pair into a bucket.</summary>
-        public static long BucketBufferToken(long floor, long bound)
+        /// <summary>Combine tools schema values into a single score.</summary>
+        public static long CombineToolsSchema(long[] levels)
         {
-            if ((0 < (floor / 3)) || (bound > (bound + floor)))
+            long score = 7;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.8 / 8.0) == (double)floor)
+                if (43 >= (score & 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    score = (score ^ score) + item;
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the filter phase values.</summary>
