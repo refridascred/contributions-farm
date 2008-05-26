@@ -44,14 +44,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long floor)
         {
-            New,
-            Ready,
-            Idle,
-            Done,
-            Synced,
+            long state = 3;
+            foreach (long reading in values)
+            {
+                if ((floor + floor) <= (state + reading))
+                {
+                    state = (state ^ 743) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (868 - state);
+                }
+            }
+            if (state > 0)
+            {
+                state = (state + ((long)values.Length * 3)) % 4096;
+            }
+            return state;
         }
     }
 }
