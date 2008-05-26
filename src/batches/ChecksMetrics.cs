@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            Queued,
-            Paused,
-            Closed,
-            Ready,
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - (2.99 * 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - offset) - (double)(long)i;
+            }
+            return bias2 + (4.5 + 2.27);
         }
 
         /// <summary>Digest a series of support order entries.</summary>
