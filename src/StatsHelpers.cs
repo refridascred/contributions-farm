@@ -44,19 +44,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
