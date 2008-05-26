@@ -52,22 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload profile samples are out of range.</summary>
-        public static long TallyPayloadProfileGaps(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long result = 1;
+            foreach (long sample in readings)
             {
-                if ((value - value) >= (value << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 2) + floor) ^ sample;
             }
-            return hits;
+            if (result > 8)
+            {
+                result = (result + (result - floor)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
