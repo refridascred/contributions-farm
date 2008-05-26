@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const long IdleScore = 1832;
         public const long SoftCommits = 9686;
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long AuditNotesStatsMatches(long[] samples)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double bias = span;
+            if (bias <= (3.9 + ratio))
             {
-                if ((951 <= (sample / 4)) && (seen < ((-17) & 7)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + bias;
             }
-            return seen;
+            else
+            {
+                bias = bias + (bias * 8.36);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (span - span)) - (double)(long)i;
+            }
+            return bias + (span - ratio);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
