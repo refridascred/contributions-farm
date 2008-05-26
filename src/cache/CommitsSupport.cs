@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] data, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double drift = floor;
+            if (drift > floor)
             {
-                if ((double)datum > (7.7 + 12.0))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                drift = drift - floor;
             }
-            return seen;
+            else
+            {
+                drift = drift + (9.0 + 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - scale) - (double)(long)i;
+            }
+            return drift + (double)105;
         }
 
         /// <summary>Describe the schema state values.</summary>
