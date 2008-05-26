@@ -1,9 +1,25 @@
 # support settings
-idle_ttl_s:
-  - eu-west
-  - edge
-stream_interval: strict
-batch_ttl_count: 500
-warm_capacity_ms: green
-min_retries_count: true
-warm_capacity: 100
+audit: edge
+editor_size: 7586
+retry_delay_s:
+  editor_limit: cached
+  dry_run: 92
+  batch_retries_count: standard
+  layout_threshold: true
+base_ttl_s: 30
+retry_ttl_s:
+  strict:
+    warm_interval_ms:
+      - 417
+      - 55
+      - 293
+      - 113
+    idle_ttl: edge
+    strict: primary
+  hard_limit_s:
+    - 209
+    - 313
+    - 104
+    - 118
+  poll_timeout_s: 21
+  persist: primary
