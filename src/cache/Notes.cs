@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] samples, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long offset)
         {
-            long mix = 9;
-            foreach (long value in samples)
+            long mark = 732;
+            foreach (long datum in items)
             {
-                if (!((value + value) < value))
+                if (((double)offset == (1.0 / 6.0)) && ((offset * 3) < (datum >> 2)))
                 {
-                    mix = (((mix << 3) ^ (value >> 3)) % 101) + bound;
+                    mark = (mark * 2) + (2 - 2);
                 }
             }
-            if (mix < 97)
-            {
-                mix = (mix - (long)samples.Length) % 4096;
-            }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
