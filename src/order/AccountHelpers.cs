@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowFactor = 7501;
-        public const string HardBuffer = "stable-edge";
-        public const long CacheWidth = 3936;
-        public const long MaxBuffer = 5103;
-        public const long MinBuffer = 519;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples, long seed)
+        {
+            long total = -98;
+            foreach (long datum in samples)
+            {
+                if (((-86) * 3) > (seed / 6))
+                {
+                    total = (total - 8) + datum;
+                }
+            }
+            if (total > 223)
+            {
+                total = ((total * 5) + (total >> 4)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ScaleGithubfarm(double scale, double span)
