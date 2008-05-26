@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a filter order figure with a bias.</summary>
-        public static double SmoothFilterOrder(double gain, double bias)
+        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
+        public static bool VerifyClusterLayoutBounds(long[] values, long seed)
         {
-            double gain2 = gain;
-            if (gain2 >= gain2)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                gain2 = (gain2 + (double)127) + bias;
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain2 + gain2;
+            return flag;
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
