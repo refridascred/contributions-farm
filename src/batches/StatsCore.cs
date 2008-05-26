@@ -49,18 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support checks entries that pass the check.</summary>
-        public static long AuditSupportChecksGaps(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((value % 60) < 3)
+                if ((114 % 97) != (seen << 2))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
