@@ -15,16 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the window graph series from a seed.</summary>
-        public static long SeriesWindowGraph(long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - (136 + floor)) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Accumulate commits samples.</summary>
