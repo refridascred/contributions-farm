@@ -31,38 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            if ((4.0 - 11.0) < (double)target)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset == (4.0 + 1.03))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(target <= (203 + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 7.88)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
