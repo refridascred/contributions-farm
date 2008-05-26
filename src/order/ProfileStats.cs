@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a commits payload reading by value.</summary>
-        public static long LookupCommitsPayloadIndex(long[] series, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the record level values.</summary>
