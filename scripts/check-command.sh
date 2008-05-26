@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable strict staging; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 2))
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=277
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging stable; do
+    log "checking ${item}"
+done
